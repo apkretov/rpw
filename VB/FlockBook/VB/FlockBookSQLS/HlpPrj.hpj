@@ -1,0 +1,21 @@
+; This file is maintained by HCW. Do not modify this file directly.
+
+[OPTIONS]
+LCID=0x419 0x0 0x0 ; Russian
+REPORT=Yes
+HLP=HlpPrj.hlp
+
+[FILES]
+HlpSample6.rtf
+
+[MAP]
+ABOUT_SAMPLE=001        ; About This Topic File Sample
+ABOUT_TOPICS=002        ; About Topics
+INFO_MAT=003            ; About Informational Text
+NORTH_AMERICA=004         ; This is North America.
+
+[WINDOWS]
+Main="Tesy Window",,20740,(r14876671),(r12632256),f2
+
+[CONFIG]
+BrowseButtons()

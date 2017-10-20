@@ -1,0 +1,309 @@
+[Root]
+Most Recent Package=Standard Setup Package 2
+
+
+[Package|Standard Setup Package 1|Root]
+SubWizProgID=PDWizard.SetupPkgSubWiz
+BuildFolder=D:\CABS\VB\Projects\FlockBook\Package
+
+[Package|Standard Setup Package 1|Configure DAO ISAMs]
+Applicable=No
+
+[Package|Standard Setup Package 1|Configure DAO ODBC]
+JetWorkspace=
+ODBCDirect=
+
+[Package|Standard Setup Package 1|Files Found]
+
+[Package|Standard Setup Package 1|Files Released]
+
+[Package|Standard Setup Package 1|Missing Dependency Information]
+C:\WINNT\system32\FM20.DLL=
+C:\Program Files\Common Files\Designer\MSDE.DLL=
+C:\Program Files\Common Files\Designer\MSCONDES.DLL=
+
+[Package|Standard Setup Package 1|Out-of-Date Dependency Information]
+C:\WINNT\system32\CRYSTL32.OCX=
+
+[Package|Standard Setup Package 1|Files Added]
+d:\cabs\vb\projects\flockbook\setupdb\setupdb.sql=
+
+[Package|Standard Setup Package 1|Files Removed]
+
+[Package|Standard Setup Package 1|Files In Project]
+D:\CABS\VB\Projects\FlockBook\FlockBook.exe=Yes
+C:\WINNT\system32\MSVBVM60.DLL=Yes
+C:\WINNT\system32\OLEAUT32.DLL=Yes
+C:\WINNT\system32\OLEPRO32.DLL=Yes
+C:\WINNT\system32\ASYCFILT.DLL=Yes
+C:\WINNT\system32\STDOLE2.TLB=Yes
+D:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=Yes
+C:\Program Files\Common Files\Designer\MSCONDES.DLL=Yes
+C:\WINNT\system32\MSDBRPTR.DLL=Yes
+C:\WINNT\system32\MSSTDFMT.DLL=Yes
+C:\Program Files\Common Files\Designer\MSDE.DLL=Yes
+C:\WINNT\system32\MSBIND.DLL=Yes
+C:\WINNT\system32\FM20.DLL=Yes
+C:\WINNT\system32\MSMASK32.OCX=Yes
+C:\WINNT\system32\MSCOMCTL.OCX=Yes
+C:\WINNT\system32\MSHFLXGD.OCX=Yes
+C:\WINNT\system32\MSADODC.OCX=Yes
+C:\WINNT\system32\MSDATGRD.OCX=Yes
+C:\WINNT\system32\MSDATLST.OCX=Yes
+C:\WINNT\system32\MSCOMCT2.OCX=Yes
+C:\WINNT\system32\TABCTL32.OCX=Yes
+D:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MDAC_TYP.EXE=Yes
+D:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=Yes
+D:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=Yes
+C:\WINNT\system32\VB6STKIT.DLL=Yes
+D:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=Yes
+C:\WINNT\system32\SCRRUN.DLL=Yes
+C:\WINNT\system32\MSVCRT.DLL=Yes
+C:\WINNT\system32\comdlg32.ocx=Yes
+D:\CABS\VB\Projects\FlockBook\SetupDB\SetupDB.sql=Yes
+C:\Program Files\Common Files\Designer\MSCDRUN.DLL=Yes
+C:\WINNT\system32\msrdo20.dll=Yes
+C:\WINNT\system32\rdocurs.dll=Yes
+
+[Package|Standard Setup Package 1|Configure Registry Files]
+Applicable=No
+
+[Package|Standard Setup Package 1|Configure Remote Servers]
+Applicable=No
+
+[Package|Standard Setup Package 1|Install Locations]
+D:\CABS\VB\Projects\FlockBook\FlockBook.exe=$(AppPath)
+C:\WINNT\system32\MSVBVM60.DLL=$(WinSysPathSysFile)
+C:\WINNT\system32\OLEAUT32.DLL=$(WinSysPathSysFile)
+C:\WINNT\system32\OLEPRO32.DLL=$(WinSysPathSysFile)
+C:\WINNT\system32\ASYCFILT.DLL=$(WinSysPathSysFile)
+C:\WINNT\system32\STDOLE2.TLB=$(WinSysPathSysFile)
+D:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=$(WinSysPathSysFile)
+C:\Program Files\Common Files\Designer\MSCONDES.DLL=$(WinSysPath)
+C:\WINNT\system32\MSDBRPTR.DLL=$(WinSysPath)
+C:\WINNT\system32\MSSTDFMT.DLL=$(WinSysPath)
+C:\Program Files\Common Files\Designer\MSDE.DLL=$(WinSysPath)
+C:\Program Files\Common Files\Designer\MSDERUN.DLL=$(CommonFiles)\designer
+C:\WINNT\system32\MSBIND.DLL=$(WinSysPath)
+C:\WINNT\system32\FM20.DLL=$(WinSysPath)
+C:\WINNT\system32\MSCOMM32.OCX=$(WinSysPath)
+C:\WINNT\system32\MSMASK32.OCX=$(WinSysPath)
+C:\WINNT\system32\MSCOMCTL.OCX=$(WinSysPath)
+C:\WINNT\system32\MSHFLXGD.OCX=$(WinSysPath)
+C:\WINNT\system32\MSADODC.OCX=$(WinSysPath)
+C:\WINNT\system32\MSDATGRD.OCX=$(WinSysPath)
+C:\WINNT\system32\MSDATLST.OCX=$(WinSysPath)
+C:\WINNT\system32\PICCLP32.OCX=$(WinSysPath)
+C:\WINNT\system32\MSCOMCT2.OCX=$(WinSysPath)
+C:\WINNT\system32\TABCTL32.OCX=$(WinSysPath)
+C:\WINNT\system32\CRYSTL32.OCX=$(WinSysPath)
+C:\WINNT\system32\CRPE32.DLL=$(WinSysPath)
+C:\WINNT\system32\IMPLODE.DLL=$(WinSysPath)
+D:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\CO2C40EN.DLL=$(WinSysPath)
+D:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MSVCRT20.DLL=$(WinSysPathSysFile)
+C:\WINNT\Crystal\CRXLAT32.DLL=$(WinPath)\Crystal
+C:\WINNT\system32\P2BBND.DLL=$(WinSysPath)
+C:\WINNT\system32\P2BDAO.DLL=$(WinSysPath)
+C:\WINNT\system32\P2CTDAO.DLL=$(WinSysPath)
+C:\WINNT\system32\P2IRDAO.DLL=$(WinSysPath)
+C:\WINNT\system32\P2SODBC.DLL=$(WinSysPath)
+C:\WINNT\Crystal\U2DDISK.DLL=$(WinPath)\Crystal
+C:\WINNT\Crystal\U2DMAPI.DLL=$(WinPath)\Crystal
+C:\WINNT\Crystal\U2FCR.DLL=$(WinPath)\Crystal
+C:\WINNT\Crystal\U2FDIF.DLL=$(WinPath)\Crystal
+C:\WINNT\Crystal\U2FHTML.DLL=$(WinPath)\Crystal
+C:\WINNT\Crystal\U2FREC.DLL=$(WinPath)\Crystal
+C:\WINNT\Crystal\U2FRTF.DLL=$(WinPath)\Crystal
+C:\WINNT\Crystal\U2FSEPV.DLL=$(WinPath)\Crystal
+C:\WINNT\Crystal\U2FTEXT.DLL=$(WinPath)\Crystal
+C:\WINNT\Crystal\U2FWKS.DLL=$(WinPath)\Crystal
+C:\WINNT\Crystal\U2FWORDW.DLL=$(WinPath)\Crystal
+C:\WINNT\Crystal\U2FXLS.DLL=$(WinPath)\Crystal
+C:\WINNT\system32\MSFLXGRD.OCX=$(WinSysPath)
+C:\WINNT\system32\MSOUTL32.OCX=$(WinSysPath)
+D:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MFC40.DLL=$(WinSysPathSysFile)
+D:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MSVCRT40.DLL=$(WinSysPathSysFile)
+C:\WINNT\system32\RICHTX32.OCX=$(WinSysPath)
+D:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\RICHED32.DLL=$(WinSysPathSysFile)
+D:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MDAC_TYP.EXE=$(AppPath)
+D:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=$(AppPath)
+D:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=$(WinPath)
+C:\WINNT\system32\VB6STKIT.DLL=$(WinSysPathSysFile)
+D:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=$(WinPath)
+C:\WINNT\system32\SCRRUN.DLL=$(WinSysPath)
+C:\WINNT\system32\MSVCRT.DLL=$(WinSysPathSysFile)
+C:\WINNT\system32\comdlg32.ocx=$(WinSysPath)
+D:\CABS\VB\Projects\FlockBook\SetupDB\SetupDB.sql=$(AppPath)\SetupDB
+C:\Program Files\Common Files\Designer\MSCDRUN.DLL=$(CommonFiles)\Designer
+C:\WINNT\system32\msrdo20.dll=$(WinSysPath)
+C:\WINNT\system32\rdocurs.dll=$(WinSysPath)
+
+[Package|Standard Setup Package 1|Configure Shared Files]
+Applicable=Yes
+D:\CABS\VB\Projects\FlockBook\FlockBook.exe=No
+D:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MDAC_TYP.EXE=No
+D:\CABS\VB\Projects\FlockBook\SetupDB\SetupDB.sql=No
+
+[Package|Standard Setup Package 1|Distribution]
+Type=multi
+Size=1.44 MB
+Title=FlockBook
+
+[Package|Standard Setup Package 1|IconGroups]
+Group0=FlockBook
+PrivateGroup0=True
+Parent0=$(Programs)
+
+[Package|Standard Setup Package 1|FlockBook]
+Icon1=FlockBook.exe
+Title1=FlockBook
+StartIn1=$(AppPath)
+Key1=Icon1
+
+[Package|Standard Setup Package 1|Package]
+PackageFolder=D:\CABS\VB\Projects\FlockBook\Package
+ProjectFolder=D:\CABS\VB\Projects\FlockBook
+ServerSideCab=
+File1=D:\CABS\VB\Projects\FlockBook\Package\setup.exe
+File2=D:\CABS\VB\Projects\FlockBook\Package\Setup.Lst
+File3=D:\CABS\VB\Projects\FlockBook\Package\FlockB1.CAB
+File4=D:\CABS\VB\Projects\FlockBook\Package\FlockB2.CAB
+File5=D:\CABS\VB\Projects\FlockBook\Package\FlockB3.CAB
+File6=D:\CABS\VB\Projects\FlockBook\Package\FlockB4.CAB
+File7=D:\CABS\VB\Projects\FlockBook\Package\FlockB5.CAB
+File8=D:\CABS\VB\Projects\FlockBook\Package\FlockB6.CAB
+File9=D:\CABS\VB\Projects\FlockBook\Package\FlockB7.CAB
+File10=D:\CABS\VB\Projects\FlockBook\Package\FlockB8.CAB
+File11=D:\CABS\VB\Projects\FlockBook\Package\FlockB9.CAB
+File12=D:\CABS\VB\Projects\FlockBook\Package\FlockB10.CAB
+Handler1=PDWizard.FloppyDplySubWiz
+Handler2=PDWizard.FolderDplySubWiz
+Handler3=PDWizard.WebPostDplySubWiz
+
+
+[Package|Standard Setup Package 2|Root]
+SubWizProgID=PDWizard.SetupPkgSubWiz
+BuildFolder=D:\CABS\VB\Projects\FlockBook\FlockBookSQLS\Package
+
+[Package|Standard Setup Package 2|Configure DAO ISAMs]
+Applicable=No
+
+[Package|Standard Setup Package 2|Configure DAO ODBC]
+JetWorkspace=
+ODBCDirect=
+
+[Package|Standard Setup Package 2|Files Found]
+
+[Package|Standard Setup Package 2|Files Released]
+
+[Package|Standard Setup Package 2|Missing Dependency Information]
+C:\WINNT\system32\FM20.DLL=
+
+[Package|Standard Setup Package 2|Out-of-Date Dependency Information]
+C:\WINNT\system32\SCRRUN.DLL=
+
+[Package|Standard Setup Package 2|Files Added]
+
+[Package|Standard Setup Package 2|Files Removed]
+
+[Package|Standard Setup Package 2|Files In Project]
+D:\CABS\VB\Projects\FlockBook\FlockBookSQLS\FlockBookSQLS.exe=Yes
+C:\WINNT\system32\MSVBVM60.DLL=Yes
+D:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\OLEAUT32.DLL=Yes
+D:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\OLEPRO32.DLL=Yes
+D:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\ASYCFILT.DLL=Yes
+D:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\STDOLE2.TLB=Yes
+D:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=Yes
+C:\WINNT\system32\SCRRUN.DLL=Yes
+C:\WINNT\system32\MSVCRT.DLL=Yes
+C:\WINNT\system32\MSDBRPTR.DLL=Yes
+C:\WINNT\system32\MSSTDFMT.DLL=Yes
+C:\WINNT\system32\MSBIND.DLL=Yes
+C:\WINNT\system32\FM20.DLL=Yes
+C:\WINNT\system32\MSCOMCTL.OCX=Yes
+C:\WINNT\system32\MSHFLXGD.OCX=Yes
+C:\WINNT\system32\MSADODC.OCX=Yes
+C:\WINNT\system32\MSDATGRD.OCX=Yes
+C:\WINNT\system32\MSDATLST.OCX=Yes
+C:\WINNT\system32\MSCOMCT2.OCX=Yes
+C:\WINNT\system32\TABCTL32.OCX=Yes
+C:\WINNT\system32\comdlg32.ocx=Yes
+D:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MDAC_TYP.EXE=Yes
+D:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=Yes
+D:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=Yes
+C:\WINNT\system32\VB6STKIT.DLL=Yes
+D:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=Yes
+
+[Package|Standard Setup Package 2|Configure Registry Files]
+Applicable=No
+
+[Package|Standard Setup Package 2|Configure Remote Servers]
+Applicable=No
+
+[Package|Standard Setup Package 2|Install Locations]
+D:\CABS\VB\Projects\FlockBook\FlockBookSQLS\FlockBookSQLS.exe=$(AppPath)
+C:\WINNT\system32\MSVBVM60.DLL=$(WinSysPathSysFile)
+D:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\OLEAUT32.DLL=$(WinSysPathSysFile)
+D:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\OLEPRO32.DLL=$(WinSysPathSysFile)
+D:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\ASYCFILT.DLL=$(WinSysPathSysFile)
+D:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\STDOLE2.TLB=$(WinSysPathSysFile)
+D:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=$(WinSysPathSysFile)
+C:\WINNT\system32\SCRRUN.DLL=$(WinSysPath)
+C:\WINNT\system32\MSVCRT.DLL=$(WinSysPathSysFile)
+C:\WINNT\system32\MSDBRPTR.DLL=$(WinSysPath)
+C:\WINNT\system32\MSSTDFMT.DLL=$(WinSysPath)
+C:\WINNT\system32\MSBIND.DLL=$(WinSysPath)
+C:\WINNT\system32\FM20.DLL=$(WinSysPath)
+C:\WINNT\system32\MSCOMCTL.OCX=$(WinSysPath)
+C:\WINNT\system32\MSHFLXGD.OCX=$(WinSysPath)
+C:\WINNT\system32\MSADODC.OCX=$(WinSysPath)
+C:\WINNT\system32\MSDATGRD.OCX=$(WinSysPath)
+C:\WINNT\system32\MSDATLST.OCX=$(WinSysPath)
+C:\WINNT\system32\MSCOMCT2.OCX=$(WinSysPath)
+C:\WINNT\system32\TABCTL32.OCX=$(WinSysPath)
+C:\WINNT\system32\comdlg32.ocx=$(WinSysPath)
+D:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MDAC_TYP.EXE=$(AppPath)
+D:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=$(AppPath)
+D:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=$(WinPath)
+C:\WINNT\system32\VB6STKIT.DLL=$(WinSysPathSysFile)
+D:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=$(WinPath)
+
+[Package|Standard Setup Package 2|Configure Shared Files]
+Applicable=Yes
+D:\CABS\VB\Projects\FlockBook\FlockBookSQLS\FlockBookSQLS.exe=No
+D:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\MDAC_TYP.EXE=No
+
+[Package|Standard Setup Package 2|Distribution]
+Type=multi
+Size=1.44 MB
+Title=FlockBook
+
+[Package|Standard Setup Package 2|IconGroups]
+Group0=FlockBook
+PrivateGroup0=-1
+Parent0=$(Programs)
+
+[Package|Standard Setup Package 2|FlockBook]
+Icon1=FlockBookSQLS.exe
+Title1=FlockBook
+StartIn1=$(AppPath)
+Key1=Icon1
+
+[Package|Standard Setup Package 2|Package]
+PackageFolder=D:\CABS\VB\Projects\FlockBook\FlockBookSQLS\Package
+ProjectFolder=D:\CABS\VB\Projects\FlockBook\FlockBookSQLS
+ServerSideCab=
+File1=D:\CABS\VB\Projects\FlockBook\FlockBookSQLS\Package\setup.exe
+File2=D:\CABS\VB\Projects\FlockBook\FlockBookSQLS\Package\Setup.Lst
+File3=D:\CABS\VB\Projects\FlockBook\FlockBookSQLS\Package\FlockB1.CAB
+File4=D:\CABS\VB\Projects\FlockBook\FlockBookSQLS\Package\FlockB2.CAB
+File5=D:\CABS\VB\Projects\FlockBook\FlockBookSQLS\Package\FlockB3.CAB
+File6=D:\CABS\VB\Projects\FlockBook\FlockBookSQLS\Package\FlockB4.CAB
+File7=D:\CABS\VB\Projects\FlockBook\FlockBookSQLS\Package\FlockB5.CAB
+File8=D:\CABS\VB\Projects\FlockBook\FlockBookSQLS\Package\FlockB6.CAB
+File9=D:\CABS\VB\Projects\FlockBook\FlockBookSQLS\Package\FlockB7.CAB
+File10=D:\CABS\VB\Projects\FlockBook\FlockBookSQLS\Package\FlockB8.CAB
+File11=D:\CABS\VB\Projects\FlockBook\FlockBookSQLS\Package\FlockB9.CAB
+Handler1=PDWizard.FloppyDplySubWiz
+Handler2=PDWizard.FolderDplySubWiz
+Handler3=PDWizard.WebPostDplySubWiz
