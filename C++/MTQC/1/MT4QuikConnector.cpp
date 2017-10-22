@@ -1,7 +1,9 @@
 #include "MT4QuikConnector.h"
+
 using std::string;
 using std::to_string;
 using std::exception;
+
 #include "events.h"
 #include "mt4QuikConnector_.h"
 #include "objects.h"
@@ -9,17 +11,23 @@ using std::exception;
 #include "alg.h"
 #include "enumerators.h"
 #include "terminalMT4.h"
+
 using namespace mtqc;
 using namespace mtqc::terminalMT4;
+
 #include "trend.h"
 #include "switch.h"
 #include "messages.h"
+
 #include "functions.h"
 using namespace mtqc::functions;
+
 #include "algEA.h"
 using namespace mtqc::algEA;
+
 #include "constants.h"
 using namespace mtqc::constants;
+
 #include "server.h"
 
 //A forward declaration required in srvMessageToQuik. Declared ouside the MT4QuikConnector namespace becuase the function is out of the namespace's scope as well.
@@ -782,4 +790,3 @@ extern "C" LUALIB_API int luaopen_MTQC(lua_State* L) {
 BOOL APIENTRY DllMain(HANDLE hModule, DWORD ul_reason_for_call, LPVOID lpReserved) { 
 	return TRUE; 
 } 
-//SUSPENDED
