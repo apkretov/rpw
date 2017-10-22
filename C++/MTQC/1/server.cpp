@@ -57,7 +57,7 @@ namespace mtqc {
 			pipe->cbToWrite = (lstrlen(pipe->chReply) + 1)*sizeof(TCHAR);
 		}
 
-		static int srvStartQuikServer(lua_State* L) { //"Named Pipe Server Using Overlapped I/O" @ https://msdn.microsoft.com/en-us/library/aa365603(v=vs.85).aspx //+
+		static int srvStartQuikServer(lua_State* L) { //"Named Pipe Server Using Overlapped I/O" @ https://msdn.microsoft.com/en-us/library/aa365603(v=vs.85).aspx
 			try {
 				DWORD i, dwWait, cbRet, dwErr;
 				BOOL fSuccess;
@@ -188,7 +188,7 @@ namespace mtqc {
 		//}
 		//
 
-		int startQuikServer(lua_State* L) { //"Вызов функций QLua(Lua) из DLL, написанной на C/C++" @ http://quikluacsharp.ru/qlua-c-cpp-csharp/vyzov-funktsij-qlua-lua-iz-dll-napisannoj-na-c-c/ //+
+		int startQuikServer(lua_State* L) { //"Вызов функций QLua(Lua) из DLL, написанной на C/C++" @ http://quikluacsharp.ru/qlua-c-cpp-csharp/vyzov-funktsij-qlua-lua-iz-dll-napisannoj-na-c-c/
 			try {
 				std::thread objThread(srvStartQuikServer, L); //Запускает выполнение функции MyCallback() в отдельном потоке
 				objThread.detach(); //Отсоединяет созданный поток от основного, делая его "фоновым"

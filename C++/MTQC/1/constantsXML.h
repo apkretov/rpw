@@ -2,7 +2,10 @@
 #include "constantsXMLv.h"
 
 namespace mtqc {
-	class constantsXML : public constantsXMLv { // Use namepsace instead of numbering like this next time: Namespaces provide a method for preventing name conflicts in large projects. See Namespaces @ http://en.cppreference.com/w/cpp/language/namespace 
+	
+	// Use namepsace instead of numbering like this next time: Namespaces provide a method for preventing name conflicts in large projects.
+	// See Namespaces @ http://en.cppreference.com/w/cpp/language/namespace 
+	class constantsXML : public constantsXMLv { 
 	
 		const std::wstring cstrCLASSCODEName = L"CLASSCODE";
 		const std::wstring cstrStockName = L"Stock";

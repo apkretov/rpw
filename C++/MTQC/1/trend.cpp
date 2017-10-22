@@ -74,6 +74,26 @@ void trend::trade_open() {
 			cintPhase = enmPhases::phase_signal_triggered;
 }	}	} 
 
+/*KTB
+bool time_frame_shift() {
+	if (cintIdxTFActive < ArraySize(cintTimeFrames) - 1) { //Isn't the active time frame the biggest one already?
+		if (getTradeActive()->getProfit() >= 0) { //a profit trade in the old time frame?
+			alg objAlg(cintTimeFrames[cintIdxTFActive + 1], gintIdx0); //watch an appearance of an opposite direction
+			if (objAlg.getDirec() == cintDirec) { //is the new time frame direction the same?
+				if (objAlg.signalGet()) { //has a signaled appeared in the new time frame?
+					if (objAlg.signalOvercome()) { //can trade in the new time frame, i.g. signal triggered?
+						datetime dtmSignalTimePrior = cobjAlg->getSignalTime(); //remember the prior signal to use it the shifted time frame //develop: trend_child/parent will contain the prior direction
+						double dblSignalPricePrior = cobjAlg->cdblSignalPrice;
+						cobjAlg.reset();
+						initialise(cintTimeFrames[++cintIdxTFActive]); //Shift the active time frame index and initialise the trend.
+						cobjAlg->setSignalTime(dtmSignalTimePrior); //restore the original signal generated in the prior time frame //develop: trend_child/parent will contain the prior and new time frame signals; it's more robust to remember the new time frame signal in a way
+						cobjAlg->cdblSignalPrice = dblSignalPricePrior;
+						cintPhase = phase_signal_triggered;
+						return true;
+	}	}	}	}	}
+	return false;
+}*/
+
 bool trend::trade_close() { //close a buy/sell position +
 	if (!cobjTradeActive->close_bid_ask(cintDirec)) return false; //din't the currently active trade close?
 	else {

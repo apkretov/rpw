@@ -10,7 +10,11 @@ using namespace mtqc::functions;
 using namespace mtqc::constants;
 
 namespace mtqc {
-	/*inline*/ wstring constantsXML::getCLASSCODE() const { return cstrCLASSCODE; } //To enable DLL exporting, the Original Runtime Library property "Multi-threaded Debug (/MTd)" changed to "Multi-threaded Debug DLL (/MDd)" //Debug Assertion Failed! Expression: __acrt_first_block == header @ https://stackoverflow.com/questions/35310117/debug-assertion-failed-expression-acrt-first-block-header // /MD, /MT, /LD (Use Run-Time Library) @ https://docs.microsoft.com/en-us/cpp/build/reference/md-mt-ld-use-run-time-library 
+	//To enable DLL exporting, the Original Runtime Library property "Multi-threaded Debug (/MTd)" changed to "Multi-threaded Debug DLL (/MDd)" 
+	//Debug Assertion Failed! Expression: __acrt_first_block == header @ https://stackoverflow.com/questions/35310117/debug-assertion-failed-expression-acrt-first-block-header // /MD, /MT, /LD (Use Run-Time Library) @ https://docs.microsoft.com/en-us/cpp/build/reference/md-mt-ld-use-run-time-library 
+	
+	/*inline*/ wstring constantsXML::getCLASSCODE() const { return cstrCLASSCODE; } 
+	
 	/*inline*/ void constantsXML::setCLASSCODE(const wstring& strCLASSCODE) { cstrCLASSCODE = strCLASSCODE; } 
 
 	wstring constantsXML::getStock() const { return cstrStock; } 
@@ -19,65 +23,178 @@ namespace mtqc {
 	wstring constantsXML::getFutures() const { return cstrFutures; }  //TO DO: Create string counterparts for all wstring's.
 	void constantsXML::setFutures(const wstring& strFutures) { cstrFutures = strFutures; } 
 
-	bool constantsXML::isEmpty(const wstring& strMember, const wstring& strMemberName) const { // Make sure a member is available and filled in. //TO DO: Make this check at the stage of reading a node from the XML file. Also check there if the file is available at all.
-		if (!strMember.empty()) return false;
+	// Make sure a member is available and filled in. 
+	//TO DO: Make this check at the stage of reading a node from the XML file. Also check there if the file is available at all.
+	bool constantsXML::isEmpty(const wstring& strMember, const wstring& strMemberName) const {
+		if (!strMember.empty()) 
+			return false;
 		else {
-			MessageBox(NULL, (string("The ") + wstringToString(strMemberName) + " member is empty or not found in the XML file. It will be ignored.").c_str(), STR_PROJECT_NAME, MB_ICONWARNING);
+			MessageBox(
+				NULL, 
+				(string("The ") + wstringToString(strMemberName) + " member is empty or not found in the XML file. It will be ignored.").c_str(), 
+				STR_PROJECT_NAME, 
+				MB_ICONWARNING
+			);
 			return true;
-	}	}
+		}
+	}
 
-	inline bool constantsXML::stringToBool(const wstring& str1true_0false) const { return stoi(str1true_0false) == NULL ? false : true; }
+	inline bool constantsXML::stringToBool(const wstring& str1true_0false) const { 
+		return stoi(str1true_0false) == NULL ? false : true; 
+	}
 																													
-	bool constantsXML::getTradeSR() const { return cblnTradeSR; } 
-	void constantsXML::setTradeSR(bool blnTRADE_SR) { cblnTradeSR = blnTRADE_SR; } 
-	void constantsXML::setTradeSR(const wstring& str1true_0false) { if (!isEmpty(str1true_0false, cstrTradeSRName)) cblnTradeSR = stringToBool(str1true_0false); }
+	bool constantsXML::getTradeSR() const { 
+		return cblnTradeSR; 
+	} 
+	
+	void constantsXML::setTradeSR(bool blnTRADE_SR) { 
+		cblnTradeSR = blnTRADE_SR; 
+	} 
+	
+	void constantsXML::setTradeSR(const wstring& str1true_0false) { 
+		if (!isEmpty(str1true_0false, cstrTradeSRName)) 
+			cblnTradeSR = stringToBool(str1true_0false);
+	}
 
-	double constantsXML::getStockPoint() const { return cdblStockPoint; } 
-	void constantsXML::setStockPoint(double dblStockPoint) { dblStockPoint = dblStockPoint; } 
-	void constantsXML::setStockPoint(const wstring& strStockPoint) { if (!isEmpty(strStockPoint, cstrStockPointName)) cdblStockPoint = stod(strStockPoint); } //How to convert std::wstring to numeric type(int, long, float)? @ http://stackoverflow.com/questions/5118308/how-to-convert-stdwstring-to-numeric-typeint-long-float 
+	double constantsXML::getStockPoint() const { 
+		return cdblStockPoint; 
+	} 
+	
+	void constantsXML::setStockPoint(double dblStockPoint) { 
+		dblStockPoint = dblStockPoint; 
+	} 
+	
+	//How to convert std::wstring to numeric type(int, long, float)? @ http://stackoverflow.com/questions/5118308/how-to-convert-stdwstring-to-numeric-typeint-long-float 
+	void constantsXML::setStockPoint(const wstring& strStockPoint) { 
+		if (!isEmpty(strStockPoint, cstrStockPointName)) 
+			cdblStockPoint = stod(strStockPoint); 
+	} 
 
-	wstring constantsXML::getStockTagPrice() const { return cstrStockTagPrice; } 
-	void constantsXML::setStockTagPrice(const wstring& strStockTagPrice) { if (!isEmpty(strStockTagPrice, cstrStockTagPriceName)) cstrStockTagPrice = strStockTagPrice; }
+	wstring constantsXML::getStockTagPrice() const { 
+		return cstrStockTagPrice; 
+	} 
+	
+	void constantsXML::setStockTagPrice(const wstring& strStockTagPrice) { 
+		if (!isEmpty(strStockTagPrice, cstrStockTagPriceName)) 
+			cstrStockTagPrice = strStockTagPrice; 
+	}
 
-	wstring constantsXML::getStockTagAlg() const { return cstrStockTagAlg; } 
-	void constantsXML::setStockTagAlg(const wstring& strStockTagAlg) { if (!isEmpty(strStockTagAlg, cstrStockTagAlgName)) cstrStockTagAlg = strStockTagAlg; }
+	wstring constantsXML::getStockTagAlg() const { 
+		return cstrStockTagAlg; 
+	} 
+	
+	void constantsXML::setStockTagAlg(const wstring& strStockTagAlg) { 
+		if (!isEmpty(strStockTagAlg, cstrStockTagAlgName)) 
+			cstrStockTagAlg = strStockTagAlg; 
+	}
 
-	int constantsXML::getFuturesPoint() const { return cintFuturesPoint; } 
-	void constantsXML::setFuturesPoint(int intFuturesPoint) { cintFuturesPoint = intFuturesPoint; } 
-	void constantsXML::setFuturesPoint(const wstring& strFuturesPoint) { if (!isEmpty(strFuturesPoint, cstrFuturesPointName)) cintFuturesPoint = stoi(strFuturesPoint); } //How to convert std::wstring to numeric type(int, long, float)? @ http://stackoverflow.com/questions/5118308/how-to-convert-stdwstring-to-numeric-typeint-long-float 
+	int constantsXML::getFuturesPoint() const { 
+		return cintFuturesPoint; 
+	} 
+	
+	void constantsXML::setFuturesPoint(int intFuturesPoint) { 
+		cintFuturesPoint = intFuturesPoint; 
+	} 
+	
+	//How to convert std::wstring to numeric type(int, long, float)? @ http://stackoverflow.com/questions/5118308/how-to-convert-stdwstring-to-numeric-typeint-long-float 
+	void constantsXML::setFuturesPoint(const wstring& strFuturesPoint) { 
+		if (!isEmpty(strFuturesPoint, cstrFuturesPointName)) 
+			cintFuturesPoint = stoi(strFuturesPoint); 
+	} 
 
-	wstring constantsXML::getFuturesTagPrice() const { return cstrFuturesTagPrice; } 
-	void constantsXML::setFuturesTagPrice(const wstring& strFuturesTagPrice) { if (!isEmpty(strFuturesTagPrice, cstrFuturesTagPriceName)) cstrFuturesTagPrice = strFuturesTagPrice; } 
+	wstring constantsXML::getFuturesTagPrice() const { 
+		return cstrFuturesTagPrice; 
+	} 
+	
+	void constantsXML::setFuturesTagPrice(const wstring& strFuturesTagPrice) { 
+		if (!isEmpty(strFuturesTagPrice, cstrFuturesTagPriceName)) 
+			cstrFuturesTagPrice = strFuturesTagPrice; 
+	} 
 
-	wstring constantsXML::getFuturesTagAlg() const { return cstrFuturesTagAlg; } 
-	void constantsXML::setFuturesTagAlg(const wstring& strFuturesTagAlg) { if (!isEmpty(strFuturesTagAlg, cstrFuturesTagAlgName)) cstrFuturesTagAlg = strFuturesTagAlg; }
+	wstring constantsXML::getFuturesTagAlg() const { 
+		return cstrFuturesTagAlg; 
+	} 
+	
+	void constantsXML::setFuturesTagAlg(const wstring& strFuturesTagAlg) { 
+		if (!isEmpty(strFuturesTagAlg, cstrFuturesTagAlgName)) 
+			cstrFuturesTagAlg = strFuturesTagAlg; 
+	}
 
-	int constantsXML::getLotsTraded() const {	return cintLotsTraded; } 
-	void constantsXML::setLotsTraded(int intLotsTraded) { cintLotsTraded = intLotsTraded; } 
-	void constantsXML::setLotsTraded(const wstring& strLotsTraded) { if (!isEmpty(strLotsTraded, cstrLotsTradedName)) cintLotsTraded = stoi(strLotsTraded); } 
+	int constantsXML::getLotsTraded() const {	
+		return cintLotsTraded; 
+	} 
+	
+	void constantsXML::setLotsTraded(int intLotsTraded) { 
+		cintLotsTraded = intLotsTraded; 
+	} 
+	
+	void constantsXML::setLotsTraded(const wstring& strLotsTraded) { 
+		if (!isEmpty(strLotsTraded, cstrLotsTradedName)) 
+			cintLotsTraded = stoi(strLotsTraded); 
+	} 
 
-	int constantsXML::getLotsMax() const {	return cintLotsMax; } 
-	void constantsXML::setLotsMax(int intLotsMax) { cintLotsMax = intLotsMax; } 
-	void constantsXML::setLotsMax(const wstring& strLotsMax) { if (!isEmpty(strLotsMax, cstrLotsMaxName)) cintLotsMax = stoi(strLotsMax); } 
+	int constantsXML::getLotsMax() const {	
+		return cintLotsMax; 
+	} 
+	
+	void constantsXML::setLotsMax(int intLotsMax) { 
+		cintLotsMax = intLotsMax; 
+	} 
+	
+	void constantsXML::setLotsMax(const wstring& strLotsMax) { 
+		if (!isEmpty(strLotsMax, cstrLotsMaxName)) 
+			cintLotsMax = stoi(strLotsMax); 
+	} 
 
-	bool constantsXML::getTradeDisabled() const { return cblnTradeDisabled; } 
-	void constantsXML::setTradeDisabled(bool blnTradeDisabled) { cblnTradeDisabled = blnTradeDisabled; } 
-	void constantsXML::setTradeDisabled(const wstring& str1true_0false){ if (!isEmpty(str1true_0false, cstrTradeDisabledName)) cblnTradeDisabled = stringToBool(str1true_0false); } 
+	bool constantsXML::getTradeDisabled() const { 
+		return cblnTradeDisabled; 
+	} 
 
-	bool constantsXML::getAllMessages() const { return cblnAllMessages; } 
-	void constantsXML::setAllMessages(bool blnAllMessages) { cblnAllMessages = blnAllMessages; } 
-	void constantsXML::setAllMessages(const wstring& str1true_0false){ if (!isEmpty(str1true_0false, cstrAllMessagesName)) cblnAllMessages = stringToBool(str1true_0false); }
+	void constantsXML::setTradeDisabled(bool blnTradeDisabled) { 
+		cblnTradeDisabled = blnTradeDisabled; 
+	} 
 
-	int constantsXML::getResumeRange() const { return cintResumeRange; } 
-	void constantsXML::setResumeRange(int intResumeRange) { cintResumeRange = intResumeRange; } 
-	void constantsXML::setResumeRange(const wstring& strResumeRange) { if (!isEmpty(strResumeRange, cstrResumeRangeName)) cintResumeRange = stoi(strResumeRange); }
+	void constantsXML::setTradeDisabled(const wstring& str1true_0false){ 
+		if (!isEmpty(str1true_0false, cstrTradeDisabledName)) 
+			cblnTradeDisabled = stringToBool(str1true_0false); 
+	} 
 
-	void constantsXML::destroy() { delete this; }
+	bool constantsXML::getAllMessages() const { 
+		return cblnAllMessages; 
+	} 
+	
+	void constantsXML::setAllMessages(bool blnAllMessages) { 
+		cblnAllMessages = blnAllMessages; 
+	} 
+	
+	void constantsXML::setAllMessages(const wstring& str1true_0false){ 
+		if (!isEmpty(str1true_0false, cstrAllMessagesName)) 
+			cblnAllMessages = stringToBool(str1true_0false); 
+	}
+
+	int constantsXML::getResumeRange() const { 
+		return cintResumeRange; 
+	} 
+	
+	void constantsXML::setResumeRange(int intResumeRange) { 
+		cintResumeRange = intResumeRange; 
+	} 
+	
+	void constantsXML::setResumeRange(const wstring& strResumeRange) { 
+		if (!isEmpty(strResumeRange, cstrResumeRangeName)) 
+			cintResumeRange = stoi(strResumeRange); 
+	}
+
+	void constantsXML::destroy() { 
+		delete this; 
+	}
 }
-//extern "C" __declspec(dllexport) mtqc::constantsXMLv* __cdecl createConstantsXML() { return new mtqc::constantsXML; } //Exporting C++ classes from a DLL @ http://eli.thegreenplace.net/2011/09/16/exporting-c-classes-from-a-dll/
+
 namespace mtqc {
-	//extern "C" __declspec(dllexport) constantsXMLv* __cdecl createConstantsXML() { return new constantsXML; } //Exporting C++ classes from a DLL @ http://eli.thegreenplace.net/2011/09/16/exporting-c-classes-from-a-dll/
-	extern "C" MTQC_API constantsXMLv* __cdecl createConstantsXML() { return new constantsXML; } //Exporting C++ classes from a DLL @ http://eli.thegreenplace.net/2011/09/16/exporting-c-classes-from-a-dll/
+	//Exporting C++ classes from a DLL @ http://eli.thegreenplace.net/2011/09/16/exporting-c-classes-from-a-dll/
+	extern "C" MTQC_API constantsXMLv* __cdecl createConstantsXML() { 
+		return new constantsXML; 
+	} 
 }
 
 //+------------------------------------------------------------------------------------------------------------------------------------------------------------------- +
@@ -94,10 +211,12 @@ using std::to_wstring;
 
 namespace mtqc {
 	namespace constantsXML_ {
+
 		const wstring mstrConstantsXML = stringToWstring(gstrMTQC) + L" - ConstantsXML.xml";
 		const wstring mstrRoot = L"root";
 
-		static HRESULT VariantFromString(PCWSTR wszValue, VARIANT &Variant) { // Helper function to create a VT_BSTR variant from a null terminated string. 
+		// Helper function to create a VT_BSTR variant from a null terminated string. 
+		static HRESULT VariantFromString(PCWSTR wszValue, VARIANT &Variant) { 
 			HRESULT hr = S_OK;
 			BSTR bstr = SysAllocString(wszValue);
 			CHK_ALLOC(bstr);
@@ -107,10 +226,14 @@ namespace mtqc {
 			return hr;
 		}
 
-		static HRESULT CreateAndInitDOM(IXMLDOMDocument **ppDoc) { // Helper function to create a DOM instance.  
+		// Helper function to create a DOM instance.  
+		static HRESULT CreateAndInitDOM(IXMLDOMDocument **ppDoc) { 
 			HRESULT hr{};
 			try {
-				hr = CoCreateInstance(__uuidof(DOMDocument60), NULL, CLSCTX_INPROC_SERVER, IID_PPV_ARGS(ppDoc)); //An error occurs here when the function is first invoked. The second consequent call passes successfully. Let Microsoft be responsible for that. I'll use it for the time being like this.
+				//An error occurs here when the function is first invoked. The second consequent call passes successfully. Let Microsoft be responsible for that. 
+				//I'll use it for the time being like this.
+				hr = CoCreateInstance(__uuidof(DOMDocument60), NULL, CLSCTX_INPROC_SERVER, IID_PPV_ARGS(ppDoc)); 
+				
 				if (SUCCEEDED(hr)) {
 					(*ppDoc)->put_async(VARIANT_FALSE); // these methods should not fail so don't inspect result
 					(*ppDoc)->put_validateOnParse(VARIANT_FALSE);
@@ -118,11 +241,16 @@ namespace mtqc {
 					(*ppDoc)->put_preserveWhiteSpace(VARIANT_TRUE);
 				}
 			}
-			catch (const std::exception& objException) { messages::messageException(objException, __FUNCTION__, __LINE__);	}	
+			
+			catch (const std::exception& objException) { 
+				messages::messageException(objException, __FUNCTION__, __LINE__);	
+			}	
+			
 			return hr;
 		}
 
-		static HRESULT ReportParseError(IXMLDOMDocument *pDoc, char *szDesc) { // Helper function to display parse error. It returns error code of the parse error. 
+		// Helper function to display parse error. It returns error code of the parse error. 
+		static HRESULT ReportParseError(IXMLDOMDocument *pDoc, char *szDesc) { 
 			HRESULT hr = S_OK;
 			HRESULT hrRet = E_FAIL; // Default error code if failed to get from parse error.
 			IXMLDOMParseError *pXMLErr = NULL;
@@ -163,20 +291,28 @@ namespace mtqc {
 					SysFreeString(bstrNodeName);
 	
 					CHK_HR(pNode->get_xml(&bstrNodeValue)); //Get a node value.
-					{ //IXMLDOMNode::get_nodeValue @ https://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k(MSXML%2FIXMLDOMNode%3A%3Aget_nodeValue);k(IXMLDOMNode%3A%3Aget_nodeValue);k(get_nodeValue);k(DevLang-C%2B%2B);k(TargetOS-Windows)&rd=true
+					
+					//IXMLDOMNode::get_nodeValue @ https://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k(MSXML%2FIXMLDOMNode%3A%3Aget_nodeValue);k(IXMLDOMNode%3A%3Aget_nodeValue);k(get_nodeValue);k(DevLang-C%2B%2B);k(TargetOS-Windows)&rd=true
+					{ 
 						CComVariant varNodeValue; 
 						hr = pNode->get_nodeValue(&varNodeValue);
 						if (FAILED(hr)) goto CleanUp;
-						{ //MSXML2: How can I get value of a node? @ http://stackoverflow.com/questions/5966771/msxml2-how-can-i-get-value-of-a-node
+						
+						//MSXML2: How can I get value of a node? @ http://stackoverflow.com/questions/5966771/msxml2-how-can-i-get-value-of-a-node
+						{ 
 							BSTR myBstr = L""; //Initialize a BSTR @ http://www.tek-tips.com/viewthread.cfm?qid=938639
 							pNode->get_text(&myBstr); //Get the value of a node.
 							return myBstr;
-					}	}
+						}	
+					}
+					
 					SysFreeString(bstrNodeValue);
 					SAFE_RELEASE(pNode);
 				}
-				else CHK_HR(ReportParseError(pXMLDom, "Error while calling selectSingleNode."));
+				else 
+					CHK_HR(ReportParseError(pXMLDom, "Error while calling selectSingleNode."));
 				return L"";
+				
 				CleanUp:	{
 					SAFE_RELEASE(pXMLDom);
 					SAFE_RELEASE(pNodes);
@@ -186,11 +322,13 @@ namespace mtqc {
 					SysFreeString(bstrNodeValue);
 					VariantClear(&varFileName);
 					return L"";
-			}	} 
+				}	
+			} 
 			catch (const std::exception& objException) { 
 				messages::messageException(objException, __FUNCTION__, __LINE__);
 				return nullptr;
-		}	}
+			}	
+		}
 	}
 	using namespace constantsXML_;
 
@@ -220,12 +358,17 @@ namespace mtqc {
 
 				setResumeRange(queryNodes(cstrResumeRangeName));
 				CoUninitialize();
-		}	}
-		catch (const std::exception& objException) { messages::messageException(objException, __FUNCTION__, __LINE__);	}	
+			}	
+		}
+		catch (const std::exception& objException) { 
+			messages::messageException(objException, __FUNCTION__, __LINE__);	
+		}	
 	}	
 
 	namespace constantsXML_ {
-		static HRESULT CreateElement(IXMLDOMDocument *pXMLDom, PCWSTR wszName, IXMLDOMElement **ppElement) { // Helper that allocates the BSTR param for the caller. 
+
+		// Helper that allocates the BSTR param for the caller. 
+		static HRESULT CreateElement(IXMLDOMDocument *pXMLDom, PCWSTR wszName, IXMLDOMElement **ppElement) { 
 			HRESULT hr = S_OK;
 			*ppElement = NULL;
 
@@ -237,7 +380,8 @@ namespace mtqc {
 			return hr;
 		}
 
-		static HRESULT AppendChildToParent(IXMLDOMNode *pChild, IXMLDOMNode *pParent) { // Helper function to append a child to a parent node. 
+		// Helper function to append a child to a parent node. 
+		static HRESULT AppendChildToParent(IXMLDOMNode *pChild, IXMLDOMNode *pParent) { 
 			HRESULT hr = S_OK;
 			IXMLDOMNode *pChildOut = NULL;
 			CHK_HR(pParent->appendChild(pChild, &pChildOut));
@@ -246,7 +390,8 @@ namespace mtqc {
 			return hr;
 		}
 
-		static HRESULT CreateAndAddPINode(IXMLDOMDocument *pDom, PCWSTR wszTarget, PCWSTR wszData) { // Helper function to create and add a processing instruction to a document node. 
+		// Helper function to create and add a processing instruction to a document node. 
+		static HRESULT CreateAndAddPINode(IXMLDOMDocument *pDom, PCWSTR wszTarget, PCWSTR wszData) { 
 			HRESULT hr = S_OK;
 			IXMLDOMProcessingInstruction *pPI = NULL;
 
@@ -263,7 +408,8 @@ namespace mtqc {
 			return hr;
 		}
 
-		static HRESULT CreateAndAddAttributeNode(IXMLDOMDocument *pDom, PCWSTR wszName, PCWSTR wszValue, IXMLDOMElement *pParent) { // Helper function to create and add an attribute to a parent node. 
+		// Helper function to create and add an attribute to a parent node. 
+		static HRESULT CreateAndAddAttributeNode(IXMLDOMDocument *pDom, PCWSTR wszName, PCWSTR wszValue, IXMLDOMElement *pParent) { 
 			HRESULT hr = S_OK;
 			IXMLDOMAttribute *pAttribute = NULL;
 			IXMLDOMAttribute *pAttributeOut = NULL; // Out param that is not used
@@ -287,7 +433,8 @@ namespace mtqc {
 			return hr;
 		}
 
-		static HRESULT CreateAndAddTextNode(IXMLDOMDocument *pDom, PCWSTR wszText, IXMLDOMNode *pParent) { // Helper function to create and append a text node to a parent node. 
+		// Helper function to create and append a text node to a parent node. 
+		static HRESULT CreateAndAddTextNode(IXMLDOMDocument *pDom, PCWSTR wszText, IXMLDOMNode *pParent) { 
 			HRESULT hr = S_OK;
 			IXMLDOMText *pText = NULL;
 
@@ -302,7 +449,8 @@ namespace mtqc {
 			return hr;
 		}
 
-		static HRESULT CreateAndAddElementNode(IXMLDOMDocument *pDom, PCWSTR wszName, PCWSTR wszNewline, IXMLDOMNode *pParent, IXMLDOMElement **ppElement = NULL) { // Helper function to create and append an element node to a parent node, and pass the newly created element node to caller if it wants. 
+		// Helper function to create and append an element node to a parent node, and pass the newly created element node to caller if it wants. 
+		static HRESULT CreateAndAddElementNode(IXMLDOMDocument *pDom, PCWSTR wszName, PCWSTR wszNewline, IXMLDOMNode *pParent, IXMLDOMElement **ppElement = NULL) { 
 			HRESULT hr = S_OK;
 			IXMLDOMElement* pElement = NULL;
 
@@ -415,5 +563,6 @@ namespace mtqc {
 		if (SUCCEEDED(hr)) {
 			writeNodesToXML();
 			CoUninitialize();
-	}	}	
+		}	
+	}	
 }

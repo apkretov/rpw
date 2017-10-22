@@ -3,6 +3,7 @@
 #include <map>
 
 namespace mtqc {
+
 	typedef boost::shared_ptr<mtqc::object> object_SP;
 	typedef std::map<int, object_SP> mapObj_t;
 
@@ -12,14 +13,15 @@ namespace mtqc {
 		object_SP cobjObjectTriggered;
 		double cdblPriceScanned; //The price last scanned for a trigger object.
 		std::string cstrPricesToDisplay;
-
 		mtqc::object getObject(int intOperation, double dblPrice, const std::string& strDescription) const;
 		void deleteAll();
 		object_SP add(int intOperation, double dblPrice, const std::string& strDescription);
 		object_SP item (int intOperation) const;
+
 	public:
-		object_SP getObjectTriggered() const;
 		objects();
+
+		object_SP getObjectTriggered() const;
 		int getCount(bool blnPendingInclusive) const;
 		void setPricesToDisplay();
 		void set(const std::string& strPricesForQuik);

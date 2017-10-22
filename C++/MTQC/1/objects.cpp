@@ -59,7 +59,7 @@ object_SP objects::item(int intOperation) const { // Returns a reference to the 
 	else return nullptr;	
 }
 
-inline int objects::getCount(bool blnPendingInclusive) const { return blnPendingInclusive ? cobjObjects.size() : cobjObjectsActive.size(); } //Get the count of the trading objects inclusive/exclusive the pending once, if any. //+
+inline int objects::getCount(bool blnPendingInclusive) const { return blnPendingInclusive ? cobjObjects.size() : cobjObjectsActive.size(); } //Get the count of the trading objects inclusive/exclusive the pending once, if any.
 
 void objects::setPricesToDisplay() { // Compile a string with the prices of the active object to be displayed. 
 	if (gobjConstantsXML.getAllMessages()) { //Are all the messages shown ?

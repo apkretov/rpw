@@ -6,14 +6,12 @@ using std::exception;
 #include "time.h"
 #include "functions.h"
 using namespace mtqc::functions;
-//#include "functionsMT4.h"
 using namespace mtqc;
 #include "terminalMT4.h"
 using namespace mtqc::terminalMT4;
 #include "messages.h"
 #include "constants.h"
 using namespace mtqc::constants;
-//#include "constantsAlg.h"
 #include "MT4QuikConnector.h"
 using namespace mtqc::MT4QuikConnector;
 
@@ -42,7 +40,7 @@ namespace mtqc {
 		//const string mstrDelayLong = "DelayLong";
 		//const int gintIdx0 = 0;
 		const ENUM_TIMEFRAMES mintPeriodCurrent = PERIOD_CURRENT;
-	
+
 		//enum enmAlgStates { alg_flat, alg_crossing, alg_moving_away, alg_ahead_of_dashed_lips };
 		//enum enmFibo { fibo_1 = 1, fibo_3 = 3, fibo_5 = 5, fibo_8 = 8, fibo_13 = 13, fibo_21 = 21, fibo_34 = 34, fibo_55 = 55, fibo_89 = 89 };
 
@@ -64,10 +62,10 @@ namespace mtqc {
 
 		/*inline*/ double distance(double dblFrom, double dblTo, enmDirec intDirec) { return (dblTo - dblFrom) * (int)intDirec; }
 		int distance_pts(double dblFrom, double dblTo, enmDirec intDirec) { return roundToPts((dblTo - dblFrom) * (int)intDirec); }
-	
+
 		void delay() { // It's kept for MT4 compatability. +
 		}
-	
+
 		static bool delete_old_trend() { //delete the old trend, if a new signal appeared; return true, if deleted //TO DO: Rename it to something like newSignalAppeared etc. +
 			static datetime dtmTimePrior; //avoid unnecessary computing at every tick, instead proceed once a bar on its opening
 			datetime dtmTime = Time[gintIdx0];
@@ -78,7 +76,9 @@ namespace mtqc {
 					if (objAlg.getSignalTime() > gobjTrend->alg_GetSignalTime()) {
 						gobjTrend = nullptr; //A new signal appeared? Delete the old trend. //is it better to use shared_ptr.reset or operator =? @ http://stackoverflow.com/questions/14836691/is-it-better-to-use-shared-ptr-reset-or-operator
 						return true;
-			}	}	}
+					}
+				}
+			}
 			return false; //not deleted.
 		}
 
@@ -89,10 +89,12 @@ namespace mtqc {
 				if (CheckPointer(gobjTrend.get()) == ENUM_POINTER_TYPE::POINTER_INVALID) {
 					messageMBFncNum(Bid);
 					gobjTrend = std::make_unique<trend>(Bid); //a new trend began; create an object for it, unless available //develop: unite the three events (trend + signal + trade): create a trend object on the first trade within the trend //is it better to use shared_ptr.reset or operator =? @ http://stackoverflow.com/questions/14836691/is-it-better-to-use-shared-ptr-reset-or-operator
-					messageMBFnc(); 
-				} else {
+					messageMBFnc();
+				}
+				else {
 					gobjTrend->alg_GetSave(gintIdx0); //otherwise refresh Alligator
 				}
+				
 				switch (gobjTrend->getPhase()) {
 				case enmPhases::phase_beginning:
 					if (delete_old_trend()) OnTickAlg(); //the old trend has become obsolete; restart the procedure
@@ -103,13 +105,17 @@ namespace mtqc {
 								//KTB Alert("Alligator signal_appeared!");
 								gobjTrend->trade_open();
 								keyPressedOperation(gobjTrend->tradeActive_GetType()); //ChannelsTT connection.
-					}	}	}
+							}
+						}
+					}
 					break; //no signal yet? //develop: unite the three events (trend + signal + trade): create a trend object on the first trade within the trend
+				
 				case enmPhases::phase_signal_appeared:
 					if (delete_old_trend()) OnTickAlg(); //Has not the old trend become obsolete? Restart the procedure //develop: unite the three events (trend + signal + trade): create a trend object on the first trade within the trend
 					gobjTrend->trade_open(); //isn't the signal too far from the teeth, when the signal has appeared?
 					keyPressedOperation(gobjTrend->tradeActive_GetType()); //ChannelsTT connection.
 					break;
+				
 				case enmPhases::phase_signal_triggered:
 					if (!gobjTrend->tradeActive_GetBEReached()) gobjTrend->tradeActive_SetBEReached(roundToPts(gobjTrend->tradeActive_GetProfit()) >= BreakEven); //check for a break even, unless reached yet
 					else if (gobjTrend->tradeActive_GetProfit() <= 0) {
@@ -122,11 +128,18 @@ namespace mtqc {
 						keyPressedOperation(BUYtoSELL(gobjTrend->tradeActive_GetType())); //ChannelsTT connection.
 					}
 					break;
-				case enmPhases::phase_end: delete_old_trend(); break;
+				
+				case enmPhases::phase_end: 
+					delete_old_trend(); 
+					break;
 				}
+
 				if (CheckPointer(gobjTrend.get()) == ENUM_POINTER_TYPE::POINTER_DYNAMIC) gobjTrend->update_peak(Bid); //update the peak for a later use, if a trend exists. //develop: why not placing it at the top below gobjTrend->cobjAlg.getSave(gintIdx0)?
 			}
-			catch (const exception& objException) { messages::messageException(objException, __FUNCTION__, __LINE__); }
+			
+			catch (const exception& objException) { 
+				messages::messageException(objException, __FUNCTION__, __LINE__); 
+			}
 		}
 
 		//void OnInitAlg(lua_State* L) { // Initialise the Alligator EA. +
@@ -137,7 +150,7 @@ namespace mtqc {
 		//		GlobalVariableTemp(mstrDelayLong);
 		//		GlobalVariableSet(mstrDelayLong, lngDelayLong);
 		//}
-	
-		//void OnDeinit(const int reason) { if (CheckPointer(gobjTrend.get()) == POINTER_DYNAMIC) gobjTrend.reset(); } //delete dynamically created objects //+
+
+		//void OnDeinit(const int reason) { if (CheckPointer(gobjTrend.get()) == POINTER_DYNAMIC) gobjTrend.reset(); } //delete dynamically created objects
 	}
 }

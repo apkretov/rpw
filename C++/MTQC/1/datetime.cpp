@@ -1,7 +1,12 @@
 #include "datetime.h"
 using namespace mtqc;
 
-datetime::datetime() {} //Class Member Initialization //Bear in mind that if the same data member has both a class member initializer and a mem-init in the constructor, the latter takes precedence. In fact, you can take advantage of this behavior by specifying a default value for a member in the form of a class member initializer that will be used if the constructor doesn't have an explicit mem-init for that member. Otherwise, the constructor's mem-init will take effect, overriding the class member initializer. @ http://www.informit.com/articles/article.aspx?p=1852519
+//Class Member Initialization 
+//Bear in mind that if the same data member has both a class member initializer and a mem-init in the constructor, the latter takes precedence. 
+//In fact, you can take advantage of this behavior by specifying a default value for a member in the form of a class member initializer 
+//that will be used if the constructor doesn't have an explicit mem-init for that member. Otherwise, the constructor's mem-init will take effect, 
+//overriding the class member initializer. @ http://www.informit.com/articles/article.aspx?p=1852519
+datetime::datetime() {} 
 
 datetime::datetime(int intMcs, int intMs, int intSec, int intMin, int intHour, int intDay, int intMonth, int intYear) :
 	cintMcs(intMcs),
@@ -26,7 +31,8 @@ bool datetime::operator<(const datetime& objDatetimeR) const {
 	return false;
 }
 
-const datetime& datetime::operator=(int intNum) { // Introduced for MT4 compatability. 
+// Introduced for MT4 compatability. 
+const datetime& datetime::operator=(int intNum) { 
 	this->cintMcs = intNum; //An explicit use of the this pointer.
 	this->cintMs = intNum;
 	this->cintSec = intNum;
@@ -38,7 +44,9 @@ const datetime& datetime::operator=(int intNum) { // Introduced for MT4 compatab
 	return *this; // enables x = y = z, for example //C++ Fundamentals By Paul J. @ Lesson10\Fig11_06_08.
 }
 
-const datetime& datetime::operator=(const datetime& objDatetimeR) { // Introduced for MT4 compatability. //TO DO: Optimise the algorithm by comparing membmer multiplications only. E.g: Years * 1000 + Month * 100 + Day * 10 etc. 
+// Introduced for MT4 compatability. 
+//TO DO: Optimise the algorithm by comparing membmer multiplications only. E.g: Years * 1000 + Month * 100 + Day * 10 etc. 
+const datetime& datetime::operator=(const datetime& objDatetimeR) { 
 	(*this).cintMcs = objDatetimeR.cintMcs; //An explicit use of a dereferenced this pointer.
 	(*this).cintMs = objDatetimeR.cintMs; 
 	(*this).cintSec = objDatetimeR.cintSec;
@@ -51,7 +59,9 @@ const datetime& datetime::operator=(const datetime& objDatetimeR) { // Introduce
 }
 
 /*KTB
-const datetime& datetime::operator=(datetime&& objDatetimeR) { //Practicing with rvalue. //Understanding lvalues and rvalues in C and C++ @ http://eli.thegreenplace.net/2011/12/15/understanding-lvalues-and-rvalues-in-c-and-c 
+//Practicing with rvalue. 
+//Understanding lvalues and rvalues in C and C++ @ http://eli.thegreenplace.net/2011/12/15/understanding-lvalues-and-rvalues-in-c-and-c 
+const datetime& datetime::operator=(datetime&& objDatetimeR) { 
 	swap((*this).cintMcs, objDatetimeR.cintMcs); 
 	swap((*this).cintMs, objDatetimeR.cintMs); 
 	swap((*this).cintSec, objDatetimeR.cintSec);
@@ -64,7 +74,8 @@ const datetime& datetime::operator=(datetime&& objDatetimeR) { //Practicing with
 }
 */
 
-bool mtqc::operator>(const datetime& objDatetimeL, const datetime& objDatetimeR) { // Despite this function can be a member (alike operator<), I made it friend purposefuly for practice. Introduced for MT4 compatability. 
+// Despite this function can be a member (alike operator<), I made it friend purposefuly for practice. Introduced for MT4 compatability. 
+bool mtqc::operator>(const datetime& objDatetimeL, const datetime& objDatetimeR) { 
 	if (objDatetimeL.cintYear > objDatetimeR.cintYear) return true; //A friend function can access private members.
 	if (objDatetimeL.cintMonth > objDatetimeR.cintMonth) return true;
 	if (objDatetimeL.cintDay > objDatetimeR.cintDay) return true;

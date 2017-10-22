@@ -19,11 +19,8 @@
 #define messageFncThread() messages::message( STR_FUNCTION_LINE + ": This thread's id: " +  mtqc::functions::threadIdToString(std::this_thread::get_id()) ) 
 //KTB #define logFnc() log(std::string(__DATE__) + " " + __TIME__ + " " + STR_FUNCTION_LINE)
 
-#define messageMBFnc() MessageBox( NULL, (STR_FUNCTION_LINE).c_str(), STR_PROJECT_NAME, NULL ) //Copied from the MTQC - WinAPI project wstring to string adaption might be needed.
-//#define messageMBFnc() MessageBoxW((STR_FUNCTION_LINE).c_str()) //Copied from the MTQC - WinAPI project wstring to string adaption might be needed.
+//Copied from the MTQC - WinAPI project wstring to string adaption might be needed.
+#define messageMBFnc() MessageBox( NULL, (STR_FUNCTION_LINE).c_str(), STR_PROJECT_NAME, NULL ) 
 #define messageMBFncNum(varNum) MessageBox( NULL, (STR_FUNCTION_LINE + ": " + displayNum(varNum)).c_str(), STR_PROJECT_NAME, NULL )
-//#define messageMBFncNum(varNum) MessageBoxW((STR_FUNCTION_LINE + ": " + displayNum(varNum)).c_str())
 #define messageMBFncStr(str_) MessageBox( NULL, (STR_FUNCTION_LINE + ": " + displayStr(str_)).c_str(), STR_PROJECT_NAME, NULL )
-//#define messageMBFncStr(str_) MessageBoxW( (STR_FUNCTION_LINE + ": " + displayStr(str_)).c_str())
 #define messageMBFncWStr(str_) MessageBox( NULL, (STR_FUNCTION_LINE + ": " + wstringToString(displayWStr(str_))).c_str(), STR_PROJECT_NAME, NULL )
-//#define messageMBFncWStr(str_) MessageBoxW((STR_FUNCTION_LINE + ": " + wstringToString(displayWStr(str_))).c_str())

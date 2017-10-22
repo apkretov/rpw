@@ -10,7 +10,9 @@ namespace mtqc {
 		int cintDay{};
 		int cintMonth = 0;
 		int cintYear{};
+
 		friend bool operator>(const datetime& objDatetimeL, const datetime& objDatetimeR);
+
 	public:
 		datetime();
 		datetime(int intMcs, int intMs, int intSec, int intMin, int intHour, int intDay, int intMonth, int intYear);
@@ -37,4 +39,5 @@ namespace mtqc {
 		const datetime& operator=(int intNum);
 		const datetime& operator=(const datetime& objDatetimeR);
 		//KTB const datetime& operator=(datetime&& objDatetimeR);
-};	}
+	};	
+}

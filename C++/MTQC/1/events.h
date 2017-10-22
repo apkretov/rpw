@@ -1,6 +1,7 @@
 #pragma once
 
 namespace mtqc {
+	
 	class events { 
 		bool		cblnSrvMessageToQuik{}; //The event flags.
 		std::string	cstrSrvMessageToQuik_message;
@@ -67,4 +68,5 @@ namespace mtqc {
 		void srvMessageToQuik_reset();
 		void tableNotificationCallback_reset();
 		void OnSendTransaction_reset();
-};	}
+	};	
+}

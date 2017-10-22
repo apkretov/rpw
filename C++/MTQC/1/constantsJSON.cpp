@@ -49,5 +49,8 @@ constantsJSON::constantsJSON() {
 			cdblPriceStock = stringToDouble(ptreeRoot.get_value<string>("Test without quotes.Stock price"));
 		#endif
 	}
-	catch (const exception& objException) { messages::messageException(objException, __FUNCTION__, __LINE__); }
+	
+	catch (const exception& objException) { 
+		messages::messageException(objException, __FUNCTION__, __LINE__); 
+	}
 }

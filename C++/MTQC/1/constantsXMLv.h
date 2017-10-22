@@ -1,4 +1,6 @@
-#pragma once //Exporting C++ classes from a DLL @ http://eli.thegreenplace.net/2011/09/16/exporting-c-classes-from-a-dll/
+//Exporting C++ classes from a DLL @ http://eli.thegreenplace.net/2011/09/16/exporting-c-classes-from-a-dll/
+
+#pragma once
 
 namespace mtqc {
 	class constantsXMLv {
