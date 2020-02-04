@@ -1,0 +1,1780 @@
+Document Type: WSE
+item: Global
+  Version=9.0
+  Flags=00000100
+  Split=1420
+  Languages=65 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+  Japanese Font Name=MS Gothic
+  Japanese Font Size=9
+  Start Gradient=0 0 255
+  End Gradient=0 0 0
+  Windows Flags=00000100000000010010110000001000
+  Message Font=MS Sans Serif
+  Font Size=8
+  Disk Label=WiseInst
+  Disk Filename=SETUP
+  Patch Flags=0000000000000001
+  Patch Threshold=85
+  Patch Memory=4000
+  MIF PDF Version=1.0
+  MIF SMS Version=2.0
+  FTP Cluster Size=20
+  Per-User Version ID=1
+  Dialogs Version=7
+  Crystal Format=10111100101100000010001001001001
+  Step View=&Properties
+end
+item: Check Configuration
+  Flags=11011010
+end
+item: Check Configuration
+  Flags=11010110
+end
+item: Check Configuration
+  Flags=11010010
+end
+item: Install File
+  Source=%_SYS_%\12520437.cpx
+  Destination=%TEMP%\MDACTMP\12520437.cpx
+  Flags=0000000010000010
+  File Size=2151
+  File Date=19990503 011626
+end
+item: Install File
+  Source=%_SYS_%\12520850.cpx
+  Destination=%TEMP%\MDACTMP\12520850.cpx
+  Flags=0000000010000010
+  File Size=2233
+  File Date=19990503 011626
+end
+item: Install File
+  Source=D:\Distr\Visual Studio SP 5\acmsetup.exe
+  Destination=%TEMP%\MDACTMP\acmsetup.exe
+  Flags=0000000010000011
+  Version String=3.01.0.8043
+  Version MS=196609
+  Version LS=8043
+  Company=Microsoft Corporation
+  Product=Microsoft App-wide Setup for Windows
+  File Size=371200
+  File Date=19980824 184856
+  EXE Type=32
+end
+item: Install File
+  Source=D:\Distr\Visual Studio SP 5\acmsetup.hlp
+  Destination=%TEMP%\MDACTMP\acmsetup.hlp
+  Flags=0000000010000010
+  File Size=14490
+  File Date=19980824 184856
+end
+item: Install File
+  Source=C:\Program Files\Common Files\System\msadc\adcjavas.inc
+  Destination=%TEMP%\MDACTMP\adcjavas.inc
+  Flags=0000000010000010
+  File Size=596
+  File Date=19990609 140314
+end
+item: Install File
+  Source=C:\Program Files\Common Files\System\msadc\adcvbs.inc
+  Destination=%TEMP%\MDACTMP\adcvbs.inc
+  Flags=0000000010000010
+  File Size=589
+  File Date=19990609 140314
+end
+item: Install File
+  Source=C:\Program Files\Common Files\System\ado\adoapt15.reg
+  Destination=%TEMP%\MDACTMP\adoapt15.reg
+  Flags=0000000010000010
+  File Size=667
+  File Date=19990609 132954
+end
+item: Install File
+  Source=C:\Program Files\Common Files\System\ado\adofre15.reg
+  Destination=%TEMP%\MDACTMP\adofre15.reg
+  Flags=0000000010000010
+  File Size=640
+  File Date=19990609 132954
+end
+item: Install File
+  Source=C:\Program Files\Common Files\System\ado\adojavas.inc
+  Destination=%TEMP%\MDACTMP\adojavas.inc
+  Flags=0000000010000010
+  File Size=10209
+  File Date=19990609 134838
+end
+remarked item: Install File
+  Source=C:\Program Files\Common Files\System\ado\adomdrd.txt
+  Destination=%TEMP%\MDACTMP\adomdrd.txt
+  Flags=0000000010000010
+  File Size=1283
+  File Date=19980928 180054
+end
+remarked item: Install File
+  Source=C:\Program Files\Common Files\System\ado\adoreadm.txt
+  Destination=%TEMP%\MDACTMP\adoreadm.txt
+  Flags=0000000010000010
+  File Size=20273
+  File Date=19990122 174524
+end
+item: Install File
+  Source=C:\Program Files\Common Files\System\ado\adovbs.inc
+  Destination=%TEMP%\MDACTMP\adovbs.inc
+  Flags=0000000010000010
+  File Size=10444
+  File Date=19990609 134838
+end
+remarked item: Install File
+  Source=C:\Program Files\Common Files\System\ado\adoxrdme.txt
+  Destination=%TEMP%\MDACTMP\adoxrdme.txt
+  Flags=0000000010000010
+  File Size=6019
+  File Date=19981106 145820
+end
+item: Install File
+  Source=%_SYS_%\asycfilt.dll
+  Destination=%TEMP%\MDACTMP\asycfilt.dll
+  Flags=0000000010000011
+  Version String=2.40.4275
+  Version MS=131112
+  Version LS=280166401
+  Company=Microsoft Corporation
+  Product=Microsoft OLE 2.40  for Windows NT(TM) and Windows 95(TM) Operating Systems
+  File Size=147728
+  File Date=19990308 125056
+  EXE Type=32
+end
+item: Install File
+  Source=%_SYS_%\cliconf.hlp
+  Destination=%TEMP%\MDACTMP\cliconf.hlp
+  Flags=0000000010000010
+  File Size=30344
+  File Date=19990405 001158
+end
+item: Install File
+  Source=%_SYS_%\cliconfg.DLL
+  Destination=%TEMP%\MDACTMP\cliconfg.DLL
+  Flags=0000000010000011
+  Version String=1999.04.05
+  Version MS=131006468
+  Version LS=327680
+  Company=Microsoft Corporation
+  Product=Microsoft SQL Server
+  File Size=61712
+  File Date=19990405 045754
+  EXE Type=32
+end
+item: Install File
+  Source=%_SYS_%\cliconfg.exe
+  Destination=%TEMP%\MDACTMP\cliconfg.exe
+  Flags=0000000010000011
+  Version String=1999.04.05
+  Version MS=131006468
+  Version LS=327680
+  Company=Microsoft Corporation
+  Product=Microsoft SQL Server
+  File Size=37136
+  File Date=19990405 045754
+  EXE Type=32
+end
+item: Install File
+  Source=d:\Program Files\Microsoft Visual Studio\Common\Setup\1033\common98.dll
+  Destination=%TEMP%\MDACTMP\common98.dll
+  Flags=0000000010000011
+  Version String=6.00.8076
+  Version MS=393216
+  Version LS=8076
+  Company=Microsoft Corporation
+  Product=Microsoft (R) Visual Studio
+  File Size=124928
+  File Date=19980818 152420
+  EXE Type=32
+end
+item: Install File
+  Source=%_SYS_%\dbmsadsn.dll
+  Destination=%TEMP%\MDACTMP\dbmsadsn.dll
+  Flags=0000000010000011
+  Version String=1999.04.05
+  Version MS=131006468
+  Version LS=327680
+  Company=Microsoft Corporation
+  Product=Microsoft SQL Server
+  File Size=33040
+  File Date=19990405 032144
+  EXE Type=32
+end
+item: Install File
+  Source=%_SYS_%\dbmsrpcn.dll
+  Destination=%TEMP%\MDACTMP\dbmsrpcn.dll
+  Flags=0000000010000011
+  Version String=1999.04.05
+  Version MS=131006468
+  Version LS=327680
+  Company=Microsoft Corporation
+  Product=Microsoft SQL Server
+  File Size=28944
+  File Date=19990405 032144
+  EXE Type=32
+end
+item: Install File
+  Source=%_SYS_%\dbmsshrn.dll
+  Destination=%TEMP%\MDACTMP\dbmsshrn.dll
+  Flags=0000000010000011
+  Version String=1999.04.05
+  Version MS=131006468
+  Version LS=327680
+  Company=Microsoft Corporation
+  Product=Microsoft SQL Server
+  File Size=33040
+  File Date=19990405 032144
+  EXE Type=32
+end
+item: Install File
+  Source=%_SYS_%\dbmssocn.dll
+  Destination=%TEMP%\MDACTMP\dbmssocn.dll
+  Flags=0000000010000011
+  Version String=1999.04.05
+  Version MS=131006468
+  Version LS=327680
+  Company=Microsoft Corporation
+  Product=Microsoft SQL Server
+  File Size=28944
+  File Date=19990405 032146
+  EXE Type=32
+end
+item: Install File
+  Source=%_SYS_%\dbmsspxn.dll
+  Destination=%TEMP%\MDACTMP\dbmsspxn.dll
+  Flags=0000000010000011
+  Version String=1999.04.05
+  Version MS=131006468
+  Version LS=327680
+  Company=Microsoft Corporation
+  Product=Microsoft SQL Server
+  File Size=33040
+  File Date=19990405 032146
+  EXE Type=32
+end
+item: Install File
+  Source=%_SYS_%\dbmsvinn.dll
+  Destination=%TEMP%\MDACTMP\dbmsvinn.dll
+  Flags=0000000010000011
+  Version String=1999.04.05
+  Version MS=131006468
+  Version LS=327680
+  Company=Microsoft Corporation
+  Product=Microsoft SQL Server
+  File Size=28944
+  File Date=19990405 032146
+  EXE Type=32
+end
+item: Install File
+  Source=%_SYS_%\dbnmpntw.dll
+  Destination=%TEMP%\MDACTMP\dbnmpntw.dll
+  Flags=0000000010000011
+  Version String=1999.04.05
+  Version MS=131006468
+  Version LS=327680
+  Company=Microsoft Corporation
+  Product=Microsoft SQL Server
+  File Size=33040
+  File Date=19990405 045736
+  EXE Type=32
+end
+item: Install File
+  Source=%_SYS_%\drvvfp.cnt
+  Destination=%TEMP%\MDACTMP\drvvfp.cnt
+  Flags=0000000010000010
+  File Size=5446
+  File Date=19980908 085550
+end
+item: Install File
+  Source=%_SYS_%\drvvfp.hlp
+  Destination=%TEMP%\MDACTMP\drvvfp.hlp
+  Flags=0000000010000010
+  File Size=203767
+  File Date=19980908 085558
+end
+item: Install File
+  Source=%_SYS_%\ds16gt.dll
+  Destination=%TEMP%\MDACTMP\ds16gt.dll
+  Flags=0000000010000011
+  Version String=3.510.4202.0
+  Version MS=197118
+  Version LS=275382272
+  Company=Microsoft Corporation
+  Product=Microsoft Open Database Connectivity
+  File Size=4656
+  File Date=19990603 085234
+  EXE Type=16
+end
+item: Install File
+  Source=%_SYS_%\ds32gt.dll
+  Destination=%TEMP%\MDACTMP\ds32gt.dll
+  Flags=0000000010000011
+  Version String=3.510.4202.0
+  Version MS=197118
+  Version LS=275382272
+  Company=Microsoft Corporation
+  Product=Microsoft Open Database Connectivity
+  File Size=5632
+  File Date=19990603 150026
+  EXE Type=32
+end
+item: Install File
+  Source=%_SYS_%\expsrv.dll
+  Destination=%TEMP%\MDACTMP\expsrv.dll
+  Flags=0000000010000011
+  Version String=6.0.8268
+  Version MS=393216
+  Version LS=8268
+  Company=Microsoft Corporation
+  Product=Microsoft Visual Basic for Applications
+  File Size=379152
+  File Date=19990121 210920
+  EXE Type=32
+end
+item: Install File
+  Source=C:\Program Files\Common Files\System\msadc\HANDLER.reg
+  Destination=%TEMP%\MDACTMP\HANDLER.reg
+  Flags=0000000010000010
+  File Size=518
+  File Date=19990609 132900
+end
+item: Install File
+  Source=C:\Program Files\Common Files\System\msadc\handsafe.reg
+  Destination=%TEMP%\MDACTMP\handsafe.reg
+  Flags=0000000010000010
+  File Size=588
+  File Date=19990609 132900
+end
+item: Install File
+  Source=C:\Program Files\Common Files\System\msadc\handunsf.reg
+  Destination=%TEMP%\MDACTMP\handunsf.reg
+  Flags=0000000010000010
+  File Size=573
+  File Date=19990609 132902
+end
+item: Install File
+  Source=%_SYS_%\instcat.sql
+  Destination=%TEMP%\MDACTMP\instcat.sql
+  Flags=0000000010000010
+  File Size=591752
+  File Date=19990128 062826
+end
+remarked item: Install File
+  Source=%_SYS_%\jroread.txt
+  Destination=%TEMP%\MDACTMP\jroread.txt
+  Flags=0000000010000010
+  File Size=1707
+  File Date=19981019 133620
+end
+item: Install File
+  Source=C:\Program Files\Common Files\System\ado\makapt15.bat
+  Destination=%TEMP%\MDACTMP\makapt15.bat
+  Flags=0000000010000010
+  File Size=26
+  File Date=19990609 132954
+end
+item: Install File
+  Source=C:\Program Files\Common Files\System\ado\makfre15.bat
+  Destination=%TEMP%\MDACTMP\makfre15.bat
+  Flags=0000000010000010
+  File Size=26
+  File Date=19990609 132954
+end
+remarked item: Install File
+  Source=%_SYS_%\mdac.cmd
+  Destination=%TEMP%\MDACTMP\mdac.cmd
+  Flags=0000000010000010
+  File Size=4926
+  File Date=19990602 142526
+end
+remarked item: Install File
+  Source=%_SYS_%\mdac_typ.inf
+  Destination=%TEMP%\MDACTMP\mdac_typ.inf
+  Flags=0000000010000010
+  File Size=13071
+  File Date=19990622 173858
+end
+remarked item: Install File
+  Source=%_SYS_%\mdac_typ.stf
+  Destination=%TEMP%\MDACTMP\mdac_typ.stf
+  Flags=0000000010000010
+  File Size=24716
+  File Date=19990622 173858
+end
+remarked item: Install File
+  Source=%_SYS_%\mdac21rd.txt
+  Destination=%TEMP%\MDACTMP\mdac21rd.txt
+  Flags=0000000010000010
+  File Size=21037
+  File Date=19990622 173514
+end
+item: Install File
+  Source=C:\Program Files\Common Files\System\msadc\msadce.dll
+  Destination=%TEMP%\MDACTMP\msadce.dll
+  Flags=0000000010000011
+  Version String=2.10.4202.1
+  Version MS=131082
+  Version LS=275382273
+  Company=Microsoft Corporation
+  Product=Microsoft Remote Data Services 2.0
+  File Size=313104
+  File Date=19990609 172052
+  EXE Type=32
+end
+item: Install File
+  Source=C:\Program Files\Common Files\System\msadc\msadcer.dll
+  Destination=%TEMP%\MDACTMP\msadcer.dll
+  Flags=0000000010000011
+  Version String=2.10.4202.1
+  Version MS=131082
+  Version LS=275382273
+  Company=Microsoft Corporation
+  Product=Microsoft Remote Data Services 2.0
+  File Size=9728
+  File Date=19990609 165610
+  EXE Type=32
+end
+item: Install File
+  Source=C:\Program Files\Common Files\System\msadc\msadcf.dll
+  Destination=%TEMP%\MDACTMP\msadcf.dll
+  Flags=0000000010000011
+  Version String=2.10.4202.1
+  Version MS=131082
+  Version LS=275382273
+  Company=Microsoft Corporation
+  Product=Microsoft® Remote Data Services
+  File Size=45328
+  File Date=19990609 172052
+  EXE Type=32
+end
+item: Install File
+  Source=C:\Program Files\Common Files\System\msadc\msadcfr.dll
+  Destination=%TEMP%\MDACTMP\msadcfr.dll
+  Flags=0000000010000011
+  Version String=2.10.4202.1
+  Version MS=131082
+  Version LS=275382273
+  Company=Microsoft Corporation
+  Product=Microsoft® Remote Data Services
+  File Size=4096
+  File Date=19990609 165610
+  EXE Type=32
+end
+item: Install File
+  Source=C:\Program Files\Common Files\System\msadc\msadco.dll
+  Destination=%TEMP%\MDACTMP\msadco.dll
+  Flags=0000000010000011
+  Version String=2.10.4202.1
+  Version MS=131082
+  Version LS=275382273
+  Company=Microsoft Corporation
+  Product=Microsoft® Remote Data Services
+  File Size=133904
+  File Date=19990609 172052
+  EXE Type=32
+end
+item: Install File
+  Source=C:\Program Files\Common Files\System\msadc\msadcor.dll
+  Destination=%TEMP%\MDACTMP\msadcor.dll
+  Flags=0000000010000011
+  Version String=2.10.4202.1
+  Version MS=131082
+  Version LS=275382273
+  Company=Microsoft Corporation
+  Product=Microsoft® Remote Data Services
+  File Size=6144
+  File Date=19990609 165612
+  EXE Type=32
+end
+item: Install File
+  Source=C:\Program Files\Common Files\System\msadc\msadcs.dll
+  Destination=%TEMP%\MDACTMP\msadcs.dll
+  Flags=0000000010000011
+  Version String=2.10.4202.2
+  Version MS=131082
+  Version LS=275382274
+  Company=Microsoft Corporation
+  Product=Microsoft® Remote Data Services
+  File Size=46352
+  File Date=19990610 211150
+  EXE Type=32
+end
+item: Install File
+  Source=C:\Program Files\Common Files\System\msadc\msadds.dll
+  Destination=%TEMP%\MDACTMP\msadds.dll
+  Flags=0000000010000011
+  Version String=2.10.4202.1
+  Version MS=131082
+  Version LS=275382273
+  Company=Microsoft Corporation
+  Product=Microsoft Data Shape OLE DB Provider 2.0
+  File Size=147728
+  File Date=19990609 172054
+  EXE Type=32
+end
+item: Install File
+  Source=C:\Program Files\Common Files\System\msadc\msaddsr.dll
+  Destination=%TEMP%\MDACTMP\msaddsr.dll
+  Flags=0000000010000011
+  Version String=2.10.4202.1
+  Version MS=131082
+  Version LS=275382273
+  Company=Microsoft Corporation
+  Product=Microsoft Data Shape OLE DB Provider 2.0
+  File Size=13824
+  File Date=19990609 165612
+  EXE Type=32
+end
+item: Install File
+  Source=C:\Program Files\Common Files\System\ado\msader15.dll
+  Destination=%TEMP%\MDACTMP\msader15.dll
+  Flags=0000000010000011
+  Version String=2.10.4202.1
+  Version MS=131082
+  Version LS=275382273
+  Company=Microsoft Corporation
+  Product=Microsoft® ADO
+  File Size=7680
+  File Date=19990609 165204
+  EXE Type=32
+end
+item: Install File
+  Source=C:\Program Files\Common Files\System\ado\msado15.dll
+  Destination=%TEMP%\MDACTMP\msado15.dll
+  Flags=0000000010000011
+  Version String=2.10.4202.1
+  Version MS=131082
+  Version LS=275382273
+  Company=Microsoft Corporation
+  Product=Microsoft® ADO
+  File Size=340752
+  File Date=19990609 172408
+  EXE Type=32
+end
+item: Install File
+  Source=C:\Program Files\Common Files\System\ado\msado20.tlb
+  Destination=%TEMP%\MDACTMP\msado20.tlb
+  Flags=0000000010000010
+  File Size=48528
+  File Date=19990609 133302
+end
+item: Install File
+  Source=C:\Program Files\Common Files\System\ado\msadomd.dll
+  Destination=%TEMP%\MDACTMP\msadomd.dll
+  Flags=0000000010000011
+  Version String=2.10.4202.0
+  Version MS=131082
+  Version LS=275382272
+  Company=Microsoft Corporation
+  Product=Microsoft® ADOMD
+  File Size=152848
+  File Date=19990603 160636
+  EXE Type=32
+end
+item: Install File
+  Source=C:\Program Files\Common Files\System\ado\msador15.dll
+  Destination=%TEMP%\MDACTMP\msador15.dll
+  Flags=0000000010000011
+  Version String=2.10.4202.1
+  Version MS=131082
+  Version LS=275382273
+  Company=Microsoft Corporation
+  Product=Microsoft® ADO
+  File Size=37376
+  File Date=19990609 165206
+  EXE Type=32
+end
+item: Install File
+  Source=C:\Program Files\Common Files\System\ado\msadox.dll
+  Destination=%TEMP%\MDACTMP\msadox.dll
+  Flags=0000000010000011
+  Version String=2.10.4202.0
+  Version MS=131082
+  Version LS=275382272
+  Company=Microsoft Corporation
+  Product=Microsoft® ADOX
+  File Size=170768
+  File Date=19990603 160638
+  EXE Type=32
+end
+item: Install File
+  Source=C:\Program Files\Common Files\System\ado\msadrh15.dll
+  Destination=%TEMP%\MDACTMP\msadrh15.dll
+  Flags=0000000010000011
+  Version String=2.10.4202.1
+  Version MS=131082
+  Version LS=275382273
+  Company=Microsoft Corporation
+  Product=Microsoft® ADO
+  File Size=42256
+  File Date=19990609 172410
+  EXE Type=32
+end
+item: Install File
+  Source=%_SYS_%\mscpxl32.dll
+  Destination=%TEMP%\MDACTMP\mscpxl32.dll
+  Flags=0000000010000011
+  Version String= 3.60.0320
+  Version MS=196668
+  Version LS=196628
+  Company=Microsoft Corporation
+  Product=Microsoft SQL Server
+  File Size=13824
+  File Date=19990503 011626
+  EXE Type=32
+end
+item: Install File
+  Source=C:\Program Files\Common Files\System\ole db\msdadc.dll
+  Destination=%TEMP%\MDACTMP\msdadc.dll
+  Flags=0000000010000011
+  File Size=5392
+  File Date=19990603 160434
+  EXE Type=32
+end
+item: Install File
+  Source=C:\Program Files\Common Files\System\ole db\msdaenum.dll
+  Destination=%TEMP%\MDACTMP\msdaenum.dll
+  Flags=0000000010000011
+  File Size=5392
+  File Date=19990603 160436
+  EXE Type=32
+end
+item: Install File
+  Source=C:\Program Files\Common Files\System\ole db\msdaer.dll
+  Destination=%TEMP%\MDACTMP\msdaer.dll
+  Flags=0000000010000011
+  File Size=5392
+  File Date=19990603 160436
+  EXE Type=32
+end
+remarked item: Install File
+  Source=C:\Program Files\Common Files\System\ole db\msdamg9x.dll
+  Destination=%TEMP%\MDACTMP\msdamg9x.dll
+  Flags=0000000010000011
+  Version String=2.50.4202.0
+  Version MS=131122
+  Version LS=275382272
+  Company=Microsoft Corporation
+  Product=Microsoft Data Access Components
+  File Size=4368
+  File Date=19990602 020048
+  EXE Type=16
+end
+item: Install File
+  Source=C:\Program Files\Common Files\System\ole db\msdaora.dll
+  Destination=%TEMP%\MDACTMP\msdaora.dll
+  Flags=0000000010000011
+  Version String=02.10.4202.0
+  Version MS=131082
+  Version LS=275382272
+  Company=Microsoft Corporation
+  Product=Microsoft OLE DB
+  File Size=188176
+  File Date=19990603 160546
+  EXE Type=32
+end
+item: Install File
+  Source=C:\Program Files\Common Files\System\ole db\msdaosp.dll
+  Destination=%TEMP%\MDACTMP\msdaosp.dll
+  Flags=0000000010000011
+  Version String=2.10.4202.1
+  Version MS=131082
+  Version LS=275382273
+  Company=Microsoft Corporation
+  Product=Microsoft OLE DB
+  File Size=74000
+  File Date=19990609 171322
+  EXE Type=32
+end
+item: Install File
+  Source=C:\Program Files\Common Files\System\msadc\msdaprsr.dll
+  Destination=%TEMP%\MDACTMP\msdaprsr.dll
+  Flags=0000000010000011
+  Version String=2.10.4202.1
+  Version MS=131082
+  Version LS=275382273
+  Company=Microsoft Corporation
+  Product=Microsoft Persistence OLE DB Provider 2.0
+  File Size=4608
+  File Date=19990609 165614
+  EXE Type=32
+end
+item: Install File
+  Source=C:\Program Files\Common Files\System\msadc\msdaprst.dll
+  Destination=%TEMP%\MDACTMP\msdaprst.dll
+  Flags=0000000010000011
+  Version String=2.10.4202.1
+  Version MS=131082
+  Version LS=275382273
+  Company=Microsoft Corporation
+  Product=Microsoft Persistence OLE DB Provider 2.0
+  File Size=171792
+  File Date=19990609 172054
+  EXE Type=32
+end
+item: Install File
+  Source=C:\Program Files\Common Files\System\ole db\msdaps.dll
+  Destination=%TEMP%\MDACTMP\msdaps.dll
+  Flags=0000000010000011
+  Version String=2.10.4202.0
+  Version MS=131082
+  Version LS=275382272
+  Company=Microsoft Corporation
+  Product=Microsoft OLE DB
+  File Size=122640
+  File Date=19990603 160608
+  EXE Type=32
+end
+item: Install File
+  Source=C:\Program Files\Common Files\System\msadc\msdarem.dll
+  Destination=%TEMP%\MDACTMP\msdarem.dll
+  Flags=0000000010000011
+  Version String=2.10.4202.1
+  Version MS=131082
+  Version LS=275382273
+  Company=Microsoft Corporation
+  Product=Microsoft Remote Data Services 2.10
+  File Size=112912
+  File Date=19990609 172056
+  EXE Type=32
+end
+item: Install File
+  Source=C:\Program Files\Common Files\System\msadc\msdaremr.dll
+  Destination=%TEMP%\MDACTMP\msdaremr.dll
+  Flags=0000000010000011
+  Version String=2.10.4202.1
+  Version MS=131082
+  Version LS=275382273
+  Company=Microsoft Corporation
+  Product=MS Remote
+  File Size=5120
+  File Date=19990609 165614
+  EXE Type=32
+end
+item: Install File
+  Source=C:\Program Files\Common Files\System\ole db\msdasc.cnt
+  Destination=%TEMP%\MDACTMP\msdasc.cnt
+  Flags=0000000010000010
+  File Size=700
+  File Date=19980914 101826
+end
+item: Install File
+  Source=C:\Program Files\Common Files\System\ole db\msdasc.dll
+  Destination=%TEMP%\MDACTMP\msdasc.dll
+  Flags=0000000010000011
+  File Size=5392
+  File Date=19990603 160434
+  EXE Type=32
+end
+item: Install File
+  Source=C:\Program Files\Common Files\System\ole db\msdasc.hlp
+  Destination=%TEMP%\MDACTMP\msdasc.hlp
+  Flags=0000000010000010
+  File Size=24120
+  File Date=19980921 094630
+end
+item: Install File
+  Source=C:\Program Files\Common Files\System\ole db\msdasc.txt
+  Destination=%TEMP%\MDACTMP\msdasc.txt
+  Flags=0000000010000010
+  File Size=2160
+  File Date=19980925 092936
+end
+item: Install File
+  Source=C:\Program Files\Common Files\System\ole db\msdasql.dll
+  Destination=%TEMP%\MDACTMP\msdasql.dll
+  Flags=0000000010000011
+  Version String=02.10.4202.0
+  Version MS=131082
+  Version LS=275382272
+  Company=Microsoft Corporation
+  Product=Microsoft OLE DB
+  File Size=293136
+  File Date=19990603 160404
+  EXE Type=32
+end
+item: Install File
+  Source=C:\Program Files\Common Files\System\ole db\msdasqlr.dll
+  Destination=%TEMP%\MDACTMP\msdasqlr.dll
+  Flags=0000000010000011
+  Version String=02.10.4202.0
+  Version MS=131082
+  Version LS=275382272
+  Company=Microsoft Corporation
+  Product=Microsoft OLE DB
+  File Size=9488
+  File Date=19990603 160406
+  EXE Type=32
+end
+item: Install File
+  Source=C:\Program Files\Common Files\System\ole db\msdatl2.dll
+  Destination=%TEMP%\MDACTMP\msdatl2.dll
+  Flags=0000000010000011
+  Version String=02.10.4202.0
+  Version MS=131082
+  Version LS=275382272
+  Company=Microsoft Corporation
+  Product=Microsoft OLE DB
+  File Size=63760
+  File Date=19990603 160406
+  EXE Type=32
+end
+item: Install File
+  Source=%_SYS_%\msdatsrc.tlb
+  Destination=%TEMP%\MDACTMP\msdatsrc.tlb
+  Flags=0000000010000010
+  File Size=2492
+  File Date=19990609 132754
+end
+item: Install File
+  Source=C:\Program Files\Common Files\System\ole db\msdatt.dll
+  Destination=%TEMP%\MDACTMP\msdatt.dll
+  Flags=0000000010000011
+  Version String=02.10.4202.0
+  Version MS=131082
+  Version LS=275382272
+  Company=Microsoft Corporation
+  Product=Microsoft OLE DB
+  File Size=37648
+  File Date=19990603 160406
+  EXE Type=32
+end
+item: Install File
+  Source=C:\Program Files\Common Files\System\msadc\msdfmap.dll
+  Destination=%TEMP%\MDACTMP\msdfmap.dll
+  Flags=0000000010000011
+  Version String=2.10.4202.1
+  Version MS=131082
+  Version LS=275382273
+  Company=Microsoft Corporation
+  Product=Microsoft® Remote Data Services
+  File Size=25872
+  File Date=19990609 172056
+  EXE Type=32
+end
+item: Install File
+  Source=%_WIN_%\msdfmap.ini
+  Destination=%TEMP%\MDACTMP\msdfmap.ini
+  Flags=0000000010000010
+  File Size=1405
+  File Date=19990609 132902
+end
+remarked item: Install File
+  Source=%_SYS_%\msdsqlrm.txt
+  Destination=%TEMP%\MDACTMP\msdsqlrm.txt
+  Flags=0000000010000010
+  File Size=1023
+  File Date=19980925 093052
+end
+item: Install File
+  Source=%_SYS_%\msexch40.dll
+  Destination=%TEMP%\MDACTMP\msexch40.dll
+  Flags=0000000010000011
+  Version String=4.00.2927.2
+  Version MS=262144
+  Version LS=191823874
+  Company=Microsoft Corporation
+  Product=Microsoft (R) Jet
+  File Size=499984
+  File Date=19990602 185526
+  EXE Type=32
+end
+item: Install File
+  Source=%_SYS_%\msexcl40.dll
+  Destination=%TEMP%\MDACTMP\msexcl40.dll
+  Flags=0000000010000011
+  Version String=4.00.2927.2
+  Version MS=262144
+  Version LS=191823874
+  Company=Microsoft Corporation
+  Product=Microsoft (R) Jet
+  File Size=311568
+  File Date=19990602 185524
+  EXE Type=32
+end
+item: Install File
+  Source=%_SYS_%\msjet40.dll
+  Destination=%TEMP%\MDACTMP\msjet40.dll
+  Flags=0000000010000011
+  Version String=4.00.2927.2
+  Version MS=262144
+  Version LS=191823874
+  Company=Microsoft Corporation
+  Product=Microsoft (R) Jet
+  File Size=1495312
+  File Date=19990602 185518
+  EXE Type=32
+end
+item: Install File
+  Source=%_SYS_%\Msjeto~1.dll
+  Destination=%TEMP%\MDACTMP\Msjeto~1.dll
+  Flags=0000000010000011
+  Version String=4.00.2927.2
+  Version MS=262144
+  Version LS=191823874
+  Company=Microsoft Corporation
+  Product=Microsoft® OLE DB Provider for Jet
+  File Size=348432
+  File Date=19990602 185528
+  EXE Type=32
+end
+item: Install File
+  Source=%_SYS_%\msjint40.dll
+  Destination=%TEMP%\MDACTMP\msjint40.dll
+  Flags=0000000010000011
+  Version String=4.00.2927.2
+  Version MS=262144
+  Version LS=191823874
+  Company=Microsoft Corporation
+  Product=Microsoft (R) Jet
+  File Size=151824
+  File Date=19990602 185524
+  EXE Type=32
+end
+item: Install File
+  Source=C:\Program Files\Common Files\System\ado\msjro.dll
+  Destination=%TEMP%\MDACTMP\msjro.dll
+  Flags=0000000010000011
+  Version String=2.10.4202.0
+  Version MS=131082
+  Version LS=275382272
+  Company=Microsoft Corporation
+  Product=Microsoft® JRO
+  File Size=79120
+  File Date=19990603 160640
+  EXE Type=32
+end
+item: Install File
+  Source=%_SYS_%\msjter40.dll
+  Destination=%TEMP%\MDACTMP\msjter40.dll
+  Flags=0000000010000011
+  Version String=4.00.2927.2
+  Version MS=262144
+  Version LS=191823874
+  Company=Microsoft Corporation
+  Product=Microsoft (R) Jet
+  File Size=53520
+  File Date=19990602 185522
+  EXE Type=32
+end
+item: Install File
+  Source=%_SYS_%\msjtes40.dll
+  Destination=%TEMP%\MDACTMP\msjtes40.dll
+  Flags=0000000010000011
+  Version String=4.00.2927.2
+  Version MS=262144
+  Version LS=191823874
+  Company=Microsoft Corporation
+  Product=Microsoft (R) Jet
+  File Size=237840
+  File Date=19990602 185532
+  EXE Type=32
+end
+item: Install File
+  Source=%_SYS_%\msltus40.dll
+  Destination=%TEMP%\MDACTMP\msltus40.dll
+  Flags=0000000010000011
+  Version String=4.00.2927.2
+  Version MS=262144
+  Version LS=191823874
+  Company=Microsoft Corporation
+  Product=Microsoft (R) Jet
+  File Size=209168
+  File Date=19990602 185524
+  EXE Type=32
+end
+item: Install File
+  Source=%_SYS_%\msorcl32.cnt
+  Destination=%TEMP%\MDACTMP\msorcl32.cnt
+  Flags=0000000010000010
+  File Size=1731
+  File Date=19980914 101152
+end
+item: Install File
+  Source=%_SYS_%\msorcl32.dll
+  Destination=%TEMP%\MDACTMP\msorcl32.dll
+  Flags=0000000010000011
+  Version String=02.573.4202.0
+  Version MS=131645
+  Version LS=275382272
+  Company=Microsoft Corporation
+  Product=Microsoft ODBC for Oracle
+  File Size=143120
+  File Date=19990603 160536
+  EXE Type=32
+end
+item: Install File
+  Source=%_SYS_%\msorcl32.hlp
+  Destination=%TEMP%\MDACTMP\msorcl32.hlp
+  Flags=0000000010000010
+  File Size=46517
+  File Date=19980924 140254
+end
+remarked item: Install File
+  Source=%_SYS_%\msorcolr.txt
+  Destination=%TEMP%\MDACTMP\msorcolr.txt
+  Flags=0000000010000010
+  File Size=3040
+  File Date=19981113 114108
+end
+remarked item: Install File
+  Source=%_SYS_%\msorcrdm.txt
+  Destination=%TEMP%\MDACTMP\msorcrdm.txt
+  Flags=0000000010000010
+  File Size=1654
+  File Date=19980925 083540
+end
+item: Install File
+  Source=%_SYS_%\mspbde40.dll
+  Destination=%TEMP%\MDACTMP\mspbde40.dll
+  Flags=0000000010000011
+  Version String=4.00.2927.2
+  Version MS=262144
+  Version LS=191823874
+  Company=Microsoft Corporation
+  Product=Microsoft (R) Jet
+  File Size=286992
+  File Date=19990602 185520
+  EXE Type=32
+end
+item: Install File
+  Source=%_SYS_%\msrclr40.dll
+  Destination=%TEMP%\MDACTMP\msrclr40.dll
+  Flags=0000000010000011
+  Version String=4.00.2927.2
+  Version MS=262144
+  Version LS=191823874
+  Company=Microsoft Corporation
+  Product=Microsoft (R) Jet
+  File Size=74000
+  File Date=19990602 185528
+  EXE Type=32
+end
+item: Install File
+  Source=%_SYS_%\msrd2x40.dll
+  Destination=%TEMP%\MDACTMP\msrd2x40.dll
+  Flags=0000000010000011
+  Version String=4.00.2927.2
+  Version MS=262144
+  Version LS=191823874
+  Company=Microsoft Corporation
+  Product=Microsoft (R) Jet
+  File Size=422160
+  File Date=19990602 185522
+  EXE Type=32
+end
+item: Install File
+  Source=%_SYS_%\msrd3x40.dll
+  Destination=%TEMP%\MDACTMP\msrd3x40.dll
+  Flags=0000000010000011
+  Version String=4.00.2927.2
+  Version MS=262144
+  Version LS=191823874
+  Company=Microsoft Corporation
+  Product=Microsoft (R) Jet
+  File Size=315664
+  File Date=19990602 185520
+  EXE Type=32
+end
+item: Install File
+  Source=%_SYS_%\msrecr40.dll
+  Destination=%TEMP%\MDACTMP\msrecr40.dll
+  Flags=0000000010000011
+  Version String=4.00.2927.2
+  Version MS=262144
+  Version LS=191823874
+  Company=Microsoft Corporation
+  Product=Microsoft (R) Jet
+  File Size=28944
+  File Date=19990602 185526
+  EXE Type=32
+end
+item: Install File
+  Source=%_SYS_%\msrepl40.dll
+  Destination=%TEMP%\MDACTMP\msrepl40.dll
+  Flags=0000000010000011
+  Version String=4.00.2927.2
+  Version MS=262144
+  Version LS=191823874
+  Company=Microsoft Corporation
+  Product=Microsoft® Access
+  File Size=553232
+  File Date=19990602 185522
+  EXE Type=32
+end
+item: Install File
+  Source=d:\Program Files\Microsoft Visual Studio\Common\Setup\1033\mssetup.dll
+  Destination=%TEMP%\MDACTMP\mssetup.dll
+  Flags=0000000010000011
+  Version String=3.01.0.8043
+  Version MS=196609
+  Version LS=1918
+  Company=Microsoft Corporation
+  Product=Microsoft Setup for Windows
+  File Size=283136
+  File Date=19980824 184858
+  EXE Type=32
+end
+item: Install File
+  Source=%_SYS_%\mstext40.dll
+  Destination=%TEMP%\MDACTMP\mstext40.dll
+  Flags=0000000010000011
+  Version String=4.00.2927.2
+  Version MS=262144
+  Version LS=191823874
+  Company=Microsoft Corporation
+  Product=Microsoft (R) Jet
+  File Size=241936
+  File Date=19990602 185526
+  EXE Type=32
+end
+item: Install File
+  Source=%_SYS_%\msvcirt.dll
+  Destination=%TEMP%\MDACTMP\msvcirt.dll
+  Flags=0000000010000011
+  Version String=6.00.8168.0
+  Version MS=393216
+  Version LS=535298048
+  Company=Microsoft Corporation
+  Product=Microsoft (R) Visual C++
+  File Size=77878
+  File Date=19980616 194548
+  EXE Type=32
+end
+item: Install File
+  Source=%_SYS_%\msvcrt.dll
+  Destination=%TEMP%\MDACTMP\msvcrt.dll
+  Flags=0000000010000011
+  Version String=6.00.8397.0
+  Version MS=393216
+  Version LS=550305792
+  Company=Microsoft Corporation
+  Product=Microsoft (R) Visual C++
+  File Size=266293
+  File Date=19990201 233828
+  EXE Type=32
+end
+item: Install File
+  Source=%_SYS_%\mswdat10.dll
+  Destination=%TEMP%\MDACTMP\mswdat10.dll
+  Flags=0000000010000011
+  Version String=4.00.2927.2
+  Version MS=262144
+  Version LS=191823874
+  Company=Microsoft Corporation
+  Product=Microsoft (R) Jet
+  File Size=831760
+  File Date=19990602 185530
+  EXE Type=32
+end
+item: Install File
+  Source=%_SYS_%\mswstr10.dll
+  Destination=%TEMP%\MDACTMP\mswstr10.dll
+  Flags=0000000010000011
+  Version String=4.00.2927.2
+  Version MS=262144
+  Version LS=191823874
+  Company=Microsoft Corporation
+  Product=Microsoft (R) Jet
+  File Size=614672
+  File Date=19990602 185530
+  EXE Type=32
+end
+item: Install File
+  Source=C:\Program Files\Common Files\System\ole db\msxactps.dll
+  Destination=%TEMP%\MDACTMP\msxactps.dll
+  Flags=0000000010000011
+  Version String=2.10.4202.0
+  Version MS=131082
+  Version LS=275382272
+  Company=Microsoft Corporation
+  Product=Microsoft OLE DB
+  File Size=8464
+  File Date=19990603 160608
+  EXE Type=32
+end
+item: Install File
+  Source=%_SYS_%\msxbde40.dll
+  Destination=%TEMP%\MDACTMP\msxbde40.dll
+  Flags=0000000010000011
+  Version String=4.00.2927.2
+  Version MS=262144
+  Version LS=191823874
+  Company=Microsoft Corporation
+  Product=Microsoft (R) Jet
+  File Size=229648
+  File Date=19990602 185520
+  EXE Type=32
+end
+item: Install File
+  Source=%_SYS_%\mtxdm.dll
+  Destination=%TEMP%\MDACTMP\mtxdm.dll
+  Flags=0000000010000011
+  Version String=1997.11.532.0
+  Version MS=130875403
+  Version LS=34865152
+  Company=Microsoft Corporation
+  Product=Microsoft Transaction Server
+  File Size=29456
+  File Date=19971114 064300
+  EXE Type=32
+end
+item: Install File
+  Source=%_SYS_%\mtxoci.dll
+  Destination=%TEMP%\MDACTMP\mtxoci.dll
+  Flags=0000000010000011
+  Version String=1998.02.715.0
+  Version MS=130940930
+  Version LS=46858240
+  Company=Microsoft Corporation
+  Product=Microsoft Transaction Server
+  File Size=69904
+  File Date=19980302 180534
+  EXE Type=32
+end
+item: Install File
+  Source=%_SYS_%\odbc16gt.dll
+  Destination=%TEMP%\MDACTMP\odbc16gt.dll
+  Flags=0000000010000011
+  Version String=3.510.4202.0
+  Version MS=197118
+  Version LS=275382272
+  Company=Microsoft Corporation
+  Product=Microsoft Open Database Connectivity
+  File Size=26224
+  File Date=19990603 085524
+  EXE Type=16
+end
+item: Install File
+  Source=%_SYS_%\odbc32.dll
+  Destination=%TEMP%\MDACTMP\odbc32.dll
+  Flags=0000000010000011
+  Version String=3.510.4202.0
+  Version MS=197118
+  Version LS=275382272
+  Company=Microsoft Corporation
+  Product=Microsoft Open Database Connectivity
+  File Size=203024
+  File Date=19990603 160506
+  EXE Type=32
+end
+item: Install File
+  Source=%_SYS_%\odbc32gt.dll
+  Destination=%TEMP%\MDACTMP\odbc32gt.dll
+  Flags=0000000010000011
+  Version String=3.510.4202.0
+  Version MS=197118
+  Version LS=275382272
+  Company=Microsoft Corporation
+  Product=Microsoft Open Database Connectivity
+  File Size=6656
+  File Date=19990603 150030
+  EXE Type=32
+end
+item: Install File
+  Source=%_SYS_%\odbcad32.exe
+  Destination=%TEMP%\MDACTMP\odbcad32.exe
+  Flags=0000000010000011
+  Version String=3.510.4202.0
+  Version MS=197118
+  Version LS=275382272
+  Company=Microsoft Corporation
+  Product=Microsoft Open Database Connectivity
+  File Size=9216
+  File Date=19990603 085836
+  EXE Type=32
+end
+item: Install File
+  Source=%_SYS_%\odbcbcp.dll
+  Destination=%TEMP%\MDACTMP\odbcbcp.dll
+  Flags=0000000010000011
+  Version String= 3.70.0690
+  Version MS=196678
+  Version LS=393306
+  Company=Microsoft Corporation
+  Product=Microsoft SQL Server
+  File Size=24848
+  File Date=19990405 032138
+  EXE Type=32
+end
+item: Install File
+  Source=%_SYS_%\odbcconf.exe
+  Destination=%TEMP%\MDACTMP\odbcconf.exe
+  Flags=0000000010000011
+  File Size=29696
+  File Date=19990402 170150
+  EXE Type=32
+end
+item: Install File
+  Source=%_SYS_%\odbccp32.cpl
+  Destination=%TEMP%\MDACTMP\odbccp32.cpl
+  Flags=0000000010000011
+  Version String=3.510.4202.0
+  Version MS=197118
+  Version LS=275382272
+  Company=Microsoft Corporation
+  Product=Microsoft Open Database Connectivity
+  File Size=7952
+  File Date=19990603 160508
+  EXE Type=32
+end
+item: Install File
+  Source=%_SYS_%\odbccp32.dll
+  Destination=%TEMP%\MDACTMP\odbccp32.dll
+  Flags=0000000010000011
+  Version String=3.510.4202.0
+  Version MS=197118
+  Version LS=275382272
+  Company=Microsoft Corporation
+  Product=Microsoft Open Database Connectivity
+  File Size=87312
+  File Date=19990603 160506
+  EXE Type=32
+end
+item: Install File
+  Source=%_SYS_%\odbccr32.dll
+  Destination=%TEMP%\MDACTMP\odbccr32.dll
+  Flags=0000000010000011
+  Version String=3.510.4202.0
+  Version MS=197118
+  Version LS=275382272
+  Company=Microsoft Corporation
+  Product=Microsoft Open Database Connectivity
+  File Size=183568
+  File Date=19990603 160508
+  EXE Type=32
+end
+item: Install File
+  Source=%_SYS_%\odbccu32.dll
+  Destination=%TEMP%\MDACTMP\odbccu32.dll
+  Flags=0000000010000011
+  Version String=3.510.4202.0
+  Version MS=197118
+  Version LS=275382272
+  Company=Microsoft Corporation
+  Product=Microsoft Open Database Connectivity
+  File Size=184592
+  File Date=19990603 160506
+  EXE Type=32
+end
+item: Install File
+  Source=%_SYS_%\odbcinst.cnt
+  Destination=%TEMP%\MDACTMP\odbcinst.cnt
+  Flags=0000000010000010
+  File Size=324
+  File Date=19981019 133436
+end
+item: Install File
+  Source=%_SYS_%\odbcinst.hlp
+  Destination=%TEMP%\MDACTMP\odbcinst.hlp
+  Flags=0000000010000010
+  File Size=37062
+  File Date=19981019 133438
+end
+item: Install File
+  Source=%_SYS_%\odbcint.dll
+  Destination=%TEMP%\MDACTMP\odbcint.dll
+  Flags=0000000010000011
+  Version String=3.510.4202.0
+  Version MS=197118
+  Version LS=275382272
+  Company=Microsoft Corporation
+  Product=Microsoft Open Database Connectivity
+  File Size=70928
+  File Date=19990603 160510
+  EXE Type=32
+end
+item: Install File
+  Source=%_SYS_%\odbcjet.cnt
+  Destination=%TEMP%\MDACTMP\odbcjet.cnt
+  Flags=0000000010000010
+  File Size=7348
+  File Date=19980924 140330
+end
+item: Install File
+  Source=%_SYS_%\odbcjet.hlp
+  Destination=%TEMP%\MDACTMP\odbcjet.hlp
+  Flags=0000000010000010
+  File Size=171967
+  File Date=19980924 140330
+end
+item: Install File
+  Source=%_SYS_%\odbcji32.dll
+  Destination=%TEMP%\MDACTMP\odbcji32.dll
+  Flags=0000000010000011
+  Version String=4.0.4202.00
+  Version MS=262144
+  Version LS=275382272
+  Company=Microsoft Corporation
+  Product=Microsoft ODBC Desktop Driver Pack 3.5
+  File Size=38160
+  File Date=19990603 160520
+  EXE Type=32
+end
+item: Install File
+  Source=%_SYS_%\odbcjt32.dll
+  Destination=%TEMP%\MDACTMP\odbcjt32.dll
+  Flags=0000000010000011
+  Version String=4.0.4202.00
+  Version MS=262144
+  Version LS=275382272
+  Company=Microsoft Corporation
+  Product=Microsoft ODBC Desktop Driver Pack 3.5
+  File Size=312080
+  File Date=19990603 160520
+  EXE Type=32
+end
+item: Install File
+  Source=%_SYS_%\odbckey.inf
+  Destination=%TEMP%\MDACTMP\odbckey.inf
+  Flags=0000000010000010
+  File Size=4336
+  File Date=19990609 172656
+end
+item: Install File
+  Source=%_SYS_%\odbcstf.dll
+  Destination=%TEMP%\MDACTMP\odbcstf.dll
+  Flags=0000000010000011
+  File Size=31232
+  File Date=19990402 170154
+  EXE Type=32
+end
+item: Install File
+  Source=%_SYS_%\odbctrac.dll
+  Destination=%TEMP%\MDACTMP\odbctrac.dll
+  Flags=0000000010000011
+  Version String=3.510.4202.0
+  Version MS=197118
+  Version LS=275382272
+  Company=Microsoft Corporation
+  Product=Microsoft Open Database Connectivity
+  File Size=141072
+  File Date=19990603 160508
+  EXE Type=32
+end
+item: Install File
+  Source=%_SYS_%\oddbse32.dll
+  Destination=%TEMP%\MDACTMP\oddbse32.dll
+  Flags=0000000010000011
+  Version String=4.0.4202.00
+  Version MS=262144
+  Version LS=275382272
+  Company=Microsoft Corporation
+  Product=ODBC (3.0) driver for DBase
+  File Size=4368
+  File Date=19990603 160522
+  EXE Type=32
+end
+item: Install File
+  Source=%_SYS_%\odexl32.dll
+  Destination=%TEMP%\MDACTMP\odexl32.dll
+  Flags=0000000010000011
+  Version String=4.0.4202.00
+  Version MS=262144
+  Version LS=275382272
+  Company=Microsoft Corporation
+  Product=ODBC (3.0) driver for Excel
+  File Size=4368
+  File Date=19990603 160522
+  EXE Type=32
+end
+item: Install File
+  Source=%_SYS_%\odfox32.dll
+  Destination=%TEMP%\MDACTMP\odfox32.dll
+  Flags=0000000010000011
+  Version String=4.0.4202.00
+  Version MS=262144
+  Version LS=275382272
+  Company=Microsoft Corporation
+  Product=ODBC (3.0) driver for FoxPro
+  File Size=4368
+  File Date=19990603 160524
+  EXE Type=32
+end
+item: Install File
+  Source=%_SYS_%\odpdx32.dll
+  Destination=%TEMP%\MDACTMP\odpdx32.dll
+  Flags=0000000010000011
+  Version String=4.0.4202.00
+  Version MS=262144
+  Version LS=275382272
+  Company=Microsoft Corporation
+  Product=ODBC (3.0) driver for Paradox
+  File Size=4368
+  File Date=19990603 160522
+  EXE Type=32
+end
+item: Install File
+  Source=%_SYS_%\odtext32.dll
+  Destination=%TEMP%\MDACTMP\odtext32.dll
+  Flags=0000000010000011
+  Version String=4.0.4202.00
+  Version MS=262144
+  Version LS=275382272
+  Company=Microsoft Corporation
+  Product=ODBC (3.0) driver for text files
+  File Size=4368
+  File Date=19990603 160522
+  EXE Type=32
+end
+item: Install File
+  Source=%_SYS_%\oleaut32.dll
+  Destination=%TEMP%\MDACTMP\oleaut32.dll
+  Flags=0000000010000011
+  Version String=2.40.4275
+  Version MS=131112
+  Version LS=280166401
+  Company=Microsoft Corporation
+  Product=Microsoft OLE 2.40  for Windows NT(TM) and Windows 95(TM) Operating Systems
+  File Size=598288
+  File Date=19990308 125054
+  EXE Type=32
+end
+item: Install File
+  Source=C:\Program Files\Common Files\System\ole db\oledb32.dll
+  Destination=%TEMP%\MDACTMP\oledb32.dll
+  Flags=0000000010000011
+  Version String=02.10.4202.0
+  Version MS=131082
+  Version LS=275382272
+  Company=Microsoft Corporation
+  Product=Microsoft OLE DB
+  File Size=370960
+  File Date=19990603 160432
+  EXE Type=32
+end
+item: Install File
+  Source=C:\Program Files\Common Files\System\ole db\oledb32r.dll
+  Destination=%TEMP%\MDACTMP\oledb32r.dll
+  Flags=0000000010000011
+  Version String=02.10.4202.0
+  Version MS=131082
+  Version LS=275382272
+  Company=Microsoft Corporation
+  Product=Microsoft OLE DB
+  File Size=40720
+  File Date=19990603 160432
+  EXE Type=32
+end
+item: Install File
+  Source=C:\Program Files\Common Files\System\ole db\oledb32x.dll
+  Destination=%TEMP%\MDACTMP\oledb32x.dll
+  Flags=0000000010000011
+  File Size=5392
+  File Date=19990603 160432
+  EXE Type=32
+end
+item: Install File
+  Source=%_SYS_%\olepro32.dll
+  Destination=%TEMP%\MDACTMP\olepro32.dll
+  Flags=0000000010000011
+  Version String=5.0.4275
+  Version MS=327680
+  Version LS=280166401
+  Company=Microsoft Corporation
+  File Size=164112
+  File Date=19990308 125056
+  EXE Type=32
+end
+item: Install File
+  Source=%_SYS_%\selfreg.dll
+  Destination=%TEMP%\MDACTMP\selfreg.dll
+  Flags=0000000010000011
+  Version String=8.0
+  Version MS=524288
+  Version LS=3214
+  Company=Microsoft
+  Product=SelfReg
+  File Size=32256
+  File Date=19980824 184858
+  EXE Type=32
+end
+item: Install File
+  Source=%_SYS_%\setup.exe
+  Destination=%TEMP%\MDACTMP\setup.exe
+  Flags=0000000010000011
+  Version String=3.0
+  Version MS=196608
+  Version LS=1210
+  Company=Microsoft Corporation
+  Product=Microsoft Setup for Windows
+  File Size=74352
+  File Date=19980824 184858
+  EXE Type=16
+end
+item: Install File
+  Source=D:\Distr\Visual Studio 60\setup.ini
+  Destination=%TEMP%\MDACTMP\setup.ini
+  Flags=0000000010000010
+  File Size=149
+  File Date=19990609 172654
+end
+item: Install File
+  Source=D:\Distr\VB5\VB\SETUP\setup.lst
+  Destination=%TEMP%\MDACTMP\setup.lst
+  Flags=0000000010000010
+  File Size=1678
+  File Date=19990622 173858
+end
+item: Install File
+  Source=D:\Distr\Visual Studio 60\setup.tdf
+  Destination=%TEMP%\MDACTMP\setup.tdf
+  Flags=0000000010000010
+  File Size=84
+  File Date=19990609 172654
+end
+item: Install File
+  Source=C:\Program Files\Common Files\System\ole db\sqloledb.dll
+  Destination=%TEMP%\MDACTMP\sqloledb.dll
+  Flags=0000000010000011
+  Version String=07.01.0690
+  Version MS=458753
+  Version LS=393306
+  Company=Microsoft Corporation
+  Product=Microsoft OLE DB Provider for SQL Server
+  File Size=540944
+  File Date=19990405 032142
+  EXE Type=32
+end
+item: Install File
+  Source=C:\Program Files\Common Files\System\ole db\SQLOLEDB.txt
+  Destination=%TEMP%\MDACTMP\SQLOLEDB.txt
+  Flags=0000000010000010
+  File Size=3768
+  File Date=19980616 152850
+end
+item: Install File
+  Source=%_SYS_%\sqlsodbc.hlp
+  Destination=%TEMP%\MDACTMP\sqlsodbc.hlp
+  Flags=0000000010000010
+  File Size=15922
+  File Date=19980902 145850
+end
+item: Install File
+  Source=C:\Program Files\Common Files\System\ole db\SQLSOLDB.hlp
+  Destination=%TEMP%\MDACTMP\SQLSOLDB.hlp
+  Flags=0000000010000010
+  File Size=8270
+  File Date=19980902 145928
+end
+item: Install File
+  Source=%_SYS_%\Sqlsrdme.txt
+  Destination=%TEMP%\MDACTMP\Sqlsrdme.txt
+  Flags=0000000010000010
+  File Size=13228
+  File Date=19990122 151724
+end
+item: Install File
+  Source=%_SYS_%\sqlsrv32.dll
+  Destination=%TEMP%\MDACTMP\sqlsrv32.dll
+  Flags=0000000010000011
+  Version String= 3.70.0690
+  Version MS=196678
+  Version LS=393306
+  Company=Microsoft Corporation
+  Product=Microsoft SQL Server
+  File Size=516368
+  File Date=19990405 032140
+  EXE Type=32
+end
+item: Install File
+  Source=%_SYS_%\sqlstr.dll
+  Destination=%TEMP%\MDACTMP\sqlstr.dll
+  Flags=0000000010000011
+  Version String=1999.04.05
+  Version MS=131006468
+  Version LS=327680
+  Company=Microsoft Corporation
+  Product=Microsoft SQL Server
+  File Size=119056
+  File Date=19990405 045752
+  EXE Type=32
+end
+item: Install File
+  Source=%_SYS_%\sqlwid.dll
+  Destination=%TEMP%\MDACTMP\sqlwid.dll
+  Flags=0000000010000011
+  Version String=1999.04.05
+  Version MS=131006468
+  Version LS=327680
+  Company=Microsoft Corporation
+  Product=Microsoft SQL Server
+  File Size=24848
+  File Date=19990405 032124
+  EXE Type=32
+end
+item: Install File
+  Source=%_SYS_%\sqlwoa.dll
+  Destination=%TEMP%\MDACTMP\sqlwoa.dll
+  Flags=0000000010000011
+  Version String=1999.04.05
+  Version MS=131006468
+  Version LS=327680
+  Company=Microsoft Corporation
+  Product=Microsoft SQL Server
+  File Size=49424
+  File Date=19990405 045748
+  EXE Type=32
+end
+item: Install File
+  Source=%_SYS_%\stdole2.tlb
+  Destination=%TEMP%\MDACTMP\stdole2.tlb
+  Flags=0000000010000011
+  Version String=2.40.4275
+  Version MS=131112
+  Version LS=280166401
+  Company=Microsoft Corporation
+  Product=Microsoft OLE 2.40  for Windows NT(TM) and Windows 95(TM) Operating Systems
+  File Size=17920
+  File Date=19990308 121544
+  EXE Type=32
+end
+item: Install File
+  Source=%_SYS_%\vbajet32.dll
+  Destination=%TEMP%\MDACTMP\vbajet32.dll
+  Flags=0000000010000011
+  Version String=6.1.8268
+  Version MS=393216
+  Version LS=73804
+  Company=Microsoft Corporation
+  Product=Microsoft Visual Basic for Applications
+  File Size=30992
+  File Date=19990121 210938
+  EXE Type=32
+end
+item: Install File
+  Source=%_SYS_%\vfpodbc.dll
+  Destination=%TEMP%\MDACTMP\vfpodbc.dll
+  Flags=0000000010000011
+  Version String=6.0.8440.0
+  Version MS=393216
+  Version LS=553123840
+  Company=Microsoft Corporation
+  Product=Microsoft® Visual FoxPro®
+  File Size=978192
+  File Date=19990318 160108
+  EXE Type=32
+end
+item: Install File
+  Source=%_SYS_%\vfpodbc.txt
+  Destination=%TEMP%\MDACTMP\vfpodbc.txt
+  Flags=0000000010000010
+  File Size=11538
+  File Date=19980921 112118
+end
+item: Edit INI File
+  Pathname=%TEMP%\MDACTMP\Preset.INI
+  Settings=[MDAC]
+  Settings=Extracted=True
+  Settings=
+end
+item: End Block
+end
+item: End Block
+end
+item: End Block
+end
+item: Remark
+end
