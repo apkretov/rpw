@@ -1,4 +1,0 @@
-VBGROUP 5.0
-StartupProject=Client.vbp
-Project=Server.vbp
-Project=TCP.vbp
