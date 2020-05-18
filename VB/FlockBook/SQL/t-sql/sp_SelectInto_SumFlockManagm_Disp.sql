@@ -1,0 +1,21 @@
+USE FlockBook
+GO
+IF EXISTS (SELECT name FROM sysobjects WHERE -- Drop the previous SP.
+	NAME = "spSelectInto_SumFlockManagm_Disp" AND type = "P")
+DROP PROCEDURE spSelectInto_SumFlockManagm_Disp
+GO
+CREATE PROCEDURE spSelectInto_SumFlockManagm_Disp -- Create a new one.
+AS
+EXEC spSelectInto_SumFlockManagm_Disp_All
+EXEC spSelectInto_SumFlockManagm_Disp_Male1All
+EXEC spSelectInto_SumFlockManagm_Disp_Female2All
+EXEC spSelectInto_SumFlockManagm_Disp_Male3All
+EXEC spSelectInto_SumFlockManagm_Disp_Female4All
+EXEC spSelectInto_SumFlockManagm_Disp_Male5All
+EXEC spSelectInto_SumFlockManagm_Disp_Female6All
+EXEC spSelectInto_SumFlockManagm_Disp1
+EXEC spSelectInto_SumFlockManagm_Disp2
+EXEC spSelectInto_SumFlockManagm_Disp3
+GO
+spSelectInto_SumFlockManagm_Disp 
+GO

@@ -1,0 +1,33 @@
+{
+    "Constants": {
+        "Account": {
+            "Client code": "162349",
+            "Account": "SPBFUT00gg2"
+        },
+        "Lengths": {
+            "Length of lots": "6",
+            "Length of price": "6"
+        },
+        "Futures": {
+            "Contract size": "100",
+            "Futures fractional": "false"
+        },
+        "Alligator settings 1": {
+            "Candles count": "1000",
+            "Chart offset": "8"
+        },
+        "Alligator settings 2": {
+            "Candles count": "50",
+            "Chart offset": "144"
+        },
+        "Period": {
+            "Current period": "0"
+        },
+        "Trade SR": {
+            "Stock-to-futures adjustment": "-2.5"
+        },
+        "Test without quotes": {
+            "Stock price": "180.51"
+        }
+    }
+}
