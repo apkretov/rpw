@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<root created="using dom">
+	<CLASSCODE>SPBFUT</CLASSCODE>
+
+	<Stock>SBER</Stock>
+	<Futures>SRU7</Futures>
+
+	<TradeSR>0</TradeSR>
+
+	<StockPoint>0.01</StockPoint>
+	<StockTagPrice>PriceSBER</StockTagPrice>
+	<StockTagAlg>AlgSBER</StockTagAlg>
+
+	<FuturesPoint>1</FuturesPoint>
+	<FuturesTagPrice>PriceSR</FuturesTagPrice>
+	<FuturesTagAlg>AlgSR</FuturesTagAlg>
+
+	<LotsTraded>1</LotsTraded>
+	<LotsMax>1</LotsMax>
+
+	<ResumeRange>2</ResumeRange>
+
+	<TradeDisabled>1</TradeDisabled>
+	<AllMessages>0</AllMessages>
+</root>
