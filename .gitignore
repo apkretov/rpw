@@ -1,0 +1,34 @@
+# Exclude object files
+*.obj
+
+# Exclude executable files
+*.exe
+
+# Exclude other build artifacts
+*.suo
+*.user
+*.userosscache
+*.sdf
+
+# Exclude backup and temporary files
+*.bak
+*.tmp
+~*
+
+# Exclude Visual Studio Code settings
+.vscode/
+
+# Exclude other IDE settings
+.idea/
+.tye/
+
+# Exclude package directories
+packages/
+
+# Exclude other common ignored files
+*.pyc
+*.pyo
+*.pyd
+*.dll
+*.lib
+*.pdb
