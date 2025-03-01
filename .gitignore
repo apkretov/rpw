@@ -43,6 +43,7 @@ packages/
 *.lastbuildstate
 *.tlog
 *.d.json
-*.mudule.json
+*.module.json
 *.command
-*.ibd
+*.idb
+*.filters
