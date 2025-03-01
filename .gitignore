@@ -32,3 +32,6 @@ packages/
 *.dll
 *.lib
 *.pdb
+
+# Exclude .vs folder
+.vs/
