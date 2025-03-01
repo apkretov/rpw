@@ -35,3 +35,14 @@ packages/
 
 # Exclude .vs folder
 .vs/
+
+# Exclude other MSVS C++ project files
+*.recipe
+*.ilk
+*.log
+*.lastbuildstate
+*.tlog
+*.d.json
+*.mudule.json
+*.command
+*.ibd
