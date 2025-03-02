@@ -47,3 +47,9 @@ packages/
 *.command
 *.idb
 *.filters
+*.enc
+*.exp
+
+# Exclude Debug, x64 folders
+Debug/
+x64/
