@@ -1,0 +1,517 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="01_02.cpp" />
+    <ClCompile Include="01_04_3.cpp" />
+    <ClCompile Include="01_04_4.cpp" />
+    <ClCompile Include="01_06.cpp" />
+    <ClCompile Include="02_01_1.cpp" />
+    <ClCompile Include="02_01_2.cpp" />
+    <ClCompile Include="02_01_3.cpp" />
+    <ClCompile Include="02_02_1.cpp" />
+    <ClCompile Include="02_02_2.cpp" />
+    <ClCompile Include="02_02_4.cpp" />
+    <ClCompile Include="02_03_1.cpp" />
+    <ClCompile Include="02_03_2.cpp" />
+    <ClCompile Include="02_04.cpp" />
+    <ClCompile Include="02_04_1.cpp" />
+    <ClCompile Include="02_04_2.cpp" />
+    <ClCompile Include="02_04_3.cpp" />
+    <ClCompile Include="02_04_4.cpp" />
+    <ClCompile Include="02_05_1.cpp" />
+    <ClCompile Include="02_05_2.cpp" />
+    <ClCompile Include="02_05_3.cpp" />
+    <ClCompile Include="02_06_1.cpp" />
+    <ClCompile Include="02_06_2.cpp" />
+    <ClCompile Include="03_02_2.cpp" />
+    <ClCompile Include="03_03_1.cpp" />
+    <ClCompile Include="03_03_2.cpp" />
+    <ClCompile Include="03_03_3.cpp" />
+    <ClCompile Include="03_04_1.cpp" />
+    <ClCompile Include="03_04_2.cpp" />
+    <ClCompile Include="03_05_1.cpp" />
+    <ClCompile Include="03_05_2.cpp" />
+    <ClCompile Include="03_05_3.cpp" />
+    <ClCompile Include="03_05_4.cpp" />
+    <ClCompile Include="03_05_5.cpp" />
+    <ClCompile Include="03_06.cpp" />
+    <ClCompile Include="04_01_1.cpp" />
+    <ClCompile Include="04_01_2.cpp" />
+    <ClCompile Include="04_01_3.cpp" />
+    <ClCompile Include="04_02.cpp" />
+    <ClCompile Include="04_03.cpp" />
+    <ClCompile Include="04_04.cpp" />
+    <ClCompile Include="04_05.cpp" />
+    <ClCompile Include="04_06.cpp" />
+    <ClCompile Include="04_07.cpp" />
+    <ClCompile Include="04_08.cpp" />
+    <ClCompile Include="04_09.cpp" />
+    <ClCompile Include="04_10.cpp" />
+    <ClCompile Include="04_11_1.cpp" />
+    <ClCompile Include="04_11_2.cpp" />
+    <ClCompile Include="04_11_3.cpp" />
+    <ClCompile Include="05_05_3.cpp" />
+    <ClCompile Include="05_06_2.cpp" />
+    <ClCompile Include="06_02_2.cpp" />
+    <ClCompile Include="06_02_3.cpp" />
+    <ClCompile Include="06_02_4.cpp" />
+    <ClCompile Include="06_02_5.cpp" />
+    <ClCompile Include="06_02_6.cpp" />
+    <ClCompile Include="06_03_2.cpp" />
+    <ClCompile Include="06_03_3.cpp" />
+    <ClCompile Include="06_04.cpp" />
+    <ClCompile Include="06_04_1.cpp" />
+    <ClCompile Include="06_05_1.cpp" />
+    <ClCompile Include="06_05_2.cpp" />
+    <ClCompile Include="06_05_3.cpp" />
+    <ClCompile Include="06_07.cpp" />
+    <ClCompile Include="07_01_1.cpp" />
+    <ClCompile Include="07_01_2.cpp" />
+    <ClCompile Include="07_01_3.cpp" />
+    <ClCompile Include="07_01_4.cpp" />
+    <ClCompile Include="07_03_1.cpp" />
+    <ClCompile Include="07_03_2.cpp" />
+    <ClCompile Include="07_03_3.cpp" />
+    <ClCompile Include="07_03_4_1.cpp" />
+    <ClCompile Include="07_03_4_3.cpp" />
+    <ClCompile Include="07_04.cpp" />
+    <ClCompile Include="07_04_1.cpp" />
+    <ClCompile Include="07_05_1.cpp" />
+    <ClCompile Include="07_05_3.cpp" />
+    <ClCompile Include="07_05_4.cpp" />
+    <ClCompile Include="07_05_5.cpp" />
+    <ClCompile Include="07_05_6.cpp" />
+    <ClCompile Include="07_06.cpp" />
+    <ClCompile Include="08_01_2.cpp" />
+    <ClCompile Include="08_01_3.cpp" />
+    <ClCompile Include="08_02_1.cpp" />
+    <ClCompile Include="08_02_2.cpp" />
+    <ClCompile Include="08_03_1.cpp" />
+    <ClCompile Include="08_03_2.cpp" />
+    <ClCompile Include="09_02.cpp" />
+    <ClCompile Include="09_02_3.cpp" />
+    <ClCompile Include="09_02_4.cpp" />
+    <ClCompile Include="09_02_5.cpp" />
+    <ClCompile Include="09_02_6.cpp" />
+    <ClCompile Include="09_02_7.cpp" />
+    <ClCompile Include="09_03_1.cpp" />
+    <ClCompile Include="09_03_2.cpp" />
+    <ClCompile Include="09_03_3.cpp" />
+    <ClCompile Include="09_03_4.cpp" />
+    <ClCompile Include="09_03_5.cpp" />
+    <ClCompile Include="09_03_6.cpp" />
+    <ClCompile Include="09_04.cpp" />
+    <ClCompile Include="09_05_1.cpp" />
+    <ClCompile Include="09_05_2.cpp" />
+    <ClCompile Include="09_05_3.cpp" />
+    <ClCompile Include="09_05_5.cpp" />
+    <ClCompile Include="09_06.cpp" />
+    <ClCompile Include="10_01.cpp" />
+    <ClCompile Include="10_02_1.cpp" />
+    <ClCompile Include="10_02_2.cpp" />
+    <ClCompile Include="10_02_3.cpp" />
+    <ClCompile Include="10_03_1.cpp" />
+    <ClCompile Include="10_03_2.cpp" />
+    <ClCompile Include="10_03_3.cpp" />
+    <ClCompile Include="10_03_4.cpp" />
+    <ClCompile Include="10_04_1.cpp" />
+    <ClCompile Include="10_04_2.cpp" />
+    <ClCompile Include="10_04_3.cpp" />
+    <ClCompile Include="10_05_3.cpp" />
+    <ClCompile Include="11_01.cpp" />
+    <ClCompile Include="11_02_1.cpp" />
+    <ClCompile Include="11_02_2.cpp" />
+    <ClCompile Include="11_02_3.cpp" />
+    <ClCompile Include="11_03.cpp" />
+    <ClCompile Include="11_03_1.cpp" />
+    <ClCompile Include="11_03_2.cpp" />
+    <ClCompile Include="11_03_3.cpp" />
+    <ClCompile Include="11_03_4.cpp" />
+    <ClCompile Include="11_03_5.cpp" />
+    <ClCompile Include="11_04.cpp" />
+    <ClCompile Include="12_01_1.cpp" />
+    <ClCompile Include="12_01_2.cpp" />
+    <ClCompile Include="12_01_3.cpp" />
+    <ClCompile Include="12_01_4.cpp" />
+    <ClCompile Include="12_01_5.cpp" />
+    <ClCompile Include="12_01_6.cpp" />
+    <ClCompile Include="12_02_1.cpp" />
+    <ClCompile Include="12_02_2.cpp" />
+    <ClCompile Include="12_03_1.cpp" />
+    <ClCompile Include="12_03_2.cpp" />
+    <ClCompile Include="13_01_1.cpp" />
+    <ClCompile Include="13_01_2.cpp" />
+    <ClCompile Include="13_01_3.cpp" />
+    <ClCompile Include="13_01_4.cpp" />
+    <ClCompile Include="13_01_5.cpp" />
+    <ClCompile Include="13_01_6.cpp" />
+    <ClCompile Include="13_02.cpp" />
+    <ClCompile Include="13_02_1.cpp" />
+    <ClCompile Include="13_02_2.cpp" />
+    <ClCompile Include="13_03.cpp" />
+    <ClCompile Include="13_04.cpp" />
+    <ClCompile Include="13_05.cpp" />
+    <ClCompile Include="13_06_1.cpp" />
+    <ClCompile Include="13_06_2.cpp" />
+    <ClCompile Include="13_06_3.cpp" />
+    <ClCompile Include="14_01.cpp" />
+    <ClCompile Include="14_02_1.cpp" />
+    <ClCompile Include="14_02_2.cpp" />
+    <ClCompile Include="14_03.cpp" />
+    <ClCompile Include="14_03_1.cpp" />
+    <ClCompile Include="14_04.cpp" />
+    <ClCompile Include="14_05.cpp" />
+    <ClCompile Include="14_06.cpp" />
+    <ClCompile Include="14_07.cpp" />
+    <ClCompile Include="14_08.cpp" />
+    <ClCompile Include="14_08_1.cpp" />
+    <ClCompile Include="14_08_2.cpp" />
+    <ClCompile Include="14_08_3.cpp" />
+    <ClCompile Include="14_09_1.cpp" />
+    <ClCompile Include="14_09_2.cpp" />
+    <ClCompile Include="14_09_3.cpp" />
+    <ClCompile Include="15_01.cpp" />
+    <ClCompile Include="15_02_2.cpp" />
+    <ClCompile Include="15_03.cpp" />
+    <ClCompile Include="15_04.cpp" />
+    <ClCompile Include="15_05.cpp" />
+    <ClCompile Include="15_06.cpp" />
+    <ClCompile Include="15_07_1.cpp" />
+    <ClCompile Include="15_07_2.cpp" />
+    <ClCompile Include="15_07_3.cpp" />
+    <ClCompile Include="15_07_4.cpp" />
+    <ClCompile Include="15_08.cpp" />
+    <ClCompile Include="15_08_1.cpp" />
+    <ClCompile Include="15_09_2.cpp" />
+    <ClCompile Include="15_09_4.cpp" />
+    <ClCompile Include="16_01.cpp" />
+    <ClCompile Include="16_01_1.cpp" />
+    <ClCompile Include="16_01_2_3.cpp" />
+    <ClCompile Include="16_01_2_4.cpp" />
+    <ClCompile Include="16_01_2_5.cpp" />
+    <ClCompile Include="16_01_2_6.cpp" />
+    <ClCompile Include="16_01_3.cpp" />
+    <ClCompile Include="16_01_4.cpp" />
+    <ClCompile Include="16_01_5_1.cpp" />
+    <ClCompile Include="16_01_5_2.cpp" />
+    <ClCompile Include="16_01_5_1_Application.cpp" />
+    <ClCompile Include="16_01_5_1_templateBuild.cpp" />
+    <ClCompile Include="16_01_6.cpp" />
+    <ClCompile Include="16_02_1.cpp" />
+    <ClCompile Include="16_02_2.cpp" />
+    <ClCompile Include="16_02_3.cpp" />
+    <ClCompile Include="16_02_4.cpp" />
+    <ClCompile Include="16_02_5.cpp" />
+    <ClCompile Include="16_02_6.cpp" />
+    <ClCompile Include="16_02_7.cpp" />
+    <ClCompile Include="16_03.cpp" />
+    <ClCompile Include="16_04.cpp" />
+    <ClCompile Include="16_04_1.cpp" />
+    <ClCompile Include="16_04_2.cpp" />
+    <ClCompile Include="16_04_3.cpp" />
+    <ClCompile Include="16_05_1.cpp" />
+    <ClCompile Include="16_05_2.cpp" />
+    <ClCompile Include="17_01_1.cpp" />
+    <ClCompile Include="17_01_2.cpp" />
+    <ClCompile Include="17_02_1.cpp" />
+    <ClCompile Include="17_02_2.cpp" />
+    <ClCompile Include="17_03_1.cpp" />
+    <ClCompile Include="17_03_2.cpp" />
+    <ClCompile Include="17_03_3.cpp" />
+    <ClCompile Include="17_03_4.cpp" />
+    <ClCompile Include="17_04_1.cpp" />
+    <ClCompile Include="17_04_2.cpp" />
+    <ClCompile Include="17_05_1.cpp" />
+    <ClCompile Include="17_05_2.cpp" />
+    <ClCompile Include="17_05_3.cpp" />
+    <ClCompile Include="18_01_1.cpp" />
+    <ClCompile Include="18_01_2.cpp" />
+    <ClCompile Include="18_01_3.cpp" />
+    <ClCompile Include="18_01_4.cpp" />
+    <ClCompile Include="18_01_5.cpp" />
+    <ClCompile Include="18_02_1_1.cpp" />
+    <ClCompile Include="18_02_1_2.cpp" />
+    <ClCompile Include="18_02_1_Sales_data.cpp" />
+    <ClCompile Include="18_02_1_user.cpp" />
+    <ClCompile Include="18_02_2.cpp" />
+    <ClCompile Include="18_02_3.cpp" />
+    <ClCompile Include="18_02_4.cpp" />
+    <ClCompile Include="18_03_1.cpp" />
+    <ClCompile Include="18_03_2.cpp" />
+    <ClCompile Include="18_03_3.cpp" />
+    <ClCompile Include="18_03_4.cpp" />
+    <ClCompile Include="18_03_5.cpp" />
+    <ClCompile Include="19_01_1.cpp" />
+    <ClCompile Include="19_01_2.cpp" />
+    <ClCompile Include="19_02_1.cpp" />
+    <ClCompile Include="19_02_2.cpp" />
+    <ClCompile Include="19_02_3.cpp" />
+    <ClCompile Include="19_02_4.cpp" />
+    <ClCompile Include="19_03.cpp" />
+    <ClCompile Include="19_04_1_1.cpp" />
+    <ClCompile Include="19_04_1_2.cpp" />
+    <ClCompile Include="19_04_2_1.cpp" />
+    <ClCompile Include="19_04_2_2.cpp" />
+    <ClCompile Include="19_04_3.cpp" />
+    <ClCompile Include="19_05.cpp" />
+    <ClCompile Include="19_06.cpp" />
+    <ClCompile Include="19_07.cpp" />
+    <ClCompile Include="19_08_1.cpp" />
+    <ClCompile Include="19_08_2.cpp" />
+    <ClCompile Include="19_08_3.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\stdafx.h" />
+    <ClInclude Include="02_06_3.h" />
+    <ClInclude Include="05_06_2.h" />
+    <ClInclude Include="06_03_2.h" />
+    <ClInclude Include="06_05_2.h" />
+    <ClInclude Include="07_01_2.h" />
+    <ClInclude Include="07_01_3.h" />
+    <ClInclude Include="07_01_4.h" />
+    <ClInclude Include="07_02.h" />
+    <ClInclude Include="07_02_1.h" />
+    <ClInclude Include="07_03_1_1.h" />
+    <ClInclude Include="07_03_1_2.h" />
+    <ClInclude Include="07_03_2.h" />
+    <ClInclude Include="07_03_4.h" />
+    <ClInclude Include="07_03_4_1.h" />
+    <ClInclude Include="07_03_4_2.h" />
+    <ClInclude Include="07_05_1.h" />
+    <ClInclude Include="07_05_2.h" />
+    <ClInclude Include="07_05_4.h" />
+    <ClInclude Include="07_06_example.h" />
+    <ClInclude Include="08_03_1.h" />
+    <ClInclude Include="12_01_1_1.h" />
+    <ClInclude Include="12_01_1_2.h" />
+    <ClInclude Include="12_01_1_3.h" />
+    <ClInclude Include="12_01_1_4.h" />
+    <ClInclude Include="12_01_4.h" />
+    <ClInclude Include="12_01_6_2.h" />
+    <ClInclude Include="12_01_6_3.h" />
+    <ClInclude Include="12_01_6_util.h" />
+    <ClInclude Include="12_01_6_1.h" />
+    <ClInclude Include="12_03_2_1.h" />
+    <ClInclude Include="12_03_2_2.h" />
+    <ClInclude Include="12_03_2_3.h" />
+    <ClInclude Include="12_03_2_4.h" />
+    <ClInclude Include="12_03_2_5.h" />
+    <ClInclude Include="12_03_2_6.h" />
+    <ClInclude Include="12_03_2_7.h" />
+    <ClInclude Include="12_03_2_8.h" />
+    <ClInclude Include="13_02.h" />
+    <ClInclude Include="13_02_2.h" />
+    <ClInclude Include="13_05.h" />
+    <ClInclude Include="13_06_2.h" />
+    <ClInclude Include="13_06_3.h" />
+    <ClInclude Include="14_01.h" />
+    <ClInclude Include="14_03_1_1.h" />
+    <ClInclude Include="14_06_1.h" />
+    <ClInclude Include="14_06_2.h" />
+    <ClInclude Include="14_07.h" />
+    <ClInclude Include="14_08_2_util.h" />
+    <ClInclude Include="14_09_2.h" />
+    <ClInclude Include="15_01_1.h" />
+    <ClInclude Include="15_01_2.h" />
+    <ClInclude Include="15_02_1.h" />
+    <ClInclude Include="15_02_2_1.h" />
+    <ClInclude Include="15_02_2_2.h" />
+    <ClInclude Include="15_03.h" />
+    <ClInclude Include="15_04_1.h" />
+    <ClInclude Include="15_04_2.h" />
+    <ClInclude Include="15_06.h" />
+    <ClInclude Include="15_07_2.h" />
+    <ClInclude Include="15_07_3.h" />
+    <ClInclude Include="15_07_3_1.h" />
+    <ClInclude Include="15_07_3_2.h" />
+    <ClInclude Include="15_07_3_3.h" />
+    <ClInclude Include="15_07_3_4.h" />
+    <ClInclude Include="15_07_4.h" />
+    <ClInclude Include="15_08_1_1.h" />
+    <ClInclude Include="15_08_1_2.h" />
+    <ClInclude Include="15_08_1_3.h" />
+    <ClInclude Include="15_08_1_4.h" />
+    <ClInclude Include="15_08_1_5.h" />
+    <ClInclude Include="15_09_2.h" />
+    <ClInclude Include="15_09_3_1.h" />
+    <ClInclude Include="15_09_3_2.h" />
+    <ClInclude Include="15_09_4_1.h" />
+    <ClInclude Include="16_01_1.h" />
+    <ClInclude Include="16_01_4_1.h" />
+    <ClInclude Include="16_01_4_2.h" />
+    <ClInclude Include="16_01_4_3.h" />
+    <ClInclude Include="16_01_6_1.h" />
+    <ClInclude Include="16_01_6_2.h" />
+    <ClInclude Include="16_01_6_3.h" />
+    <ClInclude Include="16_03_1.h" />
+    <ClInclude Include="16_03_2.h" />
+    <ClInclude Include="16_04_1.h" />
+    <ClInclude Include="16_04_3_1.h" />
+    <ClInclude Include="16_04_3_2.h" />
+    <ClInclude Include="16_04_3_3.h" />
+    <ClInclude Include="16_05_1.h" />
+    <ClInclude Include="16_05_2.h" />
+    <ClInclude Include="17_01_1.h" />
+    <ClInclude Include="17_01_2.h" />
+    <ClInclude Include="17_02_2.h" />
+    <ClInclude Include="17_05_2.h" />
+    <ClInclude Include="18_01_3_2.h" />
+    <ClInclude Include="18_01_3_1.h" />
+    <ClInclude Include="18_01_3_3.h" />
+    <ClInclude Include="18_01_4_1.h" />
+    <ClInclude Include="18_01_4_2.h" />
+    <ClInclude Include="18_02_1_Sales_data.h" />
+    <ClInclude Include="18_03_1_1.h" />
+    <ClInclude Include="18_03_1_2.h" />
+    <ClInclude Include="18_03_2.h" />
+    <ClInclude Include="18_03_3.h" />
+    <ClInclude Include="18_03_4.h" />
+    <ClInclude Include="18_03_5.h" />
+    <ClInclude Include="19_04.h" />
+    <ClInclude Include="19_05_1.h" />
+    <ClInclude Include="19_05_2.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="0_in.txt" />
+    <Text Include="0_input.txt" />
+    <Text Include="0_map_file.txt" />
+    <Text Include="0_out.txt" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{8b18340f-41fb-4603-904f-c3834a63cf4b}</ProjectGuid>
+    <RootNamespace>CPrimer</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>c:\Program Files (x86)\Visual Leak Detector\include\;$(IncludePath)</IncludePath>
+    <LibraryPath>c:\Program Files (x86)\Visual Leak Detector\lib\Win64\;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <Optimization>Disabled</Optimization>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

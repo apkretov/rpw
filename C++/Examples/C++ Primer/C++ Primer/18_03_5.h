@@ -1,0 +1,189 @@
+#pragma once
+
+#include <format>
+#include <iostream>
+#include <string>
+using std::cout;
+using std::format;
+using std::max;
+using std::ostream;
+using std::string;
+
+#pragma region MINE
+class ZooAnimal { //VER5
+	friend ostream &operator<<(ostream &, const ZooAnimal &);
+public:
+	ZooAnimal() {
+		cout << "ZooAnimal::ZooAnimal()\n";
+	}
+
+	ZooAnimal(const string &name, bool onExhibit, const string &spec) : name(name), onExhibit(onExhibit), species(spec) {
+		cout << "ZooAnimal::ZooAnimal(const string &name, bool onExhibit, const string &spec)\n";
+	}
+
+	virtual ~ZooAnimal() {
+		cout << "virtual ZooAnimal::~ZooAnimal()\n";
+	}
+
+	virtual void print() {
+		cout << "virtual void ZooAnimal::print: " << *this << '\n';
+	}
+
+	virtual double max_weight() {
+		cout << "virtual double ZooAnimal::max_weight()\n";
+		return 111;
+	}
+private:
+	string name;
+	bool onExhibit{};
+	string species;
+};
+
+ostream &operator<<(ostream &os, const ZooAnimal &za) {
+	os << format("Name = '{}'\tonExhibit = {}", za.name, za.onExhibit);
+	return os;
+}
+#pragma endregion
+
+#pragma region Multiple Inheritance
+#pragma region Using a Virtual Base Class
+class Bear : virtual public ZooAnimal { //VER5 // the order of the keywords public and virtual is not significant
+#pragma endregion
+#pragma region MINE
+public:
+	Bear() {
+		cout << "Bear::Bear()\n";
+	};
+
+	Bear(const string &name, bool onExhibit);
+
+	void print() override {
+		cout << "void Bear::print() override: " << *this << '\n';
+	}
+
+	virtual void toes() {
+		cout << "virtual void Bear::toes()\n";
+	}
+
+	double max_weight() override {
+		return 0;
+	}
+#pragma endregion
+};
+
+#pragma region Constructors and Virtual Inheritance
+//ORIG Bear::Bear(string name, bool onExhibit) : ZooAnimal(name, onExhibit, "Bear") {}
+Bear::Bear(const string &name, bool onExhibit) : ZooAnimal(name, onExhibit, "Bear") {
+	cout << "Bear::Bear(const string &name, bool onExhibit)\n"; //MINE
+}
+#pragma endregion
+
+#pragma region Using a Virtual Base Class
+class Raccoon : public virtual ZooAnimal { //VER2 // the order of the keywords public and virtual is not significant
+public:
+	Raccoon() { //MINE
+		cout << "Raccoon::Raccoon()\n";
+	} 
+
+	Raccoon(const string &, bool);
+};
+#pragma endregion
+
+#pragma region Constructors and Virtual Inheritance
+//ORIG Raccoon::Raccoon(string name, bool onExhibit) : ZooAnimal(name, onExhibit, "Raccoon") {}
+Raccoon::Raccoon(const string &name, bool onExhibit) : ZooAnimal(name, onExhibit, "Raccoon") {
+	cout << "Raccoon::Raccoon(const string &name, bool onExhibit)\n"; //MINE
+}
+#pragma endregion
+
+#pragma region MINE
+class Endangered {
+	enum class Severity { low, medium, high, critical };
+	Severity severity;
+public:
+	explicit Endangered(Severity sever) : severity(sever) {
+		cout << "Endangered::Endangered(Severity sever)\n";
+	}
+
+	virtual ~Endangered() {
+		cout << "virtual Endangered::~Endangered()\n";
+	}
+
+	virtual void print() {
+		cout << format("virtual void Endangered::print(): severity = {}", static_cast<int>(severity)) << '\n';
+	}
+
+	virtual void highlight() {
+		cout << "virtual void Endangered::highlight()\n";
+	}
+
+	virtual double max_weight() {
+		cout << "virtual double Endangered::max_weight()\n";
+		return 222;
+	}
+
+	static const Severity low = Severity::low;
+	static const Severity medium = Severity::medium;
+	static const Severity high = Severity::high;
+	static const Severity critical = Severity::critical;
+};
+#pragma endregion
+
+#pragma region Using a Virtual Base Class
+class Panda : public Bear, public Raccoon, public Endangered {
+#pragma endregion
+#pragma region MINE
+public:
+	Panda();
+	Panda(const string &name, bool onExhibit = false);
+
+	void print() final {
+		cout << "void Panda::print() final: " << *this << '\n';
+		cout << "void Panda::print() final: ";
+		Endangered::print();
+	}
+
+	void highlight() final {
+		cout << "void Panda::highlight() final\n";
+	}
+
+	void toes() final {
+		cout << "void Panda::toes() final\n";
+	}
+
+	virtual void cuddle() final {
+		cout << "virtual void Panda::cuddle() final\n";
+	}
+
+	double max_weight() final;
+private:
+	bool sleeping_flag;
+#pragma endregion
+};
+#pragma endregion
+
+#pragma region Derived Constructors Initialize All Base Classes
+//ORIG Panda::Panda(string name, bool onExhibit) : Bear(name, onExhibit, "Panda"), Endangered(Endangered::critical) {} // explicitly initialize both base classes
+//OFF Panda::Panda(const string &name, bool onExhibit) : Bear(name, onExhibit, "Panda"), Endangered(Endangered::critical) {} // explicitly initialize both base classes
+Panda::Panda() : Endangered(Endangered::critical) { // implicitly uses the Bear default constructor to initialize the Bear subobject
+	cout << "Panda::Panda()\n"; //MINE
+} 
+#pragma endregion
+
+#pragma region Class Scope under Multiple Inheritance
+double Panda::max_weight() /*ORIG const*/ {
+	cout << "double Panda::max_weight() final\n";
+	return max(ZooAnimal::max_weight(), Endangered::max_weight());
+}
+#pragma endregion
+
+#pragma region Constructors and Virtual Inheritance
+Panda::Panda(const string &name, bool onExhibit) : //ORIG Panda::Panda(string name, bool onExhibit) : 
+	ZooAnimal(name, onExhibit, "Panda"),
+	Bear(name, onExhibit),
+	Raccoon(name, onExhibit),
+	Endangered(Endangered::critical),
+	sleeping_flag(false) {
+	cout << "Panda::Panda(const string &name, bool onExhibit)\n"; //MINE
+}
+#pragma endregion
