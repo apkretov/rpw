@@ -49,6 +49,7 @@ packages/
 *.filters
 *.enc
 *.exp
+*.aps
 
 # Exclude Release, Debug, x64 folders
 Release/
