@@ -51,7 +51,8 @@ packages/
 *.exp
 *.aps
 
-# Exclude Release, Debug, x64 folders
+# Exclude Release, Debug, x64 folders and other temporary folders
 Release/
 Debug/
 x64/
+.cr/
