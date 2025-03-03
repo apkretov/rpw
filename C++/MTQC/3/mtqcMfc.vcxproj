@@ -19,37 +19,43 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{E41E273A-5065-401B-A67B-F8D7A2128DFC}</ProjectGuid>
-    <RootNamespace>MTQC</RootNamespace>
+    <VCProjectVersion>15.0</VCProjectVersion>
+    <ProjectGuid>{7F0CE616-431E-4DEC-92CE-510CAB80F7B7}</ProjectGuid>
+    <RootNamespace>mtqcMfc</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>MTQC</ProjectName>
+    <Keyword>MFCProj</Keyword>
+    <ProjectName>MTQC - MFC</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
-    <CharacterSet>MultiByte</CharacterSet>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>MultiByte</CharacterSet>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
-    <CharacterSet>MultiByte</CharacterSet>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>MultiByte</CharacterSet>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -70,153 +76,175 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
     <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
-    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>true</LinkIncremental>
     <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
-      <AdditionalIncludeDirectories>g:\_\Program Files (x86)\boost_1_64_0\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PrecompiledHeader>Use</PrecompiledHeader>
-      <ForcedIncludeFiles>stdafx.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
-      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <BrowseInformation>true</BrowseInformation>
-      <PreprocessorDefinitions>STR_PROJECT_NAME="$(ProjectName)";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir);g:\_\Program Files (x86)\boost_1_64_0\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>Lua\lua5.1.lib;AutoItX3_DLL.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <SubSystem>Windows</SubSystem>
       <AdditionalLibraryDirectories>g:\_\Program Files (x86)\boost_1_64_0\stage\lib\</AdditionalLibraryDirectories>
     </Link>
-    <Bscmake>
-      <PreserveSbr>true</PreserveSbr>
-    </Bscmake>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <ValidateAllParameters>true</ValidateAllParameters>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0409</Culture>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_WINDOWS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
     </ClCompile>
     <Link>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
     </Link>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <ValidateAllParameters>true</ValidateAllParameters>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0409</Culture>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>g:\_\Program Files (x86)\boost_1_64_0\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PrecompiledHeader>Use</PrecompiledHeader>
-      <ForcedIncludeFiles>stdafx.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
-      <PreprocessorDefinitions>STR_PROJECT_NAME="$(ProjectName)";%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <AdditionalIncludeDirectories>$(SolutionDir);c:\_\My_Docs\Misc\Projects\C++\boost_1_64_0\</AdditionalIncludeDirectories>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
     </ClCompile>
     <Link>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalLibraryDirectories>g:\_\Program Files (x86)\boost_1_64_0\stage\lib\</AdditionalLibraryDirectories>
-      <AdditionalDependencies>Lua\lua5.1.lib;AutoItX3_DLL.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <ValidateAllParameters>true</ValidateAllParameters>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0409</Culture>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>_WINDOWS;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
     </ClCompile>
     <Link>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
+    <Midl>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+      <ValidateAllParameters>true</ValidateAllParameters>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0409</Culture>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="alg.cpp" />
-    <ClCompile Include="algEA.cpp" />
-    <ClCompile Include="candlesByIndex.cpp" />
-    <ClCompile Include="chartProperties.cpp" />
-    <ClCompile Include="client.cpp" />
-    <ClCompile Include="constants.cpp" />
-    <ClCompile Include="constantsJSON.cpp" />
-    <ClCompile Include="constantsXML.cpp" />
-    <ClCompile Include="datetime.cpp" />
-    <ClCompile Include="functionsMT4dll.cpp" />
-    <ClCompile Include="events.cpp" />
-    <ClCompile Include="fileCSV.cpp" />
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="aboutDlg.h" />
+    <ClInclude Include="editConstant.h" />
+    <ClInclude Include="enumerators.h" />
+    <ClInclude Include="functions.h" />
+    <ClInclude Include="viewLeft.h" />
+    <ClInclude Include="frame.h" />
+    <ClInclude Include="app.h" />
+    <ClInclude Include="doc.h" />
+    <ClInclude Include="viewRight.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="aboutDlg.cpp" />
+    <ClCompile Include="editConstant.cpp" />
     <ClCompile Include="functions.cpp" />
-    <ClCompile Include="lua.cpp" />
-    <ClCompile Include="messages.cpp" />
-    <ClCompile Include="MT4QuikConnector.cpp" />
-    <ClCompile Include="mt4QuikConnector_.cpp" />
-    <ClCompile Include="mt4SmartXConnector.cpp" />
-    <ClCompile Include="objects.cpp" />
-    <ClCompile Include="object.cpp" />
-    <ClCompile Include="position.cpp" />
-    <ClCompile Include="server.cpp" />
+    <ClCompile Include="viewLeft.cpp" />
+    <ClCompile Include="frame.cpp" />
+    <ClCompile Include="app.cpp" />
+    <ClCompile Include="doc.cpp" />
+    <ClCompile Include="viewRight.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="terminal.cpp" />
-    <ClCompile Include="terminalMT4.cpp" />
-    <ClCompile Include="time.cpp" />
-    <ClCompile Include="trade.cpp" />
-    <ClCompile Include="trend.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="alg.h" />
-    <ClInclude Include="algEA.h" />
-    <ClInclude Include="candlesByIndex.h" />
-    <ClInclude Include="chartProperties.h" />
-    <ClInclude Include="constants.h" />
-    <ClInclude Include="constantsJSON.h" />
-    <ClInclude Include="constantsXML.h" />
-    <ClInclude Include="constantsXMLv.h" />
-    <ClInclude Include="datetime.h" />
-    <ClInclude Include="display.h" />
-    <ClInclude Include="enumerators.h" />
-    <ClInclude Include="events.h" />
-    <ClInclude Include="fileCSV.h" />
-    <ClInclude Include="functions.h" />
-    <ClInclude Include="lua.h" />
-    <ClInclude Include="messages.h" />
-    <ClInclude Include="indicator.h" />
-    <ClInclude Include="MT4QuikConnector.h" />
-    <ClInclude Include="mt4QuikConnector_.h" />
-    <ClInclude Include="objects.h" />
-    <ClInclude Include="object.h" />
-    <ClInclude Include="position.h" />
-    <ClInclude Include="server.h" />
-    <ClInclude Include="stdafx.h" />
-    <ClInclude Include="switch.h" />
-    <ClInclude Include="targetver.h" />
-    <ClInclude Include="terminal.h" />
-    <ClInclude Include="terminalMT4.h" />
-    <ClInclude Include="time.h" />
-    <ClInclude Include="trade.h" />
-    <ClInclude Include="trend.h" />
+    <ResourceCompile Include="mtqcMfc.rc" />
   </ItemGroup>
   <ItemGroup>
-    <Xml Include="..\..\Program Files (x86)\BCS_Work\QUIK Ticks\MTQC - ConstantsXML.xml" />
-    <Xml Include="MTQC - ConstantsXML - Backup.xml" />
+    <None Include="res\mtqcMfc.rc2" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\Program Files (x86)\BCS_Work\QUIK Ticks\MTQC - Constants.json" />
-    <None Include="MTQC - Constants - Backup.json" />
+    <Image Include="res\bitmap1.bmp" />
+    <Image Include="res\folderopened_yellow - Test.bmp" />
+    <Image Include="res\folderopened_yellow - tmp.bmp" />
+    <Image Include="res\folderopened_yellow.bmp" />
+    <Image Include="res\folderopened_yellow16.bmp" />
+    <Image Include="res\icon1.ico" />
+    <Image Include="res\mtqcMfc.ico" />
+    <Image Include="res\mtqcMfcDoc.ico" />
+    <Image Include="res\shaderLambert - tmp.bmp" />
+    <Image Include="res\Toolbar.bmp" />
+    <Image Include="res\Toolbar256.bmp" />
+    <Image Include="res\treetog-junior-folder-close - test\bitmap2.bmp" />
+    <Image Include="res\Treetog-Junior-Folder-close - Test\Treetog-Junior-Folder-close - Test-9.bmp" />
+    <Image Include="res\Treetog-Junior-Folder-close.ico" />
+    <Image Include="res\tree_bmp.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

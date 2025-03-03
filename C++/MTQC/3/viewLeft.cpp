@@ -55,7 +55,7 @@ void viewLeft::createConstants() { //Windows Explorer Application - 23. To creat
 	ctlViewLeft.SetImageList(&treeImages, TVSIL_NORMAL);	
 	ptree ptreeRoot = GetDocument()->getPtreeConstants()->get_child("");
 	for (const auto& pairRoot : ptreeRoot) { //Get the root item in a sigle loop operation. I used the loop because I didn't know how to get an key of the pair another way w/o using the for loop.
-		HTREEITEM hndRoot = ctlViewLeft.InsertItem(stringToWstring(pairRoot.first).c_str(), 0, 1); Use ptree in a loop.
+		HTREEITEM hndRoot = ctlViewLeft.InsertItem(stringToWstring(pairRoot.first).c_str(), 0, 1); //Use ptree in a loop.
 		ptree ptreeLevel1 = ptreeRoot.get_child(pairRoot.first);
 		for (const auto& pairLevel1 : ptreeLevel1) ctlViewLeft.InsertItem(stringToWstring(pairLevel1.first).c_str(), 2, 3, hndRoot);
 		ctlViewLeft.Expand(hndRoot, TVE_EXPAND);

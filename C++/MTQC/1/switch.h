@@ -24,10 +24,12 @@
 
 //#undef BLN_NO_TAPE // If the tape (таблица обезличенных сделок в Quik) is off the OnAllTrade function in MT4QuikConnector.cpp is not called. Therefore the stock price is not being set. Set it manually.
 
-#define BLN_TRADE_IN_SMARTX //Trade in SmartX.
+#undef BLN_TRADE_IN_SMARTX //Trade in SmartX.
 #ifdef BLN_TRADE_IN_SMARTX
 	#define SMARTX_VER_5_7_365 57365 //The SmartX versions.
 	#define SMARTX_VER_5_7_637 57637
 	#define SMARTX_ACTIVE_VER SMARTX_VER_5_7_365 //The active version.
 	#define SMARTX_SBER_ABOVE //The position of SBER is above/below of SR in the Comparative Ticker list.
 #endif
+
+#define BLN_TRADE_IN_MT5
