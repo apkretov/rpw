@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{174b8e7b-7957-478b-a730-be3f4e0b5436}</ProjectGuid>
+    <RootNamespace>My4Коричневыйпояс</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>c:\Program Files (x86)\Visual Leak Detector\include\;$(IncludePath)</IncludePath>
+    <LibraryPath>c:\Program Files (x86)\Visual Leak Detector\lib\Win64\;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="3_11 Откуда берётся утечка памяти.cpp" />
+    <ClCompile Include="1_EX_03 set__iterator++.cpp" />
+    <ClCompile Include="1_06 Итераторы в map set Почему лучше использовать собственные методы для поиска.cpp" />
+    <ClCompile Include="1_02 Размен отсортированности на производительность.cpp" />
+    <ClCompile Include="1_01 Введение в ассоциативные контейнеры.cpp" />
+    <ClCompile Include="1_03 Введение в хеш функции.cpp" />
+    <ClCompile Include="1_08 Использование пользовательских типов в ассоциативных контейнерах.cpp" />
+    <ClCompile Include="1_09 Зависимость производительности от хеш функции.cpp" />
+    <ClCompile Include="1_10 Рекомендации по выбору хеш функции.cpp" />
+    <ClCompile Include="1_11 extract и merge.cpp" />
+    <ClCompile Include="1_EX_02 Хеш-таблица.cpp" />
+    <ClCompile Include="1_EX_04 Структура Point3D в контейнере unordered_set.cpp" />
+    <ClCompile Include="1_EX_05 Интеграция структуры Person в unordered_set.cpp" />
+    <ClCompile Include="1_EX_06 Вторичный индекс в базе данных.cpp" />
+    <ClCompile Include="2_EX_01 Загрузка расходов из формата XML.cpp" />
+    <ClCompile Include="2_EX_02 Загрузка расходов из формата JSON.cpp" />
+    <ClCompile Include="2_EX_03 Библиотека работы с INI-файлами.cpp" />
+    <ClCompile Include="2_EX_04 XmlToJson и JsonToXml.cpp" />
+    <ClCompile Include="2_EX_06 Двойная диспетчеризация.cpp" />
+    <ClCompile Include="2_EX_07 Сервер комментариев.cpp" />
+    <ClCompile Include="3_07 Ещё раз о константности в многопоточной среде.cpp" />
+    <ClCompile Include="3_03 Использование const для поддержания инвариантов в классах и объектах.cpp" />
+    <ClCompile Include="3_04 Идиома immediately invoked lambda expression IILE.cpp" />
+    <ClCompile Include="3_01 Введение.cpp" />
+    <ClCompile Include="3_06 Логическая константность и mutable.cpp" />
+    <ClCompile Include="3_10 Обнаружение утечки памяти в ObjectPool.cpp" />
+    <ClCompile Include="3_12 Умный указатель unique ptr.cpp" />
+    <ClCompile Include="3_13 unique ptr для исправления утечки.cpp" />
+    <ClCompile Include="3_EX_01 Показатели переписи населения.cpp" />
+    <ClCompile Include="3_EX_02 Шаблон LazyValue.cpp" />
+    <ClCompile Include="3_EX_03 Продолжение Шаблон Synchronized.cpp" />
+    <ClCompile Include="3_EX_04 Константность в шаблоне ConcurrentMap.cpp" />
+    <ClCompile Include="3_EX_05 perator[] в классе Polynomial.cpp" />
+    <ClCompile Include="3_EX_07 Иерархия классов животных.cpp" />
+    <ClCompile Include="3_EX_08 Конвейер.cpp" />
+    <ClCompile Include="3_EX_09 Дерево выражений.cpp" />
+    <ClCompile Include="4_05 Владение - часть 2.cpp" />
+    <ClCompile Include="4_06 Присваивание умных указателей.cpp" />
+    <ClCompile Include="4_07 shared ptr и многопоточность.cpp" />
+    <ClCompile Include="4_08 Умный указатель weak ptr.cpp" />
+    <ClCompile Include="4_09 Пользовательский deleter.cpp" />
+    <ClCompile Include="4_11 Жизненный цикл объекта.cpp" />
+    <ClCompile Include="4_13 RAII обёртка над файлом.cpp" />
+    <ClCompile Include="4_14 Копирование RAII обёрток.cpp" />
+    <ClCompile Include="4_16 Разбор задачи 1.cpp" />
+    <ClCompile Include="4_17 Разбор задачи 2.cpp" />
+    <ClCompile Include="4_EX_01 Текстуры.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="1_08 Использование пользовательских типов в ассоциативных контейнерах.h" />
+    <ClInclude Include="1_09 Зависимость производительности от хеш функции.h" />
+    <ClInclude Include="3_03 Использование const для поддержания инвариантов в классах и объектах.h" />
+    <ClInclude Include="1_EX_06 Вторичный индекс в базе данных 2.h" />
+    <ClInclude Include="1_EX_06 Вторичный индекс в базе данных 1.h" />
+    <ClInclude Include="3_01 Введение.h" />
+    <ClInclude Include="3_06 Логическая константность и mutable.h" />
+    <ClInclude Include="3_10 Обнаружение утечки памяти в ObjectPool 2.h" />
+    <ClInclude Include="3_10 Обнаружение утечки памяти в ObjectPool 1.h" />
+    <ClInclude Include="4_16 Разбор задачи 1.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
