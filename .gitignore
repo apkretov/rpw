@@ -50,6 +50,7 @@ packages/
 *.enc
 *.exp
 
-# Exclude Debug, x64 folders
+# Exclude Release, Debug, x64 folders
+Release/
 Debug/
 x64/
