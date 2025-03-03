@@ -1,0 +1,208 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{3ec4784d-4fc3-4b94-ac15-057285ec89b8}</ProjectGuid>
+    <RootNamespace>My3Красныйпояс</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>c:\Program Files (x86)\Visual Leak Detector\include\;$(IncludePath)</IncludePath>
+    <LibraryPath>c:\Program Files (x86)\Visual Leak Detector\lib\Win64\;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <Optimization>Disabled</Optimization>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="2_08 Связанность потоков.cpp" />
+    <ClCompile Include="1_02 Оператор #.cpp" />
+    <ClCompile Include="1_06 Интеграция пользовательского класса в цикл for.cpp" />
+    <ClCompile Include="1_07 Разница между шаблоном и классом.cpp" />
+    <ClCompile Include="1_09 Вывод типов в шаблонах классов 2.cpp" />
+    <ClCompile Include="1_10 Автоматический вывод типа возвращаемого функцией.cpp" />
+    <ClCompile Include="1_EX_01 Реализуйте шаблонную функцию.cpp" />
+    <ClCompile Include="1_EX_06 Макрос UNIQ_ID.cpp" />
+    <ClCompile Include="1_EX_07 Таблица.cpp" />
+    <ClCompile Include="1_EX_08 Дек на основе двух векторов.cpp" />
+    <ClCompile Include="1_EX_09 Шаблон Paginator.cpp" />
+    <ClCompile Include="2_04 Совершенствование своего профайлера.cpp" />
+    <ClCompile Include="2_09 Итоги раздела Эффективное использование потоков ввода вывода.cpp" />
+    <ClCompile Include="2_EX_01 Сортировка студентов по рейтингу.cpp" />
+    <ClCompile Include="2_EX_02 Изучение нового языка.cpp" />
+    <ClCompile Include="2_EX_03 Маршрутизация экспрессов.cpp" />
+    <ClCompile Include="2_EX_04 Электронная книга.cpp" />
+    <ClCompile Include="2_EX_05 Система бронирования отелей.cpp" />
+    <ClCompile Include="3_08 Внутреннее устройство массива.cpp" />
+    <ClCompile Include="3_09 Класс string view.cpp" />
+    <ClCompile Include="3_10 Удобное использование string view.cpp" />
+    <ClCompile Include="3_11 Безопасное использование string view.cpp" />
+    <ClCompile Include="3_EX_01 Пул объектов.cpp" />
+    <ClCompile Include="3_09 Добавляем в вектор begin и end 2.cpp" />
+    <ClCompile Include="3_EX_02 Swap SortPointers ReversedCopy.cpp" />
+    <ClCompile Include="3_EX_04 Односвязный список.cpp" />
+    <ClCompile Include="5_06 Конструктор копирования и оператор присваивания - tmp.cpp" />
+    <ClCompile Include="5_01 Перемещение временных объектов.cpp" />
+    <ClCompile Include="4_01 Эффективное использование вектора.cpp" />
+    <ClCompile Include="4_02 Эффективное использование дека.cpp" />
+    <ClCompile Include="4_03 Инвалидация итераторов.cpp" />
+    <ClCompile Include="4_05 Преимущества списка.cpp" />
+    <ClCompile Include="4_06 Неинвалидация итераторов списка.cpp" />
+    <ClCompile Include="4_EX_06 Статистика web-сервера.cpp" />
+    <ClCompile Include="4_07 Контейнер array.cpp" />
+    <ClCompile Include="4_EX_02 StackVector.cpp" />
+    <ClCompile Include="4_EX_03 Translator.cpp" />
+    <ClCompile Include="4_EX_04 AirportCounter.cpp" />
+    <ClCompile Include="4_EX_05 Текстовый редактор.cpp" />
+    <ClCompile Include="5_03 Функция move.cpp" />
+    <ClCompile Include="5_05 Когда перемещение не помогает.cpp" />
+    <ClCompile Include="5_08 Передача параметра по значению.cpp" />
+    <ClCompile Include="5_11 NRVO и copy elision.cpp" />
+    <ClCompile Include="5_12 Опасности return.cpp" />
+    <ClCompile Include="5_14 async и future.cpp" />
+    <ClCompile Include="5_15 Задача генерации и суммирования матрицы.cpp" />
+    <ClCompile Include="5_18 Состояние гонки.cpp" />
+    <ClCompile Include="5_19 mutex и lock guard.cpp" />
+    <ClCompile Include="5_20 execution которого нет.cpp" />
+    <ClCompile Include="5_EX_01 Считалка Иосифа.cpp" />
+    <ClCompile Include="5_EX_02 Группировка строк.cpp" />
+    <ClCompile Include="5_EX_04 Разбиение на предложения.cpp" />
+    <ClCompile Include="5_EX_05 Move-семантика в SimpleVector.cpp" />
+    <ClCompile Include="5_EX_06 Сортировка слиянием — 3.cpp" />
+    <ClCompile Include="5_EX_07 Контейнер с приоритетами.cpp" />
+    <ClCompile Include="5_EX_08 Суммирование матрицы.cpp" />
+    <ClCompile Include="5_EX_09 Исследование блогов.cpp" />
+    <ClCompile Include="5_EX_10 Шаблон Synchronized.cpp" />
+    <ClCompile Include="5_EX_11 ConcurrentMap.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="1_06 Интеграция пользовательского класса в цикл for.h" />
+    <ClInclude Include="1_10 Автоматический вывод типа возвращаемого функцией.h" />
+    <ClInclude Include="1_EX_09 Шаблон Paginator.h" />
+    <ClInclude Include="3_09 Класс string view.h" />
+    <ClInclude Include="5_15 Задача генерации и суммирования матрицы.h" />
+    <ClInclude Include="3_EX_01 Пул объектов.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
