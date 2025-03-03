@@ -51,8 +51,8 @@ packages/
 *.exp
 *.aps
 *Serialized.ser
-*.VC.db, 
-*.def, 
+*.VC.db 
+*.def
 
 # Exclude Release, Debug, x64 folders and other temporary folders
 Release/
