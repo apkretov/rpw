@@ -50,6 +50,7 @@ packages/
 *.enc
 *.exp
 *.aps
+*Serialized.ser
 
 # Exclude Release, Debug, x64 folders and other temporary folders
 Release/
