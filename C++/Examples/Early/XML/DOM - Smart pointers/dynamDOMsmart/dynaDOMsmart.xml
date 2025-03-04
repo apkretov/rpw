@@ -1,0 +1,4 @@
+<?xml version="1.0"?><!--sample xml file created using XML DOM object.--><root created="using dom">
+	<node1>some character data</node1>
+	<node2>some character data 2</node2>
+</root>
