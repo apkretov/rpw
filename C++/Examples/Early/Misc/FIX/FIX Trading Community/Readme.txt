@@ -1,0 +1,1 @@
+https://www.fixtrading.org/beginners-resources/
