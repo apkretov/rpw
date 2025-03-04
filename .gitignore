@@ -56,10 +56,14 @@ packages/
 *.pr2
 *.cd
 
-# Exclude Release, Debug, x64 folders and other temporary folders
+# Exclude Release, Debug, x64 folders and other temporary C++ MSVS folders
 Release/
 Debug/
 x64/
 .cr/
 packages/
 ipch/
+
+# Exclude temporary Python folders
+.idea/
+.ipynb_checkpoints/
