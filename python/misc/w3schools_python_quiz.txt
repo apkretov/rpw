@@ -1,0 +1,83 @@
+Question 4:
+How do you create a variable with the numeric value 5?
+
+Both the other answers are correct    Your answer  
+x = 5
+x = int(5)
+
+
+Question 6:
+How do you create a variable with the floating number 2.8?
+
+x = 2.8    Your answer  
+x = float(2.8)
+Both the other answers are correct    Correct answer  
+
+
+Question 10:
+What is a correct syntax to return the first character in a string?
+
+x = sub("Hello", 0, 1)    Your answer  
+x = "Hello".sub(0, 1)
+x = "Hello"[0]    Correct answer  
+
+
+Question 11:
+Which method can be used to remove any whitespace from both the beginning and the end of a string?
+
+trim()    Your answer  
+len()
+ptrim()
+strip()    Correct answer  
+
+
+Question 12:
+Which method can be used to return a string in upper case letters?
+
+upper()    Your answer  
+upperCase()
+toUpperCase()
+uppercase()
+
+
+Question 13:
+Which method can be used to replace parts of a string?
+
+replace()    Your answer  
+replaceString()
+switch()
+repl()
+
+
+Question 18:
+Which of these collections defines a SET?
+
+{"apple", "banana", "cherry"}    Your answer  
+{"name": "apple", "color": "green"}
+["apple", "banana", "cherry"]
+("apple", "banana", "cherry")
+
+
+Question 20:
+Which collection is ordered, changeable, and allows duplicate members?
+
+SET    Your answer  
+TUPLE
+LIST    Correct answer  
+DICTIONARY
+
+
+Question 21:
+Which collection does not allow duplicate members?
+
+SET    Your answer  
+LIST
+TUPLE
+
+
+Question 21:
+Which collection does not allow duplicate members?
+
+SET    Your answer  
+LIST
+TUPLE
