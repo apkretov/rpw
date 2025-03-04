@@ -1,0 +1,971 @@
+--~ --To test it for debugging -----------------------------------------------------------------------------------------------------------------------------------------------------------
+--~ --function message(strMessage) print(strMessage) end
+--~ --function getNumberOf(strTableName) return 1 end
+--~ --function sendTransaction(sttTransaction) return "" end --To test it for debugging in Quik when no quotes
+--~ --function getQuoteLevel2(class, sec) --To test it for debugging in Quik when no quotes
+--~ --	local ql2 = {bid_count = "1" , offer_count = "1", bid = {}, offer = {} }
+--~ --	ql2.bid[1] = {price = "15140", quantity = "10"}
+--~ --	ql2.offer[1] = {price = "15141", quantity = "20"}
+--~ --	return ql2
+--~ --end
+--~ --QTABLE_VKEY = 1
+--~ --function sleep(intTime) end
+--~ --function AllocTable() return 0 end
+--~ --function AddColumn (t_id, iCode, name, is_default, par_type, width) return 0 end
+--~ --function CreateWindow(t_id) return 0 end
+--~ --function InsertRow(t_id, key) return 0 end
+--~ --function SetColor(t_id, row, NUMBER , b_color, f_color, sel_b_color, sel_f_color) return true end
+--~ --function RGB(red, green, blue) return 0 end
+--~ --function SetWindowCaption(t_id, str) end
+--~ --function SetWindowPos(t_id, x, y, dx, dy) return true end
+--~ --function SetTableNotificationCallback (t_id, f_cb) return 0 end
+--~ --function DestroyTable(t_id) return 0 end
+--~ -----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+require("MT4QuikConnector")
+
+--~ OP_BUY = 0
+--~ OP_SELL = 1
+--~ OP_BUYLIMIT = 2
+--~ OP_SELLLIMIT = 3
+--~ OP_BUYSTOP = 4
+--~ OP_SELLSTOP = 5
+
+--~ msttVariousConsts = {}
+--~ msttVariousConsts.msgWrongOrder = "Wrong order type!"
+--~ msttVariousConsts.operationNull = -1
+--~ msttVariousConsts.valueSeparator = ","
+--~ msttVariousConsts.lengthValueSeparator = 1
+--~ msttVariousConsts.lengthPrice = 6
+--~ msttVariousConsts.lengthLots = 6
+--~ msttVariousConsts.lengthOperation = 1
+--~ mstrOperations = {[OP_BUY] = "B", "S", "bl", "sl", "bs", "ss"}
+--~ mintIconTypes = {["icon_type_information"] = 1, ["icon_type_exclamation"] = 2, ["icon_type_critical"] = 3}
+--~ mintKeys = { --[[KTB["keyEnter"] = 13,]] ["keyEsc"] = 27, --[[KTB["keyArrowUp"] = 38, ["keyArrowDown"] = 40,]] ["keyB"] = 66, ["keyS"] = 83 --[[KTB, ["keyV"] = 86 , ["keyF5"] = 116]] }
+--~ mstrMessages = {}
+--~ mstrMessages.noPriceStock = "No OnAllTrade event to get alltrade.price for mobjTerminal.priceStock!"
+--~ mstrMessages.noOfferBid = "There is neither a bid nor an offer!"
+--~ msttExpertProperties = {}
+--~ msttExpertProperties.TradeDisabled = true --The trading disabled flag.
+--~ msttExpertProperties.Futures = "SRH7" --The futures traded.
+--~ msttExpertProperties.FuturesFractional = false --The flag for a fractional part of the futures price.
+--~ msttExpertProperties.Stock = "SBER" --The stock indicative for the futures traded.
+--~ msttExpertProperties.Point = 0.01 --The Point constant in MT4. TO DO: Use getSecurityInfo: scale  Точность (количество значащих цифр после запятой) and/or min_price_step  Минимальный шаг цены.
+--~ msttExpertProperties.MagicNumber = "1"
+--~ msttExpertProperties.ResumeRange = 2
+--~ msttExpertProperties.LotsTraded = 1 --The volume to trade.
+--~ msttExpertProperties.LotsMax = 2 --The maximal volume to trade.
+--~ msttExpertProperties.AllMessages = true --Show all the messages.
+
+--~ --To test it in the evening session -----------------------------------------------------------------------------------------------------------------------------------------------------------
+--~ msttExpertProperties.Stock = msttExpertProperties.Futures
+--~ --To test it for debugging -----------------------------------------------------------------------------------------------------------------------------------------------------------
+--~ --function getItem(strTableName, dblIndex) return {["sec_code"] = msttExpertProperties.Futures, ["totalnet"] = 0} end
+--~ -----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+--~ function roundToPts(dblValue) return math.floor((dblValue / msttExpertProperties.Point) + 0.5) end --1) Rounding: math.floor((a) + 0.5) 2) Taking an integer part: math.floor(b) ------------------------------------------------------------------+
+
+--~ function printArray(varArray) ------------------------------------------------------------------+
+--~ 	print("table.foreachi -----------------")
+--~ 	table.foreachi(varArray, print)
+--~ 	local intCount = 0
+--~ 	print("for i, v in pairs -----------------")
+--~ 	for i, v in pairs(varArray) do
+--~ 		intCount = intCount + 1
+--~ 		print(i, v)
+--~ 	end
+--~ 	message("#array = " .. tostring(#varArray) .. "   table.getn(array) = " .. tostring(table.getn(varArray)) .. "   table.maxn(array) = " .. table.maxn(varArray) .. "   count = " .. tostring(intCount) )
+--~ end
+
+--~ function BUYtoSELL(intOperation) return math.abs(intOperation - 1) end -- Convert OP_BUY=0 to OP_SELL=1 and vice versa. ------------------------------------------------------------------+
+
+--~ function LIMITSTOPtoBUYSELL(intOperation) return intOperation % 2 end -- Convert OP_BUYLIMIT=2/OP_BUYSTOP=4 to OP_BUY=0 or OP_SELLLIMIT=3/OP_SELLSTOP=5 to OP_SELL=1. --You should use the '%' operator on positive numbers instead, as it is much faster. @ https://maurits.tv/data/garrysmod/wiki/wiki.garrysmod.com/indexdaf1.html ------------------------------------------------------------------+
+
+--~ terminal = {} ------------------------------------------------------------------+
+--~ function terminal.new()
+--~ 	local self = {}
+--~ 	--self.Point = 0.01 --The Point constant in MT4. TO DO: Use getSecurityInfo: scale  Точность (количество значащих цифр после запятой) and/or min_price_step  Минимальный шаг цены.
+--~ 	self.ACCOUNT = "SPBFUT00gg2" -- Торговый счет из таблицы "Таблица торговых счетов", колонка "Счет". @ http://robostroy.ru/community/article.aspx?id=773
+--~ 	self.CLIENT_CODE = "162349" --Код клиента из таблицы "Клиентский портфель", колонка "Код клиента". @ http://robostroy.ru/community/article.aspx?id=773
+--~ 	self.CLASSCODE = "SPBFUT" --Код класса. Его можно посмотреть, например, в текущей таблице параметров. Саму текущую таблицу параметров можно открыть через меню «Таблица» -> «Текущая таблица». @ http://robostroy.ru/community/article.aspx?id=773
+--~ 	self.futures_client_holding = "futures_client_holding"
+--~ 	self.run = nil
+--~ 	self.operationsTable = nil
+--~ 	self.priceStock = nil
+--~ 	self.offerBid = {}
+--~ 	self.offerBid[OP_BUY] = {price = nil, quantity = nil}
+--~ 	self.offerBid[OP_SELL] = {price = nil, quantity = nil}
+
+--~ 	function self.getOfferBid(strFutures) ------------------------------------------------------------------+
+--~ 		local ql2 = getQuoteLevel2(self.CLASSCODE, strFutures)
+--~ 		self.offerBid[OP_SELL] = nil
+--~ 		for i = tonumber(ql2.bid_count), 1, -1 do
+--~ 			if ql2.bid[i].quantity ~= nil then -- На некоторых ценах могут отсутствовать заявки
+--~ 					self.offerBid[OP_SELL] = ql2.bid[i]
+--~ 				break --The best bid is assigned. Exit the loop.
+--~ 		end	end
+--~ 		self.offerBid[OP_BUY] = nil
+--~ 		for i = 1, tonumber(ql2.offer_count), 1 do
+--~ 			if ql2.offer[i].quantity ~= nil then   -- На некоторых ценах могут отсутствовать заявки
+--~ 				self.offerBid[OP_BUY] = ql2.offer[i]
+--~ 				break --The best offer is assigned. Exit the loop.
+--~ 		end	end
+--~ 		if self.offerBid[OP_SELL] ~= nil and self.offerBid[OP_BUY] ~= nil then return true --Is there a bid and an offer?
+--~ 		else return false end
+--~ 	end
+
+--~ 	function self.createOperationsTable() ------------------------------------------------------------------+
+--~ 		local intColumnWidht = 15
+--~ 		local intRows = 2
+--~ 		--KTB local intPosX = 912 --Right bottom window
+--~ 		--KTB local intPosY = 549 --Right bottom window
+--~ 		--KTB local intPosX = 457 --Center top window
+--~ 		--KTB local intPosY = 238 --Center top window
+--~ 		local intPosX = 912 --Right top window
+--~ 		local intPosY = 238 --Right top window
+--~ 		local intPosDX = 160
+--~ 		local intPosDY = 80
+--~ 		self.operationsTable = AllocTable()
+--~ --message("QTABLE_STRING_TYPE = " .. tostring(QTABLE_STRING_TYPE))
+--~ 		AddColumn(self.operationsTable, BUYtoSELL(OP_SELL), "SELL", true, QTABLE_STRING_TYPE, intColumnWidht) --The "SELL" column stands first. The operation will be converted back on every event.
+--~ 		AddColumn(self.operationsTable, BUYtoSELL(OP_BUY), "BUY", true, QTABLE_STRING_TYPE, intColumnWidht)
+--~ 		CreateWindow(self.operationsTable)
+--~ --message("QTABLE_DEFAULT_COLOR = " .. tostring(QTABLE_DEFAULT_COLOR))
+--~ --message("RGB(255, 255, 255) = " .. tostring(RGB(255, 255, 255)))
+--~ --message("RGB(0, 0, 0) = " .. tostring(RGB(0, 0, 0)))
+--~ --message("RGB(240, 128, 128) = " .. tostring(RGB(240, 128, 128)))
+--~ --message("RGB(153, 255, 153) = " .. tostring(RGB(153, 255, 153)))
+--~ 		for i = 1, intRows do
+--~ 			local intRow = InsertRow(self.operationsTable, -1)
+--~ 			SetColor(self.operationsTable, intRow, BUYtoSELL(OP_SELL), RGB(240, 128, 128), QTABLE_DEFAULT_COLOR, QTABLE_DEFAULT_COLOR, QTABLE_DEFAULT_COLOR)
+--~ 			SetColor(self.operationsTable, intRow, BUYtoSELL(OP_BUY), RGB(153, 255, 153), QTABLE_DEFAULT_COLOR, QTABLE_DEFAULT_COLOR, QTABLE_DEFAULT_COLOR)
+--~ 		end
+--~ 		SetWindowCaption(self.operationsTable, "SELL BUY")
+--~ 		SetWindowPos(self.operationsTable, intPosX, intPosY, intPosDX, intPosDY)
+--~ 		SetTableNotificationCallback(self.operationsTable, tableNotificationCallback)
+--~ 	end
+
+--~ 	return self
+--~ end
+--~ mobjTerminal = terminal.new()
+
+--~ events = {} ------------------------------------------------------------------+
+--~ function events.new()
+--~ 	local self = {}
+--~ 	self.srvMessageToQuik = false --The event flags.
+--~ 	self.srvMessageToQuik_strMessage = ""
+--~ 	self.tableNotificationCallback = false
+--~ 	self.tableNotificationCallback_msg = 0
+--~ 	self.tableNotificationCallback_par2 = 0
+--~ 	self.OnAllTrade = false
+--~ 	self.OnSendTransaction = false
+--~ 	self.OnSendTransaction_opening = false
+--~ 	self.OnSendTransaction_closing = false
+--~ 	self.OnSendTransaction_keyPressedOperation = false
+--~ 	self.OnSendTransaction_keyPressedOperationInt = msttVariousConsts.operationNull
+--~ 	self.OnSendTransaction_keyPressedOperationResumed = false
+--~ 	self.OnTransReply = false
+--~ 	function self.srvMessageToQuik_reset() ------------------------------------------------------------------+
+--~ 		self.srvMessageToQuik_strMessage = ""
+--~ 		self.srvMessageToQuik = false --Reset the event parameters first and then the flag to prevent resetting those of a new event.
+--~ 	end
+--~ 	function self.tableNotificationCallback_reset() ------------------------------------------------------------------+
+--~ 		self.tableNotificationCallback_msg = 0
+--~ 		self.tableNotificationCallback_par2 = 0
+--~ 		self.OnSendTransaction_keyPressedOperationResumed = false
+--~ 		self.tableNotificationCallback = false --Reset the event parameters first and then the flag to prevent resetting those of a new event.
+--~ 	end
+--~ 	function self.OnSendTransaction_reset() ------------------------------------------------------------------+
+--~ 		self.OnSendTransaction_opening = false
+--~ 		self.OnSendTransaction_closing = false
+--~ 		self.OnSendTransaction_keyPressedOperation = false
+--~ 		self.OnSendTransaction_keyPressedOperationInt = msttVariousConsts.operationNull
+--~ 		self.OnSendTransaction_keyPressedOperationResumed = false
+--~ 		self.OnSendTransaction = false --Reset the event parameters first and then the flag to prevent resetting those of a new event.
+--~ 	end
+--~ 	return self
+--~ end
+--~ mobjEvents = events.new()
+
+--~ mt4QuikConnector = {} ------------------------------------------------------------------+
+--~ function mt4QuikConnector.new()
+--~ 	local intPosition1stSymbol = 1 --The position of the 1st symbol within a string for the string.sub function.
+--~ 	local intLengthCommand = 5 --The length of commands.
+--~ 	local strDisableOjects = "cmdDO" --The Disable Ojects command.
+--~ 	local strClosePosition = "cmdCP" --The Close Position command.
+--~ 	--KTB local strKeyPressedEsc = "keyES" --The Key Esc Pressed message.
+--~ 	local strKeyPressedOperation = "cmdBS" --The Buy/Sell operation command.
+--~ 	local strSetLots = "cmdSL" --The Set Lots command.
+--~ 	local self = {}
+--~ 	self.message = ""
+
+--~ 	local function getValue(intLengthValue) -- Get the value (price, lots, etc.) after the command prefix. ------------------------------------------------------------------+
+--~ 		local intPositionValue = intPosition1stSymbol + intLengthCommand + msttVariousConsts.lengthValueSeparator -- The position of the value (price, lots, etc.) after the command prefix.
+--~ 		return tonumber( string.sub(self.message, intPositionValue, intPositionValue + intLengthValue - 1) )
+--~ 	end
+
+--~ 	function self.pricesSent() return type( tonumber(string.sub(self.message, intPosition1stSymbol, 1)) ) == "number" end -- Is it a prices message (with a number of orders in front)? ------------------------------------------------------------------+
+--~ 	function self.disableObjects() return string.sub(self.message, intPosition1stSymbol, intLengthCommand) == strDisableOjects end ------------------------------------------------------------------+
+--~ 	function self.closePosition() return string.sub(self.message, intPosition1stSymbol, intLengthCommand) == strClosePosition end ------------------------------------------------------------------+
+--~ 	--KTB function self.keyPressedEsc() return string.sub(self.message, intPosition1stSymbol, intLengthCommand) == strKeyPressedEsc end ------------------------------------------------------------------+
+
+--~ 	function self.keyPressedOperation() -- An operation key is pressed. ------------------------------------------------------------------+
+--~ 		if string.sub(self.message, intPosition1stSymbol, intLengthCommand) == strKeyPressedOperation then return getValue(msttVariousConsts.lengthOperation)
+--~ 		else return msttVariousConsts.operationNull end
+--~ 	end
+
+--~ 	function self.setLots() -- A Set Lots command ir received. Get the number of lots from it. ------------------------------------------------------------------+
+--~ 		if string.sub(self.message, intPosition1stSymbol, intLengthCommand) == strSetLots then return getValue(msttVariousConsts.lengthLots)
+--~ 		else return 0 end
+--~ 	end
+
+--~ 	return self
+--~ end
+--~ mobjMT4QuikConnector = mt4QuikConnector.new()
+
+--~ object = {} ------------------------------------------------------------------+
+--~ function object.new(intOperation, dblPrice, strDescription)
+--~ 	local self = {}
+--~ 	self.operation = intOperation
+--~ 	self.price = dblPrice
+--~ 	self.description = strDescription
+--~ 	self.renamed = false
+--~ 	function self.getOperationBuySell() return LIMITSTOPtoBUYSELL(self.operation) end ------------------------------------------------------------------+
+--~ --	function self.isKept() ------------------------------------------------------------------+
+--~ --		if self.description == "k" then return true
+--~ --		else return false end
+--~ --	end
+--~ --	function self.isPending() ------------------------------------------------------------------+
+--~ --		if self.description == "p" then return true
+--~ --		else return false end
+--~ --	end
+--~ --	function self.isResuming() ------------------------------------------------------------------+
+--~ --		if self.description == "m" then return true
+--~ --		else return false end
+--~ --	end
+--~ --	function self.isReversing() ------------------------------------------------------------------+
+--~ --		if self.description == "r" then return true
+--~ --		else return false end
+--~ --	end
+--~ --	function self.isAlert() -- Is it an alert? ------------------------------------------------------------------+
+--~ --		if self.description == "a" then return true
+--~ --		else return false end
+--~ --	end
+--~ --	--[[KTB
+--~ --	function self.isTrade() -- Is it a trade vs. alert? ------------------------------------------------------------------+
+--~ --		if self.description == "t" then return true
+--~ --		else return false end
+--~ --	end
+--~ --	]]
+--~ 	function self.isKept() 		return self.description == "k" end ------------------------------------------------------------------+
+--~ 	function self.isPending() 	return self.description == "p" end ------------------------------------------------------------------+
+--~ 	function self.isResuming() 	return self.description == "m" end ------------------------------------------------------------------+
+--~ 	function self.isReversing() return self.description == "r" end ------------------------------------------------------------------+
+--~ 	function self.isAlert() 	return self.description == "a" end ------------------------------------------------------------------+
+--~ 	--KTB function self.isTrade() return self.description == "t" end ------------------------------------------------------------------+
+
+--~ 	function self.rename() -- Rename a trade object and clear its description to prevent its accidential wrong reuse. ------------------------------------------------------------------+
+--~ 		self.description = "" --Clear the description of the initiating trade object to prevent its accidential wrong reuse.
+--~ 		self.renamed = true
+--~ 	end
+--~ 	return self
+--~ end
+
+--~ objects = {} ------------------------------------------------------------------+
+--~ function objects.new()
+--~ 	local objObjects = {}
+--~ 	local dblPriceScanned = 0 --The price last scanned for a trigger object.
+--~ 	local strPricesToDisplay = ""
+--~ 	--KTB local intCountPending
+--~ 	local self = {}
+--~ 	--KTB self.count = 0;
+--~ 	self.objectTriggeredIdx = nil
+
+--~ 	--[[KTB
+--~ 	local function setCount(intCountPendingNew) -- Set the count of the trading objects and the pending ones, if any. +------------------------------------------------------------------+
+--~       self.count = #objObjects
+--~       intCountPending = intCountPendingNew --Unlike setting intCountPending throughout the class member functions as before, its done inside this function just to manipulate bouth counts in one place.
+--~ 	end]]
+
+--~ 	local function deleteAll() ------------------------------------------------------------------+
+--~ 		objObjects = nil --When we have a table a with set of elements and if we assign it to b, both a and b refer to the same memory. No separate memory is allocated separately for b. When a is set to nil, table will be still accessible to b. When there are no reference to a table, then garbage collection in Lua takes care of cleaning up process to make these unreferenced memory to be reused again. @ http://www.tutorialspoint.com/lua/lua_tables.htm
+--~ 		objObjects = {}
+--~ 		--KTB setCount(0)
+--~ 	end
+
+--~ 	local function add(intOperation, dblPrice, strDescription) --Add a new trading onbject into the collection. Return a pointer to it. ------------------------------------------------------------------+
+--~ 		objObject = object.new(intOperation, dblPrice, strDescription) --Remember an available trading object.
+--~ 		table.insert(objObjects, objObject)
+--~ 		--[[KTB if objObject.isPending() then setCount(intCountPending + 1)
+--~ 		else setCount(intCountPending) end]]
+--~ 		return objObject
+--~ 	end
+
+--~ 	local function item(intOperation) --Find an object by looking up the collection +------------------------------------------------------------------+
+--~ 		for _, objObject in pairs(objObjects) do
+--~ 			if objObject.operation == intOperation then return objObjects end
+--~ 		end
+--~ 		return nil
+--~ 	end
+
+--~ 	function self.getCount(blnPendingInclusive, blnRenamedInclusive) --Get the count of the trading objects inclusive/exclusive the pending and renamed ones. Unlike MT4, the function is this complicate because I couldn't properly rename objects deleted (or delete those renamed; see good solutions @ 1) http://lua-users.org/wiki/TablesTutorial 2) https://www.gammon.com.au/scripts/doc.php?lua=table.remove) from the objObjects array. At the same time I just used this because to get rig of controlling intCountPending unlike MT4. //+------------------------------------------------------------------+
+--~ 		local intCount = 0
+--~ 		for _, objObject in pairs(objObjects) do
+--~ 			if objObject.isPending() then
+--~ 				if blnPendingInclusive then intCount = intCount + 1 end
+--~ 			elseif objObject.renamed then
+--~ 				if blnRenamedInclusive then intCount = intCount + 1 end
+--~ 			else intCount = intCount + 1
+--~ 		end	end
+--~ 		return intCount
+--~ 	end
+
+--~ 	function self.getObjectTriggered() return objObjects[self.objectTriggeredIdx] end ------------------------------------------------------------------+
+
+--~ 	function self.setPricesToDisplay() -- Compile a string with the prices of the active object to be displayed. ------------------------------------------------------------------+
+--~ 		if msttExpertProperties.AllMessages then -- Are all the messages shown?
+--~ 			strPricesToDisplay = ""
+--~ 			local intCount = 0
+--~ 			for _, objObject in pairs(objObjects) do
+--~ 				if (not objObject.isPending()) and (not objObject.renamed) then
+--~ 					intCount = intCount + 1
+--~ 					strPricesToDisplay = strPricesToDisplay .. ({[true] = ", ", [false] = " "})[intCount > 1] .. mstrOperations[objObject.operation] .. " " .. tostring(objObject.price)
+--~ 	end	end	end	end
+
+--~ 	function self.set(strPricesForQuik) ------------------------------------------------------------------+
+--~ 		local intPositionCount = 1 --The position of the count in strPricesForQuik
+--~ 		local int intLengthDescription = 1 --The length of the description (e.g. kp, pn etc.).
+--~ 		self.objectTriggeredIdx = nil
+--~ 		deleteAll()
+--~ 		local intCount = tonumber(string.sub(strPricesForQuik, intPositionCount, intPositionCount)) --Get the numnber of orders
+--~ 		if intCount ~= nil then --Prevent a programme exception error.
+--~ 			local intLengthPricesForQuik = string.len(strPricesForQuik)
+--~ 			local intLengthCount = string.len( tostring(intCount) ) --The length of the count.
+--~ 			--local intLengthValueSeparator = lengthValueSeparator() --The length of the price separator.
+--~ 			--local intLengthValueSeparator = msttVariousConsts.lengthValueSeparator --The length of the price separator.
+--~ 			local intPositionOpearation1 = intPositionCount + intLengthCount + 1 --The position of trade operation 1.
+--~ 			for i = 1, intCount do
+--~ 				local intPositionOpearation = intPositionOpearation1 + (i - 1) * ( (msttVariousConsts.lengthOperation + msttVariousConsts.lengthValueSeparator) + (msttVariousConsts.lengthPrice + msttVariousConsts.lengthValueSeparator) + (intLengthDescription + msttVariousConsts.lengthValueSeparator) ) --The position of a trade operation.
+--~ 				local strOperation = string.sub(strPricesForQuik, intPositionOpearation, intPositionOpearation + msttVariousConsts.lengthOperation - 1)
+--~ 				local intOperation = tonumber(strOperation) --A trade operation
+--~ 				local intPositionPrice = intPositionOpearation + msttVariousConsts.lengthOperation + msttVariousConsts.lengthValueSeparator --The position of the price of the above operation.
+--~ 				local strPrice = string.sub(strPricesForQuik, intPositionPrice, intPositionPrice + msttVariousConsts.lengthPrice - 1)
+--~ 				local dblPrice = tonumber(strPrice) --The price at the this position.
+--~ 				local intPositionDescription = intPositionPrice + msttVariousConsts.lengthPrice + msttVariousConsts.lengthValueSeparator --The position of the description of the above operation.
+--~ 				local strDescription = string.sub(strPricesForQuik, intPositionDescription, intPositionDescription + intLengthDescription - 1)
+--~ 				if strDescription == string.rep(" ", intLengthDescription) then strDescription = ""	end --Trim a blank description.
+--~ 				add(intOperation, dblPrice, strDescription)
+--~ 				intPositionPricesToDisplay = intPositionDescription + intLengthDescription + msttVariousConsts.lengthValueSeparator
+--~ 		end	end
+--~ 		dblPriceScanned = 0 --Reset the price last scanned for a trigger object.
+--~ 		self.setPricesToDisplay() -- Compile a string with the prices of the active object to be displayed.
+--~ 	end
+
+--~ 	function self.scanTriggered(dblPrice) --Alternatively the ojbects array can be always full but with dummy minimal or maximal prices instead of missing objects. Then distinguish buy/sell trades and scan only for a respective buy/sell object only 2 istead of all 4. ------------------------------------------------------------------+
+--~ 		self.objectTriggeredIdx = nil
+--~ 		if dblPrice ~= dblPriceScanned then --Scan for a triggered object, if the new price differs from that scanned before.
+--~ 			dblPriceScanned = dblPrice --Remember the new price scanned.
+--~ 			for i, objObject in pairs(objObjects) do
+--~ 				if (not objObject.isPending()) and (not objObject.renamed) then
+--~ -- 					if objObject.operation == OP_BUYLIMIT then
+--~ -- 						if roundToPts(dblPrice - objObject.price) <= 0 then self.objectTriggeredIdx = i end
+--~ -- 					elseif objObject.operation == OP_SELLLIMIT then
+--~ -- 						if roundToPts(dblPrice - objObject.price) >= 0 then self.objectTriggeredIdx = i end
+--~ -- 					elseif objObject.operation == OP_BUYSTOP then
+--~ -- 						if roundToPts(dblPrice - objObject.price) > 0 then self.objectTriggeredIdx = i end
+--~ -- 					elseif objObject.operation == OP_SELLSTOP then
+--~ -- 						if roundToPts(dblPrice - objObject.price) < 0 then self.objectTriggeredIdx = i end
+--~ -- 					end
+--~ -- 					if self.objectTriggeredIdx ~= nil then break end --A triggered object found. No need to continue the loop.
+--~ 					if objObject.operation == OP_BUYLIMIT then
+--~ 						if roundToPts(dblPrice - objObject.price) <= 0 then self.objectTriggeredIdx = i return end
+--~ 					elseif objObject.operation == OP_SELLLIMIT then
+--~ 						if roundToPts(dblPrice - objObject.price) >= 0 then self.objectTriggeredIdx = i return end
+--~ 					elseif objObject.operation == OP_BUYSTOP then
+--~ 						if roundToPts(dblPrice - objObject.price) > 0 then self.objectTriggeredIdx = i return end
+--~ 					elseif objObject.operation == OP_SELLSTOP then
+--~ 						if roundToPts(dblPrice - objObject.price) < 0 then self.objectTriggeredIdx = i return end
+--~ 	end	end	end	end	end
+
+--~ 	function self.renameAll(intOperationSkip, blnDisableAll) --Rename all trade objects except a skipped one to prevent their accidential wrong reuse, unless required. ------------------------------------------------------------------+
+--~ 		--for _, objObject in pairs(objObjects) do
+--~ 		--	if objObject.operation ~= intOperationSkip or blnDisableAll then --Is it not a skippedobject?
+--~ 		--		if not objObject.isKept() or blnDisableAll then --Rename it, unless its name must be kept.
+--~ 		--			if (objObject.isPending()) and (not blnDisableAll) then objObject.description = "" --Clear the pending flag to enable the trading object for a later use.
+--~ 		--			else objObject.rename() end
+--~ 		--		end
+--~ 		--	end
+--~ 		--end
+--~ 		if blnDisableAll then --Rename all in the blnDisableAll mode.
+--~ 			for _, objObject in pairs(objObjects) do objObject.rename() end
+--~ 		else
+--~ 			for _, objObject in pairs(objObjects) do
+--~ 				if objObject.operation ~= intOperationSkip then --Is it not a skippedobject?
+--~ 					if not objObject.isKept() then --Rename it, unless its name must be kept.
+--~ 						if objObject.isPending() then objObject.description = "" --Clear the pending flag to enable the trading object for a later use.
+--~ 						else objObject.rename() end
+--~ 	end	end	end	end	end
+
+--~ 	function self.displayPrices(strOpenClose, blnNoObjects) -- Dispay the prices of all the trade objectes. If there is none don't display anyting. ------------------------------------------------------------------+
+--~ 		if self.getCount(false, false) > 0 then --Objects exclusive pending.
+--~ 			if msttExpertProperties.AllMessages then message(strOpenClose .. ":" .. strPricesToDisplay) end --Are there active objects (non-pending)?
+--~ 		elseif blnNoObjects then message("No objects.")
+--~ 	end	end
+
+--~ 	function self.createResuming() --Create a resuming trade object on closing the triggered object with a resume flag. ------------------------------------------------------------------+
+--~ 		local objObjectResuming = nil
+--~ 		if objectTriggered.operation > OP_SELLLIMIT then message(msttVariousConsts.msgWrongOrder .. " Only positions closed by limit orders can be resumed!") --OP_SELLLIMIT=3. Is it OP_BUYSTOP=4 or OP_SELLSTOP=5?
+--~ 		else
+--~ 			local objectTriggered = self.getObjectTriggered()
+--~ 			local intOperationResuming = BUYtoSELL(LIMITSTOPtoBUYSELL(objectTriggered.operation)) + OP_BUYSTOP --Convert OP_BUYLIMIT to OP_SELLSTOP and OP_SELLLIMIT to OP_BUYSTOP.
+--~ 			local dblPriceResuming = objectTriggered.price + msttExpertProperties.ResumeRange * ( (({[OP_BUYLIMIT] = -1, [OP_SELLLIMIT] = 1})[objectTriggered.operation]) * Point ) --Place the converted resuming trade object below (-1 multiplier) or above (+1 multiplier) the triggered one.
+--~ 			local objObjectExisting = item(intOperationResuming) --Prevent name collision between an existing and newly created object.
+--~ 			if objObjectExisting == nil then objObjectResuming = add(intOperationResuming, dblPriceResuming, "") --Does not an object with the same trade operation as a resuming one exist? Add one.
+--~ 			else --An object with the same trade operation as a resuming one exists.
+--~ 				--if objObjectExisting.isPending() then objObjectExisting.description = "" end --Has it been pending? --The resuming object will not be pending.
+--~ 				if objObjectExisting.isPending() then --Has it been pending? --The resuming object will not be pending.
+--~ 					objObjectExisting.description = ""
+--~ 					--KTB setCount(intCountPending - 1) --Decrement the count of pending trade objects.
+--~ 				end
+--~ 				message("Object " .. tostring(objObjectExisting.operation) .. " renamed!")
+--~ 				objObjectResuming = objObjectExisting
+--~ 			end
+--~ 			objectTriggered.description = "" --Clear the description of the triggered trade object to prevent its accidential wrong reuse.
+--~ 		end
+--~ 		return objObjectResuming
+--~ 	end
+
+--~ 	return self
+--~ end
+--~ mobjObjects = objects.new()
+
+--~ fileCSV = {} ------------------------------------------------------------------+
+--~ function fileCSV.new(strFileName, strHeader)
+--~ 	local self = {}
+--~ 	local objFile = io.open(getScriptPath().."/MT4QuikConnector - " .. strFileName .. ".csv", "a+") -- Создает, или открывает для чтения/добавления файл CSV в той же папке, где находится данный скрипт @ http://quikluacsharp.ru/qlua-osnovy/iz-qlua-lua-v-excel-csv/
+
+--~ 	function self.addLine(strLine, blnDatedTimed) ------------------------------------------------------------------+
+--~ 		if not blnDatedTimed then objFile:write(strLine .. "\n") -- Добавляет строку
+--~ 		else objFile:write(os.date("%x", os.time()) .. "," .. os.date("%X", os.time()) .. "," .. strLine .. "\n") end -- Добавляет строку
+--~ 		objFile:flush() -- Сохраняет изменения в файле
+--~ 	end
+
+--~ 	local vrbPosition = objFile:seek("end", 0) -- Встает в конец файла, получает номер позиции
+--~ 	if vrbPosition == 0 then self.addLine(strHeader, false) end -- Если файл еще пустой
+--~ 	return self
+--~ end
+
+--~ fileTXT = {} ------------------------------------------------------------------+
+--~ function fileTXT.new(strFileName_)
+--~ 	local self = {}
+--~ 	local strFileName = getScriptPath().."/MT4QuikConnector - " .. strFileName_ .. ".txt"
+
+--~ 	function self.read() ------------------------------------------------------------------+
+--~ 		local objFile = io.open(strFileName, "a+")
+--~ 		strFile = objFile:read("*all")
+--~ 		objFile:close()
+--~ 		return strFile
+--~ 	end
+
+--~ 	function self.write(strLine) ------------------------------------------------------------------+
+--~ 		local objFile = io.open(strFileName, "w")
+--~ 		objFile:write(strLine .. "\n") -- Добавляет строку
+--~ 		objFile:flush() -- Сохраняет изменения в файле
+--~ 		objFile:close()
+--~ 	end
+
+--~ 	return self
+--~ end
+
+--~ position = {} ------------------------------------------------------------------+
+--~ function position.new(blnTradeDisabled_, intLotsTraded_)
+--~ 	local blnTradeDisabled = blnTradeDisabled_ --The trading disabled flag.
+--~ 	local intLotsTraded = intLotsTraded_ --The initial volume to trade. It can be changed from MT4.
+--~ 	local objfileCSVOrders = fileCSV.new("Orders", "Date,Time,Open/Close,Operation,Price,Stock price,Quantity")
+--~ 	local objfileCSVTrades = fileCSV.new("Trades", "Дата,Время,Операция,Цена,Кол-во")
+--~ 	local self = {}
+--~ 	self.totalnet = 0 --MT4 uses the ticket of an open position to identify a Channels position. A null value is -1, whose equivalent in MT4QuikConnector is 0.
+--~ 	local objFileTXTTotalnet = nil
+--~ 	if blnTradeDisabled then --If a trade disabled mode, load totalnet from the file saved in a prior session.
+--~ 		objFileTXTTotalnet = fileTXT.new("Totalnet")
+--~ 		strFileTXTTotalnet = objFileTXTTotalnet.read()
+--~ 		if tonumber(strFileTXTTotalnet) ~= nil then self.totalnet = tonumber(strFileTXTTotalnet) end
+--~ 	end
+--~ 	self.StrOpen = "Open"
+--~ 	self.StrClose = "Close"
+
+--~ 	local intTradeNums = {}	-- Массив для хранения номеров записанных в файл сделок (для предотвращения дублирования) @ http://quikluacsharp.ru/qlua-osnovy/iz-qlua-lua-v-excel-csv/
+--~ 	local objFileTXTTradeNums = io.open(getScriptPath().."/MT4QuikConnector - TradeNums.txt", "a+")
+--~ 	repeat -- @ http://www.gammon.com.au/scripts/doc.php?lua=f:read
+--~ 		local strLine = objFileTXTTradeNums:read ("*l") -- read one line
+--~ 		if strLine then -- if not end of file (EOF)
+--~ 			intTradeNums[#intTradeNums + 1] = tonumber(strLine)
+--~ 			message("Recorded trade number: " .. strLine)
+--~ 		end
+--~ 	until not strLine  -- until end of file
+
+--~ 	local function checkBit(intFlags, intBit) -- Функция возвращает значение бита (число 0, или 1) под номером intBit (начинаются с 0) в числе intFlags, если такого бита нет, возвращает nil @ http://quikluacsharp.ru/qlua-osnovy/iz-qlua-lua-v-excel-csv/ ------------------------------------------------------------------+
+--~ 	   local strRevBitsStr  = "" -- Перевернутое (задом наперед) строковое представление двоичного представления переданного десятичного числа (intFlags)
+--~ 	   local intFmod = 0 -- Остаток от деления
+--~ 	   local blnGo = true -- Флаг работы цикла
+--~ 	   while blnGo do
+--~ 		  intFmod = math.fmod(intFlags, 2) -- Остаток от деления
+--~ 		  intFlags = math.floor(intFlags / 2) -- Оставляет для следующей итерации цикла только целую часть от деления
+--~ 		  strRevBitsStr = strRevBitsStr .. tostring(intFmod) -- Добавляет справа остаток от деления
+--~ 		  if intFlags == 0 then blnGo = false end -- Если был последний бит, завершает цикл
+--~ 	   end
+--~ 	   local strResult = strRevBitsStr:sub(intBit + 1, intBit + 1) -- Возвращает значение бита
+--~ 	   if strResult == "0" then return 0
+--~ 	   elseif strResult == "1" then return 1
+--~ 	   else return nil
+--~ 	   end
+--~ 	end
+
+--~ 	function self.setLotsTraded(intLotsTraded_) intLotsTraded = intLotsTraded_ end ------------------------------------------------------------------+
+
+--~ 	function self.recordTrade(intTradeNum, intFlags, dblPrice, intQty) -- Record a trade into the Trades CSV file ------------------------------------------------------------------+
+--~ 		for i = #intTradeNums, 1, -1 do -- Перебирает массив с номерами записанных сделок (в обратном порядке)
+--~ 			if intTradeNums[i] == intTradeNum then return end -- Если данная сделка уже была записана, выходит из функции
+--~ 		end
+--~ 		intTradeNums[#intTradeNums + 1] = intTradeNum -- Если мы здесь, значит сделка не была найдена в числе уже записанных. Добавляет в массив номер новой сделки.
+--~ 		objFileTXTTradeNums:write(tostring(intTradeNum) .. "\n") -- Save the trade number in the file for later use.
+--~ 		objFileTXTTradeNums:flush()
+--~ 		local strOperation = "" -- Вычисляет операцию сделки.
+--~ 		--if checkBit(intFlags, 2) == 1 then strOperation = "Продажа" else strOperation = "Купля" end
+--~ 		local intCheckBit = checkBit(intFlags, 2)
+--~ 		if intCheckBit == 1 then strOperation = "Продажа"
+--~ 		elseif intCheckBit == 0 then strOperation = "Купля"
+--~ 		end
+--~ 		objfileCSVTrades.addLine(strOperation .. "," .. dblPrice .. "," .. intQty, true)
+--~ 	end
+
+--~ 	local function sendTransaction_(intOperation, strPriceDOM, strOpenClose, intLots) ------------------------------------------------------------------+
+--~ 		local intStockFuturesDiff = 500 --The difference between the prices of the stock and futures to order the worst futures price w/o the DOM.
+--~ 		local blnSendTransaction = false
+--~ 		local strPriceFractional = ""
+--~ 		local strPriceFractionalDOM = ""
+--~ 		local dblPrice = tonumber(mobjTerminal.priceStock) * 100 + ({[OP_BUY] = intStockFuturesDiff, [OP_SELL] = -intStockFuturesDiff})[intOperation]
+--~ 		if msttExpertProperties.FuturesFractional then --Is the price fractional?
+--~ 			strPriceFractional = tostring(dblPrice)
+--~ 			strPriceFractionalDOM = strPriceDOM
+--~ 		else
+--~ 			strPriceFractional = tostring(math.floor(dblPrice))
+--~ 			strPriceFractionalDOM = tostring( math.floor(tonumber(strPriceDOM)) )
+--~ 		end
+--~ 		--local strMessageCSV = strOpenClose .. "," .. mstrOperations[intOperation] .. "," .. strPriceFractionalDOM .. "," .. tostring(mobjTerminal.priceStock) .. "," .. tostring(msttExpertProperties.LotsTraded)
+--~ 		local strMessageCSV = strOpenClose .. "," .. mstrOperations[intOperation] .. "," .. strPriceFractionalDOM .. "," .. tostring(mobjTerminal.priceStock) .. "," .. tostring(intLotsTraded)
+--~ 		--local strMessagePart1 = strOpenClose .. ": " .. ({[OP_BUY] = "Bought", [OP_SELL] = "Sold"})[intOperation] .. " at " .. tostring(mobjTerminal.priceStock) .. " (" .. strPriceFractionalDOM .. ") " .. tostring(msttExpertProperties.LotsTraded)
+--~ 		local strMessagePart1 = strOpenClose .. ": " .. ({[OP_BUY] = "Bought", [OP_SELL] = "Sold"})[intOperation] .. " at " .. tostring(mobjTerminal.priceStock) .. " (" .. strPriceFractionalDOM .. ") " .. tostring(intLotsTraded)
+--~ 		local strMessagePart2 = "                                                                                                                               ," .. strMessageCSV --ON Futures DOM
+--~ 		objfileCSVOrders.addLine(strMessageCSV, true) -- %x: date (e.g., 09/16/98); %X: time (e.g., 23:48:10) @ https://www.lua.org/pil/22.1.html
+--~ 		objfileCSVTrades.addLine(strOpenClose, true) -- %x: date (e.g., 09/16/98); %X: time (e.g., 23:48:10) @ https://www.lua.org/pil/22.1.html
+--~ 		if blnTradeDisabled then
+--~ 			self.recordTrade(#intTradeNums + 1, 2 ^ 2 - 1 + intOperation, strPriceFractionalDOM, intLots) -- ["flags"]: бит 2 (0x4)  Заявка на продажу, иначе – на покупку. Данный флаг для сделок и сделок для исполнения определяет направление сделки (BUY/SELL) @ QLUA.chm\Флаги для таблиц Заявки, Заявки на внебиржевые сделки, Сделки, Сделки для исполнения
+--~ 			blnSendTransaction = true --The flag is first to prevent reopening/reclosing in the calling procedure just because of an error in the message below.
+--~ 			self.totalnet = self.totalnet - (intOperation * 2 - 1) * intLots --Set totalnet by converting the operation to -1/1 in a TradeDisabled mode.
+--~ 			objFileTXTTotalnet.write(self.totalnet) --Save totalnet in the file for reloading Quik.
+--~ 			message(strMessagePart1 .. " Total net: " .. tostring(self.totalnet) .. strMessagePart2)
+--~ 		else
+--~ 			local strSendTransaction = sendTransaction( { ["TRANS_ID"] = msttExpertProperties.MagicNumber, ["ACTION"] = "NEW_ORDER", ["CLASSCODE"] = mobjTerminal.CLASSCODE, ["SECCODE"] = msttExpertProperties.Futures, ["OPERATION"]  = mstrOperations[intOperation], ["TYPE"] = "M", ["QUANTITY"] = tostring(intLots), ["ACCOUNT"] = mobjTerminal.ACCOUNT, ["CLIENT_CODE"]= mobjTerminal.CLIENT_CODE, ["PRICE"] = strPriceFractional } ) --sendTransaction она вернет нам сообщение. Обратите внимание, что res идет без кавычек, это переменная, а не жестко заданный текст, как в предыдущем примере. @ http://robostroy.ru/community/article.aspx?id=773 --Результат транзакции можно получить, воспользовавшись функцией обратного вызова OnTransReply @ http://help.qlua.org/ch4_5_11.htm
+--~ 			if strSendTransaction ~= "" then message("Sending the transaction failed! The error is " .. strSendTransaction, mintIconTypes.icon_type_exclamation) -- ЕСЛИ функция вернула строку диагностики ошибки, ТО значит транзакция не прошла -- Выводит сообщение с ошибкой --@ http://quikluacsharp.ru/quik-qlua/primer-skripta-qlua-lua-vypolnyayushhego-torgovye-operatsii-v-terminale-quik/
+--~ 			else
+--~ 				blnSendTransaction = true --The flag is first to prevent reopening/reclosing in the calling procedure just because of an error in the message below.
+--~ 				message(strMessagePart1 .. strMessagePart2)
+--~ 			end
+--~ 		end
+--~ 		return blnSendTransaction
+--~ 	end
+
+--~ 	local function getOperation() -- Get the operation by converting totalnet to OP_BUY/OP_SELL. ------------------------------------------------------------------+
+--~ 		if self.totalnet > 0 then return OP_BUY
+--~ 		--elseif self.totalnet < 0 then return OP_SELL end
+--~ 		elseif self.totalnet < 0 then return OP_SELL
+--~ 		else return msttVariousConsts.operationNull end --This is needed to prevent Warning	C4715	not all control paths return a value.
+--~ 	end
+
+--~ 	function self.open(intOperation) ------------------------------------------------------------------+
+--~ 		local blnOpen = false
+--~ 		local intLots = 0
+--~ 		local intTotalnetAbs = math.abs(self.totalnet)
+--~ 		--local intTotalnetResult = intTotalnetAbs + msttExpertProperties.LotsTraded --The resulting lots.
+--~ 		local intTotalnetResult = intTotalnetAbs + intLotsTraded --The resulting lots.
+--~ 		--if intTotalnetResult <= msttExpertProperties.LotsMax then intLots = msttExpertProperties.LotsTraded --Won't the resulting lots exceed the maximum?
+--~ 		if intTotalnetResult <= msttExpertProperties.LotsMax then intLots = intLotsTraded --Won't the resulting lots exceed the maximum?
+--~ 		elseif intTotalnetAbs == msttExpertProperties.LotsMax then message("The maximal number of lots has been opened already before!") --The maximum exeeded.
+--~ 		else intLots = msttExpertProperties.LotsMax - intTotalnetAbs --Open lots left till the maximum.
+--~ 		end
+--~ 		if intLots > 0 then blnOpen = sendTransaction_(intOperation, mobjTerminal.offerBid[intOperation].price, self.StrOpen, intLots) end --Are there lots to open?
+--~ 		return blnOpen
+--~ 	end
+
+--~ 	function self.matchClosingToOpened(intOperationClosing) --A closing trade operation must match the open one. ------------------------------------------------------------------+
+--~ 		local blnMatchClosingToOpened = false
+--~ 		--[[ KTB Unnecessary self-contradiction: CORRECT THE LINE BELOW: GET self.totalnet FROM QUIK:
+--~ 		if blnTradeDisabled then intOperationOpened = getOperation()
+--~ 		else intOperationOpened = getOperation() end]]
+--~ 		local intOperationOpened = getOperation()
+--~ 		if BUYtoSELL(intOperationClosing) == intOperationOpened then blnMatchClosingToOpened = true
+--~ 		else -- KTB message( msttVariousConsts.msgWrongOrder .. ({[OP_BUY] = " An OP_BUY position cannot be closed with an OP_BUYSTOP/OP_BUYLIMIT order!", [OP_SELL] = " An OP_SELL position cannot be closed with an OP_SELLSTOP/OP_SELLLIMIT order!"})[intOperationOpened] )
+--~ 		end
+--~ 		return blnMatchClosingToOpened
+--~ 	end
+
+--~ -- 	function self.close(intLots) ------------------------------------------------------------------+
+--~ -- 		local intClosingOperation = BUYtoSELL(getOperation())
+--~ -- 		return sendTransaction_(intClosingOperation, mobjTerminal.offerBid[intClosingOperation].price, self.StrClose, intLots) --ON Futures DOM
+--~ -- 	end
+--~ 	function self.close(blnReverse) ------------------------------------------------------------------+
+--~ 		local intClosingOperation = BUYtoSELL(getOperation())
+--~ 		local intFactor = 1
+--~ 		if blnReverse then intFactor = 2 end
+--~ 		return sendTransaction_(intClosingOperation, mobjTerminal.offerBid[intClosingOperation].price, self.StrClose, math.abs(mobjPosition.totalnet) * intFactor ) --ON Futures DOM
+--~ 	end
+
+--~ 	return self
+--~ end
+--~ mobjPosition = position.new(msttExpertProperties.TradeDisabled)
+
+--~ function KTB_swap(intIdx) return false end --Swap a support/resistance. To be developed, if necessary. +------------------------------------------------------------------+
+
+--~ function runOpenProcedure(blnAlert) -- The open procedure of the run fucntion. The function is called by the OnTransReply function unless trading is disabled. ------------------------------------------------------------------+
+--~ 	local objObjectTriggered = mobjObjects.getObjectTriggered() --Get a pointer for a quick reference.
+--~ 	if blnAlert then objObjectTriggered.rename()
+--~ 	else
+--~ 		mobjObjects.renameAll(objObjectTriggered.operation, false)
+--~ 		if not KTB_swap(0) then objObjectTriggered.rename() end
+--~ 	end
+--~ 	mobjObjects.setPricesToDisplay() --Reset the displayed prires after the trade.
+--~ 	mobjObjects.displayPrices(mobjPosition.StrClose, false) -- Dispay the close prices of all the trade objectes. If there is none don't display anyting.
+--~ end
+
+--~ function runCloseProcedure() -- The close procedure of the run fucntion. The function is called by the OnTransReply function unless trading is disabled. ------------------------------------------------------------------+
+--~ 	local objObjectTriggered = mobjObjects.getObjectTriggered() --Get a pointer for a quick reference.
+--~ 	local objObjectResuming = nil
+--~ 	local strOpenClose = mobjPosition.StrOpen --If after closing any object will remain display them as opening.
+--~ 	if objObjectTriggered.isResuming() then	objObjectResuming = mobjObjects.createResuming() --Is resuming required? Remember the trade operation index of the opened position.
+--~ 	elseif objObjectTriggered.isReversing() then strOpenClose = mobjPosition.StrClose end --Is reversing required? --If any objects remain after reversing display them as closing.
+--~ 	objObjectTriggered.rename() --Rename the trade object to prevent its accidential wrong reuse.
+--~ 	if objObjectResuming ~= nil then mobjObjects.renameAll(objObjectResuming.operation, false)
+--~ 	else mobjObjects.renameAll(msttVariousConsts.operationNull, false) end
+--~ 	mobjObjects.setPricesToDisplay() --Reset the displayed prires after the trade.
+--~ 	mobjObjects.displayPrices(strOpenClose, false) --Dispay the prices reset as opening or closing depending on the above commands.
+--~ end
+
+--~ function runOpen(objObjectTriggered, strAlert) -- The open procedure of the run fucntion. ------------------------------------------------------------------+
+--~ 	if objObjectTriggered ~= nil then --Has any trading object triggered?
+--~ 		if not mobjTerminal.getOfferBid(msttExpertProperties.Futures) then message(mstrMessages.noOfferBid, mintIconTypes.icon_type_exclamation) --Is there neither a bid nor an offer? --ON Futures DOM
+--~ 		else --ON Futures DOM
+--~ 			if objObjectTriggered.isAlert() then --Alert and skip opening while doing all the same operations as if it's opening in a trade disabled mode.
+--~ 				if msttExpertProperties.AllMessages then message( strAlert .. mstrOperations[objObjectTriggered.operation] .. " " .. tostring(objObjectTriggered.price) .. "!" ) end
+--~ 				runOpenProcedure(true)
+--~ 			elseif mobjPosition.open(objObjectTriggered.getOperationBuySell()) then --Fulfill an operation, unless it's just an alert.
+--~ 				if msttExpertProperties.TradeDisabled then runOpenProcedure(false) --Continue the opening procedure directly in a trade disables mode.
+--~ 				else --Continue the opening procedure after a transcation reply.
+--~ 					mobjEvents.OnSendTransaction_opening = true
+--~ 					mobjEvents.OnSendTransaction = true
+--~ 			end	end
+--~ 		end --ON Futures DOM
+--~ 	end
+--~ end
+
+--~ function run() ------------------------------------------------------------------+
+--~ 	--local strAlert = "Alert: "
+--~ 	if mobjTerminal.priceStock == nil then message(mstrMessages.noPriceStock, mintIconTypes.icon_type_exclamation) --The priceStock must be assigned on the OnAllTrade event.
+--~ 	elseif not mobjEvents.OnSendTransaction then --Open/close a position, unless a previously sent transaction is waiting for a reply.
+--~ 		mobjObjects.scanTriggered(mobjTerminal.priceStock)
+--~ 		local objObjectTriggered = mobjObjects.getObjectTriggered() --Get a pointer for a quick reference.
+--~ 		local strAlert = "Alert: "
+--~ 		if mobjPosition.totalnet == 0 then runOpen(objObjectTriggered, strAlert) --Is there no Channels position? Check to open one.
+--~ 		else --There is an open position. Check to close it.
+--~ 			if objObjectTriggered ~= nil then --Has any trading object triggered?
+--~ 				if not mobjTerminal.getOfferBid(msttExpertProperties.Futures) then message(mstrMessages.noOfferBid, mintIconTypes.icon_type_exclamation) --Is there neither a bid nor an offer? --ON Futures DOM
+--~ 				else --ON Futures DOM
+--~ 					if not mobjPosition.matchClosingToOpened(objObjectTriggered.getOperationBuySell()) then runOpen(objObjectTriggered, strAlert)
+--~ 					else --A closing trade operation must match the open one.
+--~ 						if objObjectTriggered.isAlert() then --Alert and skip closing while doing all the same operations as if it's closing in a trade disabled mode.
+--~ 							if msttExpertProperties.AllMessages then message( strAlert .. mstrOperations[objObjectTriggered.operation] .. " " .. tostring(objObjectTriggered.price) .. "!" ) end
+--~ 							--mobjObjects.getObjectTriggered().rename() --Rename the trade object to prevent its accidential wrong reuse.
+--~ 							objObjectTriggered.rename() --Rename the trade object to prevent its accidential wrong reuse.
+--~ 							mobjObjects.setPricesToDisplay() --Reset the displayed prires after the trade.
+--~ 							mobjObjects.displayPrices(mobjPosition.StrClose, false) --Dispay the prices reset as opening or closing depending on the above commands.
+--~ 						--elseif mobjPosition.close( ( ({[true] = 2, [false] = 1})[objObjectTriggered.isReversing()] ) * msttExpertProperties.LotsTraded ) then --If reversing is required open a new position to the same direction as the closing one. That is buy/sell all the lots opened before plus one more.
+--~ 						elseif mobjPosition.close(objObjectTriggered.isReversing()) then --If reversing is required open a new position to the same direction as the closing one. That is buy/sell all the lots opened before plus one more.
+--~ 							if msttExpertProperties.TradeDisabled then runCloseProcedure() --Continue the closing procedure directly in a trade disables mode.
+--~ 							else --Continue the closing procedure after a transcation reply.
+--~ 								mobjEvents.OnSendTransaction_closing = true
+--~ 								mobjEvents.OnSendTransaction = true
+--~ end	end	end	end	--[[ON Futures DOM]]end	end	end	end
+
+--~ function checkPriceStockOfferBid() -- Make sure that the stock price and the futures offer/bid are available. ------------------------------------------------------------------+
+--~ 	local blnCheckPriceStockOfferBid = false
+--~ 	if mobjTerminal.priceStock == nil then message(mstrMessages.noPriceStock, mintIconTypes.icon_type_exclamation) --The priceStock must be assigned on the OnAllTrade event.
+--~ 	elseif not mobjTerminal.getOfferBid(msttExpertProperties.Futures) then message(mstrMessages.noOfferBid, mintIconTypes.icon_type_exclamation) --Is there neither a bid nor an offer? --ON Futures DOM
+--~ 	else blnCheckPriceStockOfferBid = true
+--~ 	end
+--~ 	return blnCheckPriceStockOfferBid
+--~ end
+
+--~ function closePosition() -- Close an open position, if any. ------------------------------------------------------------------+
+--~ 	if checkPriceStockOfferBid() then -- Make sure that the stock price and the futures offer/bid are available.
+--~ 		--if mobjPosition.totalnet ~= 0 then mobjPosition.close(math.abs(mobjPosition.totalnet)) end --Is there a Channels position to be closed? --Close all the lots opened.
+--~ 		if mobjPosition.totalnet ~= 0 then mobjPosition.close(false) end --Is there a Channels position to be closed? --Close all the lots opened.
+--~ end end
+
+--~ function disableObjects() -- Disable objects / close position on a key press. ------------------------------------------------------------------+
+--~ 	mobjObjects.renameAll(msttVariousConsts.operationNull, true)
+--~ 	mobjObjects.setPricesToDisplay() --Reset the displayed prires after the trade.
+--~ 	message("Objects disabled.")
+--~ end
+
+--~ function keyPressedEsc() -- Esc pressed to unselect all objects / disable them / close position. ------------------------------------------------------------------+
+--~ 	if mobjObjects.getCount(true, true) > 0 then disableObjects() --Is there any object to be disabled?
+--~ 	else closePosition() end --Close an open position, if any.
+--~ end
+
+--~ --[[KTB
+--~ function keyPressedF5() -- F5 pressed to reset. ------------------------------------------------------------------+
+--~  	disableObjects()
+--~ 	closePosition()
+--~ end]]
+
+--~ function setTransactionKeyPressedOperation(intOperation) -- Set OnSendTransaction_keyPressedOperation. +------------------------------------------------------------------+
+--~ 	mobjEvents.OnSendTransaction_keyPressedOperation = true
+--~ 	mobjEvents.OnSendTransaction_keyPressedOperationInt = intOperation
+--~ 	mobjEvents.OnSendTransaction = true
+--~ end
+
+--~ function keyPressedOperationOpen(intOperation) -- The open procedure of the keyPressedOperation fucntion. +------------------------------------------------------------------+
+--~ 	if mobjPosition.open(intOperation) then -- Has it opened?
+--~ 		if msttExpertProperties.TradeDisabled then mobjObjects.renameAll(msttVariousConsts.operationNull, false) --Continue the opening procedure directly in a trade disables mode.
+--~ 		else setTransactionKeyPressedOperation(intOperation) --Set OnSendTransaction_keyPressedOperation.
+--~ end	end	end
+
+--~ function keyPressedOperation(intOperation) -- KeyArrowUp/KeyB/KeyArrowDown/KeyS pressed to buy or sell. +------------------------------------------------------------------+
+--~ 	if checkPriceStockOfferBid() then -- Make sure that the stock price and the futures offer/bid are available.
+--~ 		if mobjPosition.totalnet == 0 then keyPressedOperationOpen(intOperation) --Is there no Channels position?
+--~ 		else --Check to close a Channels position.
+--~ 			if not mobjPosition.matchClosingToOpened(intOperation) then keyPressedOperationOpen(intOperation)
+--~ 			else --Does the closing operation match the open one?
+--~ 				--if mobjPosition.close(msttExpertProperties.LotsTraded) then
+--~ 				if mobjPosition.close(false) then
+--~ 					if msttExpertProperties.TradeDisabled then mobjObjects.renameAll(msttVariousConsts.operationNull, false) --Continue the opening procedure directly in a trade disables mode.
+--~ 					else setTransactionKeyPressedOperation(intOperation) --Set OnSendTransaction_keyPressedOperation.
+--~ end	end	end	end	end	end
+
+--~ function srvMessageToQuik(strMessage) ------------------------------------------------------------------+
+--~ 	if not mobjEvents.srvMessageToQuik then --No new action till the prvevious message has been processed.
+--~ 		--mobjEvents.srvMessageToQuik = true
+--~ 		mobjEvents.srvMessageToQuik_strMessage = strMessage --First set the message and then set the flag about it (below).
+--~ 		mobjEvents.srvMessageToQuik = true
+--~ end	end
+
+--~ function eventSrvMessageToQuik(strMessage) ------------------------------------------------------------------+
+--~ 	mobjMT4QuikConnector.message = strMessage
+--~ 	if mobjMT4QuikConnector.pricesSent() then --Is it a prices message (with a number of orders in front) vs. an initialisation message?
+--~ 		mobjObjects.set(strMessage)
+--~ 		mobjObjects.displayPrices( ({[true] = mobjPosition.StrOpen, [false] = mobjPosition.StrClose})[mobjPosition.totalnet == 0], true )
+--~ 		run()
+--~ 	elseif mobjMT4QuikConnector.disableObjects() then disableObjects() --Is it a Disable Ojects command message?
+--~ 	elseif mobjMT4QuikConnector.closePosition() then --Is it a Close Position command message?
+--~ 		if checkPriceStockOfferBid() then -- Make sure that the stock price and the futures offer/bid are available.
+--~ 			--if mobjPosition.totalnet ~= 0 then mobjPosition.close(math.abs(mobjPosition.totalnet)) end --Is there a Channels position to be closed?
+--~ 			if mobjPosition.totalnet ~= 0 then mobjPosition.close(false) end --Is there a Channels position to be closed?
+--~ 		end
+--~ 	else
+--~ 		local intOperation = mobjMT4QuikConnector.keyPressedOperation() --Is an operation key pressed?
+--~ 		if intOperation ~= msttVariousConsts.operationNull then keyPressedOperation(intOperation)
+--~ 		else
+--~ 			local intLots = mobjMT4QuikConnector.setLots()
+--~ 			if intLots ~= 0 then --Is a Set Lots command received? --Set the number of lots.
+--~ 				msttExpertProperties.LotsTraded = intLots
+--~ 				message("Lots: " .. tostring(intLots))
+--~ end	end	end	end
+
+--~ function tableNotificationCallback(operationsTable, msg, par1, par2) -- Register necessary events only. ------------------------------------------------------------------+
+--~ --message("tableNotificationCallback: QTABLE_LBUTTONUP = " .. tostring(QTABLE_LBUTTONUP))
+--~ --message("tableNotificationCallback: QTABLE_VKEY = " .. tostring(QTABLE_VKEY))
+--~ --message( "operationsTable = " .. tostring(operationsTable) .. "   msg = " .. tostring(msg) .. "   par1 = " .. tostring(par1) .. "   par2 = " .. tostring(par2) )
+--~ 	blnContinue = false
+--~ 	if msg == QTABLE_LBUTTONUP then blnContinue = true --A left mouse-click.
+--~ 	elseif msg == QTABLE_VKEY then --A key is pressed.
+--~ 		if par2 == mintKeys.keyEsc
+--~ 			--KTB or par2 == mintKeys.keyArrowUp
+--~ 			or par2 == mintKeys.keyB
+--~ 			--KTB or par2 == mintKeys.keyArrowDown
+--~ 			or par2 == mintKeys.keyS then blnContinue = true end
+--~ 	end
+--~ 	if blnContinue then
+--~ 		mobjEvents.tableNotificationCallback = true
+--~ 		mobjEvents.tableNotificationCallback_msg = msg
+--~ 		mobjEvents.tableNotificationCallback_par2 = par2
+--~ end	end
+
+--~ function eventTableNotificationCallback(msg, par2) ------------------------------------------------------------------+
+--~ 	--if msg == QTABLE_VKEY then
+--~ 	if msg == QTABLE_LBUTTONUP then keyPressedOperation(BUYtoSELL(par2)) --A left mouse-click. --Sell or buy. Convert the operation first (ref. table creation).
+--~ 	elseif msg == QTABLE_VKEY then
+--~ 		if par2 == mintKeys.keyEsc then keyPressedEsc() --Escape pressed? --Unselect all objects / disable them / close position.
+--~ 		elseif
+--~ 			--KTB par2 == mintKeys.keyArrowUp or
+--~ 			par2 == mintKeys.keyB then keyPressedOperation(OP_BUY) --Buy.
+--~ 		elseif
+--~ 			--KTB par2 == mintKeys.keyArrowDown or
+--~ 			par2 == mintKeys.keyS then keyPressedOperation(OP_SELL) --Sell.
+--~ 		--KTB elseif par2 == mintKeys.keyF5 then keyPressedF5()
+--~ 	end	end
+--~ 	--if msg == QTABLE_LBUTTONUP then keyPressedOperation(BUYtoSELL(par2)) end --A left mouse-click. --Sell or buy. Convert the operation first (ref. table creation).
+--~ end
+
+--~ function OnStop() ------------------------------------------------------------------+
+--~ 	if mobjTerminal.operationsTable ~= nil then DestroyTable(mobjTerminal.operationsTable) end
+--~ 	message("Quit Quik to quit MT4QuikConnector.")
+--~ 	mobjTerminal.run = false
+--~ end
+
+--~ function getEmptyCallback() -- Чтобы получать новые данные без использования функции обратного вызова, а просто получать новые данные в ds и брать их оттуда по необходимости, существует функция: -- Которая подписывается на получение новых данных ------------------------------------------------------------------+
+--~ 	i = ds2:Size()
+--~ 	message("ds2: ds2:Size() = " .. ds2:Size() .. "   O = " .. ds2:O(i) .. "   H = " .. ds2:H(i) .. "   L = " .. ds2:L(i) .. "   C = " .. ds2:C(i) .. "   V = " .. ds2:V(i) .. "   " .. ds2:T(i).hour .. ":" .. ds2:T(i).min .. ":" .. ds2:T(i).sec .. "." .. ds2:T(i).ms .. "   count = " .. ds2:T(i).count)
+--~ end
+
+--~ function MyFuncName(index) -- Пример функции: ------------------------------------------------------------------+
+--~ 	local i = index;
+--~ 	local O = ds:O(i); -- После этого, можно использовать следующие функции для доступа к данным: -- Где i - индекс свечи (от 1 до ds:Size()) -- Получить значение Open для указанной свечи (цена открытия свечи)
+--~ 	local H = ds:H(i); -- Получить значение High для указанной свечи (наибольшая цена свечи)
+--~ 	local L = ds:L(i); -- Получить значение Low для указанной свечи (наименьшая цена свечи)
+--~ 	local C = ds:C(i); -- Получить значение Close для указанной свечи (цена закрытия свечи)
+--~ 	local V = ds:V(i); -- Получить значение Volume для указанной свечи (объем сделок в свече)
+--~ 	local T = ds:T(i); -- Получить значение Time для указанной свечи (время открытия свечи (таблица datetime))
+--~ 	message("ds: index = " .. index .. "   O = " .. O .. "   H = " .. H .. "   L = " .. L .. "   C = " .. C .. "   V = " .. V .. "   " .. T.hour .. ":" .. T.min .. ":" .. T.sec .. "." .. T.ms .. "   count = " .. T.count)
+--~ end;
+
+--~ function setDataSource() ------------------------------------------------------------------+
+--~ 	ds, Error = CreateDataSource(mobjTerminal.CLASSCODE, msttExpertProperties.Futures, INTERVAL_TICK);
+--~ 	while (Error == "" or Error == nil) and ds:Size() == 0 do sleep(1) end -- Если график, к которому нужно подключиться не открыт в терминале, то данные заказываются с сервера, на их получение нужно время, поэтому рекомендуется добавлять вот такое ожидание, прежде, чем обращаться к ds: -- Ждет, пока данные будут получены с сервера (на случай, если такой график не открыт)
+--~ 	if Error ~= "" and Error ~= nil then message("Ошибка подключения к графику: "..Error) end
+--~ 	MyFuncName(ds:Size())
+--~ 	ds:SetUpdateCallback(MyFuncName); -- Позволяет задать пользователю функцию обратного вызова для обработки изменившихся свечей, т.е. когда по выбранному в CreateDataSource параметру в терминал поступит новое значение (возможно такое же), автоматически будет вызвана данная функция, в которую будут передан индекс последней свечи графика, а так же добавятся новые данные в таблицу ds
+--~ 	ds2, Error = CreateDataSource(mobjTerminal.CLASSCODE, msttExpertProperties.Futures, INTERVAL_TICK);
+--~ 	ds2:SetEmptyCallback(); -- Чтобы получать новые данные без использования функции обратного вызова, а просто получать новые данные в ds и брать их оттуда по необходимости, существует функция: -- Которая подписывается на получение новых данных -- @ https://quikluacsharp.ru/quik-qlua/poluchenie-v-qlua-lua-dannyh-iz-grafikov-i-indikatorov/
+--~ 	getEmptyCallback()
+--~ end
+
+--~ function getCandlesByIndex_(strTag, intLine, intOffset) ------------------------------------------------------------------+
+--~ 	local intCount = getNumCandles(strTag)
+--~ 	--local t, n, l = getCandlesByIndex(strTag, intLine, 0, intCount);
+--~ 	local t, n, l = getCandlesByIndex(strTag, intLine, intCount - intOffset - 1, 1);
+--~ 	--local i = intCount - intOffset - 1 --intCount - 8 - 1 --1st Price value given Alligator. intCount - 5 - 1 --1st Lips value. intCount - 3 - 1 --1st Teeth value. intCount - 0 - 1 --1st Jaws value.
+--~ 	local i = 0 --intCount - 8 - 1 --1st Price value given Alligator. intCount - 5 - 1 --1st Lips value. intCount - 3 - 1 --1st Teeth value. intCount - 0 - 1 --1st Jaws value.
+--~ 	local O = t[i].open; -- Получить значение Open для указанной свечи (цена открытия свечи)
+--~ 	local H = t[i].high; -- Получить значение High для указанной свечи (наибольшая цена свечи)
+--~ 	local L = t[i].low; -- Получить значение Low для указанной свечи (наименьшая цена свечи)
+--~ 	local C = t[i].close; -- Получить значение Close для указанной свечи (цена закрытия свечи)
+--~ 	local V = t[i].volume; -- Получить значение Volume для указанной свечи (объем сделок в свече)
+--~ 	local T = t[i].datetime; -- Получить значение datetime для указанной свечи
+--~ 	message("strTag = " .. strTag .. "  intLine = " .. intLine .. "   i = " .. i .. "   O = " .. O .. "   H = " .. H .. "   L = " .. L .. "   C = " .. C .. "   V = " .. V)
+--~ end
+
+--~ function getCandles() -- В QLua есть функции для получения данных как графиков, так и индикаторов по их уникальным идентификаторам(тэгам), для этого необходимо нужному графику(индикатору) назначить уникальный идентификатор. -- -- ПОЛУЧЕНИЕ В QLUA(LUA) ДАННЫХ ИЗ ГРАФИКОВ И ИНДИКАТОРОВ @ https://quikluacsharp.ru/quik-qlua/poluchenie-v-qlua-lua-dannyh-iz-grafikov-i-indikatorov/
+--~ 	message('getLinesCount("SRPrice") = ' .. getLinesCount("SRPrice")) -- getLinesCount(tag); -- Функция предназначена для получения КОЛИЧЕСТВА ЛИНИЙ в графике (индикаторе) по выбранному идентификатору -- Возвращает число -- tag - (STRING) идентификатор графика (индикатора), о котором писалось выше
+--~ 	message('getLinesCount("SRAlligator") = ' .. getLinesCount("SRAlligator"))
+--~ 	message('getNumCandles("SRPrice") = ' .. getNumCandles("SRPrice")) -- getNumCandles(tag); -- Функция предназначена для получения информации о КОЛИЧЕСТВЕ СВЕЧЕЙ по выбранному идентификатору -- Возвращает число
+--~ 	message('getNumCandles("SRAlligator") = ' .. getNumCandles("SRAlligator"))
+--~ 	local intOffset = 8 --The price offset given Alligator, otherwise = 0.
+--~ 	local intLineLips = 0 --Lips line.
+--~ 	local intLineTeeth = 2 --Teeth line.
+--~ 	local intLineJaws = 1 --Jaws line.
+--~ 	getCandlesByIndex_("SRPrice", 	  0, 			intOffset)
+--~ 	getCandlesByIndex_("SRAlligator", intLineLips, 	intOffset) --Lips.
+--~ 	getCandlesByIndex_("SRAlligator", intLineTeeth, intOffset) --Teeth.
+--~ 	getCandlesByIndex_("SRAlligator", intLineJaws, 	intOffset) --Jaws.
+--~ end
+
+--~ function main() ------------------------------------------------------------------+
+--~ 	mobjTerminal.createOperationsTable()
+--~ 	mobjTerminal.run = true
+--~ --To test it for debugging: COMMENT IT OUT -----------------------------------------------------------------------------------------------------------------------------------------------------------
+--~ --	MT4QuikConnector.StartQuikServer()
+--~ -- -----------------------------------------------------------------------------------------------------------------------------------------------------------
+--~ 	setDataSource()
+--~ 	--getCandles()
+--~ 	while mobjTerminal.run do
+--~ 		if mobjEvents.OnSendTransaction_keyPressedOperationResumed then --Resuming the key pressed operation procedure?
+--~ 			local intOperation = mobjEvents.OnSendTransaction_keyPressedOperationInt --Remember the operation to be resumed.
+--~ 			mobjEvents.OnSendTransaction_reset() --Reset all the parameters of the previous key pressed operation before resuming it so that the procedure begins from scratch.
+--~ 			keyPressedOperation(intOperation) --Resume it.
+--~ 		end
+--~ 		if mobjEvents.tableNotificationCallback then
+--~ 			eventTableNotificationCallback(mobjEvents.tableNotificationCallback_msg, mobjEvents.tableNotificationCallback_par2)
+--~ 			mobjEvents.tableNotificationCallback_reset()
+--~ 		end
+--~ 		if mobjEvents.srvMessageToQuik then --Check the events, implement them, and reset their flags.
+--~ 			eventSrvMessageToQuik(mobjEvents.srvMessageToQuik_strMessage)
+--~ 			mobjEvents.srvMessageToQuik_reset()
+--~ 		end
+--~ 		if mobjEvents.OnTransReply then
+--~ 			if mobjEvents.OnSendTransaction_opening then runOpenProcedure(false) --Complete the opening procedure.
+--~ 			elseif mobjEvents.OnSendTransaction_closing then runCloseProcedure() --Complete the closing procedure.
+--~ 			elseif mobjEvents.OnSendTransaction_keyPressedOperation then mobjObjects.renameAll(msttVariousConsts.operationNull, false) end --Complete the opening/closing procedure.
+--~ 			mobjEvents.OnTransReply = false --The opening/closing procedure is over. Reset the flags.
+--~ 			mobjEvents.OnSendTransaction_reset()
+--~ 		end
+--~ 		if mobjEvents.OnAllTrade then
+--~ 			run()
+--~ 		 	mobjEvents.OnAllTrade = false
+--~ 		end
+--~ 		sleep(1)
+--~ 		--sleep(1000)
+--~ 		--getCandles()
+--~ -- --To test it for debugging -----------------------------------------------------------------------------------------------------------------------------------------------------------
+--~ -- OnStop()
+--~ -- -----------------------------------------------------------------------------------------------------------------------------------------------------------
+--~ 	end
+--~ end
+
+--~ function OnStop() ------------------------------------------------------------------+
+--~ 	--mobjTerminal.run = false
+--~  	if mobjTerminal.operationsTable ~= nil then DestroyTable(mobjTerminal.operationsTable) end
+--~  	message("Quit Quik to quit MT4QuikConnector.")
+--~  	mobjTerminal.run = false
+--~ end
+
+--~ function OnAllTrade(alltrade) -- Функция вызывается терминалом Quik при получении обезличенной сделки (Таблица всех сделок). Функция возвращает таблицу, поля которой перечислены в примере: ------------------------------------------------------------------+
+--~ 	--message("OnAllTrade: alltrade.sec_code = " .. alltrade.sec_code .. "   alltrade.price = " .. alltrade.price)
+--~ 	if alltrade.sec_code == msttExpertProperties.Stock then --Is it the indicative security?
+--~ 		mobjTerminal.priceStock = alltrade.price
+--~ -- --To test it in the evening session -----------------------------------------------------------------------------------------------------------------------------------------------------------
+--~ -- mobjTerminal.priceStock = mobjTerminal.priceStock / 100 - 1.50
+--~ -- -----------------------------------------------------------------------------------------------------------------------------------------------------------
+--~ 		mobjEvents.OnAllTrade = true
+--~ end	end
+
+--~ function OnTransReply(trans_reply) --Результат транзакции можно получить, воспользовавшись функцией обратного вызова OnTransReply @ http://help.qlua.org/ch4_5_11.htm --See a detailed description @ http://robostroy.ru/community/article.aspx?id=765 ------------------------------------------------------------------+
+--~ 	if trans_reply.sec_code ~= nil then mobjEvents.OnTransReply = true --Is a transaction successful? --Complete the opening procedure.
+--~ 	else
+--~ 		message("Transaction failed! result_msg: " .. trans_reply.result_msg .. " Resuming transaction...")
+--~ -- 		if mobjEvents.OnSendTransaction_opening or mobjEvents.OnSendTransaction_closing then --Resume the opening/closing procedure.
+--~ -- 			mobjEvents.OnSendTransaction_reset()
+--~ -- 			mobjEvents.OnAllTrade = true
+--~ -- 		elseif mobjEvents.OnSendTransaction_keyPressedOperation then mobjEvents.OnSendTransaction_keyPressedOperationResumed = true end --Resume the key pressed operation procedure.
+--~ 		if mobjEvents.OnSendTransaction_keyPressedOperation then mobjEvents.OnSendTransaction_keyPressedOperationResumed = true --Resume the key pressed operation procedure.
+--~ 		elseif mobjEvents.OnSendTransaction_opening or mobjEvents.OnSendTransaction_closing then --Resume the opening/closing procedure.
+--~ 			mobjEvents.OnSendTransaction_reset()
+--~ 			mobjEvents.OnAllTrade = true
+--~ end	end	end
+
+--~ function OnFuturesClientHolding(fut_pos) if fut_pos.sec_code == msttExpertProperties.Futures then mobjPosition.totalnet = fut_pos.totalnet end end -- Is that my security that has changed? -- Функция вызывается терминалом QUIK при изменении позиции по срочному рынку. ------------------------------------------------------------------+
+
+--~ function OnTrade(trade) -- Функция вызывается терминалом QUIK при совершении Вами новой сделки (обычно вызывается по 2 раза для каждой сделки) @ http://quikluacsharp.ru/qlua-osnovy/iz-qlua-lua-v-excel-csv/ ------------------------------------------------------------------+
+--~ 	mobjPosition.recordTrade(trade.trade_num, trade.flags, trade.price, trade.qty) -- Record a trade into the Trades CSV file.
+--~ end
+
+--~ --To test it for debugging -----------------------------------------------------------------------------------------------------------------------------------------------------------
+--~ -- message("mobjPosition.totalnet = " .. tostring(mobjPosition.totalnet))
+--~ --OnAllTrade({sec_code = msttExpertProperties.Stock, price = 173.25}) --To test it for debugging in Quik when there are no quotes
+--~ -- srvMessageToQuik("cmdES")
+--~ -- srvMessageToQuik("cmdBS,0")
+--~ -- srvMessageToQuik("2,3,146.70,p,5,147.00, ")
+--~ -- srvMessageToQuik("1,5,147.00,r")
+--~ -- OnAllTrade({sec_code = msttExpertProperties.Stock, price = 146.99})
+--~ -- QTABLE_VKEY = 0 tableNotificationCallback({}, QTABLE_VKEY, 0, mintKeys.keyEsc )
+--~ -- tableNotificationCallback(nil, QTABLE_VKEY, 0, mintKeys.keyEsc)
+--~ -- main()
