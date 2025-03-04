@@ -53,6 +53,7 @@ packages/
 *Serialized.ser
 *.VC.db 
 *.def
+*.pr2
 
 # Exclude Release, Debug, x64 folders and other temporary folders
 Release/
