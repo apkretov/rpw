@@ -139,7 +139,8 @@
     <ClInclude Include="01 It started with a simple SimUDuck app 2.h" />
     <ClInclude Include="01 It started with a simple SimUDuck app 1.h" />
     <ClInclude Include="02 But now we need the ducks to FLY.h" />
-    <ClInclude Include="04 Joe thinks about inheritance.h" />
+    <ClInclude Include="04 Joe thinks about inheritance 1.h" />
+    <ClInclude Include="04 Joe thinks about inheritance 2.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

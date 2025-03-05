@@ -1,9 +1,9 @@
-#if 1
+#if 0
 
 #include <array>
 #include <memory>
 #include "../../stdafx.h"
-#include "04 Joe thinks about inheritance.h"
+#include "04 Joe thinks about inheritance 1.h"
 using namespace std;
 
 int main() {
