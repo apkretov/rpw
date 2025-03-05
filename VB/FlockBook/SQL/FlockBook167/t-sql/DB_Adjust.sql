@@ -1,0 +1,29 @@
+USE MyDB
+GO
+
+DELETE Cert_SheepGoat
+DELETE Cert_SheepGoatDam
+DELETE Cert_SheepGoatSire
+DELETE Cert_WeightWoolAnnl
+/*
+DELETE Cert_WeightWoolAnnlAge Don't delete this ancillary table. The line is left to emphasise.
+*/
+DELETE CertEweShegoat_LambKid
+DELETE CertEweShegoat_Offspring
+DELETE CertRamHegoat_FarmSireOffspring
+DELETE CertRamHegoat_Mate
+DELETE CertRamHegoat_SireOffspring
+DELETE SumFlockManagm_Farms
+DELETE SumFlockManagm_LambKid
+DELETE SumFlockManagm_LambKidWeaned
+DELETE SumFlockManagm_Mate
+DELETE SumFlockManagm_SheepGoat
+DELETE SumFlockManagm_SheepGoatDisp
+DELETE SumFlockManagm_Weight7Mon
+DELETE SumFlockManagm_WeightAnnl
+DELETE SumFlockManagm_WeightWean
+DELETE SumFlockManagm_WoolAnnl
+DELETE SumGenEval_FarmSireOffspring
+DELETE SumPerform_Farms
+DELETE SumPerform_SheepGoat
+GO
