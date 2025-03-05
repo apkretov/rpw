@@ -1,4 +1,4 @@
-#if 1
+#if 0
 
 #undef ORIG
 #define MINE
@@ -27,8 +27,7 @@ struct DecoyDuck final : Duck {
 #endif //ORIG
 
 #ifdef MINE
-#include "04 Joe thinks about inheritance 1.h"
-#include "04 Joe thinks about inheritance 2.h"
+#include "04 Joe thinks about inheritance.h"
 #endif //MINE
 
 #ifdef AMAZON_Q
