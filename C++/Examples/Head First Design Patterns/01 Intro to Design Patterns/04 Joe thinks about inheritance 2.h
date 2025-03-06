@@ -11,16 +11,16 @@ struct QuackBehavior {
 	virtual void quack() const = 0;
 };
 
-struct StandardQuack final : QuackBehavior {
+struct Quack final : QuackBehavior {
 	void quack() const override { cout << "The duck quacks.\n"; }
 };
 
-struct SqueakQuack final : QuackBehavior {
+struct Squeak final : QuackBehavior {
 	void quack() const override { cout << "The duck squeaks.\n"; }
 };
 
-struct NoQuack final : QuackBehavior {
-	void quack() const override { /* Do nothing. */ }
+struct MuteQuack final : QuackBehavior {
+	void quack() const override { /* Do nothing -- can't quack! */ }
 };
 
 struct FlyBehavior {
@@ -33,7 +33,7 @@ struct FlyWithWings final : FlyBehavior {
 };
 
 struct FlyNoWay final : FlyBehavior {
-	void fly() const override { /* Do nothing. */ }
+	void fly() const override { /* Do nothing -- can't fly!*/ }
 };
 
 class Duck {
@@ -49,21 +49,21 @@ public:
 };
 
 struct MallardDuck final : Duck {
-	MallardDuck() : Duck(make_unique<StandardQuack>(), make_unique<FlyWithWings>()) {}
+	MallardDuck() : Duck(make_unique<Quack>(), make_unique<FlyWithWings>()) {}
 	void display() const override { cout << "The duck looks like a mallard.\n"; }
 };
 
 struct RedheadDuck final : Duck {
-	RedheadDuck() : Duck(make_unique<StandardQuack>(), make_unique<FlyWithWings>()) {}
+	RedheadDuck() : Duck(make_unique<Quack>(), make_unique<FlyWithWings>()) {}
 	void display() const override { cout << "The duck looks like a redhead.\n"; }
 };
 
 struct RubberDuck final : Duck {
-	RubberDuck() : Duck(make_unique<SqueakQuack>(), make_unique<FlyNoWay>()) {}
+	RubberDuck() : Duck(make_unique<Squeak>(), make_unique<FlyNoWay>()) {}
 	void display() const override { cout << "The duck looks like a rubber duck.\n"; }
 };
 
 struct DecoyDuck final : Duck {
-	DecoyDuck() : Duck(make_unique<NoQuack>(), make_unique<FlyNoWay>()) {}
+	DecoyDuck() : Duck(make_unique<MuteQuack>(), make_unique<FlyNoWay>()) {}
 	void display() const override { cout << "The duck looks like a decoy duck.\n"; }
 };

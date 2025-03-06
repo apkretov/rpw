@@ -133,7 +133,7 @@
     <ClCompile Include="03 But something went horribly wrong.cpp" />
     <ClCompile Include="04 Joe thinks about inheritance.cpp" />
     <ClCompile Include="05 How about an interface.cpp" />
-    <ClCompile Include="06 Designing the Duck Behaviors.cpp" />
+    <ClCompile Include="06 Designing the Duck Behaviors, Implementing the Duck Behaviors.cpp" />
     <ClCompile Include="07 Program to an interface.cpp" />
   </ItemGroup>
   <ItemGroup>
