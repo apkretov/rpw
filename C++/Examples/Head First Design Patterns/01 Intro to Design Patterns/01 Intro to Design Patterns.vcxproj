@@ -135,6 +135,7 @@
     <ClCompile Include="05 How about an interface.cpp" />
     <ClCompile Include="06 Designing the Duck Behaviors, Implementing the Duck Behaviors.cpp" />
     <ClCompile Include="07 Program to an interface.cpp" />
+    <ClCompile Include="08 Sharpen your pencil 1.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="01 It started with a simple SimUDuck app 2.h" />
