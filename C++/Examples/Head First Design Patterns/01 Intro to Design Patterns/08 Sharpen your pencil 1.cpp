@@ -3,13 +3,10 @@
 #include <array>
 #include "../../stdafx.h"
 #include "04 Joe thinks about inheritance 2.h"
+#include "08 Sharpen your pencil 1.h"
 #include "04 Joe thinks about inheritance 3.h"
 #include "04 Joe thinks about inheritance 4.h"
 using namespace std;
-
-struct FlyRocketPowered final : FlyBehavior {
-	void fly() const override { cout << "The duck flies rocket-powered.\n"; }
-};
 
 struct RocketDuck final : Duck {
 	RocketDuck() : Duck(make_unique<MuteQuack>(), make_unique<FlyRocketPowered>()) {}

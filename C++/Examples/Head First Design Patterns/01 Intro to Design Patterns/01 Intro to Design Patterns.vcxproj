@@ -140,6 +140,7 @@
     <ClCompile Include="09 Integrating the Duck Behavior.cpp" />
     <ClCompile Include="10 Behavior changes at runtime.cpp" />
     <ClCompile Include="11 Testing the Duck code.cpp" />
+    <ClCompile Include="12 Setting behavior dynamically.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="01 It started with a simple SimUDuck app 2.h" />
@@ -150,6 +151,8 @@
     <ClInclude Include="04 Joe thinks about inheritance 3.h" />
     <ClInclude Include="04 Joe thinks about inheritance 4.h" />
     <ClInclude Include="09 Integrating the Duck Behavior.h" />
+    <ClInclude Include="10 Behavior changes at runtime.h" />
+    <ClInclude Include="08 Sharpen your pencil 1.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

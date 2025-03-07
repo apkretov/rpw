@@ -1,4 +1,4 @@
-#if 1
+#if 0
 
 #include "../../stdafx.h"
 #include "04 Joe thinks about inheritance 2.h"
