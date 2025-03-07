@@ -2,12 +2,13 @@
 
 #include "../../stdafx.h"
 #include "04 Joe thinks about inheritance 2.h"
+#include "09 Integrating the Duck Behavior.h"
 using namespace std;
 
 /* Java
 public class Duck {
-	QuackBehavior quackBehavior;
-	public void performQuack() { quackBehavior.quack();	}
+	QuackBehavior quackBehavior; // Each Duck has a reference to something that implements the QuackBehavior interface.
+	public void performQuack() { quackBehavior.quack();	} // Rather than handling the quack behavior itself, the Duck object delegates that behavior to the object referenced by quackBehavior.
 }
 
 public class MallardDuck extends Duck {
@@ -19,23 +20,6 @@ public class MallardDuck extends Duck {
 	public void display() {	System.out.println("I’m a real Mallard duck"); }
 }
 */
-
-class Duck {
-	unique_ptr<QuackBehavior> quacking;
-	unique_ptr<FlyBehavior> flying;
-public:
-	Duck(unique_ptr<QuackBehavior> quack_behavior, unique_ptr<FlyBehavior> fly_behavior) : quacking(std::move(quack_behavior)), flying(std::move(fly_behavior)) {}
-	~Duck() = default;
-	void performQuack() const { quacking->quack(); };
-	void swim() const { cout << "The duck swims.\n"; }
-	virtual void display() const = 0;
-	void performFly() const { flying->fly(); }
-};
-
-struct MallardDuck final : Duck {
-	MallardDuck() : Duck(make_unique<Quack>(), make_unique<FlyWithWings>()) {}
-	void display() const override { cout << "I’m a real Mallard duck\n"; }
-};
 
 int main() {
 	print_file_line();

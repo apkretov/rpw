@@ -12,15 +12,15 @@ struct QuackBehavior {
 };
 
 struct Quack final : QuackBehavior {
-	void quack() const override { cout << "The duck quacks.\n"; }
+	void quack() const override { cout << "Quack\n"; }
 };
 
 struct Squeak final : QuackBehavior {
-	void quack() const override { cout << "The duck squeaks.\n"; }
+	void quack() const override { cout << "Squeak\n"; }
 };
 
 struct MuteQuack final : QuackBehavior {
-	void quack() const override { /* Do nothing -- can't quack! */ }
+	void quack() const override { cout << "<< Silence >>\n"; }
 };
 
 struct FlyBehavior {
@@ -29,11 +29,11 @@ struct FlyBehavior {
 };
 
 struct FlyWithWings final : FlyBehavior {
-	void fly() const override { cout << "The duck flies.\n"; }
+	void fly() const override { cout << "I’m flying!!!\n"; }
 };
 
 struct FlyNoWay final : FlyBehavior {
-	void fly() const override { /* Do nothing -- can't fly!*/ }
+	void fly() const override { cout << "I can’t fly.\n"; }
 };
 
 //class Duck {
