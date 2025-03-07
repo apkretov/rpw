@@ -1,4 +1,4 @@
-#if 1
+#if 0
 
 #undef MINE
 #define HFDP // Head First Design Patterns
@@ -6,6 +6,8 @@
 #include <array>
 #include "../../stdafx.h"
 #include "04 Joe thinks about inheritance 2.h"
+#include "04 Joe thinks about inheritance 3.h"
+#include "04 Joe thinks about inheritance 4.h"
 using namespace std;
 
 #ifdef MINE
