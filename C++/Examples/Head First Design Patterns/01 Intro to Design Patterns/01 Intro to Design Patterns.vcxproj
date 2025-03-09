@@ -141,6 +141,7 @@
     <ClCompile Include="10 Behavior changes at runtime.cpp" />
     <ClCompile Include="11 Testing the Duck code.cpp" />
     <ClCompile Include="12 Setting behavior dynamically.cpp" />
+    <ClCompile Include="13 Design Puzzle.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="01 It started with a simple SimUDuck app 2.h" />

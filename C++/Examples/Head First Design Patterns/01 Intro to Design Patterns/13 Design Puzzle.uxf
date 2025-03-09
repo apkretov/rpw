@@ -1,0 +1,44 @@
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><help_text>Space for diagram notes
+--
+WeaponBehavior weapon;
+--
+fight(); </help_text><element><id>UMLClass</id><coordinates><x>100</x><y>40</y><w>210</w><h>110</h></coordinates><panel_attributes>*/Character/*
+--
+WeaponBehavior weapon;
+--
+/fight();/
+setWeapon(WeaponBehavior w) {
+        this.weapon = w;
+}</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>100</x><y>260</y><w>80</w><h>50</h></coordinates><panel_attributes>*Queen*
+--
+fight() {...}</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>30</x><y>190</y><w>80</w><h>50</h></coordinates><panel_attributes>*King*
+--
+fight() {...}</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>60</x><y>140</y><w>110</w><h>70</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>90;10;10;50</additional_attributes></element><element><id>Relation</id><coordinates><x>130</x><y>140</y><w>70</w><h>140</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>50;10;10;120</additional_attributes></element><element><id>UMLClass</id><coordinates><x>180</x><y>190</y><w>80</w><h>50</h></coordinates><panel_attributes>*Knight*
+--
+fight() {...}</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>210</x><y>140</y><w>30</w><h>70</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;50</additional_attributes></element><element><id>UMLClass</id><coordinates><x>240</x><y>260</y><w>80</w><h>50</h></coordinates><panel_attributes>*Troll*
+--
+fight() {...}</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>250</x><y>140</y><w>50</w><h>140</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;30;120</additional_attributes></element><element><id>UMLClass</id><coordinates><x>440</x><y>50</y><w>150</w><h>60</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt;
+*/WeaponBehavior/*
+--
+/useWeapon();/
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>300</x><y>60</y><w>160</w><h>30</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>140;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>330</x><y>140</y><w>130</w><h>80</h></coordinates><panel_attributes>*KnifeBehavior*
+--
+useWeapon() 
+{ // implements 
+cutting with a knife }
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>420</x><y>240</y><w>150</w><h>80</h></coordinates><panel_attributes>*BowAndArrowBehavior*
+--
+useWeapon() 
+{ // implements shooting
+an arrow with a bow }
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>520</x><y>140</y><w>140</w><h>80</h></coordinates><panel_attributes>*AxeBehavior*
+--
+useWeapon() 
+{ // implements 
+chopping with an axe }
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>630</x><y>240</y><w>130</w><h>80</h></coordinates><panel_attributes>*SwordBehavior*
+--
+useWeapon() 
+{ // implements 
+swinging a sword }
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>390</x><y>100</y><w>100</w><h>60</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>80;10;10;40</additional_attributes></element><element><id>Relation</id><coordinates><x>480</x><y>100</y><w>40</w><h>160</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>20;10;10;140</additional_attributes></element><element><id>Relation</id><coordinates><x>520</x><y>100</y><w>80</w><h>60</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;60;40</additional_attributes></element><element><id>Relation</id><coordinates><x>550</x><y>100</y><w>170</w><h>160</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;150;40;150;140</additional_attributes></element></diagram>
