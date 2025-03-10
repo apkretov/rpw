@@ -1,9 +1,9 @@
 #pragma once
 
-struct MallardDuck final : Duck {
+struct MallardDuck : Duck {
 	void display() const override { cout << "The duck looks like a mallard.\n"; }
 };
 
-struct RedheadDuck final : Duck {
+struct RedheadDuck : Duck {
 	void display() const override { cout << "The duck looks like a redhead.\n"; }
 };

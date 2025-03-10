@@ -18,16 +18,16 @@ struct FlyingDuck : Duck {
 	void fly() const { cout << "The duck flies.\n"; }
 };
 
-struct MallardDuck final : FlyingDuck {
+struct MallardDuck : FlyingDuck {
 	void display() const override { cout << "The duck looks like a mallard.\n"; }
 };
 
-struct RedheadDuck final : FlyingDuck {
+struct RedheadDuck : FlyingDuck {
 	void display() const override { cout << "The duck looks like a redhead.\n"; }
 };
 #endif //MINE
 
-struct RubberDuck final : Duck {
+struct RubberDuck : Duck {
 	void quack() const override { cout << "The duck squeaks.\n"; }
 	void display() const override { cout << "The duck looks like a rubber duck.\n"; }
 };

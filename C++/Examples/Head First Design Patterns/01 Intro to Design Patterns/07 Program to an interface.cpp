@@ -24,12 +24,12 @@ struct Animal {
 	virtual void makeSound() const = 0;
 };
 
-struct Dog final : Animal {
+struct Dog : Animal {
 	void makeSound() const override { bark(); }
 	void bark() const { cout << "Make a bark sound.\n"; }
 };
 
-struct Cat final : Animal {
+struct Cat : Animal {
 	void makeSound() const override { meow(); }
 	void meow() const { cout << "Make a meow sound.\n"; }
 };

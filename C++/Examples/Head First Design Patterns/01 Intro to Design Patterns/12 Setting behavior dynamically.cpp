@@ -38,7 +38,7 @@ public class MiniDuckSimulator { // 4. Change the test class (MiniDuckSimulator.
 }
 */
 
-struct ModelDuck final : Duck { // 2. Make a new Duck type(ModelDuck.java).
+struct ModelDuck : Duck { // 2. Make a new Duck type(ModelDuck.java).
 	ModelDuck() : Duck(make_unique<Quack>(), make_unique<FlyNoWay>()) {} // Our model duck begins life grounded... without a way to fly.
 	void display() const override { cout << "I’m a model duck.\n"; }
 };

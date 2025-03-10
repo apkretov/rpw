@@ -8,7 +8,7 @@
 #include "04 Joe thinks about inheritance 4.h"
 using namespace std;
 
-struct RocketDuck final : Duck {
+struct RocketDuck : Duck {
 	RocketDuck() : Duck(make_unique<MuteQuack>(), make_unique<FlyRocketPowered>()) {}
 	void display() const override { cout << "The duck looks like a rocket duck.\n"; }
 };

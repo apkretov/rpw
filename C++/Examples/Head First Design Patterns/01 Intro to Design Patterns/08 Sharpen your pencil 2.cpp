@@ -21,12 +21,12 @@ public:
 	void quack() const { quacking->quack(); };
 };
 
-struct MallardDuckActor final : DuckActor {
+struct MallardDuckActor : DuckActor {
 	MallardDuckActor() : SoundDevice(make_unique<Quack>()) {}
 	void display() const override { cout << "The duck actor looks like a mallard.\n"; }
 };
 
-struct RubberDuckActor final : DuckActor {
+struct RubberDuckActor : DuckActor {
 	RubberDuckActor() : SoundDevice(make_unique<Squeak>()) {}
 	void display() const override { cout << "The duck actor looks like a rubber duck.\n"; }
 };
@@ -59,7 +59,7 @@ public:
 	void sound() const { sounding->quack(); };
 };
 
-struct DuckCall final : SoundDevice {
+struct DuckCall : SoundDevice {
 	DuckCall() : SoundDevice(make_unique<Quack>()) {}
 };
 

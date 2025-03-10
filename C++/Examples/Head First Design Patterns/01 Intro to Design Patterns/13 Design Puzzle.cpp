@@ -10,19 +10,19 @@ struct WeaponBehavior {
 	virtual void useWeapon() const = 0;
 };
 
-struct KnifeBehavior final : WeaponBehavior {
+struct KnifeBehavior : WeaponBehavior {
 	void useWeapon() const override { cout << "Cutting with a knife.\n"; }
 };
 
-struct BowAndArrowBehavior final : WeaponBehavior {
+struct BowAndArrowBehavior : WeaponBehavior {
 	void useWeapon() const override { cout << "Shooting an arrow with a bow.\n"; }
 };
 
-struct AxeBehavior final : WeaponBehavior {
+struct AxeBehavior : WeaponBehavior {
 	void useWeapon() const override { cout << "Chopping with an axe.\n"; }
 };
 
-struct SwordBehavior final : WeaponBehavior {
+struct SwordBehavior : WeaponBehavior {
 	void useWeapon() const override { cout << "Swinging a sword.\n"; }
 };
 
@@ -36,22 +36,22 @@ public:
 	void setWeaponBehavior(unique_ptr<WeaponBehavior> w) { weapon = std::move(w); }
 };
 
-struct King final : Character {
+struct King : Character {
 	King() : Character(make_unique<SwordBehavior>()) {}
 	void fight() const override { cout << "The king fights.\n"; }
 };
 
-struct Queen final : Character {
+struct Queen : Character {
 	Queen() : Character(make_unique<KnifeBehavior>()) {}
 	void fight() const override { cout << "The queen fights.\n"; }
 };
 
-struct Knight final : Character {
+struct Knight : Character {
 	Knight() : Character(make_unique<AxeBehavior>()) {}
 	void fight() const override { cout << "The knight fights.\n"; }
 };
 
-struct Troll final : Character {
+struct Troll : Character {
 	Troll() : Character(make_unique<BowAndArrowBehavior>()) {}
 	void fight() const override { cout << "The troll fights.\n"; }
 };

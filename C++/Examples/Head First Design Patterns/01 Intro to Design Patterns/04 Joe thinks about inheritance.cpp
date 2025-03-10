@@ -13,13 +13,13 @@ using namespace std;
 #include "02 But now we need the ducks to FLY.h"
 #include "01 It started with a simple SimUDuck app 2.h"
 
-struct RubberDuck final : Duck {
+struct RubberDuck : Duck {
 	void quack() const override { cout << "The duck squeaks.\n"; }
 	void display() const override { cout << "The duck looks like a rubber duck.\n"; }
 	virtual void fly() const { /* Do nothing. */ } //TEST!!
 };
 
-struct DecoyDuck final : Duck {
+struct DecoyDuck : Duck {
 	void quack() const override { /* Do nothing. */ }
 	void display() const override { cout << "The duck looks like a decoy duck.\n"; }
 	virtual void fly() const { /* Do nothing. */ }

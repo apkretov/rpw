@@ -17,7 +17,7 @@ public:
 	void performFly() const { flyBehavior->fly(); }
 };
 
-struct MallardDuck final : Duck {
+struct MallardDuck : Duck {
 	MallardDuck() : Duck(make_unique<Quack>(), make_unique<FlyWithWings>()) {}
 	void display() const override { cout << "I’m a real Mallard duck\n"; }
 };
