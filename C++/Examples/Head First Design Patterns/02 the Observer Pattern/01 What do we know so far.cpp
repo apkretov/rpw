@@ -1,4 +1,4 @@
-#if 1
+#ifndef MINE
 
 #include <memory>
 #include <numeric>
@@ -10,11 +10,25 @@ class Displays;
 
 class WeatherData{
 	Displays &displays_;
+
+	struct RndMeasurements {
+		Rnd rnd_temp{-30, 50};
+		Rnd rnd_humidity{0, 100};
+		Rnd rnd_pressure{870, 1084}; // The standard air pressure at sea level is 1013.25 millibars (mb). The highest recorded air pressure was 1084 mb in Siberia, and the lowest was 870 mb during a typhoon in the Pacific Ocean.
+	};
+	RndMeasurements rnd_measurs;
+
+	struct Measurements {
+		int temp = 0;
+		int humidity = 0;
+		int pressure = 0; 
+	};
+	Measurements measurs;
 public:
 	explicit WeatherData(Displays &displays) : displays_(displays) {}
-	int getTemperature() const { /*TO DO: Return a random value.*/ return 0; } // These three methods return the most recent weather measurements for temperature, humidity and barometric pressure respectively. We don�t care HOW these variables are set; the WeatherData object knows how to get updated info from the Weather Station.
-	int getHumidity() const { /*TO DO: Return a random value.*/ return 0; }
-	int getPressure() const { /*TO DO: Return a random value.*/ return 0; }
+	int getTemperature() const { return measurs.temp; } // These three methods return the most recent weather measurements for temperature, humidity and barometric pressure respectively. We don�t care HOW these variables are set; the WeatherData object knows how to get updated info from the Weather Station.
+	int getHumidity() const { return measurs.humidity; }
+	int getPressure() const { return measurs.pressure; }
 	void measurementsChanged(); // This method gets called whenever the weather measurements have been updated. It updates the three displays for current conditions, weather stats, and forecast.
 };
 
@@ -38,7 +52,7 @@ class WeatherStats : public Display {
 public:
 	static constexpr const char *name = "WeatherStats";
 	void update(const WeatherData &wd) override { 
-		temp_measuremens.push_back(wd.getTemperature()); 
+		temp_measuremens.push_back(wd.getTemperature());
 		cout << "Avg. temp: " << accumulate(temp_measuremens.begin(), temp_measuremens.end(), 0.0) / temp_measuremens.size() << '\n';
 		cout << "Min. temp: " << *min_element(temp_measuremens.begin(), temp_measuremens.end()) << '\n';
 		cout << "Max. temp: " << *max_element(temp_measuremens.begin(), temp_measuremens.end()) << '\n';
@@ -48,10 +62,10 @@ public:
 struct Forecast : public Display {
 	static constexpr const char *name = "Forecast";
 
-	void update(const WeatherData &wd) override {
-		cout << "Temp forecast: " << wd.getTemperature() + 10 << '\n';
-		cout << "Humidity forecast: " << wd.getHumidity() + 10 << '\n';
-		cout << "Pressure forecast: " << wd.getPressure() + 10 << '\n';
+	void update(const WeatherData &wd) override { // TO DO: Split this function and void show().
+		cout << "Temp forecast: " << wd.getTemperature()<< '\n';
+		cout << "Humidity forecast: " << wd.getHumidity() << '\n';
+		cout << "Pressure forecast: " << wd.getPressure() << '\n';
 	};
 };
 
@@ -71,6 +85,9 @@ public:
 };
 
 void WeatherData::measurementsChanged() { // This method gets called whenever the weather measurements have been updated. It updates the three displays for current conditions, weather stats, and forecast.
+	measurs.temp = rnd_measurs.rnd_temp();
+	measurs.humidity = rnd_measurs.rnd_humidity();
+	measurs.pressure = rnd_measurs.rnd_pressure();
 	for (auto &pair : displays_) {
 		pair.second->update(*this);
 		cout << '\n';
@@ -87,10 +104,9 @@ int main(int argc, char *argv[]) {
 	WeatherData wd(displays);
 	wd.measurementsChanged();
 
-	displays.remove(WeatherStats::name);
 	displays.remove(Forecast::name);
 	wd.measurementsChanged();
 
 	return 0;
 }
-#endif //1
+#endif //MINE
