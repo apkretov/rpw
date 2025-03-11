@@ -128,8 +128,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="01 What do we know so far 1.cpp" />
-    <ClCompile Include="01 What do we know so far 2.cpp" />
+    <ClCompile Include="01 What do we know so far.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
