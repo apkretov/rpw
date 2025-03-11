@@ -5,7 +5,6 @@
 #include <random>
 #include <ranges>
 #include "../../stdafx.h"
-#include "14_08_2_util.h"
 using namespace std;
 
 void Random_Number_Engines_and_Distribution() {

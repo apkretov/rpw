@@ -1,4 +1,4 @@
-#ifndef	EX_16_28
+#ifdef	EX_16_28
 
 #include <iostream>
 #include <type_traits>

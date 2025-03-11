@@ -7,6 +7,7 @@
 #include <functional>
 #include <iostream>
 #include <locale>
+#include <random>
 #include <source_location> 
 #include <vector>
 
@@ -166,4 +167,14 @@ struct str_equal { // Custom transparent equality comparator for std::string
 	*/
 	bool operator()(const char *lhs, const char *rhs) const { return std::strcmp(lhs, rhs) == 0; }
 	template <typename T, typename U> bool operator()(const T &lhs, const U &rhs) const { return lhs == rhs; } // Template-based transparent equality comparator for std::string
+};
+
+class Rnd {
+	std::random_device rnd_dev;
+	std::mt19937 gen;
+	std::uniform_int_distribution<> distr;
+public:
+	Rnd(int min = 0, int max = 9) : gen(rnd_dev()), distr(min, max) {}
+	Rnd(const Rnd &s) : gen(s.gen), distr(s.distr.min(), s.distr.max()) {} // std::generate requires the callable object to be copyable.
+	int operator()() { return distr(gen); }
 };

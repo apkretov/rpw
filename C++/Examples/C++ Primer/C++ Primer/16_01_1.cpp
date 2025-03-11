@@ -86,7 +86,6 @@ int main(int argc, char argv[]) {
 #include <list>
 #include <algorithm>
 #include "../../stdafx.h"
-#include "14_08_2_util.h"
 using namespace std;
 
 template <typename T, typename U> 

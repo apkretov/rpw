@@ -58,7 +58,7 @@ int main(int argc, char *argv[]) {
 }
 #endif
 
-#ifdef EX_14_42
+#ifndef EX_14_42
 
 #include <iostream>
 #include <fstream>
@@ -67,7 +67,6 @@ int main(int argc, char *argv[]) {
 #include <algorithm>
 #include <functional>
 #include "../../stdafx.h"
-#include "14_08_2_util.h"
 using namespace std;
 
 void mine1() { // you.com
@@ -181,7 +180,6 @@ int main(int argc, char *argv[]) {
 #include <algorithm>
 #include <functional>
 #include "../../stdafx.h"
-#include "14_08_2_util.h"
 using namespace std;
 
 int main(int argc, char *argv[]) {

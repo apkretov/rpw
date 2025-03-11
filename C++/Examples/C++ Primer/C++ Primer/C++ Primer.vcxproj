@@ -327,7 +327,6 @@
     <ClInclude Include="14_06_1.h" />
     <ClInclude Include="14_06_2.h" />
     <ClInclude Include="14_07.h" />
-    <ClInclude Include="14_08_2_util.h" />
     <ClInclude Include="14_09_2.h" />
     <ClInclude Include="15_01_1.h" />
     <ClInclude Include="15_01_2.h" />
