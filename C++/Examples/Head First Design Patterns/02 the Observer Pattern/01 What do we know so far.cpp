@@ -80,11 +80,11 @@ public:
 	void add(string_view display_name, unique_ptr<Display> display) { displays_.emplace(display_name, std::move(display)); }
 	void remove(const string &display_name) { displays_.erase(display_name); }
 
-	using Nam_n_displ = unordered_map<string, unique_ptr<Display>>;
-	Nam_n_displ::iterator begin() { return displays_.begin(); }
-	Nam_n_displ::iterator end() { return displays_.end(); }
+	using NamedDisplays = unordered_map<string, unique_ptr<Display>>;
+	NamedDisplays::iterator begin() { return displays_.begin(); }
+	NamedDisplays::iterator end() { return displays_.end(); }
 private:
-	Nam_n_displ displays_;
+	NamedDisplays displays_;
 };
 
 void WeatherData::measurementsChanged() { // This method gets called whenever the weather measurements have been updated. It updates the three displays for current conditions, weather stats, and forecast.
