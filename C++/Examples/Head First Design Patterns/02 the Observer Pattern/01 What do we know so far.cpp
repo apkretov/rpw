@@ -40,7 +40,7 @@ struct Display {
 struct CurrentConditions : public Display {
 	static constexpr const char *name = "CurrentConditions";
 
-	void update(const WeatherData &wd ) override {
+	void update(const WeatherData &wd) override {
 		cout << "Temp: " << wd.getTemperature() << '\n';
 		cout << "Humidity: " << wd.getHumidity() << '\n';
 		cout << "Pressure: " << wd.getPressure() << '\n';
@@ -70,7 +70,6 @@ struct Forecast : public Display {
 };
 
 class Displays {
-	unordered_map<string, unique_ptr<Display>> displays_;
 public:
 	Displays() = default;
 	Displays(const Displays &) = delete;
@@ -80,8 +79,12 @@ public:
 
 	void add(string_view display_name, unique_ptr<Display> display) { displays_.emplace(display_name, std::move(display)); }
 	void remove(const string &display_name) { displays_.erase(display_name); }
-	auto begin() -> decltype(displays_)::iterator{ return displays_.begin(); }
-	auto end() -> decltype(displays_)::iterator{ return displays_.end(); }
+
+	using Nam_n_displ = unordered_map<string, unique_ptr<Display>>;
+	Nam_n_displ::iterator begin() { return displays_.begin(); }
+	Nam_n_displ::iterator end() { return displays_.end(); }
+private:
+	Nam_n_displ displays_;
 };
 
 void WeatherData::measurementsChanged() { // This method gets called whenever the weather measurements have been updated. It updates the three displays for current conditions, weather stats, and forecast.
