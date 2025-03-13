@@ -58,7 +58,7 @@ int main(int argc, char *argv[]) {
 }
 #endif
 
-#ifndef EX_14_42
+#ifdef EX_14_42
 
 #include <iostream>
 #include <fstream>
