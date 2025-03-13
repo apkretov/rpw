@@ -130,10 +130,7 @@
   <ItemGroup>
     <ClCompile Include="01 What do we know so far.cpp" />
     <ClCompile Include="02 Taking a first, misguided SWAG at the Weather Station.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="03 Implementing the Weather Station.h" />
-    <ClInclude Include="04 Implementing the Subject interface in WeatherData.h" />
+    <ClCompile Include="03 Implementing the Weather Station.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
