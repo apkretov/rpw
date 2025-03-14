@@ -132,6 +132,9 @@
     <ClCompile Include="02 Taking a first, misguided SWAG at the Weather Station.cpp" />
     <ClCompile Include="03 Implementing the Weather Station.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="03 Implementing the Weather Station.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
