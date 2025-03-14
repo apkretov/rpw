@@ -131,6 +131,7 @@
     <ClCompile Include="01 What do we know so far.cpp" />
     <ClCompile Include="02 Taking a first, misguided SWAG at the Weather Station.cpp" />
     <ClCompile Include="03 Implementing the Weather Station.cpp" />
+    <ClCompile Include="04 Sharpen your pencil.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="03 Implementing the Weather Station.h" />
