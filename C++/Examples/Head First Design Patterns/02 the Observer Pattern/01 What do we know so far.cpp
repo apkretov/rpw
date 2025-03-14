@@ -48,14 +48,14 @@ struct CurrentConditions : public Display {
 };
 
 class WeatherStats : public Display {
-	vector<int> temp_measuremens;
+	vector<int> temp_measurs;
 public:
 	static constexpr const char *name = "WeatherStats";
 	void update(const WeatherData &wd) override { 
-		temp_measuremens.push_back(wd.getTemperature());
-		cout << "Avg. temp: " << accumulate(temp_measuremens.begin(), temp_measuremens.end(), 0.0) / temp_measuremens.size() << '\n';
-		cout << "Min. temp: " << *min_element(temp_measuremens.begin(), temp_measuremens.end()) << '\n';
-		cout << "Max. temp: " << *max_element(temp_measuremens.begin(), temp_measuremens.end()) << '\n';
+		temp_measurs.push_back(wd.getTemperature());
+		cout << "Avg. temp: " << accumulate(temp_measurs.begin(), temp_measurs.end(), 0.0) / temp_measurs.size() << '\n';
+		cout << "Min. temp: " << *min_element(temp_measurs.begin(), temp_measurs.end()) << '\n';
+		cout << "Max. temp: " << *max_element(temp_measurs.begin(), temp_measurs.end()) << '\n';
 	}
 };
 
