@@ -1,4 +1,4 @@
-#ifdef MINE
+#ifndef MINE
 
 #include <memory>
 #include <numeric>
@@ -37,7 +37,7 @@ struct Display {
 	virtual void update(const WeatherData &) = 0;
 };
 
-struct CurrentConditions : public Display {
+struct CurrentConditions : Display {
 	static constexpr const char *name = "CurrentConditions";
 
 	void update(const WeatherData &wd) override {
@@ -59,7 +59,7 @@ public:
 	}
 };
 
-struct Forecast : public Display {
+struct Forecast : Display {
 	static constexpr const char *name = "Forecast";
 
 	void update(const WeatherData &wd) override { // TO DO: Split this function and void show().
