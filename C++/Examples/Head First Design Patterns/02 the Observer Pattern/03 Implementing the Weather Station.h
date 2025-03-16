@@ -21,11 +21,13 @@ public interface DisplayElement { // The DisplayElement interface just includes 
 */
 
 struct Observer { // The Observer interface is implemented by all observers, so they all have to implement the update() method. Here we're following Mary and Sue's lead and passing the measurements to the observers.
+	~Observer() = default;
 	virtual void update(double temp, double humidity, double pressure) = 0; // These are the state values the Observers get from the Subject when a weather measurement changes.
 };
 
 #ifndef AMAZON_Q_USING_CPP20_CONCEPTS
 struct Subject {
+	~Subject() = default;
 	virtual void registerObserver(Observer *o) = 0; // Both of these methods take an Observer as an argument; that is, the Observer to be registered or removed.
 	virtual void removeObserver(Observer *o) = 0;
 	virtual void notifyObservers() = 0; // This method is called to notify all observers when the Subject's state has changed.
@@ -33,6 +35,7 @@ struct Subject {
 #endif //AMAZON_Q_USING_CPP20_CONCEPTS
 
 struct DisplayElement { // Define the DisplayElement interface
+	~DisplayElement() = default;
 	virtual void display() = 0; // Pure virtual function
 };
 #pragma endregion //Implementing the Weather Station
