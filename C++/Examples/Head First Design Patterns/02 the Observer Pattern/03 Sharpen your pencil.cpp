@@ -3,7 +3,7 @@
 #define ORIG // Must be defined because of 03 Implementing the Weather Station.cpp
 
 #include "../../stdafx.h"
-#include "03 Implementing the Weather Station.h"
+#include "02 Implementing the Weather Station.h"
 using namespace std;
 
 class HeatIndexDisplay : public Observer, public DisplayElement { // This display implements Observer so it can get changes from the WeatherData object. // It also implements DisplayElement, because our API is going to require all display elements to implement this interface.
