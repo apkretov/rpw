@@ -85,7 +85,13 @@ class WeatherData : public Subject { // Implement the WeatherData class
 	double humidity;
 	double pressure;
 public:
-	WeatherData() {}
+	WeatherData() = default;
+
+	~WeatherData() { //TO DO
+		for (auto it = observers.begin(); it != observers.end(); ++it)
+			;//delete *it;
+			//std::cout << *it << '\n';
+	}
 #pragma region Here we implement the Subject Interface.
 	void registerObserver(Observer *o) override { observers.push_back(o); } // When an observer registers, we just add it to the end of the list.
 

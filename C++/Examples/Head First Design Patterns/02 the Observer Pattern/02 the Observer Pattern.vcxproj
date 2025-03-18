@@ -131,6 +131,7 @@
     <ClCompile Include="01 What do we know so far.cpp" />
     <ClCompile Include="02 Implementing the Weather Station.cpp" />
     <ClCompile Include="03 Sharpen your pencil.cpp" />
+    <ClCompile Include="04 Welcome to Starbuzz Coffee.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="02 Implementing the Weather Station.h" />
