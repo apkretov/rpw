@@ -1,4 +1,4 @@
-#if 0
+#ifdef CURSOR
 
 #include <memory>
 #include "../../stdafx.h"
@@ -95,4 +95,4 @@ int main() {
 
 	return 0;
 }
-#endif //1
+#endif //CURSOR
