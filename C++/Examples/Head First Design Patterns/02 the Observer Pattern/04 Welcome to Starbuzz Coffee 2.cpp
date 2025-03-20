@@ -84,9 +84,8 @@ public:
     string getDescription() const {
         string desc = description_;
         const auto condimentDesc = condiments_.getDescription();
-        if (!condimentDesc.empty()) {
+        if (!condimentDesc.empty())
             desc += " with " + condimentDesc;
-        }
         return desc;
     }
 

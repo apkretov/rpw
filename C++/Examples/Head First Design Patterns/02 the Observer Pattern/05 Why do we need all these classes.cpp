@@ -1,4 +1,4 @@
-#ifndef MINE
+#if 0
 
 #include <memory>
 #include "../../stdafx.h"
@@ -95,4 +95,4 @@ int main() {
 
 	return 0;
 }
-#endif //MINE
+#endif //1

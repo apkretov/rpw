@@ -134,6 +134,7 @@
     <ClCompile Include="04 Welcome to Starbuzz Coffee 1.cpp" />
     <ClCompile Include="04 Welcome to Starbuzz Coffee 2.cpp" />
     <ClCompile Include="05 Why do we need all these classes.cpp" />
+    <ClCompile Include="06 Constructing a drink order with Decorators.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="02 Implementing the Weather Station.h" />
