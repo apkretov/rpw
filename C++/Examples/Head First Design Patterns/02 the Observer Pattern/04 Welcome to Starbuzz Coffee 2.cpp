@@ -10,35 +10,35 @@ class Beverage;
 class Condiment { // Base Condiment interface
 public:
     virtual ~Condiment() = default;
-    virtual constexpr double cost() const = 0;
+    virtual double cost() const noexcept = 0;
     virtual string getName() const = 0;
 };
 
 class SteamedMilk final : public Condiment { // Concrete Condiments
     static constexpr double COST = 10.0;
 public:
-    constexpr double cost() const override { return COST; }
+    double cost() const noexcept override { return COST; }
     string getName() const override { return "Steamed Milk"; }
 };
 
 class Soy final : public Condiment {
     static constexpr double COST = 20.0;
 public:
-    constexpr double cost() const override { return COST; }
+    double cost() const noexcept override { return COST; }
     string getName() const override { return "Soy"; }
 };
 
 class Mocha final : public Condiment {
     static constexpr double COST = 30.0;
 public:
-    constexpr double cost() const override { return COST; }
+    double cost() const noexcept override { return COST; }
     string getName() const override { return "Mocha"; }
 };
 
 class WhippedMilk final : public Condiment {
     static constexpr double COST = 40.0;
 public:
-    constexpr double cost() const override { return COST; }
+    double cost() const noexcept override { return COST; }
     string getName() const override { return "Whipped Milk"; }
 };
 
@@ -48,10 +48,14 @@ public:
 	CondimentSet() = default;
 	CondimentSet(const CondimentSet &) = delete; //TO DO
 	CondimentSet &operator=(const CondimentSet &) = delete; //TO DO
-	CondimentSet(CondimentSet &&) = default;
-	CondimentSet &operator=(CondimentSet &&) = default;
+	CondimentSet(CondimentSet &&) noexcept = default;
+	CondimentSet &operator=(CondimentSet &&) noexcept = default;
 
-    void addCondiment(unique_ptr<Condiment> condiment) { condiments.push_back(std::move(condiment)); }
+    void addCondiment(unique_ptr<Condiment> condiment) {
+        if (!condiment) 
+            throw invalid_argument("Cannot add null condiment");
+        condiments.push_back(std::move(condiment));
+    }
     double calculateTotalCost() const { return accumulate(condiments.begin(), condiments.end(), 0.0, [](double sum, const auto& condiment) { return sum + condiment->cost(); }); }
 
     string getDescription() const {
@@ -67,15 +71,15 @@ public:
 
 class Beverage { // Base Beverage class
     string description_;
-    double baseCost_;
+    const double baseCost_;
     CondimentSet condiments_;
 public:
     Beverage(string_view description, double baseCost) : description_(description), baseCost_(baseCost) {}
 	virtual ~Beverage() = default;
     Beverage(const Beverage&) = delete; //TO DO
     Beverage &operator=(const Beverage &) = delete; //TO DO
-    Beverage(Beverage&&) = default;
-    Beverage &operator=(Beverage &&) = default;
+    Beverage(Beverage&&) noexcept = default;
+    Beverage &operator=(Beverage &&) noexcept = default;
 
     string getDescription() const {
         string desc = description_;

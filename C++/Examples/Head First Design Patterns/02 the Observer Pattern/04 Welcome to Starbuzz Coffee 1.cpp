@@ -6,23 +6,23 @@ using namespace std;
 
 struct Condiment {
 	virtual ~Condiment() = default;
-	virtual constexpr double cost() const = 0;
+	virtual double cost() const = 0;
 };
 
 struct SteamedMilk : Condiment {
-	constexpr double cost() const override { return 10; }
+	double cost() const override { return 10; }
 };
 
 struct Soy : Condiment {
-	constexpr double cost() const override { return 20; }
+	double cost() const override { return 20; }
 };
 
 struct Mocha : Condiment {
-	constexpr double cost() const override { return 30; }
+	double cost() const override { return 30; }
 };
 
 struct WhippedMilk : Condiment {
-	constexpr double cost() const override { return 40; }
+	double cost() const override { return 40; }
 };
 
 class Condiments {
