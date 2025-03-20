@@ -1,4 +1,4 @@
-#ifndef AMAZON_Q_OPTIMIZED
+#ifdef AMAZON_Q_OPTIMIZED
 
 #include <memory>
 #include <numeric>
