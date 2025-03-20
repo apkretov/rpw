@@ -45,6 +45,12 @@ public:
 class CondimentSet { // Separated condiment management into CondimentSet class
     vector<unique_ptr<Condiment>> condiments;
 public:
+	CondimentSet() = default;
+	CondimentSet(const CondimentSet &) = delete; //TO DO
+	CondimentSet &operator=(const CondimentSet &) = delete; //TO DO
+	CondimentSet(CondimentSet &&) = default;
+	CondimentSet &operator=(CondimentSet &&) = default;
+
     void addCondiment(unique_ptr<Condiment> condiment) { condiments.push_back(std::move(condiment)); }
     double calculateTotalCost() const { return accumulate(condiments.begin(), condiments.end(), 0.0, [](double sum, const auto& condiment) { return sum + condiment->cost(); }); }
 
@@ -66,10 +72,10 @@ class Beverage { // Base Beverage class
 public:
     Beverage(string_view description, double baseCost) : description_(description), baseCost_(baseCost) {}
 	virtual ~Beverage() = default;
-    Beverage(const Beverage&) = delete;
-    Beverage& operator=(const Beverage&) = delete;
+    Beverage(const Beverage&) = delete; //TO DO
+    Beverage &operator=(const Beverage &) = delete; //TO DO
     Beverage(Beverage&&) = default;
-    Beverage& operator=(Beverage&&) = default;
+    Beverage &operator=(Beverage &&) = default;
 
     string getDescription() const {
         string desc = description_;
