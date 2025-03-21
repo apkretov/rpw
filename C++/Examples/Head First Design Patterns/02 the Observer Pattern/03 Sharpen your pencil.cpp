@@ -1,4 +1,4 @@
-﻿#if 0
+﻿#if 1
 
 #define ORIG // Must be defined because of 03 Implementing the Weather Station.cpp
 

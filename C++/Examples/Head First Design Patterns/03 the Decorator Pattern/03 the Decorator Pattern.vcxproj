@@ -18,6 +18,11 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="01 Welcome to Starbuzz Coffee.cpp" />
+    <ClCompile Include="02 Why do we need all these classes.cpp" />
+    <ClCompile Include="03 Constructing a drink order with Decorators.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
@@ -127,11 +132,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="..\02 the Observer Pattern\01 Welcome to Starbuzz Coffee.cpp" />
-    <ClCompile Include="..\02 the Observer Pattern\02 Why do we need all these classes.cpp" />
-    <ClCompile Include="..\02 the Observer Pattern\03 Constructing a drink order with Decorators.cpp" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

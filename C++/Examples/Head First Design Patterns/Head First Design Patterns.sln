@@ -5,9 +5,9 @@ VisualStudioVersion = 17.13.35818.85
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "01 Intro to Design Patterns", "01 Intro to Design Patterns\01 Intro to Design Patterns.vcxproj", "{1759B4A3-1FDD-4600-B35C-6B06BCBD4EC8}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "02 the Observer Pattern", "02 the Observer Pattern\02 the Observer Pattern.vcxproj", "{9CCB1FF9-B34E-4C9A-8FB0-E28F60C1DD3D}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "03 the Decorator Pattern", "03 the Decorator Pattern\03 the Decorator Pattern.vcxproj", "{EE75C758-E8D1-491D-847C-13C2E6F4AF56}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "02 the Observer Pattern", "02 the Observer Pattern\02 the Observer Pattern.vcxproj", "{306BA0F6-EAB9-4465-B2D9-A032E85BFC94}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,14 +25,6 @@ Global
 		{1759B4A3-1FDD-4600-B35C-6B06BCBD4EC8}.Release|x64.Build.0 = Release|x64
 		{1759B4A3-1FDD-4600-B35C-6B06BCBD4EC8}.Release|x86.ActiveCfg = Release|Win32
 		{1759B4A3-1FDD-4600-B35C-6B06BCBD4EC8}.Release|x86.Build.0 = Release|Win32
-		{9CCB1FF9-B34E-4C9A-8FB0-E28F60C1DD3D}.Debug|x64.ActiveCfg = Debug|x64
-		{9CCB1FF9-B34E-4C9A-8FB0-E28F60C1DD3D}.Debug|x64.Build.0 = Debug|x64
-		{9CCB1FF9-B34E-4C9A-8FB0-E28F60C1DD3D}.Debug|x86.ActiveCfg = Debug|Win32
-		{9CCB1FF9-B34E-4C9A-8FB0-E28F60C1DD3D}.Debug|x86.Build.0 = Debug|Win32
-		{9CCB1FF9-B34E-4C9A-8FB0-E28F60C1DD3D}.Release|x64.ActiveCfg = Release|x64
-		{9CCB1FF9-B34E-4C9A-8FB0-E28F60C1DD3D}.Release|x64.Build.0 = Release|x64
-		{9CCB1FF9-B34E-4C9A-8FB0-E28F60C1DD3D}.Release|x86.ActiveCfg = Release|Win32
-		{9CCB1FF9-B34E-4C9A-8FB0-E28F60C1DD3D}.Release|x86.Build.0 = Release|Win32
 		{EE75C758-E8D1-491D-847C-13C2E6F4AF56}.Debug|x64.ActiveCfg = Debug|x64
 		{EE75C758-E8D1-491D-847C-13C2E6F4AF56}.Debug|x64.Build.0 = Debug|x64
 		{EE75C758-E8D1-491D-847C-13C2E6F4AF56}.Debug|x86.ActiveCfg = Debug|Win32
@@ -41,6 +33,14 @@ Global
 		{EE75C758-E8D1-491D-847C-13C2E6F4AF56}.Release|x64.Build.0 = Release|x64
 		{EE75C758-E8D1-491D-847C-13C2E6F4AF56}.Release|x86.ActiveCfg = Release|Win32
 		{EE75C758-E8D1-491D-847C-13C2E6F4AF56}.Release|x86.Build.0 = Release|Win32
+		{306BA0F6-EAB9-4465-B2D9-A032E85BFC94}.Debug|x64.ActiveCfg = Debug|x64
+		{306BA0F6-EAB9-4465-B2D9-A032E85BFC94}.Debug|x64.Build.0 = Debug|x64
+		{306BA0F6-EAB9-4465-B2D9-A032E85BFC94}.Debug|x86.ActiveCfg = Debug|Win32
+		{306BA0F6-EAB9-4465-B2D9-A032E85BFC94}.Debug|x86.Build.0 = Debug|Win32
+		{306BA0F6-EAB9-4465-B2D9-A032E85BFC94}.Release|x64.ActiveCfg = Release|x64
+		{306BA0F6-EAB9-4465-B2D9-A032E85BFC94}.Release|x64.Build.0 = Release|x64
+		{306BA0F6-EAB9-4465-B2D9-A032E85BFC94}.Release|x86.ActiveCfg = Release|Win32
+		{306BA0F6-EAB9-4465-B2D9-A032E85BFC94}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
