@@ -1,4 +1,4 @@
-#if 1
+#if 0
 
 #undef MINE
 #define AMAZON_Q_OPTIMIZED // Better.
@@ -9,7 +9,6 @@
 using namespace std;
 
 #ifdef MINE
-
 struct Condiment {
 	virtual ~Condiment() = default;
 	virtual double cost() const = 0;
@@ -108,9 +107,6 @@ int main(int argc, char *argv[]) {
 #endif //MINE
 
 #ifdef AMAZON_Q_OPTIMIZED
-
-class Beverage;
-
 class Condiment { // Base Condiment interface
 public:
 	virtual ~Condiment() = default;
