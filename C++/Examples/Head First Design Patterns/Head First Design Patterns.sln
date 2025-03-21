@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "01 Intro to Design Patterns
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "02 the Observer Pattern", "02 the Observer Pattern\02 the Observer Pattern.vcxproj", "{9CCB1FF9-B34E-4C9A-8FB0-E28F60C1DD3D}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "03 the Decorator Pattern", "03 the Decorator Pattern\03 the Decorator Pattern.vcxproj", "{EE75C758-E8D1-491D-847C-13C2E6F4AF56}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -31,6 +33,14 @@ Global
 		{9CCB1FF9-B34E-4C9A-8FB0-E28F60C1DD3D}.Release|x64.Build.0 = Release|x64
 		{9CCB1FF9-B34E-4C9A-8FB0-E28F60C1DD3D}.Release|x86.ActiveCfg = Release|Win32
 		{9CCB1FF9-B34E-4C9A-8FB0-E28F60C1DD3D}.Release|x86.Build.0 = Release|Win32
+		{EE75C758-E8D1-491D-847C-13C2E6F4AF56}.Debug|x64.ActiveCfg = Debug|x64
+		{EE75C758-E8D1-491D-847C-13C2E6F4AF56}.Debug|x64.Build.0 = Debug|x64
+		{EE75C758-E8D1-491D-847C-13C2E6F4AF56}.Debug|x86.ActiveCfg = Debug|Win32
+		{EE75C758-E8D1-491D-847C-13C2E6F4AF56}.Debug|x86.Build.0 = Debug|Win32
+		{EE75C758-E8D1-491D-847C-13C2E6F4AF56}.Release|x64.ActiveCfg = Release|x64
+		{EE75C758-E8D1-491D-847C-13C2E6F4AF56}.Release|x64.Build.0 = Release|x64
+		{EE75C758-E8D1-491D-847C-13C2E6F4AF56}.Release|x86.ActiveCfg = Release|Win32
+		{EE75C758-E8D1-491D-847C-13C2E6F4AF56}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

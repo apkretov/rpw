@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{9ccb1ff9-b34e-4c9a-8fb0-e28f60c1dd3d}</ProjectGuid>
-    <RootNamespace>My02theObserverPattern</RootNamespace>
+    <ProjectGuid>{ee75c758-e8d1-491d-847c-13c2e6f4af56}</ProjectGuid>
+    <RootNamespace>My03theDecoratorPattern</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -128,12 +128,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="01 What do we know so far.cpp" />
-    <ClCompile Include="02 Implementing the Weather Station.cpp" />
-    <ClCompile Include="03 Sharpen your pencil.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="02 Implementing the Weather Station.h" />
+    <ClCompile Include="..\02 the Observer Pattern\01 Welcome to Starbuzz Coffee.cpp" />
+    <ClCompile Include="..\02 the Observer Pattern\02 Why do we need all these classes.cpp" />
+    <ClCompile Include="..\02 the Observer Pattern\03 Constructing a drink order with Decorators.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
