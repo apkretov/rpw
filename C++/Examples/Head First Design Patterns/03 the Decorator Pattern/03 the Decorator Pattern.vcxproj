@@ -22,6 +22,7 @@
     <ClCompile Include="01 Welcome to Starbuzz Coffee.cpp" />
     <ClCompile Include="02 Why do we need all these classes.cpp" />
     <ClCompile Include="03 Constructing a drink order with Decorators.cpp" />
+    <ClCompile Include="04 Writing the Starbuzz code.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

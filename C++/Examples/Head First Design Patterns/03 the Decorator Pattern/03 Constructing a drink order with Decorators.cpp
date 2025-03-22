@@ -161,7 +161,7 @@ int main() {
 }
 #endif //CURSOR
 
-#ifndef MINE
+#ifdef MINE
 
 #include <memory>
 #include <string>
@@ -175,7 +175,7 @@ class Beverage { // Base class for all beverages
 	double cost_;
 	string description_;
 public:
-	explicit Beverage(double base_cost, string_view description = "Unknown Beverage") : cost_(base_cost), description_(description) {}
+	Beverage(double base_cost, string_view description) : cost_(base_cost), description_(description) {}
 	virtual ~Beverage() = default;
 	virtual double cost() const { return cost_; }
 	virtual string getDescription() const { return description_; }
@@ -206,13 +206,10 @@ public:
 };
 
 class Condiment : public Beverage { // Base decorator class
-	BeveragePtr beverage_;
+	BeveragePtr beverage_; //TEST!
 	string condiment_name_;
 public:
-	Condiment(double cost, BeveragePtr beverage, string_view condiment_name)
-		: Beverage(cost, ""), beverage_(std::move(beverage)), condiment_name_(condiment_name) {
-	}
-
+	Condiment(double cost, BeveragePtr beverage, string_view condiment_name) : Beverage(cost, ""), beverage_(std::move(beverage)), condiment_name_(condiment_name) {}
 	double cost() const override { return Beverage::cost() + beverage_->cost(); }
 	string getDescription() const override { return beverage_->getDescription() + " with " + condiment_name_; }
 };
@@ -244,19 +241,19 @@ public:
 int main() {
 	print_file_line();
 
-	auto house_blend = std::make_unique<HouseBlend>();
+	auto house_blend = make_unique<HouseBlend>();
 	cout << "Beverage: " << house_blend->getDescription() << '\n';
 	cout << AS_KV(house_blend->cost()) << '\n'; // 100.0
 
-	auto with_steamed_milk = std::make_unique<SteamedMilk>(std::move(house_blend));
+	auto with_steamed_milk = make_unique<SteamedMilk>(std::move(house_blend));
 	cout << "Beverage: " << with_steamed_milk->getDescription() << '\n';
 	cout << AS_KV(with_steamed_milk->cost()) << '\n'; // 110.0
 
-	auto with_steamed_milk_and_soy = std::make_unique<Soy>(std::move(with_steamed_milk));
+	auto with_steamed_milk_and_soy = make_unique<Soy>(std::move(with_steamed_milk));
 	cout << "Beverage: " << with_steamed_milk_and_soy->getDescription() << '\n';
 	cout << AS_KV(with_steamed_milk_and_soy->cost()) << '\n'; // 130.0
 
-	auto with_double_soy = std::make_unique<Soy>(std::move(with_steamed_milk_and_soy));
+	auto with_double_soy = make_unique<Soy>(std::move(with_steamed_milk_and_soy));
 	cout << "Beverage: " << with_double_soy->getDescription() << '\n';
 	cout << AS_KV(with_double_soy->cost()) << '\n'; // 150.0
 
