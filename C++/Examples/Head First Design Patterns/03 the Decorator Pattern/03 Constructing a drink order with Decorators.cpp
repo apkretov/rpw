@@ -1,129 +1,102 @@
-#ifdef CURSOR
+#if 1
+
+#define CURSOR // Better.
+#undef MINE
 
 #include <memory>
 #include "../../stdafx.h"
 using namespace std;
 
+#ifdef CURSOR
 class Beverage {
 protected:
 	string description_;
 	const double baseCost_;
 public:
-	explicit Beverage(string_view description, double baseCost) 
-		: description_(description), baseCost_(baseCost) {
-		if (baseCost < 0) {
+	explicit Beverage(string_view description, double baseCost) : description_(description), baseCost_(baseCost) {
+		if (baseCost < 0)
 			throw invalid_argument("Base cost cannot be negative");
-		}
 	}
 
 	virtual ~Beverage() = default;
-	Beverage(const Beverage&) = delete;
-	Beverage& operator=(const Beverage&) = delete;
-	Beverage(Beverage&&) noexcept = default;
-	Beverage& operator=(Beverage&&) noexcept = default;
 
-	[[nodiscard]] virtual string getDescription() const { return description_; }
-	[[nodiscard]] virtual double cost() const noexcept { return baseCost_; }
+	/* 1. Ownership Semantics : The decorator pattern uses composition with unique_ptr<Beverage> to store the wrapped component. Since unique_ptr represents exclusive ownership, copying a decorator would require deep copying of the entire chain of wrapped objects, which is complex and potentially error-prone.
+	   2. Resource Management : Decorators often manage resources (in this case, the wrapped beverage). Copying could lead to resource duplication or incorrect sharing, so it's safer to disable copying and rely on move semantics. */
+	Beverage(const Beverage &) = delete;
+	Beverage &operator=(const Beverage &) = delete;
+
+	Beverage(Beverage &&) noexcept = default;
+	Beverage &operator=(Beverage &&) noexcept = default;
+
+	virtual string getDescription() const { return description_; }
+	virtual double cost() const noexcept { return baseCost_; }
 };
 
-// Base decorator class
-class CondimentDecorator : public Beverage {
+class CondimentDecorator : public Beverage { // Base decorator class
 protected:
 	unique_ptr<Beverage> beverage_;
 public:
-	explicit CondimentDecorator(unique_ptr<Beverage> beverage) 
-		: Beverage("", 0), beverage_(std::move(beverage)) {}
+	explicit CondimentDecorator(unique_ptr<Beverage> beverage) : Beverage("", 0), beverage_(std::move(beverage)) {}
 
-	[[nodiscard]] string getDescription() const override {
-		return beverage_->getDescription();
-	}
-
-	[[nodiscard]] double cost() const noexcept override {
-		return beverage_->cost();
-	}
+	string getDescription() const override { return beverage_->getDescription(); }
+	double cost() const noexcept override { return beverage_->cost(); }
 };
 
-// Concrete decorators
-class Mocha final : public CondimentDecorator {
+class Mocha final : public CondimentDecorator { // Concrete decorator
 	static constexpr double COST = 30.0;
 public:
-	explicit Mocha(unique_ptr<Beverage> beverage) 
-		: CondimentDecorator(std::move(beverage)) {}
+	explicit Mocha(unique_ptr<Beverage> beverage) : CondimentDecorator(std::move(beverage)) {}
 
-	[[nodiscard]] string getDescription() const override {
-		return beverage_->getDescription() + ", Mocha";
-	}
-
-	[[nodiscard]] double cost() const noexcept override {
-		return beverage_->cost() + COST;
-	}
+	string getDescription() const override { return beverage_->getDescription() + ", Mocha"; }
+	double cost() const noexcept override { return beverage_->cost() + COST; }
 };
 
-class Whip final : public CondimentDecorator {
+class Whip final : public CondimentDecorator { // Concrete decorator
 	static constexpr double COST = 40.0;
 public:
-	explicit Whip(unique_ptr<Beverage> beverage) 
-		: CondimentDecorator(std::move(beverage)) {}
+	explicit Whip(unique_ptr<Beverage> beverage) : CondimentDecorator(std::move(beverage)) {}
 
-	[[nodiscard]] string getDescription() const override {
-		return beverage_->getDescription() + ", Whip";
-	}
-
-	[[nodiscard]] double cost() const noexcept override {
-		return beverage_->cost() + COST;
-	}
+	string getDescription() const override { return beverage_->getDescription() + ", Whip"; }
+	double cost() const noexcept override { return beverage_->cost() + COST; }
 };
 
-class Soy final : public CondimentDecorator {
+class Soy final : public CondimentDecorator { // Concrete decorator
 	static constexpr double COST = 20.0;
 public:
-	explicit Soy(unique_ptr<Beverage> beverage) 
-		: CondimentDecorator(std::move(beverage)) {}
+	explicit Soy(unique_ptr<Beverage> beverage) : CondimentDecorator(std::move(beverage)) {}
 
-	[[nodiscard]] string getDescription() const override {
-		return beverage_->getDescription() + ", Soy";
-	}
-
-	[[nodiscard]] double cost() const noexcept override {
-		return beverage_->cost() + COST;
-	}
+	string getDescription() const override { return beverage_->getDescription() + ", Soy"; }
+	double cost() const noexcept override { return beverage_->cost() + COST; }
 };
 
-class SteamedMilk final : public CondimentDecorator {
+class SteamedMilk final : public CondimentDecorator { // Concrete decorator
 	static constexpr double COST = 10.0;
 public:
-	explicit SteamedMilk(unique_ptr<Beverage> beverage) 
-		: CondimentDecorator(std::move(beverage)) {}
+	explicit SteamedMilk(unique_ptr<Beverage> beverage) : CondimentDecorator(std::move(beverage)) {}
 
-	[[nodiscard]] string getDescription() const override {
-		return beverage_->getDescription() + ", Steamed Milk";
-	}
-
-	[[nodiscard]] double cost() const noexcept override {
-		return beverage_->cost() + COST;
-	}
+	string getDescription() const override { return beverage_->getDescription() + ", Steamed Milk"; }
+	double cost() const noexcept override { return beverage_->cost() + COST; }
 };
 
-// Concrete beverages
-class DarkRoast final : public Beverage {
+class DarkRoast final : public Beverage { // Concrete beverage
 	static constexpr double BASE_COST = 20.0;
 public:
 	DarkRoast() : Beverage("Dark Roast Coffee", BASE_COST) {}
 };
 
-class HouseBlend final : public Beverage {
+class HouseBlend final : public Beverage { // Concrete beverage
 	static constexpr double BASE_COST = 10.0;
 public:
 	HouseBlend() : Beverage("House Blend Coffee", BASE_COST) {}
 };
 
-class Decaf final : public Beverage {
+class Decaf final : public Beverage { // Concrete beverage
 	static constexpr double BASE_COST = 30.0;
 public:
 	Decaf() : Beverage("Decaf Coffee", BASE_COST) {}
 };
 
-class Espresso final : public Beverage {
+class Espresso final : public Beverage { // Concrete beverage
 	static constexpr double BASE_COST = 40.0;
 public:
 	Espresso() : Beverage("Espresso", BASE_COST) {}
@@ -132,29 +105,23 @@ public:
 int main() {
 	print_file_line();
 
-	// Create a DarkRoast
-	unique_ptr<Beverage> beverage = make_unique<DarkRoast>();
+	unique_ptr<Beverage> beverage = make_unique<DarkRoast>(); // Create a DarkRoast
 	cout << beverage->getDescription() << " $" << beverage->cost() << '\n';
 
-	// Wrap it with Mocha
-	unique_ptr<Beverage> mocha = make_unique<Mocha>(std::move(beverage));
+	unique_ptr<Beverage> mocha = make_unique<Mocha>(std::move(beverage)); // Wrap it with Mocha
 	cout << mocha->getDescription() << " $" << mocha->cost() << '\n';
 
-	// Wrap it with Whip
-	unique_ptr<Beverage> whip = make_unique<Whip>(std::move(mocha));
+	unique_ptr<Beverage> whip = make_unique<Whip>(std::move(mocha)); // Wrap it with Whip
 	cout << whip->getDescription() << " $" << whip->cost() << '\n';
 	cout << '\n';
 
-	// Create another example with HouseBlend
-	unique_ptr<Beverage> beverage2 = make_unique<HouseBlend>();
+	unique_ptr<Beverage> beverage2 = make_unique<HouseBlend>(); // Create another example with HouseBlend
 	cout << beverage2->getDescription() << " $" << beverage2->cost() << '\n';
 
-	// Wrap it with Soy
-	unique_ptr<Beverage> soy = make_unique<Soy>(std::move(beverage2));
+	unique_ptr<Beverage> soy = make_unique<Soy>(std::move(beverage2)); // Wrap it with Soy
 	cout << soy->getDescription() << " $" << soy->cost() << '\n';
 
-	// Wrap it with Mocha
-	unique_ptr<Beverage> mocha2 = make_unique<Mocha>(std::move(soy));
+	unique_ptr<Beverage> mocha2 = make_unique<Mocha>(std::move(soy)); // Wrap it with Mocha
 	cout << mocha2->getDescription() << " $" << mocha2->cost() << '\n';
 
 	return 0;
@@ -162,12 +129,6 @@ int main() {
 #endif //CURSOR
 
 #ifdef MINE
-
-#include <memory>
-#include <string>
-#include "../../stdafx.h"
-using namespace std;
-
 class Beverage; // Forward declaration
 using BeveragePtr = std::unique_ptr<Beverage>;
 
@@ -176,7 +137,6 @@ class Beverage { // Base class for all beverages
 	string description_;
 public:
 	Beverage(double base_cost, string_view description) : cost_(base_cost), description_(description) {}
-	virtual ~Beverage() = default;
 	virtual double cost() const { return cost_; }
 	virtual string getDescription() const { return description_; }
 };
@@ -260,3 +220,4 @@ int main() {
 	return 0;
 }
 #endif //MINE
+#endif //1
