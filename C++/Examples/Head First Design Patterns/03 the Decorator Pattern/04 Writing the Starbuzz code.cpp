@@ -22,6 +22,8 @@ protected:
 	void setDescription(const string &desc) { description = desc; }
 };
 
+using BeveragePtr = unique_ptr<Beverage>;
+
 /* Java
 public abstract class CondimentDecorator extends Beverage { // First, we need to be interchangeable with a Beverage, so we extend the Beverage class.
 	public abstract String getDescription(); // We're also going to require that the condiment decorators all reimplement the getDescription() method. Again, we'll see why in a sec...
@@ -70,24 +72,24 @@ public class Mocha extends CondimentDecorator { // Mocha is a decorator, so we e
 */
 
 struct Mocha : public CondimentDecorator { // Mocha is a decorator, so we inherit from CondimentDecorator. // Remember, CondimentDecorator inherits from Beverage.
-	unique_ptr<Beverage> beverage; // An instance variable to hold the beverage we are wrapping.
-	Mocha(unique_ptr<Beverage> beverage) { this->beverage = std::move(beverage); } // A way to set this instance variable to the object we are wrapping. Here, we're going to pass the beverage we're wrapping to the decorator's constructor.
-	string getDescription() override { return beverage->getDescription() + ", Mocha"; } // We want our description to not only include the beverage - say "Dark Roast" - but also to include each item decorating the beverage, for instance, "Dark Roast, Mocha". So we first delegate to the object we are decorating to get its description, then append ", Mocha" to that description.
-	double cost() override { return .20 + beverage->cost(); } // Now we need to compute the cost of our beverage with Mocha. First, we delegate the call to the object we're decorating, so that it can compute the cost; then, we add the cost of Mocha to the result.
+	BeveragePtr beverage;
+	Mocha(BeveragePtr beverage) { this->beverage = std::move(beverage); }
+	string getDescription() override { return beverage->getDescription() + ", Mocha"; }
+	double cost() override { return .20 + beverage->cost(); }
 };
 #pragma endregion //Coding condiments
 
 #pragma region Sharpen your pencil
 struct Soy : public CondimentDecorator {
-	unique_ptr<Beverage> beverage;
-	Soy(unique_ptr<Beverage> beverage) { this->beverage = std::move(beverage); }
+	BeveragePtr beverage;
+	Soy(BeveragePtr beverage) { this->beverage = std::move(beverage); }
 	string getDescription() override { return beverage->getDescription() + ", Soy"; }
 	double cost() override { return .15 + beverage->cost(); } // Soy costs 15 cents
 };
 
 struct Whip : public CondimentDecorator {
-	unique_ptr<Beverage> beverage;
-	Whip(unique_ptr<Beverage> beverage) { this->beverage = std::move(beverage); }
+	BeveragePtr beverage;
+	Whip(BeveragePtr beverage) { this->beverage = std::move(beverage); }
 	string getDescription() override { return beverage->getDescription() + ", Whip"; }
 	double cost() override { return .10 + beverage->cost(); } // Whip costs 10 cents
 };
@@ -116,16 +118,16 @@ public class StarbuzzCoffee {
 int main(int argc, char *argv[]) {
 	print_file_line();
 
-	auto beverage = make_unique<Espresso>();
+	BeveragePtr beverage = make_unique<Espresso>();
 	cout << beverage->getDescription() << " $" << beverage->cost() << endl;
 
-	unique_ptr<Beverage> beverage2 = make_unique<HouseBlend>();
+	BeveragePtr beverage2 = make_unique<HouseBlend>();
 	beverage2 = make_unique<Mocha>(std::move(beverage2));
 	beverage2 = make_unique<Mocha>(std::move(beverage2));
 	beverage2 = make_unique<Whip>(std::move(beverage2));
 	cout << beverage2->getDescription() << " $" << beverage2->cost() << endl;
 
-	unique_ptr<Beverage> beverage3 = make_unique<HouseBlend>();
+	BeveragePtr beverage3 = make_unique<HouseBlend>();
 	beverage3 = make_unique<Soy>(std::move(beverage3));
 	beverage3 = make_unique<Mocha>(std::move(beverage3));
 	beverage3 = make_unique<Whip>(std::move(beverage3));
