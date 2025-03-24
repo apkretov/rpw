@@ -1,26 +1,9 @@
-#if 1
+#if 0
 
 #include <memory>
 #include "../../stdafx.h"
+#include "01 Building a simple pizza factory.h"
 using namespace std;
-
-#pragma region MINE
-class Pizza {
-public:
-    virtual ~Pizza() = default;
-    void prepare() { cout << "Preparing " << typeid(*this).name() << endl; }
-    void bake() { cout << "Baking " << typeid(*this).name() << endl; }
-    void cut() { cout << "Cutting " << typeid(*this).name() << endl; }
-    void box() { cout << "Boxing " << typeid(*this).name() << endl; }
-};
-
-using PizzaPtr = unique_ptr<Pizza>;
-
-class CheesePizza : public Pizza {};
-class PepperoniPizza : public Pizza {};
-class ClamPizza : public Pizza {};
-class VeggiePizza : public Pizza {};
-#pragma endregion //MINE
 
 #pragma region Building a simple pizza factory
 /* Java
@@ -43,7 +26,7 @@ public class SimplePizzaFactory { // Here's our new class, the SimplePizzaFactor
 
 class SimplePizzaFactory {
 public:
-    PizzaPtr createPizza(const string &type) {
+    PizzaPtr createPizza(string_view type) {
         PizzaPtr pizza;
         if (type == "cheese")
             pizza = make_unique<CheesePizza>();

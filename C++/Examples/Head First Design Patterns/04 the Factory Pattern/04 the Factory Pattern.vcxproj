@@ -129,6 +129,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="01 Building a simple pizza factory.cpp" />
+    <ClCompile Include="02 A framework for the pizza store.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="01 Building a simple pizza factory.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
