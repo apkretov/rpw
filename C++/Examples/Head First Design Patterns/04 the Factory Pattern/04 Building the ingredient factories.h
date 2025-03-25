@@ -8,10 +8,10 @@ using std::unique_ptr;
 
 #pragma region MINE
 class Veggies {};
-class Garlic : public Veggies {};
-class Onion : public Veggies {};
-class Mushroom : public Veggies {};
-class RedPepper : public Veggies {};
+class Garlic final : public Veggies {};
+class Onion final : public Veggies {};
+class Mushroom final : public Veggies {};
+class RedPepper final : public Veggies {};
 using VeggiesVec = vector<unique_ptr<Veggies>>;
 
 class Dough {};
@@ -20,11 +20,11 @@ class Cheese {};
 class Pepperoni {};
 class Clams {};
 
-class ThinCrustDough : public Dough {}; // The NY ingredients.
-class MarinaraSauce : public Sauce {};
-class ReggianoCheese : public Cheese {};
-class SlicedPepperoni : public Pepperoni {};
-class FreshClams : public Clams {};
+class ThinCrustDough final : public Dough {}; // The NY ingredients.
+class MarinaraSauce final : public Sauce {};
+class ReggianoCheese final : public Cheese {};
+class SlicedPepperoni final : public Pepperoni {};
+class FreshClams final : public Clams {};
 #pragma endregion //MINE
 
 #pragma region Building the ingredient factories
@@ -41,21 +41,12 @@ public:
 #pragma endregion //Building the ingredient factories
 
 #pragma region Building the New York ingredient factory
-class NYPizzaIngredientFactory : public PizzaIngredientFactory {
+class NYPizzaIngredientFactory final : public PizzaIngredientFactory {
 public:
 	unique_ptr<Dough> createDough() override { return make_unique<ThinCrustDough>(); } // For each ingredient in the ingredient family, we create the New York version.
 	unique_ptr<Sauce> createSauce() override { return make_unique<MarinaraSauce>(); }
 	unique_ptr<Cheese> createCheese() override { return make_unique<ReggianoCheese>(); }
-
-	VeggiesVec createVeggies() override {
-		VeggiesVec veggies;
-		veggies.push_back(make_unique<Garlic>());
-		veggies.push_back(make_unique<Onion>());
-		veggies.push_back(make_unique<Mushroom>());
-		veggies.push_back(make_unique<RedPepper>());
-		return veggies;
-	}
-
+	VeggiesVec createVeggies() override { return {make_unique<Garlic>(), make_unique<Onion>(), make_unique<Mushroom>(), make_unique<RedPepper>()}; }
 	unique_ptr<Pepperoni> createPepperoni() override { return make_unique<SlicedPepperoni>(); }
 	unique_ptr<Clams> createClam() override { return make_unique<FreshClams>(); }
 };
