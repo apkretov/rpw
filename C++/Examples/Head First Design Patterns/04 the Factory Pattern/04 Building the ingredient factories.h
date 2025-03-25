@@ -28,10 +28,20 @@ class FreshClams final : public Clams {};
 #pragma endregion //MINE
 
 #pragma region Building the ingredient factories
+/* Java
+public interface PizzaIngredientFactory{
+	public Dough createDough(); // For each ingredient we define a create method in our interface.
+	public Sauce createSauce();
+	public Cheese createCheese();
+	public Veggies[] createVeggies();
+	public Pepperoni createPepperoni();
+	public Clams createClam();
+}
+*/
 class PizzaIngredientFactory {
 public:
 	virtual ~PizzaIngredientFactory() = default;
-	virtual unique_ptr<Dough> createDough() = 0;
+	virtual unique_ptr<Dough> createDough() = 0; // For each ingredient we define a create method in our interface.
 	virtual unique_ptr<Sauce> createSauce() = 0;
 	virtual unique_ptr<Cheese> createCheese() = 0;
 	virtual vector<unique_ptr<Veggies>> createVeggies() = 0;
@@ -41,6 +51,29 @@ public:
 #pragma endregion //Building the ingredient factories
 
 #pragma region Building the New York ingredient factory
+/* Java
+public class NYPizzaIngredientFactory implements PizzaIngredientFactory {
+	public Dough createDough() { // For each ingredient in the ingredient family, we create the New York version.
+		return new ThinCrustDough();
+	}
+	public Sauce createSauce() {
+		return new MarinaraSauce();
+	}
+	public Cheese createCheese() {
+		return new ReggianoCheese();
+	}
+	public Veggies[] createVeggies() {
+		Veggies veggies[] = {new Garlic(), new Onion(), new Mushroom(), new RedPepper()};
+		return veggies;
+	}
+	public Pepperoni createPepperoni() {
+		return new SlicedPepperoni();
+	}
+	public Clams createClam() {
+		return new FreshClams();
+	}
+}
+*/
 class NYPizzaIngredientFactory final : public PizzaIngredientFactory {
 public:
 	unique_ptr<Dough> createDough() override { return make_unique<ThinCrustDough>(); } // For each ingredient in the ingredient family, we create the New York version.
