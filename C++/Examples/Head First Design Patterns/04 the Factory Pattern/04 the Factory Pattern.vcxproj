@@ -131,10 +131,16 @@
     <ClCompile Include="01 Building a simple pizza factory.cpp" />
     <ClCompile Include="02 A framework for the pizza store.cpp" />
     <ClCompile Include="03 Sharpen your pencil.cpp" />
+    <ClCompile Include="05 You%27ve waited long enough time for some pizzas.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="01 Building a simple pizza factory.h" />
-    <ClInclude Include="02 A framework for the pizza store.h" />
+    <ClInclude Include="02 A framework for the pizza store 1.h" />
+    <ClInclude Include="02 A framework for the pizza store 2.h" />
+    <ClInclude Include="03 Sharpen your pencil.h" />
+    <ClInclude Include="04 We%27re just missing one thing PIZZA.h" />
+    <ClInclude Include="06 Building the ingredient factories.h" />
+    <ClInclude Include="07 Sharpen your pencil.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

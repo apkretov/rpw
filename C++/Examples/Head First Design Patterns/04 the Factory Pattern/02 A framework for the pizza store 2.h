@@ -1,16 +1,10 @@
 #pragma once
 
 #include <memory>
-#include "01 Building a simple pizza factory.h"
+#include <string_view>
 using std::make_unique;
 using std::string_view;
-
-#pragma region MINE
-class NYStyleCheesePizza final : public CheesePizza {};
-class NYStylePepperoniPizza final : public PepperoniPizza {};
-class NYStyleClamPizza final : public ClamPizza {};
-class NYStyleVeggiePizza final : public VeggiePizza {};
-#pragma endregion //MINE
+using std::unique_ptr;
 
 #pragma region A framework for the pizza store
 /* Java
@@ -27,13 +21,12 @@ public abstract class PizzaStore { // PizzaStore is now abstract.
 	abstract Pizza createPizza(String type); // Our "factory method" is now abstract in PizzaStore. // Now we've moved our factory object to this method.
 }
 */
-
 class PizzaStore { // PizzaStore is now abstract
 public:
 	virtual ~PizzaStore() = default;
 
-	PizzaPtr orderPizza(string_view type) {
-		PizzaPtr pizza;
+	unique_ptr<Pizza> orderPizza(string_view type) {
+		unique_ptr<Pizza> pizza;
 		pizza = createPizza(type); // Now createPizza is back to being a call to a method in the PizzaStore rather than on a factory object
 		pizza->prepare(); // All this looks just the same...
 		pizza->bake();
@@ -42,7 +35,7 @@ public:
 		return pizza;
 	}
 
-	virtual PizzaPtr createPizza(string_view type) = 0; // Our "factory method" is now abstract in PizzaStore. // Now we've moved our factory object to this method
+	virtual unique_ptr<Pizza> createPizza(string_view type) = 0; // Our "factory method" is now abstract in PizzaStore. // Now we've moved our factory object to this method
 };
 #pragma endregion //A framework for the pizza store
 
@@ -62,10 +55,9 @@ public class NYPizzaStore extends PizzaStore { // The NYPizzaStore extends Pizza
 	}
 } // * Note that the orderPizza() method in the superclass has no clue which Pizza we are creating; it just knows it can prepare, bake, cut, and box it!
 */
-
-class NYPizzaStore : public PizzaStore { // The NYPizzaStore extends PizzaStore, so it inherits the orderPizza() method(among others).
+class NYPizzaStore final : public PizzaStore { // The NYPizzaStore extends PizzaStore, so it inherits the orderPizza() method(among others).
 public:
-	PizzaPtr createPizza(string_view item) override { // createPizza() returns a Pizza, and the subclass is fully responsible for which concrete Pizza it instantiates. // We've got to implement createPizza(), since it is abstract in PizzaStore.
+	unique_ptr<Pizza> createPizza(string_view item) override { // createPizza() returns a Pizza, and the subclass is fully responsible for which concrete Pizza it instantiates. // We've got to implement createPizza(), since it is abstract in PizzaStore.
 		if (item == "cheese") // Here's where we create our concrete classes.For each type of Pizza we create the NY style.
 			return make_unique<NYStyleCheesePizza>();
 		else if (item == "veggie")

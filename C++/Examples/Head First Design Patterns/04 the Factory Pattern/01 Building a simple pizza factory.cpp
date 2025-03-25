@@ -23,11 +23,10 @@ public class SimplePizzaFactory { // Here's our new class, the SimplePizzaFactor
 	}
 }
 */
-
 class SimplePizzaFactory {
 public:
-    PizzaPtr createPizza(string_view type) {
-        PizzaPtr pizza;
+    unique_ptr<Pizza> createPizza(string_view type) {
+        unique_ptr<Pizza> pizza;
         if (type == "cheese")
             pizza = make_unique<CheesePizza>();
         else if (type == "pepperoni")
@@ -59,14 +58,13 @@ public class PizzaStore {
 	}
 }
 */
-
 class PizzaStore {
 	SimplePizzaFactory factory_; // Now we give PizzaStore a reference to a SimplePizzaFactory.
 public:
 	explicit PizzaStore(SimplePizzaFactory factory) : factory_(std::move(factory)) {} // PizzaStore gets the factory passed to it in the constructor.
 
-	PizzaPtr orderPizza(const string &type) {
-		PizzaPtr pizza = factory_.createPizza(type); // And the orderPizza() method uses the factory to create its pizzas by simply passing on the type of the order. // Notice that we've replaced the new operator with a create method on the factory object.No more concrete instantiations here!
+	unique_ptr<Pizza> orderPizza(const string &type) {
+		unique_ptr<Pizza> pizza = factory_.createPizza(type); // And the orderPizza() method uses the factory to create its pizzas by simply passing on the type of the order. // Notice that we've replaced the new operator with a create method on the factory object.No more concrete instantiations here!
 		pizza->prepare();
 		pizza->bake();
 		pizza->cut();
