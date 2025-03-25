@@ -56,9 +56,9 @@ public:
 			cout << " " << topping << endl;
 	}
 
-	virtual void bake() { cout << "Bake for 25 minutes at 350" << endl; }
-	virtual void cut() { cout << "Cutting the pizza into diagonal slices" << endl; }
-	virtual void box() { cout << "Place pizza in official PizzaStore box" << endl; }
+	virtual void bake() { cout << "Bake for 25 minutes at 350\n"; }
+	virtual void cut() { cout << "Cutting the pizza into diagonal slices\n"; }
+	virtual void box() { cout << "Place pizza in official PizzaStore box\n"; }
 	string getName() const { return name; }
 };
 #pragma endregion //Were just missing one thing PIZZA
@@ -105,18 +105,14 @@ public:
 		toppings.push_back("Shredded Mozzarella Cheese"); // The Chicago style deep dish pizza has lots of mozzarella cheese!
 	}
 
-	void cut() override { cout << "Cutting the pizza into square slices" << endl; } // The Chicago style pizza also overrides the cut() method so that the pieces are cut into squares.
+	void cut() override { cout << "Cutting the pizza into square slices\n"; } // The Chicago style pizza also overrides the cut() method so that the pieces are cut into squares.
 };
 #pragma endregion //Now we just need some concrete subclasses...
 
 #pragma region MINE
-class PepperoniPizza : public Pizza {};
-class ClamPizza : public Pizza {};
-class VeggiePizza : public Pizza {};
-
-class NYStylePepperoniPizza final : public PepperoniPizza {};
-class NYStyleClamPizza final : public ClamPizza {};
-class NYStyleVeggiePizza final : public VeggiePizza {};
+class NYStylePepperoniPizza final : public Pizza {};
+class NYStyleClamPizza final : public Pizza {};
+class NYStyleVeggiePizza final : public Pizza {};
 #pragma endregion //MINE
 
 #include "02 A framework for the pizza store 2.h"

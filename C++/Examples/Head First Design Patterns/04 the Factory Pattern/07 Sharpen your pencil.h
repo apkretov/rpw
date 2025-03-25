@@ -1,6 +1,6 @@
 #pragma once
 
-#include "05 Building the ingredient factories.h"
+#include "06 Building the ingredient factories.h"
 
 class ThickCrustDough final : public Dough {}; // The Chicago ingredients.
 class PlumTomatoSauce final : public Sauce {};

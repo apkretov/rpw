@@ -141,6 +141,7 @@
     <ClInclude Include="04 We%27re just missing one thing PIZZA.h" />
     <ClInclude Include="06 Building the ingredient factories.h" />
     <ClInclude Include="07 Sharpen your pencil.h" />
+    <ClInclude Include="08 Reworking the pizzas.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
