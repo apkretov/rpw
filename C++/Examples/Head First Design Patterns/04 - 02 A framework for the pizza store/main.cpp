@@ -1,8 +1,5 @@
-﻿#if 1
-
-#include <memory>
 #include "../../stdafx.h"
-#include "02 A framework for the pizza store 1.h"
+#include "NYPizzaStore.h"
 
 int main(int argc, char *argv[]) {
 	print_file_line();
@@ -16,4 +13,3 @@ int main(int argc, char *argv[]) {
 
 	return 0;
 }
-#endif //1
