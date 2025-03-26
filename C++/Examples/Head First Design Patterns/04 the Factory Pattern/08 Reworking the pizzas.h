@@ -1,12 +1,14 @@
 #pragma once
 
 #include <iostream>
+#include <memory>
 #include <string>
 #include <vector>
 #include "06 Building the ingredient factories.h"
 
 using std::cout;
 using std::string;
+using std::unique_ptr;
 using std::vector;
 
 /* Java
@@ -52,3 +54,5 @@ public:
 		return "";
 	}
 };
+
+using PizzaPtr = unique_ptr<Pizza>; //MINE

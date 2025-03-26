@@ -27,7 +27,7 @@ int main(int argc, char *argv[]) {
 	unique_ptr<PizzaStore> nyStore = make_unique<NYPizzaStore>(); // First we create two different stores.
 	unique_ptr<PizzaStore> chicagoStore = make_unique<ChicagoPizzaStore>();
 
-	unique_ptr<Pizza> pizza = nyStore->orderPizza("cheese"); // Then use one store to make Ethan's order.
+	PizzaPtr pizza = nyStore->orderPizza("cheese"); // Then use one store to make Ethan's order.
 	cout << "Ethan ordered a " << pizza->getName() << "\n" << endl;
 
 	pizza = chicagoStore->orderPizza("cheese"); // And the other for Joel's.

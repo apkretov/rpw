@@ -1,11 +1,13 @@
 #pragma once
 
 #include <iostream>
+#include <memory>
 #include <string>
 #include <vector>
 using std::cout;
 using std::endl;
 using std::string;
+using std::unique_ptr;
 using std::vector;
 
 #pragma region Were just missing one thing PIZZA // We’re just missing one thing: PIZZA!
@@ -24,18 +26,10 @@ public abstract class Pizza { // We'll start with an abstract Pizza class and al
 			System.out.println(" " + toppings.get(i));
 		}
 	}
-	void bake() {
-		System.out.println("Bake for 25 minutes at 350");
-	}
-	void cut() {
-		System.out.println("Cutting the pizza into diagonal slices");
-	}
-	void box() {
-		System.out.println("Place pizza in official PizzaStore box");
-	}
-	public String getName() {
-		return name;
-	}
+	void bake() { System.out.println("Bake for 25 minutes at 350");	}
+	void cut() { System.out.println("Cutting the pizza into diagonal slices"); }
+	void box() { System.out.println("Place pizza in official PizzaStore box"); }
+	public String getName() { return name; }
 }
 */
 class Pizza { // We'll start with an abstract Pizza class and all the concrete pizzas will derive from this.
@@ -62,6 +56,8 @@ public:
 	string getName() const { return name; }
 };
 #pragma endregion //Were just missing one thing PIZZA
+
+using PizzaPtr = unique_ptr<Pizza>; //MINE
 
 #pragma region Now we just need some concrete subclasses...
 /* Java

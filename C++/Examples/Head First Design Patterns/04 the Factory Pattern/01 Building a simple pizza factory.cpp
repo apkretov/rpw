@@ -25,8 +25,8 @@ public class SimplePizzaFactory { // Here's our new class, the SimplePizzaFactor
 */
 class SimplePizzaFactory {
 public:
-    unique_ptr<Pizza> createPizza(string_view type) {
-        unique_ptr<Pizza> pizza;
+    PizzaPtr createPizza(string_view type) {
+        PizzaPtr pizza;
         if (type == "cheese")
             pizza = make_unique<CheesePizza>();
         else if (type == "pepperoni")
