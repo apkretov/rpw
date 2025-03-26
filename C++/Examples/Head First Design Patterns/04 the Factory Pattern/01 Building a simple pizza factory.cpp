@@ -1,4 +1,4 @@
-#if 0
+#if 1
 
 #include <memory>
 #include "../../stdafx.h"
@@ -10,15 +10,14 @@ using namespace std;
 public class SimplePizzaFactory { // Here's our new class, the SimplePizzaFactory. It has one job in life : creating pizzas for its clients.
 	public Pizza createPizza(String type) { // First we define a createPizza() method in the factory.This is the method all clients will use to instantiate new objects.
 		Pizza pizza = null;
-		if (type.equals("cheese")) { // Here's the code we plucked out of the orderPizza() method.
+		if (type.equals("cheese")) // Here's the code we plucked out of the orderPizza() method.
 			pizza = new CheesePizza();
-		} else if (type.equals("pepperoni")) {
+		else if (type.equals("pepperoni"))
 			pizza = new PepperoniPizza();
-		} else if (type.equals("clam")) {
+		else if (type.equals("clam"))
 			pizza = new ClamPizza();
-		} else if (type.equals("veggie")) {
+		else if (type.equals("veggie"))
 			pizza = new VeggiePizza();
-		}
 		return pizza;
 	}
 }
@@ -63,8 +62,8 @@ class PizzaStore {
 public:
 	explicit PizzaStore(SimplePizzaFactory factory) : factory_(std::move(factory)) {} // PizzaStore gets the factory passed to it in the constructor.
 
-	unique_ptr<Pizza> orderPizza(const string &type) {
-		unique_ptr<Pizza> pizza = factory_.createPizza(type); // And the orderPizza() method uses the factory to create its pizzas by simply passing on the type of the order. // Notice that we've replaced the new operator with a create method on the factory object.No more concrete instantiations here!
+	PizzaPtr orderPizza(const string &type) {
+		PizzaPtr pizza = factory_.createPizza(type); // And the orderPizza() method uses the factory to create its pizzas by simply passing on the type of the order. // Notice that we've replaced the new operator with a create method on the factory object.No more concrete instantiations here!
 		pizza->prepare();
 		pizza->bake();
 		pizza->cut();

@@ -15,7 +15,7 @@ class CaliforniaStyleVeggiePizza final : public Pizza {};
 
 class ChicagoPizzaStore : public PizzaStore {
 public:
-	unique_ptr<Pizza> createPizza(string_view item) override {
+	PizzaPtr createPizza(string_view item) override {
 		if (item == "cheese")
 			return make_unique<ChicagoStyleCheesePizza>();
 		else if (item == "veggie")
@@ -30,7 +30,7 @@ public:
 
 class CaliforniaPizzaStore : public PizzaStore {
 public:
-	unique_ptr<Pizza> createPizza(string_view item) override {
+	PizzaPtr createPizza(string_view item) override {
 		if (item == "cheese")
 			return make_unique<CaliforniaStyleCheesePizza>();
 		else if (item == "veggie")

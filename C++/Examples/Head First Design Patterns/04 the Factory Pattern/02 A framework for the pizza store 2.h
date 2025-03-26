@@ -25,8 +25,8 @@ class PizzaStore { // PizzaStore is now abstract
 public:
 	virtual ~PizzaStore() = default;
 
-	unique_ptr<Pizza> orderPizza(string_view type) {
-		unique_ptr<Pizza> pizza;
+	PizzaPtr orderPizza(string_view type) {
+		PizzaPtr pizza;
 		pizza = createPizza(type); // Now createPizza is back to being a call to a method in the PizzaStore rather than on a factory object
 		pizza->prepare(); // All this looks just the same...
 		pizza->bake();
@@ -35,7 +35,7 @@ public:
 		return pizza;
 	}
 
-	virtual unique_ptr<Pizza> createPizza(string_view type) = 0; // Our "factory method" is now abstract in PizzaStore. // Now we've moved our factory object to this method
+	virtual PizzaPtr createPizza(string_view type) = 0; // Our "factory method" is now abstract in PizzaStore. // Now we've moved our factory object to this method
 };
 #pragma endregion //A framework for the pizza store
 
@@ -59,7 +59,7 @@ public class NYPizzaStore extends PizzaStore { // The NYPizzaStore extends Pizza
 */
 class NYPizzaStore final : public PizzaStore { // The NYPizzaStore extends PizzaStore, so it inherits the orderPizza() method(among others).
 public:
-	unique_ptr<Pizza> createPizza(string_view item) override { // createPizza() returns a Pizza, and the subclass is fully responsible for which concrete Pizza it instantiates. // We've got to implement createPizza(), since it is abstract in PizzaStore.
+	PizzaPtr createPizza(string_view item) override { // createPizza() returns a Pizza, and the subclass is fully responsible for which concrete Pizza it instantiates. // We've got to implement createPizza(), since it is abstract in PizzaStore.
 		if (item == "cheese") // Here's where we create our concrete classes.For each type of Pizza we create the NY style.
 			return make_unique<NYStyleCheesePizza>();
 		else if (item == "veggie")
