@@ -39,6 +39,8 @@ public:
 };
 #pragma endregion //A framework for the pizza store
 
+using PizzaStorePtr = unique_ptr<PizzaStore>; //MINE
+
 #pragma region Lets make a PizzaStore //Let's make a PizzaStore
 /* Java
 public class NYPizzaStore extends PizzaStore { // The NYPizzaStore extends PizzaStore, so it inherits the orderPizza() method(among others).

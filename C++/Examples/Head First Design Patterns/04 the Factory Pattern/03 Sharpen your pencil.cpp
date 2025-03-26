@@ -10,7 +10,7 @@ using namespace std;
 int main(int argc, char *argv[]) {
 	print_file_line();
 
-	array<unique_ptr<PizzaStore>, 2> stores = {make_unique<ChicagoPizzaStore>(), make_unique<CaliforniaPizzaStore>()};
+	array<PizzaStorePtr, 2> stores = {make_unique<ChicagoPizzaStore>(), make_unique<CaliforniaPizzaStore>()};
 	for (const auto& store : stores) {
 		auto cheese_pizza = store->createPizza("cheese");
 		cheese_pizza->prepare();

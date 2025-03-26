@@ -24,8 +24,8 @@ public class PizzaTestDrive {
 int main(int argc, char *argv[]) {
 	print_file_line();
 
-	unique_ptr<PizzaStore> nyStore = make_unique<NYPizzaStore>(); // First we create two different stores.
-	unique_ptr<PizzaStore> chicagoStore = make_unique<ChicagoPizzaStore>();
+	PizzaStorePtr nyStore = make_unique<NYPizzaStore>(); // First we create two different stores.
+	PizzaStorePtr chicagoStore = make_unique<ChicagoPizzaStore>();
 
 	PizzaPtr pizza = nyStore->orderPizza("cheese"); // Then use one store to make Ethan's order.
 	cout << "Ethan ordered a " << pizza->getName() << "\n" << endl;
