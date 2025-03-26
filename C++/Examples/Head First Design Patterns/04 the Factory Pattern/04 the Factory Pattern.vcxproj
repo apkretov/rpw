@@ -132,7 +132,7 @@
     <ClCompile Include="02 A framework for the pizza store.cpp" />
     <ClCompile Include="03 Sharpen your pencil.cpp" />
     <ClCompile Include="05 You%27ve waited long enough time for some pizzas.cpp" />
-    <ClCompile Include="08 Reworking the pizzas.cpp" />
+    <ClCompile Include="08 Reworking the pizzas - SUSPENDED.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="01 Building a simple pizza factory.h" />
