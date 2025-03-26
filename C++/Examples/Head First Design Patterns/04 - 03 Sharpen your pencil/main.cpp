@@ -1,17 +1,15 @@
-#if 1
 
 #include <array>
-#include <memory>
 #include "../../stdafx.h"
-#include "02 A framework for the pizza store 1.h"
-#include "03 Sharpen your pencil.h"
-using namespace std;
+#include "NYPizzaStore.h"
+#include "ChicagoPizzaStore.h"
+#include "CaliforniaPizzaStore.h"
 
 int main(int argc, char *argv[]) {
 	print_file_line();
 
 	array<PizzaStorePtr, 2> stores = {make_unique<ChicagoPizzaStore>(), make_unique<CaliforniaPizzaStore>()};
-	for (const auto& store : stores) {
+	for (const auto &store : stores) {
 		auto cheese_pizza = store->createPizza("cheese");
 		cheese_pizza->prepare();
 		cheese_pizza->bake();
@@ -22,4 +20,3 @@ int main(int argc, char *argv[]) {
 
 	return 0;
 }
-#endif //1
