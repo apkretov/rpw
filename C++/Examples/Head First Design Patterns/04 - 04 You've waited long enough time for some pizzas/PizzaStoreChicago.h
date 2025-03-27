@@ -14,7 +14,8 @@ public:
 			return make_unique<ChicagoStyleClamPizza>();
 		else if (item == "pepperoni")
 			return make_unique<ChicagoStylePepperoniPizza>();
-		else return nullptr;
+		else 
+			return nullptr;
 	}
 };
 #pragma endregion //MINE

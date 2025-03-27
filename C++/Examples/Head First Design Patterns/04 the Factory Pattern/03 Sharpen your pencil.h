@@ -24,7 +24,8 @@ public:
 			return make_unique<ChicagoStyleClamPizza>();
 		else if (item == "pepperoni")
 			return make_unique<ChicagoStylePepperoniPizza>();
-		else return nullptr;
+		else 
+			return nullptr;
 	}
 };
 
@@ -39,7 +40,8 @@ public:
 			return make_unique<CaliforniaStyleClamPizza>();
 		else if (item == "pepperoni")
 			return make_unique<CaliforniaStylePepperoniPizza>();
-		else return nullptr;
+		else 
+			return nullptr;
 	}
 };
 #pragma endregion //MINE

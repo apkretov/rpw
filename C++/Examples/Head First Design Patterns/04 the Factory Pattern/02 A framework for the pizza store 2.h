@@ -68,7 +68,8 @@ public:
 			return make_unique<NYStyleClamPizza>();
 		else if (item == "pepperoni")
 			return make_unique<NYStylePepperoniPizza>();
-		else return nullptr;
+		else 
+			return nullptr;
 	}
 }; // * Note that the orderPizza() method in the superclass has no clue which Pizza we are creating; it just knows it can prepare, bake, cut, and box it!
 #pragma endregion //Lets make a PizzaStore
