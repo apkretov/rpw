@@ -145,7 +145,7 @@ public class WeatherStation {
 	public static void main(String[] args) {
 		WeatherData weatherData = new WeatherData(); // First, create the WeatherData object.
 		CurrentConditionsDisplay currentDisplay = new CurrentConditionsDisplay(weatherData); // Create the three displays and pass them the WeatherData object.
-		StatisticsDisplay statisticsDisplay = new StatisticsDisplay(weatherData); // If you don’t want to download the code, you can comment out these two lines and run it.
+		StatisticsDisplay statisticsDisplay = new StatisticsDisplay(weatherData); // If you don't want to download the code, you can comment out these two lines and run it.
 		ForecastDisplay forecastDisplay = new ForecastDisplay(weatherData);
 		weatherData.setMeasurements(80, 65, 30.4f); // Simulate new weather measurements.
 		weatherData.setMeasurements(82, 70, 29.2f);
@@ -160,7 +160,7 @@ int main() {
 	WeatherData weatherData; // First, create the WeatherData object.
 	CurrentConditionsDisplay currentDisplay(weatherData); // Create the three displays and pass them the WeatherData object.
 #ifdef ORIG 
-	StatisticsDisplay statisticsDisplay(weatherData); // If you don’t want to download the code, you can comment out these two lines and run it.
+	StatisticsDisplay statisticsDisplay(weatherData); // If you don't want to download the code, you can comment out these two lines and run it.
 	ForecastDisplay forecastDisplay(weatherData);
 #endif //ORIG
 	weatherData.setMeasurements(80, 65, 30.4); // Simulate new weather measurements.

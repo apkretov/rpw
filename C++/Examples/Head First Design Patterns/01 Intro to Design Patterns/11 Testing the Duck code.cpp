@@ -21,11 +21,11 @@ public interface FlyBehavior{ // 2. Type and compile the FlyBehavior interface (
 }
 
 public class FlyWithWings implements FlyBehavior {
-	public void fly() {	System.out.println(“I’m flying!!”); }
+	public void fly() {	System.out.println(“I'm flying!!”); }
 }
 
 public class FlyNoWay implements FlyBehavior {
-	public void fly() { System.out.println(“I can’t fly”); }
+	public void fly() { System.out.println(“I can't fly”); }
 }
 
 public interface QuackBehavior{ // 3. Type and compile the QuackBehavior interface (QuackBehavior.java) and the three behavior implementation classes(Quack.java, MuteQuack.java, and Sqeak.java).
@@ -47,8 +47,8 @@ public class Squeak implements QuackBehavior {
 public class MiniDuckSimulator { // Type and compile the test class (MiniDuckSimulator.java).
 	public static void main(String[] args) {
 		Duck mallard = new MallardDuck();
-		mallard.performQuack(); // This calls the MallardDuck’s inherited performQuack() method, which then delegates to the object’s QuackBehavior (i.e. calls quack() on the duck’s inherited quackBehavior reference).
-		mallard.performFly(); // Then we do the same thing with MallardDuck’s inherited performFly() method.
+		mallard.performQuack(); // This calls the MallardDuck's inherited performQuack() method, which then delegates to the object's QuackBehavior (i.e. calls quack() on the duck's inherited quackBehavior reference).
+		mallard.performFly(); // Then we do the same thing with MallardDuck's inherited performFly() method.
 	}
 }
 */
@@ -57,8 +57,8 @@ int main() {
 	print_file_line();
 
 	MallardDuck mallard;
-	mallard.performQuack(); // This calls the MallardDuck’s inherited performQuack() method, which then delegates to the object’s QuackBehavior (i.e. calls quack() on the duck’s inherited quackBehavior reference).
-	mallard.performFly(); // Then we do the same thing with MallardDuck’s inherited performFly() method.
+	mallard.performQuack(); // This calls the MallardDuck's inherited performQuack() method, which then delegates to the object's QuackBehavior (i.e. calls quack() on the duck's inherited quackBehavior reference).
+	mallard.performFly(); // Then we do the same thing with MallardDuck's inherited performFly() method.
 
 	return 0;
 }

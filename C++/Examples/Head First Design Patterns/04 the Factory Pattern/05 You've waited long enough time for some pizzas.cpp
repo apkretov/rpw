@@ -8,15 +8,15 @@
 #include "03 Sharpen your pencil.h"
 using namespace std;
 
-#pragma region You’ve waited long enough, time for some pizzas!
+#pragma region You've waited long enough, time for some pizzas!
 /* Java
 public class PizzaTestDrive {
 	public static void main(String[] args) {
 		PizzaStore nyStore = new NYPizzaStore(); // First we create two different stores.
 		PizzaStore chicagoStore = new ChicagoPizzaStore();
-		Pizza pizza = nyStore.orderPizza("cheese"); // Then use one one store to make Ethan’s order.
+		Pizza pizza = nyStore.orderPizza("cheese"); // Then use one one store to make Ethan's order.
 		System.out.println("Ethan ordered a " + pizza.getName() + "\n");
-		pizza = chicagoStore.orderPizza("cheese"); // And the other for Joel’s.
+		pizza = chicagoStore.orderPizza("cheese"); // And the other for Joel's.
 		System.out.println("Joel ordered a " + pizza.getName() + "\n");
 	}
 }
@@ -35,5 +35,5 @@ int main(int argc, char *argv[]) {
 
 	return 0;
 }
-#pragma endregion //You’ve waited long enough, time for some pizzas!
+#pragma endregion //You've waited long enough, time for some pizzas!
 #endif //1

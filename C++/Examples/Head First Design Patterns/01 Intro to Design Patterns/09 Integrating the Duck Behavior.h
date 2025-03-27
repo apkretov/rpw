@@ -19,5 +19,5 @@ public:
 
 struct MallardDuck : Duck {
 	MallardDuck() : Duck(make_unique<Quack>(), make_unique<FlyWithWings>()) {}
-	void display() const override { cout << "I’m a real Mallard duck\n"; }
+	void display() const override { cout << "I'm a real Mallard duck\n"; }
 };

@@ -29,9 +29,9 @@ struct FlyBehavior {
 };
 
 struct FlyWithWings : FlyBehavior {
-	void fly() const override { cout << "I’m flying!!!\n"; }
+	void fly() const override { cout << "I'm flying!!!\n"; }
 };
 
 struct FlyNoWay : FlyBehavior {
-	void fly() const override { cout << "I can’t fly.\n"; }
+	void fly() const override { cout << "I can't fly.\n"; }
 };

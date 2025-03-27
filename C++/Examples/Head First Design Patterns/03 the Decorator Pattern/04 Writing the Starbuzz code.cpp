@@ -65,9 +65,9 @@ struct HouseBlend : public Beverage { // Okay, here's another Beverage. All we d
 /*Java
 public class Mocha extends CondimentDecorator { // Mocha is a decorator, so we extend CondimentDecorator. // Remember, CondimentDecorator extends Beverage.
 	Beverage beverage; // An instance variable to hold the beverage we are wrapping.
-	public Mocha(Beverage beverage) { this.beverage = beverage;	} // A way to set this instance	variable to the object we are wrapping.Here, we’re going to pass the beverage we’re wrapping to the decorator’s constructor.
+	public Mocha(Beverage beverage) { this.beverage = beverage;	} // A way to set this instance	variable to the object we are wrapping.Here, we're going to pass the beverage we're wrapping to the decorator's constructor.
 	public String getDescription() { return beverage.getDescription() + ", Mocha"; } // We want our description to not only include the beverage - say "Dark Roast" - but also to include each item decorating the beverage, for instance, "Dark Roast, Mocha". So we first delegate to the object we are decorating to get its description, then append ", Mocha" to that description.
-	public double cost() { return .20 + beverage.cost(); } // Now we need to compute the cost of our beverage with Mocha.First, we delegate the call to the object we’re decorating, so that it can compute the cost; then, we add the cost of Mocha to the result.
+	public double cost() { return .20 + beverage.cost(); } // Now we need to compute the cost of our beverage with Mocha.First, we delegate the call to the object we're decorating, so that it can compute the cost; then, we add the cost of Mocha to the result.
 }
 */
 

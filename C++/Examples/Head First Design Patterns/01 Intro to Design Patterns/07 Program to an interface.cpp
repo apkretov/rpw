@@ -11,11 +11,11 @@ Dog d = new Dog(); // Declaring the variable “d” as type Dog (a concrete impleme
 d.bark();
 
 // But programming to an interface/supertype would be:
-Animal animal = new Dog(); // We know it’s a Dog, but we can now use the animal reference polymorphically.
+Animal animal = new Dog(); // We know it's a Dog, but we can now use the animal reference polymorphically.
 animal.makeSound();
 
 // Even better, rather than hard-coding the instantiation of the subtype (like new Dog()) into the code, assign the concrete implementation object at runtime:
-a = getAnimal(); // We don’t know WHAT the actual animal subtype is... all we care about is that it knows how to respond to makeSound().
+a = getAnimal(); // We don't know WHAT the actual animal subtype is... all we care about is that it knows how to respond to makeSound().
 a.makeSound();
 */
 
@@ -40,7 +40,7 @@ void programming_to_implementation() { // Programming to an implementation would
 }
 
 void programming_to_interface_supertype() { // But programming to an interface/supertype would be:
-	auto animal = make_unique<Dog>(); // We know it’s a Dog, but we can now use the animal reference polymorphically.
+	auto animal = make_unique<Dog>(); // We know it's a Dog, but we can now use the animal reference polymorphically.
 	animal->makeSound();
 }
 
@@ -54,7 +54,7 @@ unique_ptr<Animal> getAnimal(string_view animal_type) {
 }
 
 void assign_implementation_at_runtime() { // Even better, rather than hard-coding the instantiation of the subtype (like new Dog()) into the code, assign the concrete implementation object at runtime:
-	auto a = getAnimal("cat"); // We don’t know WHAT the actual animal subtype is... all we care about is that it knows how to respond to makeSound().
+	auto a = getAnimal("cat"); // We don't know WHAT the actual animal subtype is... all we care about is that it knows how to respond to makeSound().
 	a->makeSound();
 	
 	a = getAnimal("dog"); 

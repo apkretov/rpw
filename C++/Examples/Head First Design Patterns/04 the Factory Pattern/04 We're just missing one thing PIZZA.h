@@ -10,7 +10,7 @@ using std::string;
 using std::unique_ptr;
 using std::vector;
 
-#pragma region Were just missing one thing PIZZA // We’re just missing one thing: PIZZA!
+#pragma region Were just missing one thing PIZZA // We're just missing one thing: PIZZA!
 /*Java
 public abstract class Pizza { // We'll start with an abstract Pizza class and all the concrete pizzas will derive from this.
 	String name; // Each Pizza has a name, a type of dough, a type of sauce, and a set of toppings.
