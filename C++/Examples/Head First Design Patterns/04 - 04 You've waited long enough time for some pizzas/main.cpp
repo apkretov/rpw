@@ -1,14 +1,14 @@
-#if 1
-
-#define YOU_VE_WAITED_LONG_ENOUGH_TIME_FOR_SOME_PIZZAS // For 03 Sharpen your pencil.h
-
 #include <memory>
 #include "../../stdafx.h"
-#include "04 We're just missing one thing PIZZA.h"
-#include "03 Sharpen your pencil.h"
+#include "PizzaStyleChicagoCheese.h"
+#include "PizzaStyleNYCheese.h"
+#include "PizzaStyleOthers.h"
+#include "PizzaStoreCalifornia.h"
+#include "PizzaStoreChicago.h"
+#include "PizzaStoreNY.h"
 using namespace std;
 
-#pragma region Youve waited long enough time for some pizzas //You've waited long enough, time for some pizzas!
+#pragma region Youve waited long enough, time for some pizzas! //You've waited long enough, time for some pizzas!
 /* Java
 public class PizzaTestDrive {
 	public static void main(String[] args) {
@@ -28,12 +28,11 @@ int main(int argc, char *argv[]) {
 	PizzaStorePtr chicagoStore = make_unique<ChicagoPizzaStore>();
 
 	PizzaPtr pizza = nyStore->orderPizza("cheese"); // Then use one store to make Ethan's order.
-	cout << "Ethan ordered a " << pizza->getName() << "\n" << endl;
+	cout << "Ethan ordered a " << pizza->getName() << "\n\n";
 
 	pizza = chicagoStore->orderPizza("cheese"); // And the other for Joel's.
-	cout << "Joel ordered a " << pizza->getName() << "\n" << endl;
+	cout << "Joel ordered a " << pizza->getName() << "\n\n";
 
 	return 0;
 }
-#pragma endregion //Youve waited long enough time for some pizzas
-#endif //1
+#pragma endregion //Youve waited long enough, time for some pizzas!

@@ -38,12 +38,12 @@ public:
 	virtual ~Pizza() = default;
 
 	virtual void prepare() {
-		cout << "Preparing " << name << endl;
-		cout << "Tossing dough..." << endl;
-		cout << "Adding sauce..." << endl;
-		cout << "Adding toppings: " << endl;
-		for (const auto &topping : toppings)
-			cout << " " << topping << endl;
+		cout << "Preparing " << name << '\n';
+        cout << "Tossing dough...\n";
+        cout << "Adding sauce...\n";
+        cout << "Adding toppings:\n";
+        for (const auto &topping : toppings)
+			cout << " " << topping << '\n';
 	}
 
 	virtual void bake() { cout << "Bake for 25 minutes at 350\n"; }
@@ -54,57 +54,3 @@ public:
 #pragma endregion //Were just missing one thing PIZZA
 
 using PizzaPtr = unique_ptr<Pizza>; //MINE
-
-//#pragma region Now we just need some concrete subclasses...
-///* Java
-//public class NYStyleCheesePizza extends Pizza {
-//	public NYStyleCheesePizza() {
-//		name = "NY Style Sauce and Cheese Pizza"; // The NY Pizza has its own marinara style sauce and thin crust.
-//		dough = "Thin Crust Dough";
-//		sauce = "Marinara Sauce";
-//		toppings.add("Grated Reggiano Cheese"); // And one topping, reggiano cheese!
-//	}
-//}
-//*/
-//class NYStyleCheesePizza final : public Pizza {
-//public:
-//	NYStyleCheesePizza() {
-//		name = "NY Style Sauce and Cheese Pizza"; // The NY Pizza has its own marinara style sauce and thin crust.
-//		dough = "Thin Crust Dough";
-//		sauce = "Marinara Sauce";
-//		toppings.push_back("Grated Reggiano Cheese"); // And one topping, reggiano cheese!
-//	}
-//};
-//
-///* Java
-//public class ChicagoStyleCheesePizza extends Pizza {
-//	public ChicagoStyleCheesePizza() { // The Chicago Pizza uses plum tomatoes as a sauce along with extra thick crust.
-//		name = "Chicago Style Deep Dish Cheese Pizza";
-//		dough = "Extra Thick Crust Dough";
-//		sauce = "Plum Tomato Sauce";
-//		toppings.add("Shredded Mozzarella Cheese"); // The Chicago style deep dish pizza has lots of mozzarella cheese!
-//	}
-//
-//	void cut() { System.out.println("Cutting the pizza into square slices"); } // The Chicago style pizza also overrides the cut() method so that the pieces are cut into squares.
-//}
-//*/
-//class ChicagoStyleCheesePizza : public Pizza {
-//public:
-//	ChicagoStyleCheesePizza() { // The Chicago Pizza uses plum tomatoes as a sauce along with extra thick crust.
-//		name = "Chicago Style Deep Dish Cheese Pizza";
-//		dough = "Extra Thick Crust Dough";
-//		sauce = "Plum Tomato Sauce";
-//		toppings.push_back("Shredded Mozzarella Cheese"); // The Chicago style deep dish pizza has lots of mozzarella cheese!
-//	}
-//
-//	void cut() override { cout << "Cutting the pizza into square slices\n"; } // The Chicago style pizza also overrides the cut() method so that the pieces are cut into squares.
-//};
-//#pragma endregion //Now we just need some concrete subclasses...
-//
-//#pragma region MINE
-//class NYStylePepperoniPizza final : public Pizza {};
-//class NYStyleClamPizza final : public Pizza {};
-//class NYStyleVeggiePizza final : public Pizza {};
-//#pragma endregion //MINE
-//
-//#include "02 A framework for the pizza store 2.h"

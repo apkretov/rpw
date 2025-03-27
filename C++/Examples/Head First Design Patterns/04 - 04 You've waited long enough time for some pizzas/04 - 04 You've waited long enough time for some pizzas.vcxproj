@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{f63945cc-e3d7-45cb-bb19-63b84f9fb215}</ProjectGuid>
+    <ProjectGuid>{8fb50fcd-1940-421c-819d-77a94356222b}</ProjectGuid>
     <RootNamespace>My0404Youvewaitedlongenoughtimeforsomepizzas</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
@@ -128,8 +128,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="NYStyleCheesePizza.h" />
+    <ClInclude Include="PizzaStyleChicagoCheese.h" />
+    <ClInclude Include="PizzaStyleOthers.h" />
+    <ClInclude Include="PizzaStoreChicago.h" />
+    <ClInclude Include="PizzaStoreCalifornia.h" />
+    <ClInclude Include="PizzaStoreNY.h" />
+    <ClInclude Include="PizzaStore.h" />
+    <ClInclude Include="PizzaStyleNYCheese.h" />
     <ClInclude Include="Pizza.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

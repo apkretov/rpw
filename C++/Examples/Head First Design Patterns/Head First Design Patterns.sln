@@ -17,6 +17,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "04 - 02 A framework for the
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "04 - 03 Sharpen your pencil", "04 - 03 Sharpen your pencil\04 - 03 Sharpen your pencil.vcxproj", "{246C5C0A-26F8-4899-B57D-CAB67AA36D58}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "04 - 04 You've waited long enough time for some pizzas", "04 - 04 You've waited long enough time for some pizzas\04 - 04 You've waited long enough time for some pizzas.vcxproj", "{8FB50FCD-1940-421C-819D-77A94356222B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -81,6 +83,14 @@ Global
 		{246C5C0A-26F8-4899-B57D-CAB67AA36D58}.Release|x64.Build.0 = Release|x64
 		{246C5C0A-26F8-4899-B57D-CAB67AA36D58}.Release|x86.ActiveCfg = Release|Win32
 		{246C5C0A-26F8-4899-B57D-CAB67AA36D58}.Release|x86.Build.0 = Release|Win32
+		{8FB50FCD-1940-421C-819D-77A94356222B}.Debug|x64.ActiveCfg = Debug|x64
+		{8FB50FCD-1940-421C-819D-77A94356222B}.Debug|x64.Build.0 = Debug|x64
+		{8FB50FCD-1940-421C-819D-77A94356222B}.Debug|x86.ActiveCfg = Debug|Win32
+		{8FB50FCD-1940-421C-819D-77A94356222B}.Debug|x86.Build.0 = Debug|Win32
+		{8FB50FCD-1940-421C-819D-77A94356222B}.Release|x64.ActiveCfg = Release|x64
+		{8FB50FCD-1940-421C-819D-77A94356222B}.Release|x64.Build.0 = Release|x64
+		{8FB50FCD-1940-421C-819D-77A94356222B}.Release|x86.ActiveCfg = Release|Win32
+		{8FB50FCD-1940-421C-819D-77A94356222B}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
