@@ -1,9 +1,9 @@
 
 #include <array>
 #include "../../stdafx.h"
-#include "NYPizzaStore.h"
-#include "ChicagoPizzaStore.h"
-#include "CaliforniaPizzaStore.h"
+#include "PizzaStoreNY.h"
+#include "PizzaStoreChicago.h"
+#include "PizzaStoreCalifornia.h"
 
 int main(int argc, char *argv[]) {
 	print_file_line();

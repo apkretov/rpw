@@ -131,9 +131,9 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ChicagoPizzaStore.h" />
-    <ClInclude Include="CaliforniaPizzaStore.h" />
-    <ClInclude Include="NYPizzaStore.h" />
+    <ClInclude Include="PizzaStoreChicago.h" />
+    <ClInclude Include="PizzaStoreCalifornia.h" />
+    <ClInclude Include="PizzaStoreNY.h" />
     <ClInclude Include="Pizza.h" />
     <ClInclude Include="PizzaStore.h" />
   </ItemGroup>
