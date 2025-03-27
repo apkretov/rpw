@@ -7,7 +7,7 @@ int main(int argc, char *argv[]) {
 
 	SimplePizzaFactory factory;
 	PizzaStore store{factory};
-	auto cheese_pizza = factory.createPizza("cheese");
+	PizzaPtr cheese_pizza = factory.createPizza("cheese");
 	cheese_pizza->prepare();
 	cheese_pizza->bake();
 	cheese_pizza->cut();
