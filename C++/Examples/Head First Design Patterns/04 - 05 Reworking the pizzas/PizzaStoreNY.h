@@ -31,10 +31,10 @@ class NYPizzaStore : public PizzaStore {
 protected:
 	PizzaPtr createPizza(string_view item) override {
 		PizzaPtr pizza = nullptr;
-		auto ingredientFactory = make_unique<NYPizzaIngredientFactory>(); // The NY Store is composed with a NY pizza ingredient factory. This will be used to produce the ingredients for all NY style pizzas.
+		NYPizzaIngredientFactory ingredientFactory; // The NY Store is composed with a NY pizza ingredient factory. This will be used to produce the ingredients for all NY style pizzas.
 
 		if (item == "cheese") { // For each type of Pizza, we instantiate a new Pizza and give it the factory it needs to get its ingredients.
-			pizza = make_unique<CheesePizza>(*ingredientFactory); // We now pass each pizza the factory that should be used to produce its ingredients.
+			pizza = make_unique<CheesePizza>(ingredientFactory); // We now pass each pizza the factory that should be used to produce its ingredients.
 			pizza->setName("New York Style Cheese Pizza");
 #if 0
 		} else if (item == "veggie") {
