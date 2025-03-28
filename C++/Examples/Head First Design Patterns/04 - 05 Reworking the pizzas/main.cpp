@@ -5,11 +5,11 @@ using namespace std;
 int main() {
 	print_file_line();
 
-#ifndef MINE
+#pragma region MINE
 	PizzaStorePtr nyStore = make_unique<NYPizzaStore>();
 	PizzaPtr pizza = nyStore->orderPizza("cheese");
 	cout << "Ethan ordered a " << pizza->getName() << '\n';
-#endif //MINE
+#pragma endregion //MINE  
 
 	return 0;
 }
