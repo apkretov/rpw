@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{2273ba1e-93d9-4160-92ef-b3e1439b2baa}</ProjectGuid>
-    <RootNamespace>My0402Aframeworkforthepizzastore</RootNamespace>
+    <ProjectGuid>{c76ced7b-2671-43fc-bd57-840873a50946}</ProjectGuid>
+    <RootNamespace>My0405Reworkingthepizzas</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -128,12 +128,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
+    <ClInclude Include="PizzaCheese.h" />
+    <ClInclude Include="Pizza.h" />
+    <ClInclude Include="PizzaClam.h" />
+    <ClInclude Include="PizzaIngredientFactoryNY.h" />
+    <ClInclude Include="PizzaIngredientFactory.h" />
+    <ClInclude Include="Ingredients.h" />
+    <ClInclude Include="PizzaStore.h" />
+    <ClInclude Include="PizzaStoreNY.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="PizzaStore.h" />
-    <ClInclude Include="Pizza.h" />
-    <ClInclude Include="PizzaStoreNY.h" />
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

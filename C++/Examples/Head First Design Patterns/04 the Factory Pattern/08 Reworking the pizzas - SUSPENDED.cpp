@@ -1,4 +1,4 @@
-#if 0
+#if 1
 
 #include <memory>
 #include "06 Building the ingredient factories.h"
