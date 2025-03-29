@@ -136,6 +136,7 @@
     <ClInclude Include="PizzaIngredientFactory.h" />
     <ClInclude Include="Ingredients.h" />
     <ClInclude Include="PizzaStore.h" />
+    <ClInclude Include="PizzaStoreChicago.h" />
     <ClInclude Include="PizzaStoreNY.h" />
   </ItemGroup>
   <ItemGroup>
