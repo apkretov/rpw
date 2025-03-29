@@ -37,7 +37,7 @@ protected:
 		if (item == "cheese") { // For each type of Pizza, we instantiate a new Pizza and give it the factory it needs to get its ingredients.
 			pizza = make_unique<CheesePizza>(ingredientFactory); // We now pass each pizza the factory that should be used to produce its ingredients.
 			pizza->setName("New York Style Cheese Pizza");
-#if 0
+#ifdef OFF
 		} else if (item == "veggie") {
 			pizza = make_unique<VeggiePizza>(ingredientFactory);
 			pizza->setName("New York Style Veggie Pizza");
@@ -47,7 +47,7 @@ protected:
 		} else if (item == "pepperoni") {
 			pizza = make_unique<PepperoniPizza>(ingredientFactory);
 			pizza->setName("New York Style Pepperoni Pizza");
-#endif //0
+#endif //OFF
 		}
 		return pizza;
 	}
