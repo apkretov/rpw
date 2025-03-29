@@ -12,6 +12,7 @@ class Mushroom final : public Veggies {};
 class RedPepper final : public Veggies {};
 class Spinach final : public Veggies {};
 class BlackOlives final : public Veggies {};
+class EggPlant final : public Veggies {};
 using VeggiesVec = vector<unique_ptr<Veggies>>;
 
 class Dough {};
@@ -28,6 +29,6 @@ class FreshClams final : public Clams {};
 
 class ThickCrustDough final : public Dough {}; // The Chicago ingredients.
 class PlumTomatoSauce final : public Sauce {};
-class Mozzarella final : public Cheese {};
+class MozzarellaCheese final : public Cheese {};
 class FrozenClams final : public Clams {};
 #pragma endregion //MINE
