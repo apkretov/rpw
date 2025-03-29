@@ -3,6 +3,7 @@
 #include "PizzaStore.h"
 #include "PizzaIngredientFactoryNY.h"
 #include "PizzaCheese.h"
+#include "PizzaClam.h"
 
 #pragma region Revisiting our pizza stores
 /* Java
@@ -41,9 +42,11 @@ protected:
 		} else if (item == "veggie") {
 			pizza = make_unique<VeggiePizza>(ingredientFactory);
 			pizza->setName("New York Style Veggie Pizza");
+#endif //OFF
 		} else if (item == "clam") {
 			pizza = make_unique<ClamPizza>(ingredientFactory);
 			pizza->setName("New York Style Clam Pizza");
+#ifdef OFF
 		} else if (item == "pepperoni") {
 			pizza = make_unique<PepperoniPizza>(ingredientFactory);
 			pizza->setName("New York Style Pepperoni Pizza");

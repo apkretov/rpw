@@ -8,6 +8,9 @@ int main() {
 #pragma region MINE
 	PizzaStorePtr nyStore = make_unique<NYPizzaStore>();
 	PizzaPtr pizza = nyStore->orderPizza("cheese");
+	cout << "Ethan ordered a " << pizza->getName() << "\n\n";
+
+	pizza = nyStore->orderPizza("clam");
 	cout << "Ethan ordered a " << pizza->getName() << '\n';
 #pragma endregion //MINE  
 
