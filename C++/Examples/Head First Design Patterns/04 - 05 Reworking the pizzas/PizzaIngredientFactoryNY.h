@@ -20,7 +20,9 @@ public class NYPizzaIngredientFactory implements PizzaIngredientFactory {
 */
 class NYPizzaIngredientFactory final : public PizzaIngredientFactory {
 public:
-	unique_ptr<Dough> createDough() override { return make_unique<ThinCrustDough>(); } // For each ingredient in the ingredient family, we create the New York version.
+	unique_ptr<Dough> createDough() override { 
+		return make_unique<ThinCrustDough>(); 
+	} // For each ingredient in the ingredient family, we create the New York version.
 	unique_ptr<Sauce> createSauce() override { return make_unique<MarinaraSauce>(); }
 	unique_ptr<Cheese> createCheese() override { return make_unique<ReggianoCheese>(); }
 
