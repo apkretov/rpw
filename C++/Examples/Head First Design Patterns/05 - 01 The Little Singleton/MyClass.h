@@ -14,9 +14,11 @@ public:
 		return instance;
 	}
 
+#pragma region MINE
 	MyClass(const MyClass &) = delete;
 	void operator=(const MyClass &) = delete;
 	MyClass(MyClass &&) = default;
 	MyClass &operator=(MyClass &&) = default;
+#pragma endregion //MINE
 };
 #pragma endregion //The Little Singleton
