@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="1_01 Введение в ассоциативные контейнеры.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="1_02 Размен отсортированности на производительность.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="1_03 Введение в хеш функции.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="1_06 Итераторы в map set Почему лучше использовать собственные методы для поиска.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="1_08 Использование пользовательских типов в ассоциативных контейнерах.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="1_09 Зависимость производительности от хеш функции.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="1_10 Рекомендации по выбору хеш функции.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="1_11 extract и merge.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="1_EX_02 Хеш-таблица.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="1_EX_03 set__iterator++.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="1_EX_04 Структура Point3D в контейнере unordered_set.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="1_EX_05 Интеграция структуры Person в unordered_set.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="1_EX_06 Вторичный индекс в базе данных.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="2_EX_01 Загрузка расходов из формата XML.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="2_EX_02 Загрузка расходов из формата JSON.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="2_EX_03 Библиотека работы с INI-файлами.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="2_EX_04 XmlToJson и JsonToXml.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="2_EX_06 Двойная диспетчеризация.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="2_EX_07 Сервер комментариев.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="3_03 Использование const для поддержания инвариантов в классах и объектах.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="3_04 Идиома immediately invoked lambda expression IILE.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="3_01 Введение.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="3_06 Логическая константность и mutable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="3_EX_01 Показатели переписи населения.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="3_EX_02 Шаблон LazyValue.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="3_07 Ещё раз о константности в многопоточной среде.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="3_10 Обнаружение утечки памяти в ObjectPool.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="3_11 Откуда берётся утечка памяти.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="3_12 Умный указатель unique ptr.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="3_13 unique ptr для исправления утечки.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="3_EX_03 Продолжение Шаблон Synchronized.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="3_EX_04 Константность в шаблоне ConcurrentMap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="3_EX_05 perator[] в классе Polynomial.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="3_EX_07 Иерархия классов животных.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="3_EX_08 Конвейер.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="3_EX_09 Дерево выражений.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="4_05 Владение - часть 2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="4_06 Присваивание умных указателей.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="4_07 shared ptr и многопоточность.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="4_08 Умный указатель weak ptr.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="4_09 Пользовательский deleter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="4_11 Жизненный цикл объекта.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="4_13 RAII обёртка над файлом.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="4_14 Копирование RAII обёрток.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="4_16 Разбор задачи 1.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="4_17 Разбор задачи 2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="4_EX_01 Текстуры.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="1_08 Использование пользовательских типов в ассоциативных контейнерах.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="1_09 Зависимость производительности от хеш функции.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="3_03 Использование const для поддержания инвариантов в классах и объектах.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="1_EX_06 Вторичный индекс в базе данных 2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="1_EX_06 Вторичный индекс в базе данных 1.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="3_01 Введение.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="3_06 Логическая константность и mutable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="3_10 Обнаружение утечки памяти в ObjectPool 1.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="3_10 Обнаружение утечки памяти в ObjectPool 2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="4_16 Разбор задачи 1.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
