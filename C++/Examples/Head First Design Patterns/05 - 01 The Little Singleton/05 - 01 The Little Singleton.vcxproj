@@ -131,6 +131,7 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ChocolateBoiler.h" />
     <ClInclude Include="MyClass.h" />
     <ClInclude Include="Singleton.h" />
   </ItemGroup>
