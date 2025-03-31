@@ -17,7 +17,7 @@ class ChocolateBoiler {
 public:
 	friend unique_ptr<ChocolateBoiler> std::make_unique<ChocolateBoiler>();
 
-	ChocolateBoiler(const ChocolateBoiler &) = delete;
+	ChocolateBoiler(const ChocolateBoiler &) = delete; 
 	void operator=(const ChocolateBoiler &) = delete;
 	ChocolateBoiler(ChocolateBoiler &&) = delete;
 	ChocolateBoiler &operator=(ChocolateBoiler &&) = delete;

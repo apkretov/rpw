@@ -20,7 +20,7 @@ public:
 #pragma region MINE
 	MyClass(const MyClass &) = delete;
 	void operator=(const MyClass &) = delete;
-	MyClass(MyClass &&) = default;
+	MyClass(MyClass &&) = default; //TEST // While deleting only copy controls would work due to the suppression of move operations, explicitly deleting both makes the intent clearer and provides better protection against future modifications.
 	MyClass &operator=(MyClass &&) = default;
 #pragma endregion //MINE
 };
