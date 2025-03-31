@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Singleton.h">
+    <ClInclude Include="SingletonLazy.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
