@@ -1,24 +1,31 @@
+#include <future>
 #include "../../stdafx.h"
 #include "ChocolateBoiler.h"
-#include <thread>
-#include <vector>
+using namespace std;
 
 void operateBoiler() {
     auto boiler = ChocolateBoiler::getInstance();
     boiler->fill();
     boiler->boil();
     boiler->drain();
+	cout << '\n';
 }
 
 int main() {
-    print_file_line();
+	print_file_line();
 
-    vector<thread> threads;
-    for (int i = 0; i < 2; ++i)
-        threads.emplace_back(operateBoiler);
+	constexpr size_t num_threads = 2;
+	
+	auto getBoilerInstance = [] { return ChocolateBoiler::getInstance(); };
+	vector<future<ChocolateBoiler *>> boilerInstances(num_threads);
+	for	(size_t i = 0; i < num_threads; ++i)
+		boilerInstances[i] = async(getBoilerInstance);
 
-    for (auto& thread : threads)
-        thread.join();
+	vector<future<void>> boilerOperations(num_threads);
+	for (size_t i = 0; i < num_threads; ++i)
+		boilerOperations.emplace_back(async(operateBoiler));
+	cout << '\n';
+
 
     return 0;
 }
