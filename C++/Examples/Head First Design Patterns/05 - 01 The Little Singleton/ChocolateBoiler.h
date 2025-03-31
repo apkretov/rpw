@@ -1,4 +1,6 @@
 #pragma once
+#include <iostream>
+using namespace std;
 
 #pragma region The Chocolate Factory
 /* Java
@@ -51,6 +53,9 @@ public:
             empty = false;
             boiled = false;
             // fill the boiler with a milk/chocolate mixture
+#pragma region MINE
+			cout << "ChocolateBoiler::fill()\n";
+#pragma endregion //MINE
         }
     }
 

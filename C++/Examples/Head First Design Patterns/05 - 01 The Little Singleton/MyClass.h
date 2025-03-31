@@ -11,6 +11,9 @@ class MyClass {
 public:
 	static MyClass &getInstance() {
 		static MyClass instance;
+#pragma region MINE
+		cout << "MyClass::getInstance()\n";
+#pragma endregion //MINE
 		return instance;
 	}
 

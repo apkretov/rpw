@@ -28,6 +28,9 @@ public:
 	static Singleton *getInstance() { // The getInstance() method gives us a way to instantiate the class and also to return an instance of it.
 		if (uniqueInstance == nullptr) // uniqueInstance holds our ONE instance; remember, it is a static variable.
 			uniqueInstance = make_unique<Singleton>(); //TEST! // If uniqueInstance is null, then we haven't created the instance yet... // ...and, if it doesn't exist, we instantiate Singleton through its private constructor and assign it to uniqueInstance. Note that if we never need the instance, it never gets created; this is lazy instantiation.
+#pragma region MINE
+		cout << "Singleton::getInstance()\n";
+#pragma endregion //MINE
 		return uniqueInstance.get(); // If uniqueInstance wasn't null, then it was previously created. We just fall through to the return statement.
 	}
 #pragma region MINE
