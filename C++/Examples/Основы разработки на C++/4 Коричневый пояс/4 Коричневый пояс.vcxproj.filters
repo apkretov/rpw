@@ -111,7 +111,7 @@
     <ClCompile Include="3_EX_04 Константность в шаблоне ConcurrentMap.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="3_EX_05 perator[] в классе Polynomial.cpp">
+    <ClCompile Include="3_EX_05 operator[] в классе Polynomial.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="3_EX_07 Иерархия классов животных.cpp">

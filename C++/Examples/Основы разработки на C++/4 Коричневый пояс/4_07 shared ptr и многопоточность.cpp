@@ -1,11 +1,11 @@
-#if 0
+#if 1
 
 #undef SYNCED_BY_OSTREAM
 #undef UNSYNCED_BY_OSTREAM
 #define SYNCED_BY_CONST
 
 #include <future>
-#include <thread>
+#include <thread> // For this_thread::get_id().
 #include "../../stdafx.h"
 using namespace std;
 
