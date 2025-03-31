@@ -14,15 +14,15 @@ void operateBoiler() {
 int main() {
 	print_file_line();
 
-	constexpr size_t num_threads = 2;
+	constexpr size_t numThreads = 2;
 	
 	auto getBoilerInstance = [] { return ChocolateBoiler::getInstance(); };
-	vector<future<ChocolateBoiler *>> boilerInstances(num_threads);
-	for	(size_t i = 0; i < num_threads; ++i)
+	vector<future<ChocolateBoiler *>> boilerInstances(numThreads);
+	for	(size_t i = 0; i < numThreads; ++i)
 		boilerInstances[i] = async(getBoilerInstance);
 
-	vector<future<void>> boilerOperations(num_threads);
-	for (size_t i = 0; i < num_threads; ++i)
+	vector<future<void>> boilerOperations(numThreads);
+	for (size_t i = 0; i < numThreads; ++i)
 		boilerOperations.emplace_back(async(operateBoiler));
 	cout << '\n';
 

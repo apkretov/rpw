@@ -18,12 +18,17 @@ public class Singleton { // Let's rename MyClass to Singleton.
 }
 */
 class Singleton { // Let's rename MyClass to Singleton.
-private:
 	static unique_ptr<Singleton> uniqueInstance; // We have a static variable to hold our one instance of the class Singleton.
 	// other useful instance variables here
 	Singleton() {} // Our constructor is declared private; only Singleton can instantiate this class!
 public:
 	friend unique_ptr<Singleton> std::make_unique<Singleton>(); //TEST!! // This is a friend declaration, which allows make_unique to access the private constructor of Singleton.
+#pragma region MINE
+	Singleton(const Singleton &) = delete;
+	void operator=(const Singleton &) = delete;
+	Singleton(Singleton &&) = default;
+	Singleton &operator=(Singleton &&) = default;
+#pragma endregion //MINE
 
 	static Singleton *getInstance() { // The getInstance() method gives us a way to instantiate the class and also to return an instance of it.
 		if (uniqueInstance == nullptr) // uniqueInstance holds our ONE instance; remember, it is a static variable.
@@ -33,12 +38,6 @@ public:
 #pragma endregion //MINE
 		return uniqueInstance.get(); // If uniqueInstance wasn't null, then it was previously created. We just fall through to the return statement.
 	}
-#pragma region MINE
-	Singleton(const Singleton &) = delete;
-	void operator=(const Singleton &) = delete;
-	Singleton(Singleton &&) = default;
-	Singleton &operator=(Singleton &&) = default;
-#pragma endregion //MINE
 	// other useful methods here
 };
 
