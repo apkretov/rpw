@@ -1,17 +1,25 @@
 #include <future>
 #include "../../stdafx.h"
+#include "SingletonEager.h"
 #include "SingletonLazy.h"
 using namespace std;
+
+template <typename T>
+void testThreads() {
+	constexpr size_t numThreads = 3;
+
+	auto getSingletonInstance = [] { return T::getInstance(); };
+	vector<future<T *>> boilerInstances(numThreads);
+	for (size_t i = 0; i < numThreads; ++i)
+		boilerInstances[i] = async(getSingletonInstance);
+}
 
 int main() {
 	print_file_line();
 
-	constexpr size_t numThreads = 10;
-	
-	auto getSingletonInstance = [] { return Lazy::Singleton::getInstance(); };
-	vector<future<Lazy::Singleton *>> boilerInstances(numThreads);
-	for	(size_t i = 0; i < numThreads; ++i)
-		boilerInstances[i] = async(getSingletonInstance);
+	testThreads<Lazy::Singleton>();
+	cout << '\n';
+	testThreads<Eager::Singleton>();
 
     return 0;
 }

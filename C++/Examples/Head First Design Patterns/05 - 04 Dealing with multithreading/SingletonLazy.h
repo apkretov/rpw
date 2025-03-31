@@ -39,10 +39,7 @@ namespace Lazy {
 			lock_guard<mutex> lock(mtx); // Lock the mutex to ensure thread safety
 			if (uniqueInstance == nullptr)
 				uniqueInstance = make_unique<Singleton>();
-#pragma region MINE
-			cout << uniqueInstance.get() << ": Get the instance.\n";
-#pragma endregion //MINE
-
+			cout << uniqueInstance.get() << ": Get the instance.\n"; //MINE
 			return uniqueInstance.get();
 		}
 		// other useful methods here

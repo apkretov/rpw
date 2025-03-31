@@ -128,6 +128,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="SingletonEager.h" />
     <ClInclude Include="SingletonLazy.h" />
   </ItemGroup>
   <ItemGroup>
