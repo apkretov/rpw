@@ -169,7 +169,7 @@ ASSERT_EQUAL(s_int.GetAccess().ref_to_value, 5);
 Проверяющий код никак не закладывается на имена типов, возвращаемых методами GetAccess, поэтому вы можете назвать их не Access1 и Access2, а как-то более осмысленно.
 */
 
-#ifdef PERPLEXITY
+#ifndef PERPLEXITY
 
 #undef MUTEX_AND_LOCK_GUARD
 #define SIMPLE_MUTEX_AND_SIMPLE_LOCK_GUARD
