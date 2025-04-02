@@ -1,5 +1,6 @@
 #include <future>
 #include "../../stdafx.h"
+#include "vld.h"
 #include "SingletonDoubleCheckedLocking.h"
 #include "SingletonEager.h"
 #include "SingletonLazy.h"
@@ -18,11 +19,15 @@ void testThreads() {
 int main() {
 	print_file_line();
 
+	cout << "Lazy::Singleton\n";
 	testThreads<Lazy::Singleton>();
-	cout << '\n';
+
+	cout << "\nEager::Singleton\n";
 	testThreads<Eager::Singleton>();
-	cout << '\n';
+
+	cout << "\nDoubleCheckedLocking::Singleton\n";
 	testThreads<DoubleCheckedLocking::Singleton>();
+	cout << '\n';
 
     return 0;
 }
