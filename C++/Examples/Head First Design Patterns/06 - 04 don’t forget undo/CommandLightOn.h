@@ -3,18 +3,20 @@
 #include "Command.h"
 #include "DeviceLight.h"
 
-#pragma region Implementing a Command to turn a light on
+#pragma region 2 Let's start with the LightOnCommand
 /* Java
-public class LightOnCommand implements Command { // This is a command, so we need to implement the Command interface.
+public class LightOnCommand implements Command {
 	Light light;
-	public LightOnCommand(Light light) { this.light = light; } // The constructor is passed the specific light that this command is going to control - say the living room light - and stashes it in the light instance variable.When execute gets called, this is the light object that is going to be the Receiver of the request.
-	public void execute() { light.on(); } // The execute method calls the on() method on the receiving object, which is the light we are controlling.
+	public LightOnCommand(Light light) { this.light = light; } 
+	public void execute() { light.on(); } 
+	public void undo() { light.off(); } // execute() turns the light on, so undo() simply turns the light back off.
 }
 */
-class LightOnCommand final : public Command { // This is a command, so we need to implement the Command interface.
+class LightOnCommand final : public Command {
 	Light &light_;
 public:
-	explicit LightOnCommand(Light &light) : light_(light) {} // The constructor is passed the specific light that this command is going to control - say the living room light - and stashes it in the light instance variable.When execute gets called, this is the light object that is going to be the Receiver of the request.
-	void execute() override { light_.on(); } // The execute method calls the on() method on the receiving object, which is the light we are controlling.
+	explicit LightOnCommand(Light &light) : light_(light) {} 
+	void execute() override { light_.on(); } 
+	void undo() override { light_.off(); } // execute() turns the light on, so undo() simply turns the light back off.
 };
-#pragma endregion //Implementing a Command to turn a light on
+#pragma endregion //2 Let's start with the LightOnCommand

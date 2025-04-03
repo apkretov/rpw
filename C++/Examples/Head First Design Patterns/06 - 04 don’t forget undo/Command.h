@@ -10,7 +10,7 @@ public interface Command{
 class Command {
 public:
 	virtual ~Command() = default;
-	virtual void execute() = 0; // Simple. All we need is one method called execute().
+	virtual void execute() = 0;
 	virtual void undo() = 0; // Here's the new undo() method.
 };
 #pragma endregion //1 When commands support undo
