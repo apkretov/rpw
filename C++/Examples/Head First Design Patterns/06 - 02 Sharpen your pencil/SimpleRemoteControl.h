@@ -17,7 +17,7 @@ class SimpleRemoteControl {
 private:
 	shared_ptr<Command> slot; // We have one slot to hold our command, which will control one device.
 public:
-	void setCommand(shared_ptr<Command> command) { slot = move(command); } // We have a method for setting the command the slot is going to control. This could be called multiple times if the client of this code wanted to change the behavior of the remote button.
+	void setCommand(shared_ptr<Command> command) { slot = command; } // We have a method for setting the command the slot is going to control. This could be called multiple times if the client of this code wanted to change the behavior of the remote button.
 
 	void buttonWasPressed() {
 		if (slot)
