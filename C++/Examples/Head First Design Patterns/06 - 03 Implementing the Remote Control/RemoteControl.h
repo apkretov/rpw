@@ -5,7 +5,12 @@
 #include <string>
 #include "Command.h"
 #include "CommandNo.h"
-using namespace std;
+using std::array;
+using std::shared_ptr;
+using std::make_shared;
+using std::string;
+using std::to_string;
+using std::size_t;
 
 #pragma region Implementing the Remote Control
 /* Java

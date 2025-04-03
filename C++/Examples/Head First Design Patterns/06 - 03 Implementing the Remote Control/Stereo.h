@@ -1,7 +1,7 @@
 #pragma once
 
 #include <iostream>
-using namespace std;
+using std::cout;
 
 #pragma region MINE
 class Stereo {

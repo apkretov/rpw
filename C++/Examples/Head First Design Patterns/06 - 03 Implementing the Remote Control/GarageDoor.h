@@ -1,7 +1,8 @@
 #pragma once
 
 #include <iostream>
-using namespace std;
+using std::cout;
+using std::endl;
 
 #pragma region MINE
 class GarageDoor {
