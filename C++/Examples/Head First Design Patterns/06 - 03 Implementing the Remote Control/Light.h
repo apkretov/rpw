@@ -7,5 +7,6 @@ using namespace std;
 class Light {
 public:
 	void on() { cout << "Light is On\n"; }
+	void off() { cout << "Light is Off\n"; }
 };
 #pragma endregion //MINE
