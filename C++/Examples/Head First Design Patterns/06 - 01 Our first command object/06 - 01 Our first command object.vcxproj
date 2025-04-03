@@ -131,6 +131,7 @@
     <ClInclude Include="Command.h" />
     <ClInclude Include="CommandLightOn.h" />
     <ClInclude Include="Light.h" />
+    <ClInclude Include="SimpleRemoteControl.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />

@@ -6,6 +6,6 @@ using namespace std;
 #pragma region MINE
 class Light {
 public:
-	void on() { cout << "Light::on();\n"; }
+	void on() { cout << "Light is On\n"; }
 };
 #pragma endregion //MINE
