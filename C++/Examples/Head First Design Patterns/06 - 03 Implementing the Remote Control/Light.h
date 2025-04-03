@@ -12,7 +12,7 @@ class Light {
 	string name_;
 public:
 	explicit Light(string_view name) : name_(name) {}
-	void on() { cout << "Light is On\n"; }
-	void off() { cout << "Light is Off\n"; }
+	void on() { cout << name_ << " Light is On\n"; }
+	void off() { cout << name_ << " Light is Off\n"; }
 };
 #pragma endregion //MINE
