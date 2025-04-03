@@ -131,8 +131,8 @@
     <ClInclude Include="Command.h" />
     <ClInclude Include="CommandGarageDoorOpen.h" />
     <ClInclude Include="CommandLightOn.h" />
-    <ClInclude Include="GarageDoor.h" />
-    <ClInclude Include="Light.h" />
+    <ClInclude Include="DeviceGarageDoor.h" />
+    <ClInclude Include="DeviceLight.h" />
     <ClInclude Include="SimpleRemoteControl.h" />
   </ItemGroup>
   <ItemGroup>

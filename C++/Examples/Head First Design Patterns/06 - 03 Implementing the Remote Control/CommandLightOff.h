@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Command.h"
-#include "Light.h"
+#include "DeviceLight.h"
 
 #pragma region Implementing the Commands
 /* Java

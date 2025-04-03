@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Command.h"
-#include "GarageDoor.h"
+#include "DeviceGarageDoor.h"
 
 #pragma region MINE
 class GarageDoorOpenCommand final : public Command { // This is a command, so we need to implement the Command interface.

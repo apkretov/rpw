@@ -21,7 +21,7 @@
     <ClInclude Include="CommandLightOn.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Light.h">
+    <ClInclude Include="DeviceLight.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="SimpleRemoteControl.h">

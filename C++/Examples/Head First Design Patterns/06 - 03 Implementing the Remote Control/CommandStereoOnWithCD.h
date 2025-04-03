@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Command.h"
-#include "Stereo.h"
+#include "DeviceStereo.h"
 
 #pragma region Implementing the Commands
 /* Java

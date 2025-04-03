@@ -21,13 +21,13 @@
     <ClInclude Include="CommandLightOn.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Light.h">
+    <ClInclude Include="DeviceLight.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="SimpleRemoteControl.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GarageDoor.h">
+    <ClInclude Include="DeviceGarageDoor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CommandGarageDoorOpen.h">

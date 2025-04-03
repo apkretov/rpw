@@ -134,7 +134,7 @@
   <ItemGroup>
     <ClInclude Include="Command.h" />
     <ClInclude Include="CommandLightOn.h" />
-    <ClInclude Include="Light.h" />
+    <ClInclude Include="DeviceLight.h" />
     <ClInclude Include="SimpleRemoteControl.h" />
   </ItemGroup>
   <ItemGroup>

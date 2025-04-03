@@ -24,10 +24,10 @@
     <ClInclude Include="CommandLightOn.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GarageDoor.h">
+    <ClInclude Include="DeviceGarageDoor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Light.h">
+    <ClInclude Include="DeviceLight.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="RemoteControl.h">
@@ -42,7 +42,13 @@
     <ClInclude Include="CommandStereoOnWithCD.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Stereo.h">
+    <ClInclude Include="DeviceStereo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DeviceCeilingFan.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CommandCeilingFanOn.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
