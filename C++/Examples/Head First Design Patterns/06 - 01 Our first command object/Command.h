@@ -8,6 +8,7 @@ public interface Command{
 */
 class Command {
 public:
+	virtual ~Command() = default;
     virtual void execute() = 0; // Simple. All we need is one method called execute().
 };
 #pragma endregion //Implementing the Command interface
