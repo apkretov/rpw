@@ -63,15 +63,8 @@ public:
         offCommands.at(slot) = offCommand;
     }
 
-    void onButtonWasPushed(size_t slot) { // When an On or Off button is pressed, the hardware takes care of calling the corresponding methods onButtonWasPushed() or offButtonWasPushed().
-        if (onCommands.at(slot))
-            onCommands.at(slot)->execute(); 
-    } 
-
-    void offButtonWasPushed(size_t slot) { 
-        if (offCommands.at(slot))
-            offCommands.at(slot)->execute(); 
-    }
+	void onButtonWasPushed(size_t slot) { onCommands[slot]->execute(); } // When an On or Off button is pressed, the hardware takes care of calling the corresponding methods onButtonWasPushed() or offButtonWasPushed().
+    void offButtonWasPushed(size_t slot) { offCommands[slot]->execute(); }
 
     string toString() const { // We've overwritten toString() to print out each slot and its corresponding command.You'll see us use this when we test the remote control.
         string result = "\n------Remote Control------ - \n";
