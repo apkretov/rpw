@@ -21,11 +21,14 @@
   <ItemGroup>
     <ClInclude Include="Command.h" />
     <ClInclude Include="CommandGarageDoorOpen.h" />
+    <ClInclude Include="CommandLightOff.h" />
     <ClInclude Include="CommandLightOn.h" />
     <ClInclude Include="CommandNo.h" />
+    <ClInclude Include="CommandStereoOnWithCD.h" />
     <ClInclude Include="GarageDoor.h" />
     <ClInclude Include="Light.h" />
     <ClInclude Include="RemoteControl.h" />
+    <ClInclude Include="Stereo.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />

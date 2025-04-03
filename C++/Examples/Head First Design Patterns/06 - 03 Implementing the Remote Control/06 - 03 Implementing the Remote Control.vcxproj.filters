@@ -36,6 +36,15 @@
     <ClInclude Include="CommandNo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="CommandLightOff.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CommandStereoOnWithCD.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Stereo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
