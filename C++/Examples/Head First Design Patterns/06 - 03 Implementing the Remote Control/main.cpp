@@ -85,7 +85,7 @@ int main() {
     remoteControl.setCommand(2, ceilingFanOn, ceilingFanOff);
     remoteControl.setCommand(3, stereoOnWithCD, stereoOff);
 
-    cout << remoteControl << '\n'; // Here's where we use our toString() method to print each remote slot and the command that it is assigned to
+    cout << remoteControl.toString() << '\n'; // Here's where we use our toString() method to print each remote slot and the command that it is assigned to
 
     remoteControl.onButtonWasPushed(0); // All right, we are ready to roll! Now, we step through each slot and push its On and Off button
     remoteControl.offButtonWasPushed(0);
