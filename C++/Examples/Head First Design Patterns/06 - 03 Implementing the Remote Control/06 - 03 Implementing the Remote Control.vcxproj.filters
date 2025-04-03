@@ -18,7 +18,7 @@
     <ClInclude Include="Command.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CommandGarageDoorOpen.h">
+    <ClInclude Include="CommandGarageDoorUp.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CommandLightOn.h">
@@ -49,6 +49,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CommandCeilingFanOn.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CommandCeilingFanOff.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CommandGarageDoorDown.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CommandStereoOff.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

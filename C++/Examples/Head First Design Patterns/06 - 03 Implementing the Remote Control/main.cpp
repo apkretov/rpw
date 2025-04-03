@@ -6,6 +6,7 @@
 #include "CommandLightOn.h"
 #include "CommandLightOff.h"
 #include "CommandNo.h"
+#include "CommandStereoOff.h"
 #include "CommandStereoOnWithCD.h"
 #include "RemoteControl.h"
 using namespace std;

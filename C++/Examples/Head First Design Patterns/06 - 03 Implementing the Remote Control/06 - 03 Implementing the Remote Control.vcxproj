@@ -19,10 +19,13 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CommandCeilingFanOff.h" />
+    <ClInclude Include="CommandGarageDoorDown.h" />
+    <ClInclude Include="CommandStereoOff.h" />
     <ClInclude Include="DeviceCeilingFan.h" />
     <ClInclude Include="Command.h" />
     <ClInclude Include="CommandCeilingFanOn.h" />
-    <ClInclude Include="CommandGarageDoorOpen.h" />
+    <ClInclude Include="CommandGarageDoorUp.h" />
     <ClInclude Include="CommandLightOff.h" />
     <ClInclude Include="CommandLightOn.h" />
     <ClInclude Include="CommandNo.h" />
