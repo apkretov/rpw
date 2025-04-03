@@ -1,14 +1,16 @@
 #pragma once
 
-#pragma region Implementing the Command interface
+#pragma region 1 When commands support undo
 /* Java
 public interface Command{
-	public void execute(); // Simple. All we need is one method called execute().
+	public void execute();
+	public void undo(); // Here's the new undo() method.
 }
 */
 class Command {
 public:
 	virtual ~Command() = default;
-    virtual void execute() = 0; // Simple. All we need is one method called execute().
+	virtual void execute() = 0; // Simple. All we need is one method called execute().
+	virtual void undo() = 0; // Here's the new undo() method.
 };
-#pragma endregion //Implementing the Command interface
+#pragma endregion //1 When commands support undo
