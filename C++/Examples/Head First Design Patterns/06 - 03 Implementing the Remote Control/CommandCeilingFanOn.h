@@ -1,13 +1,13 @@
 #pragma once
 
 #include "Command.h"
-#include "CeilingFan.h"
+#include "DeviceCeilingFan.h"
 
 #pragma region MINE
-class LightOnCommand final : public Command {
+class CeilingFanOnCommand final : public Command {
 	CeilingFan &fan_;
 public:
-	explicit LightOnCommand(CeilingFan &fan) : fan_(fan) {} 
+	explicit CeilingFanOnCommand(CeilingFan &fan) : fan_(fan) {}
 	void execute() override { fan_.on(); } 
 };
 #pragma endregion //MINE

@@ -1,4 +1,5 @@
 #include "../../stdafx.h"
+#include "CommandCeilingFanOn.h"
 #include "CommandGarageDoorOpen.h"
 #include "CommandLightOn.h"
 #include "CommandLightOff.h"
