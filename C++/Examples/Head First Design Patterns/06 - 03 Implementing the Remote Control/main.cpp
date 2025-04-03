@@ -1,6 +1,7 @@
 #include "../../stdafx.h"
 #include "CommandCeilingFanOff.h"
 #include "CommandCeilingFanOn.h"
+#include "CommandGarageDoorDown.h"
 #include "CommandGarageDoorUp.h"
 #include "CommandLightOn.h"
 #include "CommandLightOff.h"
