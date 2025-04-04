@@ -37,6 +37,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "06 - 04 don’t forget undo
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "06 - 05 Using state to implement Undo", "06 - 05 Using state to implement Undo\06 - 05 Using state to implement Undo.vcxproj", "{F198D7FE-1368-4251-BFB1-FD5BAEB6CB27}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "06 - 06 Every remote needs a Party Mode", "06 - 06 Every remote needs a Party Mode\06 - 06 Every remote needs a Party Mode.vcxproj", "{2540BC96-1469-476E-A2D5-3FCAAC10F160}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -181,6 +183,14 @@ Global
 		{F198D7FE-1368-4251-BFB1-FD5BAEB6CB27}.Release|x64.Build.0 = Release|x64
 		{F198D7FE-1368-4251-BFB1-FD5BAEB6CB27}.Release|x86.ActiveCfg = Release|Win32
 		{F198D7FE-1368-4251-BFB1-FD5BAEB6CB27}.Release|x86.Build.0 = Release|Win32
+		{2540BC96-1469-476E-A2D5-3FCAAC10F160}.Debug|x64.ActiveCfg = Debug|x64
+		{2540BC96-1469-476E-A2D5-3FCAAC10F160}.Debug|x64.Build.0 = Debug|x64
+		{2540BC96-1469-476E-A2D5-3FCAAC10F160}.Debug|x86.ActiveCfg = Debug|Win32
+		{2540BC96-1469-476E-A2D5-3FCAAC10F160}.Debug|x86.Build.0 = Debug|Win32
+		{2540BC96-1469-476E-A2D5-3FCAAC10F160}.Release|x64.ActiveCfg = Release|x64
+		{2540BC96-1469-476E-A2D5-3FCAAC10F160}.Release|x64.Build.0 = Release|x64
+		{2540BC96-1469-476E-A2D5-3FCAAC10F160}.Release|x86.ActiveCfg = Release|Win32
+		{2540BC96-1469-476E-A2D5-3FCAAC10F160}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
