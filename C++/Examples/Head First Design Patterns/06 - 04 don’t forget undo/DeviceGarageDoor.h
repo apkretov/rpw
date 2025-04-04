@@ -7,13 +7,13 @@ using std::string;
 
 #pragma region MINE
 class GarageDoor {
-	string name_;
+	string location_;
 public:
-	explicit GarageDoor(string_view name) : name_(name) {}
-	void up() { cout << name_ << " Garage Door is Open\n"; }
-	void down() { cout << name_ << " Garage Door is Closed\n"; }
-	void stop() { cout << name_ << " Garage Door is Stopped\n"; }
-	void lightOn() { cout << name_ << " Garage Light is On\n"; }
-	void lightOff() { cout << name_ << " Garage Light is Off\n"; }
+	explicit GarageDoor(string_view location) : location_(location) {}
+	void up() { cout << location_ << " Garage Door is Open\n"; }
+	void down() { cout << location_ << " Garage Door is Closed\n"; }
+	void stop() { cout << location_ << " Garage Door is Stopped\n"; }
+	void lightOn() { cout << location_ << " Garage Light is On\n"; }
+	void lightOff() { cout << location_ << " Garage Light is Off\n"; }
 };
 #pragma endregion //MINE

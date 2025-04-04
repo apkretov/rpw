@@ -10,7 +10,6 @@ using std::shared_ptr;
 using std::make_shared;
 using std::string;
 using std::to_string;
-using std::size_t;
 
 #pragma region Implementing the Remote Control
 /* Java
@@ -46,7 +45,7 @@ public class RemoteControl {
 }
 */
 class RemoteControl {
-	static constexpr size_t slots = 7; // The number of slots in the remote control.
+	static constexpr int slots = 7; // The number of slots in the remote control.
     array<shared_ptr<Command>, slots> onCommands; // This time around the remote is going to handle seven On and Off commands, which we'll hold in corresponding arrays.
     array<shared_ptr<Command>, slots> offCommands;
 public:
@@ -58,17 +57,17 @@ public:
         }
     }
 
-    void setCommand(size_t slot, shared_ptr<Command> onCommand, shared_ptr<Command> offCommand) { // The setCommand() method takes a slot position and an On and Off command to be stored in that slot.It puts these commands in the on and off arrays for later use.
+    void setCommand(int slot, shared_ptr<Command> onCommand, shared_ptr<Command> offCommand) { // The setCommand() method takes a slot position and an On and Off command to be stored in that slot.It puts these commands in the on and off arrays for later use.
         onCommands.at(slot) = onCommand;
         offCommands.at(slot) = offCommand;
     }
 
-	void onButtonWasPushed(size_t slot) { onCommands[slot]->execute(); } // When an On or Off button is pressed, the hardware takes care of calling the corresponding methods onButtonWasPushed() or offButtonWasPushed().
-    void offButtonWasPushed(size_t slot) { offCommands[slot]->execute(); }
+	void onButtonWasPushed(int slot) { onCommands[slot]->execute(); } // When an On or Off button is pressed, the hardware takes care of calling the corresponding methods onButtonWasPushed() or offButtonWasPushed().
+    void offButtonWasPushed(int slot) { offCommands[slot]->execute(); }
 
     string toString() const { // We've overwritten toString() to print out each slot and its corresponding command.You'll see us use this when we test the remote control.
         string result = "\n------Remote Control------ - \n";
-        for (size_t i = 0; i < slots; i++)
+        for (int i = 0; i < slots; i++)
             result += "[slot " + to_string(i) + "] " + typeid(*onCommands[i]).name() + " " + typeid(*offCommands[i]).name() + "\n";
         return result; 
     }

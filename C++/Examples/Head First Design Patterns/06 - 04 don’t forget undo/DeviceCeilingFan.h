@@ -9,10 +9,10 @@ using std::string_view;
 
 #pragma region MINE
 class CeilingFan {
-	string name_;
+	string location_;
 public:
-	explicit CeilingFan(string_view name) : name_(name) {}
-	void on() { cout << name_ << " CeilingFan is On\n"; }
-	void off() { cout << name_ << " CeilingFan is Off\n"; }
+	explicit CeilingFan(string_view location) : location_(location) {}
+	void on() { cout << location_ << " CeilingFan is On\n"; }
+	void off() { cout << location_ << " CeilingFan is Off\n"; }
 };
 #pragma endregion //MINE

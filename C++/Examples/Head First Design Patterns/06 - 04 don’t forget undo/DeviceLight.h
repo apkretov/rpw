@@ -9,10 +9,10 @@ using std::string_view;
 
 #pragma region MINE
 class Light {
-	string name_;
+	string location_;
 public:
-	explicit Light(string_view name) : name_(name) {}
-	void on() { cout << name_ << " Light is On\n"; }
-	void off() { cout << name_ << " Light is Off\n"; }
+	explicit Light(string_view location) : location_(location) {}
+	void on() { cout << location_ << " Light is On\n"; }
+	void off() { cout << location_ << " Light is Off\n"; }
 };
 #pragma endregion //MINE
