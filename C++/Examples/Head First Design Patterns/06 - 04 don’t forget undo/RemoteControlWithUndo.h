@@ -17,7 +17,7 @@ using std::size_t;
 public class RemoteControlWithUndo {
 	Command[] onCommands; 
 	Command[] offCommands;
-	Command undoCommand; // This is where we’ll stash the last command executed for the undo button.
+	Command undoCommand; // This is where we'll stash the last command executed for the undo button.
 
 	public RemoteControlWithUndo() {
 		onCommands = new Command[7]; 
@@ -27,7 +27,7 @@ public class RemoteControlWithUndo {
 			onCommands[i] = noCommand;
 			offCommands[i] = noCommand;
 		}
-		undoCommand = noCommand; // Just like the other slots, undo starts off with a NoCommand, so pressing undo before any other button won’t do anything at all.
+		undoCommand = noCommand; // Just like the other slots, undo starts off with a NoCommand, so pressing undo before any other button won't do anything at all.
 	}
 
 	public void setCommand(int slot, Command onCommand, Command offCommand) { 
@@ -60,7 +60,7 @@ class RemoteControlWithUndo {
 	static constexpr size_t slots = 7; // The number of slots in the remote control.
 	array<shared_ptr<Command>, slots> onCommands;
 	array<shared_ptr<Command>, slots> offCommands;
-	shared_ptr<Command> undoCommand; // This is where we’ll stash the last command executed for the undo button.
+	shared_ptr<Command> undoCommand; // This is where we'll stash the last command executed for the undo button.
 public:
 	RemoteControlWithUndo() {
 		shared_ptr<Command> noCommand = make_shared<NoCommand>(); 
@@ -68,7 +68,7 @@ public:
 			onCommands[i] = noCommand;
 			offCommands[i] = noCommand;
 		}
-		undoCommand = noCommand; // Just like the other slots, undo starts off with a NoCommand, so pressing undo before any other button won’t do anything at all.
+		undoCommand = noCommand; // Just like the other slots, undo starts off with a NoCommand, so pressing undo before any other button won't do anything at all.
 	}
 
 	void setCommand(size_t slot, shared_ptr<Command> onCommand, shared_ptr<Command> offCommand) { 

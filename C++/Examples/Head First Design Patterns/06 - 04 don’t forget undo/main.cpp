@@ -8,8 +8,9 @@
 #include "CommandNo.h"
 #include "CommandStereoOff.h"
 #include "CommandStereoOnWithCD.h"
-#include "RemoteControl.h"
-using namespace std;
+#include "RemoteControlWithUndo.h"
+using std::cout;
+using std::make_shared;
 
 #pragma region Putting the Remote Control through its paces
 /* Java
@@ -58,7 +59,7 @@ public class RemoteLoader {
 int main() {
     print_file_line();
 
-    RemoteControl remoteControl;
+    RemoteControlWithUndo remoteControl;
 
     Light livingRoomLight("Living Room"); // Create all the devices in their proper locations
     Light kitchenLight("Kitchen");

@@ -3,7 +3,7 @@
 #include "Command.h"
 #include "DeviceLight.h"
 
-#pragma region 2 Let's start with the LightOnCommand
+#pragma region 2 Lets start with the LightOnCommand //2 Let's start with the LightOnCommand
 /* Java
 public class LightOnCommand implements Command {
 	Light light;
@@ -19,4 +19,4 @@ public:
 	void execute() override { light_.on(); } 
 	void undo() override { light_.off(); } // execute() turns the light on, so undo() simply turns the light back off.
 };
-#pragma endregion //2 Let's start with the LightOnCommand
+#pragma endregion //2 Lets start with the LightOnCommand
