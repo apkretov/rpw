@@ -57,7 +57,7 @@
     <ClInclude Include="DeviceStereo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="RemoteControl.h">
+    <ClInclude Include="RemoteControlWithUndo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -142,7 +142,7 @@
     <ClInclude Include="DeviceGarageDoor.h" />
     <ClInclude Include="DeviceLight.h" />
     <ClInclude Include="DeviceStereo.h" />
-    <ClInclude Include="RemoteControl.h" />
+    <ClInclude Include="RemoteControlWithUndo.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
