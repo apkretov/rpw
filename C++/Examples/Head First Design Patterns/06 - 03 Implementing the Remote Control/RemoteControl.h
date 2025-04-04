@@ -51,7 +51,7 @@ class RemoteControl {
 public:
     RemoteControl() {
         shared_ptr<Command> noCommand = make_shared<NoCommand>(); // In the constructor all we need to do is instantiate and initialize the on and off arrays.
-        for (int i = 0; i < slots; i++) {
+        for (int i = 0; i < slots; ++i) {
             onCommands[i] = noCommand;
             offCommands[i] = noCommand;
         }
@@ -67,7 +67,7 @@ public:
 
     string toString() const { // We've overwritten toString() to print out each slot and its corresponding command.You'll see us use this when we test the remote control.
         string result = "\n------Remote Control------ - \n";
-        for (int i = 0; i < slots; i++)
+        for (int i = 0; i < slots; ++i)
             result += "[slot " + to_string(i) + "] " + typeid(*onCommands[i]).name() + " " + typeid(*offCommands[i]).name() + "\n";
         return result; 
     }
