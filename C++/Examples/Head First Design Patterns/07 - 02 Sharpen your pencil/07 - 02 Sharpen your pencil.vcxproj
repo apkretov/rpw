@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{52f26396-a601-4c64-bd37-83b37715ec79}</ProjectGuid>
-    <RootNamespace>My0701Ifitwalkslikeaduck</RootNamespace>
+    <ProjectGuid>{33cc1418-8037-4769-90e0-cd373cf95996}</ProjectGuid>
+    <RootNamespace>My0702Sharpenyourpencil</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -128,6 +128,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AdapterDuck.h" />
     <ClInclude Include="Duck.h" />
     <ClInclude Include="DuckMallard.h" />
     <ClInclude Include="Turkey.h" />

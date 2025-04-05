@@ -41,6 +41,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "06 - 06 Every remote needs 
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "07 - 01 If it walks like a duck", "07 - 01 If it walks like a duck\07 - 01 If it walks like a duck.vcxproj", "{52F26396-A601-4C64-BD37-83B37715EC79}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "07 - 02 Sharpen your pencil", "07 - 02 Sharpen your pencil\07 - 02 Sharpen your pencil.vcxproj", "{33CC1418-8037-4769-90E0-CD373CF95996}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -201,6 +203,14 @@ Global
 		{52F26396-A601-4C64-BD37-83B37715EC79}.Release|x64.Build.0 = Release|x64
 		{52F26396-A601-4C64-BD37-83B37715EC79}.Release|x86.ActiveCfg = Release|Win32
 		{52F26396-A601-4C64-BD37-83B37715EC79}.Release|x86.Build.0 = Release|Win32
+		{33CC1418-8037-4769-90E0-CD373CF95996}.Debug|x64.ActiveCfg = Debug|x64
+		{33CC1418-8037-4769-90E0-CD373CF95996}.Debug|x64.Build.0 = Debug|x64
+		{33CC1418-8037-4769-90E0-CD373CF95996}.Debug|x86.ActiveCfg = Debug|Win32
+		{33CC1418-8037-4769-90E0-CD373CF95996}.Debug|x86.Build.0 = Debug|Win32
+		{33CC1418-8037-4769-90E0-CD373CF95996}.Release|x64.ActiveCfg = Release|x64
+		{33CC1418-8037-4769-90E0-CD373CF95996}.Release|x64.Build.0 = Release|x64
+		{33CC1418-8037-4769-90E0-CD373CF95996}.Release|x86.ActiveCfg = Release|Win32
+		{33CC1418-8037-4769-90E0-CD373CF95996}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,7 +1,7 @@
 #include "../../stdafx.h"
 #include "DuckMallard.h"
 #include "TurkeyWild.h"
-#include "TurkeyAdapter.h"
+#include "AdapterTurkey.h"
 using std::cout;
 using std::make_shared;
 using std::shared_ptr;
