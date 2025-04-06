@@ -7,7 +7,7 @@
 class DuckAdapter : public Turkey {
     Duck& duck;
 public:
-    DuckAdapter(Duck& duck) : duck(duck) {}
+   explicit DuckAdapter(Duck& duck) : duck(duck) {}
     void gobble() override { duck.quack(); }
     void fly() override { duck.fly(); }
 };
