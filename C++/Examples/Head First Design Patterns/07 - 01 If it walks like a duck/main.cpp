@@ -1,10 +1,8 @@
 #include "../../stdafx.h"
+#include "AdapterTurkey.h"
 #include "DuckMallard.h"
 #include "TurkeyWild.h"
-#include "AdapterTurkey.h"
 using std::cout;
-using std::make_shared;
-using std::shared_ptr;
 
 #pragma region Test drive the adapter
 /* Java
@@ -32,22 +30,22 @@ public class DuckTestDrive {
 	}
 }
 */
-void testDuck(shared_ptr<Duck> duck) { // Here's our testDuck() method; it gets a duck and calls its quack() and fly() methods.
-    duck->quack();
-    duck->fly();
+void testDuck(Duck &duck) { // Here's our testDuck() method; it gets a duck and calls its quack() and fly() methods.
+    duck.quack();
+    duck.fly();
 }
 
 int main() {
 	print_file_line();
 
-	shared_ptr<MallardDuck> duck = make_shared<MallardDuck>(); // Let's create a Duck...
+	MallardDuck duck; // Let's create a Duck...
 
-	shared_ptr<WildTurkey> turkey = make_shared<WildTurkey>(); // and a Turkey.
-	shared_ptr<Duck> turkeyAdapter = make_shared<TurkeyAdapter>(turkey); // And then wrap the turkey in a TurkeyAdapter, which makes it look like a Duck.
+	WildTurkey turkey; // and a Turkey.
+	TurkeyAdapter turkeyAdapter{turkey}; // And then wrap the turkey in a TurkeyAdapter, which makes it look like a Duck.
 
     cout << "The Turkey says...\n"; // Then, let's test the Turkey: make it gobble, make it fly.
-    turkey->gobble();
-    turkey->fly();
+    turkey.gobble();
+    turkey.fly();
 
     cout << "\nThe Duck says...\n"; // Now let's test the duck by calling the testDuck() method, which expects a Duck object.
     testDuck(duck);
