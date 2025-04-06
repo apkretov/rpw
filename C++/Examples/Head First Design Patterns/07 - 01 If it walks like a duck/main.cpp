@@ -39,7 +39,6 @@ int main() {
 	print_file_line();
 
 	MallardDuck duck; // Let's create a Duck...
-
 	WildTurkey turkey; // and a Turkey.
 	TurkeyAdapter turkeyAdapter{turkey}; // And then wrap the turkey in a TurkeyAdapter, which makes it look like a Duck.
 
