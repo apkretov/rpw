@@ -45,6 +45,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "07 - 02 Sharpen your pencil
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "07 - 03 Object and class adapters", "07 - 03 Object and class adapters\07 - 03 Object and class adapters.vcxproj", "{4F5C9EF4-D532-4A88-A4B0-B39F63608C94}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "07 - 04 Writing the EnumerationIterator adapter", "07 - 04 Writing the EnumerationIterator adapter\07 - 04 Writing the EnumerationIterator adapter.vcxproj", "{DEC4BABF-5BA3-4C6F-9CBB-F55E0B08A739}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -221,6 +223,14 @@ Global
 		{4F5C9EF4-D532-4A88-A4B0-B39F63608C94}.Release|x64.Build.0 = Release|x64
 		{4F5C9EF4-D532-4A88-A4B0-B39F63608C94}.Release|x86.ActiveCfg = Release|Win32
 		{4F5C9EF4-D532-4A88-A4B0-B39F63608C94}.Release|x86.Build.0 = Release|Win32
+		{DEC4BABF-5BA3-4C6F-9CBB-F55E0B08A739}.Debug|x64.ActiveCfg = Debug|x64
+		{DEC4BABF-5BA3-4C6F-9CBB-F55E0B08A739}.Debug|x64.Build.0 = Debug|x64
+		{DEC4BABF-5BA3-4C6F-9CBB-F55E0B08A739}.Debug|x86.ActiveCfg = Debug|Win32
+		{DEC4BABF-5BA3-4C6F-9CBB-F55E0B08A739}.Debug|x86.Build.0 = Debug|Win32
+		{DEC4BABF-5BA3-4C6F-9CBB-F55E0B08A739}.Release|x64.ActiveCfg = Release|x64
+		{DEC4BABF-5BA3-4C6F-9CBB-F55E0B08A739}.Release|x64.Build.0 = Release|x64
+		{DEC4BABF-5BA3-4C6F-9CBB-F55E0B08A739}.Release|x86.ActiveCfg = Release|Win32
+		{DEC4BABF-5BA3-4C6F-9CBB-F55E0B08A739}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
