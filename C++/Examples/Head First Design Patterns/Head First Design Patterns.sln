@@ -53,6 +53,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "07 - 06 How NOT to Win Frie
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "07 - 07 Keeping your method calls in bounds", "07 - 07 Keeping your method calls in bounds\07 - 07 Keeping your method calls in bounds.vcxproj", "{A4FA18FE-0881-49FB-B431-C43BA6A91E88}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "07 - 08 Sharpen your pencil", "07 - 08 Sharpen your pencil\07 - 08 Sharpen your pencil.vcxproj", "{606023F0-ECBF-4EC1-8FAD-32CA37C725E2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -261,6 +263,14 @@ Global
 		{A4FA18FE-0881-49FB-B431-C43BA6A91E88}.Release|x64.Build.0 = Release|x64
 		{A4FA18FE-0881-49FB-B431-C43BA6A91E88}.Release|x86.ActiveCfg = Release|Win32
 		{A4FA18FE-0881-49FB-B431-C43BA6A91E88}.Release|x86.Build.0 = Release|Win32
+		{606023F0-ECBF-4EC1-8FAD-32CA37C725E2}.Debug|x64.ActiveCfg = Debug|x64
+		{606023F0-ECBF-4EC1-8FAD-32CA37C725E2}.Debug|x64.Build.0 = Debug|x64
+		{606023F0-ECBF-4EC1-8FAD-32CA37C725E2}.Debug|x86.ActiveCfg = Debug|Win32
+		{606023F0-ECBF-4EC1-8FAD-32CA37C725E2}.Debug|x86.Build.0 = Debug|Win32
+		{606023F0-ECBF-4EC1-8FAD-32CA37C725E2}.Release|x64.ActiveCfg = Release|x64
+		{606023F0-ECBF-4EC1-8FAD-32CA37C725E2}.Release|x64.Build.0 = Release|x64
+		{606023F0-ECBF-4EC1-8FAD-32CA37C725E2}.Release|x86.ActiveCfg = Release|Win32
+		{606023F0-ECBF-4EC1-8FAD-32CA37C725E2}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
