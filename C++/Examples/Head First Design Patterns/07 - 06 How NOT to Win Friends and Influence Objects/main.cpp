@@ -1,4 +1,5 @@
 #include <iostream>
+#include "../../stdafx.h"
 #include "Station.h"
 #include "Thermometer.h"
 using std::cout;
@@ -26,6 +27,8 @@ double getTempWithPrinciple(Station &station) { // With the Principle
 #pragma endregion //How NOT to Win Friends and Influence Objects
 
 int main() {
+	print_file_line();
+
     Station station;
     
     cout << "Temperature without principle: " << getTempWithoutPrinciple(station) << '\n';
