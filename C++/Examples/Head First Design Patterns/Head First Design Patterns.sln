@@ -59,6 +59,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "08 - 01 Whipping up some co
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "08 - 02 Abstracting prepareRecipe", "08 - 02 Abstracting prepareRecipe\08 - 02 Abstracting prepareRecipe.vcxproj", "{4867606A-1A64-4A99-8B40-1B9517A341F9}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "08 - 03 Hooked on Template Method", "08 - 03 Hooked on Template Method\08 - 03 Hooked on Template Method.vcxproj", "{A7CA46B1-6369-4BDA-9E6F-727AC4CB4243}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "08 - 04 Sorting with Template Method", "08 - 04 Sorting with Template Method\08 - 04 Sorting with Template Method.vcxproj", "{90FA38C9-223B-4D03-B350-A205780B0660}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -291,6 +295,22 @@ Global
 		{4867606A-1A64-4A99-8B40-1B9517A341F9}.Release|x64.Build.0 = Release|x64
 		{4867606A-1A64-4A99-8B40-1B9517A341F9}.Release|x86.ActiveCfg = Release|Win32
 		{4867606A-1A64-4A99-8B40-1B9517A341F9}.Release|x86.Build.0 = Release|Win32
+		{A7CA46B1-6369-4BDA-9E6F-727AC4CB4243}.Debug|x64.ActiveCfg = Debug|x64
+		{A7CA46B1-6369-4BDA-9E6F-727AC4CB4243}.Debug|x64.Build.0 = Debug|x64
+		{A7CA46B1-6369-4BDA-9E6F-727AC4CB4243}.Debug|x86.ActiveCfg = Debug|Win32
+		{A7CA46B1-6369-4BDA-9E6F-727AC4CB4243}.Debug|x86.Build.0 = Debug|Win32
+		{A7CA46B1-6369-4BDA-9E6F-727AC4CB4243}.Release|x64.ActiveCfg = Release|x64
+		{A7CA46B1-6369-4BDA-9E6F-727AC4CB4243}.Release|x64.Build.0 = Release|x64
+		{A7CA46B1-6369-4BDA-9E6F-727AC4CB4243}.Release|x86.ActiveCfg = Release|Win32
+		{A7CA46B1-6369-4BDA-9E6F-727AC4CB4243}.Release|x86.Build.0 = Release|Win32
+		{90FA38C9-223B-4D03-B350-A205780B0660}.Debug|x64.ActiveCfg = Debug|x64
+		{90FA38C9-223B-4D03-B350-A205780B0660}.Debug|x64.Build.0 = Debug|x64
+		{90FA38C9-223B-4D03-B350-A205780B0660}.Debug|x86.ActiveCfg = Debug|Win32
+		{90FA38C9-223B-4D03-B350-A205780B0660}.Debug|x86.Build.0 = Debug|Win32
+		{90FA38C9-223B-4D03-B350-A205780B0660}.Release|x64.ActiveCfg = Release|x64
+		{90FA38C9-223B-4D03-B350-A205780B0660}.Release|x64.Build.0 = Release|x64
+		{90FA38C9-223B-4D03-B350-A205780B0660}.Release|x86.ActiveCfg = Release|Win32
+		{90FA38C9-223B-4D03-B350-A205780B0660}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
