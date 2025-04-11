@@ -84,8 +84,6 @@ int main() {
 	Waitress waitress(allMenus);
 	waitress.printVegetarianMenu();
 #pragma endregion //Give me the vegetarian menu
-#ifdef OFF
-#endif //OFF
 
     return 0;
 }
