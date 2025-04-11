@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <memory>
 #include "MenuComponent.h"
 using std::cout;
 
@@ -35,13 +36,13 @@ public class Waitress {
 }
 */
 class Waitress {
-    MenuComponent* allMenus;
+    shared_ptr<MenuComponent> allMenus;
 public:
-    Waitress(MenuComponent* allMenus) : allMenus(allMenus) {}
+    Waitress(shared_ptr<MenuComponent> allMenus) : allMenus(allMenus) {}
     void printMenu() { allMenus->print(); }
 
     void printVegetarianMenu() {
-        Iterator<MenuComponent>* iterator = allMenus->createIterator();
+        shared_ptr<Iterator<MenuComponent>> iterator = allMenus->createIterator();
 
         cout << "\nVEGETARIAN MENU\n----\n";
         while (iterator->hasNext()) {
@@ -49,6 +50,5 @@ public:
             if (menuComponent.isVegetarian())
                 menuComponent.print();
         }
-        delete iterator;
     }
 };
