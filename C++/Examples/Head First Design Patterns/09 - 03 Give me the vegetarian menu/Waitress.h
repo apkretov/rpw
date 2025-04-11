@@ -45,9 +45,9 @@ public:
 
         cout << "\nVEGETARIAN MENU\n----\n";
         while (iterator->hasNext()) {
-            MenuComponent* menuComponent = iterator->next();
-            if (menuComponent->isVegetarian())
-                menuComponent->print();
+            MenuComponent& menuComponent = iterator->next();
+            if (menuComponent.isVegetarian())
+                menuComponent.print();
         }
         delete iterator;
     }

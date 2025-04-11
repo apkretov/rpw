@@ -1,3 +1,4 @@
+#include "vld.h"
 #include "Menu.h"
 #include "MenuItem.h"
 #include "Waitress.h"

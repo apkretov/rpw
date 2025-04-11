@@ -1,4 +1,5 @@
 #include "../../stdafx.h"
+#include "vld.h"
 #include "MenuDiner.h"
 #include "MenuPancakeHouse.h"
 

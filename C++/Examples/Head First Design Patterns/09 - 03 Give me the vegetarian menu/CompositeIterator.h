@@ -43,30 +43,30 @@ public class CompositeIterator implements Iterator<MenuComponent> {
 }
 */
 class CompositeIterator : public Iterator<MenuComponent> {
-	stack<Iterator<MenuComponent> *> stack;
+    stack<Iterator<MenuComponent>*> stack;
 
 public:
-	CompositeIterator(Iterator<MenuComponent> *iterator) { stack.push(iterator); }
+    CompositeIterator(Iterator<MenuComponent>* iterator) { stack.push(iterator); }
 
-	MenuComponent *next() override {
-		if (hasNext()) {
-			Iterator<MenuComponent> *iterator = stack.top();
-			MenuComponent *component = iterator->next();
-			stack.push(component->createIterator());
-			return component;
-		}
-		return nullptr;
-	}
+    MenuComponent& next() override {
+        if (hasNext()) {
+            Iterator<MenuComponent>* iterator = stack.top();
+            MenuComponent& component = iterator->next();
+            stack.push(component.createIterator());
+            return component;
+        }
+        throw std::runtime_error("No more items in composite");
+    }
 
-	bool hasNext() override {
-		if (stack.empty())
-			return false;
+    bool hasNext() noexcept override {
+        if (stack.empty())
+            return false;
 
-		Iterator<MenuComponent> *iterator = stack.top();
-		if (!iterator->hasNext()) {
-			stack.pop();
-			return hasNext();
-		}
-		return true;
-	}
+        Iterator<MenuComponent>* iterator = stack.top();
+        if (!iterator->hasNext()) {
+            stack.pop();
+            return hasNext();
+        }
+        return true;
+    }
 };

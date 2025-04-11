@@ -12,6 +12,8 @@ public class NullIterator implements Iterator<MenuComponent> {
 
 class NullIterator : public Iterator<MenuComponent> {
 public:
-    MenuComponent* next() override { return nullptr; }
-    bool hasNext() override { return false; }
+    MenuComponent& next() override { 
+        throw std::runtime_error("No elements in NullIterator"); 
+    }
+    bool hasNext() noexcept override { return false; }
 };
