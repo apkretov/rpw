@@ -2,16 +2,18 @@
 
 #include "Iterator.h"
 #include <vector>
+#include <memory>
 using std::vector;
+using std::shared_ptr;
 
 #pragma region Trae
 template <typename T>
 class VectorIterator : public Iterator<T> {
-    vector<T*>& items;
+    vector<shared_ptr<T>>& items;
     int position = 0;
 
 public:
-    VectorIterator(vector<T*>& items) : items(items) {}
+    VectorIterator(vector<shared_ptr<T>>& items) : items(items) {}
 
     T& next() override {
         if (hasNext())
