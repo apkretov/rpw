@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <vector>
+#include <memory>
 #include "MenuComponent.h"
 #include "CompositeIterator.h"
 #include "VectorIterator.h"
@@ -52,14 +53,14 @@ public class Menu extends MenuComponent {
 }
 */
 class Menu : public MenuComponent {
-    vector<MenuComponent*> menuComponents;
+    vector<shared_ptr<MenuComponent>> menuComponents;
     string name;
     string description;
 public:
     Menu(string name, string description) : name(name), description(description) {}
-    void add(MenuComponent* menuComponent) override { menuComponents.push_back(menuComponent); }
+    void add(shared_ptr<MenuComponent> menuComponent) override { menuComponents.push_back(menuComponent); }
 
-	void remove(MenuComponent* menuComponent) override {
+    void remove(shared_ptr<MenuComponent> menuComponent) override {
         for (auto it = menuComponents.begin(); it != menuComponents.end(); ++it)
             if (*it == menuComponent) {
                 menuComponents.erase(it);
@@ -67,16 +68,18 @@ public:
             }
     }
 
-    MenuComponent* getChild(int i) override { return menuComponents[i]; }
+    shared_ptr<MenuComponent> getChild(int i) override { return menuComponents[i]; }
     string getName() override { return name; }
     string getDescription() override { return description; }
-    Iterator<MenuComponent>* createIterator() override { return new CompositeIterator(new VectorIterator<MenuComponent>(menuComponents)); }
+    shared_ptr<Iterator<MenuComponent>> createIterator() override { 
+        return std::make_shared<CompositeIterator>(std::make_shared<VectorIterator<MenuComponent>>(menuComponents)); 
+    }
 
     void print() override {
         cout << "\n" << getName();
         cout << ", " << getDescription() << "\n";
         cout << "---------------------\n";
-        for (auto menuComponent : menuComponents)
+        for (const auto& menuComponent : menuComponents)
             menuComponent->print();
     }
 };
