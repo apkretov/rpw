@@ -2,6 +2,7 @@
 
 #include "MenuComponent.h"
 #include "NullIterator.h"
+#include <memory>
 using std::string;
 
 /* Java @https://github.com/bethrobson/Head-First-Design-Patterns/tree/master/src/headfirst/designpatterns/composite/menuiterator
@@ -48,7 +49,9 @@ public:
     string getDescription() override { return description; }
     double getPrice() override { return price; }
     bool isVegetarian() override { return vegetarian; }
-    Iterator<MenuComponent>* createIterator() override { return new NullIterator(); }
+    shared_ptr<Iterator<MenuComponent>> createIterator() override { 
+        return std::make_shared<NullIterator>(); 
+    }
 
     void print() override {
         cout << "  " << getName();
