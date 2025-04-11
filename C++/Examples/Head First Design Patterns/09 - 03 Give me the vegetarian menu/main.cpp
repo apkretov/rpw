@@ -47,17 +47,22 @@ public class MenuTestDrive {
 }
 */
 int main() {
-    auto pancakeHouseMenu = make_unique<Menu>("PANCAKE HOUSE MENU", "Breakfast");
-    auto dinerMenu = make_unique<Menu>("DINER MENU", "Lunch");
-    auto cafeMenu = make_unique<Menu>("CAFE MENU", "Dinner");
-    auto dessertMenu = make_unique<Menu>("DESSERT MENU", "Dessert of course!");
-    auto allMenus = make_unique<Menu>("ALL MENUS", "All menus combined");
+	auto pancakeHouseMenu = make_unique<Menu>("PANCAKE HOUSE MENU", "Breakfast");
+#ifdef OFF
+	auto dinerMenu = make_unique<Menu>("DINER MENU", "Lunch");
+	auto cafeMenu = make_unique<Menu>("CAFE MENU", "Dinner");
+	auto dessertMenu = make_unique<Menu>("DESSERT MENU", "Dessert of course!");
+#endif //OFF
+	auto allMenus = make_unique<Menu>("ALL MENUS", "All menus combined");
 
-    allMenus->add(pancakeHouseMenu.get());
+	allMenus->add(pancakeHouseMenu.get());
+#ifdef OFF
     allMenus->add(dinerMenu.get());
     allMenus->add(cafeMenu.get());
+#endif //OFF
 
     pancakeHouseMenu->add(new MenuItem("K&B's Pancake Breakfast", "Pancakes with scrambled eggs", true, 2.99));
+#ifdef OFF
     pancakeHouseMenu->add(new MenuItem("Regular Pancake Breakfast", "Pancakes with fried eggs, sausage", false, 2.99));
     pancakeHouseMenu->add(new MenuItem("Blueberry Pancakes", "Pancakes made with fresh blueberries", true, 3.49));
     pancakeHouseMenu->add(new MenuItem("Waffles", "Waffles with your choice of blueberries or strawberries", true, 3.59));
@@ -77,13 +82,16 @@ int main() {
     cafeMenu->add(new MenuItem("Veggie Burger and Air Fries", "Veggie burger on a whole wheat bun, lettuce, tomato, and fries", true, 3.99));
     cafeMenu->add(new MenuItem("Soup of the Day", "A cup of the soup of the day, with a side salad", false, 3.69));
     cafeMenu->add(new MenuItem("Burrito", "A large burrito, with whole pinto beans, salsa, guacamole", true, 4.29));
+#endif //OFF
 
     allMenus->print();
 
+#ifdef OFF
 #pragma region Give me the vegetarian menu
 	Waitress waitress(allMenus.get());
 	waitress.printVegetarianMenu();
 #pragma endregion //Give me the vegetarian menu
+#endif //OFF
 
     return 0;
 }
