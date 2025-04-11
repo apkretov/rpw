@@ -4,6 +4,7 @@
 #include "Waitress.h"
 #include <memory>
 using std::make_shared;
+using std::make_unique;
 
 /* Java @https://github.com/bethrobson/Head-First-Design-Patterns/tree/master/src/headfirst/designpatterns/composite/menuiterator
 public class MenuTestDrive {
@@ -47,18 +48,14 @@ public class MenuTestDrive {
 */
 int main() {
 	auto pancakeHouseMenu = make_shared<Menu>("PANCAKE HOUSE MENU", "Breakfast");
-#ifdef OFF
-	auto dinerMenu = make_unique<Menu>("DINER MENU", "Lunch");
-	auto cafeMenu = make_unique<Menu>("CAFE MENU", "Dinner");
-	auto dessertMenu = make_unique<Menu>("DESSERT MENU", "Dessert of course!");
-#endif //OFF
+	auto dinerMenu = make_shared<Menu>("DINER MENU", "Lunch");
+	auto cafeMenu = make_shared<Menu>("CAFE MENU", "Dinner");
+	auto dessertMenu = make_shared<Menu>("DESSERT MENU", "Dessert of course!");
 	auto allMenus = make_shared<Menu>("ALL MENUS", "All menus combined");
 
-#ifdef OFF
 	allMenus->add(pancakeHouseMenu);
-    allMenus->add(dinerMenu.get());
-    allMenus->add(cafeMenu.get());
-#endif //OFF
+    allMenus->add(dinerMenu);
+    allMenus->add(cafeMenu);
 
 #ifdef OFF
     pancakeHouseMenu->add(new MenuItem("Regular Pancake Breakfast", "Pancakes with fried eggs, sausage", false, 2.99));
