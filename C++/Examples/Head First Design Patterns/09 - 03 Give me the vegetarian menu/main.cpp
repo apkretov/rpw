@@ -3,8 +3,7 @@
 #include "MenuItem.h"
 #include "Waitress.h"
 #include <memory>
-using std::unique_ptr;
-using std::make_unique;
+using std::make_shared;
 
 /* Java @https://github.com/bethrobson/Head-First-Design-Patterns/tree/master/src/headfirst/designpatterns/composite/menuiterator
 public class MenuTestDrive {
@@ -47,13 +46,13 @@ public class MenuTestDrive {
 }
 */
 int main() {
-	auto pancakeHouseMenu = make_unique<Menu>("PANCAKE HOUSE MENU", "Breakfast");
+	auto pancakeHouseMenu = make_shared<Menu>("PANCAKE HOUSE MENU", "Breakfast");
 #ifdef OFF
 	auto dinerMenu = make_unique<Menu>("DINER MENU", "Lunch");
 	auto cafeMenu = make_unique<Menu>("CAFE MENU", "Dinner");
 	auto dessertMenu = make_unique<Menu>("DESSERT MENU", "Dessert of course!");
 #endif //OFF
-	auto allMenus = make_unique<Menu>("ALL MENUS", "All menus combined");
+	auto allMenus = make_shared<Menu>("ALL MENUS", "All menus combined");
 
 	allMenus->add(pancakeHouseMenu.get());
 #ifdef OFF
