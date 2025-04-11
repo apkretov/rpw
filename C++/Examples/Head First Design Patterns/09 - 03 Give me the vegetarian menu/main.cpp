@@ -80,11 +80,11 @@ int main() {
 
     allMenus->print();
 
-#ifdef OFF
 #pragma region Give me the vegetarian menu
-	Waitress waitress(allMenus.get());
+	Waitress waitress(allMenus);
 	waitress.printVegetarianMenu();
 #pragma endregion //Give me the vegetarian menu
+#ifdef OFF
 #endif //OFF
 
     return 0;
