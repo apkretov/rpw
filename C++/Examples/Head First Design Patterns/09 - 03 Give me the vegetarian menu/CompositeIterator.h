@@ -1,6 +1,7 @@
 #pragma once
 
 #include <stack>
+#include <memory>
 #include "MenuComponent.h"
 using std::stack;
 
@@ -43,14 +44,14 @@ public class CompositeIterator implements Iterator<MenuComponent> {
 }
 */
 class CompositeIterator : public Iterator<MenuComponent> {
-    stack<Iterator<MenuComponent>*> stack;
+    stack<shared_ptr<Iterator<MenuComponent>>> stack;
 
 public:
-    CompositeIterator(Iterator<MenuComponent>* iterator) { stack.push(iterator); }
+    CompositeIterator(shared_ptr<Iterator<MenuComponent>> iterator) { stack.push(iterator); }
 
     MenuComponent& next() override {
         if (hasNext()) {
-            Iterator<MenuComponent>* iterator = stack.top();
+            shared_ptr<Iterator<MenuComponent>> iterator = stack.top();
             MenuComponent& component = iterator->next();
             stack.push(component.createIterator());
             return component;
@@ -62,7 +63,7 @@ public:
         if (stack.empty())
             return false;
 
-        Iterator<MenuComponent>* iterator = stack.top();
+        shared_ptr<Iterator<MenuComponent>> iterator = stack.top();
         if (!iterator->hasNext()) {
             stack.pop();
             return hasNext();
