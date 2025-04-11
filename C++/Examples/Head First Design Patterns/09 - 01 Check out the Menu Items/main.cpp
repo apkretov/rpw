@@ -13,9 +13,9 @@ int main() {
 	MenuItem[] lunchItems = dinerMenu.getMenuItems();
 */
 	PancakeHouseMenu pancakeHouseMenu; // The method looks the same, but the calls are returning different types. // The implementation is showing through, breakfast items are in an ArrayList, lunch items are in an Array.
-	vector<MenuItem> breakfastItems = pancakeHouseMenu.getMenuItems();
+	const auto &breakfastItems = pancakeHouseMenu.getMenuItems();
 	DinerMenu dinerMenu;
-	MenuItem *lunchItems = dinerMenu.getMenuItems();
+	auto lunchItems = dinerMenu.getMenuItems();
 #pragma endregion //To print all the items on each menu,
 
 #pragma region Now, to print out the items from the PancakeHouseMenu
@@ -43,7 +43,7 @@ int main() {
 	}
 
 	cout << '\n';
-	for (int i = 0; i < DinerMenu::MAX_ITEMS; i++) { // ...one loop for the ArrayList...
+	for (int i = 0; i < lunchItems.size(); i++) { // ...one loop for the ArrayList...
 		MenuItem menuItem = lunchItems[i];
 		cout << menuItem.getName() << " "; // and another for the Array.
 		cout << menuItem.getPrice() << "\n";

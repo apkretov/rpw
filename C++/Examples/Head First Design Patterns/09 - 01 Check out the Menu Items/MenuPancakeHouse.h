@@ -43,7 +43,7 @@ public:
         menuItems.push_back(menuItem);
     }
 
-    vector<MenuItem> getMenuItems() const { return menuItems; } // The getMenuItems() method returns the list of menu items
+    const vector<MenuItem> &getMenuItems() const { return menuItems; } // The getMenuItems() method returns the list of menu items
     // other menu methods here // Lou has a bunch of other menu code that depends on the ArrayList implementation. He doesn't want to have to rewrite all that code!
 };
 #pragma endregion //Lou and Mels Menu implementations

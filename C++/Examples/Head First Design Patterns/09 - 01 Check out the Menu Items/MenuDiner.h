@@ -1,8 +1,10 @@
 #pragma once
 #include <iostream>
+#include <span>
 #include <string>
 #include "MenuItem.h"
 using std::cout;
+using std::span;
 using std::string;
 
 #pragma region Lou and Mels Menu implementations // Lou and Mel's Menu implementations
@@ -38,9 +40,7 @@ public class DinerMenu {
 }
 */
 class DinerMenu {
-public:
     static const int MAX_ITEMS = 6; // Mel takes a different approach; he's using an Array so he can control the max size of the menu and retrieve menu items out without having to cast his objects.
-private:
     int numberOfItems = 0;
     MenuItem* menuItems;
 public:
@@ -66,7 +66,7 @@ public:
         }
     }
 
-    MenuItem* getMenuItems() const { return menuItems; } // getMenuItems() returns the array of menu items.
+    span<const MenuItem> getMenuItems() const { return span<const MenuItem>(menuItems, numberOfItems); } // getMenuItems() returns the array of menu items.
     // other menu methods here // Like Lou, Mel has a bunch of code that depends on the implementation of his menu being an Array. He's too busy cooking to rewrite all of this.
 };
 #pragma endregion //Lou and Mels Menu implementations
