@@ -54,7 +54,7 @@ int main() {
 #endif //OFF
 	auto allMenus = make_shared<Menu>("ALL MENUS", "All menus combined");
 
-	allMenus->add(pancakeHouseMenu.get());
+	allMenus->add(pancakeHouseMenu);
 #ifdef OFF
     allMenus->add(dinerMenu.get());
     allMenus->add(cafeMenu.get());
