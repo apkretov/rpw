@@ -1,8 +1,10 @@
 #pragma once
 
 #include <string>
+#include <memory>
 #include "Iterator.h"
 using std::string;
+using std::shared_ptr;
 
 /* Java @https://github.com/bethrobson/Head-First-Design-Patterns/tree/master/src/headfirst/designpatterns/composite/menuiterator
 package headfirst.designpatterns.composite.menuiterator;
@@ -44,13 +46,13 @@ public abstract class MenuComponent {
 class MenuComponent {
 public:
     virtual ~MenuComponent() {}
-    virtual void add(MenuComponent* menuComponent) {}
-    virtual void remove(MenuComponent* menuComponent) {}
-    virtual MenuComponent* getChild(int i) { return nullptr; }
+    virtual void add(shared_ptr<MenuComponent> menuComponent) {}
+    virtual void remove(shared_ptr<MenuComponent> menuComponent) {} //TO DO
+    virtual shared_ptr<MenuComponent> getChild(int i) { return nullptr; }
     virtual string getName() { return ""; }
     virtual string getDescription() { return ""; }
     virtual double getPrice() { return 0.0; }
     virtual bool isVegetarian() { return false; }
-    virtual Iterator<MenuComponent>* createIterator() = 0;
+    virtual shared_ptr<Iterator<MenuComponent>> createIterator() = 0;
     virtual void print() {}
 };

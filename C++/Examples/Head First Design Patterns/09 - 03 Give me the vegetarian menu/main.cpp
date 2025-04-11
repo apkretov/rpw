@@ -60,7 +60,6 @@ int main() {
     allMenus->add(cafeMenu.get());
 #endif //OFF
 
-    pancakeHouseMenu->add(new MenuItem("K&B's Pancake Breakfast", "Pancakes with scrambled eggs", true, 2.99));
 #ifdef OFF
     pancakeHouseMenu->add(new MenuItem("Regular Pancake Breakfast", "Pancakes with fried eggs, sausage", false, 2.99));
     pancakeHouseMenu->add(new MenuItem("Blueberry Pancakes", "Pancakes made with fresh blueberries", true, 3.49));
@@ -81,6 +80,7 @@ int main() {
     cafeMenu->add(new MenuItem("Veggie Burger and Air Fries", "Veggie burger on a whole wheat bun, lettuce, tomato, and fries", true, 3.99));
     cafeMenu->add(new MenuItem("Soup of the Day", "A cup of the soup of the day, with a side salad", false, 3.69));
     cafeMenu->add(new MenuItem("Burrito", "A large burrito, with whole pinto beans, salsa, guacamole", true, 4.29));
+    pancakeHouseMenu->add(new MenuItem("K&B's Pancake Breakfast", "Pancakes with scrambled eggs", true, 2.99));
 #endif //OFF
 
     allMenus->print();
