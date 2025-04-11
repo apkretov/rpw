@@ -62,7 +62,7 @@ class GumballMachine {
     int count = 0;
 public:
     GumballMachine(int numberGumballs);
-    ~GumballMachine();
+    ~GumballMachine(); //TO DO: Remove it.
     void insertQuarter() { state->insertQuarter(); }
     void ejectQuarter() { state->ejectQuarter(); }
 

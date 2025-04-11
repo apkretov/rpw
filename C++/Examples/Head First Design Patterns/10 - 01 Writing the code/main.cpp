@@ -1,5 +1,6 @@
-#include "GumballMachine.h"
 #include <iostream>
+#include "vld.h"
+#include "GumballMachine.h"
 using std::cout;
 
 /* Java @ https://github.com/bethrobson/Head-First-Design-Patterns/tree/master/src/headfirst/designpatterns/state/gumball
