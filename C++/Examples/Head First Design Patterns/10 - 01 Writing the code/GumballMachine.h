@@ -56,10 +56,14 @@ public class GumballMachine {
 class State;
 
 class GumballMachine : public std::enable_shared_from_this<GumballMachine> {
+#ifdef OFF
     shared_ptr<State> soldOutState;
     shared_ptr<State> noQuarterState;
+#endif //OFF
     shared_ptr<State> hasQuarterState;
+#ifdef OFF
     shared_ptr<State> soldState;
+#endif //OFF
     shared_ptr<State> state;
     int count = 0;
 public:
@@ -75,10 +79,14 @@ public:
 	void setState(shared_ptr<State> state) { this->state = state; }
     void releaseBall() { if (count > 0) count = count - 1; }
     shared_ptr<State> getState() { return state; }
+#ifdef OFF
     shared_ptr<State> getSoldOutState() { return soldOutState; }
     shared_ptr<State> getNoQuarterState() { return noQuarterState; }
+#endif //OFF
     shared_ptr<State> getHasQuarterState() { return hasQuarterState; }
+#ifdef OFF
     shared_ptr<State> getSoldState() { return soldState; }
+#endif //OFF
     int getCount() { return count; }
 
     string toString() {
