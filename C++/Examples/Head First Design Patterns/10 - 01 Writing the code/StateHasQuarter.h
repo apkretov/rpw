@@ -5,6 +5,7 @@
 #include "GumballMachine.h"
 #include <memory>
 using std::cout;
+using std::shared_ptr;
 using std::string;
 using std::weak_ptr;
 
