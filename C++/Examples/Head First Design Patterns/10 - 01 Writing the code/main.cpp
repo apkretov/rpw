@@ -33,7 +33,6 @@ public class GumballMachineTestDrive {
 }
 */
 int main() {
-	//GumballMachine gumballMachine(5);
 	auto gumballMachine = GumballMachine::create(5);
 	cout << gumballMachine->toString();
 
