@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{43349738-9cb3-4ab8-b888-c1fd430d9649}</ProjectGuid>
-    <RootNamespace>My1001Writingthecode</RootNamespace>
+    <ProjectGuid>{614f4584-b765-4f2d-8222-9f0ca5f4e522}</ProjectGuid>
+    <RootNamespace>My1001WritingthecodepointerMINE</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -137,11 +137,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GumballMachine.h" />
+    <ClInclude Include="State.h" />
     <ClInclude Include="StateHasQuarter.h" />
     <ClInclude Include="StateNoQuarter.h" />
-    <ClInclude Include="StateSoldOut.h" />
     <ClInclude Include="StateSold.h" />
-    <ClInclude Include="State.h" />
+    <ClInclude Include="StateSoldOut.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

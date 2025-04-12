@@ -69,8 +69,13 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "09 - 02 Adding an Iterator 
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "09 - 03 Give me the vegetarian menu", "09 - 03 Give me the vegetarian menu\09 - 03 Give me the vegetarian menu.vcxproj", "{A6A9A743-C2C3-4BAA-B17A-C85C30FF1003}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "10 - 01 Writing the code", "10 - 01 Writing the code\10 - 01 Writing the code.vcxproj", "{43349738-9CB3-4AB8-B888-C1FD430D9649}"
+<<<<<<< Updated upstream
+=======
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "10 - 01 Writing the code - pointer - MINE", "10 - 01 Writing the code - pointer - MINE\10 - 01 Writing the code - pointer - MINE.vcxproj", "{614F4584-B765-4F2D-8222-9F0CA5F4E522}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "10 - 02 Writing the code - shared_ptr - MINE", "10 - 02 Writing the code - shared_ptr - MINE\10 - 02 Writing the code - shared_ptr - MINE.vcxproj", "{BA03A596-5CC5-46CA-BAC3-69662AA5D013}"
+EndProject
+>>>>>>> Stashed changes
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -343,14 +348,25 @@ Global
 		{A6A9A743-C2C3-4BAA-B17A-C85C30FF1003}.Release|x64.Build.0 = Release|x64
 		{A6A9A743-C2C3-4BAA-B17A-C85C30FF1003}.Release|x86.ActiveCfg = Release|Win32
 		{A6A9A743-C2C3-4BAA-B17A-C85C30FF1003}.Release|x86.Build.0 = Release|Win32
-		{43349738-9CB3-4AB8-B888-C1FD430D9649}.Debug|x64.ActiveCfg = Debug|x64
-		{43349738-9CB3-4AB8-B888-C1FD430D9649}.Debug|x64.Build.0 = Debug|x64
-		{43349738-9CB3-4AB8-B888-C1FD430D9649}.Debug|x86.ActiveCfg = Debug|Win32
-		{43349738-9CB3-4AB8-B888-C1FD430D9649}.Debug|x86.Build.0 = Debug|Win32
-		{43349738-9CB3-4AB8-B888-C1FD430D9649}.Release|x64.ActiveCfg = Release|x64
-		{43349738-9CB3-4AB8-B888-C1FD430D9649}.Release|x64.Build.0 = Release|x64
-		{43349738-9CB3-4AB8-B888-C1FD430D9649}.Release|x86.ActiveCfg = Release|Win32
-		{43349738-9CB3-4AB8-B888-C1FD430D9649}.Release|x86.Build.0 = Release|Win32
+<<<<<<< Updated upstream
+=======
+		{614F4584-B765-4F2D-8222-9F0CA5F4E522}.Debug|x64.ActiveCfg = Debug|x64
+		{614F4584-B765-4F2D-8222-9F0CA5F4E522}.Debug|x64.Build.0 = Debug|x64
+		{614F4584-B765-4F2D-8222-9F0CA5F4E522}.Debug|x86.ActiveCfg = Debug|Win32
+		{614F4584-B765-4F2D-8222-9F0CA5F4E522}.Debug|x86.Build.0 = Debug|Win32
+		{614F4584-B765-4F2D-8222-9F0CA5F4E522}.Release|x64.ActiveCfg = Release|x64
+		{614F4584-B765-4F2D-8222-9F0CA5F4E522}.Release|x64.Build.0 = Release|x64
+		{614F4584-B765-4F2D-8222-9F0CA5F4E522}.Release|x86.ActiveCfg = Release|Win32
+		{614F4584-B765-4F2D-8222-9F0CA5F4E522}.Release|x86.Build.0 = Release|Win32
+		{BA03A596-5CC5-46CA-BAC3-69662AA5D013}.Debug|x64.ActiveCfg = Debug|x64
+		{BA03A596-5CC5-46CA-BAC3-69662AA5D013}.Debug|x64.Build.0 = Debug|x64
+		{BA03A596-5CC5-46CA-BAC3-69662AA5D013}.Debug|x86.ActiveCfg = Debug|Win32
+		{BA03A596-5CC5-46CA-BAC3-69662AA5D013}.Debug|x86.Build.0 = Debug|Win32
+		{BA03A596-5CC5-46CA-BAC3-69662AA5D013}.Release|x64.ActiveCfg = Release|x64
+		{BA03A596-5CC5-46CA-BAC3-69662AA5D013}.Release|x64.Build.0 = Release|x64
+		{BA03A596-5CC5-46CA-BAC3-69662AA5D013}.Release|x86.ActiveCfg = Release|Win32
+		{BA03A596-5CC5-46CA-BAC3-69662AA5D013}.Release|x86.Build.0 = Release|Win32
+>>>>>>> Stashed changes
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

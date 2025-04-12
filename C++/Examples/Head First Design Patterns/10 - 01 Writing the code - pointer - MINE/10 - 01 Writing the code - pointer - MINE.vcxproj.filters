@@ -26,19 +26,19 @@
     <ClInclude Include="GumballMachine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="State.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="StateHasQuarter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="StateNoQuarter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="StateSoldOut.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="StateSold.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="State.h">
+    <ClInclude Include="StateSoldOut.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
