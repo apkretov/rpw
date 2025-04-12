@@ -56,7 +56,6 @@ public class GumballMachine {
 class State;
 
 class GumballMachine : public std::enable_shared_from_this<GumballMachine> {
-    explicit GumballMachine(int numberGumballs);
     shared_ptr<State> soldOutState;
     shared_ptr<State> noQuarterState;
     shared_ptr<State> hasQuarterState;
@@ -64,7 +63,14 @@ class GumballMachine : public std::enable_shared_from_this<GumballMachine> {
     shared_ptr<State> state;
     int count;
     void initialize();
+    
+	explicit GumballMachine(int numberGumballs);
 public:
+    GumballMachine(const GumballMachine&) = delete; // Delete copy operations as copying a state machine doesn't make sense
+    GumballMachine &operator=(const GumballMachine&) = delete;
+    GumballMachine(GumballMachine&&) = delete; // Move operations should also be deleted as it would break shared_from_this
+    GumballMachine &operator=(GumballMachine&&) = delete;
+
     static shared_ptr<GumballMachine> create(int numberGumballs);
     void insertQuarter() { state->insertQuarter(); }
     void ejectQuarter() { state->ejectQuarter(); }
