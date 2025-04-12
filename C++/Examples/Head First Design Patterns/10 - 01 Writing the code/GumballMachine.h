@@ -63,7 +63,11 @@ class GumballMachine : public std::enable_shared_from_this<GumballMachine> {
     shared_ptr<State> state;
     int count;
 public:
-    explicit GumballMachine(int numberGumballs);
+    static shared_ptr<GumballMachine> create(int numberGumballs);
+private:
+    GumballMachine(int numberGumballs);
+    void initialize();
+public:
     void insertQuarter() { state->insertQuarter(); }
     void ejectQuarter() { state->ejectQuarter(); }
 

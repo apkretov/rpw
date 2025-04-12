@@ -6,10 +6,18 @@
 #include <memory>
 using std::make_shared;
 
-GumballMachine::GumballMachine(int numberGumballs) : count(numberGumballs) { // We need to construct the object first before using shared_from_this()
-	soldOutState = make_shared<SoldOutState>(shared_from_this());
-	noQuarterState = make_shared<NoQuarterState>(shared_from_this());
-	hasQuarterState = make_shared<HasQuarterState>(shared_from_this());
+shared_ptr<GumballMachine> GumballMachine::create(int numberGumballs) {
+    auto machine = shared_ptr<GumballMachine>(new GumballMachine(numberGumballs));
+    machine->initialize();
+    return machine;
+}
+
+GumballMachine::GumballMachine(int numberGumballs) : count(numberGumballs) {}
+
+void GumballMachine::initialize() {
+    soldOutState = make_shared<SoldOutState>(shared_from_this());
+    noQuarterState = make_shared<NoQuarterState>(shared_from_this());
+    hasQuarterState = make_shared<HasQuarterState>(shared_from_this());
     soldState = make_shared<SoldState>(shared_from_this());
-    state = (numberGumballs > 0) ? noQuarterState : soldOutState;
+    state = (count > 0) ? noQuarterState : soldOutState;
 }

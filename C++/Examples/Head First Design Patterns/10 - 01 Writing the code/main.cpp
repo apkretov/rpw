@@ -33,33 +33,34 @@ public class GumballMachineTestDrive {
 }
 */
 int main() {
-	GumballMachine gumballMachine(5);
-	cout << gumballMachine.toString();
+	//GumballMachine gumballMachine(5);
+	auto gumballMachine = GumballMachine::create(5);
+	cout << gumballMachine->toString();
 
-	gumballMachine.insertQuarter();
-	gumballMachine.turnCrank();
-	cout << gumballMachine.toString();
+	gumballMachine->insertQuarter();
+	gumballMachine->turnCrank();
+	cout << gumballMachine->toString();
 
-	gumballMachine.insertQuarter();
-	gumballMachine.ejectQuarter();
-	gumballMachine.turnCrank();
-	cout << gumballMachine.toString();
+	gumballMachine->insertQuarter();
+	gumballMachine->ejectQuarter();
+	gumballMachine->turnCrank();
+	cout << gumballMachine->toString();
 
-	gumballMachine.insertQuarter();
-	gumballMachine.turnCrank();
-	gumballMachine.insertQuarter();
-	gumballMachine.turnCrank();
-	gumballMachine.ejectQuarter();
-	cout << gumballMachine.toString();
+	gumballMachine->insertQuarter();
+	gumballMachine->turnCrank();
+	gumballMachine->insertQuarter();
+	gumballMachine->turnCrank();
+	gumballMachine->ejectQuarter();
+	cout << gumballMachine->toString();
 
-	gumballMachine.insertQuarter();
-	gumballMachine.insertQuarter();
-	gumballMachine.turnCrank();
-	gumballMachine.insertQuarter();
-	gumballMachine.turnCrank();
-	gumballMachine.insertQuarter();
-	gumballMachine.turnCrank();
-	cout << gumballMachine.toString();
+	gumballMachine->insertQuarter();
+	gumballMachine->insertQuarter();
+	gumballMachine->turnCrank();
+	gumballMachine->insertQuarter();
+	gumballMachine->turnCrank();
+	gumballMachine->insertQuarter();
+	gumballMachine->turnCrank();
+	cout << gumballMachine->toString();
 
 	return 0;
 }
