@@ -1,9 +1,11 @@
 #pragma once
 
 #include <string>
+#include <memory>
 #include "State.h"
 using std::string;
 using std::to_string;
+using std::shared_ptr;
 
 /* Java @ https://github.com/bethrobson/Head-First-Design-Patterns/tree/master/src/headfirst/designpatterns/state/gumball
 public class GumballMachine {
@@ -54,15 +56,14 @@ public class GumballMachine {
 class State;
 
 class GumballMachine {
-    State* soldOutState;
-    State* noQuarterState;
-    State* hasQuarterState;
-    State* soldState;
-    State* state;
+    shared_ptr<State> soldOutState;
+    shared_ptr<State> noQuarterState;
+    shared_ptr<State> hasQuarterState;
+    shared_ptr<State> soldState;
+    shared_ptr<State> state;
     int count = 0;
 public:
-    GumballMachine(int numberGumballs);
-    ~GumballMachine(); //TO DO: Remove it.
+    explicit GumballMachine(int numberGumballs);
     void insertQuarter() { state->insertQuarter(); }
     void ejectQuarter() { state->ejectQuarter(); }
 
@@ -71,13 +72,13 @@ public:
         state->dispense();
     }
     
-	void setState(State* state) { this->state = state; }
+	void setState(shared_ptr<State> state) { this->state = state; }
     void releaseBall() { if (count > 0) count = count - 1; }
-    State* getState() { return state; }
-    State* getSoldOutState() { return soldOutState; }
-    State* getNoQuarterState() { return noQuarterState; }
-    State* getHasQuarterState() { return hasQuarterState; }
-    State* getSoldState() { return soldState; }
+    shared_ptr<State> getState() { return state; }
+    shared_ptr<State> getSoldOutState() { return soldOutState; }
+    shared_ptr<State> getNoQuarterState() { return noQuarterState; }
+    shared_ptr<State> getHasQuarterState() { return hasQuarterState; }
+    shared_ptr<State> getSoldState() { return soldState; }
     int getCount() { return count; }
 
     string toString() {

@@ -137,10 +137,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GumballMachine.h" />
-    <ClInclude Include="HasQuarterState.h" />
-    <ClInclude Include="NoQuarterState.h" />
-    <ClInclude Include="SoldOutState.h" />
-    <ClInclude Include="SoldState.h" />
+    <ClInclude Include="StateHasQuarter.h" />
+    <ClInclude Include="StateNoQuarter.h" />
+    <ClInclude Include="StateSoldOut.h" />
+    <ClInclude Include="StateSold.h" />
     <ClInclude Include="State.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
