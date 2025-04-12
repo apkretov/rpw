@@ -3,8 +3,10 @@
 #include <iostream>
 #include "State.h"
 #include "GumballMachine.h"
+#include <memory>
 using std::cout;
 using std::string;
+using std::weak_ptr;
 
 /* Java @ https://github.com/bethrobson/Head-First-Design-Patterns/tree/master/src/headfirst/designpatterns/state/gumball
 public class HasQuarterState implements State {
@@ -25,18 +27,25 @@ public class HasQuarterState implements State {
 */
 
 class HasQuarterState : public State {
-    GumballMachine* gumballMachine;
+    weak_ptr<GumballMachine> gumballMachine;
 public:
-    HasQuarterState(GumballMachine* gumballMachine) : gumballMachine(gumballMachine) {}
+    HasQuarterState(shared_ptr<GumballMachine> gumballMachine) : gumballMachine(gumballMachine) {}
     void insertQuarter() override { cout << "You can't insert another quarter\n"; }
-    void ejectQuarter() override {
-        cout << "Quarter returned\n";
-        gumballMachine->setState(gumballMachine->getNoQuarterState());
+
+	void ejectQuarter() override {
+		if (auto machine = gumballMachine.lock()) {
+			cout << "Quarter returned\n";
+			machine->setState(machine->getNoQuarterState());
+		}
+	}
+    
+	void turnCrank() override {
+		if (auto machine = gumballMachine.lock()) {
+			cout << "You turned...\n";
+			machine->setState(machine->getSoldState());
+		}
     }
-    void turnCrank() override {
-        cout << "You turned...\n";
-        gumballMachine->setState(gumballMachine->getSoldState());
-    }
-    void dispense() override { cout << "No gumball dispensed\n"; }
+    
+	void dispense() override { cout << "No gumball dispensed\n"; }
     string toString() override { return "waiting for turn of crank"; }
 };
