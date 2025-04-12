@@ -1,0 +1,50 @@
+Now, having the weak_ptr here StateHasQuarter.h we've got a whole bunch of overhead:
+1. The private  constructor GumballMachine here GumballMachine.h;
+2. GumballMachine.h Due to the inheritance 'from this' the additional creating and initializing functions GumballMachine.cpp;
+3.  And finally, unlike ordinary object creation, the need to use the create main.cpp a shared pointer to it...
+All that is just because you recommended to use the weak_ptr instead of the reference in StateHasQuarter.h as GumballMachine &gumballMachine... Is the overhead truelly justified?
+
+You raise a valid point about the overhead. Let's analyze the tradeoffs:
+
+Using `weak_ptr`:
+Pros:
+1. Prevents potential circular references
+2. Safer memory management
+3. Can detect if the GumballMachine is destroyed
+4. More idiomatic when working with modern C++ smart pointers
+
+Cons:
+1. Requires `enable_shared_from_this` inheritance
+2. Needs two-phase initialization
+3. More complex creation pattern
+4. Runtime overhead for pointer checking
+5. More complex code structure
+
+Using reference:
+Pros:
+1. Simpler code structure
+2. No need for `enable_shared_from_this`
+3. Direct object creation
+4. No runtime overhead
+5. Clearer intent
+
+Cons:
+1. Cannot detect if the referenced object is destroyed
+2. Might hide potential lifetime issues
+
+In this specific case, the State pattern as implemented in the Gumball Machine example, the reference approach would be sufficient because:
+1. The states are owned by the GumballMachine
+2. The GumballMachine's lifetime encompasses its states
+3. The states are never used after the GumballMachine is destroyed
+
+So yes, you're right - we could simplify back to:
+
+```cpp:c:\_\rpw\C++\Examples\Head First Design Patterns\10 - 01 Writing the code\StateHasQuarter.h
+class HasQuarterState : public State {
+    GumballMachine& gumballMachine;
+public:
+    HasQuarterState(GumballMachine& gumballMachine) : gumballMachine(gumballMachine) {}
+    // ... rest of the code using gumballMachine. instead of checking weak_ptr ...
+```
+
+And remove all the smart pointer complexity. The overhead in this case isn't fully justified given the simple and well-defined lifetime relationships in this pattern.
