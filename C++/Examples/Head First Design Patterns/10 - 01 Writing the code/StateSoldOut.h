@@ -1,7 +1,10 @@
 #pragma once
-
+#include <iostream>
 #include "State.h"
 #include "GumballMachine.h"
+#include <memory>
+using std::cout;
+using std::shared_ptr;
 using std::string;
 
 /* Java @ https://github.com/bethrobson/Head-First-Design-Patterns/tree/master/src/headfirst/designpatterns/state/gumball
@@ -17,9 +20,9 @@ public class SoldOutState implements State {
 */
 
 class SoldOutState : public State {
-    GumballMachine* gumballMachine;
+    weak_ptr<GumballMachine> gumballMachine;
 public:
-    SoldOutState(GumballMachine* gumballMachine) : gumballMachine(gumballMachine) {}
+    SoldOutState(shared_ptr<GumballMachine> gumballMachine) : gumballMachine(gumballMachine) {}
     void insertQuarter() override { cout << "You can't insert a quarter, the machine is sold out\n"; }
     void ejectQuarter() override { cout << "You can't eject, you haven't inserted a quarter yet\n"; }
     void turnCrank() override { cout << "You turned, but there are no gumballs\n"; }

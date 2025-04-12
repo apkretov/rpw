@@ -2,6 +2,9 @@
 
 #include "State.h"
 #include "GumballMachine.h"
+#include <memory>
+using std::cout;
+using std::shared_ptr;
 using std::string;
 
 /* Java @ https://github.com/bethrobson/Head-First-Design-Patterns/tree/master/src/headfirst/designpatterns/state/gumball
@@ -24,19 +27,22 @@ public class SoldState implements State {
 */
 
 class SoldState : public State {
-    GumballMachine* gumballMachine;
+    weak_ptr<GumballMachine> gumballMachine;
 public:
-    SoldState(GumballMachine* gumballMachine) : gumballMachine(gumballMachine) {}
+    SoldState(shared_ptr<GumballMachine> gumballMachine) : gumballMachine(gumballMachine) {}
     void insertQuarter() override { cout << "Please wait, we're already giving you a gumball\n"; }
     void ejectQuarter() override { cout << "Sorry, you already turned the crank\n"; }
     void turnCrank() override { cout << "Turning twice doesn't get you another gumball!\n"; }
 
     void dispense() override {
-        gumballMachine->releaseBall();
-        if (gumballMachine->getCount() > 0) gumballMachine->setState(gumballMachine->getNoQuarterState());
-        else {
-            cout << "Oops, out of gumballs!\n";
-            gumballMachine->setState(gumballMachine->getSoldOutState());
+        if (auto machine = gumballMachine.lock()) {
+            machine->releaseBall();
+            if (machine->getCount() > 0) 
+                machine->setState(machine->getNoQuarterState());
+            else {
+                cout << "Oops, out of gumballs!\n";
+                machine->setState(machine->getSoldOutState());
+            }
         }
     }
     string toString() override { return "dispensing a gumball"; }
