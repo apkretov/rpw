@@ -36,18 +36,14 @@ public:
 	void ejectQuarter() override {
 		if (auto machine = gumballMachine.lock()) {
 			cout << "Quarter returned\n";
-#ifdef OFF
 			machine->setState(machine->getNoQuarterState());
-#endif //OFF
 		}
 	}
     
 	void turnCrank() override {
 		if (auto machine = gumballMachine.lock()) {
 			cout << "You turned...\n";
-#ifdef OFF
 			machine->setState(machine->getSoldState());
-#endif //OFF
 		}
     }
     
