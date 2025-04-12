@@ -8,8 +8,7 @@
 #endif //OFF
 using std::make_shared;
 
-GumballMachine::GumballMachine(int numberGumballs) {
-    // We need to construct the object first before using shared_from_this()
+GumballMachine::GumballMachine(int numberGumballs) { // We need to construct the object first before using shared_from_this()
 #ifdef OFF
 	soldOutState = make_shared<SoldOutState>(shared_from_this());
 	noQuarterState = make_shared<NoQuarterState>(shared_from_this());

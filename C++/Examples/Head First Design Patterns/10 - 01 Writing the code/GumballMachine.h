@@ -1,3 +1,5 @@
+#define OFF
+
 #pragma once
 
 #include <string>
