@@ -38,11 +38,13 @@ int main() {
 
 	gumballMachine->insertQuarter();
 	gumballMachine->turnCrank();
+
 	cout << gumballMachine->toString();
 
 	gumballMachine->insertQuarter();
 	gumballMachine->ejectQuarter();
 	gumballMachine->turnCrank();
+
 	cout << gumballMachine->toString();
 
 	gumballMachine->insertQuarter();
@@ -50,6 +52,7 @@ int main() {
 	gumballMachine->insertQuarter();
 	gumballMachine->turnCrank();
 	gumballMachine->ejectQuarter();
+
 	cout << gumballMachine->toString();
 
 	gumballMachine->insertQuarter();
@@ -59,6 +62,7 @@ int main() {
 	gumballMachine->turnCrank();
 	gumballMachine->insertQuarter();
 	gumballMachine->turnCrank();
+
 	cout << gumballMachine->toString();
 
 	return 0;

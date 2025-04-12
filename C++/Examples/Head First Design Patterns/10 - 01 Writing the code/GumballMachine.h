@@ -1,11 +1,13 @@
 #pragma once
 
+#include <iostream>
 #include <string>
 #include <memory>
 #include "State.h"
+using std::cout;
 using std::string;
-using std::to_string;
 using std::shared_ptr;
+using std::to_string;
 
 /* Java @ https://github.com/bethrobson/Head-First-Design-Patterns/tree/master/src/headfirst/designpatterns/state/gumball
 public class GumballMachine {
@@ -81,8 +83,14 @@ public:
     }
     
 	void setState(shared_ptr<State> state) { this->state = state; }
-    void releaseBall() { if (count > 0) count = count - 1; }
-    shared_ptr<State> getState() { return state; }
+
+    void releaseBall() { 
+		cout << "A gumball comes rolling out the slot..\n";
+		if (count > 0) 
+			--count; 
+	}
+    
+	shared_ptr<State> getState() { return state; }
     shared_ptr<State> getSoldOutState() { return soldOutState; }
     shared_ptr<State> getNoQuarterState() { return noQuarterState; }
     shared_ptr<State> getHasQuarterState() { return hasQuarterState; }
@@ -97,7 +105,7 @@ public:
         if (count != 1) 
 			result += "s";
         result += "\n";
-        result += "Machine is " + state->toString() + "\n";
+        result += "Machine is " + state->toString() + "\n\n";
         return result;
     }
 };
