@@ -116,6 +116,7 @@ class GumballMachine {
 
 public:
 	GumballMachine(int count) { this->count = count; if (count > 0) state = NO_QUARTER; }
+
 	void insertQuarter() {
 		if (state == HAS_QUARTER)
 			cout << "You can't insert another quarter\n";
@@ -127,6 +128,7 @@ public:
 		else if (state == SOLD)
 			cout << "Please wait, we're already giving you a gumball\n";
 	}
+	
 	void ejectQuarter() {
 		if (state == HAS_QUARTER) {
 			cout << "Quarter returned\n";
@@ -138,6 +140,7 @@ public:
 		else if (state == SOLD_OUT)
 			cout << "You can't eject, you haven't inserted a quarter yet\n";
 	}
+	
 	void turnCrank() {
 		if (state == SOLD)
 			cout << "Turning twice doesn't get you another gumball!\n";
@@ -151,7 +154,9 @@ public:
 			dispense();
 		}
 	}
+	
 	void refill(int numGumBalls) { count = numGumBalls; state = NO_QUARTER; }
+
 	string toString() {
 		stringstream result;
 		result << "\nMighty Gumball, Inc.";
@@ -160,9 +165,12 @@ public:
 		if (count != 1) result << "s";
 		result << "\nMachine is ";
 		if (state == SOLD_OUT) result << "sold out";
-		else if (state == NO_QUARTER) result << "waiting for quarter";
-		else if (state == HAS_QUARTER) result << "waiting for turn of crank";
-		else if (state == SOLD) result << "delivering a gumball";
+		else if (state == NO_QUARTER) 
+			result << "waiting for quarter";
+		else if (state == HAS_QUARTER) 
+			result << "waiting for turn of crank";
+		else if (state == SOLD) 
+			result << "delivering a gumball";
 		result << "\n";
 		return result.str();
 	}

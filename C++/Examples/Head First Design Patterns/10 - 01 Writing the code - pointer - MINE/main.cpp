@@ -1,4 +1,5 @@
 #include <iostream>
+#include "../../stdafx.h"
 #include "vld.h"
 #include "GumballMachine.h"
 using std::cout;
@@ -33,6 +34,8 @@ public class GumballMachineTestDrive {
 }
 */
 int main() {
+	print_file_line();
+
     GumballMachine gumballMachine(5);
     cout << gumballMachine.toString();
 

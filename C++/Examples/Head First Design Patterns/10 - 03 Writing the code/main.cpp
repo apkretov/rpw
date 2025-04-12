@@ -1,3 +1,4 @@
+#include "../../stdafx.h"
 #include "GumballMachine.h"
 
 #pragma region Writing the code
@@ -33,6 +34,8 @@ public class GumballMachineTestDrive {
 }
 */
 int main() {
+	print_file_line();
+
 	GumballMachine gumballMachine(5);
 
 	cout << gumballMachine.toString();
