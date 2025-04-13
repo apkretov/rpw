@@ -75,6 +75,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "10 - 02 Implementing our St
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "10 - 03 Implementing our State classes", "10 - 03 Implementing our State classes\10 - 03 Implementing our State classes.vcxproj", "{767E140E-C87D-4689-B060-DC89AD6A6E75}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "10 - 04 We still need to finish the Gumball 1 in 10 game", "10 - 04 We still need to finish the Gumball 1 in 10 game\10 - 04 We still need to finish the Gumball 1 in 10 game.vcxproj", "{257945D2-B994-4C03-B99A-6EAED052927C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -371,6 +373,14 @@ Global
 		{767E140E-C87D-4689-B060-DC89AD6A6E75}.Release|x64.Build.0 = Release|x64
 		{767E140E-C87D-4689-B060-DC89AD6A6E75}.Release|x86.ActiveCfg = Release|Win32
 		{767E140E-C87D-4689-B060-DC89AD6A6E75}.Release|x86.Build.0 = Release|Win32
+		{257945D2-B994-4C03-B99A-6EAED052927C}.Debug|x64.ActiveCfg = Debug|x64
+		{257945D2-B994-4C03-B99A-6EAED052927C}.Debug|x64.Build.0 = Debug|x64
+		{257945D2-B994-4C03-B99A-6EAED052927C}.Debug|x86.ActiveCfg = Debug|Win32
+		{257945D2-B994-4C03-B99A-6EAED052927C}.Debug|x86.Build.0 = Debug|Win32
+		{257945D2-B994-4C03-B99A-6EAED052927C}.Release|x64.ActiveCfg = Release|x64
+		{257945D2-B994-4C03-B99A-6EAED052927C}.Release|x64.Build.0 = Release|x64
+		{257945D2-B994-4C03-B99A-6EAED052927C}.Release|x86.ActiveCfg = Release|Win32
+		{257945D2-B994-4C03-B99A-6EAED052927C}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
