@@ -75,6 +75,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "10 - 02 Writing the code - 
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "10 - 03 Writing the code", "10 - 03 Writing the code\10 - 03 Writing the code.vcxproj", "{A8FC676D-B0EF-45D3-8D36-A3B5A329B8E7}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "10 - 04 Implementing our State classes", "10 - 04 Implementing our State classes\10 - 04 Implementing our State classes.vcxproj", "{3DEEB386-C73C-47D0-B5F2-BACB7D5C3656}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -371,6 +373,14 @@ Global
 		{A8FC676D-B0EF-45D3-8D36-A3B5A329B8E7}.Release|x64.Build.0 = Release|x64
 		{A8FC676D-B0EF-45D3-8D36-A3B5A329B8E7}.Release|x86.ActiveCfg = Release|Win32
 		{A8FC676D-B0EF-45D3-8D36-A3B5A329B8E7}.Release|x86.Build.0 = Release|Win32
+		{3DEEB386-C73C-47D0-B5F2-BACB7D5C3656}.Debug|x64.ActiveCfg = Debug|x64
+		{3DEEB386-C73C-47D0-B5F2-BACB7D5C3656}.Debug|x64.Build.0 = Debug|x64
+		{3DEEB386-C73C-47D0-B5F2-BACB7D5C3656}.Debug|x86.ActiveCfg = Debug|Win32
+		{3DEEB386-C73C-47D0-B5F2-BACB7D5C3656}.Debug|x86.Build.0 = Debug|Win32
+		{3DEEB386-C73C-47D0-B5F2-BACB7D5C3656}.Release|x64.ActiveCfg = Release|x64
+		{3DEEB386-C73C-47D0-B5F2-BACB7D5C3656}.Release|x64.Build.0 = Release|x64
+		{3DEEB386-C73C-47D0-B5F2-BACB7D5C3656}.Release|x86.ActiveCfg = Release|Win32
+		{3DEEB386-C73C-47D0-B5F2-BACB7D5C3656}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
