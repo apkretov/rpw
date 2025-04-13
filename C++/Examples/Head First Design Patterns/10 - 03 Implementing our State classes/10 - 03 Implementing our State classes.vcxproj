@@ -18,23 +18,11 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="GumballMachine.cpp" />
-    <ClCompile Include="main.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="GumballMachine.h" />
-    <ClInclude Include="State.h" />
-    <ClInclude Include="StateHasQuarter.h" />
-    <ClInclude Include="StateNoQuarter.h" />
-    <ClInclude Include="StateSold.h" />
-    <ClInclude Include="StateSoldOut.h" />
-  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{3deeb386-c73c-47d0-b5f2-bacb7d5c3656}</ProjectGuid>
-    <RootNamespace>My1004ImplementingourStateclasses</RootNamespace>
+    <ProjectGuid>{767e140e-c87d-4689-b060-dc89ad6a6e75}</ProjectGuid>
+    <RootNamespace>My1003ImplementingourStateclasses</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -143,6 +131,18 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="GumballMachine.cpp" />
+    <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GumballMachine.h" />
+    <ClInclude Include="State.h" />
+    <ClInclude Include="StateHasQuarter.h" />
+    <ClInclude Include="StateNoQuarter.h" />
+    <ClInclude Include="StateSold.h" />
+    <ClInclude Include="StateSoldOut.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
