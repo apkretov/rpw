@@ -1,4 +1,0 @@
-Having the shared_ptr in the State classes results in this overhead:
-1. The private  constructor GumballMachine here GumballMachine.h;
-2. GumballMachine.h Due to the inheritance 'from this' the additional creating and initializing functions GumballMachine.cpp;
-3.  And finally, unlike ordinary object creation, the need to use the create main.cpp a shared pointer to it.

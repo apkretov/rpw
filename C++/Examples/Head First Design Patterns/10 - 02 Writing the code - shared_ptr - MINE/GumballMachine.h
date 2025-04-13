@@ -58,9 +58,9 @@ public class GumballMachine {
 class State;
 
 class GumballMachine : public std::enable_shared_from_this<GumballMachine> {
-    shared_ptr<State> soldOutState;
-    shared_ptr<State> noQuarterState;
-    shared_ptr<State> hasQuarterState;
+    shared_ptr<State> soldOutState;		// Having the shared_ptr in the State classes requires the overhead:
+    shared_ptr<State> noQuarterState;	// 1. The private constructor;
+    shared_ptr<State> hasQuarterState;	// 2. The creating and initializing functions due to the inheritance 'from this'.
     shared_ptr<State> soldState;
     shared_ptr<State> state;
     int count;
