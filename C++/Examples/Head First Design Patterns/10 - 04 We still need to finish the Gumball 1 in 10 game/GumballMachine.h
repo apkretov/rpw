@@ -121,7 +121,6 @@ class GumballMachine : public std::enable_shared_from_this<GumballMachine> {
 	shared_ptr<State> state;
 	int count;
 	void initialize();
-
 	explicit GumballMachine(int numberGumballs);
 public:
 	GumballMachine(const GumballMachine &) = delete; // Delete copy operations as copying a state machine doesn't make sense

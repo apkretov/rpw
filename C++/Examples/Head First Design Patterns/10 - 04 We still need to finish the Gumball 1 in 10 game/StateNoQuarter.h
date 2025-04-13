@@ -27,12 +27,14 @@ class NoQuarterState : public State {
 	weak_ptr<GumballMachine> gumballMachine;
 public:
 	NoQuarterState(shared_ptr<GumballMachine> gumballMachine) : gumballMachine(gumballMachine) {}
+
 	void insertQuarter() override {
 		if (auto machine = gumballMachine.lock()) {
 			cout << "You inserted a quarter\n";
 			machine->setState(machine->getHasQuarterState());
 		}
 	}
+
 	void ejectQuarter() override { cout << "You haven't inserted a quarter\n"; }
 	void turnCrank() override { cout << "You turned, but there's no quarter\n"; }
 	void dispense() override { cout << "You need to pay first\n"; }

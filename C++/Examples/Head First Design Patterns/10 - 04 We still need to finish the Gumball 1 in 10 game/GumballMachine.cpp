@@ -8,13 +8,13 @@
 using std::make_shared;
 
 #pragma region We still need to finish the Gumball 1 in 10 game
+GumballMachine::GumballMachine(int numberGumballs) : count(numberGumballs) {}
+
 shared_ptr<GumballMachine> GumballMachine::create(int numberGumballs) {
     auto machine = shared_ptr<GumballMachine>(new GumballMachine(numberGumballs));
     machine->initialize();
     return machine;
 }
-
-GumballMachine::GumballMachine(int numberGumballs) : count(numberGumballs) {}
 
 void GumballMachine::initialize() {
     soldOutState = make_shared<SoldOutState>(shared_from_this());
