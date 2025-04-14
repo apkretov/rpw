@@ -77,6 +77,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "10 - 03 Implementing our St
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "10 - 04 We still need to finish the Gumball 1 in 10 game", "10 - 04 We still need to finish the Gumball 1 in 10 game\10 - 04 We still need to finish the Gumball 1 in 10 game.vcxproj", "{257945D2-B994-4C03-B99A-6EAED052927C}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "10 - 05 Sharpen your pencil", "10 - 05 Sharpen your pencil\10 - 05 Sharpen your pencil.vcxproj", "{CA632F2D-DA31-4FAE-BE1D-1154E8AB404E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -381,6 +383,14 @@ Global
 		{257945D2-B994-4C03-B99A-6EAED052927C}.Release|x64.Build.0 = Release|x64
 		{257945D2-B994-4C03-B99A-6EAED052927C}.Release|x86.ActiveCfg = Release|Win32
 		{257945D2-B994-4C03-B99A-6EAED052927C}.Release|x86.Build.0 = Release|Win32
+		{CA632F2D-DA31-4FAE-BE1D-1154E8AB404E}.Debug|x64.ActiveCfg = Debug|x64
+		{CA632F2D-DA31-4FAE-BE1D-1154E8AB404E}.Debug|x64.Build.0 = Debug|x64
+		{CA632F2D-DA31-4FAE-BE1D-1154E8AB404E}.Debug|x86.ActiveCfg = Debug|Win32
+		{CA632F2D-DA31-4FAE-BE1D-1154E8AB404E}.Debug|x86.Build.0 = Debug|Win32
+		{CA632F2D-DA31-4FAE-BE1D-1154E8AB404E}.Release|x64.ActiveCfg = Release|x64
+		{CA632F2D-DA31-4FAE-BE1D-1154E8AB404E}.Release|x64.Build.0 = Release|x64
+		{CA632F2D-DA31-4FAE-BE1D-1154E8AB404E}.Release|x86.ActiveCfg = Release|Win32
+		{CA632F2D-DA31-4FAE-BE1D-1154E8AB404E}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
