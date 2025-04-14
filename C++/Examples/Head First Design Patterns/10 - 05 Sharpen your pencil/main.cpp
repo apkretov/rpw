@@ -4,13 +4,14 @@
 #include "GumballMachine.h"
 using std::cout;
 
-int main() { 
+#pragma region MINE
+int main() {
 	print_file_line();
 
-	auto gumballMachine = GumballMachine::create(1);           
+	auto gumballMachine = GumballMachine::create(1);
 	cout << gumballMachine->toString();
 
-	gumballMachine->insertQuarter();                                
+	gumballMachine->insertQuarter();
 	gumballMachine->turnCrank();
 
 	cout << gumballMachine->toString();
@@ -20,3 +21,4 @@ int main() {
 
 	return 0;
 }
+#pragma endregion //MINE
