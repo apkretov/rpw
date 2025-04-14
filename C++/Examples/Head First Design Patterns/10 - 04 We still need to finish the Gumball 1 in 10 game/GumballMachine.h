@@ -145,15 +145,15 @@ public:
 			--count;
 	}
 
-	shared_ptr<State> getState() { return state; }
-	shared_ptr<State> getSoldOutState() { return soldOutState; }
-	shared_ptr<State> getNoQuarterState() { return noQuarterState; }
-	shared_ptr<State> getHasQuarterState() { return hasQuarterState; }
-	shared_ptr<State> getSoldState() { return soldState; }
-	shared_ptr<State> getWinnerState() { return winnerState; } // Don't forget you also have to add a getter method for WinnerState too.
-	int getCount() { return count; }
+	shared_ptr<State> getState() const { return state; }
+	shared_ptr<State> getSoldOutState() const { return soldOutState; }
+	shared_ptr<State> getNoQuarterState() const { return noQuarterState; }
+	shared_ptr<State> getHasQuarterState() const { return hasQuarterState; }
+	shared_ptr<State> getSoldState() const { return soldState; }
+	shared_ptr<State> getWinnerState() const { return winnerState; } // Don't forget you also have to add a getter method for WinnerState too.
+	int getCount() const { return count; }
 
-	string toString() {
+	string toString() const {
 		string result;
 		result += "\nMighty Gumball, Inc.";
 		result += "\nC++-enabled Standing Gumball Model #2004";
