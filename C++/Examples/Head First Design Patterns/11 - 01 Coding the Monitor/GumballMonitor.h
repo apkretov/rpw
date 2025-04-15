@@ -1,7 +1,7 @@
 #pragma once
 
 #include <iostream>
-#include <string>
+//#include <string>
 #include <memory>
 #include "GumballMachine.h"
 using std::cout;

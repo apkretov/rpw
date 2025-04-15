@@ -11,7 +11,6 @@ public interface State {
     public void dispense();
 }
 */
-
 class State {
 public:
     virtual ~State() = default;
