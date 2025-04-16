@@ -5,13 +5,12 @@
 #include "StateSoldOut.h"
 #include "StateWinner.h"
 #include <memory>
-using std::make_shared;
 
 #pragma region Coding the Monitor
-GumballMachine::GumballMachine(string_view location, int count) : location(location), count(count) {}
+GumballMachine::GumballMachine(std::string_view location, int count) : location(location), count(count) {}
 
-shared_ptr<GumballMachine> GumballMachine::create(string_view location, int count) {
-	auto machine = shared_ptr<GumballMachine>(new GumballMachine(location, count));
+std::shared_ptr<GumballMachine> GumballMachine::create(std::string_view location, int count) {
+	auto machine = std::shared_ptr<GumballMachine>(new GumballMachine(location, count));
 	machine->initialize();
 	return machine;
 }

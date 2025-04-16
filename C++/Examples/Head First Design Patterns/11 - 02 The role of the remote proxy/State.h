@@ -1,7 +1,6 @@
 #pragma once
 
 #include <string>
-using std::string;
 
 /* Java @ https://github.com/bethrobson/Head-First-Design-Patterns/tree/master/src/headfirst/designpatterns/state/gumball
 public interface State {
@@ -18,5 +17,5 @@ public:
     virtual void ejectQuarter() = 0;
     virtual void turnCrank() = 0;
     virtual void dispense() = 0;
-    virtual string toString() = 0;
+    virtual std::string toString() = 0;
 };

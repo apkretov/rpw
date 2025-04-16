@@ -5,10 +5,6 @@
 #include "../../stdafx.h"
 #include "GumballMachine.h"
 #include "State.h"
-using std::cout;
-using std::shared_ptr;
-using std::string;
-using std::weak_ptr;
 
 #pragma region Finishing the game
 /* Java @ https://github.com/bethrobson/Head-First-Design-Patterns/tree/master/src/headfirst/designpatterns/state/gumballstatewinner
@@ -35,21 +31,21 @@ public class HasQuarterState implements State {
 */
 class HasQuarterState : public State {
 	Rnd randomWinner; // First we add a random number generator to generate the 10% chance of winning...
-	weak_ptr<GumballMachine> gumballMachine;
+	std::weak_ptr<GumballMachine> gumballMachine;
 public:
-	HasQuarterState(shared_ptr<GumballMachine> gumballMachine) : gumballMachine(gumballMachine) {}
-	void insertQuarter() override { cout << "You can't insert another quarter\n"; }
+	HasQuarterState(std::shared_ptr<GumballMachine> gumballMachine) : gumballMachine(gumballMachine) {}
+	void insertQuarter() override { std::cout << "You can't insert another quarter\n"; }
 
 	void ejectQuarter() override {
 		if (auto machine = gumballMachine.lock()) {
-			cout << "Quarter returned\n";
+			std::cout << "Quarter returned\n";
 			machine->setState(machine->getNoQuarterState());
 		}
 	}
 
 	void turnCrank() override {
 		if (auto machine = gumballMachine.lock()) {
-			cout << "You turned...\n";
+			std::cout << "You turned...\n";
 			int winner = randomWinner(); // ...then we determine if this customer won.
 			if ((winner == 0) && (machine->getCount() > 1)) { // If they won, and there's enough gumballs left for them to get two, we go to the WinnerState; otherwise, we go to the SoldState(just like we always did).
 				machine->setState(machine->getWinnerState());
@@ -58,7 +54,7 @@ public:
 		}
 	}
 
-	void dispense() override { cout << "No gumball dispensed\n"; }
-	string toString() override { return "waiting for turn of crank"; }
+	void dispense() override { std::cout << "No gumball dispensed\n"; }
+	std::string toString() override { return "waiting for turn of crank"; }
 };
 #pragma endregion //Finishing the game

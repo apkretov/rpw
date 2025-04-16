@@ -4,9 +4,6 @@
 #include "State.h"
 #include "GumballMachine.h"
 #include <memory>
-using std::cout;
-using std::shared_ptr;
-using std::string;
 
 #pragma region Implementing our State classes
 /* Java @ https://github.com/bethrobson/Head-First-Design-Patterns/tree/master/src/headfirst/designpatterns/state/gumball
@@ -24,20 +21,20 @@ public class NoQuarterState implements State {
 }
 */
 class NoQuarterState : public State {
-	weak_ptr<GumballMachine> gumballMachine;
+	std::weak_ptr<GumballMachine> gumballMachine;
 public:
-	NoQuarterState(shared_ptr<GumballMachine> gumballMachine) : gumballMachine(gumballMachine) {}
+	NoQuarterState(std::shared_ptr<GumballMachine> gumballMachine) : gumballMachine(gumballMachine) {}
 
 	void insertQuarter() override {
 		if (auto machine = gumballMachine.lock()) {
-			cout << "You inserted a quarter\n";
+			std::cout << "You inserted a quarter\n";
 			machine->setState(machine->getHasQuarterState());
 		}
 	}
 
-	void ejectQuarter() override { cout << "You haven't inserted a quarter\n"; }
-	void turnCrank() override { cout << "You turned, but there's no quarter\n"; }
-	void dispense() override { cout << "You need to pay first\n"; }
-	string toString() override { return "waiting for quarter"; }
+	void ejectQuarter() override { std::cout << "You haven't inserted a quarter\n"; }
+	void turnCrank() override { std::cout << "You turned, but there's no quarter\n"; }
+	void dispense() override { std::cout << "You need to pay first\n"; }
+	std::string toString() override { return "waiting for quarter"; }
 };
 #pragma endregion //Implementing our State classes

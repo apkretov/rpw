@@ -3,10 +3,6 @@
 #include <memory>
 #include "GumballMachine.h"
 #include "State.h"
-using std::cout;
-using std::shared_ptr;
-using std::string;
-using std::weak_ptr;
 
 #pragma region We still need to finish the Gumball 1 in 10 game
 /* Java @ https://github.com/bethrobson/Head-First-Design-Patterns/tree/master/src/headfirst/designpatterns/state/gumballstatewinner
@@ -41,12 +37,12 @@ public class WinnerState implements State {
 }
 */
 class WinnerState : public State {
-	weak_ptr<GumballMachine> gumballMachine;
+	std::weak_ptr<GumballMachine> gumballMachine;
 public:
-	WinnerState(shared_ptr<GumballMachine> gumballMachine) : gumballMachine(gumballMachine) {}
-	void insertQuarter() override { cout << "Please wait, we're already giving you a Gumball\n"; }
-	void ejectQuarter() override { cout << "Please wait, we're already giving you a Gumball\n"; }
-	void turnCrank() override { cout << "Turning again doesn't get you another gumball!\n"; }
+	WinnerState(std::shared_ptr<GumballMachine> gumballMachine) : gumballMachine(gumballMachine) {}
+	void insertQuarter() override { std::cout << "Please wait, we're already giving you a Gumball\n"; }
+	void ejectQuarter() override { std::cout << "Please wait, we're already giving you a Gumball\n"; }
+	void turnCrank() override { std::cout << "Turning again doesn't get you another gumball!\n"; }
 
 	void dispense() override { // Here we release two gumballs and then either go to the NoQuarterState or the SoldOutState.
 		if (auto machine = gumballMachine.lock()) {
@@ -55,17 +51,17 @@ public:
 				machine->setState(machine->getSoldOutState());
 			else {
 				machine->releaseBall(); // As long as we have a second gumball we release it.
-				cout << "YOU'RE A WINNER! You got two gumballs for your quarter\n";
+				std::cout << "YOU'RE A WINNER! You got two gumballs for your quarter\n";
 				if (machine->getCount() > 0)
 					machine->setState(machine->getNoQuarterState());
 				else {
-					cout << "Oops, out of gumballs!\n";
+					std::cout << "Oops, out of gumballs!\n";
 					machine->setState(machine->getSoldOutState());
 				}
 			}
 		}
 	}
 
-	string toString() override { return "despensing two gumballs for your quarter, because YOU'RE A WINNER!"; }
+	std::string toString() override { return "despensing two gumballs for your quarter, because YOU'RE A WINNER!"; }
 };
 #pragma endregion //We still need to finish the Gumball 1 in 10 game

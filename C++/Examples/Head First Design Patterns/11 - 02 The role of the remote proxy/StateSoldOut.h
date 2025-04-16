@@ -3,9 +3,6 @@
 #include "State.h"
 #include "GumballMachine.h"
 #include <memory>
-using std::cout;
-using std::shared_ptr;
-using std::string;
 
 #pragma region Sharpen your pencil
 /* Java @ https://github.com/bethrobson/Head-First-Design-Patterns/tree/master/src/headfirst/designpatterns/state/gumball
@@ -20,13 +17,13 @@ public class SoldOutState implements State {
 }
 */
 class SoldOutState : public State {
-	weak_ptr<GumballMachine> gumballMachine;
+	std::weak_ptr<GumballMachine> gumballMachine;
 public:
-	SoldOutState(shared_ptr<GumballMachine> gumballMachine) : gumballMachine(gumballMachine) {}
-	void insertQuarter() override { cout << "You can't insert a quarter, the machine is sold out\n"; }
-	void ejectQuarter() override { cout << "You can't eject, you haven't inserted a quarter yet\n"; }
-	void turnCrank() override { cout << "You turned, but there are no gumballs\n"; }
-	void dispense() override { cout << "No gumball dispensed\n"; }
-	string toString() override { return "sold out"; }
+	SoldOutState(std::shared_ptr<GumballMachine> gumballMachine) : gumballMachine(gumballMachine) {}
+	void insertQuarter() override { std::cout << "You can't insert a quarter, the machine is sold out\n"; }
+	void ejectQuarter() override { std::cout << "You can't eject, you haven't inserted a quarter yet\n"; }
+	void turnCrank() override { std::cout << "You turned, but there are no gumballs\n"; }
+	void dispense() override { std::cout << "No gumball dispensed\n"; }
+	std::string toString() override { return "sold out"; }
 };
 #pragma endregion //Sharpen your pencil
