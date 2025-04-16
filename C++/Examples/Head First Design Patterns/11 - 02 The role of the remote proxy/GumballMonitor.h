@@ -30,7 +30,7 @@ public:
         if (auto machine = machine_.lock()) {
             cout << "Gumball Machine: " << machine->getLocation() << "\n";
             cout << "Current inventory: " << machine->getCount() << " gumballs\n";
-            cout << "Current state: " << machine->getState()->toString() << "\n"; //MINE: This is a violation of the Principle of Least Knowledge. Delegate the toString() call through GumballMachine: string GumballMachine::getStateString() const { return state->toString(); }
+            cout << "Current state: " << machine->getState()->toString() << "\n"; //MINE: TO DO: This is a violation of the Principle of Least Knowledge. Delegate the toString() call through GumballMachine: string GumballMachine::getStateString() const { return state->toString(); }
         }
     }
 };

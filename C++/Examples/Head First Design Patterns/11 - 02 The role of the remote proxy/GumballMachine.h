@@ -5,31 +5,17 @@
 #include <string_view>
 #include <memory>
 #include "State.h"
+#include "GumballMachineI.h"
 using std::cout;
 using std::shared_ptr;
 using std::string;
 using std::string_view;
 using std::to_string;
 
-#pragma region Coding the Monitor
-/* Java
-public class GumballMachine { 
-	// other instance variables
-	String location; // A location is just a String.
-
-	public GumballMachine(String location, int count) { // The location is passed into the constructor and stored in the instance variable.
-		// other constructor code here
-		this.location = location;
-	}
-
-	public String getLocation() { return location; } // Let's also add a getter method to grab the location when we need it.
-	// other methods here
-}
-*/
-
 class State;
 
-class GumballMachine : public std::enable_shared_from_this<GumballMachine> {
+#pragma region Trae
+class GumballMachine : public IGumballMachine, public std::enable_shared_from_this<GumballMachine> {
 	shared_ptr<State> soldOutState;		// Having the shared_ptr in the State classes requires the overhead:
 	shared_ptr<State> noQuarterState;	// 1. The private constructor;
 	shared_ptr<State> hasQuarterState;	// 2. The creating and initializing functions due to the inheritance 'from this'.
@@ -88,5 +74,9 @@ public:
 		result += "Machine is " + state->toString() + "\n\n";
 		return result;
 	}
+
+	string getStateString() const override { return state->toString(); } // Add these methods to properly implement IGumballMachine
+	string getLocation() const override { return location; }
+	int getCount() const override { return count; }
 };
-#pragma endregion //Coding the Monitor
+#pragma endregion //Trae
