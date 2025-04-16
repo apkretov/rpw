@@ -4,8 +4,8 @@
 #include <string>
 #include <string_view>
 #include <memory>
+#include "IGumballMachine.h"
 #include "State.h"
-#include "GumballMachineI.h"
 using std::cout;
 using std::shared_ptr;
 using std::string;
@@ -60,8 +60,13 @@ public:
 	shared_ptr<State> getHasQuarterState() const { return hasQuarterState; }
 	shared_ptr<State> getSoldState() const { return soldState; }
 	shared_ptr<State> getWinnerState() const { return winnerState; } // Don't forget you also have to add a getter method for WinnerState too.
-	string getLocation() const { return location; } // Let's also add a getter method to grab the location when we need it.
-	int getCount() const { return count; }
+	string getLocation() const override { return location; } // Let's also add a getter method to grab the location when we need it.
+	int getCount() const override { return count; }
+	string getStateString() const override { return state->toString(); } // Add these methods to properly implement IGumballMachine
+#ifdef OFF
+	string getLocation() const override { return location; }
+	int getCount() const override { return count; }
+#endif //OFF
 
 	string toString() const {
 		string result;
@@ -74,9 +79,5 @@ public:
 		result += "Machine is " + state->toString() + "\n\n";
 		return result;
 	}
-
-	string getStateString() const override { return state->toString(); } // Add these methods to properly implement IGumballMachine
-	string getLocation() const override { return location; }
-	int getCount() const override { return count; }
 };
 #pragma endregion //Trae

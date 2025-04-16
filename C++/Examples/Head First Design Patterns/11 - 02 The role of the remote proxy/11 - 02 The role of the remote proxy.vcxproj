@@ -134,7 +134,7 @@
   <ItemGroup>
     <ClInclude Include="GumballMachine.h" />
     <ClInclude Include="GumballMonitor.h" />
-    <ClInclude Include="GumballMachineI.h" />
+    <ClInclude Include="IGumballMachine.h" />
     <ClInclude Include="State.h" />
     <ClInclude Include="StateHasQuarter.h" />
     <ClInclude Include="StateNoQuarter.h" />
