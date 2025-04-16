@@ -3,7 +3,6 @@
 #include <boost/exception/exception.hpp>
 #include "../../stdafx.h"
 #include "vld.h"
-#include "GumballMachine.h"
 #include "GumballMachineServer.h"
 #include "GumballMachineProxy.h"
 #include "GumballMonitor.h"
@@ -12,7 +11,7 @@
 void runServer(std::shared_ptr<boost::asio::io_context> io_context) { // Server example
     auto machine = GumballMachine::create("Seattle", 5);
     GumballMachineServer server(*io_context, 12345, machine);
-    io_context->run();
+	io_context->run(); // This starts the event loop.
 }
 
 void runClient() { // Client example
@@ -31,7 +30,7 @@ int main() {
     print_file_line();
 
     auto io_context = std::make_shared<boost::asio::io_context>();
-    std::thread server_thread([io_context] { runServer(io_context); });
+    std::thread server_thread([io_context]() { runServer(io_context); });
     
     std::this_thread::sleep_for(std::chrono::milliseconds(100)); // Give the server a moment to start
     runClient(); // Run client

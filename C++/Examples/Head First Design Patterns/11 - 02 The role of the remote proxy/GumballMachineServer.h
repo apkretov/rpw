@@ -16,9 +16,8 @@ class GumballMachineServer {
 			boost::system::error_code ec;
 			size_t len = socket->read_some(boost::asio::buffer(buffer), ec);
 
-			if (ec) {
+			if (ec)
 				return;
-			}
 
 			std::string request(buffer.data(), len);
 			std::string response;
@@ -31,8 +30,8 @@ class GumballMachineServer {
 
 			boost::asio::write(*socket, boost::asio::buffer(response), ec);
 		}
-		catch (const std::exception &) {
-			// Handle error
+		catch (const std::exception &e) {
+			std::cerr << e.what() << '\n';
 		}
 	}
 
