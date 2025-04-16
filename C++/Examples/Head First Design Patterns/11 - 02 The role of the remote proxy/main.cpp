@@ -1,47 +1,41 @@
-#include <iostream>
+#include <boost/asio.hpp>
+#include <boost/exception/diagnostic_information.hpp>
+#include <boost/exception/exception.hpp>
 #include "../../stdafx.h"
+//OFF #include "vld.h"
 #include "GumballMachine.h"
+#include "GumballMachineServer.h"
+#include "GumballMachineProxy.h"
 #include "GumballMonitor.h"
 
-#pragma region Testing the Monitor
-/* Java
-public class GumballMachineTestDrive {
-	public static void main(String[] args) {
-		int count = 0;
+#pragma region Trae
+void runServer() { // Server example
+    boost::asio::io_context io_context;
+    auto machine = GumballMachine::create("Seattle", 5);
+    GumballMachineServer server(io_context, 12345, machine);
+    io_context.run();
+}
 
-		if (args.length < 2) { // Pass in a location and initial # of gumballs on the command line.
-			System.out.println("GumballMachine <name> <inventory>");
-			System.exit(1);
-		}
-
-		count = Integer.parseInt(args[1]);
-		GumballMachine gumballMachine = new GumballMachine(args[0], count); // Don't forget to give the constructor a location and count...
-
-		GumballMonitor monitor = new GumballMonitor(gumballMachine); // ...and instantiate a monitor and pass it a machine to provide a report on.
-
-		// rest of test code here
-
-		monitor.report(); // When we need a report on the machine, we call the report() method.
+void runClient() { // Client example
+    boost::asio::io_context io_context;
+    auto proxy = std::make_shared<GumballMachineProxy>(io_context, "localhost", 12345);
+    GumballMonitor monitor(proxy);
+	try {
+		monitor.report();
+	}
+	catch (const boost::exception &e) {
+		std::cerr << "Exception: " << boost::diagnostic_information(e) << "\n";
 	}
 }
-*/
-int main(int argc, char *argv[]) {
-	if (argc < 3) { // Pass in a location and initial # of gumballs on the command line.
-		std::cout << "GumballMachine <name> <inventory>\n";
-		return 1;
-	}
 
-	int count = std::stoi(argv[2]);
-	auto gumballMachine = GumballMachine::create(argv[1], count); // Don't forget to give the constructor a location and count...
+int main() {
+	print_file_line();
 
-	GumballMonitor monitor(gumballMachine); // ...and instantiate a monitor and pass it a machine to provide a report on.
+	std::thread server_thread(runServer); // Run server in a separate thread
+	std::this_thread::sleep_for(std::chrono::milliseconds(100)); // Give the server a moment to start
+	runClient(); // Run client
+	server_thread.join(); // Cleanup
 
-	// rest of test code here
-
-	std::cout << "\nThe monitoring report\n"; //MINE
-	monitor.report(); // When we need a report on the machine, we call the report() method.
-	std::cout << '\n'; //MINE
-
-	return 0;
+    return 0;
 }
-#pragma endregion //Testing the Monitor
+#pragma endregion //Trae

@@ -4,7 +4,7 @@
 #include <string>
 #include <string_view>
 #include <memory>
-#include "IGumballMachine.h"
+#include "GumballMachineI.h"
 #include "State.h"
 
 class State;

@@ -1,11 +1,11 @@
+#if 0
 #include <iostream>
 #include "../../stdafx.h"
-#include "vld.h"
+//OFF #include "vld.h"
 #include "GumballMachine.h"
 #include "GumballMonitor.h"
-using std::cout;
-using std::stoi;
-using std::string;
+#include "GumballMachineServer.h"
+#include "GumballMachineProxy.h"
 
 #pragma region Testing the Monitor
 /* Java
@@ -33,21 +33,23 @@ int main(int argc, char *argv[]) {
 	print_file_line();
 
 	if (argc < 3) { // Pass in a location and initial # of gumballs on the command line.
-		cout << "GumballMachine <name> <inventory>\n";
+		std::cout << "GumballMachine <name> <inventory>\n";
 		return 1;
 	}
 
-	int count = stoi(argv[2]);
+	int count = std::stoi(argv[2]);
 	auto gumballMachine = GumballMachine::create(argv[1], count); // Don't forget to give the constructor a location and count...
 
 	GumballMonitor monitor(gumballMachine); // ...and instantiate a monitor and pass it a machine to provide a report on.
 
 	// rest of test code here
 
-	cout << "\nThe monitoring report\n"; //MINE
+	std::cout << "\nThe monitoring report\n"; //MINE
 	monitor.report(); // When we need a report on the machine, we call the report() method.
-	cout << '\n'; //MINE
+	std::cout << '\n'; //MINE
 
 	return 0;
 }
 #pragma endregion //Testing the Monitor
+
+#endif //0

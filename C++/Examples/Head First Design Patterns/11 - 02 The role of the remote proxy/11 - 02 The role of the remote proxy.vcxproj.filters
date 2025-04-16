@@ -18,6 +18,9 @@
     <ClCompile Include="GumballMachine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="main - off.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -47,7 +50,16 @@
     <ClInclude Include="StateWinner.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="IGumballMachine.h">
+    <ClInclude Include="GumballMachineI.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GumballMachineServer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GumballMachineProxy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SocketHandler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
