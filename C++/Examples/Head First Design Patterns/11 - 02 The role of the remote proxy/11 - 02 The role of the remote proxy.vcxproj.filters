@@ -62,8 +62,5 @@
     <ClInclude Include="SocketHandler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="boost_types.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>

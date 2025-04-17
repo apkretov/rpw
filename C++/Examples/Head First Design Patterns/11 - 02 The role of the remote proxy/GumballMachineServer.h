@@ -6,52 +6,60 @@
 
 #pragma region Trae
 class GumballMachineServer {
-	boost::asio::io_context &io_context_;
-	boost::asio::ip::tcp::acceptor acceptor_;
-	std::shared_ptr<GumballMachine> machine_;
+#pragma region aliases
+    using io_context =         boost::asio::io_context;
+    using acceptor =           boost::asio::ip::tcp::acceptor;
+    using endpoint =           boost::asio::ip::tcp::endpoint;
+    using socket =             boost::asio::ip::tcp::socket;
+    using error_code =         boost::system::error_code;
+    using char_vec =           std::vector<char>;
+    using GumballMachine_ptr = std::shared_ptr<GumballMachine>;
+    using socket_ptr =         std::shared_ptr<socket>;
+    using string =             std::string;
+#pragma endregion //aliases
+    io_context& io_context_;
+    acceptor acceptor_;
+    GumballMachine_ptr machine_;
 
-	void handleRequest(std::shared_ptr<boost::asio::ip::tcp::socket> socket) {
-		try {
-			std::vector<char> buffer(1024);
-			boost::system::error_code ec;
-			size_t len = socket->read_some(boost::asio::buffer(buffer), ec);
+    void handleRequest(socket_ptr socket_) {
+        try {
+            char_vec buffer(1024);
+            error_code ec;
+            size_t len = socket_->read_some(boost::asio::buffer(buffer), ec);
 
-			if (ec)
-				return;
+            if (ec)
+                return;
 
-			std::string request(buffer.data(), len);
-			std::string response;
+            string request(buffer.data(), len);
+            string response;
 
-			if (request == "getAllInfo\n") {
-				response = machine_->getLocation() + "\n" +
-					std::to_string(machine_->getCount()) + "\n" +
-					machine_->getStateString() + "\n";
-			}
+            if (request == "getAllInfo\n") {
+                response = machine_->getLocation() + "\n" +
+                    std::to_string(machine_->getCount()) + "\n" +
+                    machine_->getStateString() + "\n";
+            }
 
-			boost::asio::write(*socket, boost::asio::buffer(response), ec);
-		}
-		catch (const std::exception &e) {
-			std::cerr << e.what() << '\n';
-		}
-	}
+            boost::asio::write(*socket_, boost::asio::buffer(response), ec);
+        }
+        catch (const std::exception& e) {
+            std::cerr << e.what() << '\n';
+        }
+    }
 
+    void accept() {
+        auto socket_ = std::make_shared<socket>(io_context_);
+        acceptor_.async_accept(*socket_, [this, socket_](const error_code& error) {
+            if (!error)
+                handleRequest(socket_);
+            accept();
+        });
+    }
 public:
-	GumballMachineServer(boost::asio::io_context &io_context, unsigned short port, std::shared_ptr<GumballMachine> machine)
-		: io_context_(io_context)
-		, acceptor_(io_context, boost::asio::ip::tcp::endpoint(boost::asio::ip::tcp::v4(), port))
-		, machine_(machine) {
-		accept();
-	}
-
-private:
-	void accept() {
-		auto socket = std::make_shared<boost::asio::ip::tcp::socket>(io_context_);
-		acceptor_.async_accept(*socket, [this, socket](const boost::system::error_code &error) {
-			if (!error) {
-				handleRequest(socket);
-			}
-			accept();
-			});
-	}
+    GumballMachineServer(io_context& io_context, unsigned short port, GumballMachine_ptr machine)
+        : io_context_(io_context)
+        , acceptor_(io_context, endpoint(boost::asio::ip::tcp::v4(), port))
+        , machine_(machine) {
+        accept();
+    }
 };
 #pragma endregion //Trae

@@ -139,7 +139,6 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="boost_types.h" />
     <ClInclude Include="GumballMachine.h" />
     <ClInclude Include="GumballMachineProxy.h" />
     <ClInclude Include="GumballMachineServer.h" />
