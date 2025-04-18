@@ -132,6 +132,7 @@
     <ClCompile Include="Example 32.1.cpp" />
     <ClCompile Include="Example 32.2.cpp" />
     <ClCompile Include="Example 32.3.cpp" />
+    <ClCompile Include="Example 32.4.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
