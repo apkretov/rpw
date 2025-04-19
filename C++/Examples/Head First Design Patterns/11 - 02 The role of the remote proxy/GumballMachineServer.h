@@ -47,10 +47,10 @@ class GumballMachineServer {
     }
 
     void accept() {
-        auto socket_ = std::make_shared<socket>(io_context_);
-        acceptor_.async_accept(*socket_, [this, socket_](const error_code& error) {
+        auto socket_ptr = std::make_shared<socket>(io_context_);
+        acceptor_.async_accept(*socket_ptr, [this, socket_ptr](const error_code& error) {
             if (!error)
-                handleRequest(socket_);
+                handleRequest(socket_ptr);
             accept();
         });
     }

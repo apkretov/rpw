@@ -19,10 +19,10 @@ using std::thread;
 #pragma endregion
 
 #pragma region Trae
-void runServer(io_context_ptr io_context_ptr_) { // Server example
+void runServer(io_context_ptr context_ptr) { // Server example
     auto machine_ptr = GumballMachine::create("Seattle", 5);
-    GumballMachineServer server(*io_context_ptr_, 12345, machine_ptr);
-    io_context_ptr_->run(); // This starts the event loop.
+    GumballMachineServer server(*context_ptr, 12345, machine_ptr);
+    context_ptr->run(); // This starts the event loop.
 }
 
 void runClient() { // Client example
@@ -50,7 +50,7 @@ int main() {
     runClient(); // Run client
     
     io_context_ptr->stop(); // Signal the server to stop and cleanup
-    server_thread.join();
+	server_thread.join(); // Wait for the server thread to finish
     cout << '\n';
 
     return 0;
