@@ -145,6 +145,7 @@
     <ClInclude Include="SocketHandler.h" />
     <ClInclude Include="State.h" />
     <ClInclude Include="StateHasQuarter.h" />
+    <ClInclude Include="StateNoQuarter - Raw pointer.h" />
     <ClInclude Include="StateNoQuarter.h" />
     <ClInclude Include="StateSold.h" />
     <ClInclude Include="StateSoldOut.h" />

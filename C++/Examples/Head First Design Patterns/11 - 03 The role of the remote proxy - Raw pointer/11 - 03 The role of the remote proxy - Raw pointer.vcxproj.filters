@@ -59,5 +59,8 @@
     <ClInclude Include="StateWinner.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="StateNoQuarter - Raw pointer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
