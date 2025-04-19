@@ -1,8 +1,8 @@
 #include "GumballMachine.h"
-#include "NoQuarterState.h"
-#include "HasQuarterState.h"
-#include "SoldState.h"
-#include "SoldOutState.h"
+#include "StateNoQuarter.h"
+#include "StateHasQuarter.h"
+#include "StateSold.h"
+#include "StateSoldOut.h"
 
 GumballMachine::GumballMachine(int numberGumballs) {
     soldOutState = std::make_unique<SoldOutState>(this);
