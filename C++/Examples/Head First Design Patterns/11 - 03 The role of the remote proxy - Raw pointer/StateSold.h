@@ -24,22 +24,20 @@ public class SoldState implements State {
 }
 */
 class SoldState : public State {
-	std::weak_ptr<GumballMachine> gumballMachine;
+	GumballMachine *gumballMachine;
 public:
-	SoldState(std::shared_ptr<GumballMachine> gumballMachine) : gumballMachine(gumballMachine) {}
+	SoldState(GumballMachine *gumballMachine) : gumballMachine(gumballMachine) {}
 	void insertQuarter() override { std::cout << "Please wait, we're already giving you a gumball\n"; }
 	void ejectQuarter() override { std::cout << "Sorry, you already turned the crank\n"; }
 	void turnCrank() override { std::cout << "Turning twice doesn't get you another gumball!\n"; }
 
 	void dispense() override {
-		if (auto machine = gumballMachine.lock()) {
-			machine->releaseBall();
-			if (machine->getCount() > 0)
-				machine->setState(machine->getNoQuarterState());
-			else {
-				std::cout << "Oops, out of gumballs!\n";
-				machine->setState(machine->getSoldOutState());
-			}
+		gumballMachine->releaseBall();
+		if (gumballMachine->getCount() > 0)
+			gumballMachine->setState(gumballMachine->getNoQuarterState());
+		else {
+			std::cout << "Oops, out of gumballs!\n";
+			gumballMachine->setState(gumballMachine->getSoldOutState());
 		}
 	}
 	std::string toString() override { return "dispensing a gumball"; }
