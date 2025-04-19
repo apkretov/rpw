@@ -20,13 +20,13 @@ public class NoQuarterState implements State {
 }
 */
 class NoQuarterState : public State {
-    GumballMachine* gumballMachine;
+	GumballMachine &gumballMachine;
 public:
-    NoQuarterState(GumballMachine* gumballMachine) : gumballMachine(gumballMachine) {}
+    NoQuarterState(GumballMachine *gumballMachine) : gumballMachine(*gumballMachine) {}
 
     void insertQuarter() override {
         std::cout << "You inserted a quarter\n";
-        gumballMachine->setState(gumballMachine->getHasQuarterState());
+        gumballMachine.setState(gumballMachine.getHasQuarterState());
     }
 
 	void ejectQuarter() override { std::cout << "You haven't inserted a quarter\n"; }
