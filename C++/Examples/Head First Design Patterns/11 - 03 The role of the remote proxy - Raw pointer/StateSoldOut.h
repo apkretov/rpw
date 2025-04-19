@@ -17,12 +17,10 @@ public class SoldOutState implements State {
 }
 */
 class SoldOutState : public State {
-	GumballMachine* gumballMachine;
+	GumballMachine &gumballMachine;
 public:
-	SoldOutState(GumballMachine* gumballMachine) : gumballMachine(gumballMachine) {}
-	void insertQuarter() override {
-		std::cout << "You can't insert a quarter, the machine is sold out\n";
-	}
+	SoldOutState(GumballMachine* gumballMachine) : gumballMachine(*gumballMachine) {}
+	void insertQuarter() override { std::cout << "You can't insert a quarter, the machine is sold out\n"; }
 	void ejectQuarter() override { std::cout << "You can't eject, you haven't inserted a quarter yet\n"; }
 	void turnCrank() override { std::cout << "You turned, but there are no gumballs\n"; }
 	void dispense() override { std::cout << "No gumball dispensed\n"; }
