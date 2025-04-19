@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{34fc4eb7-3e5d-43f7-b7bc-1012fc89bf59}</ProjectGuid>
-    <RootNamespace>My1102Theroleoftheremoteproxy</RootNamespace>
+    <ProjectGuid>{9fba7aed-b14e-4dda-beb6-f76aea206ea6}</ProjectGuid>
+    <RootNamespace>My1103TheroleoftheremoteproxyRawpointer</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -114,7 +114,6 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -139,10 +138,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GumballMachine.h" />
+    <ClInclude Include="GumballMachineI.h" />
     <ClInclude Include="GumballMachineProxy.h" />
     <ClInclude Include="GumballMachineServer.h" />
     <ClInclude Include="GumballMonitor.h" />
-    <ClInclude Include="GumballMachineI.h" />
     <ClInclude Include="SocketHandler.h" />
     <ClInclude Include="State.h" />
     <ClInclude Include="StateHasQuarter.h" />

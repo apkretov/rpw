@@ -83,6 +83,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "11 - 01 Coding the Monitor"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "11 - 02 The role of the remote proxy", "11 - 02 The role of the remote proxy\11 - 02 The role of the remote proxy.vcxproj", "{34FC4EB7-3E5D-43F7-B7BC-1012FC89BF59}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "11 - 03 The role of the remote proxy - Raw pointer", "11 - 03 The role of the remote proxy - Raw pointer\11 - 03 The role of the remote proxy - Raw pointer.vcxproj", "{9FBA7AED-B14E-4DDA-BEB6-F76AEA206EA6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -411,6 +413,14 @@ Global
 		{34FC4EB7-3E5D-43F7-B7BC-1012FC89BF59}.Release|x64.Build.0 = Release|x64
 		{34FC4EB7-3E5D-43F7-B7BC-1012FC89BF59}.Release|x86.ActiveCfg = Release|Win32
 		{34FC4EB7-3E5D-43F7-B7BC-1012FC89BF59}.Release|x86.Build.0 = Release|Win32
+		{9FBA7AED-B14E-4DDA-BEB6-F76AEA206EA6}.Debug|x64.ActiveCfg = Debug|x64
+		{9FBA7AED-B14E-4DDA-BEB6-F76AEA206EA6}.Debug|x64.Build.0 = Debug|x64
+		{9FBA7AED-B14E-4DDA-BEB6-F76AEA206EA6}.Debug|x86.ActiveCfg = Debug|Win32
+		{9FBA7AED-B14E-4DDA-BEB6-F76AEA206EA6}.Debug|x86.Build.0 = Debug|Win32
+		{9FBA7AED-B14E-4DDA-BEB6-F76AEA206EA6}.Release|x64.ActiveCfg = Release|x64
+		{9FBA7AED-B14E-4DDA-BEB6-F76AEA206EA6}.Release|x64.Build.0 = Release|x64
+		{9FBA7AED-B14E-4DDA-BEB6-F76AEA206EA6}.Release|x86.ActiveCfg = Release|Win32
+		{9FBA7AED-B14E-4DDA-BEB6-F76AEA206EA6}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
