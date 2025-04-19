@@ -20,8 +20,8 @@ using std::thread;
 
 #pragma region Trae
 void runServer(io_context_ptr io_context_ptr_) { // Server example
-    auto machine = GumballMachine::create("Seattle", 5);
-    GumballMachineServer server(*io_context_ptr_, 12345, machine);
+    auto machine_ptr = GumballMachine::create("Seattle", 5);
+    GumballMachineServer server(*io_context_ptr_, 12345, machine_ptr);
     io_context_ptr_->run(); // This starts the event loop.
 }
 
