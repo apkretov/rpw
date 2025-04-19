@@ -1,22 +1,19 @@
 #include "GumballMachine.h"
-#include "StateNoQuarter.h"
-#include "StateHasQuarter.h"
-#include "StateSold.h"
-#include "StateSoldOut.h"
+#include "NoQuarterState.h"
+#include "HasQuarterState.h"
+#include "SoldState.h"
+#include "SoldOutState.h"
 
 GumballMachine::GumballMachine(int numberGumballs) {
-    soldOutState = new SoldOutState(this);
-    noQuarterState = new NoQuarterState(this);
-    hasQuarterState = new HasQuarterState(this);
-    soldState = new SoldState(this);
+    soldOutState = std::make_unique<SoldOutState>(this);
+    noQuarterState = std::make_unique<NoQuarterState>(this);
+    hasQuarterState = std::make_unique<HasQuarterState>(this);
+    soldState = std::make_unique<SoldState>(this);
     count = numberGumballs;
-    if (numberGumballs > 0) state = noQuarterState;
-    else state = soldOutState;
-}
-
-GumballMachine::~GumballMachine() {
-    delete soldOutState;
-    delete noQuarterState;
-    delete hasQuarterState;
-    delete soldState;
+    if (numberGumballs > 0) {
+        state = noQuarterState.get();
+    }
+    else {
+        state = soldOutState.get();
+    }
 }

@@ -63,7 +63,6 @@ class GumballMachine {
     int count = 0;
 public:
     GumballMachine(int numberGumballs);
-    ~GumballMachine();
     void insertQuarter() { state->insertQuarter(); }
     void ejectQuarter() { state->ejectQuarter(); }
 
@@ -75,10 +74,10 @@ public:
 	void setState(State* state) { this->state = state; }
     void releaseBall() { if (count > 0) count = count - 1; }
     State* getState() { return state; }
-    State* getSoldOutState() { return soldOutState; }
-    State* getNoQuarterState() { return noQuarterState; }
-    State* getHasQuarterState() { return hasQuarterState; }
-    State* getSoldState() { return soldState; }
+    State* getSoldOutState() { return soldOutState.get(); }
+    State* getNoQuarterState() { return noQuarterState.get(); }
+    State* getHasQuarterState() { return hasQuarterState.get(); }
+    State* getSoldState() { return soldState.get(); }
     int getCount() { return count; }
 
     string toString() {
