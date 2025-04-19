@@ -7,40 +7,50 @@
 #include "GumballMachineProxy.h"
 #include "GumballMonitor.h"
 
-using b_exception = boost::exception;
-using b_io_context = boost::asio::io_context;
+#pragma region Aliases
+using b_exception           = boost::exception;
+using io_context            = boost::asio::io_context;
+using io_context_ptr        = std::shared_ptr<io_context>;
+using socket               = boost::asio::ip::tcp::socket;
+using system_error         = boost::system::error_code;
+
+using std::cerr;
+using std::cout;
+using std::string;
+using std::thread;
+#pragma endregion
 
 #pragma region Trae
-void runServer(std::shared_ptr<b_io_context> io_context) { // Server example
+void runServer(io_context_ptr io_context_) { // Server example
     auto machine = GumballMachine::create("Seattle", 5);
-    GumballMachineServer server(*io_context, 12345, machine);
-	io_context->run(); // This starts the event loop.
+    GumballMachineServer server(*io_context_, 12345, machine);
+    io_context_->run(); // This starts the event loop.
 }
 
 void runClient() { // Client example
-    b_io_context io_context;
-    auto proxy = std::make_shared<GumballMachineProxy>(io_context, "localhost", 12345);
+    io_context io_context_;
+    auto proxy = std::make_shared<GumballMachineProxy>(io_context_, "localhost", 12345);
     GumballMonitor monitor(proxy);
     try {
         monitor.report();
     }
-    catch (const b_exception &e) {
-        std::cerr << "Exception: " << boost::diagnostic_information(e) << "\n";
+    catch (const b_exception &e) {  // This line needs to be updated too
+        cerr << "Exception: " << boost::diagnostic_information(e) << "\n";
     }
 }
 
 int main() {
     print_file_line();
 
-    auto io_context = std::make_shared<b_io_context>();
-    std::thread server_thread([io_context]() { runServer(io_context); });
+    auto io_context_ = std::make_shared<io_context>();
+    thread server_thread([io_context_]() { runServer(io_context_); });
     
     std::this_thread::sleep_for(std::chrono::milliseconds(100)); // Give the server a moment to start
     runClient(); // Run client
     
-    io_context->stop(); // Signal the server to stop and cleanup
+    io_context_->stop(); // Signal the server to stop and cleanup
     server_thread.join();
-	std::cout << '\n';
+    cout << '\n';
 
     return 0;
 }
