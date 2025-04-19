@@ -7,27 +7,22 @@
 #include "GumballMachineI.h"
 #include "State.h"
 
+#pragma region Trae
 class State;
 
-#pragma region Trae
-class GumballMachine : public IGumballMachine, public std::enable_shared_from_this<GumballMachine> {
-	std::shared_ptr<State> soldOutState;		// Having the std::shared_ptr in the State classes requires the overhead:
-	std::shared_ptr<State> noQuarterState;	// 1. The private constructor;
-	std::shared_ptr<State> hasQuarterState;	// 2. The creating and initializing functions due to the inheritance 'from this'.
-	std::shared_ptr<State> soldState;
-	std::shared_ptr<State> winnerState; // All you need to add here is the new WinnerState and initialize it in the constructor.
-	std::shared_ptr<State> state;
+class GumballMachine : public IGumballMachine {
+	using State_ptr = std::unique_ptr<State>;
+	State_ptr soldOutState;
+	State_ptr noQuarterState;
+	State_ptr hasQuarterState;
+	State_ptr soldState;
+	State_ptr winnerState;
+	State *state;  // Raw pointer as observer
 	std::string location;
 	int count;
-	void initialize();
-	GumballMachine(std::string_view location, int count); // The location is passed into the constructor and stored in the instance variable.
-public:
-	GumballMachine(const GumballMachine &) = delete; // Delete copy operations as copying a state machine doesn't make sense
-	GumballMachine &operator=(const GumballMachine &) = delete;
-	GumballMachine(GumballMachine &&) = delete; // Move operations should also be deleted as it would break shared_from_this
-	GumballMachine &operator=(GumballMachine &&) = delete;
 
-	static std::shared_ptr<GumballMachine> create(std::string_view location, int count);
+public:
+	GumballMachine(std::string_view location, int count);
 	void insertQuarter() { state->insertQuarter(); }
 	void ejectQuarter() { state->ejectQuarter(); }
 
@@ -36,7 +31,7 @@ public:
 		state->dispense();
 	}
 
-	void setState(std::shared_ptr<State> state) { this->state = state; }
+	void setState(State *state) { this->state = state; }
 
 	void releaseBall() {
 		std::cout << "A gumball comes rolling out the slot..\n";
@@ -46,22 +41,19 @@ public:
 
 	void refill(int count) {
 		this->count = count;
-		state = noQuarterState;
+		state = noQuarterState.get();
 	}
 
-	std::shared_ptr<State> getState() const { return state; }
-	std::shared_ptr<State> getSoldOutState() const { return soldOutState; }
-	std::shared_ptr<State> getNoQuarterState() const { return noQuarterState; }
-	std::shared_ptr<State> getHasQuarterState() const { return hasQuarterState; }
-	std::shared_ptr<State> getSoldState() const { return soldState; }
-	std::shared_ptr<State> getWinnerState() const { return winnerState; } // Don't forget you also have to add a getter method for WinnerState too.
-	std::string getLocation() const override { return location; } // Let's also add a getter method to grab the location when we need it.
+	State *getState() const { return state; }
+	State *getSoldOutState() const { return soldOutState.get(); }
+	State *getNoQuarterState() const { return noQuarterState.get(); }
+	State *getHasQuarterState() const { return hasQuarterState.get(); }
+	State *getSoldState() const { return soldState.get(); }
+	State *getWinnerState() const { return winnerState.get(); }
+
+	std::string getLocation() const override { return location; } // IGumballMachine interface implementation
 	int getCount() const override { return count; }
-	std::string getStateString() const override { return state->toString(); } // Add these methods to properly implement IGumballMachine
-#ifdef OFF
-	std::string getLocation() const override { return location; }
-	int getCount() const override { return count; }
-#endif //OFF
+	std::string getStateString() const override { return state->toString(); }
 
 	std::string toString() const {
 		std::string result;
