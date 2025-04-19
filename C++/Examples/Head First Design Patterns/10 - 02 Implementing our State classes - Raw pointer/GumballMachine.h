@@ -4,6 +4,7 @@
 #include "State.h"
 using std::string;
 using std::to_string;
+#include <memory>  // Add this at the top with other includes
 
 /* Java @ https://github.com/bethrobson/Head-First-Design-Patterns/tree/master/src/headfirst/designpatterns/state/gumball
 public class GumballMachine {
@@ -54,11 +55,11 @@ public class GumballMachine {
 class State;
 
 class GumballMachine {
-    State* soldOutState;
-    State* noQuarterState;
-    State* hasQuarterState;
-    State* soldState;
-    State* state;
+    std::unique_ptr<State> soldOutState;
+    std::unique_ptr<State> noQuarterState;
+    std::unique_ptr<State> hasQuarterState;
+    std::unique_ptr<State> soldState;
+    State* state;  // This remains raw pointer as it's just an observer
     int count = 0;
 public:
     GumballMachine(int numberGumballs);
