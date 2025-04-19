@@ -24,18 +24,18 @@ public class SoldState implements State {
 */
 
 class SoldState : public State {
-    GumballMachine* gumballMachine;
+    GumballMachine &gumballMachine;
 public:
-    SoldState(GumballMachine* gumballMachine) : gumballMachine(gumballMachine) {}
+    SoldState(GumballMachine* gumballMachine) : gumballMachine(*gumballMachine) {}
     void insertQuarter() override { cout << "Please wait, we're already giving you a gumball\n"; }
     void ejectQuarter() override { cout << "Sorry, you already turned the crank\n"; }
     void turnCrank() override { cout << "Turning twice doesn't get you another gumball!\n"; }
     void dispense() override {
-        gumballMachine->releaseBall();
-        if (gumballMachine->getCount() > 0) gumballMachine->setState(gumballMachine->getNoQuarterState());
+        gumballMachine.releaseBall();
+        if (gumballMachine.getCount() > 0) gumballMachine.setState(gumballMachine.getNoQuarterState());
         else {
             cout << "Oops, out of gumballs!\n";
-            gumballMachine->setState(gumballMachine->getSoldOutState());
+            gumballMachine.setState(gumballMachine.getSoldOutState());
         }
     }
     string toString() override { return "dispensing a gumball"; }

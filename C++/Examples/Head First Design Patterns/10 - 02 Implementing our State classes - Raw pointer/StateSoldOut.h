@@ -17,9 +17,9 @@ public class SoldOutState implements State {
 */
 
 class SoldOutState : public State {
-    GumballMachine* gumballMachine;
+    GumballMachine &gumballMachine;
 public:
-    SoldOutState(GumballMachine* gumballMachine) : gumballMachine(gumballMachine) {}
+    SoldOutState(GumballMachine* gumballMachine) : gumballMachine(*gumballMachine) {}
     void insertQuarter() override { cout << "You can't insert a quarter, the machine is sold out\n"; }
     void ejectQuarter() override { cout << "You can't eject, you haven't inserted a quarter yet\n"; }
     void turnCrank() override { cout << "You turned, but there are no gumballs\n"; }
