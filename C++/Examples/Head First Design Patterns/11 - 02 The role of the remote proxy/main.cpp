@@ -11,9 +11,7 @@
 using b_exception           = boost::exception;
 using io_context            = boost::asio::io_context;
 using io_context_ptr        = std::shared_ptr<io_context>;
-using socket               = boost::asio::ip::tcp::socket;
 using system_error         = boost::system::error_code;
-
 using std::cerr;
 using std::cout;
 using std::string;
