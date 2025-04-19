@@ -37,25 +37,25 @@ public class WinnerState implements State {
 }
 */
 class WinnerState : public State {
-    GumballMachine* gumballMachine;
+    GumballMachine &gumballMachine;
 public:
-	WinnerState(GumballMachine *gumballMachine) : gumballMachine(gumballMachine) {}
+	WinnerState(GumballMachine *gumballMachine) : gumballMachine(*gumballMachine) {}
 	void insertQuarter() override { std::cout << "Please wait, we're already giving you a Gumball\n"; }
 	void ejectQuarter() override { std::cout << "Please wait, we're already giving you a Gumball\n"; }
 	void turnCrank() override { std::cout << "Turning again doesn't get you another gumball!\n"; }
 
 	void dispense() override { // Here we release two gumballs and then either go to the NoQuarterState or the SoldOutState.
-		gumballMachine->releaseBall();
-		if (gumballMachine->getCount() == 0)
-			gumballMachine->setState(gumballMachine->getSoldOutState());
+		gumballMachine.releaseBall();
+		if (gumballMachine.getCount() == 0)
+			gumballMachine.setState(gumballMachine.getSoldOutState());
 		else {
-			gumballMachine->releaseBall(); // As long as we have a second gumball we release it.
+			gumballMachine.releaseBall(); // As long as we have a second gumball we release it.
 			std::cout << "YOU'RE A WINNER! You got two gumballs for your quarter\n";
-			if (gumballMachine->getCount() > 0)
-				gumballMachine->setState(gumballMachine->getNoQuarterState());
+			if (gumballMachine.getCount() > 0)
+				gumballMachine.setState(gumballMachine.getNoQuarterState());
 			else {
 				std::cout << "Oops, out of gumballs!\n";
-				gumballMachine->setState(gumballMachine->getSoldOutState());
+				gumballMachine.setState(gumballMachine.getSoldOutState());
 			}
 		}
 	}
