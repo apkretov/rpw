@@ -25,10 +25,12 @@ class NoQuarterState : public State {
     GumballMachine* gumballMachine;
 public:
     NoQuarterState(GumballMachine* gumballMachine) : gumballMachine(gumballMachine) {}
-    void insertQuarter() override {
+
+	void insertQuarter() override {
         cout << "You inserted a quarter\n";
         gumballMachine->setState(gumballMachine->getHasQuarterState());
     }
+
     void ejectQuarter() override { cout << "You haven't inserted a quarter\n"; }
     void turnCrank() override { cout << "You turned, but there's no quarter\n"; }
     void dispense() override { cout << "You need to pay first\n"; }

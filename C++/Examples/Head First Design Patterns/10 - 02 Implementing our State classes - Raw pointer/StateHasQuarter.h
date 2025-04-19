@@ -23,20 +23,22 @@ public class HasQuarterState implements State {
     public String toString() { return "waiting for turn of crank"; }
 }
 */
-
 class HasQuarterState : public State {
     GumballMachine* gumballMachine;
 public:
     HasQuarterState(GumballMachine* gumballMachine) : gumballMachine(gumballMachine) {}
     void insertQuarter() override { cout << "You can't insert another quarter\n"; }
-    void ejectQuarter() override {
+    
+	void ejectQuarter() override {
         cout << "Quarter returned\n";
         gumballMachine->setState(gumballMachine->getNoQuarterState());
     }
+
     void turnCrank() override {
         cout << "You turned...\n";
         gumballMachine->setState(gumballMachine->getSoldState());
     }
+
     void dispense() override { cout << "No gumball dispensed\n"; }
     string toString() override { return "waiting for turn of crank"; }
 };
