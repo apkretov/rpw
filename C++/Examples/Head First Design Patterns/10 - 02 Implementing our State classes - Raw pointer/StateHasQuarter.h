@@ -24,19 +24,19 @@ public class HasQuarterState implements State {
 }
 */
 class HasQuarterState : public State {
-    GumballMachine* gumballMachine;
+    GumballMachine &gumballMachine;
 public:
-    HasQuarterState(GumballMachine* gumballMachine) : gumballMachine(gumballMachine) {}
+    HasQuarterState(GumballMachine* gumballMachine) : gumballMachine(*gumballMachine) {}
     void insertQuarter() override { cout << "You can't insert another quarter\n"; }
     
 	void ejectQuarter() override {
         cout << "Quarter returned\n";
-        gumballMachine->setState(gumballMachine->getNoQuarterState());
+        gumballMachine.setState(gumballMachine.getNoQuarterState());
     }
 
     void turnCrank() override {
         cout << "You turned...\n";
-        gumballMachine->setState(gumballMachine->getSoldState());
+        gumballMachine.setState(gumballMachine.getSoldState());
     }
 
     void dispense() override { cout << "No gumball dispensed\n"; }
