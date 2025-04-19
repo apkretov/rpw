@@ -3,7 +3,6 @@
 #include <iostream>
 #include "State.h"
 #include "GumballMachine.h"
-#include <memory>
 
 #pragma region Implementing our State classes
 /* Java @ https://github.com/bethrobson/Head-First-Design-Patterns/tree/master/src/headfirst/designpatterns/state/gumball
@@ -21,16 +20,14 @@ public class NoQuarterState implements State {
 }
 */
 class NoQuarterState : public State {
-	std::weak_ptr<GumballMachine> gumballMachine;
+    GumballMachine* gumballMachine;
 public:
-	NoQuarterState(std::shared_ptr<GumballMachine> gumballMachine) : gumballMachine(gumballMachine) {}
+    NoQuarterState(GumballMachine* gumballMachine) : gumballMachine(gumballMachine) {}
 
-	void insertQuarter() override {
-		if (auto machine = gumballMachine.lock()) {
-			std::cout << "You inserted a quarter\n";
-			machine->setState(machine->getHasQuarterState());
-		}
-	}
+    void insertQuarter() override {
+        std::cout << "You inserted a quarter\n";
+        gumballMachine->setState(gumballMachine->getHasQuarterState());
+    }
 
 	void ejectQuarter() override { std::cout << "You haven't inserted a quarter\n"; }
 	void turnCrank() override { std::cout << "You turned, but there's no quarter\n"; }
