@@ -30,24 +30,24 @@ public class HasQuarterState implements State {
 }
 */
 class HasQuarterState : public State {
-    GumballMachine* gumballMachine;
+    GumballMachine &gumballMachine;
 	Rnd randomWinner; // First we add a random number generator to generate the 10% chance of winning...
 public:
-	HasQuarterState(GumballMachine *gumballMachine) : gumballMachine(gumballMachine) {}
+	HasQuarterState(GumballMachine *gumballMachine) : gumballMachine(*gumballMachine) {}
 	void insertQuarter() override { std::cout << "You can't insert another quarter\n"; }
 
     void ejectQuarter() override {
         std::cout << "Quarter returned\n";
-        gumballMachine->setState(gumballMachine->getNoQuarterState());
+        gumballMachine.setState(gumballMachine.getNoQuarterState());
     }
 
     void turnCrank() override {
         std::cout << "You turned...\n";
         int winner = randomWinner(); // ...then we determine if this customer won.
-        if ((winner == 0) && (gumballMachine->getCount() > 1)) // If they won, and there's enough gumballs left for them to get two, we go to the WinnerState; otherwise, we go to the SoldState(just like we always did).
-            gumballMachine->setState(gumballMachine->getWinnerState());
+        if ((winner == 0) && (gumballMachine.getCount() > 1)) // If they won, and there's enough gumballs left for them to get two, we go to the WinnerState; otherwise, we go to the SoldState(just like we always did).
+            gumballMachine.setState(gumballMachine.getWinnerState());
         else
-            gumballMachine->setState(gumballMachine->getSoldState());
+            gumballMachine.setState(gumballMachine.getSoldState());
     }
 
     void dispense() override { std::cout << "No gumball dispensed\n"; }
