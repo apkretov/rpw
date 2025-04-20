@@ -25,15 +25,15 @@ void runServer(io_context &context) { // Server example
 }
 
 void runClient() { // Client example
-    io_context context;
-    auto GumballMachineProxy_ptr = make_shared<GumballMachineProxy>(context, "localhost", 12345);
-    GumballMonitor monitor(GumballMachineProxy_ptr);
-    try {
-        monitor.report();
-    }
-    catch (const b_exception &e) {  // This line needs to be updated too
-        cerr << "Exception: " << diagnostic_information(e) << "\n";
-    }
+	io_context context;
+	GumballMachineProxy gumballMachineProxy{context, "localhost", 12345};
+	GumballMonitor monitor(gumballMachineProxy);
+	try {
+		monitor.report();
+	}
+	catch (const b_exception &e) {  // This line needs to be updated too
+		cerr << "Exception: " << diagnostic_information(e) << "\n";
+	}
 }
 
 int main() {
