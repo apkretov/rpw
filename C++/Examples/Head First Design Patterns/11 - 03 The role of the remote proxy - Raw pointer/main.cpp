@@ -2,7 +2,7 @@
 #include <boost/exception/diagnostic_information.hpp>
 #include <boost/exception/exception.hpp>
 #include "../../stdafx.h"
-//OFF #include "vld.h"
+#include "vld.h"
 #include "GumballMachineServer.h"
 #include "GumballMachineProxy.h"
 #include "GumballMonitor.h"
@@ -10,7 +10,6 @@
 #pragma region Aliases
 using io_context            = boost::asio::io_context;
 using b_exception           = boost::exception;
-using io_context_ptr        = std::shared_ptr<io_context>;
 using system_error          = boost::system::error_code;
 using std::cerr;
 using std::cout;
@@ -19,10 +18,10 @@ using std::thread;
 #pragma endregion
 
 #pragma region Trae
-void runServer(io_context_ptr context_ptr) { // Server example
+void runServer(io_context &context) { // Server example
     auto machine_ptr = std::make_shared<GumballMachine>("Seattle", 5);
-    GumballMachineServer server(*context_ptr, 12345, machine_ptr);
-    context_ptr->run(); // This starts the event loop.
+    GumballMachineServer server(context, 12345, machine_ptr);
+    context.run(); // This starts the event loop.
 }
 
 void runClient() { // Client example
@@ -41,18 +40,18 @@ void runClient() { // Client example
 
 int main() {
 	using namespace std;
-    print_file_line();
+	print_file_line();
 
-    auto io_context_ptr = make_shared<io_context>();
-    thread server_thread([io_context_ptr]() { runServer(io_context_ptr); });
-    
-    this_thread::sleep_for(chrono::milliseconds(100)); // Give the server a moment to start
-    runClient(); // Run client
-    
-    io_context_ptr->stop(); // Signal the server to stop and cleanup
+	io_context context;
+	thread server_thread([&context]() { runServer(context); });
+
+	this_thread::sleep_for(chrono::milliseconds(100)); // Give the server a moment to start
+	runClient(); // Run client
+
+	context.stop(); // Signal the server to stop and cleanup
 	server_thread.join(); // Wait for the server thread to finish
-    cout << '\n';
+	cout << '\n';
 
-    return 0;
+	return 0;
 }
 #pragma endregion //Trae
