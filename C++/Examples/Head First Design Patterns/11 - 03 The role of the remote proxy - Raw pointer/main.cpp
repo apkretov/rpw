@@ -25,10 +25,8 @@ void runServer(io_context &context) { // Server example
 }
 
 void runClient() { // Client example
-	using namespace boost;
-	using namespace std;
-    io_context io_context_;
-    auto GumballMachineProxy_ptr = make_shared<GumballMachineProxy>(io_context_, "localhost", 12345);
+    io_context context;
+    auto GumballMachineProxy_ptr = make_shared<GumballMachineProxy>(context, "localhost", 12345);
     GumballMonitor monitor(GumballMachineProxy_ptr);
     try {
         monitor.report();
