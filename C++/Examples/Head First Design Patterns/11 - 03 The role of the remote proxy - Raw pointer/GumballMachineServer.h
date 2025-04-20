@@ -13,13 +13,12 @@ class GumballMachineServer {
     using socket =             boost::asio::ip::tcp::socket;
     using error_code =         boost::system::error_code;
     using char_vec =           std::vector<char>;
-    using GumballMachine_ptr = std::shared_ptr<GumballMachine>;
     using socket_ptr =         std::shared_ptr<socket>;
     using string =             std::string;
 #pragma endregion //Aliases
     io_context& io_context_;
     acceptor acceptor_;
-    GumballMachine_ptr machine_ptr_;
+    const GumballMachine &machine;
 
     void handleRequest(socket_ptr socket_) {
         try {
@@ -34,9 +33,9 @@ class GumballMachineServer {
             string response;
 
             if (request == "getAllInfo\n") {
-                response = machine_ptr_->getLocation() + "\n" +
-                    std::to_string(machine_ptr_->getCount()) + "\n" +
-                    machine_ptr_->getStateString() + "\n";
+                response = machine.getLocation() + "\n" +
+                    std::to_string(machine.getCount()) + "\n" +
+                    machine.getStateString() + "\n";
             }
 
             boost::asio::write(*socket_, boost::asio::buffer(response), ec);
@@ -55,10 +54,10 @@ class GumballMachineServer {
         });
     }
 public:
-    GumballMachineServer(io_context& io_context, unsigned short port, GumballMachine_ptr machine_ptr)
+    GumballMachineServer(io_context& io_context, unsigned short port, const GumballMachine &machine)
         : io_context_(io_context)
         , acceptor_(io_context, endpoint(boost::asio::ip::tcp::v4(), port))
-        , machine_ptr_(machine_ptr) 
+        , machine(machine) 
 	{ accept(); }
 };
 #pragma endregion //Trae

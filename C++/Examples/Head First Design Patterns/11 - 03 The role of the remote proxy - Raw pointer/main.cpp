@@ -19,8 +19,8 @@ using std::thread;
 
 #pragma region Trae
 void runServer(io_context &context) { // Server example
-    auto machine_ptr = std::make_shared<GumballMachine>("Seattle", 5);
-    GumballMachineServer server(context, 12345, machine_ptr);
+	GumballMachine machine{"Seattle", 5};
+    GumballMachineServer server(context, 12345, machine);
     context.run(); // This starts the event loop.
 }
 
