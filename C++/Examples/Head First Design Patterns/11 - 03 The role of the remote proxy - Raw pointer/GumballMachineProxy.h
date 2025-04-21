@@ -32,16 +32,29 @@ public:
 	- Establishes TCP connection to the server
 	- Uses resolver to handle hostname resolution
 	- Initializes socket connection */
-    GumballMachineProxy(io_context& context, const string& host, unsigned short port) 
-        : context(context)
-        , socket_(context)
-        , host(host)
-        , port(port)
-	{
+    GumballMachineProxy(io_context& context, const string& host, unsigned short port) : context(context) , socket_(context) , host(host) , port(port) {
         resolver resolver(context);
         auto endpoints = resolver.resolve(host, std::to_string(port));
         boost::asio::connect(socket_, endpoints);
     }
+
+	string getLocation() const override {
+		if (!cached_info)
+			fetchInfo();
+		return cached_info->location;
+	}
+
+	int getCount() const override {
+		if (!cached_info)
+			fetchInfo();
+		return cached_info->count;
+	}
+
+	string getStateString() const override {
+		if (!cached_info)
+			fetchInfo();
+		return cached_info->state;
+	}
 private:
 	/* 3. Caching Mechanism:
 	- Caches all machine information in one structure
@@ -64,13 +77,58 @@ private:
         try {
             string request = "getAllInfo\n";
             boost::asio::write(socket_, boost::asio::buffer(request));
-            char_vec buffer(1024);
+            
+			char_vec buffer(1024);
             error_code ec;
-            size_t len = socket_.read_some(boost::asio::buffer(buffer), ec);
-            if (ec)
+			/* -Me: GumballMachineProxy.hvs. async_read_some?
+
+			- Trae:
+			The choice between read_some and async_read_some depends on your needs:
+
+			read_some (current implementation):
+			- Blocks until data is available
+			- Simpler to code and understand
+			- Synchronous operation
+			- Ties up the thread while waiting
+
+			async_read_some :
+			- Non-blocking
+			- Returns immediately
+			- Callback-based
+			- More complex to implement
+			- Better for handling multiple connections
+
+			Here's how you would implement it with async_read_some:
+			void fetchInfo() const {
+				try {
+					string request = "getAllInfo\n";
+					boost::asio::write(socket_, boost::asio::buffer(request));
+					char_vec buffer(1024);
+					socket_.async_read_some(
+						boost::asio::buffer(buffer),
+						[this, buffer](const error_code &ec, std::size_t len) {
+							if (ec)
+								throw system_error(ec);
+							string response(buffer.data(), len);
+							istringstream iss(response);
+							MachineInfo info;
+							// ... rest of the parsing code ...
+						});
+					context.run(); // Run the io_context to process async operations
+				}
+				catch (const system_error &e) {
+					throw;
+				}
+			}
+			
+			However, for this simple proxy pattern where we're just making individual requests, the synchronous read_some is probably more appropriate. 
+			async_read_some would be more beneficial in a server handling multiple concurrent connections (like in the GumballMachineServer).
+			*/
+			size_t len = socket_.read_some(boost::asio::buffer(buffer), ec);
+			if (ec)
                 throw system_error(ec);
 
-            string response(buffer.data(), len);
+			string response(buffer.data(), len);
             istringstream iss(response);
             MachineInfo info;
             std::getline(iss, info.location);
@@ -83,24 +141,6 @@ private:
         catch (const system_error& e) {
             throw;
         }
-    }
-public:
-    string getLocation() const override {
-        if (!cached_info)
-            fetchInfo();
-        return cached_info->location;
-    }
-
-    int getCount() const override {
-        if (!cached_info)
-            fetchInfo();
-        return cached_info->count;
-    }
-
-    string getStateString() const override {
-        if (!cached_info)
-            fetchInfo();
-        return cached_info->state;
     }
 };
 #pragma endregion //Trae

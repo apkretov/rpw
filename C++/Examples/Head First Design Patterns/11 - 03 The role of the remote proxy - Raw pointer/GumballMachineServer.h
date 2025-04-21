@@ -83,10 +83,32 @@ private:
 			*/
 			char_vec buffer(1024);
             error_code ec;
-            size_t len = socketPtr->read_some(boost::asio::buffer(buffer), ec);
+
+			/* -Me: Now, comment the same command vs. async_read_some here.
+
+			- Trae:
+			 read_some (current):
+			 - Blocks the current thread until data arrives
+			 - Simpler but less scalable
+			 - Not ideal for server handling multiple clients
+
+			 async_read_some (better for server):
+			 - Non-blocking, returns immediately
+			 - Better for handling multiple clients
+			 - Consistent with server's async design pattern
+			 - Would match our async_accept approach
+			 socketPtr->async_read_some(boost::asio::buffer(buffer), [this, socketPtr](const error_code& ec, std::size_t len) {
+				// Handle the read data here
+			 });
+
+			 In this server implementation, async_read_some would actually be more appropriate since we're already using async operations with 
+			 async_accept. It would provide better scalability for handling multiple clients simultaneously.
+			*/
+			size_t len = socketPtr->read_some(boost::asio::buffer(buffer), ec);
             if (ec)
                 return;
-            string response;
+            
+			string response;
             if (string request(buffer.data(), len); request == "getAllInfo\n")
 				response = std::format("{}\n{}\n{}\n", gumballMachine.getLocation(), gumballMachine.getCount(), gumballMachine.getStateString());
             boost::asio::write(*socketPtr, boost::asio::buffer(response), ec);
@@ -100,7 +122,26 @@ private:
 	- Creates new socket for each connection
 	- Uses asynchronous acceptance (non-blocking)
 	- Handles incoming connections in a callback
-	- Recursively calls itself to continue accepting connections */
+	- Recursively calls itself to continue accepting connections 
+	
+	- Me: I don't understand how this recursive loop ends...
+
+	- Trae:
+	The accept() call in the lambda function creates what appears to be an infinite recursion, but it's not actually recursive 
+	in the traditional sense. Here's how it works:
+	1. The async pattern creates an event loop, not a call stack.
+	2. When accept() is called:
+	   - It registers a callback with the IO service
+	   - Returns immediately
+	   - The lambda is executed later when a connection arrives
+	   - The new accept() call just registers another callback
+	3. The loop ends when:
+	   - The server is shut down
+	   - The io_context is stopped
+	   - An unhandled error occurs
+	It's more like setting up a repeating event handler than a recursive function. Each accept() call schedules the next one, 
+	but they don't stack up in memory because they're handled asynchronously by the event loop.
+	*/
     void accept() {
         auto socketPtr = std::make_shared<socket>(context);
         acceptor_.async_accept(*socketPtr, [this, socketPtr](const error_code& error) {
