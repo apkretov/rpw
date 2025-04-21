@@ -14,13 +14,13 @@ class GumballMachine : public IGumballMachine {
 #pragma region Aliases
 	using string =		std::string;
 	using string_view = std::string_view;
-	using State_ptr =	std::unique_ptr<State>;
+	using StatePtr =	std::unique_ptr<State>;
 #pragma endregion //Aliases
-	State_ptr soldOutState;
-	State_ptr noQuarterState;
-	State_ptr hasQuarterState;
-	State_ptr soldState;
-	State_ptr winnerState;
+	StatePtr soldOutState;
+	StatePtr noQuarterState;
+	StatePtr hasQuarterState;
+	StatePtr soldState;
+	StatePtr winnerState;
 	State *state;  // Raw pointer as observer
 	string location;
 	int count;

@@ -60,7 +60,7 @@ private:
 		- Current state
 	- Sends response back to client
 	- Includes error handling */
-    void handleRequest(socket_ptr socket_ptr_) {
+    void handleRequest(socket_ptr socketPtr) {
         try {
 			/* - Me: What will happen, if my chosen size won't suffice? A run_time exception?
 
@@ -83,13 +83,13 @@ private:
 			*/
 			char_vec buffer(1024);
             error_code ec;
-            size_t len = socket_ptr_->read_some(boost::asio::buffer(buffer), ec);
+            size_t len = socketPtr->read_some(boost::asio::buffer(buffer), ec);
             if (ec)
                 return;
             string response;
             if (string request(buffer.data(), len); request == "getAllInfo\n")
 				response = std::format("{}\n{}\n{}\n", gumballMachine.getLocation(), gumballMachine.getCount(), gumballMachine.getStateString());
-            boost::asio::write(*socket_ptr_, boost::asio::buffer(response), ec);
+            boost::asio::write(*socketPtr, boost::asio::buffer(response), ec);
         }
         catch (const exception& e) {
             std::cerr << e.what() << '\n';
@@ -102,10 +102,10 @@ private:
 	- Handles incoming connections in a callback
 	- Recursively calls itself to continue accepting connections */
     void accept() {
-        auto socket_ptr_ = std::make_shared<socket>(context);
-        acceptor_.async_accept(*socket_ptr_, [this, socket_ptr_](const error_code& error) {
+        auto socketPtr = std::make_shared<socket>(context);
+        acceptor_.async_accept(*socketPtr, [this, socketPtr](const error_code& error) {
             if (!error)
-                handleRequest(socket_ptr_);
+                handleRequest(socketPtr);
             accept();
         });
     }
