@@ -24,9 +24,13 @@ class GumballMachine : public IGumballMachine {
 	State *state;  // Raw pointer as observer
 	string location;
 	int count;
-
 public:
 	GumballMachine(string_view location, int count);
+	GumballMachine(const GumballMachine &) = delete;			// The complexity and potential for errors makes it safer to keep copying disabled. 
+	GumballMachine &operator=(const GumballMachine &) = delete;	// If multiple machines are needed, create them independently rather than copying.
+	GumballMachine(GumballMachine &&) noexcept = default;
+	GumballMachine &operator=(GumballMachine &&) noexcept = default;
+
 	void insertQuarter() { state->insertQuarter(); }
 	void ejectQuarter() { state->ejectQuarter(); }
 
