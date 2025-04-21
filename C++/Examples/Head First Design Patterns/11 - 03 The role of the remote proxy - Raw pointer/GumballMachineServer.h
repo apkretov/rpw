@@ -1,7 +1,6 @@
 #pragma once
 
 #include <boost/asio.hpp>
-#include <array>
 #include "GumballMachine.h"
 #include "SocketHandler.h"
 
@@ -13,7 +12,7 @@ class GumballMachineServer {
     using endpoint =	boost::asio::ip::tcp::endpoint;	// Represents network address and port
     using socket =		boost::asio::ip::tcp::socket;	// Handles TCP socket communications
     using error_code =	boost::system::error_code;
-    using char_arr =	std::array<char, 1024>;
+	using char_vec =	std::vector<char>;	
 	using exception =	std::exception;
     using socket_ptr =	std::shared_ptr<socket>;
     using string =		std::string;
@@ -39,7 +38,7 @@ private:
 	- Includes error handling */
     void handleRequest(socket_ptr socket_ptr_) {
         try {
-            char_arr buffer;
+			char_vec buffer(1024);
             error_code ec;
             size_t len = socket_ptr_->read_some(boost::asio::buffer(buffer), ec);
             if (ec)
