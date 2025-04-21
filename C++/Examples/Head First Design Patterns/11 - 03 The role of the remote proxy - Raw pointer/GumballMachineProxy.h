@@ -13,7 +13,7 @@
 - Caches machine information
 - Provides the same interface as the real gumball machine */
 class GumballMachineProxy : public IGumballMachine {
-#pragma region aliases
+#pragma region Aliases
 	using io_context =		boost::asio::io_context;
 	using resolver =		boost::asio::ip::tcp::resolver;
 	using socket =			boost::asio::ip::tcp::socket;
@@ -22,7 +22,7 @@ class GumballMachineProxy : public IGumballMachine {
 	using istringstream =	std::istringstream;
 	using string =			std::string;
 	using char_vec =		std::vector<char>;
-#pragma endregion //aliases
+#pragma endregion //Aliases
 	const io_context &context;
     mutable socket socket_;
     string host;
