@@ -38,9 +38,6 @@
     <ClInclude Include="GumballMonitor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SocketHandler.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="State.h">
       <Filter>Header Files</Filter>
     </ClInclude>

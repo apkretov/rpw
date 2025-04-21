@@ -5,7 +5,6 @@
 #include <string>
 #include <vector>
 #include "GumballMachineI.h"
-#include "SocketHandler.h"
 
 #pragma region Trae
 /* 1. Class Structure: implements IGumballMachine, acting as a remote proxy that:
@@ -27,7 +26,6 @@ class GumballMachineProxy : public IGumballMachine {
     mutable socket socket_;
     string host;
     unsigned short port;
-    mutable SocketHandler handler;
 public:
 	/* 2. The constructor:
 	- Takes IO context, host, and port
@@ -39,7 +37,6 @@ public:
         , socket_(context)
         , host(host)
         , port(port)
-        , handler(socket_) 
 	{
         resolver resolver(context);
         auto endpoints = resolver.resolve(host, std::to_string(port));

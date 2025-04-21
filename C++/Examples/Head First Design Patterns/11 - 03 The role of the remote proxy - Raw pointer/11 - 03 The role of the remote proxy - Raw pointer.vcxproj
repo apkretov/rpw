@@ -142,7 +142,6 @@
     <ClInclude Include="GumballMachineProxy.h" />
     <ClInclude Include="GumballMachineServer.h" />
     <ClInclude Include="GumballMonitor.h" />
-    <ClInclude Include="SocketHandler.h" />
     <ClInclude Include="State.h" />
     <ClInclude Include="StateHasQuarter.h" />
     <ClInclude Include="StateNoQuarter.h" />
