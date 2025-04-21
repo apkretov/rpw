@@ -11,18 +11,22 @@
 class State;
 
 class GumballMachine : public IGumballMachine {
-	using State_ptr = std::unique_ptr<State>;
+#pragma region Aliases
+	using string =		std::string;
+	using string_view = std::string_view;
+	using State_ptr =	std::unique_ptr<State>;
+#pragma endregion //Aliases
 	State_ptr soldOutState;
 	State_ptr noQuarterState;
 	State_ptr hasQuarterState;
 	State_ptr soldState;
 	State_ptr winnerState;
 	State *state;  // Raw pointer as observer
-	std::string location;
+	string location;
 	int count;
 
 public:
-	GumballMachine(std::string_view location, int count);
+	GumballMachine(string_view location, int count);
 	void insertQuarter() { state->insertQuarter(); }
 	void ejectQuarter() { state->ejectQuarter(); }
 
@@ -51,12 +55,12 @@ public:
 	State *getSoldState() const { return soldState.get(); }
 	State *getWinnerState() const { return winnerState.get(); }
 
-	std::string getLocation() const override { return location; } // IGumballMachine interface implementation
+	string getLocation() const override { return location; } // IGumballMachine interface implementation
 	int getCount() const override { return count; }
-	std::string getStateString() const override { return state->toString(); }
+	string getStateString() const override { return state->toString(); }
 
-	std::string toString() const {
-		std::string result;
+	string toString() const {
+		string result;
 		result += "\nMighty Gumball, Inc.";
 		result += "\nC++-enabled Standing Gumball Model #2004";
 		result += "\nInventory: " + std::to_string(count) + " gumball";

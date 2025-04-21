@@ -15,22 +15,24 @@ class GumballMachineProxy : public IGumballMachine {
 	using socket =			boost::asio::ip::tcp::socket;
 	using error_code =		boost::system::error_code;
 	using system_error =	boost::system::system_error;
+	using istringstream =	std::istringstream;
 	using string =			std::string;
+	using char_vec =		std::vector<char>;
 #pragma endregion //aliases
-	io_context &io_context_;
+	io_context &context;
     mutable socket socket_;
     string host_;
     unsigned short port_;
-    mutable SocketHandler handler_;
+    mutable SocketHandler handler;
 public:
     GumballMachineProxy(io_context& io_context, const string& host, unsigned short port)
-        : io_context_(io_context)
+        : context(io_context)
         , socket_(io_context)
         , host_(host)
         , port_(port)
-        , handler_(socket_) 
+        , handler(socket_) 
 	{
-        resolver resolver(io_context_);
+        resolver resolver(context);
         auto endpoints = resolver.resolve(host_, std::to_string(port_));
         boost::asio::connect(socket_, endpoints);
     }
@@ -48,7 +50,7 @@ public:
             string request = "getAllInfo\n";
             boost::asio::write(socket_, boost::asio::buffer(request));
             
-            std::vector<char> buffer(1024);
+            char_vec buffer(1024);
             error_code ec;
             size_t len = socket_.read_some(boost::asio::buffer(buffer), ec);
             
@@ -56,7 +58,7 @@ public:
                 throw system_error(ec);
 
             string response(buffer.data(), len);
-            std::istringstream iss(response);
+            istringstream iss(response);
             MachineInfo info;
             std::getline(iss, info.location);
             string count_str;

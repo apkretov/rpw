@@ -16,7 +16,14 @@ class GumballMachineServer {
     using socket_ptr =         std::shared_ptr<socket>;
     using string =             std::string;
 #pragma endregion //Aliases
-    io_context& io_context_;
+public:
+    GumballMachineServer(io_context& context, unsigned short port, const GumballMachine &machine)
+        : context(context)
+        , acceptor_(context, endpoint(boost::asio::ip::tcp::v4(), port))
+        , machine(machine) 
+	{ accept(); }
+private:
+    io_context& context;
     acceptor acceptor_;
     const GumballMachine &machine;
 
@@ -46,18 +53,12 @@ class GumballMachineServer {
     }
 
     void accept() {
-        auto socket_ptr = std::make_shared<socket>(io_context_);
+        auto socket_ptr = std::make_shared<socket>(context);
         acceptor_.async_accept(*socket_ptr, [this, socket_ptr](const error_code& error) {
             if (!error)
                 handleRequest(socket_ptr);
             accept();
         });
     }
-public:
-    GumballMachineServer(io_context& io_context, unsigned short port, const GumballMachine &machine)
-        : io_context_(io_context)
-        , acceptor_(io_context, endpoint(boost::asio::ip::tcp::v4(), port))
-        , machine(machine) 
-	{ accept(); }
 };
 #pragma endregion //Trae
