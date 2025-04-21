@@ -7,57 +7,58 @@
 
 #pragma region Trae
 class GumballMachineServer {
-#pragma region Aliases
-    using io_context =         boost::asio::io_context;
-    using acceptor =           boost::asio::ip::tcp::acceptor;
-    using endpoint =           boost::asio::ip::tcp::endpoint;
-    using socket =             boost::asio::ip::tcp::socket;
-    using error_code =         boost::system::error_code;
-    using char_arr =           std::array<char, 1024>;
-    using socket_ptr =         std::shared_ptr<socket>;
-    using string =             std::string;
+#pragma region Aliases									// 1. The class aliases
+    using io_context =	boost::asio::io_context;		// Manages I/O operations
+    using acceptor =	boost::asio::ip::tcp::acceptor;	// Accepts incoming TCP connections
+    using endpoint =	boost::asio::ip::tcp::endpoint;	// Represents network address and port
+    using socket =		boost::asio::ip::tcp::socket;	// Handles TCP socket communications
+    using error_code =	boost::system::error_code;
+    using char_arr =	std::array<char, 1024>;
+	using exception =	std::exception;
+    using socket_ptr =	std::shared_ptr<socket>;
+    using string =		std::string;
 #pragma endregion //Aliases
 public:
-    GumballMachineServer(io_context& context, unsigned short port, const GumballMachine &machine)
+	GumballMachineServer(io_context& context, unsigned short port, const GumballMachine &machine) // 2. Constructor starts accepting connections
         : context(context)
         , acceptor_(context, endpoint(boost::asio::ip::tcp::v4(), port))
         , machine(machine) 
-	{ accept(); }
+	{ accept(); } // Starts accepting connections.
 private:
     io_context& context;
     acceptor acceptor_;
     const GumballMachine &machine;
 
-    void handleRequest(socket_ptr socket_) {
+	/* 3. Request Handling
+	- Reads client request from socket
+	- Processes "getAllInfo" command, which returns:
+		- Machine location
+		- Gumball count
+		- Current state
+	- Sends response back to client
+	- Includes error handling */
+    void handleRequest(socket_ptr socket_ptr_) {
         try {
             char_arr buffer;
             error_code ec;
-            size_t len = socket_->read_some(boost::asio::buffer(buffer), ec);
-
+            size_t len = socket_ptr_->read_some(boost::asio::buffer(buffer), ec);
             if (ec)
                 return;
-
-            string request(buffer.data(), len);
             string response;
-
-            if (request == "getAllInfo\n") {
-                response = machine.getLocation() + "\n" +
-                    std::to_string(machine.getCount()) + "\n" +
-                    machine.getStateString() + "\n";
-            }
-
-            boost::asio::write(*socket_, boost::asio::buffer(response), ec);
+            if (string request(buffer.data(), len); request == "getAllInfo\n")
+				response = std::format("{}\n{}\n{}\n", machine.getLocation(), machine.getCount(), machine.getStateString());
+            boost::asio::write(*socket_ptr_, boost::asio::buffer(response), ec);
         }
-        catch (const std::exception& e) {
+        catch (const exception& e) {
             std::cerr << e.what() << '\n';
         }
     }
 
     void accept() {
-        auto socket_ptr = std::make_shared<socket>(context);
-        acceptor_.async_accept(*socket_ptr, [this, socket_ptr](const error_code& error) {
+        auto socket_ptr_ = std::make_shared<socket>(context);
+        acceptor_.async_accept(*socket_ptr_, [this, socket_ptr_](const error_code& error) {
             if (!error)
-                handleRequest(socket_ptr);
+                handleRequest(socket_ptr_);
             accept();
         });
     }
