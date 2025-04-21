@@ -5,8 +5,14 @@
 #include "SocketHandler.h"
 
 #pragma region Trae
+/* This server implementation:
+- Uses asynchronous I/O for better performance
+- Handles multiple clients
+- Provides remote access to gumball machine state
+- Implements part of the Proxy pattern by serving as the remote object
+The server works alongside the GumballMachineProxy to enable remote monitoring of the gumball machine's state. */
 class GumballMachineServer {
-#pragma region Aliases									// 1. The class aliases
+#pragma region Aliases									// 1. The class aliases:
     using io_context =	boost::asio::io_context;		// Manages I/O operations
     using acceptor =	boost::asio::ip::tcp::acceptor;	// Accepts incoming TCP connections
     using endpoint =	boost::asio::ip::tcp::endpoint;	// Represents network address and port
@@ -18,7 +24,7 @@ class GumballMachineServer {
     using string =		std::string;
 #pragma endregion //Aliases
 public:
-	GumballMachineServer(io_context& context, unsigned short port, const GumballMachine &machine) // 2. Constructor starts accepting connections
+	GumballMachineServer(io_context& context, unsigned short port, const GumballMachine &machine) // 2. The constructor starts accepting connections.
         : context(context)
         , acceptor_(context, endpoint(boost::asio::ip::tcp::v4(), port))
         , machine(machine) 
@@ -28,7 +34,7 @@ private:
     acceptor acceptor_;
     const GumballMachine &machine;
 
-	/* 3. Request Handling
+	/* 3. Request Handling:
 	- Reads client request from socket
 	- Processes "getAllInfo" command, which returns:
 		- Machine location
@@ -53,6 +59,11 @@ private:
         }
     }
 
+	/* 4. Connection Acceptance:
+	- Creates new socket for each connection
+	- Uses asynchronous acceptance (non-blocking)
+	- Handles incoming connections in a callback
+	- Recursively calls itself to continue accepting connections */
     void accept() {
         auto socket_ptr_ = std::make_shared<socket>(context);
         acceptor_.async_accept(*socket_ptr_, [this, socket_ptr_](const error_code& error) {
