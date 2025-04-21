@@ -45,7 +45,7 @@ public:
         auto endpoints = resolver.resolve(host, std::to_string(port));
         boost::asio::connect(socket_, endpoints);
     }
-
+private:
 	/* 3. Caching Mechanism:
 	- Caches all machine information in one structure
 	- Uses std::optional for lazy initialization 
@@ -87,7 +87,7 @@ public:
             throw;
         }
     }
-
+public:
     string getLocation() const override {
         if (!cached_info)
             fetchInfo();
