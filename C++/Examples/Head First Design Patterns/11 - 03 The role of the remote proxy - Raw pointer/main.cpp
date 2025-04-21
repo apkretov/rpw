@@ -8,9 +8,9 @@
 #include "GumballMonitor.h"
 
 #pragma region Aliases
-using io_context            = boost::asio::io_context;
-using b_exception           = boost::exception;
-using system_error          = boost::system::error_code;
+using io_context	= boost::asio::io_context;
+using exception		= boost::exception;
+using system_error	= boost::system::error_code;
 using std::cerr;
 using std::cout;
 using std::string;
@@ -23,8 +23,8 @@ using std::thread;
  - Sets up a server on port 12345
  - context.run() starts the Boost.Asio event loop, which handles incoming connections */
 void runServer(io_context &context) { // Server example
-	GumballMachine machine{"Seattle", 5};
-    GumballMachineServer server(context, 12345, machine);
+	GumballMachine gumballMachine{"Seattle", 5};
+    GumballMachineServer gumballMachineServer(context, 12345, gumballMachine);
     context.run(); // This starts the event loop.
 }
 
@@ -38,7 +38,7 @@ void runClient() { // Client example
 	try {
 		monitor.report();
 	}
-	catch (const b_exception &e) {
+	catch (const exception &e) {
 		cerr << "Exception: " << diagnostic_information(e) << "\n";
 	}
 }

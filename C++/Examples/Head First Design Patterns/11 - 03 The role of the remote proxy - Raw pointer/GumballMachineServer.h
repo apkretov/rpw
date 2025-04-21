@@ -45,12 +45,12 @@ public:
 	GumballMachineServer(io_context& context, unsigned short port, const GumballMachine &machine) // 2. The constructor starts accepting connections.
         : context(context)
         , acceptor_(context, endpoint(boost::asio::ip::tcp::v4(), port))
-        , machine(machine) 
+        , gumballMachine(machine) 
 	{ accept(); } // Starts accepting connections.
 private:
     io_context& context;
     acceptor acceptor_;
-    const GumballMachine &machine;
+    const GumballMachine &gumballMachine;
 
 	/* 3. Request Handling:
 	- Reads client request from socket
@@ -88,7 +88,7 @@ private:
                 return;
             string response;
             if (string request(buffer.data(), len); request == "getAllInfo\n")
-				response = std::format("{}\n{}\n{}\n", machine.getLocation(), machine.getCount(), machine.getStateString());
+				response = std::format("{}\n{}\n{}\n", gumballMachine.getLocation(), gumballMachine.getCount(), gumballMachine.getStateString());
             boost::asio::write(*socket_ptr_, boost::asio::buffer(response), ec);
         }
         catch (const exception& e) {
