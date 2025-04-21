@@ -23,7 +23,7 @@ class GumballMachineProxy : public IGumballMachine {
 	using string =			std::string;
 	using char_vec =		std::vector<char>;
 #pragma endregion //aliases
-	io_context &context;
+	const io_context &context;
     mutable socket socket_;
     string host;
     unsigned short port;
@@ -81,7 +81,7 @@ private:
             std::getline(iss, count_str);
             info.count = std::stoi(count_str);
             std::getline(iss, info.state);
-            cached_info = info;
+            cached_info = std::move(info);
         }
         catch (const system_error& e) {
             throw;
