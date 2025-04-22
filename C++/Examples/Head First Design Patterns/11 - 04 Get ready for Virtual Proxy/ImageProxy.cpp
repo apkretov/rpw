@@ -11,7 +11,7 @@ void ImageProxy::Paint(HDC hdc, int x, int y) {
         graphics.DrawImage(imageIcon.get(), x, y);
     } else {
         SetTextAlign(hdc, TA_CENTER);
-        TextOut(hdc, x + 400, y + 300, L"Loading album cover, please wait...", 31);
+        TextOut(hdc, x + 400, y + 300, L"Loading album cover, please wait...", 35);
 
         if (!retrieving) {
             retrieving = true;
