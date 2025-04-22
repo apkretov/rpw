@@ -3,6 +3,7 @@
 #include <FL/Fl_GIF_Image.H>
 #include <FL/Fl_PNG_Image.H>
 #include <FL/Fl_Shared_Image.H>
+#include <FL/fl_message.H>
 #include <thread>
 #include <mutex>
 #include <memory>
@@ -15,12 +16,17 @@ private:
     std::string imageURL;
     std::thread retrievalThread;
     bool retrieving;
-    std::mutex imageMutex;
+    mutable std::mutex imageMutex;
 
     void loadImage() {
         try {
             // Download image to a temporary file
-            std::string tempFile = std::tmpnam(nullptr);
+            char tempFileName[L_tmpnam_s];
+            errno_t err = tmpnam_s(tempFileName, L_tmpnam_s);
+            if (err) {
+                throw std::runtime_error("Failed to create temporary file name");
+            }
+            std::string tempFile = tempFileName;
             std::string cmd = "curl -s -o " + tempFile + " " + imageURL;
             system(cmd.c_str());
 
