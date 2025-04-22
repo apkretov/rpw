@@ -112,32 +112,21 @@ public:
 };
 
 class ImageProxy : public Icon {
-private:
 	std::unique_ptr<Gdiplus::Image> imageIcon;
 	std::wstring imageURL;
 	std::thread retrievalThread;
 	std::atomic<bool> retrieving;
 	HWND hwnd;
-
 public:
-	ImageProxy(const std::wstring &url, HWND window)
-		: imageURL(url), retrieving(false), hwnd(window) {
-	}
+	ImageProxy(const std::wstring &url, HWND window) : imageURL(url), retrieving(false), hwnd(window) {}
 
 	~ImageProxy() {
-		if (retrievalThread.joinable()) {
+		if (retrievalThread.joinable())
 			retrievalThread.join();
-		}
 	}
 
-	int GetWidth() const override {
-		return imageIcon ? imageIcon->GetWidth() : 800;
-	}
-
-	int GetHeight() const override {
-		return imageIcon ? imageIcon->GetHeight() : 600;
-	}
-
+	int GetWidth() const override { return imageIcon ? imageIcon->GetWidth() : 800; }
+	int GetHeight() const override { return imageIcon ? imageIcon->GetHeight() : 600; }
 	void Paint(HDC hdc, int x, int y) override;
 };
 #pragma endregion //Trae

@@ -9,8 +9,7 @@ void ImageProxy::Paint(HDC hdc, int x, int y) {
     if (imageIcon) {
         Gdiplus::Graphics graphics(hdc);
         graphics.DrawImage(imageIcon.get(), x, y);
-    }
-    else {
+    } else {
         SetTextAlign(hdc, TA_CENTER);
         TextOut(hdc, x + 400, y + 300, L"Loading album cover, please wait...", 31);
 
@@ -26,9 +25,8 @@ void ImageProxy::Paint(HDC hdc, int x, int y) {
                         DWORD bytesRead;
                         char temp[4096];
                         
-                        while (InternetReadFile(hFile, temp, sizeof(temp), &bytesRead) && bytesRead > 0) {
+                        while (InternetReadFile(hFile, temp, sizeof(temp), &bytesRead) && bytesRead > 0)
                             buffer.insert(buffer.end(), temp, temp + bytesRead);
-                        }
 
                         IStream* stream = SHCreateMemStream(buffer.data(), buffer.size());
                         if (stream) {

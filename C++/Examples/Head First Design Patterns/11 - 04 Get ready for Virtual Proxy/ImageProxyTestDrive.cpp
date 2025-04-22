@@ -73,7 +73,6 @@ public class ImageProxyTestDrive {
 */
 
 class ImageProxyTestDrive {
-private:
 	static constexpr int WINDOW_WIDTH = 800;
 	static constexpr int WINDOW_HEIGHT = 600;
 
@@ -83,7 +82,6 @@ private:
 	ULONG_PTR gdiplusToken;
 
 	static LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
-
 public:
 	ImageProxyTestDrive(HINSTANCE hInstance);
 	~ImageProxyTestDrive();
@@ -93,19 +91,16 @@ public:
 };
 
 ImageProxyTestDrive::ImageProxyTestDrive(HINSTANCE hInstance) {
-	// Initialize GDI+
-	Gdiplus::GdiplusStartupInput gdiplusStartupInput;
+	Gdiplus::GdiplusStartupInput gdiplusStartupInput; // Initialize GDI+
 	Gdiplus::GdiplusStartup(&gdiplusToken, &gdiplusStartupInput, NULL);
 
-	// Register window class
-	WNDCLASS wc = {};
+	WNDCLASS wc = {}; // Register window class
 	wc.lpfnWndProc = WindowProc;
 	wc.hInstance = hInstance;
 	wc.lpszClassName = L"ImageProxyTestDrive";
 	RegisterClass(&wc);
 
-	// Create window
-	hwnd = CreateWindowEx(
+	hwnd = CreateWindowEx( // Create window
 		0, L"ImageProxyTestDrive", L"Album Cover Viewer",
 		WS_OVERLAPPEDWINDOW,
 		CW_USEDEFAULT, CW_USEDEFAULT, WINDOW_WIDTH, WINDOW_HEIGHT,
@@ -121,30 +116,23 @@ ImageProxyTestDrive::~ImageProxyTestDrive() {
 }
 
 void ImageProxyTestDrive::Initialize() {
-	// Initialize albums
-	albums[L"Buddha Bar"] = L"http://images.amazon.com/images/P/B00009XBYK.01.LZZZZZZZ.jpg";
+	albums[L"Buddha Bar"] = L"http://images.amazon.com/images/P/B00009XBYK.01.LZZZZZZZ.jpg"; // Initialize albums
 	albums[L"Ima"] = L"http://images.amazon.com/images/P/B000005IRM.01.LZZZZZZZ.jpg";
 	albums[L"Karma"] = L"http://images.amazon.com/images/P/B000005DCB.01.LZZZZZZZ.gif";
 	albums[L"MCMXC a.D."] = L"http://images.amazon.com/images/P/B000002URV.01.LZZZZZZZ.jpg";
 	albums[L"Northern Exposure"] = L"http://images.amazon.com/images/P/B000003SFN.01.LZZZZZZZ.jpg";
 	albums[L"Selected Ambient Works, Vol. 2"] = L"http://images.amazon.com/images/P/B000002MNZ.01.LZZZZZZZ.jpg";
 
-	// Create menu
-	HMENU hMenu = CreateMenu();
+	HMENU hMenu = CreateMenu(); // Create menu
 	HMENU hSubMenu = CreatePopupMenu();
 
 	int id = 1;
-	for (const auto &album : albums) {
+	for (const auto &album : albums)
 		AppendMenu(hSubMenu, MF_STRING, id++, album.first.c_str());
-	}
 
 	AppendMenu(hMenu, MF_POPUP, (UINT_PTR)hSubMenu, L"Favorite Albums");
 	SetMenu(hwnd, hMenu);
-
-	// Set initial image
-	currentIcon = std::make_unique<ImageProxy>(
-		albums[L"Selected Ambient Works, Vol. 2"], hwnd);
-
+	currentIcon = std::make_unique<ImageProxy>(albums[L"Selected Ambient Works, Vol. 2"], hwnd); // Set initial image
 	ShowWindow(hwnd, SW_SHOW);
 }
 
@@ -176,7 +164,6 @@ LRESULT CALLBACK ImageProxyTestDrive::WindowProc(HWND hwnd, UINT uMsg, WPARAM wP
 				EndPaint(hwnd, &ps);
 				return 0;
 			}
-
 		case WM_COMMAND:
 			{
 				if (HIWORD(wParam) == 0) { // Menu selection
@@ -190,7 +177,6 @@ LRESULT CALLBACK ImageProxyTestDrive::WindowProc(HWND hwnd, UINT uMsg, WPARAM wP
 				}
 				return 0;
 			}
-
 		case WM_DESTROY:
 			{
 				PostQuitMessage(0);
