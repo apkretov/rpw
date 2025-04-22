@@ -87,7 +87,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "11 - 03 The role of the rem
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "11 - 04 Get ready for Virtual Proxy", "11 - 04 Get ready for Virtual Proxy\11 - 04 Get ready for Virtual Proxy.vcxproj", "{760C4543-1898-4100-B75F-79FDD23F5ED7}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "11 - 05 Get ready for Virtual Proxy - FLTK", "11 - 05 Get ready for Virtual Proxy - FLTK\11 - 05 Get ready for Virtual Proxy - FLTK.vcxproj", "{CA265678-F886-467B-AD9E-27CF2A3C38A5}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "11 - 05 Get ready for Virtual Proxy - FLTK-1.3.11", "11 - 05 Get ready for Virtual Proxy - FLTK-1.3.11\11 - 05 Get ready for Virtual Proxy - FLTK.vcxproj", "{CA265678-F886-467B-AD9E-27CF2A3C38A5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
