@@ -5,32 +5,31 @@
 
 package headfirst.designpatterns.proxy.javaproxy;
 
-public interface Person {
+public interface Person { // This is the interface; we'll get to the implementation in just a sec...
  
-	String getName();
+	String getName(); // Here we can get information about the person’s name, gender, interests and HotOrNot rating (1 - 10).
 	String getGender();
 	String getInterests();
 	int getGeekRating();
  
-    void setName(String name);
+    void setName(String name); // We can also set the same information through the respective method calls.
     void setGender(String gender);
     void setInterests(String interests);
-    void setGeekRating(int rating); 
+    void setGeekRating(int rating); // setHotOrNotRating() takes an integer and adds it to the running average for this person.
  
 }
 */
-
-class Person {
+class Person { // This is the interface; we'll get to the implementation in just a sec...
 public:
     virtual ~Person() = default;
     
-    virtual std::string getName() = 0;
+    virtual std::string getName() = 0; // Here we can get information about the person’s name, gender, interests and HotOrNot rating (1 - 10).
     virtual std::string getGender() = 0;
     virtual std::string getInterests() = 0;
     virtual int getGeekRating() = 0;
     
-    virtual void setName(const std::string& name) = 0;
+    virtual void setName(const std::string& name) = 0; // We can also set the same information through the respective method calls.
     virtual void setGender(const std::string& gender) = 0;
     virtual void setInterests(const std::string& interests) = 0;
-    virtual void setGeekRating(int rating) = 0;
+    virtual void setGeekRating(int rating) = 0; // setHotOrNotRating() takes an integer and adds it to the running average for this person.
 };
