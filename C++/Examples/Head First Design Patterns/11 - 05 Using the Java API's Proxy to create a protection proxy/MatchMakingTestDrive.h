@@ -90,7 +90,7 @@ class MatchMakingTestDrive {
 	//std::map<std::string, PersonPtr, std::less<>> datingDB;
 	std::map<std::string, PersonPtr_, std::less<>> datingDB;
 
-	Person *getPersonFromDatabase(const std::string &name) { //TO DO: optional<Person *>
+	Person *getPersonFromDatabase(const std::string &name) { //TO DO: optional<Person *> //TO DO std::string_view
 		auto it = datingDB.find(name);
 		//return (it != datingDB.end()) ? it->second : nullptr;
 		return (it != datingDB.end()) ? it->second.get() : nullptr;
@@ -100,17 +100,21 @@ class MatchMakingTestDrive {
 	PersonPtr getNonOwnerProxy(PersonPtr person) const { return std::make_shared<NonOwnerProxy>(person); }
 
 	void initializeDatabase() {
-		auto joe = std::make_shared<PersonImpl>();
+		//auto joe = std::make_shared<PersonImpl>();
+		auto joe = std::make_unique<PersonImpl>();
 		joe->setName("Joe Javabean");
 		joe->setInterests("cars, computers, music");
 		joe->setGeekRating(7);
-		datingDB[joe->getName()] = joe;
+		//datingDB[joe->getName()] = joe;
+		datingDB[joe->getName()] = std::move(joe);
 
-		auto kelly = std::make_shared<PersonImpl>();
+		//auto kelly = std::make_shared<PersonImpl>();
+		auto kelly = std::make_unique<PersonImpl>();
 		kelly->setName("Kelly Klosure");
 		kelly->setInterests("ebay, movies, music");
 		kelly->setGeekRating(6);
-		datingDB[kelly->getName()] = kelly;
+		//datingDB[kelly->getName()] = kelly;
+		datingDB[kelly->getName()] = std::move(kelly);
 	}
 public:
 	MatchMakingTestDrive() { initializeDatabase(); }
