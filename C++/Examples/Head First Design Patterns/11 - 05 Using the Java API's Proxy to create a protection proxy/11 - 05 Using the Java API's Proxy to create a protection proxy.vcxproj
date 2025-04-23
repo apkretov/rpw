@@ -130,6 +130,7 @@
     <ClCompile Include="MatchMakingTestDrive.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="MatchMakingTestDrive.h" />
     <ClInclude Include="NonOwnerProxy.h" />
     <ClInclude Include="OwnerProxy.h" />
     <ClInclude Include="Person.h" />

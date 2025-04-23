@@ -1,0 +1,156 @@
+#pragma once
+
+#include <iostream>
+#include <map>
+#include <memory>
+#include "PersonImpl.h"
+#include "OwnerProxy.h"
+#include "NonOwnerProxy.h"
+
+/* Java @ https://github.com/bethrobson/Head-First-Design-Patterns/tree/master/src/headfirst/designpatterns/proxy/javaproxy
+
+package headfirst.designpatterns.proxy.javaproxy;
+
+import java.lang.reflect.*;
+import java.util.*;
+
+public class MatchMakingTestDrive {
+	HashMap<String, Person> datingDB = new HashMap<String, Person>();
+
+	public static void main(String[] args) {
+		MatchMakingTestDrive test = new MatchMakingTestDrive();
+		test.drive();
+	}
+
+	public MatchMakingTestDrive() {
+		initializeDatabase();
+	}
+
+	public void drive() {
+		Person joe = getPersonFromDatabase("Joe Javabean");
+		Person ownerProxy = getOwnerProxy(joe);
+		System.out.println("Name is " + ownerProxy.getName());
+		ownerProxy.setInterests("bowling, Go");
+		System.out.println("Interests set from owner proxy");
+		try {
+			ownerProxy.setGeekRating(10);
+		} catch (Exception e) {
+			System.out.println("Can't set rating from owner proxy");
+		}
+		System.out.println("Rating is " + ownerProxy.getGeekRating());
+
+		Person nonOwnerProxy = getNonOwnerProxy(joe);
+		System.out.println("Name is " + nonOwnerProxy.getName());
+		try {
+			nonOwnerProxy.setInterests("bowling, Go");
+		} catch (Exception e) {
+			System.out.println("Can't set interests from non owner proxy");
+		}
+		nonOwnerProxy.setGeekRating(3);
+		System.out.println("Rating set from non owner proxy");
+		System.out.println("Rating is " + nonOwnerProxy.getGeekRating());
+	}
+
+	Person getOwnerProxy(Person person) {
+
+		return (Person) Proxy.newProxyInstance(
+				person.getClass().getClassLoader(),
+				person.getClass().getInterfaces(),
+				new OwnerInvocationHandler(person));
+	}
+
+	Person getNonOwnerProxy(Person person) {
+
+		return (Person) Proxy.newProxyInstance(
+				person.getClass().getClassLoader(),
+				person.getClass().getInterfaces(),
+				new NonOwnerInvocationHandler(person));
+	}
+
+	Person getPersonFromDatabase(String name) {
+		return (Person)datingDB.get(name);
+	}
+
+	void initializeDatabase() {
+		Person joe = new PersonImpl();
+		joe.setName("Joe Javabean");
+		joe.setInterests("cars, computers, music");
+		joe.setGeekRating(7);
+		datingDB.put(joe.getName(), joe);
+
+		Person kelly = new PersonImpl();
+		kelly.setName("Kelly Klosure");
+		kelly.setInterests("ebay, movies, music");
+		kelly.setGeekRating(6);
+		datingDB.put(kelly.getName(), kelly);
+	}
+}
+*/
+
+class MatchMakingTestDrive {
+private:
+	std::map<std::string, std::shared_ptr<Person>> datingDB;
+
+	std::shared_ptr<Person> getPersonFromDatabase(const std::string &name) {
+		auto it = datingDB.find(name);
+		return (it != datingDB.end()) ? it->second : nullptr;
+	}
+
+	std::shared_ptr<Person> getOwnerProxy(std::shared_ptr<Person> person) {
+		return std::make_shared<OwnerProxy>(person);
+	}
+
+	std::shared_ptr<Person> getNonOwnerProxy(std::shared_ptr<Person> person) {
+		return std::make_shared<NonOwnerProxy>(person);
+	}
+
+	void initializeDatabase() {
+		auto joe = std::make_shared<PersonImpl>();
+		joe->setName("Joe Javabean");
+		joe->setInterests("cars, computers, music");
+		joe->setGeekRating(7);
+		datingDB[joe->getName()] = joe;
+
+		auto kelly = std::make_shared<PersonImpl>();
+		kelly->setName("Kelly Klosure");
+		kelly->setInterests("ebay, movies, music");
+		kelly->setGeekRating(6);
+		datingDB[kelly->getName()] = kelly;
+	}
+
+public:
+	MatchMakingTestDrive() {
+		initializeDatabase();
+	}
+
+	void drive() {
+		auto joe = getPersonFromDatabase("Joe Javabean");
+		auto ownerProxy = getOwnerProxy(joe);
+
+		std::cout << "Name is " << ownerProxy->getName() << std::endl;
+		ownerProxy->setInterests("bowling, Go");
+		std::cout << "Interests set from owner proxy" << std::endl;
+
+		try {
+			ownerProxy->setGeekRating(10);
+		}
+		catch (const std::exception &e) {
+			std::cout << "Can't set rating from owner proxy" << std::endl;
+		}
+		std::cout << "Rating is " << ownerProxy->getGeekRating() << std::endl;
+
+		auto nonOwnerProxy = getNonOwnerProxy(joe);
+		std::cout << "Name is " << nonOwnerProxy->getName() << std::endl;
+
+		try {
+			nonOwnerProxy->setInterests("bowling, Go");
+		}
+		catch (const std::exception &e) {
+			std::cout << "Can't set interests from non owner proxy" << std::endl;
+		}
+
+		nonOwnerProxy->setGeekRating(3);
+		std::cout << "Rating set from non owner proxy" << std::endl;
+		std::cout << "Rating is " << nonOwnerProxy->getGeekRating() << std::endl;
+	}
+};
