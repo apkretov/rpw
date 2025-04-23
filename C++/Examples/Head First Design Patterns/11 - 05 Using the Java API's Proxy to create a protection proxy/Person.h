@@ -23,10 +23,10 @@ class Person { // This is the interface; we'll get to the implementation in just
 public:
     virtual ~Person() = default;
     
-    virtual std::string getName() = 0; // Here we can get information about the person’s name, gender, interests and HotOrNot rating (1 - 10).
-    virtual std::string getGender() = 0;
-    virtual std::string getInterests() = 0;
-    virtual int getGeekRating() = 0;
+    virtual std::string getName() const = 0; // Here we can get information about the person’s name, gender, interests and HotOrNot rating (1 - 10).
+    virtual std::string getGender() const = 0;
+    virtual std::string getInterests() const = 0;
+    virtual int getGeekRating() const = 0;
     
     virtual void setName(const std::string& name) = 0; // We can also set the same information through the respective method calls.
     virtual void setGender(const std::string& gender) = 0;

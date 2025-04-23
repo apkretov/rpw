@@ -5,14 +5,14 @@
 
 package headfirst.designpatterns.proxy.javaproxy;
 
-public class PersonImpl implements Person {
-	String name;
+public class PersonImpl implements Person { // The PersonBeanImpl implements the PersonBean interface
+	String name; // The instance variables.
 	String gender;
 	String interests;
 	int rating;
 	int ratingCount = 0;
   
-	public String getName() {
+	public String getName() { // All the getter methods; they each return	the appropriate instance variable...
 		return name;	
 	} 
   
@@ -24,7 +24,7 @@ public class PersonImpl implements Person {
 		return interests;
 	}
    
-	public int getGeekRating() {
+	public int getGeekRating() { // ...except for getHotOrNotRating(), which computes the average of the ratings by dividing the ratings by the ratingCount.
 		if (ratingCount == 0) return 0;
 		return (rating/ratingCount);
 	}
@@ -48,20 +48,20 @@ public class PersonImpl implements Person {
 	}
 }
 */
-
-class PersonImpl : public Person {
+class PersonImpl : public Person { // The PersonBeanImpl implements the PersonBean interface
 private:
-    std::string name;
+    std::string name; // The instance variables.
     std::string gender;
     std::string interests;
     int rating = 0;
     int ratingCount = 0;
 
 public:
-    std::string getName() override { return name; }
-    std::string getGender() override { return gender; }
-    std::string getInterests() override { return interests; }
-    int getGeekRating() override { 
+    std::string getName() const override { return name; } // All the getter methods; they each return	the appropriate instance variable...
+    std::string getGender() const override { return gender; }
+    std::string getInterests() const override { return interests; }
+
+    int getGeekRating() const override { // ...except for getHotOrNotRating(), which computes the average of the ratings by dividing the ratings by the ratingCount.
         if (ratingCount == 0) return 0;
         return (rating/ratingCount); 
     }

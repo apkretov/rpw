@@ -42,10 +42,10 @@ private:
 public:
     explicit NonOwnerProxy(std::shared_ptr<Person> p) : person(p) {}
 
-    std::string getName() override { return person->getName(); }
-    std::string getGender() override { return person->getGender(); }
-    std::string getInterests() override { return person->getInterests(); }
-    int getGeekRating() override { return person->getGeekRating(); }
+    std::string getName() const override { return person->getName(); }
+    std::string getGender() const override { return person->getGender(); }
+    std::string getInterests() const override { return person->getInterests(); }
+    int getGeekRating() const override { return person->getGeekRating(); }
 
     void setName(const std::string&) override { 
         throw std::runtime_error("Non-owners can't modify the profile");
