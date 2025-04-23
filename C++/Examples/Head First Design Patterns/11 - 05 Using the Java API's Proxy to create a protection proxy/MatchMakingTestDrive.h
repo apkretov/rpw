@@ -90,9 +90,10 @@ class MatchMakingTestDrive {
 	//std::map<std::string, PersonPtr, std::less<>> datingDB;
 	std::map<std::string, PersonPtr_, std::less<>> datingDB;
 
-	PersonPtr getPersonFromDatabase(const std::string &name) { //TO DO: optional<Person *>
+	Person *getPersonFromDatabase(const std::string &name) { //TO DO: optional<Person *>
 		auto it = datingDB.find(name);
-		return (it != datingDB.end()) ? it->second : nullptr;
+		//return (it != datingDB.end()) ? it->second : nullptr;
+		return (it != datingDB.end()) ? it->second.get() : nullptr;
 	}
 
 	PersonPtr getOwnerProxy(PersonPtr person) const { return std::make_shared<OwnerProxy>(person); }
