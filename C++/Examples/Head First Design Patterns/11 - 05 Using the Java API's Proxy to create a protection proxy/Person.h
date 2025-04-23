@@ -38,4 +38,5 @@ public:
 };
 
 using PersonPtr = std::shared_ptr<Person>;
+using PersonPtr_ = std::unique_ptr<Person>;
 #pragma endregion //Matchmaking in Objectville
