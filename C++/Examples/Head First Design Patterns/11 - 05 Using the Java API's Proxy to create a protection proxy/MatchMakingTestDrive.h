@@ -14,7 +14,8 @@ package headfirst.designpatterns.proxy.javaproxy;
 import java.lang.reflect.*;
 import java.util.*;
 
-public class MatchMakingTestDrive {
+#pragma region Testing the matchmaking service
+				public class MatchMakingTestDrive {
 	HashMap<String, Person> datingDB = new HashMap<String, Person>();
 
 	public static void main(String[] args) {
@@ -50,7 +51,9 @@ public class MatchMakingTestDrive {
 		System.out.println("Rating set from non owner proxy");
 		System.out.println("Rating is " + nonOwnerProxy.getGeekRating());
 	}
+#pragma endregion //Testing the matchmaking service
 
+#pragma region Step two: creating the Proxy class and instantiating the Proxy object
 	Person getOwnerProxy(Person person) {
 
 		return (Person) Proxy.newProxyInstance(
@@ -58,6 +61,7 @@ public class MatchMakingTestDrive {
 				person.getClass().getInterfaces(),
 				new OwnerInvocationHandler(person));
 	}
+#pragma endregion //Step two: creating the Proxy class and instantiating the Proxy object
 
 	Person getNonOwnerProxy(Person person) {
 
@@ -94,7 +98,10 @@ class MatchMakingTestDrive {
         return it != datingDB.end() ? std::optional<Person*>{it->second.get()} : std::nullopt;
     }
 
+#pragma region Step two: creating the Proxy class and instantiating the Proxy object
 	PersonPtr getOwnerProxy(Person *person) const { return std::make_unique<OwnerProxy>(person); }
+#pragma endregion //Step two: creating the Proxy class and instantiating the Proxy object
+
 	PersonPtr getNonOwnerProxy(Person *person) const { return std::make_unique<NonOwnerProxy>(person); }
 
 	void initializeDatabase() {
@@ -113,6 +120,7 @@ class MatchMakingTestDrive {
 public:
 	MatchMakingTestDrive() { initializeDatabase(); }
 
+#pragma region Testing the matchmaking service
 	void drive() {
 		auto joe = getPersonFromDatabase("Joe Javabean");
 		if (!joe.has_value()) {
@@ -147,4 +155,5 @@ public:
 		std::cout << "Rating set from non owner proxy" << std::endl;
 		std::cout << "Rating is " << nonOwnerProxy->getGeekRating() << std::endl;
 	}
+#pragma endregion //Testing the matchmaking service
 };

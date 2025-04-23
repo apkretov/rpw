@@ -7,6 +7,7 @@ int main() {
 
     MatchMakingTestDrive test;
     test.drive();
+	std::cout << '\n';
 
     return 0;
 }
