@@ -37,9 +37,9 @@ public class OwnerInvocationHandler implements InvocationHandler { // All invoca
 */
 class OwnerProxy : public Person {
 	using string = std::string;
-	PersonPtr person;
+	Person *person;
 public:
-	explicit OwnerProxy(PersonPtr p) : person(p) {} // We're passed the	Real Subject in the constructor and we keep a reference to it.
+	explicit OwnerProxy(Person *p) : person(p) {} // We're passed the	Real Subject in the constructor and we keep a reference to it.
 
 	string getName() const override { return person->getName(); } // If the method is a getter, we go ahead and invoke it on the real subject.
 	string getGender() const override { return person->getGender(); }
