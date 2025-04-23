@@ -87,15 +87,15 @@ public class MatchMakingTestDrive {
 }
 */
 class MatchMakingTestDrive {
-	std::map<std::string, PersonPtr_, std::less<>> datingDB;
+	std::map<std::string, PersonPtr, std::less<>> datingDB;
 
 	Person *getPersonFromDatabase(const std::string &name) { //TO DO: optional<Person *> //TO DO std::string_view
 		auto it = datingDB.find(name);
 		return (it != datingDB.end()) ? it->second.get() : nullptr;
 	}
 
-	PersonPtr_ getOwnerProxy(Person *person) const { return std::make_unique<OwnerProxy>(person); }
-	PersonPtr_ getNonOwnerProxy(Person *person) const { return std::make_unique<NonOwnerProxy>(person); }
+	PersonPtr getOwnerProxy(Person *person) const { return std::make_unique<OwnerProxy>(person); }
+	PersonPtr getNonOwnerProxy(Person *person) const { return std::make_unique<NonOwnerProxy>(person); }
 
 	void initializeDatabase() {
 		auto joe = std::make_unique<PersonImpl>();

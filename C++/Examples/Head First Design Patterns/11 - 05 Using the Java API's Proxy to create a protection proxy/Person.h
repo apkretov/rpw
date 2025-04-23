@@ -37,6 +37,5 @@ public:
 	virtual void setGeekRating(int rating) = 0; // setHotOrNotRating() takes an integer and adds it to the running average for this person.
 };
 
-using PersonPtr = std::shared_ptr<Person>;
-using PersonPtr_ = std::unique_ptr<Person>;
+using PersonPtr = std::unique_ptr<Person>;
 #pragma endregion //Matchmaking in Objectville
