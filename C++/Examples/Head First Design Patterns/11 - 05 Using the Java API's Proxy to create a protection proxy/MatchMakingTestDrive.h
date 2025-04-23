@@ -5,7 +5,7 @@
 #include <memory>
 #include "PersonImpl.h"
 #include "OwnerProxy.h"
-#include "NonOwnerProxy.h"
+#include "OwnerProxyNon.h"
 
 /* Java @ https://github.com/bethrobson/Head-First-Design-Patterns/tree/master/src/headfirst/designpatterns/proxy/javaproxy
 
@@ -86,23 +86,16 @@ public class MatchMakingTestDrive {
 	}
 }
 */
-
 class MatchMakingTestDrive {
-private:
-	std::map<std::string, std::shared_ptr<Person>> datingDB;
+	std::map<std::string, PersonPtr, std::less<>> datingDB;
 
-	std::shared_ptr<Person> getPersonFromDatabase(const std::string &name) {
+	PersonPtr getPersonFromDatabase(const std::string &name) {
 		auto it = datingDB.find(name);
 		return (it != datingDB.end()) ? it->second : nullptr;
 	}
 
-	std::shared_ptr<Person> getOwnerProxy(std::shared_ptr<Person> person) {
-		return std::make_shared<OwnerProxy>(person);
-	}
-
-	std::shared_ptr<Person> getNonOwnerProxy(std::shared_ptr<Person> person) {
-		return std::make_shared<NonOwnerProxy>(person);
-	}
+	PersonPtr getOwnerProxy(PersonPtr person) const { return std::make_shared<OwnerProxy>(person); }
+	PersonPtr getNonOwnerProxy(PersonPtr person) const { return std::make_shared<NonOwnerProxy>(person); }
 
 	void initializeDatabase() {
 		auto joe = std::make_shared<PersonImpl>();
@@ -117,11 +110,8 @@ private:
 		kelly->setGeekRating(6);
 		datingDB[kelly->getName()] = kelly;
 	}
-
 public:
-	MatchMakingTestDrive() {
-		initializeDatabase();
-	}
+	MatchMakingTestDrive() { initializeDatabase(); }
 
 	void drive() {
 		auto joe = getPersonFromDatabase("Joe Javabean");

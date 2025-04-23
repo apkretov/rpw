@@ -127,11 +127,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="MatchMakingTestDrive.cpp" />
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MatchMakingTestDrive.h" />
-    <ClInclude Include="NonOwnerProxy.h" />
+    <ClInclude Include="OwnerProxyNon.h" />
     <ClInclude Include="OwnerProxy.h" />
     <ClInclude Include="Person.h" />
     <ClInclude Include="PersonImpl.h" />
