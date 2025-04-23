@@ -52,9 +52,9 @@ public class ImageProxyTestDrive {
 
 		// set up frame and menus
 
-		Icon icon = new ImageProxy(initialURL);
-		imageComponent = new ImageComponent(icon);
-		frame.getContentPane().add(imageComponent);
+		Icon icon = new ImageProxy(initialURL); // Here we create an image proxy and set it to an initial URL. Whenever you choose a selection from the CD menu, you'll get a new image proxy.
+		imageComponent = new ImageComponent(icon); // Next we wrap our proxy in a component so it can be added to the frame. The component will take care of the proxy's width, height and similar details.
+		frame.getContentPane().add(imageComponent); // Finally we add the proxy to the frame so it can be displayed.
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(800,600);
 		frame.setVisible(true);
@@ -160,7 +160,8 @@ LRESULT CALLBACK ImageProxyTestDrive::WindowProc(HWND hwnd, UINT uMsg, WPARAM wP
 			{
 				PAINTSTRUCT ps;
 				HDC hdc = BeginPaint(hwnd, &ps);
-				if (app) app->Paint(hdc);
+				if (app) 
+					app->Paint(hdc);
 				EndPaint(hwnd, &ps);
 				return 0;
 			}
@@ -173,7 +174,8 @@ LRESULT CALLBACK ImageProxyTestDrive::WindowProc(HWND hwnd, UINT uMsg, WPARAM wP
 					mii.dwTypeData = menuText;
 					mii.cch = sizeof(menuText);
 					GetMenuItemInfo(GetMenu(hwnd), LOWORD(wParam), FALSE, &mii);
-					if (app) app->HandleMenuSelection(menuText);
+					if (app) 
+						app->HandleMenuSelection(menuText);
 				}
 				return 0;
 			}
