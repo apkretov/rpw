@@ -94,8 +94,8 @@ class MatchMakingTestDrive {
 		return (it != datingDB.end()) ? it->second.get() : nullptr;
 	}
 
-	PersonPtr getOwnerProxy(Person *person) const { return std::make_shared<OwnerProxy>(person); }
-	PersonPtr getNonOwnerProxy(Person *person) const { return std::make_shared<NonOwnerProxy>(person); }
+	PersonPtr_ getOwnerProxy(Person *person) const { return std::make_unique<OwnerProxy>(person); }
+	PersonPtr_ getNonOwnerProxy(Person *person) const { return std::make_unique<NonOwnerProxy>(person); }
 
 	void initializeDatabase() {
 		auto joe = std::make_unique<PersonImpl>();
