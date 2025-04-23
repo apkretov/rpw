@@ -38,9 +38,9 @@ public class NonOwnerInvocationHandler implements InvocationHandler {
 */
 class NonOwnerProxy : public Person {
 	using string = std::string;
-	PersonPtr person;
+	Person* person;  // Changed from std::shared_ptr<Person>
 public:
-	explicit NonOwnerProxy(PersonPtr p) : person(p) {}
+	explicit NonOwnerProxy(Person* p) : person(p) {}  // Changed from shared_ptr to raw pointer
 
 	string getName() const override { return person->getName(); }
 	string getGender() const override { return person->getGender(); }
