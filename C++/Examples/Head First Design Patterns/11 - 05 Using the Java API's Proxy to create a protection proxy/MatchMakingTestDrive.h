@@ -96,8 +96,12 @@ class MatchMakingTestDrive {
 		return (it != datingDB.end()) ? it->second.get() : nullptr;
 	}
 
-	PersonPtr getOwnerProxy(PersonPtr person) const { return std::make_shared<OwnerProxy>(person); }
-	PersonPtr getNonOwnerProxy(PersonPtr person) const { return std::make_shared<NonOwnerProxy>(person); }
+	//PersonPtr getOwnerProxy(PersonPtr person) const { return std::make_shared<OwnerProxy>(person); }
+	//PersonPtr getOwnerProxy(const Person *person) const { return std::make_shared<OwnerProxy>(person); }
+	PersonPtr getOwnerProxy(Person *person) const { return std::make_shared<OwnerProxy>(person); }
+	//PersonPtr getNonOwnerProxy(PersonPtr person) const { return std::make_shared<NonOwnerProxy>(person); }
+	//PersonPtr getNonOwnerProxy(const Person *person) const { return std::make_shared<NonOwnerProxy>(person); }
+	PersonPtr getNonOwnerProxy(Person *person) const { return std::make_shared<NonOwnerProxy>(person); }
 
 	void initializeDatabase() {
 		//auto joe = std::make_shared<PersonImpl>();
