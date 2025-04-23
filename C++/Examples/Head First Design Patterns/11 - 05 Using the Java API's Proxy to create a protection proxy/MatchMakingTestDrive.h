@@ -89,10 +89,10 @@ public class MatchMakingTestDrive {
 class MatchMakingTestDrive {
 	std::map<std::string, PersonPtr, std::less<>> datingDB;
 
-	Person *getPersonFromDatabase(const std::string &name) { //TO DO: optional<Person *> //TO DO std::string_view
-		auto it = datingDB.find(name);
-		return (it != datingDB.end()) ? it->second.get() : nullptr;
-	}
+	std::optional<Person*> getPersonFromDatabase(const std::string& name) {
+        auto it = datingDB.find(name);
+        return it != datingDB.end() ? std::optional<Person*>{it->second.get()} : std::nullopt;
+    }
 
 	PersonPtr getOwnerProxy(Person *person) const { return std::make_unique<OwnerProxy>(person); }
 	PersonPtr getNonOwnerProxy(Person *person) const { return std::make_unique<NonOwnerProxy>(person); }
@@ -115,7 +115,11 @@ public:
 
 	void drive() {
 		auto joe = getPersonFromDatabase("Joe Javabean");
-		auto ownerProxy = getOwnerProxy(joe);
+		if (!joe.has_value()) {
+			std::cout << "Person not found in database" << std::endl;
+			return;
+		}
+		auto ownerProxy = getOwnerProxy(*joe);
 
 		std::cout << "Name is " << ownerProxy->getName() << std::endl;
 		ownerProxy->setInterests("bowling, Go");
@@ -129,7 +133,7 @@ public:
 		}
 		std::cout << "Rating is " << ownerProxy->getGeekRating() << std::endl;
 
-		auto nonOwnerProxy = getNonOwnerProxy(joe);
+		auto nonOwnerProxy = getNonOwnerProxy(*joe);
 		std::cout << "Name is " << nonOwnerProxy->getName() << std::endl;
 
 		try {
