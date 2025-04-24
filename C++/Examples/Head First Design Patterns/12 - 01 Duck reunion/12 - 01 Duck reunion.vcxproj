@@ -18,6 +18,16 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="DuckCall.h" />
+    <ClInclude Include="MallardDuck.h" />
+    <ClInclude Include="Quackable.h" />
+    <ClInclude Include="RedheadDuck.h" />
+    <ClInclude Include="RubberDuck.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
