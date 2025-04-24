@@ -38,7 +38,7 @@ public class DuckSimulator {
 */
 class DuckSimulator {
 public:
-	void simulate(Quackable* duck) { duck->quack(); }
+	void simulate(const Quackable &duck) { duck.quack(); }
 
 	void simulate() {
 		std::unique_ptr<Quackable> mallardDuck = std::make_unique<MallardDuck>();
@@ -49,11 +49,11 @@ public:
 
 		cout << "\nDuck Simulator: With Goose Adapter\n";
 
-		simulate(mallardDuck.get());
-		simulate(redheadDuck.get());
-		simulate(duckCall.get());
-		simulate(rubberDuck.get());
-		simulate(gooseDuck.get());
+		simulate(*mallardDuck);
+		simulate(*redheadDuck);
+		simulate(*duckCall);
+		simulate(*rubberDuck);
+		simulate(*gooseDuck);
 	}
 };
 
