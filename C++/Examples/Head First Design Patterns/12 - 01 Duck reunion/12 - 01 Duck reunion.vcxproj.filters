@@ -14,47 +14,4 @@
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
   </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="DecoyDuck.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="DuckCall.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="DuckSimulator.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="MallardDuck.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="RedheadDuck.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="RubberDuck.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="DecoyDuck.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="DuckCall.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="DuckSimulator.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MallardDuck.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Quackable.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RedheadDuck.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RubberDuck.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-  </ItemGroup>
 </Project>

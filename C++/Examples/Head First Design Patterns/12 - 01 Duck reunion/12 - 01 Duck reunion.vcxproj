@@ -127,23 +127,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="DecoyDuck.cpp" />
-    <ClCompile Include="DuckCall.cpp" />
-    <ClCompile Include="DuckSimulator.cpp" />
-    <ClCompile Include="MallardDuck.cpp" />
-    <ClCompile Include="RedheadDuck.cpp" />
-    <ClCompile Include="RubberDuck.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="DecoyDuck.h" />
-    <ClInclude Include="DuckCall.h" />
-    <ClInclude Include="DuckSimulator.h" />
-    <ClInclude Include="MallardDuck.h" />
-    <ClInclude Include="Quackable.h" />
-    <ClInclude Include="RedheadDuck.h" />
-    <ClInclude Include="RubberDuck.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
