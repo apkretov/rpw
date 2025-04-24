@@ -16,6 +16,6 @@ public class RubberDuck implements Quackable {
 */
 class RubberDuck : public Quackable {
 public:
-	void quack() override { cout << "Squeak\n"; }
+	void quack() const override { cout << "Squeak\n"; }
 };
 #pragma endregion //We need a goose adapter

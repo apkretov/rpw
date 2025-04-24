@@ -16,6 +16,6 @@ public class DuckCall implements Quackable {
 */
 class DuckCall : public Quackable {
 public:
-	void quack() override { cout << "Kwak\n"; }
+	void quack() const override { cout << "Kwak\n"; }
 };
 #pragma endregion //We need a goose adapter

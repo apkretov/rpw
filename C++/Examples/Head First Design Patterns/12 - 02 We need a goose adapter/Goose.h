@@ -15,6 +15,6 @@ public class Goose {
 */
 class Goose {
 public:
-	void honk() { cout << "Honk\n"; }
+	void honk() const { cout << "Honk\n"; }
 };
 #pragma endregion //We need a goose adapter

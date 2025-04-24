@@ -16,6 +16,6 @@ public class MallardDuck implements Quackable {
 */
 class MallardDuck : public Quackable {
 public:
-	void quack() override { cout << "Quack\n"; }
+	void quack() const override { cout << "Quack\n"; }
 };
 #pragma endregion //We need a goose adapter

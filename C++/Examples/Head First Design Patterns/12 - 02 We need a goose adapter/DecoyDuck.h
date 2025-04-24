@@ -16,6 +16,6 @@ public class DecoyDuck implements Quackable {
 */
 class DecoyDuck : public Quackable {
 public:
-	void quack() override { cout << "<< Silence >>\n"; }
+	void quack() const override { cout << "<< Silence >>\n"; }
 };
 #pragma endregion //We need a goose adapter

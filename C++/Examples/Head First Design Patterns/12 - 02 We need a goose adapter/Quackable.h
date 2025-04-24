@@ -10,7 +10,7 @@ public interface Quackable {
 */
 class Quackable {
 public:
-	virtual void quack() = 0;
+	virtual void quack() const = 0;
 	virtual ~Quackable() = default;
 };
 #pragma endregion //We need a goose adapter

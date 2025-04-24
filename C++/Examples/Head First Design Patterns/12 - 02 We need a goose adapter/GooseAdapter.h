@@ -29,7 +29,7 @@ private:
 	Goose goose;
 public:
 	GooseAdapter(const Goose& goose) : goose(goose) {}
-	void quack() override { goose.honk(); }
+	void quack() const override { goose.honk(); }
 	std::string toString() const { return "Goose pretending to be a Duck"; }
 };
 #pragma endregion //We need a goose adapter
