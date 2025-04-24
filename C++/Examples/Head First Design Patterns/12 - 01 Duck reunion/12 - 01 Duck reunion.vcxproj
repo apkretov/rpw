@@ -20,10 +20,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DuckCall.h" />
-    <ClInclude Include="MallardDuck.h" />
+    <ClInclude Include="DuckMallard.h" />
     <ClInclude Include="Quackable.h" />
-    <ClInclude Include="RedheadDuck.h" />
-    <ClInclude Include="RubberDuck.h" />
+    <ClInclude Include="DuckRedhead.h" />
+    <ClInclude Include="DuckRubber.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
