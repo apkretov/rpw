@@ -1,5 +1,6 @@
-#include <array>
-#include <memory>
+//#include <array>
+//#include <memory>
+#include <vector>
 #include "../../stdafx.h"
 #include "DuckMallard.h"
 #include "DuckRedhead.h"
@@ -16,7 +17,9 @@ public:
 	void simulate() {
 		MallardDuck mallardDuck;
 		GooseAdapter gooseDuck(Goose{});
-		std::array<QuackCounter, 2> arr{QuackCounter{mallardDuck}, QuackCounter{gooseDuck}};
+		std::vector<QuackCounter> arr;
+		arr.emplace_back(mallardDuck);
+		arr.emplace_back(gooseDuck);
 
 		for (auto &item : arr)
 			simulate(item);
