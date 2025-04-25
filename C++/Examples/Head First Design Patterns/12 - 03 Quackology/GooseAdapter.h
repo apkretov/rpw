@@ -28,7 +28,7 @@ class GooseAdapter : public Quackable {
 	Goose goose;
 public:
 	GooseAdapter(const Goose& goose) : goose(goose) {}
-	void quack() const override { goose.honk(); }
+	void quack() override { goose.honk(); }
 	std::string toString() const { return "Goose pretending to be a Duck"; }
 };
 #pragma endregion //We need a goose adapter

@@ -1,9 +1,10 @@
+#include <memory>
 #include "DuckMallard.h"
 #include "DuckRedhead.h"
 #include "DuckCall.h"
 #include "DuckRubber.h"
 #include "GooseAdapter.h"
-#include <memory>
+#include "QuackCounter.h"
 
 #pragma region We need a goose adapter
 /* Java @ https://github.com/bethrobson/Head-First-Design-Patterns/tree/master/src/headfirst/designpatterns/combining/adapter
@@ -38,7 +39,7 @@ public class DuckSimulator {
 */
 class DuckSimulator {
 public:
-	void simulate(const Quackable &duck) { duck.quack(); }
+	void simulate(Quackable &duck) { duck.quack(); }
 
 	void simulate() {
 		using QuackablePtr = std::unique_ptr<Quackable>;
