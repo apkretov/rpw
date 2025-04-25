@@ -12,14 +12,15 @@ public abstract class AbstractDuckFactory {
 	public abstract Quackable createRubberDuck();
 }
 */
+
 class Quackable;
 
 class AbstractDuckFactory {
 public:
-	virtual Quackable* createMallardDuck() = 0;
-	virtual Quackable* createRedheadDuck() = 0;
-	virtual Quackable* createDuckCall() = 0;
-	virtual Quackable* createRubberDuck() = 0;
 	virtual ~AbstractDuckFactory() = default;
+	virtual Quackable *createMallardDuck() = 0;
+	virtual Quackable *createRedheadDuck() = 0;
+	virtual Quackable *createDuckCall() = 0;
+	virtual Quackable *createRubberDuck() = 0;
 };
 #pragma endregion //We need a factory to produce ducks

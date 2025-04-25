@@ -132,8 +132,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="FactoryAbstractDuck.h" />
+    <ClInclude Include="FactoryCountingDuck.h" />
     <ClInclude Include="DuckCall.h" />
     <ClInclude Include="DuckDecoy.h" />
+    <ClInclude Include="FactoryDuck.h" />
     <ClInclude Include="DuckMallard.h" />
     <ClInclude Include="DuckRedhead.h" />
     <ClInclude Include="DuckRubber.h" />

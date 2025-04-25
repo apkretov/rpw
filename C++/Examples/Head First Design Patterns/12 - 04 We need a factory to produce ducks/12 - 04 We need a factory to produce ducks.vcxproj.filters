@@ -42,6 +42,15 @@
     <ClInclude Include="QuackCounter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="FactoryAbstractDuck.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FactoryCountingDuck.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FactoryDuck.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
