@@ -1,7 +1,7 @@
-#include "MallardDuck.h"
-#include "RedheadDuck.h"
+#include "DuckMallard.h"
+#include "DuckRedhead.h"
 #include "DuckCall.h"
-#include "RubberDuck.h"
+#include "DuckRubber.h"
 #include "GooseAdapter.h"
 #include <memory>
 
@@ -41,11 +41,13 @@ public:
 	void simulate(const Quackable &duck) { duck.quack(); }
 
 	void simulate() {
-		std::unique_ptr<Quackable> mallardDuck = std::make_unique<MallardDuck>();
-		std::unique_ptr<Quackable> redheadDuck = std::make_unique<RedheadDuck>();
-		std::unique_ptr<Quackable> duckCall = std::make_unique<DuckCall>();
-		std::unique_ptr<Quackable> rubberDuck = std::make_unique<RubberDuck>();
-		std::unique_ptr<Quackable> gooseDuck = std::make_unique<GooseAdapter>(Goose());
+		using QuackablePtr = std::unique_ptr<Quackable>;
+
+		QuackablePtr mallardDuck = std::make_unique<MallardDuck>();
+		QuackablePtr redheadDuck = std::make_unique<RedheadDuck>();
+		QuackablePtr duckCall = std::make_unique<DuckCall>();
+		QuackablePtr rubberDuck = std::make_unique<RubberDuck>();
+		QuackablePtr gooseDuck = std::make_unique<GooseAdapter>(Goose());
 
 		cout << "\nDuck Simulator: With Goose Adapter\n";
 

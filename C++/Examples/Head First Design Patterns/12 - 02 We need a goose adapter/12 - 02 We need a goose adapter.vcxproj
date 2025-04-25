@@ -128,14 +128,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="DecoyDuck.h" />
+    <ClInclude Include="DuckDecoy.h" />
     <ClInclude Include="DuckCall.h" />
     <ClInclude Include="Goose.h" />
     <ClInclude Include="GooseAdapter.h" />
-    <ClInclude Include="MallardDuck.h" />
+    <ClInclude Include="DuckMallard.h" />
     <ClInclude Include="Quackable.h" />
-    <ClInclude Include="RedheadDuck.h" />
-    <ClInclude Include="RubberDuck.h" />
+    <ClInclude Include="DuckRedhead.h" />
+    <ClInclude Include="DuckRubber.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />

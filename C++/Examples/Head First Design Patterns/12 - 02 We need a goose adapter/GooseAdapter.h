@@ -25,7 +25,6 @@ public class GooseAdapter implements Quackable {
 }
 */
 class GooseAdapter : public Quackable {
-private:
 	Goose goose;
 public:
 	GooseAdapter(const Goose& goose) : goose(goose) {}
