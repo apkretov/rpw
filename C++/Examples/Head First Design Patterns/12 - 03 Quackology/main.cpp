@@ -42,11 +42,11 @@ public:
 	void simulate(Quackable &duck) { duck.quack(); }
 
 	void simulate() {
-		auto mallardDuck = make_unique<QuackCounter>(MallardDuck{});
-		auto redheadDuck = make_unique<QuackCounter>(RedheadDuck{});
-		auto duckCall = make_unique<QuackCounter>(DuckCall{});
-		auto rubberDuck = make_unique<QuackCounter>(RubberDuck{});
-		auto gooseDuck = make_unique<GooseAdapter>(Goose{});
+		auto mallardDuck =	make_unique<QuackCounter>(MallardDuck{}); //TEST!
+		auto redheadDuck =	make_unique<QuackCounter>(RedheadDuck{});
+		auto duckCall =		make_unique<QuackCounter>(DuckCall{});
+		auto rubberDuck =	make_unique<QuackCounter>(RubberDuck{});
+		auto gooseDuck =	make_unique<GooseAdapter>(Goose{});
 
 		cout << "\nDuck Simulator: With Goose Adapter\n";
 
