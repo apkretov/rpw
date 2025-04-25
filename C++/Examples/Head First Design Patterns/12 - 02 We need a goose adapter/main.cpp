@@ -1,9 +1,10 @@
+#include <memory>
+#include "../../stdafx.h"
 #include "DuckMallard.h"
 #include "DuckRedhead.h"
 #include "DuckCall.h"
 #include "DuckRubber.h"
 #include "GooseAdapter.h"
-#include <memory>
 
 #pragma region We need a goose adapter
 /* Java @ https://github.com/bethrobson/Head-First-Design-Patterns/tree/master/src/headfirst/designpatterns/combining/adapter
@@ -60,6 +61,8 @@ public:
 };
 
 int main() {
+	print_file_line();
+
 	DuckSimulator simulator;
 	simulator.simulate();
 	return 0;
