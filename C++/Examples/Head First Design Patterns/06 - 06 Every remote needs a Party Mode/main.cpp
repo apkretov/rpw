@@ -1,4 +1,5 @@
 #include <vector>
+#include "vld.h"
 #include "../../stdafx.h"
 #include "CommandCeilingFanHigh.h"
 #include "CommandCeilingFanLow.h"
@@ -80,11 +81,13 @@ int main() {
     remoteControl.setCommand(0, partyOnMacro, partyOffMacro); // Assign the macro command to a button as we would any command.
 
     cout << remoteControl.toString(); // Finally, we just need to push some buttons and see if this works.
+	remoteControl.undoButtonWasPushed(); //MINE: A unit-test for the undo button.
     cout << "\n--- Pushing Macro On---\n";
     remoteControl.onButtonWasPushed(0);
     cout << "\n--- Pushing Macro Off---\n";
     remoteControl.offButtonWasPushed(0);
 
+	cout << '\n';
 	return 0;
 }
 #pragma endregion //Using a macro command
