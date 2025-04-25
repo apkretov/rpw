@@ -132,13 +132,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="CompositeIterator.h" />
+    <ClInclude Include="IteratorComposite.h" />
     <ClInclude Include="Iterator.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="MenuComponent.h" />
     <ClInclude Include="MenuItem.h" />
-    <ClInclude Include="NullIterator.h" />
-    <ClInclude Include="VectorIterator.h" />
+    <ClInclude Include="IteratorNull.h" />
+    <ClInclude Include="IteratorVector.h" />
     <ClInclude Include="Waitress.h" />
   </ItemGroup>
   <ItemGroup>
