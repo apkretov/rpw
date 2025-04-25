@@ -66,6 +66,12 @@ int main() {
 	DuckSimulator simulator;
 	simulator.simulate();
 
+#ifdef MINE
+	simulator.simulate();
+
+	DuckSimulator simulator2;
+	simulator2.simulate();
+#endif //MINE
 	cout << '\n';
 	return 0;
 }
