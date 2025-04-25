@@ -71,8 +71,8 @@ public:
 	}
 
 	void setCommand(int slot, shared_ptr<Command> onCommand, shared_ptr<Command> offCommand) { 
-		onCommands.at(slot) = onCommand;
-		offCommands.at(slot) = offCommand;
+		onCommands[slot] = onCommand;
+		offCommands[slot] = offCommand;
 	}
 
 	void onButtonWasPushed(int slot) { 
