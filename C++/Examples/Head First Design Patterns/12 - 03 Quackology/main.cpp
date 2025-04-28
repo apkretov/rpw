@@ -42,11 +42,12 @@ public:
 	void simulate(Quackable &duck) { duck.quack(); }
 
 	void simulate() {
-		auto mallardDuck =	make_unique<QuackCounter>(MallardDuck{}); //TEST!
-		auto redheadDuck =	make_unique<QuackCounter>(RedheadDuck{});
-		auto duckCall =		make_unique<QuackCounter>(DuckCall{});
-		auto rubberDuck =	make_unique<QuackCounter>(RubberDuck{});
-		auto gooseDuck =	make_unique<GooseAdapter>(Goose{});
+#ifdef OFF
+		auto mallardDuck = make_unique<QuackCounter>(MallardDuck{}); //TEST!
+		auto redheadDuck = make_unique<QuackCounter>(RedheadDuck{});
+		auto duckCall = make_unique<QuackCounter>(DuckCall{});
+		auto rubberDuck = make_unique<QuackCounter>(RubberDuck{});
+		auto gooseDuck = make_unique<GooseAdapter>(Goose{});
 
 		cout << "\nDuck Simulator: With Goose Adapter\n";
 
@@ -55,6 +56,26 @@ public:
 		simulate(*duckCall);
 		simulate(*rubberDuck);
 		simulate(*gooseDuck);
+#endif //OFF
+
+		MallardDuck mallardDuck;
+		RedheadDuck redheadDuck;
+		DuckCall duckCall;
+		RubberDuck rubberDuck;
+		Goose goose;
+		auto mallardDuckCounter = make_unique<QuackCounter>(mallardDuck);
+		auto redheadDuckCounter = make_unique<QuackCounter>(redheadDuck);
+		auto duckCallCounter = make_unique<QuackCounter>(duckCall);
+		auto rubberDuckCounter = make_unique<QuackCounter>(rubberDuck);
+		auto gooseDuckCounter = make_unique<GooseAdapter>(goose);
+
+		cout << "\nDuck Simulator: With Goose Adapter\n";
+
+		simulate(*mallardDuckCounter);
+		simulate(*redheadDuckCounter);
+		simulate(*duckCallCounter);
+		simulate(*rubberDuckCounter);
+		simulate(*gooseDuckCounter);
 
 		cout << "The ducks quacked " << QuackCounter::getQuacks() << " times\n";
 	}
