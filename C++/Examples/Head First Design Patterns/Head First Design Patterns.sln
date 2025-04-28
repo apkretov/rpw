@@ -97,6 +97,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "12 - 03 Quackology", "12 - 
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "12 - 04 We need a factory to produce ducks", "12 - 04 We need a factory to produce ducks\12 - 04 We need a factory to produce ducks.vcxproj", "{DAE1651B-B940-4C67-B1DE-187EBEE17836}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "12 - 05 Sharpen your pencil", "12 - 05 Sharpen your pencil\12 - 05 Sharpen your pencil.vcxproj", "{2B9D3945-9886-43F3-9FEB-126F5AF4F9A4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -481,6 +483,14 @@ Global
 		{DAE1651B-B940-4C67-B1DE-187EBEE17836}.Release|x64.Build.0 = Release|x64
 		{DAE1651B-B940-4C67-B1DE-187EBEE17836}.Release|x86.ActiveCfg = Release|Win32
 		{DAE1651B-B940-4C67-B1DE-187EBEE17836}.Release|x86.Build.0 = Release|Win32
+		{2B9D3945-9886-43F3-9FEB-126F5AF4F9A4}.Debug|x64.ActiveCfg = Debug|x64
+		{2B9D3945-9886-43F3-9FEB-126F5AF4F9A4}.Debug|x64.Build.0 = Debug|x64
+		{2B9D3945-9886-43F3-9FEB-126F5AF4F9A4}.Debug|x86.ActiveCfg = Debug|Win32
+		{2B9D3945-9886-43F3-9FEB-126F5AF4F9A4}.Debug|x86.Build.0 = Debug|Win32
+		{2B9D3945-9886-43F3-9FEB-126F5AF4F9A4}.Release|x64.ActiveCfg = Release|x64
+		{2B9D3945-9886-43F3-9FEB-126F5AF4F9A4}.Release|x64.Build.0 = Release|x64
+		{2B9D3945-9886-43F3-9FEB-126F5AF4F9A4}.Release|x86.ActiveCfg = Release|Win32
+		{2B9D3945-9886-43F3-9FEB-126F5AF4F9A4}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
