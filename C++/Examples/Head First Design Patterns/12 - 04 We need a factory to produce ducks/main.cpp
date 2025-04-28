@@ -1,3 +1,5 @@
+#define OFF
+
 #include <memory>
 #include "../../stdafx.h"
 #include "vld.h"
@@ -44,12 +46,12 @@ public:
 	void simulate(Quackable &duck) { duck.quack(); }
 
 	void simulate(AbstractDuckFactory &duckFactory) {
-		auto mallardDuck = duckFactory.createMallardDuck();
 #ifdef OFF
+		auto mallardDuck = duckFactory.createMallardDuck();
 		auto redheadDuck = duckFactory.createRedheadDuck();
-		auto duckCall = duckFactory.createDuckCall();
-		auto rubberDuck = duckFactory.createRubberDuck();
-		auto gooseDuck = std::make_unique<GooseAdapter>(Goose{});
+		auto duckCall	 = duckFactory.createDuckCall();
+		auto rubberDuck	 = duckFactory.createRubberDuck();
+		auto gooseDuck   = std::make_unique<GooseAdapter>(Goose{});
 #endif //OFF
 
 		cout << "\nDuck Simulator: With Abstract Factory\n";

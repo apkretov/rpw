@@ -1,5 +1,6 @@
 #pragma once
 
+#include <utility>
 #include "Quackable.h"
 
 #pragma region Were going to make those Quackologists happy and give them some quack counts //We're going to make those Quackologists happy and give them some quack counts.
@@ -18,13 +19,13 @@ public class QuackCounter implements Quackable {
 }
 */
 class QuackCounter : public Quackable {
-	Quackable &duck;
+	QuackablePtr duck;
 	static int numberOfQuacks;
 public:
-	explicit QuackCounter(Quackable &duck) : duck(duck) {}
+	explicit QuackCounter(QuackablePtr duck) : duck(std::move(duck)) {}
 
 	void quack() override {
-		duck.quack();
+		duck->quack();
 		++numberOfQuacks;
 	}
 
