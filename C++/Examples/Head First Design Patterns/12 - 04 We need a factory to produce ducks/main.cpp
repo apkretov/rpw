@@ -44,14 +44,17 @@ public:
 	void simulate(Quackable &duck) { duck.quack(); }
 
 	void simulate(AbstractDuckFactory &duckFactory) {
+#ifdef OFF
 		auto mallardDuck = duckFactory.createMallardDuck();
 		auto redheadDuck = duckFactory.createRedheadDuck();
 		auto duckCall = duckFactory.createDuckCall();
 		auto rubberDuck = duckFactory.createRubberDuck();
 		auto gooseDuck = std::make_unique<GooseAdapter>(Goose{});
+#endif //OFF
 
 		cout << "\nDuck Simulator: With Abstract Factory\n";
 
+#ifdef OFF
 		simulate(*mallardDuck);
 		simulate(*redheadDuck);
 		simulate(*duckCall);
@@ -59,15 +62,18 @@ public:
 		simulate(*gooseDuck);
 
 		cout << "The ducks quacked " << QuackCounter::getQuacks() << " times\n";
+#endif //OFF
 	}
 };
 
 int main() {
 	print_file_line();
 
+#ifdef OFF
 	DuckSimulator simulator;
 	CountingDuckFactory duckFactory;
 	simulator.simulate(duckFactory);
+#endif //OFF
 
 	cout << '\n';
 	return 0;
