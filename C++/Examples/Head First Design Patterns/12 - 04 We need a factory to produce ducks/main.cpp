@@ -48,7 +48,7 @@ public:
 		auto redheadDuck = duckFactory.createRedheadDuck();
 		auto duckCall	 = duckFactory.createDuckCall();
 		auto rubberDuck	 = duckFactory.createRubberDuck();
-		auto gooseDuck   = std::make_unique<GooseAdapter>(Goose{});
+		auto gooseDuck   = make_unique<GooseAdapter>(Goose{});
 
 		cout << "\nDuck Simulator: With Abstract Factory\n";
 
