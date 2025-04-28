@@ -44,8 +44,8 @@ public:
 	void simulate(Quackable &duck) { duck.quack(); }
 
 	void simulate(AbstractDuckFactory &duckFactory) {
-#ifdef OFF
 		auto mallardDuck = duckFactory.createMallardDuck();
+#ifdef OFF
 		auto redheadDuck = duckFactory.createRedheadDuck();
 		auto duckCall = duckFactory.createDuckCall();
 		auto rubberDuck = duckFactory.createRubberDuck();
