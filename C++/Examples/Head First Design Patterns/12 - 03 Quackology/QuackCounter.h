@@ -22,7 +22,6 @@ class QuackCounter : public Quackable {
 	static int numberOfQuacks;
 public:
 	explicit QuackCounter(Quackable &duck) : duck(duck) {}
-	//explicit QuackCounter(Quackable &&duck) : duck(duck) {}
 
 	void quack() override {
 		duck.quack();

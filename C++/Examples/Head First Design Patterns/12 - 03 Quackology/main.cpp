@@ -8,7 +8,6 @@
 #include "GooseAdapter.h"
 #include "QuackCounter.h"
 using std::make_unique;
-using QuackablePtr = std::unique_ptr<Quackable>;
 
 #pragma region We need to update the simulator to create decorated ducks
 /* Java 
@@ -42,40 +41,19 @@ public:
 	void simulate(Quackable &duck) { duck.quack(); }
 
 	void simulate() {
-#ifdef OFF
-		auto mallardDuck = make_unique<QuackCounter>(MallardDuck{}); //TEST!
-		auto redheadDuck = make_unique<QuackCounter>(RedheadDuck{});
-		auto duckCall = make_unique<QuackCounter>(DuckCall{});
-		auto rubberDuck = make_unique<QuackCounter>(RubberDuck{});
-		auto gooseDuck = make_unique<GooseAdapter>(Goose{});
-
-		cout << "\nDuck Simulator: With Goose Adapter\n";
-
-		simulate(*mallardDuck);
-		simulate(*redheadDuck);
-		simulate(*duckCall);
-		simulate(*rubberDuck);
-		simulate(*gooseDuck);
-#endif //OFF
-
 		MallardDuck mallardDuck;
 		RedheadDuck redheadDuck;
 		DuckCall duckCall;
 		RubberDuck rubberDuck;
 		Goose goose;
-		auto mallardDuckCounter = make_unique<QuackCounter>(mallardDuck);
-		auto redheadDuckCounter = make_unique<QuackCounter>(redheadDuck);
-		auto duckCallCounter = make_unique<QuackCounter>(duckCall);
-		auto rubberDuckCounter = make_unique<QuackCounter>(rubberDuck);
-		auto gooseDuckCounter = make_unique<GooseAdapter>(goose);
 
 		cout << "\nDuck Simulator: With Goose Adapter\n";
 
-		simulate(*mallardDuckCounter);
-		simulate(*redheadDuckCounter);
-		simulate(*duckCallCounter);
-		simulate(*rubberDuckCounter);
-		simulate(*gooseDuckCounter);
+		simulate(*make_unique<QuackCounter>(mallardDuck));
+		simulate(*make_unique<QuackCounter>(redheadDuck));
+		simulate(*make_unique<QuackCounter>(duckCall));
+		simulate(*make_unique<QuackCounter>(rubberDuck));
+		simulate(*make_unique<GooseAdapter>(goose));
 
 		cout << "The ducks quacked " << QuackCounter::getQuacks() << " times\n";
 	}
