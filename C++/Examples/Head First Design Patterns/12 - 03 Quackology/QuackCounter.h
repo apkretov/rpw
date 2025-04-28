@@ -17,19 +17,6 @@ public class QuackCounter implements Quackable {
 	public static int getQuacks() { return numberOfQuacks; }
 }
 */
-//class QuackCounter : public Quackable {
-//	Quackable &duck;
-//	static int numberOfQuacks;
-//public:
-//	explicit QuackCounter(Quackable &duck) : duck(duck) {}
-//
-//	void quack() override {
-//		duck.quack();
-//		++numberOfQuacks;
-//	}
-//
-//	static int getQuacks() { return numberOfQuacks; }
-//};
 class QuackCounter : public Quackable {
 	QuackablePtr duck;
 	static int numberOfQuacks;
