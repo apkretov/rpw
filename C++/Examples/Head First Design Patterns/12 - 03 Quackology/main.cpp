@@ -41,19 +41,19 @@ public:
 	void simulate(Quackable &duck) { duck.quack(); }
 
 	void simulate() {
-		MallardDuck mallardDuck;
-		RedheadDuck redheadDuck;
-		DuckCall duckCall;
-		RubberDuck rubberDuck;
-		Goose goose;
+		auto mallardDuck = make_unique<QuackCounter>(make_unique<MallardDuck>());
+		auto redheadDuck = make_unique<QuackCounter>(make_unique <RedheadDuck>());
+		auto duckCall = make_unique<QuackCounter>(make_unique <DuckCall>());
+		auto rubberDuck = make_unique<QuackCounter>(make_unique <RubberDuck>());
+		auto gooseDuck = make_unique<GooseAdapter>(Goose{});
 
 		cout << "\nDuck Simulator: With Goose Adapter\n";
 
-		simulate(*make_unique<QuackCounter>(mallardDuck));
-		simulate(*make_unique<QuackCounter>(redheadDuck));
-		simulate(*make_unique<QuackCounter>(duckCall));
-		simulate(*make_unique<QuackCounter>(rubberDuck));
-		simulate(*make_unique<GooseAdapter>(goose));
+		simulate(*mallardDuck);
+		simulate(*redheadDuck);
+		simulate(*duckCall);
+		simulate(*rubberDuck);
+		simulate(*gooseDuck);
 
 		cout << "The ducks quacked " << QuackCounter::getQuacks() << " times\n";
 	}

@@ -13,4 +13,6 @@ public:
 	virtual ~Quackable() = default;
 	virtual void quack() = 0;
 };
+
+using QuackablePtr = std::unique_ptr<Quackable>;
 #pragma endregion //We need a goose adapter
