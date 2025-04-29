@@ -134,6 +134,7 @@
     <ClInclude Include="DuckRedhead.h" />
     <ClInclude Include="DuckRubber.h" />
     <ClInclude Include="FactoryAbstractDuck.h" />
+    <ClInclude Include="FactoryAbstractGoose.h" />
     <ClInclude Include="FactoryCountingDuck.h" />
     <ClInclude Include="FactoryDuck.h" />
     <ClInclude Include="Goose.h" />
