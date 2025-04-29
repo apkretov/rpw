@@ -54,9 +54,6 @@
     <ClInclude Include="FactoryAbstractGoose.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Honkable.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="FactoryGoose.h">
       <Filter>Header Files</Filter>
     </ClInclude>
