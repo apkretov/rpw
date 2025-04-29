@@ -1,7 +1,6 @@
 #pragma once
 
 #include "FactoryAbstractGoose.h"
-#include "Goose.h"
 #include "GooseAdapter.h"
 
 #pragma region Sharpen your pencil

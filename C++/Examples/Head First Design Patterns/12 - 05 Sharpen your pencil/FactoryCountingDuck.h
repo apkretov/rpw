@@ -6,6 +6,7 @@
 #include "DuckRedhead.h"
 #include "DuckCall.h"
 #include "DuckRubber.h"
+#include "GooseAdapter.h"
 
 /* Java @ https://github.com/bethrobson/Head-First-Design-Patterns/tree/master/src/headfirst/designpatterns/combining/factory
 package headfirst.designpatterns.combining.factory;
