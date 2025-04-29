@@ -1,14 +1,8 @@
 #include <memory>
 #include "../../stdafx.h"
 #include "vld.h"
-#include "DuckMallard.h"
-#include "DuckRedhead.h"
-#include "DuckCall.h"
-#include "DuckRubber.h"
-#include "FactoryAbstractDuck.h"
 #include "FactoryCountingDuck.h"
 #include "GooseAdapter.h"
-#include "QuackCounter.h"
 using std::make_unique;
 
 #pragma region Lets set up the simulator to use the factory //Let's set up the simulator to use the factory

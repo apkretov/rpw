@@ -1,13 +1,6 @@
 #include <memory>
 #include "../../stdafx.h"
-//#include "DuckMallard.h" //TO DO Remove this from the source project too.
-//#include "DuckRedhead.h"
-//#include "DuckCall.h"
-//#include "DuckRubber.h"
-//#include "FactoryAbstractDuck.h"
 #include "FactoryCountingDuck.h"
-//#include "GooseAdapter.h"
-//#include "QuackCounter.h"
 #include "FactoryGoose.h"
 using std::make_unique;
 
