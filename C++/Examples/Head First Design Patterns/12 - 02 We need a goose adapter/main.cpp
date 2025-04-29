@@ -1,9 +1,11 @@
-#include "MallardDuck.h"
-#include "RedheadDuck.h"
-#include "DuckCall.h"
-#include "RubberDuck.h"
-#include "GooseAdapter.h"
 #include <memory>
+#include "../../stdafx.h"
+#include "DuckMallard.h"
+#include "DuckRedhead.h"
+#include "DuckCall.h"
+#include "DuckRubber.h"
+#include "GooseAdapter.h"
+using std::make_unique;
 
 #pragma region We need a goose adapter
 /* Java @ https://github.com/bethrobson/Head-First-Design-Patterns/tree/master/src/headfirst/designpatterns/combining/adapter
@@ -41,11 +43,13 @@ public:
 	void simulate(const Quackable &duck) { duck.quack(); }
 
 	void simulate() {
-		std::unique_ptr<Quackable> mallardDuck = std::make_unique<MallardDuck>();
-		std::unique_ptr<Quackable> redheadDuck = std::make_unique<RedheadDuck>();
-		std::unique_ptr<Quackable> duckCall = std::make_unique<DuckCall>();
-		std::unique_ptr<Quackable> rubberDuck = std::make_unique<RubberDuck>();
-		std::unique_ptr<Quackable> gooseDuck = std::make_unique<GooseAdapter>(Goose());
+		using QuackablePtr = std::unique_ptr<Quackable>;
+
+		QuackablePtr mallardDuck =	make_unique<MallardDuck>();
+		QuackablePtr redheadDuck =	make_unique<RedheadDuck>();
+		QuackablePtr duckCall =		make_unique<DuckCall>();
+		QuackablePtr rubberDuck =	make_unique<RubberDuck>();
+		QuackablePtr gooseDuck =	make_unique<GooseAdapter>(Goose()); //TEST!
 
 		cout << "\nDuck Simulator: With Goose Adapter\n";
 
@@ -58,6 +62,8 @@ public:
 };
 
 int main() {
+	print_file_line();
+
 	DuckSimulator simulator;
 	simulator.simulate();
 	return 0;

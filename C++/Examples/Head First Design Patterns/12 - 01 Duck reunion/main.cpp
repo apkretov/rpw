@@ -1,5 +1,6 @@
 #include <memory>
 #include <vector>
+#include "../../stdafx.h"
 #include "DuckMallard.h"
 #include "DuckRedhead.h"
 #include "DuckCall.h"
@@ -7,6 +8,8 @@
 
 #pragma region Duck reunion
 int main() {
+	print_file_line();
+
     std::vector<std::unique_ptr<Quackable>> ducks;
     
     ducks.push_back(std::make_unique<MallardDuck>());

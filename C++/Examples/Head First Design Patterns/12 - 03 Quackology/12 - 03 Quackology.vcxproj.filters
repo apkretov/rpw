@@ -15,10 +15,19 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DuckCall.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="DuckDecoy.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="DuckCall.h">
+    <ClInclude Include="DuckMallard.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DuckRedhead.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DuckRubber.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Goose.h">
@@ -27,16 +36,10 @@
     <ClInclude Include="GooseAdapter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="DuckMallard.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Quackable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="DuckRedhead.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="DuckRubber.h">
+    <ClInclude Include="QuackCounter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

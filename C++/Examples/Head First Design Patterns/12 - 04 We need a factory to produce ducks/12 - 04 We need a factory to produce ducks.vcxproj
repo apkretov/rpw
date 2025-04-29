@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{a6a9a743-c2c3-4baa-b17a-c85c30ff1003}</ProjectGuid>
-    <RootNamespace>My0903Givemethevegetarianmenu</RootNamespace>
+    <ProjectGuid>{dae1651b-b940-4c67-b1de-187ebee17836}</ProjectGuid>
+    <RootNamespace>My1204Weneedafactorytoproduceducks</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -132,14 +132,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="IteratorComposite.h" />
-    <ClInclude Include="Iterator.h" />
-    <ClInclude Include="Menu.h" />
-    <ClInclude Include="MenuComponent.h" />
-    <ClInclude Include="MenuItem.h" />
-    <ClInclude Include="IteratorNull.h" />
-    <ClInclude Include="IteratorVector.h" />
-    <ClInclude Include="Waitress.h" />
+    <ClInclude Include="DuckCall.h" />
+    <ClInclude Include="DuckDecoy.h" />
+    <ClInclude Include="DuckMallard.h" />
+    <ClInclude Include="DuckRedhead.h" />
+    <ClInclude Include="DuckRubber.h" />
+    <ClInclude Include="FactoryAbstractDuck.h" />
+    <ClInclude Include="FactoryCountingDuck.h" />
+    <ClInclude Include="FactoryDuck.h" />
+    <ClInclude Include="Goose.h" />
+    <ClInclude Include="GooseAdapter.h" />
+    <ClInclude Include="Quackable.h" />
+    <ClInclude Include="QuackCounter.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />

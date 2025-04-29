@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{a6a9a743-c2c3-4baa-b17a-c85c30ff1003}</ProjectGuid>
-    <RootNamespace>My0903Givemethevegetarianmenu</RootNamespace>
+    <ProjectGuid>{b5b1f582-2d21-42b7-b1d7-96142279f646}</ProjectGuid>
+    <RootNamespace>My1203Quackology</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -132,14 +132,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="IteratorComposite.h" />
-    <ClInclude Include="Iterator.h" />
-    <ClInclude Include="Menu.h" />
-    <ClInclude Include="MenuComponent.h" />
-    <ClInclude Include="MenuItem.h" />
-    <ClInclude Include="IteratorNull.h" />
-    <ClInclude Include="IteratorVector.h" />
-    <ClInclude Include="Waitress.h" />
+    <ClInclude Include="DuckCall.h" />
+    <ClInclude Include="DuckDecoy.h" />
+    <ClInclude Include="DuckMallard.h" />
+    <ClInclude Include="DuckRedhead.h" />
+    <ClInclude Include="DuckRubber.h" />
+    <ClInclude Include="Goose.h" />
+    <ClInclude Include="GooseAdapter.h" />
+    <ClInclude Include="Quackable.h" />
+    <ClInclude Include="QuackCounter.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />

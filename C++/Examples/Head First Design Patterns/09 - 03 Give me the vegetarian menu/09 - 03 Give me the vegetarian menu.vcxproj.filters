@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CompositeIterator.h">
+    <ClInclude Include="IteratorComposite.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Iterator.h">
@@ -27,10 +27,10 @@
     <ClInclude Include="MenuItem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="NullIterator.h">
+    <ClInclude Include="IteratorNull.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="VectorIterator.h">
+    <ClInclude Include="IteratorVector.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Waitress.h">

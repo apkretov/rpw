@@ -4,8 +4,8 @@
 #include <vector>
 #include <memory>
 #include "MenuComponent.h"
-#include "CompositeIterator.h"
-#include "VectorIterator.h"
+#include "IteratorComposite.h"
+#include "IteratorVector.h"
 using std::cout;
 using std::vector;
 
