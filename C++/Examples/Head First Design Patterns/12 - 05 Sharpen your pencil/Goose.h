@@ -1,11 +1,11 @@
 #pragma once
 
 #include <iostream>
-#include "GooseAbstract.h"
+#include "Honkable.h"
 
 #pragma region Sharpen your pencil
-class Goose : public AbstractGoose {
+class Goose : public Honkable {
 public:
-	void honk() const { std::cout << "Honk\n"; }
+	void honk() const override { std::cout << "Honk\n"; }
 };
 #pragma endregion //Sharpen your pencil

@@ -6,7 +6,7 @@
 class Honkable {
 public:
 	virtual ~Honkable() = default;
-	virtual void honk() = 0;
+	virtual void honk() const = 0;
 };
 
 using HonkablePtr = std::unique_ptr<Honkable>;
