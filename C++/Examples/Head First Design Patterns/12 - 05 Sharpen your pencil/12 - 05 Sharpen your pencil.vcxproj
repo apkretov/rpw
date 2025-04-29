@@ -137,6 +137,7 @@
     <ClInclude Include="FactoryAbstractGoose.h" />
     <ClInclude Include="FactoryCountingDuck.h" />
     <ClInclude Include="FactoryDuck.h" />
+    <ClInclude Include="FactoryGoose.h" />
     <ClInclude Include="Goose.h" />
     <ClInclude Include="Honkable.h" />
     <ClInclude Include="GooseAdapter.h" />
