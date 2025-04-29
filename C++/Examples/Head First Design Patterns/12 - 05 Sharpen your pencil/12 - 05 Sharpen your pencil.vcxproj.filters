@@ -51,12 +51,6 @@
     <ClInclude Include="QuackCounter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="FactoryAbstractGoose.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="FactoryGoose.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">

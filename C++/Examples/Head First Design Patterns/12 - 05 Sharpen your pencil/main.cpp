@@ -1,7 +1,6 @@
 #include <memory>
 #include "../../stdafx.h"
 #include "FactoryCountingDuck.h"
-//#include "FactoryGoose.h"
 using std::make_unique;
 
 #pragma region Sharpen your pencil
@@ -9,13 +8,11 @@ class DuckSimulator {
 public:
 	void simulate(Quackable &duck) { duck.quack(); }
 
-	//void simulate(AbstractDuckFactory &duckFactory, AbstractGooseFactory &gooseFactory) {
 	void simulate(AbstractDuckFactory &duckFactory) {
 		auto mallardDuck = duckFactory.createMallardDuck();
 		auto redheadDuck = duckFactory.createRedheadDuck();
 		auto duckCall	 = duckFactory.createDuckCall();
 		auto rubberDuck	 = duckFactory.createRubberDuck();
-		//auto gooseDuck	 = gooseFactory.createGoose();
 		auto gooseDuck	 = duckFactory.createGooseDuck();
 
 		cout << "\nDuck Simulator: With Abstract Factory\n";
@@ -35,8 +32,6 @@ int main() {
 
 	DuckSimulator simulator;
 	CountingDuckFactory duckFactory;
-	//GooseFactory gooseFactory;
-	//simulator.simulate(duckFactory, gooseFactory);
 	simulator.simulate(duckFactory);
 
 	cout << '\n';
