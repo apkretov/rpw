@@ -36,5 +36,6 @@ public:
 	QuackablePtr createRedheadDuck() override { return std::make_unique<QuackCounter>(std::make_unique<RedheadDuck>()); }
 	QuackablePtr createDuckCall()	 override { return std::make_unique<QuackCounter>(std::make_unique<DuckCall>()); }
 	QuackablePtr createRubberDuck()  override { return std::make_unique<QuackCounter>(std::make_unique<RubberDuck>()); }
+	QuackablePtr createGooseDuck()	 override { return std::make_unique<GooseAdapter>(Goose{}); }
 };
 #pragma endregion //We need a factory to produce ducks

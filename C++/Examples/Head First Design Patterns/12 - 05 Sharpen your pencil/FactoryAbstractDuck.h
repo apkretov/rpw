@@ -21,5 +21,6 @@ public:
 	virtual QuackablePtr createRedheadDuck() = 0;
 	virtual QuackablePtr createDuckCall() = 0;
 	virtual QuackablePtr createRubberDuck() = 0;
+	virtual QuackablePtr createGooseDuck() = 0;
 };
 #pragma endregion //We need a factory to produce ducks
