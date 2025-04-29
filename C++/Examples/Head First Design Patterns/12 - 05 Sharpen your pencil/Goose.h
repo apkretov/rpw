@@ -1,11 +1,20 @@
 #pragma once
 
 #include <iostream>
-#include "Honkable.h"
+using std::cout;
 
-#pragma region Sharpen your pencil
-class Goose : public Honkable {
+#pragma region We need a goose adapter
+/* Java @ https://github.com/bethrobson/Head-First-Design-Patterns/tree/master/src/headfirst/designpatterns/combining/adapter
+package headfirst.designpatterns.combining.adapter;
+
+public class Goose {
+	public void honk() {
+		System.out.println("Honk");
+	}
+}
+*/
+class Goose {
 public:
-	void honk() const override { std::cout << "Honk\n"; }
+	void honk() const { cout << "Honk\n"; }
 };
-#pragma endregion //Sharpen your pencil
+#pragma endregion //We need a goose adapter
