@@ -36,13 +36,13 @@ public class Waitress {
 }
 */
 class Waitress {
-    shared_ptr<MenuComponent> allMenus;
+    MenueComponentPtr allMenus;
 public:
-    Waitress(shared_ptr<MenuComponent> allMenus) : allMenus(allMenus) {}
+    Waitress(MenueComponentPtr allMenus) : allMenus(allMenus) {}
     void printMenu() { allMenus->print(); }
 
     void printVegetarianMenu() {
-        shared_ptr<Iterator<MenuComponent>> iterator = allMenus->createIterator();
+        MenuComponentIterPtr iterator = allMenus->createIterator();
 
         cout << "\nVEGETARIAN MENU\n----\n";
         while (iterator->hasNext()) {

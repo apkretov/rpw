@@ -6,9 +6,6 @@
 #include "MenuComponent.h"
 #include "IteratorComposite.h"
 #include "IteratorVector.h"
-using std::cout;
-using std::make_shared;
-using std::vector;
 
 /* Java @https://github.com/bethrobson/Head-First-Design-Patterns/tree/master/src/headfirst/designpatterns/composite/menuiterator
 public class Menu extends MenuComponent {
@@ -54,14 +51,15 @@ public class Menu extends MenuComponent {
 }
 */
 class Menu : public MenuComponent {
-    vector<shared_ptr<MenuComponent>> menuComponents;
+	using string = std::string;
+	std::vector<MenueComponentPtr> menuComponents;
     string name;
     string description;
 public:
     Menu(string name, string description) : name(name), description(description) {}
-    void add(shared_ptr<MenuComponent> menuComponent) override { menuComponents.push_back(menuComponent); }
+    void add(MenueComponentPtr menuComponent) override { menuComponents.push_back(menuComponent); }
 
-    void remove(shared_ptr<MenuComponent> menuComponent) override {
+    void remove(MenueComponentPtr menuComponent) override {
         for (auto it = menuComponents.begin(); it != menuComponents.end(); ++it)
             if (*it == menuComponent) {
                 menuComponents.erase(it);
@@ -69,18 +67,18 @@ public:
             }
     }
 
-    shared_ptr<MenuComponent> getChild(int i) override { return menuComponents[i]; }
+    MenueComponentPtr getChild(int i) override { return menuComponents[i]; }
     string getName() override { return name; }
     string getDescription() override { return description; }
     
-	shared_ptr<Iterator<MenuComponent>> createIterator() override { 
+	MenuComponentIterPtr createIterator() override { 
 		return make_shared<CompositeIterator>(make_shared<VectorIterator<MenuComponent>>(menuComponents)); 
 	}
 
     void print() override {
-        cout << "\n" << getName();
-        cout << ", " << getDescription() << "\n";
-        cout << "---------------------\n";
+        std::cout << "\n" << getName();
+        std::cout << ", " << getDescription() << "\n";
+        std::cout << "---------------------\n";
         for (const auto& menuComponent : menuComponents)
             menuComponent->print();
     }

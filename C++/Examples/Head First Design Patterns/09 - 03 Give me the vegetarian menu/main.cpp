@@ -4,7 +4,6 @@
 #include "Waitress.h"
 #include <memory>
 using std::make_shared;
-using std::make_unique;
 
 /* Java @https://github.com/bethrobson/Head-First-Design-Patterns/tree/master/src/headfirst/designpatterns/composite/menuiterator
 public class MenuTestDrive {
