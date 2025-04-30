@@ -1,4 +1,5 @@
 #pragma once
+
 #include <iostream>
 #include <span>
 #include <string>
@@ -62,7 +63,7 @@ public:
             cout << "Sorry, menu is full! Can't add item to menu\n"; // Mel specifically wants to keep his menu under a certain size (presumably so he doesn't have to remember too many recipes).
         else {
             menuItems[numberOfItems] = menuItem;
-            numberOfItems = numberOfItems + 1;
+            ++numberOfItems;
         }
     }
 

@@ -9,18 +9,17 @@ using std::shared_ptr;
 #pragma region Trae
 template <typename T>
 class VectorIterator : public Iterator<T> {
-    vector<shared_ptr<T>>& items;
-    int position = 0;
-
+	vector<shared_ptr<T>> &items;
+	int position = 0;
 public:
-    VectorIterator(vector<shared_ptr<T>>& items) : items(items) {}
+	VectorIterator(vector<shared_ptr<T>> &items) : items(items) {}
 
-    T& next() override {
-        if (hasNext())
-            return *items[position++];
-        throw std::runtime_error("No more items");
-    }
+	T &next() override {
+		if (hasNext())
+			return *items[position++];
+		throw std::runtime_error("No more items");
+	}
 
-    bool hasNext() noexcept override { return position < items.size(); }
+	bool hasNext() noexcept override { return position < items.size(); }
 };
 #pragma endregion //Trae

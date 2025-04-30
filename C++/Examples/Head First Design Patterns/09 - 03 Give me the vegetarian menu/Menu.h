@@ -7,6 +7,7 @@
 #include "IteratorComposite.h"
 #include "IteratorVector.h"
 using std::cout;
+using std::make_shared;
 using std::vector;
 
 /* Java @https://github.com/bethrobson/Head-First-Design-Patterns/tree/master/src/headfirst/designpatterns/composite/menuiterator
@@ -71,9 +72,10 @@ public:
     shared_ptr<MenuComponent> getChild(int i) override { return menuComponents[i]; }
     string getName() override { return name; }
     string getDescription() override { return description; }
-    shared_ptr<Iterator<MenuComponent>> createIterator() override { 
-        return std::make_shared<CompositeIterator>(std::make_shared<VectorIterator<MenuComponent>>(menuComponents)); 
-    }
+    
+	shared_ptr<Iterator<MenuComponent>> createIterator() override { 
+		return make_shared<CompositeIterator>(make_shared<VectorIterator<MenuComponent>>(menuComponents)); 
+	}
 
     void print() override {
         cout << "\n" << getName();
