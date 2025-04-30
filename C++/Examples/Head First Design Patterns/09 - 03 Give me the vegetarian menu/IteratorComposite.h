@@ -44,8 +44,7 @@ public class CompositeIterator implements Iterator<MenuComponent> {
 }
 */
 class CompositeIterator : public Iterator<MenuComponent> {
-    stack<shared_ptr<Iterator<MenuComponent>>> stack;
-
+    mutable stack<shared_ptr<Iterator<MenuComponent>>> stack;
 public:
     CompositeIterator(shared_ptr<Iterator<MenuComponent>> iterator) { stack.push(iterator); }
 
@@ -59,7 +58,7 @@ public:
         throw std::runtime_error("No more items in composite");
     }
 
-    bool hasNext() noexcept override {
+    bool hasNext() const noexcept override {
         if (stack.empty())
             return false;
 

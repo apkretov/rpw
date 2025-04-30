@@ -15,5 +15,5 @@ public:
     MenuComponent& next() override { 
         throw std::runtime_error("No elements in NullIterator"); 
     }
-    bool hasNext() noexcept override { return false; }
+    bool hasNext() const noexcept override { return false; }
 };
