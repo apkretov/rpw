@@ -1,9 +1,8 @@
 #pragma once
 
-#include <stack>
 #include <memory>
+#include <stack>
 #include "MenuComponent.h"
-using std::stack;
 
 /* Java @https://github.com/bethrobson/Head-First-Design-Patterns/tree/master/src/headfirst/designpatterns/composite/menuiterator
 package headfirst.designpatterns.composite.menuiterator;
@@ -44,13 +43,13 @@ public class CompositeIterator implements Iterator<MenuComponent> {
 }
 */
 class CompositeIterator : public Iterator<MenuComponent> {
-    mutable stack<shared_ptr<Iterator<MenuComponent>>> stack;
+    mutable std::stack<MenuComponentIterPtr> stack;
 public:
-    CompositeIterator(shared_ptr<Iterator<MenuComponent>> iterator) { stack.push(iterator); }
+    CompositeIterator(MenuComponentIterPtr iterator) { stack.push(iterator); }
 
     MenuComponent& next() override {
         if (hasNext()) {
-            shared_ptr<Iterator<MenuComponent>> iterator = stack.top();
+            MenuComponentIterPtr iterator = stack.top();
             MenuComponent& component = iterator->next();
             stack.push(component.createIterator());
             return component;
@@ -61,8 +60,7 @@ public:
     bool hasNext() const noexcept override {
         if (stack.empty())
             return false;
-
-        shared_ptr<Iterator<MenuComponent>> iterator = stack.top();
+        MenuComponentIterPtr iterator = stack.top();
         if (!iterator->hasNext()) {
             stack.pop();
             return hasNext();

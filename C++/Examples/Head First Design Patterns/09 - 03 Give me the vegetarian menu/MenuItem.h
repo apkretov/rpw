@@ -1,9 +1,8 @@
 #pragma once
 
 #include <memory>
-#include "MenuComponent.h"
 #include "IteratorNull.h"
-using std::string;
+#include "MenuComponent.h"
 
 /* Java @https://github.com/bethrobson/Head-First-Design-Patterns/tree/master/src/headfirst/designpatterns/composite/menuiterator
 public class MenuItem extends MenuComponent {
@@ -35,6 +34,7 @@ public class MenuItem extends MenuComponent {
 }
 */
 class MenuItem : public MenuComponent {
+	using string = std::string;
     string name;
     string description;
     bool vegetarian;
@@ -46,13 +46,14 @@ public:
     string getDescription() override { return description; }
     double getPrice() override { return price; }
     bool isVegetarian() override { return vegetarian; }
-
-	shared_ptr<Iterator<MenuComponent>> createIterator() override { return std::make_shared<NullIterator>(); }
+	
+	MenuComponentIterPtr createIterator() override { return std::make_shared<NullIterator>(); }
 
     void print() override {
-        cout << "  " << getName();
-        if (isVegetarian()) cout << "(v)";
-        cout << ", " << getPrice() << "\n";
-        cout << "     -- " << getDescription() << "\n";
+        std::cout << "  " << getName();
+        if (isVegetarian()) 
+			std::cout << "(v)";
+        std::cout << ", " << getPrice() << "\n";
+        std::cout << "     -- " << getDescription() << "\n";
     }
 };

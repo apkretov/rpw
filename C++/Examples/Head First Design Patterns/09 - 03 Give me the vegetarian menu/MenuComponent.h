@@ -1,10 +1,8 @@
 #pragma once
 
-#include <string>
 #include <memory>
+#include <string>
 #include "Iterator.h"
-using std::string;
-using std::shared_ptr;
 
 /* Java @https://github.com/bethrobson/Head-First-Design-Patterns/tree/master/src/headfirst/designpatterns/composite/menuiterator
 package headfirst.designpatterns.composite.menuiterator;
@@ -45,14 +43,23 @@ public abstract class MenuComponent {
 */
 class MenuComponent {
 public:
+	using MenueComponentPtr = std::shared_ptr<MenuComponent>;
+	using MenuComponentIterPtr = std::shared_ptr<Iterator<MenuComponent>>;
+
     virtual ~MenuComponent() {}
-    virtual void add(shared_ptr<MenuComponent> menuComponent) {}
-    virtual void remove(shared_ptr<MenuComponent> menuComponent) {}
-    virtual shared_ptr<MenuComponent> getChild(int i) { return nullptr; }
-    virtual string getName() { return ""; }
-    virtual string getDescription() { return ""; }
+
+    virtual void add(MenueComponentPtr menuComponent) {}
+    virtual void remove(MenueComponentPtr menuComponent) {}
+    virtual MenueComponentPtr getChild(int i) { return nullptr; }
+    
+	virtual std::string getName() { return ""; }
+    virtual std::string getDescription() { return ""; }
     virtual double getPrice() { return 0.0; }
     virtual bool isVegetarian() { return false; }
-    virtual shared_ptr<Iterator<MenuComponent>> createIterator() = 0;
+    
+	virtual MenuComponentIterPtr createIterator() = 0;
     virtual void print() {}
 };
+
+using MenueComponentPtr = MenuComponent::MenueComponentPtr;
+using MenuComponentIterPtr = MenuComponent::MenuComponentIterPtr;
