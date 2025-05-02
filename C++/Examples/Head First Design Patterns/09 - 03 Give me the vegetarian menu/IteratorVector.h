@@ -7,11 +7,11 @@
 #pragma region Trae
 template <typename T>
 class VectorIterator : public Iterator<T> {
-	using VectorPtr = std::vector<std::shared_ptr<T>>;
-	VectorPtr &items;
+	using VecPtrT = std::vector<std::shared_ptr<T>>;
+	VecPtrT &items;
 	size_t position = 0;
 public:
-	VectorIterator(VectorPtr &items) : items(items) {}
+	VectorIterator(VecPtrT &items) : items(items) {}
 
 	T &next() override {
 		if (hasNext())

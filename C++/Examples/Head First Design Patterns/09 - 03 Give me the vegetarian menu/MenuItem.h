@@ -47,7 +47,7 @@ public:
     double getPrice() override { return price; }
     bool isVegetarian() override { return vegetarian; }
 	
-	MenuComponentIterPtr createIterator() override { return std::make_shared<NullIterator>(); }
+	PtrIterMenuCompont createIterator() override { return std::make_shared<NullIterator>(); }
 
     void print() override {
         std::cout << "  " << getName();

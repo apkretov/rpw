@@ -36,13 +36,13 @@ public class Waitress {
 }
 */
 class Waitress {
-    MenueComponentPtr allMenus;
+    PtrMenuCompont allMenus;
 public:
-    Waitress(MenueComponentPtr allMenus) : allMenus(allMenus) {}
+    Waitress(PtrMenuCompont allMenus) : allMenus(allMenus) {}
     void printMenu() { allMenus->print(); }
 
     void printVegetarianMenu() {
-        MenuComponentIterPtr iterator = allMenus->createIterator();
+        PtrIterMenuCompont iterator = allMenus->createIterator();
 
         cout << "\nVEGETARIAN MENU\n----\n";
         while (iterator->hasNext()) {
