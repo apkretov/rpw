@@ -61,10 +61,7 @@ public:
     void add(MenueComponentPtr menuComponent) override { menuComponents.push_back(menuComponent); }
 
     void remove(MenueComponentPtr menuComponent) override {
-        auto it = std::remove_if(menuComponents.begin(), menuComponents.end(),
-            [&menuComponent](const MenueComponentPtr& item) { return item == menuComponent; }); //TO DO: Perhaps the source raw pointer should be checked out.
-        if (it != menuComponents.end())
-            menuComponents.erase(it);
+        std::erase_if(menuComponents, [&menuComponent](const MenueComponentPtr& item) { return item == menuComponent; }); //TO DO: Perhaps the source raw pointer should be checked out.
     }
 
     MenueComponentPtr getChild(size_t i) override { return menuComponents.at(i); }
