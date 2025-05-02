@@ -61,14 +61,13 @@ public:
     void add(MenueComponentPtr menuComponent) override { menuComponents.push_back(menuComponent); }
 
     void remove(MenueComponentPtr menuComponent) override {
-        for (auto it = menuComponents.begin(); it != menuComponents.end(); ++it)
-            if (*it == menuComponent) { //TO DO: Perhaps the source raw pointer should be checked out.
-                menuComponents.erase(it);
-                break;
-            }
+        auto it = std::remove_if(menuComponents.begin(), menuComponents.end(),
+            [&menuComponent](const MenueComponentPtr& item) { return item == menuComponent; }); //TO DO: Perhaps the source raw pointer should be checked out.
+        if (it != menuComponents.end())
+            menuComponents.erase(it);
     }
 
-    MenueComponentPtr getChild(size_t i) override { return menuComponents.at(i); } //TO DO: I'm not sure about this solution...
+    MenueComponentPtr getChild(size_t i) override { return menuComponents.at(i); }
     string getName() override { return name; }
     string getDescription() override { return description; }
     MenuComponentIterPtr createIterator() override { return make_shared<CompositeIterator>(make_shared<VectorIterator<MenuComponent>>(menuComponents)); }
