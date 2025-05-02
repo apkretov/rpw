@@ -56,7 +56,7 @@ public:
         throw std::runtime_error("No more items in composite");
     }
 
-    bool hasNext() const noexcept override {
+    bool hasNext() const override {
         if (stack.empty())
             return false;
         MenuComponentIterPtr iterator = stack.top();
