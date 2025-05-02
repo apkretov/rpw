@@ -1,8 +1,8 @@
 #pragma once
 
 #include <iostream>
-#include <vector>
 #include <memory>
+#include <vector>
 #include "MenuComponent.h"
 #include "IteratorComposite.h"
 #include "IteratorVector.h"
@@ -68,7 +68,7 @@ public:
             }
     }
 
-    MenueComponentPtr getChild(size_t i) override { return menuComponents[i]; } //TO DO: I'm not sure about this solution...
+    MenueComponentPtr getChild(size_t i) override { return menuComponents.at(i); } //TO DO: I'm not sure about this solution...
     string getName() override { return name; }
     string getDescription() override { return description; }
     MenuComponentIterPtr createIterator() override { return make_shared<CompositeIterator>(make_shared<VectorIterator<MenuComponent>>(menuComponents)); }
