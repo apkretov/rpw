@@ -41,13 +41,12 @@ public class DinerMenu {
 }
 */
 class DinerMenu {
-    static const int MAX_ITEMS = 6; // Mel takes a different approach; he's using an Array so he can control the max size of the menu and retrieve menu items out without having to cast his objects.
+    static constexpr size_t MAX_ITEMS = 6; // Mel takes a different approach; he's using an Array so he can control the max size of the menu and retrieve menu items out without having to cast his objects.
     int numberOfItems = 0;
     MenuItem* menuItems;
 public:
     DinerMenu() { // Like Lou, Mel creates his menu items in the constructor, using the addItem() helper method
         menuItems = new MenuItem[MAX_ITEMS];
-
         addItem("Vegetarian BLT", "(Fakin') Bacon with lettuce & tomato on whole wheat", true, 2.99);
         addItem("BLT", "Bacon with lettuce & tomato on whole wheat", false, 2.99);
         addItem("Soup of the day", "Soup of the day, with a side of potato salad", false, 3.29);

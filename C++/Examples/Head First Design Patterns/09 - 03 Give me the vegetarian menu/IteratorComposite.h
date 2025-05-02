@@ -1,7 +1,7 @@
 #pragma once
 
-#include <stack>
 #include <memory>
+#include <stack>
 #include "MenuComponent.h"
 
 /* Java @https://github.com/bethrobson/Head-First-Design-Patterns/tree/master/src/headfirst/designpatterns/composite/menuiterator
@@ -60,7 +60,6 @@ public:
     bool hasNext() const noexcept override {
         if (stack.empty())
             return false;
-
         MenuComponentIterPtr iterator = stack.top();
         if (!iterator->hasNext()) {
             stack.pop();

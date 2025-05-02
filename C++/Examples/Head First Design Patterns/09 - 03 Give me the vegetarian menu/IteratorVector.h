@@ -9,7 +9,7 @@ template <typename T>
 class VectorIterator : public Iterator<T> {
 	using VectorPtr = std::vector<std::shared_ptr<T>>;
 	VectorPtr &items;
-	int position = 0;
+	size_t position = 0;
 public:
 	VectorIterator(VectorPtr &items) : items(items) {}
 

@@ -1,6 +1,5 @@
 #pragma once
 #include <string>
-using std::string;
 
 #pragma region Check out the Menu Items
 /* Java
@@ -24,6 +23,7 @@ public class MenuItem {
 }
 */
 class MenuItem {
+	using string = std::string;
     string name; // A MenuItem consists of a name, a description, a flag to indicate if the item is vegetarian, and a price. You pass all these values into the constructor to initialize the MenuItem.
     string description;
     bool vegetarian;
@@ -31,6 +31,7 @@ class MenuItem {
 public:
 	MenuItem() : name(""), description(""), vegetarian(false), price(0.0) {} // Default constructor
     MenuItem(string name, string description, bool vegetarian, double price) : name(name), description(description), vegetarian(vegetarian), price(price) {}
+
     string getName() { return name; } // These getter methods let you access the fields of the menu item.
     string getDescription() { return description; }
     double getPrice() { return price; }

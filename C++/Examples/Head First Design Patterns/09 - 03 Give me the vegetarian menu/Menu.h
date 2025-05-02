@@ -70,10 +70,7 @@ public:
     MenueComponentPtr getChild(int i) override { return menuComponents[i]; }
     string getName() override { return name; }
     string getDescription() override { return description; }
-    
-	MenuComponentIterPtr createIterator() override { 
-		return make_shared<CompositeIterator>(make_shared<VectorIterator<MenuComponent>>(menuComponents)); 
-	}
+    MenuComponentIterPtr createIterator() override { return make_shared<CompositeIterator>(make_shared<VectorIterator<MenuComponent>>(menuComponents)); }
 
     void print() override {
         std::cout << "\n" << getName();
