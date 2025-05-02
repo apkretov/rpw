@@ -57,7 +57,6 @@ class Menu : public MenuComponent {
     string description;
 public:
     Menu(string name, string description) : name(name), description(description) {}
-
     void add(MenueComponentPtr menuComponent) override { menuComponents.push_back(menuComponent); }
 
     void remove(MenueComponentPtr menuComponent) override {

@@ -46,7 +46,7 @@ class CompositeIterator : public Iterator<MenuComponent> {
 public:
     CompositeIterator(MenuComponentIterPtr iterator) { stack.push(iterator); }
 
-    MenuComponent& next() override {
+	MenuComponent &next() override {
         if (hasNext()) {
             MenuComponentIterPtr iterator = stack.top();
             MenuComponent& component = iterator->next();
