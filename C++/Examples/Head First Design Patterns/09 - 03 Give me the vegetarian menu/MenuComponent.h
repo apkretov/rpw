@@ -51,7 +51,7 @@ public:
 
     virtual void add(MenueComponentPtr menuComponent) {}
     virtual void remove(MenueComponentPtr menuComponent) {}
-    virtual MenueComponentPtr getChild(int i) { return nullptr; }
+    virtual MenueComponentPtr getChild(size_t i) { return nullptr; }
     
 	virtual string getName() { return ""; }
     virtual string getDescription() { return ""; }

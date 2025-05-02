@@ -57,17 +57,18 @@ class Menu : public MenuComponent {
     string description;
 public:
     Menu(string name, string description) : name(name), description(description) {}
+
     void add(MenueComponentPtr menuComponent) override { menuComponents.push_back(menuComponent); }
 
     void remove(MenueComponentPtr menuComponent) override {
         for (auto it = menuComponents.begin(); it != menuComponents.end(); ++it)
-            if (*it == menuComponent) {
+            if (*it == menuComponent) { //TO DO: Perhaps the source raw pointer should be checked out.
                 menuComponents.erase(it);
                 break;
             }
     }
 
-    MenueComponentPtr getChild(int i) override { return menuComponents[i]; }
+    MenueComponentPtr getChild(size_t i) override { return menuComponents[i]; } //TO DO: I'm not sure about this solution...
     string getName() override { return name; }
     string getDescription() override { return description; }
     MenuComponentIterPtr createIterator() override { return make_shared<CompositeIterator>(make_shared<VectorIterator<MenuComponent>>(menuComponents)); }

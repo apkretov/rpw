@@ -1,8 +1,8 @@
+#include <memory>
 #include "vld.h"
 #include "Menu.h"
 #include "MenuItem.h"
 #include "Waitress.h"
-#include <memory>
 using std::make_shared;
 
 /* Java @ https://github.com/bethrobson/Head-First-Design-Patterns/tree/master/src/headfirst/designpatterns/composite/menuiterator

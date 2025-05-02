@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Iterator.h"
-#include <vector>
 #include <memory>
+#include <vector>
+#include "Iterator.h"
 
 #pragma region Trae
 template <typename T>
