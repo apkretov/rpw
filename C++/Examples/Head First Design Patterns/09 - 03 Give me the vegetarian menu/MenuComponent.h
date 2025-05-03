@@ -44,23 +44,23 @@ public abstract class MenuComponent {
 class MenuComponent {
 	using string = std::string;
 public:
-	using PtrMenuCompont = std::shared_ptr<MenuComponent>;
-	using PtrIterMenuCompont = std::shared_ptr<Iterator<MenuComponent>>;
+	using PtrMenucompont = std::shared_ptr<MenuComponent>;
+	using PtrIterMenucompont = std::shared_ptr<Iterator<MenuComponent>>;
 
     virtual ~MenuComponent() {}
 
-    virtual void add(PtrMenuCompont menuComponent) {}
-    virtual void remove(PtrMenuCompont menuComponent) {}
-    virtual PtrMenuCompont getChild(size_t i) { return nullptr; }
+    virtual void add(PtrMenucompont menuComponent) {}
+    virtual void remove(PtrMenucompont menuComponent) {}
+    virtual PtrMenucompont getChild(size_t i) { return nullptr; }
     
 	virtual string getName() { return ""; }
     virtual string getDescription() { return ""; }
     virtual double getPrice() { return 0.0; }
     virtual bool isVegetarian() { return false; }
     
-	virtual PtrIterMenuCompont createIterator() = 0;
+	virtual PtrIterMenucompont createIterator() = 0;
     virtual void print() {}
 };
 
-using PtrMenuCompont = MenuComponent::PtrMenuCompont;
-using PtrIterMenuCompont = MenuComponent::PtrIterMenuCompont;
+using PtrMenucompont = MenuComponent::PtrMenucompont;
+using PtrIterMenucompont = MenuComponent::PtrIterMenucompont;

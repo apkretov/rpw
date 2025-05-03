@@ -42,13 +42,13 @@ public class CompositeIterator implements Iterator<MenuComponent> {
 }
 */
 class CompositeIterator : public Iterator<MenuComponent> {
-    mutable std::stack<PtrIterMenuCompont> stack;
+    mutable std::stack<PtrIterMenucompont> stack;
 public:
-    CompositeIterator(PtrIterMenuCompont iterator) { stack.push(iterator); }
+    CompositeIterator(PtrIterMenucompont iterator) { stack.push(iterator); }
 
 	MenuComponent &next() override {
         if (hasNext()) {
-            PtrIterMenuCompont iterator = stack.top();
+            PtrIterMenucompont iterator = stack.top();
             MenuComponent& component = iterator->next();
             stack.push(component.createIterator());
             return component;
@@ -59,8 +59,7 @@ public:
     bool hasNext() const override {
         if (stack.empty())
             return false;
-        PtrIterMenuCompont iterator = stack.top();
-        if (!iterator->hasNext()) {
+        if (PtrIterMenucompont iterator = stack.top(); !iterator->hasNext()) {
             stack.pop();
             return hasNext();
         }

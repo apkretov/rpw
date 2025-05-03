@@ -52,21 +52,24 @@ public class Menu extends MenuComponent {
 */
 class Menu : public MenuComponent {
 	using string = std::string;
-	std::vector<PtrMenuCompont> menuComponents;
+	std::vector<PtrMenucompont> menuComponents;
     string name;
     string description;
 public:
     Menu(string name, string description) : name(name), description(description) {}
-    void add(PtrMenuCompont menuComponent) override { menuComponents.push_back(menuComponent); }
+    void add(PtrMenucompont menuComponent) override { menuComponents.push_back(menuComponent); }
 
-    void remove(PtrMenuCompont menuComponent) override {
-        std::erase_if(menuComponents, [&menuComponent](const PtrMenuCompont& item) { return item == menuComponent; }); //TO DO: Perhaps the source raw pointer should be checked out.
+    void remove(PtrMenucompont menuComponent) override {
+        std::erase_if(menuComponents, [&menuComponent](const PtrMenucompont& item) { return item == menuComponent; }); //TO DO: Perhaps the source raw pointer should be checked out.
     }
 
-    PtrMenuCompont getChild(size_t i) override { return menuComponents.at(i); }
+    PtrMenucompont getChild(size_t i) override { return menuComponents.at(i); }
     string getName() override { return name; }
     string getDescription() override { return description; }
-    PtrIterMenuCompont createIterator() override { return make_shared<CompositeIterator>(make_shared<VectorIterator<MenuComponent>>(menuComponents)); }
+    
+	PtrIterMenucompont createIterator() override { 
+		return make_shared<CompositeIterator>(make_shared<VectorIterator<MenuComponent>>(menuComponents)); 
+	}
 
     void print() override {
         std::cout << "\n" << getName();

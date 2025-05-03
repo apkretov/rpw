@@ -2,7 +2,6 @@
 #include <iostream>
 #include <memory>
 #include "MenuComponent.h"
-using std::cout;
 
 /* Java @https://github.com/bethrobson/Head-First-Design-Patterns/tree/master/src/headfirst/designpatterns/composite/menuiterator
 package headfirst.designpatterns.composite.menuiterator;
@@ -36,19 +35,16 @@ public class Waitress {
 }
 */
 class Waitress {
-    PtrMenuCompont allMenus;
+    PtrMenucompont allMenus;
 public:
-    Waitress(PtrMenuCompont allMenus) : allMenus(allMenus) {}
+    Waitress(PtrMenucompont allMenus) : allMenus(allMenus) {}
     void printMenu() { allMenus->print(); }
 
     void printVegetarianMenu() {
-        PtrIterMenuCompont iterator = allMenus->createIterator();
-
-        cout << "\nVEGETARIAN MENU\n----\n";
-        while (iterator->hasNext()) {
-            MenuComponent& menuComponent = iterator->next();
-            if (menuComponent.isVegetarian())
+        std::cout << "\nVEGETARIAN MENU\n----\n";
+        PtrIterMenucompont iterator = allMenus->createIterator();
+        while (iterator->hasNext()) 
+            if (MenuComponent &menuComponent = iterator->next(); menuComponent.isVegetarian())
                 menuComponent.print();
-        }
     }
 };
