@@ -49,8 +49,6 @@ public:
 	}
 
 	MenuComponent &get() const override { //MINE
-		//if (hasNext())
-		//return stack.top()->get();
 		if (stack.empty())
 			throw std::runtime_error("No more items in composite");
 
