@@ -45,7 +45,9 @@ public:
     string getName() override { return name; }
     string getDescription() override { return description; }
     double getPrice() override { return price; }
-    bool isVegetarian() override { return vegetarian; }
+    bool isVegetarian() override { 
+		return vegetarian; 
+	}
 	
 	PtrIterMenucompont createIterator() override { return std::make_shared<NullIterator>(); }
 

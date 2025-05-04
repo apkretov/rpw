@@ -19,6 +19,8 @@ public:
 		throw std::runtime_error("No more items");
 	}
 
-	bool hasNext() const override { return position < items.size(); }
+	bool hasNext() const override { 
+		return position < items.size(); 
+	}
 };
 #pragma endregion //Trae

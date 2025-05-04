@@ -43,8 +43,10 @@ public:
     void printVegetarianMenu() {
         std::cout << "\nVEGETARIAN MENU\n----\n";
         PtrIterMenucompont iterator = allMenus->createIterator();
-        while (iterator->hasNext()) 
-            if (MenuComponent &menuComponent = iterator->next(); menuComponent.isVegetarian())
+        while (iterator->hasNext()) {
+			MenuComponent &menuComponent = iterator->next();
+            if (menuComponent.isVegetarian())
                 menuComponent.print();
+		}
     }
 };
