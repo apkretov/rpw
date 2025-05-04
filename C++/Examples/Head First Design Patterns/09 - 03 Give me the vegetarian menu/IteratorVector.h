@@ -13,7 +13,7 @@ class VectorIterator : public Iterator<T> {
 public:
 	VectorIterator(VecPtrT &items) : items(items) {}
 
-	T get() const override { //MINE
+	T &get() const override { //MINE
 		if (hasNext())
 			return *items[position];
 		throw std::runtime_error("No more items");

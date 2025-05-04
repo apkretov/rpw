@@ -6,7 +6,7 @@ class Iterator {
 public:
     virtual ~Iterator() = default;
     
-	virtual T get() const = 0; //MINE
+	virtual T &get() const = 0; //MINE
 	virtual T &next() = 0;
     virtual bool hasNext() const = 0;
 };

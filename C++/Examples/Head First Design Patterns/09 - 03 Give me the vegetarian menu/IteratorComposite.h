@@ -48,10 +48,27 @@ public:
 		stack.push(iterator); 
 	}
 
+	MenuComponent &get() const override { //MINE
+		//if (hasNext())
+		//return stack.top()->get();
+		if (stack.empty())
+			throw std::runtime_error("No more items in composite");
+
+		try {
+			PtrIterMenucompont iterator = stack.top();
+			MenuComponent &component = iterator->get();
+			return component;
+		}
+		catch (const std::exception &e) {
+			std::cerr << e.what() << '\n';
+			throw;
+		}
+	} 
+
 	MenuComponent &next() override {
         if (hasNext()) {
             PtrIterMenucompont iterator = stack.top();
-            MenuComponent& component = iterator->next();
+			MenuComponent &component = iterator->next();
             stack.push(component.createIterator());
             return component;
         }
