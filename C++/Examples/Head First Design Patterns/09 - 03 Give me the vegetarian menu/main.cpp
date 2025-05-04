@@ -1,5 +1,4 @@
 #include <memory>
-#include "../../stdafx.h"
 //OFF #include "vld.h"
 #include "Menu.h"
 #include "MenuItem.h"

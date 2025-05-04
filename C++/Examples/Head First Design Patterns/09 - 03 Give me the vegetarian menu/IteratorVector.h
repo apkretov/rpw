@@ -12,8 +12,7 @@ class VectorIterator : public Iterator<T> {
 	size_t position = 0;
 public:
 	VectorIterator(VecPtrT &items) : items(items) {
-		//std::cout << "111 " << items[position]->getName() << '\n'; //MINE
-		std::cout << "111 " << current().getName() << '\n'; //MINE
+		std::clog << "111 " << current().getName() << '\n'; //MINE
 	}
 
 	T &current() const override { //MINE
@@ -23,8 +22,10 @@ public:
 	}
 
 	T &next() override {
-		if (hasNext())
+		if (hasNext()) {
+			std::clog << "666 " << current().getName() << '\n'; //MINE
 			return *items[position++];
+		}
 		throw std::runtime_error("No more items");
 	}
 

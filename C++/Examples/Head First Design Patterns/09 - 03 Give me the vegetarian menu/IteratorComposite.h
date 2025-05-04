@@ -45,7 +45,7 @@ class CompositeIterator : public Iterator<MenuComponent> {
     mutable std::stack<PtrIterMenucompont> stack;
 public:
     CompositeIterator(PtrIterMenucompont iterator) { 
-		std::cout << "222 " << iterator->current().getName() << '\n';
+		std::clog << "222 " << iterator->current().getName() << '\n';
 		stack.push(iterator); 
 	}
 
@@ -59,6 +59,7 @@ public:
 	MenuComponent &next() override {
         if (hasNext()) {
             PtrIterMenucompont iterator = stack.top();
+			std::clog << "555 " << iterator->current().getName() << '\n';
 			MenuComponent &component = iterator->next();
             stack.push(component.createIterator());
             return component;
@@ -72,10 +73,10 @@ public:
 		PtrIterMenucompont iterator = stack.top();
 #pragma region MINE
 		try {
-			std::cout << "444 " << iterator->current().getName() << '\n';
+			std::clog << "444 " << iterator->current().getName() << '\n';
 		}
-		catch (const std::exception &e) {
-			std::cout << "Error: " << e.what() << '\n';
+		catch (const std::runtime_error &e) {
+			std::cerr << "Error: " << e.what() << '\n';
 		}
 #pragma endregion //MINE
 
