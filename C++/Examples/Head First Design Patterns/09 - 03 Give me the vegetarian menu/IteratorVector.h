@@ -12,11 +12,12 @@ class VectorIterator : public Iterator<T> {
 	size_t position = 0;
 public:
 	VectorIterator(VecPtrT &items) : items(items) {
-		std::cout << "111 " << items[position]->getName() << '\n'; //MINE
+		//std::cout << "111 " << items[position]->getName() << '\n'; //MINE
+		std::cout << "111 " << current().getName() << '\n'; //MINE
 	}
 
 	T &current() const override { //MINE
-		if (hasNext())
+		if (position < items.size())
 			return *items[position];
 		throw std::runtime_error("No more items");
 	}
