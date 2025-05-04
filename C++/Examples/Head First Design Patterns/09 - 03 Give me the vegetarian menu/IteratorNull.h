@@ -11,7 +11,7 @@ public class NullIterator implements Iterator<MenuComponent> {
 */
 class NullIterator : public Iterator<MenuComponent> {
 public:
-	MenuComponent &get() const override { throw std::runtime_error("No elements in NullIterator"); } //MINE
+	MenuComponent &current() const override { throw std::runtime_error("No elements in NullIterator"); } //MINE
 	MenuComponent &next() override { throw std::runtime_error("No elements in NullIterator"); }
     bool hasNext() const override { return false; }
 };

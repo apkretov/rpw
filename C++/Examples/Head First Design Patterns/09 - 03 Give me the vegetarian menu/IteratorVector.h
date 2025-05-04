@@ -15,7 +15,7 @@ public:
 		std::cout << "111 " << items[position]->getName() << '\n'; //MINE
 	}
 
-	T &get() const override { //MINE
+	T &current() const override { //MINE
 		if (hasNext())
 			return *items[position];
 		throw std::runtime_error("No more items");

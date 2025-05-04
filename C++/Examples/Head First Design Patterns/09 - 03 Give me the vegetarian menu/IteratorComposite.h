@@ -45,15 +45,15 @@ class CompositeIterator : public Iterator<MenuComponent> {
     mutable std::stack<PtrIterMenucompont> stack;
 public:
     CompositeIterator(PtrIterMenucompont iterator) { 
-		std::cout << "222 " << iterator.get()->get().getName() << '\n';
+		std::cout << "222 " << iterator.get()->current().getName() << '\n';
 		stack.push(iterator); 
 	}
 
-	MenuComponent &get() const override { //MINE
+	MenuComponent &current() const override { //MINE
 		if (stack.empty())
 			throw std::runtime_error("No more items in composite");
 		PtrIterMenucompont iterator = stack.top();
-		return iterator->get();
+		return iterator->current();
 	}
 
 	MenuComponent &next() override {
