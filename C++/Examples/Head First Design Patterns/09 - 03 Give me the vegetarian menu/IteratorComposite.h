@@ -51,17 +51,9 @@ public:
 	MenuComponent &get() const override { //MINE
 		if (stack.empty())
 			throw std::runtime_error("No more items in composite");
-
-		try {
-			PtrIterMenucompont iterator = stack.top();
-			MenuComponent &component = iterator->get();
-			return component;
-		}
-		catch (const std::exception &e) {
-			std::cerr << e.what() << '\n';
-			throw;
-		}
-	} 
+		PtrIterMenucompont iterator = stack.top();
+		return iterator->get();
+	}
 
 	MenuComponent &next() override {
         if (hasNext()) {
