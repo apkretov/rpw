@@ -45,6 +45,7 @@ class CompositeIterator : public Iterator<MenuComponent> {
     mutable std::stack<PtrIterMenucompont> stack;
 public:
     CompositeIterator(PtrIterMenucompont iterator) { 
+		std::cout << "222 " << iterator.get()->get().getName() << '\n';
 		stack.push(iterator); 
 	}
 

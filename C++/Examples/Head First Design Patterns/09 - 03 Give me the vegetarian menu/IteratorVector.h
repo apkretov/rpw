@@ -11,7 +11,9 @@ class VectorIterator : public Iterator<T> {
 	VecPtrT &items;
 	size_t position = 0;
 public:
-	VectorIterator(VecPtrT &items) : items(items) {}
+	VectorIterator(VecPtrT &items) : items(items) {
+		std::cout << "111 " << items[position]->getName() << '\n'; //MINE
+	}
 
 	T &get() const override { //MINE
 		if (hasNext())
