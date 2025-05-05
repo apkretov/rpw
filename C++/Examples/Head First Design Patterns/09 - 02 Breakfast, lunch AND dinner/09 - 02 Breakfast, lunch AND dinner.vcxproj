@@ -134,6 +134,7 @@
     <ClInclude Include="IteratorVector.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="MenuComponent.h" />
+    <ClInclude Include="MenuDiner.h" />
     <ClInclude Include="MenuItem.h" />
     <ClInclude Include="MenuPancakeHouse.h" />
     <ClInclude Include="Waitress.h" />
