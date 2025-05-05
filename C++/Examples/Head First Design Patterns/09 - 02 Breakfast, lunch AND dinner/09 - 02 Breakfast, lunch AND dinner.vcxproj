@@ -135,6 +135,7 @@
     <ClInclude Include="Menu.h" />
     <ClInclude Include="MenuComponent.h" />
     <ClInclude Include="MenuItem.h" />
+    <ClInclude Include="MenuPancakeHouse.h" />
     <ClInclude Include="Waitress.h" />
   </ItemGroup>
   <ItemGroup>
