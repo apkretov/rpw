@@ -45,7 +45,9 @@ class CompositeIterator : public Iterator<MenuComponent> {
     mutable std::stack<PtrIterMenucompont> stack;
 public:
     CompositeIterator(PtrIterMenucompont iterator) { 
-		std::clog << "222 " << iterator->current().getName() << '\n';
+#ifdef DEBUG
+		std::clog << "040 " << typeid(iterator->current()).name() << ": " << iterator->current().getName() << '\n';
+#endif //DEBUG
 		stack.push(iterator); 
 	}
 
@@ -59,9 +61,14 @@ public:
 	MenuComponent &next() override {
         if (hasNext()) {
             PtrIterMenucompont iterator = stack.top();
-			std::clog << "555 " << iterator->current().getName() << '\n';
+#ifdef DEBUG
+			std::clog << "070 " << typeid(iterator->current()).name() << ": " << iterator->current().getName() << '\n'; //MINE
+#endif //DEBUG
 			MenuComponent &component = iterator->next();
-            stack.push(component.createIterator());
+#ifdef DEBUG
+			std::clog << "090 " << typeid(component).name() << ": " << component.getName() << '\n'; //MINE
+#endif //DEBUG
+			stack.push(component.createIterator());
             return component;
         }
         throw std::runtime_error("No more items in composite");
@@ -71,15 +78,14 @@ public:
         if (stack.empty())
             return false;
 		PtrIterMenucompont iterator = stack.top();
-#pragma region MINE
+#ifdef DEBUG //MINE
 		try {
-			std::clog << "444 " << iterator->current().getName() << '\n';
+			std::clog << "060 " << typeid(iterator->current()).name() << ": " << iterator->current().getName() << '\n';
 		}
 		catch (const std::runtime_error &e) {
 			std::cerr << "Error: " << e.what() << '\n';
 		}
-#pragma endregion //MINE
-
+#endif //DEBUG
 		if (!iterator->hasNext()) {
             stack.pop();
             return hasNext();

@@ -1,3 +1,5 @@
+#undef DEBUG
+
 #include <memory>
 //OFF #include "vld.h"
 #include "Menu.h"

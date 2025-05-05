@@ -68,6 +68,9 @@ public:
     string getDescription() override { return description; }
     
 	PtrIterMenucompont createIterator() override { 
+#ifdef DEBUG
+		std::clog << "020 " << typeid(menuComponents).name() << ": " << menuComponents.at(0)->getName() << '\n'; //MINE
+#endif //DEBUG
 		return make_shared<CompositeIterator>(make_shared<VectorIterator<MenuComponent>>(menuComponents)); 
 	}
 

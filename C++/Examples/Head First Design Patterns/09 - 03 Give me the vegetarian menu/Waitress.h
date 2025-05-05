@@ -42,10 +42,18 @@ public:
 
     void printVegetarianMenu() {
         std::cout << "\nVEGETARIAN MENU\n----\n";
-        PtrIterMenucompont iterator = allMenus->createIterator();
-		std::clog << "333 " << iterator->current().getName() << '\n'; //MINE
+#ifdef DEBUG
+		std::clog << "010 " << typeid(*allMenus).name() << ": " << allMenus->getName() << '\n'; //MINE  
+#endif //DEBUG
+		PtrIterMenucompont iterator = allMenus->createIterator();
+#ifdef DEBUG
+		std::clog << "050 " << typeid(iterator->current()).name() << ": " << iterator->current().getName() << '\n'; //MINE
+#endif //DEBUG
         while (iterator->hasNext()) {
 			MenuComponent &menuComponent = iterator->next();
+#ifdef DEBUG
+			std::clog << "100 " << typeid(menuComponent).name() << ": " << menuComponent.getName() << '\n'; //MINE
+#endif //DEBUG
             if (menuComponent.isVegetarian())
                 menuComponent.print();
 		}
