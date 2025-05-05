@@ -1,0 +1,84 @@
+#pragma once
+
+#include <iostream>
+#include <memory>
+#include <vector>
+#include "MenuComponent.h"
+#include "IteratorComposite.h"
+#include "IteratorVector.h"
+
+/* Java @https://github.com/bethrobson/Head-First-Design-Patterns/tree/master/src/headfirst/designpatterns/composite/menuiterator
+public class Menu extends MenuComponent {
+    ArrayList<MenuComponent> menuComponents = new ArrayList<MenuComponent>();
+    String name;
+    String description;
+  
+    public Menu(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
+ 
+    public void add(MenuComponent menuComponent) {
+        menuComponents.add(menuComponent);
+    }
+ 
+    public void remove(MenuComponent menuComponent) {
+        menuComponents.remove(menuComponent);
+    }
+ 
+    public MenuComponent getChild(int i) {
+        return menuComponents.get(i);
+    }
+ 
+    public String getName() { return name; }
+    public String getDescription() { return description; }
+ 
+    public Iterator<MenuComponent> createIterator() {
+        return new CompositeIterator(menuComponents.iterator());
+    }
+ 
+    public void print() {
+        System.out.print("\n" + getName());
+        System.out.println(", " + getDescription());
+        System.out.println("---------------------");
+  
+        Iterator<MenuComponent> iterator = menuComponents.iterator();
+        while (iterator.hasNext()) {
+            MenuComponent menuComponent = iterator.next();
+            menuComponent.print();
+        }
+    }
+}
+*/
+class Menu : public MenuComponent {
+	using string = std::string;
+	std::vector<PtrMenucompont> menuComponents;
+    string name;
+    string description;
+public:
+    Menu(string name, string description) : name(name), description(description) {}
+    void add(PtrMenucompont menuComponent) override { menuComponents.push_back(menuComponent); }
+
+    void remove(PtrMenucompont menuComponent) override {
+        std::erase_if(menuComponents, [&menuComponent](const PtrMenucompont& item) { return item == menuComponent; }); //TO DO: Perhaps the source raw pointer should be checked out.
+    }
+
+    PtrMenucompont getChild(size_t i) override { return menuComponents.at(i); }
+    string getName() override { return name; }
+    string getDescription() override { return description; }
+    
+	PtrIterMenucompont createIterator() override { 
+#ifdef DEBUG
+		std::clog << "020 " << typeid(menuComponents).name() << ": " << menuComponents.at(0)->getName() << '\n'; //MINE
+#endif //DEBUG
+		return make_shared<CompositeIterator>(make_shared<VectorIterator<MenuComponent>>(menuComponents)); 
+	}
+
+    void print() override {
+        std::cout << "\n" << getName();
+        std::cout << ", " << getDescription() << "\n";
+        std::cout << "---------------------\n";
+        for (const auto& menuComponent : menuComponents)
+            menuComponent->print();
+    }
+};
