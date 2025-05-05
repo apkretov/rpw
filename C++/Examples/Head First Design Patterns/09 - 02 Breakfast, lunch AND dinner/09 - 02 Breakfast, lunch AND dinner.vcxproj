@@ -132,7 +132,7 @@
     <ClInclude Include="Menu.h" />
     <ClInclude Include="MenuCafe.h" />
     <ClInclude Include="MenuDiner.h" />
-    <ClInclude Include="MenuItem.h" />
+    <ClInclude Include="ItemMenu.h" />
     <ClInclude Include="MenuPancakeHouse.h" />
     <ClInclude Include="Waitress.h" />
   </ItemGroup>
