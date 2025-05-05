@@ -65,8 +65,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "08 - 04 Sorting with Templa
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "09 - 01 Check out the Menu Items", "09 - 01 Check out the Menu Items\09 - 01 Check out the Menu Items.vcxproj", "{1838ADA7-1AA8-49FF-B032-ED282B7B7F39}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "09 - 02 Adding an Iterator to DinerMenu - SUSPENDED", "09 - 02 Adding an Iterator to DinerMenu\09 - 02 Adding an Iterator to DinerMenu.vcxproj", "{340308EF-2C56-4AB6-B4A2-FB6451618C72}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "09 - 03 Give me the vegetarian menu", "09 - 03 Give me the vegetarian menu\09 - 03 Give me the vegetarian menu.vcxproj", "{A6A9A743-C2C3-4BAA-B17A-C85C30FF1003}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "10 - 01 Writing the code", "10 - 01 Writing the code\10 - 01 Writing the code.vcxproj", "{FBD216F0-7BD5-46DC-991D-02B5A897B054}"
@@ -357,14 +355,6 @@ Global
 		{1838ADA7-1AA8-49FF-B032-ED282B7B7F39}.Release|x64.Build.0 = Release|x64
 		{1838ADA7-1AA8-49FF-B032-ED282B7B7F39}.Release|x86.ActiveCfg = Release|Win32
 		{1838ADA7-1AA8-49FF-B032-ED282B7B7F39}.Release|x86.Build.0 = Release|Win32
-		{340308EF-2C56-4AB6-B4A2-FB6451618C72}.Debug|x64.ActiveCfg = Debug|x64
-		{340308EF-2C56-4AB6-B4A2-FB6451618C72}.Debug|x64.Build.0 = Debug|x64
-		{340308EF-2C56-4AB6-B4A2-FB6451618C72}.Debug|x86.ActiveCfg = Debug|Win32
-		{340308EF-2C56-4AB6-B4A2-FB6451618C72}.Debug|x86.Build.0 = Debug|Win32
-		{340308EF-2C56-4AB6-B4A2-FB6451618C72}.Release|x64.ActiveCfg = Release|x64
-		{340308EF-2C56-4AB6-B4A2-FB6451618C72}.Release|x64.Build.0 = Release|x64
-		{340308EF-2C56-4AB6-B4A2-FB6451618C72}.Release|x86.ActiveCfg = Release|Win32
-		{340308EF-2C56-4AB6-B4A2-FB6451618C72}.Release|x86.Build.0 = Release|Win32
 		{A6A9A743-C2C3-4BAA-B17A-C85C30FF1003}.Debug|x64.ActiveCfg = Debug|x64
 		{A6A9A743-C2C3-4BAA-B17A-C85C30FF1003}.Debug|x64.Build.0 = Debug|x64
 		{A6A9A743-C2C3-4BAA-B17A-C85C30FF1003}.Debug|x86.ActiveCfg = Debug|Win32
