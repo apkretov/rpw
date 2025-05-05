@@ -1,7 +1,7 @@
 #pragma once
 
 #pragma region Trae
-/* Java code
+/* Java
 public interface Iterator<T> {
 	boolean hasNext();
 	T next();
