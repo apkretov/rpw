@@ -67,7 +67,6 @@ public class Waitress {
 	}
 }
 */
-
 class Waitress {
 	std::shared_ptr<Menu> pancakeHouseMenu;
 	std::shared_ptr<Menu> dinerMenu;
