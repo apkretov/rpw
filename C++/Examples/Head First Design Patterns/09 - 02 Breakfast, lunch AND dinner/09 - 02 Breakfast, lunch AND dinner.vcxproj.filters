@@ -36,6 +36,9 @@
     <ClInclude Include="MenuCafe.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="IteratorMenuPancakeHouse.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">

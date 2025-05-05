@@ -1,5 +1,6 @@
 #pragma once
 
+#pragma region Trae
 /* Java code
 public interface Iterator<T> {
 	boolean hasNext();
@@ -13,3 +14,4 @@ public:
 	virtual bool hasNext() = 0;
 	virtual T &next() = 0;
 };
+#pragma endregion //Trae
