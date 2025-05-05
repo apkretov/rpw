@@ -1,7 +1,5 @@
 #pragma once
 
-#pragma once
-
 /* Java code
 public interface Iterator<T> {
 	boolean hasNext();

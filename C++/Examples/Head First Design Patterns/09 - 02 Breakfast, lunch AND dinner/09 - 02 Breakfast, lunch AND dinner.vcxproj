@@ -129,12 +129,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Iterator.h" />
-    <ClInclude Include="IteratorComposite.h" />
-    <ClInclude Include="IteratorNull.h" />
-    <ClInclude Include="IteratorVector.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="MenuCafe.h" />
-    <ClInclude Include="MenuComponent.h" />
     <ClInclude Include="MenuDiner.h" />
     <ClInclude Include="MenuItem.h" />
     <ClInclude Include="MenuPancakeHouse.h" />
