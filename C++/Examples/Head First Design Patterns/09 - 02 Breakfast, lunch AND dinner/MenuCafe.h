@@ -1,7 +1,8 @@
 #pragma once
 
-#include "Menu.h"
 #include <unordered_map>
+#include "IteratorMenuCafe.h"
+#include "Menu.h"
 
 /* Java @ https://github.com/bethrobson/Head-First-Design-Patterns/tree/master/src/headfirst/designpatterns/iterator/dinermergercafe
 public class CafeMenu implements Menu {
@@ -30,5 +31,7 @@ public:
 		menuItems[name] = menuItem;
 	}
 
-	std::shared_ptr<Iterator<MenuItem>> createIterator() override;
+	std::shared_ptr<Iterator<MenuItem>> createIterator() override {
+		return std::make_shared<CafeMenuIterator>(menuItems);
+	}
 };
