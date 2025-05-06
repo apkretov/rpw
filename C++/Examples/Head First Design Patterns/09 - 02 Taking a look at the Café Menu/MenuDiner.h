@@ -1,6 +1,7 @@
 #pragma once
 
 #include <array>
+#include <iostream>
 #include <string_view>
 #include "IteratorMenuDiner.h"
 #include "Menu.h"

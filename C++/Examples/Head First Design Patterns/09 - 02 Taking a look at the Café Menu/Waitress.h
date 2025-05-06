@@ -97,9 +97,8 @@ class Waitress {
 	bool isVegetarian(string_view name, PtrIterMenuitem iterator) {
 		while (iterator->hasNext()) {
 			auto &menuItem = iterator->next();
-			if (menuItem.getName() == name) {
+			if (menuItem.getName() == name)
 				return menuItem.isVegetarian();
-			}
 		}
 		return false;
 	}
@@ -128,17 +127,14 @@ public:
 
 	bool isItemVegetarian(string_view name) {
 		auto pancakeIterator = pancakeHouseMenu->createIterator();
-		if (isVegetarian(name, pancakeIterator)) {
+		if (isVegetarian(name, pancakeIterator))
 			return true;
-		}
 		auto dinerIterator = dinerMenu->createIterator();
-		if (isVegetarian(name, dinerIterator)) {
+		if (isVegetarian(name, dinerIterator))
 			return true;
-		}
 		auto cafeIterator = cafeMenu->createIterator();
-		if (isVegetarian(name, cafeIterator)) {
+		if (isVegetarian(name, cafeIterator))
 			return true;
-		}
 		return false;
 	}
 };
