@@ -52,7 +52,7 @@ public:
 	}
 
 	bool hasNext() override {
-		if (position >= items.size() || items[position] = MenuItem()) {
+		if (position >= items.size() || items[position] == MenuItem()) {
 			return false;
 		}
 		return true;
