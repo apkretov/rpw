@@ -4,6 +4,8 @@
 #include "MenuDiner.h"
 #include "MenuPancakeHouse.h"
 #include "Waitress.h"
+using std::cout;
+using std::make_shared;
 
 /* Java @ https://github.com/bethrobson/Head-First-Design-Patterns/tree/master/src/headfirst/designpatterns/iterator/dinermergercafe
 package headfirst.designpatterns.iterator.dinermergercafe;
@@ -37,30 +39,28 @@ public class MenuTestDrive {
 }
 */
 int main() {
-	auto pancakeHouseMenu = std::make_shared<PancakeHouseMenu>();
-	auto dinerMenu = std::make_shared<DinerMenu>();
-	auto cafeMenu = std::make_shared<CafeMenu>();
+	auto pancakeHouseMenu = make_shared<PancakeHouseMenu>();
+	auto dinerMenu = make_shared<DinerMenu>();
+	auto cafeMenu = make_shared<CafeMenu>();
 
 	Waitress waitress(pancakeHouseMenu, dinerMenu, cafeMenu);
 
 	waitress.printMenu();
 	waitress.printVegetarianMenu();
 
-	std::cout << "\nCustomer asks, is the Hotdog vegetarian?\n";
-	std::cout << "Waitress says: ";
-	if (waitress.isItemVegetarian("Hotdog")) {
-		std::cout << "Yes\n";
-	} else {
-		std::cout << "No\n";
-	}
+	cout << "\nCustomer asks, is the Hotdog vegetarian?\n";
+	cout << "Waitress says: ";
+	if (waitress.isItemVegetarian("Hotdog"))
+		cout << "Yes\n";
+	else
+		cout << "No\n";
 
-	std::cout << "\nCustomer asks, are the Waffles vegetarian?\n";
-	std::cout << "Waitress says: ";
-	if (waitress.isItemVegetarian("Waffles")) {
-		std::cout << "Yes\n";
-	} else {
-		std::cout << "No\n";
-	}
+	cout << "\nCustomer asks, are the Waffles vegetarian?\n";
+	cout << "Waitress says: ";
+	if (waitress.isItemVegetarian("Waffles"))
+		cout << "Yes\n";
+	else
+		cout << "No\n";
 
 	return 0;
 }

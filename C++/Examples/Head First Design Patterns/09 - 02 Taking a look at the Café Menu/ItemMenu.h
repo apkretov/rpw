@@ -1,4 +1,5 @@
 #pragma once
+
 #include <string>
 
 /* Java @ https://github.com/bethrobson/Head-First-Design-Patterns/tree/master/src/headfirst/designpatterns/iterator/dinermergercafe
@@ -17,16 +18,16 @@ public class MenuItem {
 }
 */
 class MenuItem {
-private:
-	std::string name;
-	std::string description;
+	using string = std::string;
+	string name;
+	string description;
 	bool vegetarian;
 	double price;
 public:
 	MenuItem() : name(""), description(""), vegetarian(false), price(0.0) {}
-	MenuItem(const std::string &name, const std::string &description, bool vegetarian, double price) : name(name), description(description), vegetarian(vegetarian), price(price) {}
-	std::string getName() const { return name; }
-	std::string getDescription() const { return description; }
+	MenuItem(const string &name, const string &description, bool vegetarian, double price) : name(name), description(description), vegetarian(vegetarian), price(price) {}
+	string getName() const { return name; }
+	string getDescription() const { return description; }
 	double getPrice() const { return price; }
 	bool isVegetarian() const { return vegetarian; }
 };
