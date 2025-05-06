@@ -88,7 +88,7 @@ public:
 		printMenu(cafeIterator);
 	}
 private:
-	void printMenu(std::shared_ptr<Iterator<MenuItem>> iterator) {
+	void printMenu(PtrIterMenuitem iterator) {
 		while (iterator->hasNext()) {
 			auto &menuItem = iterator->next();
 			std::cout << menuItem.getName() << ", ";
@@ -120,7 +120,7 @@ public:
 		return false;
 	}
 private:
-	void printVegetarianMenu(std::shared_ptr<Iterator<MenuItem>> iterator) {
+	void printVegetarianMenu(PtrIterMenuitem iterator) {
 		while (iterator->hasNext()) {
 			auto &menuItem = iterator->next();
 			if (menuItem.isVegetarian()) {
@@ -131,7 +131,7 @@ private:
 		}
 	}
 
-	bool isVegetarian(const std::string &name, std::shared_ptr<Iterator<MenuItem>> iterator) {
+	bool isVegetarian(const std::string &name, PtrIterMenuitem iterator) {
 		while (iterator->hasNext()) {
 			auto &menuItem = iterator->next();
 			if (menuItem.getName() == name) {

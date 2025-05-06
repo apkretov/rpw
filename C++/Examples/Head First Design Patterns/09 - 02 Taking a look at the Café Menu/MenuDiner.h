@@ -42,7 +42,7 @@ public:
 		numberOfItems++;
 	}
 
-    std::shared_ptr<Iterator<MenuItem>> createIterator() override {
+    PtrIterMenuitem createIterator() override {
         return std::make_shared<DinerMenuIterator>(menuItems);
     }
 };

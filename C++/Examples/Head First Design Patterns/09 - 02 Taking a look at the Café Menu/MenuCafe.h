@@ -29,5 +29,5 @@ public:
 		menuItems[name] = menuItem;
 	}
 
-	std::shared_ptr<Iterator<MenuItem>> createIterator() override { return std::make_shared<CafeMenuIterator>(menuItems); }
+	PtrIterMenuitem createIterator() override { return std::make_shared<CafeMenuIterator>(menuItems); }
 };
