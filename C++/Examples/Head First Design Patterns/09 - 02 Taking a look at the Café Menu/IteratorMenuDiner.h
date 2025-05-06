@@ -8,7 +8,7 @@
 class DinerMenuIterator : public Iterator<MenuItem> {
 private:
 	const std::array<MenuItem, 6> &items;
-	int position = 0;
+	size_t position = 0;
 
 public:
 	DinerMenuIterator(const std::array<MenuItem, 6> &items) : items(items) {}

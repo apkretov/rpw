@@ -35,7 +35,7 @@ public class AlternatingDinerMenuIterator implements Iterator<MenuItem> {
 */
 class AlternatingDinerMenuIterator : public Iterator<MenuItem> {
 	const std::array<MenuItem, 6> &items;
-	int position;
+	size_t position = 0;
 public:
 	AlternatingDinerMenuIterator(const std::array<MenuItem, 6> &items) : items(items) {
 		// Get current time to determine odd/even day

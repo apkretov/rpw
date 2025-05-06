@@ -9,7 +9,7 @@
 class CafeMenuIterator : public Iterator<MenuItem> {
 private:
 	std::vector<MenuItem> items;
-	int position = 0;
+	size_t position = 0;
 
 public:
 	CafeMenuIterator(const std::unordered_map<std::string, MenuItem> &menuItems) {

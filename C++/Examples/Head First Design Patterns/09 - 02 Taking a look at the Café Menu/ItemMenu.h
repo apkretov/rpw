@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <string_view>
 
 /* Java @ https://github.com/bethrobson/Head-First-Design-Patterns/tree/master/src/headfirst/designpatterns/iterator/dinermergercafe
 public class MenuItem {
@@ -19,13 +20,14 @@ public class MenuItem {
 */
 class MenuItem {
 	using string = std::string;
+	using string_view = std::string_view;
 	string name;
 	string description;
-	bool vegetarian;
-	double price;
+	bool vegetarian = false;
+	double price = 0;
 public:
-	MenuItem() : name(""), description(""), vegetarian(false), price(0.0) {}
-	MenuItem(const string &name, const string &description, bool vegetarian, double price) : name(name), description(description), vegetarian(vegetarian), price(price) {}
+	MenuItem() = default;
+	MenuItem(string_view name, string_view description, bool vegetarian, double price) : name(name), description(description), vegetarian(vegetarian), price(price) {}
 	string getName() const { return name; }
 	string getDescription() const { return description; }
 	double getPrice() const { return price; }

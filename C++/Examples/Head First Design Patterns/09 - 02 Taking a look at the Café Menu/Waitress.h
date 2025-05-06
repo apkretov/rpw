@@ -72,6 +72,36 @@ class Waitress {
 	PtrMenue pancakeHouseMenu;
 	PtrMenue dinerMenu;
 	PtrMenue cafeMenu;
+
+	void printMenu(PtrIterMenuitem iterator) {
+		while (iterator->hasNext()) {
+			auto &menuItem = iterator->next();
+			std::cout << menuItem.getName() << ", ";
+			std::cout << menuItem.getPrice() << " -- ";
+			std::cout << menuItem.getDescription() << "\n";
+		}
+	}
+
+	void printVegetarianMenu(PtrIterMenuitem iterator) {
+		while (iterator->hasNext()) {
+			auto &menuItem = iterator->next();
+			if (menuItem.isVegetarian()) {
+				std::cout << menuItem.getName() << ", ";
+				std::cout << menuItem.getPrice() << " -- ";
+				std::cout << menuItem.getDescription() << "\n";
+			}
+		}
+	}
+
+	bool isVegetarian(const std::string &name, PtrIterMenuitem iterator) {
+		while (iterator->hasNext()) {
+			auto &menuItem = iterator->next();
+			if (menuItem.getName() == name) {
+				return menuItem.isVegetarian();
+			}
+		}
+		return false;
+	}
 public:
 	Waitress(PtrMenue pancakeHouseMenu, PtrMenue dinerMenu, PtrMenue cafeMenu) : pancakeHouseMenu(pancakeHouseMenu), dinerMenu(dinerMenu), cafeMenu(cafeMenu) {}
 
@@ -87,16 +117,7 @@ public:
 		std::cout << "\nDINNER\n";
 		printMenu(cafeIterator);
 	}
-private:
-	void printMenu(PtrIterMenuitem iterator) {
-		while (iterator->hasNext()) {
-			auto &menuItem = iterator->next();
-			std::cout << menuItem.getName() << ", ";
-			std::cout << menuItem.getPrice() << " -- ";
-			std::cout << menuItem.getDescription() << "\n";
-		}
-	}
-public:
+
 	void printVegetarianMenu() {
 		std::cout << "\nVEGETARIAN MENU\n---------------\n";
 		printVegetarianMenu(pancakeHouseMenu->createIterator());
@@ -116,27 +137,6 @@ public:
 		auto cafeIterator = cafeMenu->createIterator();
 		if (isVegetarian(name, cafeIterator)) {
 			return true;
-		}
-		return false;
-	}
-private:
-	void printVegetarianMenu(PtrIterMenuitem iterator) {
-		while (iterator->hasNext()) {
-			auto &menuItem = iterator->next();
-			if (menuItem.isVegetarian()) {
-				std::cout << menuItem.getName() << ", ";
-				std::cout << menuItem.getPrice() << " -- ";
-				std::cout << menuItem.getDescription() << "\n";
-			}
-		}
-	}
-
-	bool isVegetarian(const std::string &name, PtrIterMenuitem iterator) {
-		while (iterator->hasNext()) {
-			auto &menuItem = iterator->next();
-			if (menuItem.getName() == name) {
-				return menuItem.isVegetarian();
-			}
 		}
 		return false;
 	}
