@@ -1,6 +1,7 @@
 #pragma once
 
 #include <vector>
+#include <string_view>
 #include "IteratorMenuPancakeHouse.h"
 #include "Menu.h"
 
@@ -19,7 +20,8 @@ public class PancakeHouseMenu implements Menu {
 }
 */
 class PancakeHouseMenu : public Menu {
-	std::vector<MenuItem> menuItems;
+    using string_view = std::string_view;
+    std::vector<MenuItem> menuItems;
 public:
 	PancakeHouseMenu() {
 		addItem("K&B's Pancake Breakfast", "Pancakes with scrambled eggs and toast", true, 2.99);
@@ -28,10 +30,10 @@ public:
 		addItem("Waffles", "Waffles with your choice of blueberries or strawberries", true, 3.59);
 	}
 
-	void addItem(const std::string &name, const std::string &description, bool vegetarian, double price) {
-		MenuItem menuItem(name, description, vegetarian, price);
-		menuItems.push_back(menuItem);
-	}
+    void addItem(string_view name, string_view description, bool vegetarian, double price) {
+        MenuItem menuItem(name, description, vegetarian, price);
+        menuItems.push_back(menuItem);
+    }
 
     PtrIterMenuitem createIterator() override { return std::make_shared<PancakeHouseMenuIterator>(menuItems); }
 };

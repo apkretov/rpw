@@ -68,6 +68,7 @@ public class Waitress {
 }
 */
 class Waitress {
+	using string_view = std::string_view;
 	using PtrMenue = std::shared_ptr<Menu>;
 	PtrMenue pancakeHouseMenu;
 	PtrMenue dinerMenu;
@@ -93,7 +94,7 @@ class Waitress {
 		}
 	}
 
-	bool isVegetarian(const std::string &name, PtrIterMenuitem iterator) {
+	bool isVegetarian(string_view name, PtrIterMenuitem iterator) {
 		while (iterator->hasNext()) {
 			auto &menuItem = iterator->next();
 			if (menuItem.getName() == name) {
@@ -125,7 +126,7 @@ public:
 		printVegetarianMenu(cafeMenu->createIterator());
 	}
 
-	bool isItemVegetarian(const std::string &name) {
+	bool isItemVegetarian(string_view name) {
 		auto pancakeIterator = pancakeHouseMenu->createIterator();
 		if (isVegetarian(name, pancakeIterator)) {
 			return true;

@@ -1,6 +1,7 @@
 #pragma once
 
 #include <array>
+#include <string_view>
 #include "IteratorMenuDiner.h"
 #include "Menu.h"
 
@@ -21,9 +22,10 @@ public class DinerMenu implements Menu {
 }
 */
 class DinerMenu : public Menu {
-	static constexpr int MAX_ITEMS = 6;
-	int numberOfItems = 0;
-	std::array<MenuItem, MAX_ITEMS> menuItems;
+    using string_view = std::string_view;
+    static constexpr int MAX_ITEMS = 6;
+    int numberOfItems = 0;
+    std::array<MenuItem, MAX_ITEMS> menuItems;
 public:
 	DinerMenu() {
 		addItem("Vegetarian BLT", "(Fakin') Bacon with lettuce & tomato on whole wheat", true, 2.99);
@@ -32,7 +34,7 @@ public:
 		addItem("Hotdog", "A hot dog, with sauerkraut, relish, onions, topped with cheese", false, 3.05);
 	}
 
-	void addItem(const std::string &name, const std::string &description, bool vegetarian, double price) {
+	void addItem(string_view name, string_view description, bool vegetarian, double price) {
 		if (numberOfItems >= MAX_ITEMS) {
 			std::cerr << "Sorry, menu is full! Can't add item to menu\n";
 			return;

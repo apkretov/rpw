@@ -1,6 +1,7 @@
 #pragma once
 
 #include <unordered_map>
+#include <string_view>
 #include "IteratorMenuCafe.h"
 #include "Menu.h"
 
@@ -16,7 +17,8 @@ public class CafeMenu implements Menu {
 }
 */
 class CafeMenu : public Menu {
-	std::unordered_map<std::string, MenuItem> menuItems;
+    using string_view = std::string_view;
+    std::unordered_map<std::string, MenuItem> menuItems;
 public:
 	CafeMenu() {
 		addItem("Veggie Burger and Air Fries", "Veggie burger on a whole wheat bun, lettuce, tomato, and fries", true, 3.99);
@@ -24,9 +26,9 @@ public:
 		addItem("Burrito", "A large burrito, with whole pinto beans, salsa, guacamole", true, 4.29);
 	}
 
-	void addItem(const std::string &name, const std::string &description, bool vegetarian, double price) {
+	void addItem(string_view name, string_view description, bool vegetarian, double price) {
 		MenuItem menuItem(name, description, vegetarian, price);
-		menuItems[name] = menuItem;
+		menuItems[std::string(name)] = menuItem;
 	}
 
 	PtrIterMenuitem createIterator() override { return std::make_shared<CafeMenuIterator>(menuItems); }
