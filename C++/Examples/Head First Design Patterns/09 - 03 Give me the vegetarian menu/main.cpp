@@ -1,6 +1,7 @@
 #undef DEBUG
 
 #include <memory>
+#include "../../stdafx.h"
 //OFF #include "vld.h"
 #include "Menu.h"
 #include "MenuItem.h"
@@ -124,6 +125,8 @@ public class MenuTestDrive {
 }
 */
 int main() {
+	print_file_line();
+
 	auto pancakeHouseMenu = make_shared<Menu>("PANCAKE HOUSE MENU", "Breakfast");
 	auto dinerMenu = make_shared<Menu>("DINER MENU", "Lunch");
 	auto cafeMenu = make_shared<Menu>("CAFE MENU", "Dinner");

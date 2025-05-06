@@ -6,10 +6,11 @@
 
 #pragma region Trae
 class PancakeHouseMenuIterator : public Iterator<MenuItem> {
-	const std::vector<MenuItem> &items;
+	using VecMenuItem = std::vector<MenuItem>;
+	const VecMenuItem &items;
 	size_t position = 0;
 public:
-	PancakeHouseMenuIterator(const std::vector<MenuItem> &items) : items(items) {}
+	PancakeHouseMenuIterator(const VecMenuItem &items) : items(items) {}
 	bool hasNext() override { return position < items.size(); }
 	MenuItem &next() override { return const_cast<MenuItem &>(items[position++]); }
 };
