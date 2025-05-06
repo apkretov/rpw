@@ -99,7 +99,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "12 - 05 Sharpen your pencil
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "12 - 06 Let’s create a flock of ducks", "12 - 06 Let’s create a flock of ducks\12 - 06 Let’s create a flock of ducks.vcxproj", "{ECC53A42-1754-423F-AF5C-66E28365BB8E}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "09 - 02 Breakfast, lunch AND dinner", "09 - 02 Breakfast, lunch AND dinner\09 - 02 Breakfast, lunch AND dinner.vcxproj", "{5941B68B-8DEE-405B-900B-B11E5E7E2FDA}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "09 - 02 Taking a look at the Café Menu", "09 - 02 Taking a look at the Café Menu\09 - 02 Taking a look at the Café Menu.vcxproj", "{17A885F2-49C9-42FB-998B-30EF09C488EA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -493,14 +493,14 @@ Global
 		{ECC53A42-1754-423F-AF5C-66E28365BB8E}.Release|x64.Build.0 = Release|x64
 		{ECC53A42-1754-423F-AF5C-66E28365BB8E}.Release|x86.ActiveCfg = Release|Win32
 		{ECC53A42-1754-423F-AF5C-66E28365BB8E}.Release|x86.Build.0 = Release|Win32
-		{5941B68B-8DEE-405B-900B-B11E5E7E2FDA}.Debug|x64.ActiveCfg = Debug|x64
-		{5941B68B-8DEE-405B-900B-B11E5E7E2FDA}.Debug|x64.Build.0 = Debug|x64
-		{5941B68B-8DEE-405B-900B-B11E5E7E2FDA}.Debug|x86.ActiveCfg = Debug|Win32
-		{5941B68B-8DEE-405B-900B-B11E5E7E2FDA}.Debug|x86.Build.0 = Debug|Win32
-		{5941B68B-8DEE-405B-900B-B11E5E7E2FDA}.Release|x64.ActiveCfg = Release|x64
-		{5941B68B-8DEE-405B-900B-B11E5E7E2FDA}.Release|x64.Build.0 = Release|x64
-		{5941B68B-8DEE-405B-900B-B11E5E7E2FDA}.Release|x86.ActiveCfg = Release|Win32
-		{5941B68B-8DEE-405B-900B-B11E5E7E2FDA}.Release|x86.Build.0 = Release|Win32
+		{17A885F2-49C9-42FB-998B-30EF09C488EA}.Debug|x64.ActiveCfg = Debug|x64
+		{17A885F2-49C9-42FB-998B-30EF09C488EA}.Debug|x64.Build.0 = Debug|x64
+		{17A885F2-49C9-42FB-998B-30EF09C488EA}.Debug|x86.ActiveCfg = Debug|Win32
+		{17A885F2-49C9-42FB-998B-30EF09C488EA}.Debug|x86.Build.0 = Debug|Win32
+		{17A885F2-49C9-42FB-998B-30EF09C488EA}.Release|x64.ActiveCfg = Release|x64
+		{17A885F2-49C9-42FB-998B-30EF09C488EA}.Release|x64.Build.0 = Release|x64
+		{17A885F2-49C9-42FB-998B-30EF09C488EA}.Release|x86.ActiveCfg = Release|Win32
+		{17A885F2-49C9-42FB-998B-30EF09C488EA}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
