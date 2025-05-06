@@ -71,7 +71,6 @@ class Waitress {
 	std::shared_ptr<Menu> pancakeHouseMenu;
 	std::shared_ptr<Menu> dinerMenu;
 	std::shared_ptr<Menu> cafeMenu;
-
 public:
 	Waitress(std::shared_ptr<Menu> pancakeHouseMenu,
 		std::shared_ptr<Menu> dinerMenu,
@@ -93,7 +92,6 @@ public:
 		std::cout << "\nDINNER\n";
 		printMenu(cafeIterator);
 	}
-
 private:
 	void printMenu(std::shared_ptr<Iterator<MenuItem>> iterator) {
 		while (iterator->hasNext()) {
@@ -103,7 +101,6 @@ private:
 			std::cout << menuItem.getDescription() << "\n";
 		}
 	}
-
 public:
 	void printVegetarianMenu() {
 		std::cout << "\nVEGETARIAN MENU\n---------------\n";
@@ -127,7 +124,6 @@ public:
 		}
 		return false;
 	}
-
 private:
 	void printVegetarianMenu(std::shared_ptr<Iterator<MenuItem>> iterator) {
 		while (iterator->hasNext()) {

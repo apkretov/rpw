@@ -33,7 +33,5 @@ public:
 		menuItems.push_back(menuItem);
 	}
 
-    std::shared_ptr<Iterator<MenuItem>> createIterator() override {
-        return std::make_shared<PancakeHouseMenuIterator>(menuItems);
-    }
+    std::shared_ptr<Iterator<MenuItem>> createIterator() override { return std::make_shared<PancakeHouseMenuIterator>(menuItems); }
 };

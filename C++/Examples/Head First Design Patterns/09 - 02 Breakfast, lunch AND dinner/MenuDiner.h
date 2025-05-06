@@ -21,11 +21,9 @@ public class DinerMenu implements Menu {
 }
 */
 class DinerMenu : public Menu {
-private:
-	static const int MAX_ITEMS = 6;
+	static constexpr int MAX_ITEMS = 6;
 	int numberOfItems = 0;
 	std::array<MenuItem, MAX_ITEMS> menuItems;
-
 public:
 	DinerMenu() {
 		addItem("Vegetarian BLT", "(Fakin') Bacon with lettuce & tomato on whole wheat", true, 2.99);

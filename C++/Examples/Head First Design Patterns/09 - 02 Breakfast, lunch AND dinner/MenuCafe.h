@@ -16,9 +16,7 @@ public class CafeMenu implements Menu {
 }
 */
 class CafeMenu : public Menu {
-private:
 	std::unordered_map<std::string, MenuItem> menuItems;
-
 public:
 	CafeMenu() {
 		addItem("Veggie Burger and Air Fries", "Veggie burger on a whole wheat bun, lettuce, tomato, and fries", true, 3.99);
@@ -31,7 +29,5 @@ public:
 		menuItems[name] = menuItem;
 	}
 
-	std::shared_ptr<Iterator<MenuItem>> createIterator() override {
-		return std::make_shared<CafeMenuIterator>(menuItems);
-	}
+	std::shared_ptr<Iterator<MenuItem>> createIterator() override { return std::make_shared<CafeMenuIterator>(menuItems); }
 };
