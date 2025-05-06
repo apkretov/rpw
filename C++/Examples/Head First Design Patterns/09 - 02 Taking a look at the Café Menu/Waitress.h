@@ -68,17 +68,12 @@ public class Waitress {
 }
 */
 class Waitress {
-	std::shared_ptr<Menu> pancakeHouseMenu;
-	std::shared_ptr<Menu> dinerMenu;
-	std::shared_ptr<Menu> cafeMenu;
+	using PtrMenue = std::shared_ptr<Menu>;
+	PtrMenue pancakeHouseMenu;
+	PtrMenue dinerMenu;
+	PtrMenue cafeMenu;
 public:
-	Waitress(std::shared_ptr<Menu> pancakeHouseMenu,
-		std::shared_ptr<Menu> dinerMenu,
-		std::shared_ptr<Menu> cafeMenu)
-		: pancakeHouseMenu(pancakeHouseMenu)
-		, dinerMenu(dinerMenu)
-		, cafeMenu(cafeMenu) {
-	}
+	Waitress(PtrMenue pancakeHouseMenu, PtrMenue dinerMenu, PtrMenue cafeMenu) : pancakeHouseMenu(pancakeHouseMenu), dinerMenu(dinerMenu), cafeMenu(cafeMenu) {}
 
 	void printMenu() {
 		auto pancakeIterator = pancakeHouseMenu->createIterator();
