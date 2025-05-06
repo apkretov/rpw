@@ -1,5 +1,7 @@
 #include <iostream>
 #include <memory>
+#include "../../stdafx.h"
+//OFF #include "vld.h"
 #include "MenuCafe.h"
 #include "MenuDiner.h"
 #include "MenuPancakeHouse.h"
@@ -39,6 +41,8 @@ public class MenuTestDrive {
 }
 */
 int main() {
+	print_file_line();
+
 	auto pancakeHouseMenu = make_shared<PancakeHouseMenu>();
 	auto dinerMenu = make_shared<DinerMenu>();
 	auto cafeMenu = make_shared<CafeMenu>();
@@ -58,9 +62,9 @@ int main() {
 	cout << "\nCustomer asks, are the Waffles vegetarian?\n";
 	cout << "Waitress says: ";
 	if (waitress.isItemVegetarian("Waffles"))
-		cout << "Yes\n";
+		cout << "Yes\n\n";
 	else
-		cout << "No\n";
+		cout << "No\n\n";
 
 	return 0;
 }
