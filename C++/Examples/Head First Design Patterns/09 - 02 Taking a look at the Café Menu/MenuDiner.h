@@ -23,7 +23,7 @@ public class DinerMenu implements Menu {
 */
 class DinerMenu : public Menu {
     using string_view = std::string_view;
-    static constexpr int MAX_ITEMS = 6;
+    static constexpr int MAX_ITEMS = DinerMenuIterator::MAX_ITEMS;
     int numberOfItems = 0;
     std::array<MenuItem, MAX_ITEMS> menuItems;
 public:
