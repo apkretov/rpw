@@ -22,8 +22,9 @@ private:
 	std::string description;
 	bool vegetarian;
 	double price;
-
 public:
+	MenuItem() : name(""), description(""), vegetarian(false), price(0.0) {}
+
 	MenuItem(const std::string &name, const std::string &description, bool vegetarian, double price)
 		: name(name), description(description), vegetarian(vegetarian), price(price) {
 	}
