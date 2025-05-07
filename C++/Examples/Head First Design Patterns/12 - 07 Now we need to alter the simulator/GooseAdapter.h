@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Quackable.h"
-#include "Goose.h"
 #include <string>
+#include "Goose.h"
+#include "Quackable.h"
 
 #pragma region We need a goose adapter
 /* Java @ https://github.com/bethrobson/Head-First-Design-Patterns/tree/master/src/headfirst/designpatterns/combining/adapter

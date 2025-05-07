@@ -1,8 +1,10 @@
+#include <iostream>
 #include <memory>
 #include "../../stdafx.h"
 #include "FactoryCountingDuck.h"
 #include "Flock.h"
 #include "GooseAdapter.h"
+using std::cout;
 using std::make_unique;
 
 #pragma region Now we need to alter the simulator

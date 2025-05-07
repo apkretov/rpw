@@ -1,8 +1,7 @@
 #pragma once
 
-#include "Quackable.h"
 #include <iostream>
-using std::cout;
+#include "Quackable.h"
 
 #pragma region We need a goose adapter
 /* Java @ https://github.com/bethrobson/Head-First-Design-Patterns/tree/master/src/headfirst/designpatterns/combining/adapter
@@ -16,6 +15,6 @@ public class RubberDuck implements Quackable {
 */
 class RubberDuck : public Quackable {
 public:
-	void quack() override { cout << "Squeak\n"; }
+	void quack() override { std::cout << "Squeak\n"; }
 };
 #pragma endregion //We need a goose adapter

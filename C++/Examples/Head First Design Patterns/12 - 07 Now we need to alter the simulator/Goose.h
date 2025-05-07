@@ -1,7 +1,6 @@
 #pragma once
 
 #include <iostream>
-using std::cout;
 
 #pragma region We need a goose adapter
 /* Java @ https://github.com/bethrobson/Head-First-Design-Patterns/tree/master/src/headfirst/designpatterns/combining/adapter
@@ -15,6 +14,6 @@ public class Goose {
 */
 class Goose {
 public:
-	void honk() const { cout << "Honk\n"; }
+	void honk() const { std::cout << "Honk\n"; }
 };
 #pragma endregion //We need a goose adapter
