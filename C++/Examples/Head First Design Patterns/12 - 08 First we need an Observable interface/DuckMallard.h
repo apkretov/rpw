@@ -1,20 +1,44 @@
 #pragma once
 
-#include <iostream>
+#include <memory>
+#include "Observable.h"
+#include "ObservableQuack.h"
 #include "Quackable.h"
 
-#pragma region We need a goose adapter
-/* Java @ https://github.com/bethrobson/Head-First-Design-Patterns/tree/master/src/headfirst/designpatterns/combining/adapter
-package headfirst.designpatterns.combining.adapter;
+#pragma region Integrate the helper Observable with the Quackable classes
+/* Java
+public class MallardDuck implements Quackable { // Each Quackable has an Observable instance variable
+	Observable observable;
 
-public class MallardDuck implements Quackable {
+	public MallardDuck() { // In the constructor, we create an Observable and pass it a reference to the MallardDuck object
+		observable = new Observable(this);
+	}
+
 	public void quack() {
 		System.out.println("Quack");
+		notifyObservers(); // When we quack, we need to let the observers know about it
+	}
+
+	public void registerObserver(Observer observer) {
+		observable.registerObserver(observer);
+	}
+
+	public void notifyObservers() { // Here's our two QuackObservable methods. Notice that we just delegate to the helper
+		observable.notifyObservers();
 	}
 }
 */
-class MallardDuck : public Quackable {
+class MallardDuck : public Quackable { // Each Quackable has an Observable instance variable
+	std::shared_ptr<Observable> observable;
 public:
-	void quack() override { std::cout << "Quack\n"; }
+	MallardDuck() : observable(std::make_shared<Observable>(shared_from_this())) {} // In the constructor, we create an Observable and pass it a reference to the MallardDuck object
+
+	void quack() override {
+		cout << "Quack\n";
+		notifyObservers(); // When we quack, we need to let the observers know about it
+	}
+
+	void registerObserver(PtrObserver observer) override { observable->registerObserver(observer); }
+	void notifyObservers() override { observable->notifyObservers(); } // Here's our two QuackObservable methods. Notice that we just delegate to the helper
 };
-#pragma endregion //We need a goose adapter
+#pragma endregion //Integrate the helper Observable with the Quackable classes
