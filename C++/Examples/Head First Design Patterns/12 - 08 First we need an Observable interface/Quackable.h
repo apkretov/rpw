@@ -15,5 +15,5 @@ public:
 	virtual void quack() = 0;
 };
 
-using PtrQuackable = std::unique_ptr<Quackable>;
+using PtrQuackable = std::unique_ptr<Quackable>; //TO DO: This may become shared_ptr.
 #pragma endregion //First we need an Observable interface
