@@ -1,5 +1,6 @@
 #pragma once
 
+#include <iostream>
 #include <memory>
 #include "Observable.h"
 #include "ObservableQuack.h"
@@ -34,7 +35,7 @@ public:
 	MallardDuck() : observable(*this) {} // In the constructor, we create an Observable and pass it a reference to the MallardDuck object
 
 	void quack() override {
-		cout << "Quack\n";
+		std::cout << "Quack\n";
 		notifyObservers(); // When we quack, we need to let the observers know about it
 	}
 
