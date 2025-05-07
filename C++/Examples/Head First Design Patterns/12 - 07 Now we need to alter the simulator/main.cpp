@@ -4,34 +4,7 @@
 #include "GooseAdapter.h"
 using std::make_unique;
 
-#pragma region Lets set up the simulator to use the factory //Let's set up the simulator to use the factory
-/* Java 
-public class DuckSimulator {
-	public static void main(String[] args) {
-		DuckSimulator simulator = new DuckSimulator();
-		AbstractDuckFactory duckFactory = new CountingDuckFactory();
-		simulator.simulate(duckFactory);
-	}
-	void simulate(AbstractDuckFactory duckFactory) {
-		Quackable mallardDuck = duckFactory.createMallardDuck();
-		Quackable redheadDuck = duckFactory.createRedheadDuck();
-		Quackable duckCall = duckFactory.createDuckCall();
-		Quackable rubberDuck = duckFactory.createRubberDuck();
-		Quackable gooseDuck = new GooseAdapter(new Goose());
-		System.out.println("\nDuck Simulator : With Abstract Factory");
-		simulate(mallardDuck);
-		simulate(redheadDuck);
-		simulate(duckCall);
-		simulate(rubberDuck);
-		simulate(gooseDuck);
-		System.out.println("The ducks quacked " + QuackCounter.getQuacks() + " times");
-	}
-	void simulate(Quackable duck) {
-		duck.quack();
-	}
-}
-*/
-
+#pragma region Now we need to alter the simulator
 class DuckSimulator {
 public:
 	void simulate(Quackable &duck) { duck.quack(); }
@@ -40,8 +13,8 @@ public:
 		auto mallardDuck = duckFactory.createMallardDuck();
 		auto redheadDuck = duckFactory.createRedheadDuck();
 		auto duckCall	 = duckFactory.createDuckCall();
-		auto rubberDuck	 = duckFactory.createRubberDuck();
-		auto gooseDuck   = make_unique<GooseAdapter>(Goose{});
+		auto rubberDuck  = duckFactory.createRubberDuck();
+		auto gooseDuck	 = make_unique<GooseAdapter>(Goose{});
 
 		cout << "\nDuck Simulator: With Abstract Factory\n";
 
@@ -65,4 +38,4 @@ int main() {
 	cout << '\n';
 	return 0;
 }
-#pragma endregion //Lets set up the simulator to use the factory
+#pragma endregion //Now we need to alter the simulator
