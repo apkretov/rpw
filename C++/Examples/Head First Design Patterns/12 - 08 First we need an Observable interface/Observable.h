@@ -29,9 +29,9 @@ public class Observable implements QuackObservable { // Observable must implemen
 */
 class Observable : public QuackObservable { // Observable must implement QuackObservable because these are the same method calls that are going to be delegated to it
     std::vector<PtrObserver> observers; // Observable implements all the functionality a Quackable needs to be an observable. We just need to plug it into a class and have that class delegate to Observable
-    PtrQuackobservable duck; //TO DO: This might be a reference. 
+    QuackObservable &duck;
 public:
-    explicit Observable(PtrQuackobservable duck) : duck(duck) {} // In the constructor we get passed the QuackObservable that is using this object to manage its observable behavior
+    explicit Observable(QuackObservable &duck) : duck(duck) {} // In the constructor we get passed the QuackObservable that is using this object to manage its observable behavior
     void registerObserver(PtrObserver observer) override { observers.push_back(observer); } // Here's the code for registering an observer
 
     void notifyObservers() override { // And the code for doing the notifications

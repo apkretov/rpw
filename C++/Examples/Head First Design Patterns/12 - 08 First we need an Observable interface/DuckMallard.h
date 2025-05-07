@@ -29,16 +29,16 @@ public class MallardDuck implements Quackable { // Each Quackable has an Observa
 }
 */
 class MallardDuck : public Quackable { // Each Quackable has an Observable instance variable
-	std::shared_ptr<Observable> observable; //TO DO: This might be a reference.
+	Observable observable;
 public:
-	MallardDuck() : observable(std::make_shared<Observable>(shared_from_this())) {} // In the constructor, we create an Observable and pass it a reference to the MallardDuck object
+	MallardDuck() : observable(*this) {} // In the constructor, we create an Observable and pass it a reference to the MallardDuck object
 
 	void quack() override {
 		cout << "Quack\n";
 		notifyObservers(); // When we quack, we need to let the observers know about it
 	}
 
-	void registerObserver(PtrObserver observer) override { observable->registerObserver(observer); }
-	void notifyObservers() override { observable->notifyObservers(); } // Here's our two QuackObservable methods. Notice that we just delegate to the helper
+	void registerObserver(PtrObserver observer) override { observable.registerObserver(observer); }
+	void notifyObservers() override { observable.notifyObservers(); } // Here's our two QuackObservable methods. Notice that we just delegate to the helper
 };
 #pragma endregion //Integrate the helper Observable with the Quackable classes
