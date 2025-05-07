@@ -1,20 +1,19 @@
 #pragma once
 
 #include <memory>
+#include "ObservableQuack.h"
 
-#pragma region We need a goose adapter
-/* Java @ https://github.com/bethrobson/Head-First-Design-Patterns/tree/master/src/headfirst/designpatterns/combining/adapter
-package headfirst.designpatterns.combining.adapter;
-
-public interface Quackable {
+#pragma region First we need an Observable interface
+/* Java 
+public interface Quackable extends QuackObservable{
 	public void quack();
 }
 */
-class Quackable {
+class Quackable : public QuackObservable {
 public:
 	virtual ~Quackable() = default;
 	virtual void quack() = 0;
 };
 
 using PtrQuackable = std::unique_ptr<Quackable>;
-#pragma endregion //We need a goose adapter
+#pragma endregion //First we need an Observable interface

@@ -141,6 +141,7 @@
     <ClInclude Include="GooseAdapter.h" />
     <ClInclude Include="Quackable.h" />
     <ClInclude Include="QuackCounter.h" />
+    <ClInclude Include="ObservableQuack.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
