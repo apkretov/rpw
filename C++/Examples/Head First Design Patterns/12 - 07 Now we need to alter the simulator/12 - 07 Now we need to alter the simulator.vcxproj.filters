@@ -36,9 +36,6 @@
     <ClInclude Include="FactoryCountingDuck.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="FactoryDuck.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Flock.h">
       <Filter>Header Files</Filter>
     </ClInclude>
