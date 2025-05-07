@@ -1,3 +1,5 @@
+#undef OFF
+
 #include <iostream>
 #include <memory>
 #include "../../stdafx.h"
