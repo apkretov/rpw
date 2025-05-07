@@ -19,10 +19,10 @@ public class QuackCounter implements Quackable {
 }
 */
 class QuackCounter : public Quackable {
-	QuackablePtr duck;
+	PtrQuackable duck;
 	static int numberOfQuacks;
 public:
-	explicit QuackCounter(QuackablePtr duck) : duck(std::move(duck)) {}
+	explicit QuackCounter(PtrQuackable duck) : duck(std::move(duck)) {}
 
 	void quack() override {
 		duck->quack();

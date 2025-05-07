@@ -32,9 +32,9 @@ public class CountingDuckFactory extends AbstractDuckFactory {
 #pragma region We need a factory to produce ducks
 class CountingDuckFactory : public AbstractDuckFactory {
 public:
-	QuackablePtr createMallardDuck() override { return std::make_unique<QuackCounter>(std::make_unique<MallardDuck>()); }
-	QuackablePtr createRedheadDuck() override { return std::make_unique<QuackCounter>(std::make_unique<RedheadDuck>()); }
-	QuackablePtr createDuckCall()	 override { return std::make_unique<QuackCounter>(std::make_unique<DuckCall>()); }
-	QuackablePtr createRubberDuck()  override { return std::make_unique<QuackCounter>(std::make_unique<RubberDuck>()); }
+	PtrQuackable createMallardDuck() override { return std::make_unique<QuackCounter>(std::make_unique<MallardDuck>()); }
+	PtrQuackable createRedheadDuck() override { return std::make_unique<QuackCounter>(std::make_unique<RedheadDuck>()); }
+	PtrQuackable createDuckCall()	 override { return std::make_unique<QuackCounter>(std::make_unique<DuckCall>()); }
+	PtrQuackable createRubberDuck()  override { return std::make_unique<QuackCounter>(std::make_unique<RubberDuck>()); }
 };
 #pragma endregion //We need a factory to produce ducks

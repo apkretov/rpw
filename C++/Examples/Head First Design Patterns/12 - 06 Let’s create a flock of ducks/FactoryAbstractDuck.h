@@ -17,9 +17,9 @@ public abstract class AbstractDuckFactory {
 class AbstractDuckFactory {
 public:
 	virtual ~AbstractDuckFactory() = default;
-	virtual QuackablePtr createMallardDuck() = 0;
-	virtual QuackablePtr createRedheadDuck() = 0;
-	virtual QuackablePtr createDuckCall() = 0;
-	virtual QuackablePtr createRubberDuck() = 0;
+	virtual PtrQuackable createMallardDuck() = 0;
+	virtual PtrQuackable createRedheadDuck() = 0;
+	virtual PtrQuackable createDuckCall() = 0;
+	virtual PtrQuackable createRubberDuck() = 0;
 };
 #pragma endregion //We need a factory to produce ducks
