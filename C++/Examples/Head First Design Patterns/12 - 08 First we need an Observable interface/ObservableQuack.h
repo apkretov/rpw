@@ -1,9 +1,7 @@
 #pragma once
 
 #include <memory>
-
-class Observer; //TO DO: Define the Observer class and delete this.
-using PtrObserver = std::shared_ptr<Observer>;
+#include "Observer.h"
 
 #pragma region First we need an Observable interface
 /* Java
