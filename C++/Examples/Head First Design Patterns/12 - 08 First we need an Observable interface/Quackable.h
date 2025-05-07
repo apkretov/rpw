@@ -5,11 +5,11 @@
 
 #pragma region First we need an Observable interface
 /* Java 
-public interface Quackable extends QuackObservable{
+public interface Quackable extends QuackObservable{ // So, we extend the Quackable interface with QuackObserver.
 	public void quack();
 }
 */
-class Quackable : public QuackObservable {
+class Quackable : public QuackObservable { // So, we extend the Quackable interface with QuackObserver.
 public:
 	virtual ~Quackable() = default;
 	virtual void quack() = 0;
