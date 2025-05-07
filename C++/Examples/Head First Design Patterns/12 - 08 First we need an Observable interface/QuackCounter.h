@@ -3,21 +3,7 @@
 #include <utility>
 #include "Quackable.h"
 
-#pragma region Were going to make those Quackologists happy and give them some quack counts //We're going to make those Quackologists happy and give them some quack counts.
-/* Java
-public class QuackCounter implements Quackable {
-	Quackable duck;
-	static int numberOfQuacks;
-	public QuackCounter(Quackable duck) { this.duck = duck; }
-
-	public void quack() {
-		duck.quack();
-		numberOfQuacks++;
-	}
-
-	public static int getQuacks() { return numberOfQuacks; }
-}
-*/
+#pragma region Sharpen your pencil
 class QuackCounter : public Quackable {
 	PtrQuackable duck;
 	static int numberOfQuacks;
@@ -33,4 +19,4 @@ public:
 };
 
 int QuackCounter::numberOfQuacks = 0;
-#pragma endregion //Were going to make those Quackologists happy and give them some quack counts
+#pragma endregion //Sharpen your pencil
