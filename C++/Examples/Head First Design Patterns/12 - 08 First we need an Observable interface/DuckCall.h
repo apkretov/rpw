@@ -1,6 +1,7 @@
 #pragma once
 
 #include <iostream>
+#include "Observable.h"
 #include "Quackable.h"
 
 #pragma region Integrate the helper Observable with the Quackable classes
