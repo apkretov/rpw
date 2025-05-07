@@ -29,7 +29,7 @@ public class MallardDuck implements Quackable { // Each Quackable has an Observa
 }
 */
 class MallardDuck : public Quackable { // Each Quackable has an Observable instance variable
-	std::shared_ptr<Observable> observable;
+	std::shared_ptr<Observable> observable; //TO DO: This might be a reference.
 public:
 	MallardDuck() : observable(std::make_shared<Observable>(shared_from_this())) {} // In the constructor, we create an Observable and pass it a reference to the MallardDuck object
 
