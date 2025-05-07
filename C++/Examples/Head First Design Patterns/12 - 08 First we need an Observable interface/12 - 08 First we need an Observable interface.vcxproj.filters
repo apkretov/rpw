@@ -62,5 +62,8 @@
     <ClInclude Include="QuackCounter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Observable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
