@@ -101,6 +101,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "12 - 06 Let’s create a fl
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "09 - 02 Taking a look at the Café Menu", "09 - 02 Taking a look at the Café Menu\09 - 02 Taking a look at the Café Menu.vcxproj", "{17A885F2-49C9-42FB-998B-30EF09C488EA}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "12 - 07 Now we need to alter the simulator", "12 - 07 Now we need to alter the simulator\12 - 07 Now we need to alter the simulator.vcxproj", "{908C5881-77B8-448C-BA7E-6CAAB958B638}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -501,6 +503,14 @@ Global
 		{17A885F2-49C9-42FB-998B-30EF09C488EA}.Release|x64.Build.0 = Release|x64
 		{17A885F2-49C9-42FB-998B-30EF09C488EA}.Release|x86.ActiveCfg = Release|Win32
 		{17A885F2-49C9-42FB-998B-30EF09C488EA}.Release|x86.Build.0 = Release|Win32
+		{908C5881-77B8-448C-BA7E-6CAAB958B638}.Debug|x64.ActiveCfg = Debug|x64
+		{908C5881-77B8-448C-BA7E-6CAAB958B638}.Debug|x64.Build.0 = Debug|x64
+		{908C5881-77B8-448C-BA7E-6CAAB958B638}.Debug|x86.ActiveCfg = Debug|Win32
+		{908C5881-77B8-448C-BA7E-6CAAB958B638}.Debug|x86.Build.0 = Debug|Win32
+		{908C5881-77B8-448C-BA7E-6CAAB958B638}.Release|x64.ActiveCfg = Release|x64
+		{908C5881-77B8-448C-BA7E-6CAAB958B638}.Release|x64.Build.0 = Release|x64
+		{908C5881-77B8-448C-BA7E-6CAAB958B638}.Release|x86.ActiveCfg = Release|Win32
+		{908C5881-77B8-448C-BA7E-6CAAB958B638}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
