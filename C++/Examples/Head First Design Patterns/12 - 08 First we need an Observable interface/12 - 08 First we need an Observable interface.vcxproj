@@ -143,6 +143,7 @@
     <ClInclude Include="Quackable.h" />
     <ClInclude Include="QuackCounter.h" />
     <ClInclude Include="ObservableQuack.h" />
+    <ClInclude Include="Quackologist.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
