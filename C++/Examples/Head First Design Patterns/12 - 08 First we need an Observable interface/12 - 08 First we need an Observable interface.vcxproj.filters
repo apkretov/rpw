@@ -68,5 +68,8 @@
     <ClInclude Include="Quackologist.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="FactoryDuck.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
