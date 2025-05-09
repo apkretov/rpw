@@ -17,7 +17,14 @@ public:
 			quacker->quack();
 	}
 
-	void registerObserver(PtrObserver observer) override { observable.registerObserver(observer); }
-	void notifyObservers() override { observable.notifyObservers(); }
+	void registerObserver(PtrObserver observer) override { 
+		for (auto &quacker : quackers) 
+			quacker->registerObserver(observer);
+	}
+
+	void notifyObservers() override { 
+		for (const auto &quacker : quackers)
+			quacker->notifyObservers(); 
+	}
 };
 #pragma endregion //Integrate the helper Observable with the Quackable classes
