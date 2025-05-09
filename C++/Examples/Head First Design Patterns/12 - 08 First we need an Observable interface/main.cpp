@@ -1,4 +1,4 @@
-#define OFF
+#undef OFF
 
 #include <iostream>
 #include <memory>

@@ -8,6 +8,9 @@ public interface Observer { // The Observer interface just	has one method, updat
 	public void update(QuackObservable duck);
 }
 */
+
+class QuackObservable; // Forward declaration.
+
 class Observer { // The Observer interface just	has one method, update(), which is passed the QuackObservable that is quacking.
 public:
 	virtual ~Observer() = default;
