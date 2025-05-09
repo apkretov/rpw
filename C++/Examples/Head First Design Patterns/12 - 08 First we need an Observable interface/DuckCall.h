@@ -16,6 +16,6 @@ public:
 	}
 
 	void registerObserver(PtrObserver observer) override { observable.registerObserver(observer); }
-	void notifyObservers() override { observable.notifyObservers(); }
+	void notifyObservers() const override { observable.notifyObservers(); }
 };
 #pragma endregion //Integrate the helper Observable with the Quackable classes

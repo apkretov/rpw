@@ -34,7 +34,7 @@ public:
     explicit Observable(QuackObservable &duck) : duck(duck) {} // In the constructor we get passed the QuackObservable that is using this object to manage its observable behavior
     void registerObserver(PtrObserver observer) override { observers.push_back(observer); } // Here's the code for registering an observer
 
-    void notifyObservers() override { // And the code for doing the notifications
+    void notifyObservers() const override { // And the code for doing the notifications
 		for (const auto &observer : observers)
 #ifdef OFF
 			observer->update(duck);

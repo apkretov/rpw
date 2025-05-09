@@ -14,7 +14,7 @@ class QuackObservable { // QuackObservable is the interface that Quackables shou
 public:
     virtual ~QuackObservable() = default;
     virtual void registerObserver(PtrObserver observer) = 0; // It has a method for registering Observers. Any object implementing the Observer interface can listen to quacks
-    virtual void notifyObservers() = 0; // It also has a method for notifying the observers
+    virtual void notifyObservers() const = 0; // It also has a method for notifying the observers
 };
 
 using PtrQuackobservable = std::shared_ptr<QuackObservable>;

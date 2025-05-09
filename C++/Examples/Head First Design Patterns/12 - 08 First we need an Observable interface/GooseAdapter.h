@@ -13,6 +13,6 @@ public:
 	void quack() override { goose.honk(); }
 	std::string toString() const { return "Goose pretending to be a Duck"; }
 	void registerObserver(PtrObserver observer) override { observable.registerObserver(observer); }
-	void notifyObservers() override { observable.notifyObservers(); }
+	void notifyObservers() const override { observable.notifyObservers(); }
 };
 #pragma endregion //Integrate the helper Observable with the Quackable classes

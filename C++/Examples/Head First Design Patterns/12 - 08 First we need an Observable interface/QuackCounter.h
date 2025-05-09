@@ -17,7 +17,7 @@ public:
 
 	static int getQuacks() { return numberOfQuacks; }
 	void registerObserver(PtrObserver observer) override { duck->registerObserver(observer); }
-	void notifyObservers() override { duck->notifyObservers(); }
+	void notifyObservers() const override { duck->notifyObservers(); }
 };
 
 int QuackCounter::numberOfQuacks = 0;

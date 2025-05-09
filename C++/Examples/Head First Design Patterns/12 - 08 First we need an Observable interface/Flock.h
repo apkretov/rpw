@@ -4,7 +4,7 @@
 #include <vector>
 #include "Quackable.h"
 
-#pragma region Integrate the helper Observable with the Quackable classes
+#pragma region Sharpen your pencil
 class Flock : public Quackable { // Remember, the composite needs to implement the same interface as the leaf elements. Our leaf elements are Quackables.
 	std::vector<PtrQuackable> quackers; // We're using an ArrayList inside each Flock to hold the Quackables that belong to the Flock.
 	Observable observable;
@@ -22,9 +22,9 @@ public:
 			quacker->registerObserver(observer);
 	}
 
-	void notifyObservers() override { 
+	void notifyObservers() const override { 
 		for (const auto &quacker : quackers)
 			quacker->notifyObservers(); 
 	}
 };
-#pragma endregion //Integrate the helper Observable with the Quackable classes
+#pragma endregion //Sharpen your pencil
