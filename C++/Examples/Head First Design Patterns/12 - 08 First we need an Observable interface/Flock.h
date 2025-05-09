@@ -5,26 +5,23 @@
 #include "Quackable.h"
 
 #pragma region Sharpen your pencil
-class Flock : public Quackable { // Remember, the composite needs to implement the same interface as the leaf elements. Our leaf elements are Quackables.
-	std::vector<PtrQuackable> quackers; // We're using an ArrayList inside each Flock to hold the Quackables that belong to the Flock.
+class Flock : public Quackable { // Flock is a Quackable, so now it’s a QuackObservable too.
+	std::vector<PtrQuackable> quackers; // Here’s the Quackables that are in the Flock.
 	Observable observable;
 public:
 	Flock() : observable(*this) {}
-	void add(PtrQuackable quacker) { quackers.push_back(std::move(quacker)); } // The add() method adds a Quackable to the Flock.
+	void add(PtrQuackable quacker) { quackers.push_back(std::move(quacker)); }          
 
-	void quack() override { // Now for the quack() method - after all, the Flock is a Quackable too. The quack() method in Flock needs to work over the entire Flock. Here we iterate through the ArrayList and call quack() on each element.
-		for (auto const &quacker : quackers) // There it is! The Iterator Pattern at work!
+	void quack() override {                                       
+		for (auto const &quacker : quackers)         
 			quacker->quack();
 	}
 
-	void registerObserver(PtrObserver observer) override { 
-		for (auto &quacker : quackers) 
+	void registerObserver(PtrObserver observer) override { // When you register as an Observer with the Flock, you actually get registered with everything that’s IN the flock, which is every Quackable, whether it’s a duck or another Flock.
+		for (auto &quacker : quackers)  // We iterate through all the Quackables in the Flock and delegate the call to each Quackable.If the Quackable is another Flock, it will do the same.
 			quacker->registerObserver(observer);
 	}
 
-	void notifyObservers() const override { 
-		for (const auto &quacker : quackers)
-			quacker->notifyObservers(); 
-	}
+	void notifyObservers() const override {} //TEST! // Each Quackable does its own notification, so Flock doesn’t have to worry about it. This happens when Flock delegates quack() to each Quackable in the Flock.
 };
 #pragma endregion //Sharpen your pencil
