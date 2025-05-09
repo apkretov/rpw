@@ -1,4 +1,4 @@
-#undef OFF
+#define OFF
 
 #include <iostream>
 #include <memory>
@@ -6,10 +6,11 @@
 #include "FactoryCountingDuck.h"
 #include "Flock.h"
 #include "GooseAdapter.h"
+#include "Quackologist.h"
 using std::cout;
 using std::make_unique;
 
-#pragma region Now we need to alter the simulator
+#pragma region Were ready to observe. Lets update the simulator and give it try //We're ready to observe. Let's update the simulator and give it try:
 /* Java
 public class DuckSimulator {
 	void simulate(AbstractDuckFactory duckFactory) {
@@ -39,11 +40,11 @@ public class DuckSimulator {
 
 		flockOfDucks.add(flockOfMallards); // Then we add the Flock of mallards to the main flock
 
-		System.out.println("\nDuck Simulator: Whole Flock Simulation");
-		simulate(flockOfDucks); // Let's test out the entire Flock!
+		System.out.println("\nDuck Simulator: With Observer");
+		Quackologist quackologist = new Quackologist(); // All we do here is create a Quackologist and set him as an observer of the flock.
+		flockOfDucks.registerObserver(quackologist);
 
-		System.out.println("\nDuck Simulator: Mallard Flock Simulation");
-		simulate(flockOfMallards); // Then let's just test out the mallard's Flock
+		simulate(flockOfDucks); // This time we'll we just simulate the entire flock.
 
 		System.out.println("\nThe ducks quacked " + // Finally, let's give the Quackologist the data
 				QuackCounter.getQuacks() +
@@ -85,19 +86,13 @@ public:
 		flockOfMallards.add(std::move(mallardThree));
 		flockOfMallards.add(std::move(mallardFour));
 
-#ifndef TRAE // If we really need to simulate both flocks separately, create the mallard flock simulation before moving it :
-		cout << "\nDuck Simulator: Mallard Flock Simulation\n";
-		simulate(flockOfMallards); // Then let's just test out the mallard's Flock
-#endif //TRAE
-
-		cout << "\nDuck Simulator: Whole Flock Simulation\n";
 		flockOfDucks.add(make_unique<Flock>(std::move(flockOfMallards))); // Then we add the Flock of mallards to the main flock
-		simulate(flockOfDucks); // Let's test out the entire Flock!
+		
+		cout << "\nDuck Simulator: With Observer\n";
+		auto quackologist = std::make_shared<Quackologist>(); // All we do here is create a Quackologist and set him as an observer of the flock.
+		flockOfDucks.registerObserver(quackologist);
 
-#ifdef ORIG
-		cout << "\nDuck Simulator: Mallard Flock Simulation\n";
-		simulate(flockOfMallards); // Then let's just test out the mallard's Flock
-#endif //ORIG
+		simulate(flockOfDucks); // This time we'll we just simulate the entire flock.
 
 		cout << "\nThe ducks quacked " << QuackCounter::getQuacks() << " times\n"; // Finally, let's give the Quackologist the data
 #endif //OFF
@@ -116,4 +111,4 @@ int main() {
 	cout << '\n';
 	return 0;
 }
-#pragma endregion //Now we need to alter the simulator
+#pragma endregion //Were ready to observe. Lets update the simulator and give it try
