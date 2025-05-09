@@ -36,11 +36,7 @@ public:
 
     void notifyObservers() const override { // And the code for doing the notifications
 		for (const auto &observer : observers)
-#ifdef OFF
 			observer->update(duck);
-#else
-			;
-#endif //OFF
     }
 };
 #pragma endregion //Now, we need to make sure all the concrete classes that implement Quackable can handle being a QuackObservable

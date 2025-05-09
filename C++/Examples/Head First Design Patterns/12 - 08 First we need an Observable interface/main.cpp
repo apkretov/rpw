@@ -1,5 +1,3 @@
-#undef OFF
-
 #include <iostream>
 #include <memory>
 #include "../../stdafx.h"
@@ -61,7 +59,6 @@ public:
 	void simulate(Quackable &duck) { duck.quack(); } // Nothing needs to change here, a Flock is a Quackable!
 
 	void simulate(AbstractDuckFactory &duckFactory) {
-#ifdef OFF
 		auto redheadDuck = duckFactory.createRedheadDuck(); // Create all the Quackables, just like before
 		auto duckCall = duckFactory.createDuckCall();
 		auto rubberDuck = duckFactory.createRubberDuck();
@@ -95,18 +92,15 @@ public:
 		simulate(flockOfDucks); // This time we'll we just simulate the entire flock.
 
 		cout << "\nThe ducks quacked " << QuackCounter::getQuacks() << " times\n"; // Finally, let's give the Quackologist the data
-#endif //OFF
 	}
 };
 
 int main() {
 	print_file_line();
 
-#ifdef OFF
 	DuckSimulator simulator;
 	CountingDuckFactory duckFactory;
 	simulator.simulate(duckFactory);
-#endif //OFF
 
 	cout << '\n';
 	return 0;
