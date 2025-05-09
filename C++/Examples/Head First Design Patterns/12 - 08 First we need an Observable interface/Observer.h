@@ -2,7 +2,7 @@
 
 #include <memory>
 
-#pragma region We're almost there! We just need to work on the Observer side of the pattern.
+#pragma region Were almost there! We just need to work on the Observer side of the pattern //We're almost there! We just need to work on the Observer side of the pattern
 /* Java
 public interface Observer { // The Observer interface just	has one method, update(), which is passed the QuackObservable that is quacking.
 	public void update(QuackObservable duck);
@@ -15,4 +15,4 @@ public:
 };
 
 using PtrObserver = std::shared_ptr<Observer>;
-#pragma endregion //We're almost there! We just need to work on the Observer side of the pattern.
+#pragma endregion //Were almost there! We just need to work on the Observer side of the pattern

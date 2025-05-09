@@ -4,31 +4,15 @@
 #include "Goose.h"
 #include "Quackable.h"
 
-#pragma region We need a goose adapter
-/* Java @ https://github.com/bethrobson/Head-First-Design-Patterns/tree/master/src/headfirst/designpatterns/combining/adapter
-package headfirst.designpatterns.combining.adapter;
-
-public class GooseAdapter implements Quackable {
-	Goose goose;
- 
-	public GooseAdapter(Goose goose) {
-		this.goose = goose;
-	}
- 
-	public void quack() {
-		goose.honk();
-	}
-
-	public String toString() {
-		return "Goose pretending to be a Duck";
-	}
-}
-*/
+#pragma region Integrate the helper Observable with the Quackable classes
 class GooseAdapter : public Quackable {
 	Goose goose;
+	Observable observable;
 public:
-	GooseAdapter(const Goose& goose) : goose(goose) {}
+	explicit GooseAdapter(const Goose& goose) : goose(goose), observable(*this) {}
 	void quack() override { goose.honk(); }
 	std::string toString() const { return "Goose pretending to be a Duck"; }
+	void registerObserver(PtrObserver observer) override { observable.registerObserver(observer); }
+	void notifyObservers() override { observable.notifyObservers(); }
 };
-#pragma endregion //We need a goose adapter
+#pragma endregion //Integrate the helper Observable with the Quackable classes
