@@ -18,6 +18,22 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="BeatController.h" />
+    <ClInclude Include="BeatModel.h" />
+    <ClInclude Include="BeatModelInterface.h" />
+    <ClInclude Include="BeatObserver.h" />
+    <ClInclude Include="BPMObserver.h" />
+    <ClInclude Include="ControllerInterface.h" />
+    <ClInclude Include="DJView.h" />
+    <ClInclude Include="HeartAdapter.h" />
+    <ClInclude Include="HeartController.h" />
+    <ClInclude Include="HeartModel.h" />
+    <ClInclude Include="HeartModelInterface.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
