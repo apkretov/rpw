@@ -35,7 +35,7 @@ public:
 #pragma endregion //Direct the model 
 #pragma region Observers get state // These methods allow the view and the controller to get state and to become observers.
 	virtual int getBPM() const = 0; // The getBPM() method returns the current BPMs, or 0 if the generator is off
-	virtual void registerObserver(std::shared_ptr<BeatObserver> o) = 0; // We've split this into two kinds of observers: observers that want to be notified on every beat, and observers that just want to be notified with the beats per minute change 
+	virtual void registerObserver(std::shared_ptr<BeatObserver> o) = 0; //TO DO: Check how appropriate the pointer is. // We've split this into two kinds of observers: observers that want to be notified on every beat, and observers that just want to be notified with the beats per minute change 
 	virtual void removeObserver(std::shared_ptr<BeatObserver> o) = 0;
 	virtual void registerObserver(std::shared_ptr <BPMObserver> o) = 0;
 	virtual void removeObserver(std::shared_ptr <BPMObserver> o) = 0;
