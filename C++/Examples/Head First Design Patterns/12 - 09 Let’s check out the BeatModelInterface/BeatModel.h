@@ -83,10 +83,9 @@ public class BeatModel implements BeatModelInterface, MetaEventListener {
 */
 class BeatModel : public BeatModelInterface, public MetaEventListener {
     std::unique_ptr<Sequencer> sequencer;
-    std::vector<std::reference_wrapper<BeatObserver>> beatObservers;
+    std::vector<std::reference_wrapper<BeatObserver>> beatObservers; //TEST!
     std::vector<std::reference_wrapper<BPMObserver>> bpmObservers;
-    int bpm{90};
-
+    int bpm = 90;
 public:
     void initialize() override {
         setUpMidi();
@@ -110,13 +109,10 @@ public:
     }
 
     int getBPM() const override { return bpm; }
-
-    void beatEvent() {
-        notifyBeatObservers();
-    }
-
+    void beatEvent() { notifyBeatObservers(); }
     void registerObserver(BeatObserver& o) override { beatObservers.push_back(o); }
-    void removeObserver(BeatObserver& o) override {
+
+	void removeObserver(BeatObserver& o) override {
         beatObservers.erase(
             std::remove_if(beatObservers.begin(), beatObservers.end(),
                 [&o](const auto& ref) { return &ref.get() == &o; }),
@@ -124,13 +120,13 @@ public:
     }
 
     void registerObserver(BPMObserver& o) override { bpmObservers.push_back(o); }
-    void removeObserver(BPMObserver& o) override {
+    
+	void removeObserver(BPMObserver& o) override {
         bpmObservers.erase(
             std::remove_if(bpmObservers.begin(), bpmObservers.end(),
                 [&o](const auto& ref) { return &ref.get() == &o; }),
             bpmObservers.end());
     }
-
 protected:
     void setUpMidi();
     void buildTrackAndStart();

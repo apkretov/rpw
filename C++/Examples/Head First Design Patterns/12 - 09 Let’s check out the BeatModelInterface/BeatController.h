@@ -5,85 +5,84 @@
 #include "BeatModelInterface.h"
 #include "DJView.h"
 
-#pragma region Now let's have a look at the concrete BeatModel class
+#pragma region And here's the implementation of the controller
 /* Java @ https://github.com/bethrobson/Head-First-Design-Patterns/tree/master/src/headfirst/designpatterns/combined/djview
 public class BeatController implements ControllerInterface {
 	BeatModelInterface model;
 	DJView view;
-   
+
 	public BeatController(BeatModelInterface model) {
 		this.model = model;
 		view = new DJView(this, model);
-        view.createView();
-        view.createControls();
+		view.createView();
+		view.createControls();
 		view.disableStopMenuItem();
 		view.enableStartMenuItem();
 		model.initialize();
 	}
-  
+
 	public void start() {
 		model.on();
 		view.disableStartMenuItem();
 		view.enableStopMenuItem();
 	}
-  
+
 	public void stop() {
 		model.off();
 		view.disableStopMenuItem();
 		view.enableStartMenuItem();
 	}
-    
+
 	public void increaseBPM() {
-        int bpm = model.getBPM();
-        model.setBPM(bpm + 1);
+		int bpm = model.getBPM();
+		model.setBPM(bpm + 1);
 	}
-    
+
 	public void decreaseBPM() {
-        int bpm = model.getBPM();
-        model.setBPM(bpm - 1);
+		int bpm = model.getBPM();
+		model.setBPM(bpm - 1);
 	}
-  
- 	public void setBPM(int bpm) {
+
+	public void setBPM(int bpm) {
 		model.setBPM(bpm);
 	}
 }
 */
 class BeatController : public ControllerInterface {
-    std::shared_ptr<BeatModelInterface> model;
-    std::unique_ptr<DJView> view;
-
+	std::shared_ptr<BeatModelInterface> model;
+	std::unique_ptr<DJView> view;
 public:
-    explicit BeatController(std::shared_ptr<BeatModelInterface> model) : model(model) {
-        view = std::make_unique<DJView>(this, model.get());
-        view->createView();
-        view->createControls();
-        view->disableStopMenuItem();
-        view->enableStartMenuItem();
-        model->initialize();
-    }
+	explicit BeatController(std::shared_ptr<BeatModelInterface> model) : model(model) {
+		view = std::make_unique<DJView>(this, model.get());
+		view->createView();
+		view->createControls();
+		view->disableStopMenuItem();
+		view->enableStartMenuItem();
+		model->initialize();
+	}
 
-    void start() override {
-        model->on();
-        view->disableStartMenuItem();
-        view->enableStopMenuItem();
-    }
+	void start() override {
+		model->on();
+		view->disableStartMenuItem();
+		view->enableStopMenuItem();
+	}
 
-    void stop() override {
-        model->off();
-        view->disableStopMenuItem();
-        view->enableStartMenuItem();
-    }
+	void stop() override {
+		model->off();
+		view->disableStopMenuItem();
+		view->enableStartMenuItem();
+	}
 
-    void increaseBPM() override {
-        int bpm = model->getBPM();
-        model->setBPM(bpm + 1);
-    }
+	void increaseBPM() override {
+		int bpm = model->getBPM();
+		model->setBPM(bpm + 1);
+	}
 
-    void decreaseBPM() override {
-        int bpm = model->getBPM();
-        model->setBPM(bpm - 1);
-    }
+	void decreaseBPM() override {
+		int bpm = model->getBPM();
+		model->setBPM(bpm - 1);
+	}
 
-    void setBPM(int bpm) override { model->setBPM(bpm); }
+	void setBPM(int bpm) override { model->setBPM(bpm); }
 };
-#pragma endregion //Now let's have a look at the concrete BeatModel class
+#pragma endregion //And here's the implementation of the controller
