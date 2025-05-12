@@ -3,6 +3,7 @@
 #include <memory>
 #include "ControllerInterface.h"
 #include "HeartModelInterface.h"
+#include "HeartAdapter.h"
 #include "DJView.h"
 
 #pragma region Now lets have a look at the concrete BeatModel class //Now let's have a look at the concrete BeatModel class
