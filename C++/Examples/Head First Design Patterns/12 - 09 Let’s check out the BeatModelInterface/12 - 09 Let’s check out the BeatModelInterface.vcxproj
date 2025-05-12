@@ -30,6 +30,8 @@
     <ClInclude Include="HeartController.h" />
     <ClInclude Include="HeartModel.h" />
     <ClInclude Include="HeartModelInterface.h" />
+    <ClInclude Include="MetaEventListener.h" />
+    <ClInclude Include="Sequencer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
