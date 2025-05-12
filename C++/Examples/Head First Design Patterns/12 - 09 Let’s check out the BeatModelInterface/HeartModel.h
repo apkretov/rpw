@@ -86,8 +86,8 @@ public class HeartModel implements HeartModelInterface, Runnable {
 }
 */
 class HeartModel : public HeartModelInterface {
-    std::vector<std::reference_wrapper<BeatObserver>> beatObservers;
-    std::vector<std::reference_wrapper<BPMObserver>> bpmObservers;
+    std::vector<BeatObserver*> beatObservers;
+    std::vector<BPMObserver*> bpmObservers;
     int time{1000};
     std::random_device rd;
     std::mt19937 gen;
@@ -128,31 +128,35 @@ public:
 
     int getHeartRate() override { return 60000/time; }
 
-    void registerObserver(BeatObserver& o) override { beatObservers.push_back(o); }
-    void removeObserver(BeatObserver& o) override {
-        beatObservers.erase(
-            std::remove_if(beatObservers.begin(), beatObservers.end(),
-                [&o](const auto& ref) { return &ref.get() == &o; }),
+    void registerObserver(BeatObserver* o) override { 
+        if (o) beatObservers.push_back(o); 
+    }
+
+    void removeObserver(BeatObserver* o) override {
+        if (o) beatObservers.erase(
+            std::remove(beatObservers.begin(), beatObservers.end(), o),
             beatObservers.end());
     }
 
-    void registerObserver(BPMObserver& o) override { bpmObservers.push_back(o); }
-    void removeObserver(BPMObserver& o) override {
-        bpmObservers.erase(
-            std::remove_if(bpmObservers.begin(), bpmObservers.end(),
-                [&o](const auto& ref) { return &ref.get() == &o; }),
+    void registerObserver(BPMObserver* o) override { 
+        if (o) bpmObservers.push_back(o); 
+    }
+
+    void removeObserver(BPMObserver* o) override {
+        if (o) bpmObservers.erase(
+            std::remove(bpmObservers.begin(), bpmObservers.end(), o),
             bpmObservers.end());
     }
 
 protected:
     void notifyBeatObservers() {
-        for (auto& observer : beatObservers)
-            observer.get().updateBeat();
+        for (auto observer : beatObservers)
+            if (observer) observer->updateBeat();
     }
 
     void notifyBPMObservers() {
-        for (auto& observer : bpmObservers)
-            observer.get().updateBPM();
+        for (auto observer : bpmObservers)
+            if (observer) observer->updateBPM();
     }
 };
 #pragma endregion //Now let's have a look at the concrete BeatModel class

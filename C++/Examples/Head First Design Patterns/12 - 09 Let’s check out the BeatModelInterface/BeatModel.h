@@ -83,9 +83,10 @@ public class BeatModel implements BeatModelInterface, MetaEventListener {
 */
 class BeatModel : public BeatModelInterface, public MetaEventListener {
     std::unique_ptr<Sequencer> sequencer;
-    std::vector<std::reference_wrapper<BeatObserver>> beatObservers; //TEST!
-    std::vector<std::reference_wrapper<BPMObserver>> bpmObservers;
-    int bpm = 90;
+    std::vector<BeatObserver*> beatObservers;
+    std::vector<BPMObserver*> bpmObservers;
+    int bpm{90};
+
 public:
     void initialize() override {
         setUpMidi();
@@ -109,36 +110,43 @@ public:
     }
 
     int getBPM() const override { return bpm; }
-    void beatEvent() { notifyBeatObservers(); }
-    void registerObserver(BeatObserver& o) override { beatObservers.push_back(o); }
 
-	void removeObserver(BeatObserver& o) override {
-        beatObservers.erase(
-            std::remove_if(beatObservers.begin(), beatObservers.end(),
-                [&o](const auto& ref) { return &ref.get() == &o; }),
+    void beatEvent() {
+        notifyBeatObservers();
+    }
+
+    void registerObserver(BeatObserver* o) override { 
+        if (o) beatObservers.push_back(o); 
+    }
+
+    void removeObserver(BeatObserver* o) override {
+        if (o) beatObservers.erase(
+            std::remove(beatObservers.begin(), beatObservers.end(), o),
             beatObservers.end());
     }
 
-    void registerObserver(BPMObserver& o) override { bpmObservers.push_back(o); }
-    
-	void removeObserver(BPMObserver& o) override {
-        bpmObservers.erase(
-            std::remove_if(bpmObservers.begin(), bpmObservers.end(),
-                [&o](const auto& ref) { return &ref.get() == &o; }),
+    void registerObserver(BPMObserver* o) override { 
+        if (o) bpmObservers.push_back(o); 
+    }
+
+    void removeObserver(BPMObserver* o) override {
+        if (o) bpmObservers.erase(
+            std::remove(bpmObservers.begin(), bpmObservers.end(), o),
             bpmObservers.end());
     }
+
 protected:
     void setUpMidi();
     void buildTrackAndStart();
 
     void notifyBeatObservers() {
-        for (auto& observer : beatObservers)
-            observer.get().updateBeat();
+        for (auto observer : beatObservers)
+            if (observer) observer->updateBeat();
     }
 
     void notifyBPMObservers() {
-        for (auto& observer : bpmObservers)
-            observer.get().updateBPM();
+        for (auto observer : bpmObservers)
+            if (observer) observer->updateBPM();
     }
 };
 #pragma endregion //Now let's have a look at the concrete BeatModel class

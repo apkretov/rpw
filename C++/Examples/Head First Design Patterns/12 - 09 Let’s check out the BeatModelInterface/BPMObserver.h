@@ -10,7 +10,7 @@ public interface BPMObserver {
 */
 class BPMObserver {
 public:
-    virtual ~BPMObserver() = default;
     virtual void updateBPM() = 0;
+    virtual ~BPMObserver() = default;
 };
 #pragma endregion //Now let's have a look at the concrete BeatModel class
