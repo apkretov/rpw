@@ -18,10 +18,10 @@ public interface HeartModelInterface {
 class HeartModelInterface {
 public:
     virtual int getHeartRate() = 0;
-    virtual void registerObserver(BeatObserver& o) = 0;
-    virtual void removeObserver(BeatObserver& o) = 0;
-    virtual void registerObserver(BPMObserver& o) = 0;
-    virtual void removeObserver(BPMObserver& o) = 0;
+    virtual void registerObserver(BeatObserver *o) = 0;
+    virtual void removeObserver(BeatObserver *o) = 0;
+    virtual void registerObserver(BPMObserver *o) = 0;
+    virtual void removeObserver(BPMObserver *o) = 0;
     virtual ~HeartModelInterface() = default;
 };
 #pragma endregion //Now lets have a look at the concrete BeatModel class

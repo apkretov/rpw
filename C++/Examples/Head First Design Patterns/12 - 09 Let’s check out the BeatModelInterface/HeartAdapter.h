@@ -52,12 +52,12 @@ public:
     void on() override {}
     void off() override {}
     
-    int getBPM() override { return heart->getHeartRate(); }
+    int getBPM() const override { return heart->getHeartRate(); }
     void setBPM(int bpm) override {}
 
-    void registerObserver(BeatObserver& o) override { heart->registerObserver(o); }
-    void removeObserver(BeatObserver& o) override { heart->removeObserver(o); }
-    void registerObserver(BPMObserver& o) override { heart->registerObserver(o); }
-    void removeObserver(BPMObserver& o) override { heart->removeObserver(o); }
+    void registerObserver(BeatObserver *o) override { heart->registerObserver(o); }
+    void removeObserver(BeatObserver *o) override { heart->removeObserver(o); }
+    void registerObserver(BPMObserver *o) override { heart->registerObserver(o); }
+    void removeObserver(BPMObserver *o) override { heart->removeObserver(o); }
 };
 #pragma endregion //Now lets have a look at the concrete BeatModel class
