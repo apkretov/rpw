@@ -94,16 +94,19 @@ class DJView : public BeatObserver, public BPMObserver {
     // For this example, we'll declare UI elements as pointers to be implemented
 
 public:
-    DJView(ControllerInterface* controller, BeatModelInterface* model) 
-        : controller(controller), model(model) {
-        model->registerObserver(*this);  // Register as BeatObserver
-        model->registerObserver(*this);  // Register as BPMObserver
+    DJView(ControllerInterface* controller, BeatModelInterface* model_) : controller(controller), model(model_) {
+        //model->registerObserver(*this);  // Register as BeatObserver
+        //model->registerObserver(*this);  // Register as BPMObserver
+        model->registerObserver(static_cast<BeatObserver *>(this));  // Register as BeatObserver
+        model->registerObserver(static_cast<BPMObserver *>(this));  // Register as BPMObserver
     }
 
     ~DJView() {
         if (model) {
-            model->removeObserver(static_cast<BeatObserver&>(*this));
-            model->removeObserver(static_cast<BPMObserver&>(*this));
+            //model->removeObserver(static_cast<BeatObserver&>(*this));
+            //model->removeObserver(static_cast<BPMObserver&>(*this));
+            model->removeObserver(static_cast<BeatObserver *>(this));
+            model->removeObserver(static_cast<BPMObserver *>(this));
         }
     }
 
