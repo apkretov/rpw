@@ -136,8 +136,8 @@ public:
     }
 
 protected:
-    void setUpMidi();
-    void buildTrackAndStart();
+	void setUpMidi() { sequencer = std::make_unique<Sequencer>(); }
+    void buildTrackAndStart() { sequencer->setTempoInBPM(getBPM()); }
 
     void notifyBeatObservers() {
         for (auto observer : beatObservers)
