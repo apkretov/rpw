@@ -10,9 +10,15 @@ public interface Sequencer {
 */
 class Sequencer {
 public:
-    virtual void start() = 0;
-    virtual void stop() = 0;
-    virtual void setTempoInBPM(int bpm) = 0;
     virtual ~Sequencer() = default;
+#ifdef TRAE
+	virtual void start() = 0;
+	virtual void stop() = 0;
+	virtual void setTempoInBPM(int bpm) = 0;
+#else //MINE
+	virtual void start() {};
+    virtual void stop() {};
+	virtual void setTempoInBPM(int bpm) {};
+#endif //MINE
 };
 #pragma endregion //Now lets have a look at the concrete BeatModel class
