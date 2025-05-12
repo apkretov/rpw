@@ -7,7 +7,7 @@
 #include "BeatModelInterface.h"
 #include "ControllerInterface.h"
 
-#pragma region Now let's have a look at the concrete BeatModel class
+#pragma region Now lets have a look at the concrete BeatModel class //Now let's have a look at the concrete BeatModel class
 /* Java @ https://github.com/bethrobson/Head-First-Design-Patterns/tree/master/src/headfirst/designpatterns/combined/djview
 public class DJView implements ActionListener,  BeatObserver, BPMObserver {
     BeatModelInterface model;
@@ -162,4 +162,4 @@ protected:
         controller->decreaseBPM();
     }
 };
-#pragma endregion //Now let's have a look at the concrete BeatModel class
+#pragma endregion //Now lets have a look at the concrete BeatModel class

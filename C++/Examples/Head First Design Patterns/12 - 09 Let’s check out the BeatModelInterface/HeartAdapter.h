@@ -4,7 +4,7 @@
 #include "BeatModelInterface.h"
 #include "HeartModelInterface.h"
 
-#pragma region Now let's have a look at the concrete BeatModel class
+#pragma region Now lets have a look at the concrete BeatModel class //Now let's have a look at the concrete BeatModel class
 /* Java @ https://github.com/bethrobson/Head-First-Design-Patterns/tree/master/src/headfirst/designpatterns/combined/djview
 public class HeartAdapter implements BeatModelInterface {
 	HeartModelInterface heart;
@@ -60,4 +60,4 @@ public:
     void registerObserver(BPMObserver& o) override { heart->registerObserver(o); }
     void removeObserver(BPMObserver& o) override { heart->removeObserver(o); }
 };
-#pragma endregion //Now let's have a look at the concrete BeatModel class
+#pragma endregion //Now lets have a look at the concrete BeatModel class

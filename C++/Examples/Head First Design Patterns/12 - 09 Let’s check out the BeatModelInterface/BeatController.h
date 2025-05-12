@@ -5,7 +5,7 @@
 #include "BeatModelInterface.h"
 #include "DJView.h"
 
-#pragma region Now let's have a look at the concrete BeatModel class
+#pragma region Now lets have a look at the concrete BeatModel class //Now let's have a look at the concrete BeatModel class
 /* Java @ https://github.com/bethrobson/Head-First-Design-Patterns/tree/master/src/headfirst/designpatterns/combined/djview
 public class BeatController implements ControllerInterface {
 	BeatModelInterface model;
@@ -86,4 +86,4 @@ public:
 
     void setBPM(int bpm) override { model->setBPM(bpm); }
 };
-#pragma endregion //Now let's have a look at the concrete BeatModel class
+#pragma endregion //Now lets have a look at the concrete BeatModel class
