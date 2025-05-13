@@ -24,12 +24,10 @@ public class HeartTestDrive {
 */
 
 int main() {
-    // Test the Beat Model
-    auto beatModel = std::make_shared<BeatModel>();
+    auto beatModel = std::make_shared<BeatModel>(); // Test the Beat Model
     auto beatController = std::make_unique<BeatController>(beatModel);
 
-    // Test the Heart Model
-    auto heartModel = std::make_shared<HeartModel>();
+    auto heartModel = std::make_shared<HeartModel>(); // Test the Heart Model
     auto heartController = std::make_unique<HeartController>(heartModel);
 
     return 0;
