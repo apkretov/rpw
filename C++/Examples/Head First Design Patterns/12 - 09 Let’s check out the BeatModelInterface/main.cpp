@@ -2,6 +2,7 @@
 
 #include <memory>
 #include "../../stdafx.h"
+#include "vld.h"
 #include "BeatModel.h"
 #include "BeatController.h"
 
