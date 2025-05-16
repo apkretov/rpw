@@ -66,3 +66,35 @@ ipch/
 # Exclude temporary Python folders
 .idea/
 .ipynb_checkpoints/
+
+# Qt Creator user-specific files
+*.pro.user
+*.pro.user.*
+*.qbs.user
+*.qbs.user.*
+*.autosave
+*.qmlproject.user
+*.qmlproject.user.*
+*creator.user*
+
+# Build generated files
+moc_*.cpp
+moc_*.h
+qrc_*.cpp
+ui_*.h
+Makefile*
+build*/
+
+# Compiled object files and binaries
+*.o
+*.lo
+*.so
+*.dylib
+
+# Logs and temporary files
+*~
+*.swp
+
+# OS files
+.DS_Store
+Thumbs.db
