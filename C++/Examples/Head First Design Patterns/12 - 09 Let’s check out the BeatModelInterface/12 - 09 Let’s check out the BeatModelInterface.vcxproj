@@ -26,10 +26,6 @@
     <ClInclude Include="BPMObserver.h" />
     <ClInclude Include="ControllerInterface.h" />
     <ClInclude Include="DJView.h" />
-    <ClInclude Include="HeartAdapter.h" />
-    <ClInclude Include="HeartController.h" />
-    <ClInclude Include="HeartModel.h" />
-    <ClInclude Include="HeartModelInterface.h" />
     <ClInclude Include="MetaEventListener.h" />
     <ClInclude Include="Sequencer.h" />
   </ItemGroup>

@@ -36,18 +36,6 @@
     <ClInclude Include="DJView.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="HeartAdapter.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="HeartController.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="HeartModel.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="HeartModelInterface.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Sequencer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
