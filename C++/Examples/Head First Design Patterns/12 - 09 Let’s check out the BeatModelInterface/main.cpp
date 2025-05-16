@@ -1,6 +1,7 @@
 #pragma once
 
 #include <memory>
+#include "../../stdafx.h"
 #include "BeatModel.h"
 #include "BeatController.h"
 
@@ -15,8 +16,11 @@ public class DJTestDrive {
 */
 
 int main() {
+	print_file_line();
+
 	auto beatModel = std::make_shared<BeatModel>(); // Test the Beat Model
 	auto beatController = std::make_unique<BeatController>(beatModel);
+
     return 0;
 }
 #pragma endregion //Putting it all together...
