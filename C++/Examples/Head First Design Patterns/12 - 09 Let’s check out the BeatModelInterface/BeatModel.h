@@ -125,12 +125,6 @@ public:
             std::remove(bpmObservers.begin(), bpmObservers.end(), o),
             bpmObservers.end());
     }
-
-    void removeObserver(BPMObserver* o) override {
-        if (o) bpmObservers.erase(
-            std::remove(bpmObservers.begin(), bpmObservers.end(), o),
-            bpmObservers.end());
-    }
 protected:
 	void setUpMidi() { sequencer = std::make_unique<Sequencer>(); }
     void buildTrackAndStart() { sequencer->setTempoInBPM(getBPM()); }
