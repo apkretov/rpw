@@ -4,7 +4,7 @@
 #include "../../stdafx.h"
 #include "vld.h"
 #include "BeatModel.h"
-#include "BeatController.h"
+#include "ControllerBeat.h"
 
 #pragma region Putting it all together...
 /* Java

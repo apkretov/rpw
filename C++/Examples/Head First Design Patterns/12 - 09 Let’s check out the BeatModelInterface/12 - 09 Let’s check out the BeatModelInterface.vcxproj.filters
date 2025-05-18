@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="BeatController.h">
+    <ClInclude Include="ControllerBeat.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="BeatModel.h">
