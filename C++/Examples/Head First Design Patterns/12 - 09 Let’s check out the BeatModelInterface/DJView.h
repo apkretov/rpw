@@ -7,7 +7,7 @@
 #include "BeatModelInterface.h"
 #include "ControllerInterface.h"
 
-#pragma region Now lets have a look at the concrete BeatModel class //Now let's have a look at the concrete BeatModel class
+#pragma region Implementing the View
 /* Java @ https://github.com/bethrobson/Head-First-Design-Patterns/tree/master/src/headfirst/designpatterns/combined/djview
 public class DJView implements ActionListener,  BeatObserver, BPMObserver {
     BeatModelInterface model;
@@ -86,15 +86,11 @@ public class DJView implements ActionListener,  BeatObserver, BPMObserver {
     }
 }
 */
-class DJView : public BeatObserver, public BPMObserver {
-    BeatModelInterface* model;
-    ControllerInterface* controller;
-    // We'll use platform-specific UI components here
-    // For Windows, we could use Win32 API or a cross-platform library like wxWidgets
-    // For this example, we'll declare UI elements as pointers to be implemented
-
+class DJView : public BeatObserver, public BPMObserver { // We'll use platform-specific UI components here
+    BeatModelInterface* model;							 // For Windows, we could use Win32 API or a cross-platform library like wxWidgets
+    ControllerInterface* controller;					 // For this example, we'll declare UI elements as pointers to be implemented
 public:
-    DJView(ControllerInterface* controller, BeatModelInterface* model_) : controller(controller), model(model_) {
+    DJView(ControllerInterface* controller, BeatModelInterface* model) : controller(controller), model(model) {
         model->registerObserver(static_cast<BeatObserver *>(this));  // Register as BeatObserver
         model->registerObserver(static_cast<BPMObserver *>(this));  // Register as BPMObserver
     }
@@ -106,43 +102,21 @@ public:
         }
     }
 
-    void createView() {
-        // Platform-specific UI creation code would go here
-    }
-
-    void createControls() {
-        // Platform-specific control creation code would go here
-    }
-
-    void enableStopMenuItem() {
-        // Enable stop menu item
-    }
-
-    void disableStopMenuItem() {
-        // Disable stop menu item
-    }
-
-    void enableStartMenuItem() {
-        // Enable start menu item
-    }
-
-    void disableStartMenuItem() {
-        // Disable start menu item
-    }
+    void createView() { /* Platform-specific UI creation code would go here */ }
+    void createControls() { /* Platform-specific control creation code would go here */ }
+    void updateBPM() override { /* Update UI with BPM value */ }
+    void disableStopMenuItem() { /* Disable stop menu item */ }
+    void enableStartMenuItem() { /* Enable start menu item */ }
+    void disableStartMenuItem() { /* Disable start menu item */ }
 
     void updateBPM() override {
         if (model) {
             int bpm = model->getBPM();
-            // Update UI with BPM value
-            // Platform-specific code would go here
+            // Update UI with BPM value. Platform-specific code would go here
         }
     }
 
-    void updateBeat() override {
-        // Update beat bar
-        // Platform-specific code would go here
-    }
-
+    void updateBeat() override { /* Update beat bar. Platform-specific code would go here */ }
 protected:
     void onSetBPM(const std::string& bpmText) {
         try {
@@ -153,12 +127,7 @@ protected:
         }
     }
 
-    void onIncreaseBPM() {
-        controller->increaseBPM();
-    }
-
-    void onDecreaseBPM() {
-        controller->decreaseBPM();
-    }
+    void onIncreaseBPM() { controller->increaseBPM(); }
+    void onDecreaseBPM() { controller->decreaseBPM(); }
 };
-#pragma endregion //Now lets have a look at the concrete BeatModel class
+#pragma endregion //Implementing the View

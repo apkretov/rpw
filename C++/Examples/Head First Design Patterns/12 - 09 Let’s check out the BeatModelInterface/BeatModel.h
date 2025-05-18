@@ -110,20 +110,31 @@ public:
 
     int getBPM() const override { return bpm; }
     void beatEvent() { notifyBeatObservers(); }
-    void registerObserver(BeatObserver* o) override { if (o) beatObservers.push_back(o); }
+
+    void registerObserver(BeatObserver* o) override { 
+		if (o) 
+			beatObservers.push_back(o); 
+	}
 
     void removeObserver(BeatObserver* o) override {
-        if (o) beatObservers.erase(
-            std::remove(beatObservers.begin(), beatObservers.end(), o),
-            beatObservers.end());
+        if (o) 
+			beatObservers.erase(
+				std::remove(beatObservers.begin(), beatObservers.end(), o),
+				beatObservers.end()
+			);
     }
 
-    void registerObserver(BPMObserver* o) override { if (o) bpmObservers.push_back(o); }
+    void registerObserver(BPMObserver* o) override { 
+		if (o) 
+			bpmObservers.push_back(o); 
+	}
 
     void removeObserver(BPMObserver* o) override {
-        if (o) bpmObservers.erase(
-            std::remove(bpmObservers.begin(), bpmObservers.end(), o),
-            bpmObservers.end());
+        if (o) 
+			bpmObservers.erase(
+				std::remove(bpmObservers.begin(), bpmObservers.end(), o),
+				bpmObservers.end()
+			);
     }
 protected:
 	void setUpMidi() { sequencer = std::make_unique<Sequencer>(); }
@@ -131,12 +142,14 @@ protected:
 
     void notifyBeatObservers() {
         for (auto observer : beatObservers)
-            if (observer) observer->updateBeat();
+            if (observer) 
+				observer->updateBeat();
     }
 
     void notifyBPMObservers() {
         for (auto observer : bpmObservers)
-            if (observer) observer->updateBPM();
+            if (observer) 
+				observer->updateBPM();
     }
 };
 #pragma endregion //Now lets have a look at the concrete BeatModel class

@@ -1,6 +1,6 @@
 #pragma once
 
-#pragma region Now lets have a look at the concrete BeatModel class //Now let's have a look at the concrete BeatModel class
+#pragma region Now for the Controller
 /* Java @ https://github.com/bethrobson/Head-First-Design-Patterns/tree/master/src/headfirst/designpatterns/combined/djview
 package headfirst.designpatterns.combined.djview;
   
@@ -21,4 +21,4 @@ public:
     virtual void setBPM(int bpm) = 0;
     virtual ~ControllerInterface() = default;
 };
-#pragma endregion //Now lets have a look at the concrete BeatModel class
+#pragma endregion //Now for the Controller

@@ -3,7 +3,7 @@
 #include "BeatObserver.h"
 #include "BPMObserver.h"
 
-#pragma region Now lets have a look at the concrete BeatModel class //Now let's have a look at the concrete BeatModel class
+#pragma region Lets check out the BeatModelInterface before looking at the implementation //Let's check out the BeatModelInterface before looking at the implementation
 /* Java @ https://github.com/bethrobson/Head-First-Design-Patterns/tree/master/src/headfirst/designpatterns/combined/djview
 package headfirst.designpatterns.combined.djview;
   
@@ -32,4 +32,4 @@ public:
     virtual void removeObserver(BPMObserver* o) = 0;
     virtual ~BeatModelInterface() = default;
 };
-#pragma endregion //Now lets have a look at the concrete BeatModel class
+#pragma endregion //Lets check out the BeatModelInterface before looking at the implementation

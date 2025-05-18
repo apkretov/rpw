@@ -10,7 +10,7 @@ public interface BeatObserver {
 */
 class BeatObserver {
 public:
-    virtual void updateBeat() = 0;
     virtual ~BeatObserver() = default;
+    virtual void updateBeat() = 0;
 };
 #pragma endregion //Now lets have a look at the concrete BeatModel class
