@@ -2,10 +2,10 @@
 
 #include <memory>
 #include <string>
-#include "BeatObserver.h"
-#include "BPMObserver.h"
 #include "BeatModelInterface.h"
 #include "ControllerInterface.h"
+#include "ObserverBeat.h"
+#include "ObserverBPM.h"
 
 #pragma region Implementing the View
 /* Java @ https://github.com/bethrobson/Head-First-Design-Patterns/tree/master/src/headfirst/designpatterns/combined/djview

@@ -24,10 +24,10 @@
     <ClInclude Include="BeatModelInterface.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="BeatObserver.h">
+    <ClInclude Include="ObserverBeat.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="BPMObserver.h">
+    <ClInclude Include="ObserverBPM.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ControllerInterface.h">

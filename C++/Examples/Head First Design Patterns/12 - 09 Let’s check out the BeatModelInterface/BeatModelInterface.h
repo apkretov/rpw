@@ -1,7 +1,7 @@
 #pragma once
 
-#include "BeatObserver.h"
-#include "BPMObserver.h"
+#include "ObserverBeat.h"
+#include "ObserverBPM.h"
 
 #pragma region Lets check out the BeatModelInterface before looking at the implementation //Let's check out the BeatModelInterface before looking at the implementation
 /* Java @ https://github.com/bethrobson/Head-First-Design-Patterns/tree/master/src/headfirst/designpatterns/combined/djview

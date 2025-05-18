@@ -22,8 +22,8 @@
     <ClInclude Include="ControllerBeat.h" />
     <ClInclude Include="BeatModel.h" />
     <ClInclude Include="BeatModelInterface.h" />
-    <ClInclude Include="BeatObserver.h" />
-    <ClInclude Include="BPMObserver.h" />
+    <ClInclude Include="ObserverBeat.h" />
+    <ClInclude Include="ObserverBPM.h" />
     <ClInclude Include="ControllerInterface.h" />
     <ClInclude Include="DJView.h" />
     <ClInclude Include="MetaEventListener.h" />
