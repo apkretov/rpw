@@ -81,7 +81,7 @@ public class BeatModel implements BeatModelInterface, MetaEventListener {
     }
 }
 */
-class BeatModel : public BeatModelInterface, public MetaEventListener {
+class BeatModel : public BeatModelInterface, public MetaEventListener { 
     std::unique_ptr<Sequencer> sequencer;
     std::vector<BeatObserver*> beatObservers;
     std::vector<BPMObserver*> bpmObservers;

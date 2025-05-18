@@ -8,7 +8,7 @@ public interface MetaEventListener {
 */
 class MetaEventListener {
 public:
-    virtual void beatEvent() = 0;
     virtual ~MetaEventListener() = default;
+    virtual void beatEvent() = 0;
 };
 #pragma endregion //Now lets have a look at the concrete BeatModel class
