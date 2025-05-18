@@ -104,7 +104,6 @@ public:
 
     void createView() { /* Platform-specific UI creation code would go here */ }
     void createControls() { /* Platform-specific control creation code would go here */ }
-    void updateBPM() override { /* Update UI with BPM value */ }
     void disableStopMenuItem() { /* Disable stop menu item */ }
     void enableStartMenuItem() { /* Enable start menu item */ }
     void disableStartMenuItem() { /* Disable start menu item */ }
