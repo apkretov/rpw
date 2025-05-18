@@ -85,8 +85,7 @@ class BeatModel : public BeatModelInterface, public MetaEventListener {
     std::unique_ptr<Sequencer> sequencer;
     std::vector<BeatObserver*> beatObservers;
     std::vector<BPMObserver*> bpmObservers;
-    int bpm{90};
-
+    int bpm = 90;
 public:
     void initialize() override {
         setUpMidi();
@@ -110,14 +109,8 @@ public:
     }
 
     int getBPM() const override { return bpm; }
-
-    void beatEvent() {
-        notifyBeatObservers();
-    }
-
-    void registerObserver(BeatObserver* o) override { 
-        if (o) beatObservers.push_back(o); 
-    }
+    void beatEvent() { notifyBeatObservers(); }
+    void registerObserver(BeatObserver* o) override { if (o) beatObservers.push_back(o); }
 
     void removeObserver(BeatObserver* o) override {
         if (o) beatObservers.erase(
@@ -125,9 +118,7 @@ public:
             beatObservers.end());
     }
 
-    void registerObserver(BPMObserver* o) override { 
-        if (o) bpmObservers.push_back(o); 
-    }
+    void registerObserver(BPMObserver* o) override { if (o) bpmObservers.push_back(o); }
 
     void removeObserver(BPMObserver* o) override {
         if (o) bpmObservers.erase(
@@ -135,6 +126,11 @@ public:
             bpmObservers.end());
     }
 
+    void removeObserver(BPMObserver* o) override {
+        if (o) bpmObservers.erase(
+            std::remove(bpmObservers.begin(), bpmObservers.end(), o),
+            bpmObservers.end());
+    }
 protected:
 	void setUpMidi() { sequencer = std::make_unique<Sequencer>(); }
     void buildTrackAndStart() { sequencer->setTempoInBPM(getBPM()); }
