@@ -17,11 +17,12 @@ public class DJTestDrive {
 */
 
 int main() {
-	print_file_line();
+	print_file_line(); //MINE
 
-	auto beatModel = std::make_shared<BeatModel>(); // Test the Beat Model
-	auto beatController = std::make_unique<BeatController>(beatModel);
+	BeatModel beatModel;
+	BeatController beatController{beatModel};
 
+	std::cout << '\n'; //MINE
     return 0;
 }
 #pragma endregion //Putting it all together...

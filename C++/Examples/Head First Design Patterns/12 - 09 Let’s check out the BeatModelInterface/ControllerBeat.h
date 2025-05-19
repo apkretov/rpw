@@ -53,7 +53,8 @@ class BeatController : public ControllerInterface {
     std::unique_ptr<DJView> view;
 
 public:
-    explicit BeatController(std::shared_ptr<BeatModelInterface> model_) : model(*model_) {
+    //explicit BeatController(std::shared_ptr<BeatModelInterface> model_) : model(*model_) {
+    explicit BeatController(BeatModelInterface &model_) : model(model_) {
         view = std::make_unique<DJView>(this, &model);
         view->createView();
         view->createControls();
