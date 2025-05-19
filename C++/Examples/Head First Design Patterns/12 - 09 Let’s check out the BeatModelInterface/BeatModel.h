@@ -118,11 +118,8 @@ public:
 
     void removeObserver(BeatObserver* o) override {
         if (o) 
-			beatObservers.erase(
-				std::remove(beatObservers.begin(), beatObservers.end(), o),
-				beatObservers.end()
-			);
-    }
+			std::erase(beatObservers, o);
+	}
 
     void registerObserver(BPMObserver* o) override { 
 		if (o) 
@@ -131,10 +128,7 @@ public:
 
     void removeObserver(BPMObserver* o) override {
         if (o) 
-			bpmObservers.erase(
-				std::remove(bpmObservers.begin(), bpmObservers.end(), o),
-				bpmObservers.end()
-			);
+			std::erase(bpmObservers, o);
     }
 protected:
 	void setUpMidi() { sequencer = std::make_unique<Sequencer>(); }
