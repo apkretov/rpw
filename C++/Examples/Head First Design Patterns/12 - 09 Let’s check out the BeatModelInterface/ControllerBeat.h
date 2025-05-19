@@ -50,29 +50,26 @@ public class BeatController implements ControllerInterface {
 */
 class BeatController : public ControllerInterface {
     BeatModelInterface &model;
-    std::unique_ptr<DJView> view;
-
+    DJView view;
 public:
-    //explicit BeatController(std::shared_ptr<BeatModelInterface> model_) : model(*model_) {
-    explicit BeatController(BeatModelInterface &model_) : model(model_) {
-        view = std::make_unique<DJView>(this, &model);
-        view->createView();
-        view->createControls();
-        view->disableStopMenuItem();
-        view->enableStartMenuItem();
+    explicit BeatController(BeatModelInterface &model_) : model(model_), view(this, &model_) {
+        view.createView();
+        view.createControls();
+        view.disableStopMenuItem();
+        view.enableStartMenuItem();
 		model.initialize();
     }
 
     void start() override {
         model.on();
-        view->disableStartMenuItem();
-        view->enableStopMenuItem();
+        view.disableStartMenuItem();
+        view.enableStopMenuItem();
     }
 
     void stop() override {
         model.off();
-        view->disableStopMenuItem();
-        view->enableStartMenuItem();
+        view.disableStopMenuItem();
+        view.enableStartMenuItem();
     }
 
     void increaseBPM() override {
