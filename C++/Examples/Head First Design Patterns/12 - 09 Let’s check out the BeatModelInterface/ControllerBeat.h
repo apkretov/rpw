@@ -1,6 +1,5 @@
 #pragma once
 
-#include <memory>
 #include "ControllerInterface.h"
 #include "BeatModelInterface.h"
 #include "DJView.h"

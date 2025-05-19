@@ -1,6 +1,5 @@
 #pragma once
 
-#include <memory>
 #include "../../stdafx.h"
 #include "vld.h"
 #include "BeatModel.h"
