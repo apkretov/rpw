@@ -50,10 +50,12 @@ public class BeatController implements ControllerInterface {
 */
 class BeatController : public ControllerInterface {
     std::shared_ptr<BeatModelInterface> model;
+    BeatModelInterface &ref_model;
     std::unique_ptr<DJView> view;
 
 public:
-    explicit BeatController(std::shared_ptr<BeatModelInterface> model) : model(model) {
+    //explicit BeatController(std::shared_ptr<BeatModelInterface> model_) : model(model_) {
+    explicit BeatController(std::shared_ptr<BeatModelInterface> model_) : ref_model(*model_), model(model_) {
         view = std::make_unique<DJView>(this, model.get());
         view->createView();
         view->createControls();
