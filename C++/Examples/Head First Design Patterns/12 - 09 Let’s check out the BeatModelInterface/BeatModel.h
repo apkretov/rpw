@@ -1,8 +1,7 @@
 #pragma once
 
-#include <vector>
 #include <memory>
-#include <thread>
+#include <vector>
 #include "BeatModelInterface.h"
 #include "Sequencer.h"
 #include "MetaEventListener.h"
