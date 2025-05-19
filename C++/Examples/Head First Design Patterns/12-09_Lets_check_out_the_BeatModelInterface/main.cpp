@@ -14,11 +14,11 @@ public class DJTestDrive {
 */
 int main(int argc, char *argv[]) {
     QApplication a(argc, argv);
-    Widget w;
-    w.show();
 
     BeatModel beatModel;
     BeatController beatController{beatModel};
 
+    Widget w;
+    w.show();
     return a.exec();
 }
