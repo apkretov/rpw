@@ -49,43 +49,41 @@ public class BeatController implements ControllerInterface {
 }
 */
 class BeatController : public ControllerInterface {
-    std::shared_ptr<BeatModelInterface> model;
-    BeatModelInterface &ref_model;
+    BeatModelInterface &model;
     std::unique_ptr<DJView> view;
 
 public:
-    //explicit BeatController(std::shared_ptr<BeatModelInterface> model_) : model(model_) {
-    explicit BeatController(std::shared_ptr<BeatModelInterface> model_) : ref_model(*model_), model(model_) {
-        view = std::make_unique<DJView>(this, model.get());
+    explicit BeatController(std::shared_ptr<BeatModelInterface> model_) : model(*model_) {
+        view = std::make_unique<DJView>(this, &model);
         view->createView();
         view->createControls();
         view->disableStopMenuItem();
         view->enableStartMenuItem();
-        model->initialize();
+		model.initialize();
     }
 
     void start() override {
-        model->on();
+        model.on();
         view->disableStartMenuItem();
         view->enableStopMenuItem();
     }
 
     void stop() override {
-        model->off();
+        model.off();
         view->disableStopMenuItem();
         view->enableStartMenuItem();
     }
 
     void increaseBPM() override {
-        int bpm = model->getBPM();
-        model->setBPM(bpm + 1);
+        int bpm = model.getBPM();
+        model.setBPM(bpm + 1);
     }
 
     void decreaseBPM() override {
-        int bpm = model->getBPM();
-        model->setBPM(bpm - 1);
+        int bpm = model.getBPM();
+        model.setBPM(bpm - 1);
     }
 
-    void setBPM(int bpm) override { model->setBPM(bpm); }
+    void setBPM(int bpm) override { model.setBPM(bpm); }
 };
 #pragma endregion //Now lets have a look at the concrete BeatModel class
