@@ -18,7 +18,7 @@ int main(int argc, char *argv[]) {
     BeatModel beatModel;
     BeatController beatController{beatModel};
 
-    Widget w;
+    Widget w(beatController, beatModel);
     w.show();
     return a.exec();
 }
