@@ -52,7 +52,7 @@ class BeatController : public ControllerInterface {
     BeatModelInterface &model;
     DJView view;
 public:
-    explicit BeatController(BeatModelInterface &model_) : model(model_), view(this, &model_) {
+    explicit BeatController(BeatModelInterface &model_) : model(model_), view(this, model_) {
         view.createView();
         view.createControls();
         view.disableStopMenuItem();

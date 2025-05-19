@@ -87,19 +87,17 @@ public class DJView implements ActionListener,  BeatObserver, BPMObserver {
 }
 */
 class DJView : public BeatObserver, public BPMObserver { // We'll use platform-specific UI components here
-    BeatModelInterface* model;							 // For Windows, we could use Win32 API or a cross-platform library like wxWidgets
+    BeatModelInterface &model;							 // For Windows, we could use Win32 API or a cross-platform library like wxWidgets
     ControllerInterface* controller;					 // For this example, we'll declare UI elements as pointers to be implemented
 public:
-    DJView(ControllerInterface* controller, BeatModelInterface* model) : controller(controller), model(model) {
-        model->registerObserver(static_cast<BeatObserver *>(this));  // Register as BeatObserver
-        model->registerObserver(static_cast<BPMObserver *>(this));  // Register as BPMObserver
+    DJView(ControllerInterface* controller_, BeatModelInterface &model_) : controller(controller_), model(model_) {
+        model.registerObserver(static_cast<BeatObserver *>(this));  // Register as BeatObserver
+        model.registerObserver(static_cast<BPMObserver *>(this));  // Register as BPMObserver
     }
 
     ~DJView() {
-        if (model) {
-            model->removeObserver(static_cast<BeatObserver *>(this));
-            model->removeObserver(static_cast<BPMObserver *>(this));
-        }
+        model.removeObserver(static_cast<BeatObserver *>(this));
+        model.removeObserver(static_cast<BPMObserver *>(this));
     }
 
     void createView() { /* Platform-specific UI creation code would go here */ }
@@ -110,10 +108,8 @@ public:
     void disableStartMenuItem() { /* Disable start menu item */ }
 
     void updateBPM() override {
-        if (model) {
-            int bpm = model->getBPM();
-            // Update UI with BPM value. Platform-specific code would go here
-        }
+        int bpm = model.getBPM(); // Removed null check as model is now a reference
+        // Update UI with BPM value. Platform-specific code would go here
     }
 
     void updateBeat() override { /* Update beat bar. Platform-specific code would go here */ }
