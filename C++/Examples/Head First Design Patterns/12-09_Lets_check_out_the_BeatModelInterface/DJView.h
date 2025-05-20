@@ -107,7 +107,7 @@ public:
     void disableStartMenuItem() { /* Disable start menu item */ }
 
     void updateBPM() override {
-        int bpm = model.getBPM(); // Removed null check as model is now a reference
+        int bpm = model.getBPM();
         // Update UI with BPM value. Platform-specific code would go here
     }
 
