@@ -1,9 +1,12 @@
-#include <iostream>
+#include "../stdafx.h"
+#include "MyClass.h"
 
-using namespace std;
+int main() {
+    print_file_line();
 
-int main()
-{
-    cout << "Hello World!" << endl;
+    MyClass myClass("test");
+    std::cout << "Text: " << myClass.text() << '\n';
+    std::cout << "Length of text: " << myClass.getLengthOfText() << '\n';
+
     return 0;
 }
