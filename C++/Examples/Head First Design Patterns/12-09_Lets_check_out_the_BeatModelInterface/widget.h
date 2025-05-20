@@ -8,18 +8,15 @@
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
-class Widget;
+    class Widget;
 }
 QT_END_NAMESPACE
 
-class Widget : public QWidget, public DJView
-{
+class Widget : public QWidget, public DJView {
     Q_OBJECT
-
 public:
     Widget(ControllerInterface& controller, BeatModelInterface& model, QWidget *parent = nullptr);
     ~Widget();
-
 private:
     Ui::Widget *ui;
 };
