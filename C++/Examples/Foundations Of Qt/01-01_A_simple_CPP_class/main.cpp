@@ -8,5 +8,8 @@ int main() {
     std::cout << "Text: " << myClass.text() << '\n';
     std::cout << "Length of text: " << myClass.getLengthOfText() << '\n';
 
+    myClass.setText("new text");
+    std::cout << "Updated text: " << myClass.text() << '\n';
+
     return 0;
 }
