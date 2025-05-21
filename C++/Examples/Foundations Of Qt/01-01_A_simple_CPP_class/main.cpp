@@ -1,15 +1,25 @@
 #include "../stdafx.h"
 #include "MyClass.h"
 
+#pragma region Listing 1-3. Dynamic memory without Qt
 int main() {
-    print_file_line();
+    print_file_line(); //MINE
 
-    MyClass myClass("test");
-    std::cout << "Text: " << myClass.text() << '\n';
-    std::cout << "Length of text: " << myClass.getLengthOfText() << '\n';
+    MyClass *a, *b, *c;
+    a = new MyClass( "foo" );
+    b = new MyClass( "ba-a-ar" );
+    c = new MyClass( "baz" );
 
-    myClass.setText("new text");
-    std::cout << "Updated text: " << myClass.text() << '\n';
+    std::cout << a->text() << " (" << a->getLengthOfText() << ")" << std::endl;
+    a->setText( b->text() );
+    std::cout << a->text() << " (" << a->getLengthOfText() << ")" << std::endl;
 
-    return 0;
+    int result = a->getLengthOfText() - c->getLengthOfText();
+
+    delete a;
+    delete b;
+    delete c;
+
+    return result;
 }
+#pragma endregion //Listing 1-3. Dynamic memory without Qt
