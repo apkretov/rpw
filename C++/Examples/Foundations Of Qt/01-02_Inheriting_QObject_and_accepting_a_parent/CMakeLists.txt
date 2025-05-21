@@ -14,6 +14,7 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core)
 
 add_executable(01-02_Inheriting_QObject_and_accepting_a_parent
   main.cpp
+  MyClass.h
 )
 target_link_libraries(01-02_Inheriting_QObject_and_accepting_a_parent Qt${QT_VERSION_MAJOR}::Core)
 
