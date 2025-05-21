@@ -1,3 +1,5 @@
+//OFF #define QT_NO_DEBUG_OUTPUT 1 // Turn off qDebug().
+
 #include <QCoreApplication>
 #include <QDebug>
 #include "../stdafx.h"
