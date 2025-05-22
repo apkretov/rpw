@@ -42,15 +42,13 @@ void Listing_1_15() { //Listing 1-15. Modifying lists using iterators
     }
 }
 
-int main(int argc, char *argv[]) {
-    QCoreApplication a(argc, argv);
-    
+int main(int argc, char *argv[]) {  
     Listing_1_13();
     qDebug("\n");
     Listing_1_14();
     qDebug("\n");
     Listing_1_15();
 
-    return a.exec();
+    return 0;
 }
 
