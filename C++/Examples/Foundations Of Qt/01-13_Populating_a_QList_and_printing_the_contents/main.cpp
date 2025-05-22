@@ -37,7 +37,7 @@ void Listing_1_15() { //Listing 1-15. Modifying lists using iterators
     qDebug("\n");
     QList<int>::Iterator stlIter; //STL-style iterator
     for(stlIter = list.begin(); stlIter != list.end(); ++stlIter) {
-        (*stlIter) = (*stlIter)*2;
+        (*stlIter) = (*stlIter) * 2;
         qDebug() << (*stlIter);
     }
 }
