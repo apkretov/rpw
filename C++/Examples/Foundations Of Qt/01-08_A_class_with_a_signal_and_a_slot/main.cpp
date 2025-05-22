@@ -21,7 +21,13 @@ int main(int argc, char *argv[]) {
     QObject::connect(b, SIGNAL(textChanged(const QString&)), c, SLOT(setText(const QString&)));
     QObject::connect(c, SIGNAL(textChanged(const QString&)), b, SLOT(setText(const QString&)));
 
-    b->setText( "test" );
+    b->setText("test");
+
+    qDebug() << "\na->text():" << a->text(); //MINE
+    qDebug() << "b->text():" << b->text();
+    qDebug() << "c->text():" << c->text();
+
+    a->setText("Qt");
 
     qDebug() << "\na->text():" << a->text(); //MINE
     qDebug() << "b->text():" << b->text();
