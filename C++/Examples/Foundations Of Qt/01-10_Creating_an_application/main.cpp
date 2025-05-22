@@ -19,12 +19,13 @@ int main(int argc, char *argv[]) {
     widget.setLayout(layout);
 
     MyClass *bridge = new MyClass("", &app);
-
 #pragma region Listing 1-11. Setting up the connections
     QObject::connect(lineEdit, SIGNAL(textChanged(const QString&)), bridge, SLOT(setText(const QString&)));
     QObject::connect(bridge, SIGNAL(textChanged(const QString&)), label, SLOT(setText(const QString&)));
 #pragma endregion //Listing 1-11. Setting up the connections
-
-    return app.exec(); //QT
+#pragma region Listing 1-12. Showing the user interface and executing the event loop
+    widget.show();
+    return app.exec();
+#pragma endregion //Listing 1-12. Showing the user interface and executing the event loop
 }
 #pragma endregion //Listing 1-10. Creating an application, widgets, layout, and a MyClass object
