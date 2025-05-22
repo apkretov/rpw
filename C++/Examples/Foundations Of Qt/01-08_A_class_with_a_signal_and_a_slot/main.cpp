@@ -7,9 +7,11 @@ int main(int argc, char *argv[]) {
     print_file_line(); //MINE
 
     QObject parent;
-    MyClass *a = new MyClass("AAA", &parent);
-    MyClass *b = new MyClass("BBB", &parent);
-    MyClass *c = new MyClass("CCC", &parent);
+    MyClass *a, *b, *c;
+
+    a = new MyClass( "foo", &parent );
+    b = new MyClass( "bar", &parent );
+    c = new MyClass( "baz", &parent );
 
     qDebug() << "a->text():" << a->text(); //MINE
     qDebug() << "b->text():" << b->text();
@@ -19,14 +21,9 @@ int main(int argc, char *argv[]) {
     QObject::connect(b, SIGNAL(textChanged(const QString&)), c, SLOT(setText(const QString&)));
     QObject::connect(c, SIGNAL(textChanged(const QString&)), b, SLOT(setText(const QString&)));
 
-    a->setText("Hello Qt!"); // Test the connections
+    b->setText( "test" );
 
-    qDebug() << "a->text():" << a->text(); //MINE
-    qDebug() << "b->text():" << b->text();
-    qDebug() << "c->text():" << c->text();
-
-    b->setText("My change to b."); //MINE
-    qDebug() << "a->text():" << a->text();
+    qDebug() << "\na->text():" << a->text(); //MINE
     qDebug() << "b->text():" << b->text();
     qDebug() << "c->text():" << c->text();
 
