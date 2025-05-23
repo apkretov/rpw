@@ -12,3 +12,9 @@ ListDialog::~ListDialog()
 {
     delete ui;
 }
+
+void ListDialog::on_addButton_clicked()
+{
+
+}
+

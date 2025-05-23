@@ -15,6 +15,9 @@ public:
     explicit ListDialog(QWidget *parent = nullptr);
     ~ListDialog();
 
+private slots:
+    void on_addButton_clicked();
+
 private:
     Ui::ListDialog *ui;
 };
