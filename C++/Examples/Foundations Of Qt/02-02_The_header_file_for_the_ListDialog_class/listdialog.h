@@ -4,22 +4,17 @@
 #include <QDialog>
 
 namespace Ui {
-class ListDialog;
+    class ListDialog;
 }
 
-class ListDialog : public QDialog
-{
+class ListDialog : public QDialog {
     Q_OBJECT
-
 public:
     explicit ListDialog(QWidget *parent = nullptr);
     ~ListDialog();
-
 private slots:
     void on_addButton_clicked();
-
 private:
     Ui::ListDialog *ui;
 };
-
 #endif // LISTDIALOG_H
