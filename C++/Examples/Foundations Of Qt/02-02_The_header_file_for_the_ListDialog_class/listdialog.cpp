@@ -1,20 +1,7 @@
 #include "listdialog.h"
 #include "ui_listdialog.h"
 
-ListDialog::ListDialog(QWidget *parent)
-    : QDialog(parent)
-    , ui(new Ui::ListDialog)
-{
-    ui->setupUi(this);
-}
-
-ListDialog::~ListDialog()
-{
-    delete ui;
-}
-
-void ListDialog::on_addButton_clicked()
-{
-
-}
+ListDialog::ListDialog(QWidget *parent) : QDialog(parent), ui(new Ui::ListDialog) { ui->setupUi(this); }
+ListDialog::~ListDialog() { delete ui; }
+void ListDialog::on_addButton_clicked() {}
 
