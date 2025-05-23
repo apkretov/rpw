@@ -24,6 +24,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
         listdialog.h listdialog.cpp listdialog.ui
+        editdialog.h editdialog.cpp editdialog.ui
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET 02-02_The_header_file_for_the_ListDialog_class APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
