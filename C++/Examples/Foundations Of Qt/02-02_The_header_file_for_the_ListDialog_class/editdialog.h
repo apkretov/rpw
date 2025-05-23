@@ -4,7 +4,7 @@
 #include <QDialog>
 
 namespace Ui {
-    class nameEdit;
+    class EditDialog;
 }
 
 class EditDialog : public QDialog {
@@ -13,6 +13,6 @@ public:
     explicit EditDialog(QWidget *parent = nullptr);
     ~EditDialog();
 private:
-    Ui::nameEdit *ui;
+    Ui::EditDialog *ui;
 };
 #endif // EDITDIALOG_H
