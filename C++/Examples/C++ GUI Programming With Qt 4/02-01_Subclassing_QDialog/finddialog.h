@@ -4,13 +4,13 @@
 #include <QDialog>
 
 class QCheckBox;
-class QLablel;
+class QLabel;
 class QLineEdit;
 class QPushButton;
 
 class FindDialog : public QDialog {
     Q_OBJECT
-    QLabel *lable;
+    QLabel *label;
     QLineEdit *lineEdit;
     QCheckBox *caseCheckBox;
     QCheckBox *backwardCheckBox;
@@ -18,7 +18,7 @@ class FindDialog : public QDialog {
     QPushButton *closeButton;
 public: FindDialog(QWidget *parent = 0);
 signals:
-    void findNext(const Qstring &str, Qt::CaseSensitivity cs);
+    void findNext(const QString &str, Qt::CaseSensitivity cs);
     void findPrevious(const QString &str, Qt::CaseSensitivity cs);
 private slots:
     void findClicked();
