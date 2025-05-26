@@ -9,12 +9,12 @@ class Widget;
 }
 QT_END_NAMESPACE
 
-class Widget : public QWidget {
+class GoToCellDialog : public QWidget {
     Q_OBJECT
 
 public:
-    Widget(QWidget *parent = nullptr);
-    ~Widget();
+    GoToCellDialog(QWidget *parent = nullptr);
+    ~GoToCellDialog();
 
 private:
     Ui::Widget *ui;

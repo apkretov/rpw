@@ -1,14 +1,14 @@
 #include "GoToCellDialog.h"
 #include "./ui_GoToCellDialog.h"
 
-Widget::Widget(QWidget *parent)
+GoToCellDialog::GoToCellDialog(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::Widget)
 {
     ui->setupUi(this);
 }
 
-Widget::~Widget()
+GoToCellDialog::~GoToCellDialog()
 {
     delete ui;
 }
