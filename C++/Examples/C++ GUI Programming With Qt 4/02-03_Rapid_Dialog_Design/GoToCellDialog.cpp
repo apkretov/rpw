@@ -1,5 +1,5 @@
-#include "widget.h"
-#include "./ui_widget.h"
+#include "GoToCellDialog.h"
+#include "./ui_GoToCellDialog.h"
 
 Widget::Widget(QWidget *parent)
     : QWidget(parent)

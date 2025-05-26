@@ -1,5 +1,5 @@
-#ifndef WIDGET_H
-#define WIDGET_H
+#ifndef GOTOCELLDIALOG_H
+#define GOTOCELLDIALOG_H
 
 #include <QWidget>
 
@@ -9,8 +9,7 @@ class Widget;
 }
 QT_END_NAMESPACE
 
-class Widget : public QWidget
-{
+class Widget : public QWidget {
     Q_OBJECT
 
 public:
@@ -20,4 +19,4 @@ public:
 private:
     Ui::Widget *ui;
 };
-#endif // WIDGET_H
+#endif // GOTOCELLDIALOG_H
