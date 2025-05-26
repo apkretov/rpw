@@ -1,9 +1,9 @@
-#include "GoToCellDialog.h"
-#include "./ui_GoToCellDialog.h"
+#include "gotocelldialog.h"
+#include "./ui_gotocelldialog.h"
 
 GoToCellDialog::GoToCellDialog(QWidget *parent)
     : QWidget(parent)
-    , ui(new Ui::Widget)
+    , ui(new Ui::GoToCellDialog)
 {
     ui->setupUi(this);
 }

@@ -5,7 +5,7 @@
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
-class Widget;
+class GoToCellDialog;
 }
 QT_END_NAMESPACE
 
@@ -17,6 +17,6 @@ public:
     ~GoToCellDialog();
 
 private:
-    Ui::Widget *ui;
+    Ui::GoToCellDialog *ui;
 };
 #endif // GOTOCELLDIALOG_H

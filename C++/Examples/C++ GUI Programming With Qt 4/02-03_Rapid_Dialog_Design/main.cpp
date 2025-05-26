@@ -1,4 +1,4 @@
-#include "GoToCellDialog.h"
+#include "gotocelldialog.h"
 #include <QApplication>
 
 int main(int argc, char *argv[]) {
