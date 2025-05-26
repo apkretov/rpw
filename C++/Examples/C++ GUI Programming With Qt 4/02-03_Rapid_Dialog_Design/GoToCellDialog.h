@@ -5,18 +5,15 @@
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
-class GoToCellDialog;
+    class GoToCellDialog;
 }
 QT_END_NAMESPACE
 
 class GoToCellDialog : public QWidget {
     Q_OBJECT
-
+    Ui::GoToCellDialog *ui;
 public:
     GoToCellDialog(QWidget *parent = nullptr);
     ~GoToCellDialog();
-
-private:
-    Ui::GoToCellDialog *ui;
 };
 #endif // GOTOCELLDIALOG_H
