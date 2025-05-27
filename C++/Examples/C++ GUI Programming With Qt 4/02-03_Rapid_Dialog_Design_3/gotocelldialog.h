@@ -1,4 +1,4 @@
-#pragma region To make the dialog use a QDialogButtonBox
+#pragma region We can make the dialog function properly by writing some code.
 
 #ifndef GOTOCELLDIALOG_H
 #define GOTOCELLDIALOG_H
@@ -14,4 +14,4 @@ private slots:
     void on_lineEdit_textChanged();
 };
 #endif // GOTOCELLDIALOG_H
-#pragma endregion //To make the dialog use a QDialogButtonBox
+#pragma endregion //We can make the dialog function properly by writing some code.

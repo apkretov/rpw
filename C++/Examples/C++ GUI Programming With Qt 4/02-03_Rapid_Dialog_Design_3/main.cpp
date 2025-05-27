@@ -1,4 +1,4 @@
-#pragma region To make the dialog use a QDialogButtonBox
+#pragma region We can make the dialog function properly by writing some code.
 
 #include <QApplication>
 #include "gotocelldialog.h"
@@ -9,4 +9,4 @@ int main(int argc, char *argv[]) {
     dialog.show();
     return app.exec();
 }
-#pragma endregion //To make the dialog use a QDialogButtonBox
+#pragma endregion //We can make the dialog function properly by writing some code.
