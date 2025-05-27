@@ -11,15 +11,12 @@ int main(int argc, char *argv[]) {
 #else //ORIG
 
 #include <QApplication>
-#include <QDialog>
-#include "ui_GoToCellDialog.h"
+#include "gotocelldialog.h"
 
 int main(int argc, char *argv[]) {
     QApplication app(argc, argv);
-    Ui::GoToCellDialog ui;
-    QDialog *dialog = new QDialog;
-    ui.setupUi(dialog);
-    dialog->show();
+    GoToCellDialog dialog;
+    dialog.show();
     return app.exec();
 }
 #endif //ORIG
