@@ -1,6 +1,7 @@
 #pragma region To make the dialog use a QDialogButtonBox
 
 #include <QtGui>
+#include <QPushButton> //TRAE
 #include "gotocelldialog.h"
 
 GoToCellDialog::GoToCellDialog(QWidget *parent) : QDialog(parent) {
