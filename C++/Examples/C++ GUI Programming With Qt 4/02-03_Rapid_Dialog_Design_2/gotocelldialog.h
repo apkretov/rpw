@@ -1,4 +1,5 @@
 #ifdef QT
+
 #ifndef GOTOCELLDIALOG_H
 #define GOTOCELLDIALOG_H
 
@@ -19,11 +20,10 @@ public:
 };
 #endif // GOTOCELLDIALOG_H
 
-#else //ORIG
+#else //ORIG //We can make the dialog function properly by writing some code.
+
 #ifndef GOTOCELLDIALOG_H
 #define GOTOCELLDIALOG_H
-
-#pragma region We can make the dialog function properly by writing some code.
 
 #include <QDialog>
 #include "ui_gotocelldialog.h"
@@ -35,6 +35,5 @@ public:
 private slots:
     void on_lineEdit_textChanged();
 };
-#pragma endregion //We can make the dialog function properly by writing some code.
 #endif // GOTOCELLDIALOG_H
-#endif //ORIG
+#endif //ORIG //We can make the dialog function properly by writing some code.

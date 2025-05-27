@@ -6,7 +6,7 @@
 GoToCellDialog::GoToCellDialog(QWidget *parent) : QWidget(parent), ui(new Ui::GoToCellDialog) { ui->setupUi(this); }
 GoToCellDialog::~GoToCellDialog() { delete ui; }
 
-#else //ORIG
+#else //ORIG //We can make the dialog function properly by writing some code.
 
 #include <QtGui>
 #include "gotocelldialog.h"
@@ -22,4 +22,4 @@ GoToCellDialog::GoToCellDialog(QWidget *parent) : QDialog(parent) {
 }
 
 void GoToCellDialog::on_lineEdit_textChanged() { okButton->setEnabled(lineEdit->hasAcceptableInput()); }
-#endif //ORIG
+#endif //ORIG //We can make the dialog function properly by writing some code.
