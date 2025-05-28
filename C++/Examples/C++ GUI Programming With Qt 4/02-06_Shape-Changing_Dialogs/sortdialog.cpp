@@ -16,8 +16,7 @@ void SortDialog::setColumnRange(QChar first, QChar last) {
 
     secondaryColumnCombo->addItem(tr("None"));
     tertiaryColumnCombo->addItem(tr("None"));
-    primaryColumnCombo->setMinimumSize(
-        secondaryColumnCombo->sizeHint());
+    primaryColumnCombo->setMinimumSize(secondaryColumnCombo->sizeHint());
 
     QChar ch = first;
     while (ch <= last) {
