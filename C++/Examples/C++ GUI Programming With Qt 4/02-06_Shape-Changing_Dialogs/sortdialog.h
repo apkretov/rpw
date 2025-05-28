@@ -1,23 +1,13 @@
-#ifndef SORTDIALOG_H
+#ifndef SORTDIALOG_H //To add code to the form, we will use the same multiple inheritance approach
 #define SORTDIALOG_H
 
 #include <QDialog>
+#include "ui_sortdialog.h"
 
-QT_BEGIN_NAMESPACE
-namespace Ui {
-class SortDialog;
-}
-QT_END_NAMESPACE
-
-class SortDialog : public QDialog
-{
+class SortDialog : public QDialog, public Ui::SortDialog {
     Q_OBJECT
-
 public:
-    SortDialog(QWidget *parent = nullptr);
-    ~SortDialog();
-
-private:
-    Ui::SortDialog *ui;
+    SortDialog(QWidget *parent = 0);
+    void setColumnRange(QChar first, QChar last);
 };
-#endif // SORTDIALOG_H
+#endif //To add code to the form, we will use the same multiple inheritance approach
