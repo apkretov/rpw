@@ -22,6 +22,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(03-01_Subclassing_QMainWindow
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
+        finddialog.cpp finddialog.h gotocelldialog.cpp gotocelldialog.h gotocelldialog.ui sortdialog.cpp sortdialog.h sortdialog.ui
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET 03-01_Subclassing_QMainWindow APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
