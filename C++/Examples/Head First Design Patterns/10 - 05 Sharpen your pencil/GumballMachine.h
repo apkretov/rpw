@@ -13,7 +13,7 @@ using std::to_string;
 class State;
 
 class GumballMachine : public std::enable_shared_from_this<GumballMachine> {
-	shared_ptr<State> soldOutState;		// Having the shared_ptr in the State classes requires the overhead:
+	shared_ptr<State> soldOutState;		// Having the shared_ptr in the State classes requires the overhead: //TO DO: Refactor them to unique_ptr with using the raw poointers.
 	shared_ptr<State> noQuarterState;	// 1. The private constructor;
 	shared_ptr<State> hasQuarterState;	// 2. The creating and initializing functions due to the inheritance 'from this'.
 	shared_ptr<State> soldState;

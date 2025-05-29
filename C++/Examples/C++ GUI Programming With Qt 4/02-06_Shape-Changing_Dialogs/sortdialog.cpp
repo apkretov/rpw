@@ -1,3 +1,5 @@
+#pragma region To add code to the form, we will use the same multiple inheritance approach
+
 #include <QtGui>
 #include "sortdialog.h"
 
@@ -23,6 +25,7 @@ void SortDialog::setColumnRange(QChar first, QChar last) {
         primaryColumnCombo->addItem(QString(ch));
         secondaryColumnCombo->addItem(QString(ch));
         tertiaryColumnCombo->addItem(QString(ch));
-        ch = ch.unicode() + 1;
+        ch = QChar(ch.unicode() + 1); //ORIG ch = ch.unicode() + 1;
     }
 }
+#pragma endregion //To add code to the form, we will use the same multiple inheritance approach
