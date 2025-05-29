@@ -17,7 +17,7 @@ MainWindow::MainWindow() {
     createStatusBar();
     readSettings();
     findDialog = 0;
-    setWindowIcon(QIcon(":/images/icon.png")); //MINE: See the comment below.
+    setWindowIcon(QIcon(":/images/icon.png")); //MINE: See the Perplexity comment below.
     setCurrentFile("");
 }
 #pragma endregion //We will now review the implementation
