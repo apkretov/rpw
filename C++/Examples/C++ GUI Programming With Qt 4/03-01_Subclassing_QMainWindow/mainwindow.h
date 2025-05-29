@@ -62,7 +62,11 @@ private:
     QToolBar *editToolBar;
     QAction *newAction;
     QAction *openAction;
+    QAction *saveAction; //MINE
+    QAction *saveAsAction; //MINE
     QAction *exitAction; //MINE
+    QAction *selectAllAction; //MINE
+    QAction *showGridAction; //MINE
     // ...
     QAction *aboutQtAction;
 };
