@@ -62,6 +62,7 @@ private:
     QToolBar *editToolBar;
     QAction *newAction;
     QAction *openAction;
+    QAction *exitAction; //MINE
     // ...
     QAction *aboutQtAction;
 };

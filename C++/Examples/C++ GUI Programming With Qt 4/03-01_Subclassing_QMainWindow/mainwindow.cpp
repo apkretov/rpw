@@ -24,7 +24,7 @@ MainWindow::MainWindow() {
 void MainWindow::createActions() {
     newAction = new QAction(tr("&New"), this);
     newAction->setIcon(QIcon(":/images/new.png"));
-    newAction->setShortcut(QKeySequence::New);
+    newAction->setShortcut(QKeySequence::New); //TEST
     newAction->setStatusTip(tr("Create a new spreadsheet file"));
     connect(newAction, SIGNAL(triggered()), this, SLOT(newFile()));
 
@@ -36,7 +36,7 @@ void MainWindow::createActions() {
     }
 
     exitAction = new QAction(tr("E&xit"), this);
-    exitAction->setShortcut(tr("Ctrl+Q"));
+    exitAction->setShortcut(tr("Ctrl+Q")); //TEST
     exitAction->setStatusTip(tr("Exit the application"));
     connect(exitAction, SIGNAL(triggered()), this, SLOT(close()));
 }
