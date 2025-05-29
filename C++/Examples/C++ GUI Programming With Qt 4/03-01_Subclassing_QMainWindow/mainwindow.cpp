@@ -20,6 +20,26 @@ MainWindow::MainWindow() {
     setWindowIcon(QIcon(":/images/icon.png")); //MINE: See the Perplexity comment below.
     setCurrentFile("");
 }
+
+void MainWindow::createActions() {
+    newAction = new QAction(tr("&New"), this);
+    newAction->setIcon(QIcon(":/images/new.png"));
+    newAction->setShortcut(QKeySequence::New);
+    newAction->setStatusTip(tr("Create a new spreadsheet file"));
+    connect(newAction, SIGNAL(triggered()), this, SLOT(newFile()));
+
+    // ...
+    for (int i = 0; i < MaxRecentFiles; ++i) {
+        recentFileActions[i] = new QAction(this);
+        recentFileActions[i]->setVisible(false);
+        connect(recentFileActions[i], SIGNAL(triggered()), this, SLOT(openRecentFile()));
+    }
+
+    exitAction = new QAction(tr("E&xit"), this);
+    exitAction->setShortcut(tr("Ctrl+Q"));
+    exitAction->setStatusTip(tr("Exit the application"));
+    connect(exitAction, SIGNAL(triggered()), this, SLOT(close()));
+}
 #pragma endregion //We will now review the implementation
 
 /* Perplexity
