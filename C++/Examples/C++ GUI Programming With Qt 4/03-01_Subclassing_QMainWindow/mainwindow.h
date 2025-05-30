@@ -67,6 +67,18 @@ private:
     QAction *exitAction; //MINE
     QAction *selectAllAction; //MINE
     QAction *showGridAction; //MINE
+    QAction *autoRecalcAction; //MINE
+    QAction *cutAction; //MINE
+    QAction *copyAction; //MINE
+    QAction *pasteAction; //MINE
+    QAction *deleteAction; //MINE
+    QAction *selectRowAction; //MINE
+    QAction *selectColumnAction; //MINE
+    QAction *goToCellAction; //MINE
+    QAction *findAction; //MINE
+    QAction *recalculateAction; //MINE
+    QAction *sortAction; //MINE
+    QAction *aboutAction; //MINE
     // ...
     QAction *aboutQtAction;
 };
