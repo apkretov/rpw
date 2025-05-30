@@ -1,5 +1,6 @@
-#ifndef MAINWINDOW_H //The source code for the Spreadsheet application's main window is spread across mainwindow.h and mainwindow.cpp.
-#define MAINWINDOW_H
+#pragma once
+
+#pragma region The source code for the Spreadsheet application's main window is spread across mainwindow.h and mainwindow.cpp.
 
 #include <QMainWindow>
 
@@ -64,4 +65,4 @@ private:
     // ...
     QAction *aboutQtAction;
 };
-#endif //The source code for the Spreadsheet application's main window is spread across mainwindow.h and mainwindow.cpp.
+#pragma endregion //The source code for the Spreadsheet application's main window is spread across mainwindow.h and mainwindow.cpp.
