@@ -143,6 +143,16 @@ void MainWindow::createStatusBar() {
     connect(spreadsheet, SIGNAL(modified()), this, SLOT(spreadsheetModified()));
     updateStatusBar();
 }
+
+void MainWindow::updateStatusBar() {
+    locationLabel->setText(spreadsheet->currentLocation());
+    formulaLabel->setText(spreadsheet->currentFormula());
+}
+
+void MainWindow::spreadsheetModified() {
+    setWindowModified(true);
+    updateStatusBar();
+}
 #pragma endregion //Setting Up the Status Bar
 /* Perplexity
 
