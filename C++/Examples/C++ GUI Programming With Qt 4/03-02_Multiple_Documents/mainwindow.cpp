@@ -19,6 +19,9 @@ MainWindow::MainWindow() {
     findDialog = 0;
     setWindowIcon(QIcon(":/images/icon.png")); //MINE: See the Perplexity comment below.
     setCurrentFile("");
+    #pragma region Multiple Documents
+    setAttribute(Qt::WA_DeleteOnClose);
+    #pragma endregion //Multiple Documents
 }
 
 #pragma endregion //We will now review the implementation
