@@ -1,3 +1,4 @@
+#include <qapplication.h>
 #include "spreadsheet.h"
 
 #pragma region Subclassing QTableWidget
@@ -125,3 +126,33 @@ bool Spreadsheet::readFile(const QString &fileName) {
     return true;
 }
 #pragma endregion //Loading and Saving
+
+#pragma region Implementing the Edit Menu
+void Spreadsheet::cut() {
+    copy();
+    del();
+}
+
+void Spreadsheet::copy() {
+    QTableWidgetSelectionRange range = selectedRange();
+    QString str;
+
+    for (int i = 0; i < range.rowCount(); ++i) {
+        if (i > 0)
+            str += "\n";
+        for (int j = 0; j < range.columnCount(); ++j) {
+            if (j > 0)
+                str += "\t";
+            str += formula(range.topRow() + i, range.leftColumn() + j);
+        }
+    }
+    QApplication::clipboard()->setText(str);
+}
+
+QTableWidgetSelectionRange Spreadsheet::selectedRange() const {
+    QList<QTableWidgetSelectionRange> ranges = selectedRanges();
+    if (ranges.isEmpty())
+        return QTableWidgetSelectionRange();
+    return ranges.first();
+}
+#pragma endregion //Implementing the Edit Menu
