@@ -65,6 +65,7 @@ private:
     QAction *saveAction; //MINE
     QAction *saveAsAction; //MINE
     QAction *exitAction; //MINE
+    QAction *closeAction; //MINE
     QAction *selectAllAction; //MINE
     QAction *showGridAction; //MINE
     QAction *autoRecalcAction; //MINE

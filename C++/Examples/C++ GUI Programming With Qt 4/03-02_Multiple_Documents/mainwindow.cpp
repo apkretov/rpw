@@ -38,11 +38,6 @@ void MainWindow::createActions() {
         connect(recentFileActions[i], SIGNAL(triggered()), this, SLOT(openRecentFile()));
     }
 
-    exitAction = new QAction(tr("E&xit"), this);
-    exitAction->setShortcut(tr("Ctrl+Q")); //TEST
-    exitAction->setStatusTip(tr("Exit the application"));
-    connect(exitAction, SIGNAL(triggered()), this, SLOT(close()));
-
     // ...
     selectAllAction = new QAction(tr("&All"), this);
     selectAllAction->setShortcut(QKeySequence::SelectAll);
@@ -60,6 +55,19 @@ void MainWindow::createActions() {
     aboutQtAction = new QAction(tr("About &Qt"), this);
     aboutQtAction->setStatusTip(tr("Show the Qt library's About box"));
     connect(aboutQtAction, SIGNAL(triggered()), qApp, SLOT(aboutQt()));
+
+    #pragma region Multiple Documents
+    // ...
+    closeAction = new QAction(tr("&Close"), this);
+    closeAction->setShortcut(QKeySequence::Close);
+    closeAction->setStatusTip(tr("Close this window"));
+    connect(closeAction, SIGNAL(triggered()), this, SLOT(close()));
+    exitAction = new QAction(tr("E&xit"), this);
+    exitAction->setShortcut(tr("Ctrl+Q"));
+    exitAction->setStatusTip(tr("Exit the application"));
+    connect(exitAction, SIGNAL(triggered()), qApp, SLOT(closeAllWindows()));
+    // ...
+    #pragma endregion //Multiple Documents
 }
 
 void MainWindow::createMenus() {
