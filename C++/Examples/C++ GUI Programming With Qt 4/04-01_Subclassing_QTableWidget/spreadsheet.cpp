@@ -231,3 +231,41 @@ void Spreadsheet::findPrevious(const QString &str, Qt::CaseSensitivity cs) {
     QApplication::beep();
 }
 #pragma endregion //Implementing the Edit Menu
+
+#pragma region Implementing the Other Menus
+void Spreadsheet::recalculate() {
+    for (int row = 0; row < RowCount; ++row)
+        for (int column = 0; column < ColumnCount; ++column)
+            if (cell(row, column))
+                cell(row, column)->setDirty();
+    viewport()->update();
+}
+
+void Spreadsheet::setAutoRecalculate(bool recalc) {
+    autoRecalc = recalc;
+    if (autoRecalc)
+        recalculate();
+}
+
+void Spreadsheet::sort(const SpreadsheetCompare &compare) {
+    QList<QStringList> rows;
+    QTableWidgetSelectionRange range = selectedRange();
+
+    int i;
+    for (i = 0; i < range.rowCount(); ++i) {
+        QStringList row;
+        for (int j = 0; j < range.columnCount(); ++j)
+            row.append(formula(range.topRow() + i, range.leftColumn() + j));
+        rows.append(row);
+    }
+
+    qStableSort(rows.begin(), rows.end(), compare);
+
+    for (i = 0; i < range.rowCount(); ++i)
+        for (int j = 0; j < range.columnCount(); ++j)
+            setFormula(range.topRow() + i, range.leftColumn() + j, rows[i][j]);
+
+    clearSelection();
+    somethingChanged();
+}
+#pragma endregion //Implementing the Other Menus
