@@ -23,6 +23,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
         finddialog.cpp finddialog.h gotocelldialog.cpp gotocelldialog.h gotocelldialog.ui mainwindow.cpp mainwindow.h sortdialog.cpp sortdialog.h sortdialog.ui
+        spreadsheet.h spreadsheet.cpp
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET 04-01_Subclassing_QTableWidget APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
