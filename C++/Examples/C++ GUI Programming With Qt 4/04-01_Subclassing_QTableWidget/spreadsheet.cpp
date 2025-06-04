@@ -1,11 +1,11 @@
 #include <qapplication.h>
+#include "spreadsheetcompare.h"
 #include "spreadsheet.h"
 
 #pragma region Subclassing QTableWidget
 
 #include <QtGui>
 #include "cell.h"
-#include "spreadsheet.h"
 
 Spreadsheet::Spreadsheet(QWidget *parent) : QTableWidget(parent) {
     autoRecalc = true;

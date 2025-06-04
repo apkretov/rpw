@@ -6,6 +6,7 @@
 #include "mainwindow.h"
 #include "sortdialog.h"
 #include "spreadsheet.h" // We will implement it in Chapter 4.
+#include "spreadsheetcompare.h"
 
 MainWindow::MainWindow() {
     spreadsheet = new Spreadsheet;

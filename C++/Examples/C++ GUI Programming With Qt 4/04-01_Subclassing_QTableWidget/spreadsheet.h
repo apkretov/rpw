@@ -3,6 +3,7 @@
 #pragma region Subclassing QTableWidget
 
 #include <QTableWidget>
+
 class Cell;
 class SpreadsheetCompare;
 
