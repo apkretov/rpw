@@ -1,6 +1,9 @@
+#pragma once
+
 #pragma region Subclassing QTableWidgetItem
 
 #include <QTableWidgetItem>
+
 class Cell : public QTableWidgetItem {
 public:
     Cell();
