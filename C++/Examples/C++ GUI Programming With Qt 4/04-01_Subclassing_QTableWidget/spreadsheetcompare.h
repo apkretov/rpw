@@ -1,5 +1,7 @@
 #pragma once
 
+#include <QStringList> //MINE
+
 #pragma region Subclassing QTableWidget
 class SpreadsheetCompare {
 public:
