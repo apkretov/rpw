@@ -99,9 +99,11 @@ void MainWindow::createActions() {
 void MainWindow::createMenus() {
     fileMenu = menuBar()->addMenu(tr("&File"));
     fileMenu->addAction(newAction);
+#ifdef OFF
     fileMenu->addAction(openAction);
     fileMenu->addAction(saveAction);
     fileMenu->addAction(saveAsAction);
+#endif //OFF
     separatorAction = fileMenu->addSeparator(); //TEST
     for (int i = 0; i < MaxRecentFiles; ++i)
         fileMenu->addAction(recentFileActions[i]);
@@ -109,23 +111,29 @@ void MainWindow::createMenus() {
     fileMenu->addAction(exitAction);
 
     editMenu = menuBar()->addMenu(tr("&Edit"));
-    editMenu->addAction(cutAction);
+    //OFF editMenu->addAction(cutAction);
     editMenu->addAction(copyAction);
+#ifdef OFF
     editMenu->addAction(pasteAction);
     editMenu->addAction(deleteAction);
+#endif //OFF
 
     selectSubMenu = editMenu->addMenu(tr("&Select")); //TEST
     selectSubMenu->addAction(selectRowAction);
-    selectSubMenu->addAction(selectColumnAction);
+    //OFF selectSubMenu->addAction(selectColumnAction);
     selectSubMenu->addAction(selectAllAction);
 
     editMenu->addSeparator();
+#ifdef OFF
     editMenu->addAction(findAction);
     editMenu->addAction(goToCellAction);
+#endif //OFF
 
     toolsMenu = menuBar()->addMenu(tr("&Tools"));
+#ifdef OFF
     toolsMenu->addAction(recalculateAction);
     toolsMenu->addAction(sortAction);
+#endif //OFF
 
     optionsMenu = menuBar()->addMenu(tr("&Options"));
     optionsMenu->addAction(showGridAction);
@@ -134,30 +142,30 @@ void MainWindow::createMenus() {
     menuBar()->addSeparator(); //TEST
 
     helpMenu = menuBar()->addMenu(tr("&Help"));
-    helpMenu->addAction(aboutAction);
+    //OFF helpMenu->addAction(aboutAction);
     helpMenu->addAction(aboutQtAction);
 }
 
 void MainWindow::createContextMenu() {
-    spreadsheet->addAction(cutAction);
+    //OFF spreadsheet->addAction(cutAction);
     spreadsheet->addAction(copyAction);
-    spreadsheet->addAction(pasteAction);
+    //OFF spreadsheet->addAction(pasteAction);
     spreadsheet->setContextMenuPolicy(Qt::ActionsContextMenu);
 }
 
 void MainWindow::createToolBars() {
     fileToolBar = addToolBar(tr("&File"));
     fileToolBar->addAction(newAction);
-    fileToolBar->addAction(openAction);
-    fileToolBar->addAction(saveAction);
+    //OFF fileToolBar->addAction(openAction);
+    //OFF fileToolBar->addAction(saveAction);
 
     editToolBar = addToolBar(tr("&Edit"));
-    editToolBar->addAction(cutAction);
+    //OFF editToolBar->addAction(cutAction);
     editToolBar->addAction(copyAction);
-    editToolBar->addAction(pasteAction);
+    //OFF editToolBar->addAction(pasteAction);
     editToolBar->addSeparator();
-    editToolBar->addAction(findAction);
-    editToolBar->addAction(goToCellAction);
+    //OFF editToolBar->addAction(findAction);
+    //OFF editToolBar->addAction(goToCellAction);
 }
 #pragma endregion //Creating Menus and Toolbars
 
@@ -394,7 +402,7 @@ void MainWindow::readSettings() {
     showGridAction->setChecked(showGrid);
 
     bool autoRecalc = settings.value("autoRecalc", true).toBool();
-    autoRecalcAction->setChecked(autoRecalc);
+    //OFF autoRecalcAction->setChecked(autoRecalc);
 }
 #pragma endregion //Storing Settings
 

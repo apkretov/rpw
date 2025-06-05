@@ -1,4 +1,4 @@
-#include "qregexpvalidator.h"
+#include "hexspinbox.h"
 
 #include <QApplication>
 
