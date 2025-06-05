@@ -37,7 +37,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) { //ORIG MainWindo
     createStatusBar();
     readSettings();
     findDialog = 0;
-    setWindowIcon(QIcon(":/images/icon.png")); //MINE: See the Perplexity comment below.
+    //OFF setWindowIcon(QIcon(":/images/icon.png")); //MINE: See the Perplexity comment below.
     setCurrentFile("");
     #pragma region Multiple Documents
     setAttribute(Qt::WA_DeleteOnClose);
@@ -48,7 +48,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) { //ORIG MainWindo
 #pragma region Creating Menus and Toolbars
 void MainWindow::createActions() {
     newAction = new QAction(tr("&New"), this);
-    newAction->setIcon(QIcon(":/images/new.png"));
+    //OFF newAction->setIcon(QIcon(":/images/new.png"));
     newAction->setShortcut(QKeySequence::New); //TEST
     newAction->setStatusTip(tr("Create a new spreadsheet file"));
     // Replace old syntax:
