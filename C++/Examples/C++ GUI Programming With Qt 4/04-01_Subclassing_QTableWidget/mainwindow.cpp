@@ -1,14 +1,33 @@
 #pragma region We will now review the implementation
 
-#include <QtGui>
+// Replace <QtGui> with specific includes
+#include <QMainWindow>
+#include <QTableWidget>
+#include <QAction>
+#include <QMenu>
+#include <QMenuBar>
+#include <QToolBar>
+#include <QStatusBar>
+#include <QMessageBox>
+#include <QFileDialog>
+#include <QLabel>
+#include <QApplication>
+#include <QMenuBar>
+#include <QToolBar> //MINE
+#include <QStatusBar> //MINE
+#include <QMessageBox> //MINE
+#include <QFileDialog> //MINE
+#include <QCloseEvent> //MINE
+#include <QSettings> //MINE
 #include "finddialog.h"
 #include "gotocelldialog.h"
 #include "mainwindow.h"
 #include "sortdialog.h"
-#include "spreadsheet.h" // We will implement it in Chapter 4.
+#include "spreadsheet.h"
 #include "spreadsheetcompare.h"
 
-MainWindow::MainWindow() {
+
+MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) { //ORIG MainWindow::MainWindow() {
     spreadsheet = new Spreadsheet;
     setCentralWidget(spreadsheet);
     createActions();
@@ -24,7 +43,6 @@ MainWindow::MainWindow() {
     setAttribute(Qt::WA_DeleteOnClose);
     #pragma endregion //Multiple Documents
 }
-
 #pragma endregion //We will now review the implementation
 
 #pragma region Creating Menus and Toolbars
@@ -33,7 +51,11 @@ void MainWindow::createActions() {
     newAction->setIcon(QIcon(":/images/new.png"));
     newAction->setShortcut(QKeySequence::New); //TEST
     newAction->setStatusTip(tr("Create a new spreadsheet file"));
-    connect(newAction, SIGNAL(triggered()), this, SLOT(newFile()));
+    // Replace old syntax:
+    // connect(newAction, SIGNAL(triggered()), this, SLOT(newFile()));
+    
+    // With new syntax:
+    connect(newAction, &QAction::triggered, this, &MainWindow::newFile);
 
     // ...
     for (int i = 0; i < MaxRecentFiles; ++i) {
@@ -295,7 +317,7 @@ void MainWindow::goToCell() {
 #ifndef VER_1
     GoToCellDialog dialog(this); //TEST
     if (dialog.exec()) {
-        QString str = dialog.lineEdit->text().toUpper();
+        QString str = dialog.getCellLocation().toUpper(); //ORIG QString str = dialog.lineEdit->text().toUpper();
         spreadsheet->setCurrentCell(str.mid(1).toInt() - 1, str[0].unicode() - 'A');
     }
 #else //VER_2
@@ -312,7 +334,7 @@ void MainWindow::goToCell() {
 void MainWindow::sort() {
     SortDialog dialog(this);
     QTableWidgetSelectionRange range = spreadsheet->selectedRange();
-    dialog.setColumnRange('A' + range.leftColumn(), 'A' + range.rightColumn());
+    dialog.setColumnRange(QChar('A' + range.leftColumn()), QChar('A' + range.rightColumn())); //ORIG dialog.setColumnRange('A' + range.leftColumn(), 'A' + range.rightColumn());
     if (dialog.exec()) {
         SpreadsheetCompare compare;
         compare.keys[0] = dialog.primaryColumnCombo->currentIndex();

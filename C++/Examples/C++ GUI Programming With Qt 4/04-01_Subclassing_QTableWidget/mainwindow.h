@@ -57,6 +57,10 @@ private:
 
     QMenu *fileMenu;
     QMenu *editMenu;
+    QMenu *selectSubMenu; //MINE
+    QMenu *toolsMenu; //MINE
+    QMenu *optionsMenu; //MINE
+    QMenu *helpMenu; //MINE
     // ...
     QToolBar *fileToolBar;
     QToolBar *editToolBar;

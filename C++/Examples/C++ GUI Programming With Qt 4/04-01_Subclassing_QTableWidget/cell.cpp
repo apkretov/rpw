@@ -3,7 +3,10 @@
 #include "cell.h"
 #include <QtGui>
 
-Cell::Cell() { setDirty(); }
+Cell::Cell() {
+    cacheIsDirty = true;
+    cachedValue = QVariant(); // Properly initialize the cached value
+}
 QTableWidgetItem *Cell::clone() const { return new Cell(*this); }
 void Cell::setFormula(const QString &formula) { setData(Qt::EditRole, formula); }
 QString Cell::formula() const { return data(Qt::EditRole).toString(); }
@@ -121,13 +124,15 @@ QVariant Cell::evalFactor(const QString &str, int &pos) const {
             result = Invalid;
         ++pos;
     } else {
-        QRegExp regExp("[A-Za-z][1-9][0-9]{0,2}");
+        QRegularExpression regExp("[A-Za-z][1-9][0-9]{0,2}");
         QString token;
         while (str[pos].isLetterOrNumber() || str[pos] == '.') {
             token += str[pos];
             ++pos;
         }
-        if (regExp.exactMatch(token)) {
+        //ORIG if (regExp.exactMatch(token)) {
+        QRegularExpressionMatch match = regExp.match(token); //PERPLEXITY
+        if (match.hasMatch() && match.capturedLength() == token.length()) { //PERPLEXITY
             int column = token[0].toUpper().unicode() - 'A';
             int row = token.mid(1).toInt() - 1;
             Cell *c = static_cast<Cell *>(
