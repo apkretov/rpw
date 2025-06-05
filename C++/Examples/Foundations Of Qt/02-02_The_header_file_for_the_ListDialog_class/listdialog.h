@@ -1,20 +1,37 @@
-#ifndef LISTDIALOG_H
-#define LISTDIALOG_H
+// #ifndef LISTDIALOG_H
+// #define LISTDIALOG_H
+
+// #include <QDialog>
+
+// namespace Ui {
+//     class ListDialog;
+// }
+
+// class ListDialog : public QDialog {
+//     Q_OBJECT
+// public:
+//     explicit ListDialog(QWidget *parent = nullptr);
+//     ~ListDialog();
+// private slots:
+//     void on_addButton_clicked();
+// private:
+//     Ui::ListDialog *ui;
+// };
+// #endif // LISTDIALOG_H
+
+#pragma region Listing 2-2. The header file for the ListDialog class
 
 #include <QDialog>
-
-namespace Ui {
-    class ListDialog;
-}
-
+#include "ui_listdialog.h"
 class ListDialog : public QDialog {
     Q_OBJECT
 public:
-    explicit ListDialog(QWidget *parent = nullptr);
-    ~ListDialog();
+    ListDialog();
 private slots:
-    void on_addButton_clicked();
+    void addItem();
+    void editItem();
+    void deleteItem();
 private:
-    Ui::ListDialog *ui;
+    Ui::ListDialog ui;
 };
-#endif // LISTDIALOG_H
+#pragma endregion //Listing 2-2. The header file for the ListDialog class
