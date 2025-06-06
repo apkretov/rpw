@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>373</width>
+    <height>155</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -23,7 +23,7 @@
       <item>
        <widget class="QLabel" name="label">
         <property name="text">
-         <string>TextLabel</string>
+         <string>Supercalifragilisticexpialidocious</string>
         </property>
        </widget>
       </item>
@@ -41,7 +41,7 @@
      <property name="sizeHint" stdset="0">
       <size>
        <width>20</width>
-       <height>176</height>
+       <height>31</height>
       </size>
      </property>
     </spacer>
