@@ -14,7 +14,7 @@ ListDialog::ListDialog() : QDialog() {
 #pragma region Listing 2-4. Adding a new item to the list
 void ListDialog::addItem() {
     EditDialog dlg(this);
-    if (dlg.exec() == Qt::Accepted)
+    if (dlg.exec() == QDialog::Accepted)
         ui.list->addItem(dlg.name() + " -- " + dlg.number());
 }
 #pragma end region //Listing 2-4. Adding a new item to the list
@@ -34,7 +34,7 @@ void ListDialog::editItem() {
     dlg.setName(parts[0].trimmed());
     dlg.setNumber(parts[1].trimmed());
 
-    if (dlg.exec() == Qt::Accepted)
+    if (dlg.exec() == QDialog::Accepted)
         ui.list->currentItem()->setText(dlg.name() + " -- " + dlg.number());
 }
 #pragma end region //Listing 2-6. Editing an item of the list
