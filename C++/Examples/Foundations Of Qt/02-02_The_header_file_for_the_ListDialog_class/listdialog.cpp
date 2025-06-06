@@ -35,10 +35,13 @@ void ListDialog::deleteItem() { delete ui.list->currentItem(); }
 void ListDialog::editItem() {
     if (!ui.list->currentItem())
         return;
+
     QStringList parts = ui.list->currentItem()->text().split("--");
+
     EditDialog dlg(this);
     dlg.setName(parts[0].trimmed());
     dlg.setNumber(parts[1].trimmed());
+
     if (dlg.exec() == Qt::Accepted)
         ui.list->currentItem()->setText(dlg.name() + " -- " + dlg.number());
 }

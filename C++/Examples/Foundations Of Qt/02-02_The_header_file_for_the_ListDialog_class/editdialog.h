@@ -1,18 +1,17 @@
-#ifndef EDITDIALOG_H
-#define EDITDIALOG_H
+#pragma once
 
-#include <QDialog>
+#include <QDialog> //MINE
+#include "ui_editdialog.h" //MINE
 
-namespace Ui {
-    class EditDialog;
-}
-
+#pragma region Listing 2-7. Editing dialog class
 class EditDialog : public QDialog {
-    Q_OBJECT
 public:
-    explicit EditDialog(QWidget *parent = nullptr);
-    ~EditDialog();
+    EditDialog(QWidget *parent = 0);
+    const QString name() const;
+    void setName(const QString &);
+    const QString number() const;
+    void setNumber(const QString &);
 private:
-    Ui::EditDialog *ui;
+    Ui::EditDialog ui;
 };
-#endif // EDITDIALOG_H
+#pragma endregion // Listing 2-7. Editing dialog class
