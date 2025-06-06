@@ -5,9 +5,15 @@
 
 ListDialog::ListDialog() : QDialog() {
     ui.setupUi(this);
+#ifdef ORIG
     connect(ui.addButton, SIGNAL(clicked()), this, SLOT(addItem()));
     connect(ui.editButton, SIGNAL(clicked()), this, SLOT(editItem()));
     connect(ui.deleteButton, SIGNAL(clicked()), this, SLOT(deleteItem()));
+#else //MINE
+    connect(ui.addButton, &QPushButton::clicked, this, &ListDialog::addItem);
+    connect(ui.editButton, &QPushButton::clicked, this, &ListDialog::editItem);
+    connect(ui.deleteButton, &QPushButton::clicked, this, &ListDialog::deleteItem);
+#endif //MINE
 }
 #pragma end region //Listing 2-3. Constructor of the ListDialog class
 
