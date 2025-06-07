@@ -1,5 +1,4 @@
-#ifndef MYDIALOG_H
-#define MYDIALOG_H
+#pragma once
 
 #include <QDialog>            
 #include <QGroupBox>         
@@ -24,4 +23,4 @@ private:
     QLineEdit *lineEdit;
     QDialogButtonBox *buttons;
 };
-#endif  
+
