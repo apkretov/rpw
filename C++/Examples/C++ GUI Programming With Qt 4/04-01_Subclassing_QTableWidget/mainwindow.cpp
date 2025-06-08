@@ -1,3 +1,5 @@
+#undef OFF
+
 #pragma region We will now review the implementation
 
 // Replace <QtGui> with specific includes
@@ -37,7 +39,9 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) { //ORIG MainWindo
     createStatusBar();
     readSettings();
     findDialog = 0;
-    //OFF setWindowIcon(QIcon(":/images/icon.png")); //MINE: See the Perplexity comment below.
+#ifdef OFF
+    setWindowIcon(QIcon(":/images/icon.png")); //MINE: See the Perplexity comment below.
+#endif //OFF
     setCurrentFile("");
     #pragma region Multiple Documents
     setAttribute(Qt::WA_DeleteOnClose);
@@ -48,7 +52,9 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) { //ORIG MainWindo
 #pragma region Creating Menus and Toolbars
 void MainWindow::createActions() {
     newAction = new QAction(tr("&New"), this);
-    //OFF newAction->setIcon(QIcon(":/images/new.png"));
+#ifdef OFF
+    newAction->setIcon(QIcon(":/images/new.png"));
+#endif //OFF
     newAction->setShortcut(QKeySequence::New); //TEST
     newAction->setStatusTip(tr("Create a new spreadsheet file"));
     // Replace old syntax:
@@ -111,7 +117,9 @@ void MainWindow::createMenus() {
     fileMenu->addAction(exitAction);
 
     editMenu = menuBar()->addMenu(tr("&Edit"));
-    //OFF editMenu->addAction(cutAction);
+#ifdef OFF
+    editMenu->addAction(cutAction);
+#endif //OFF
     editMenu->addAction(copyAction);
 #ifdef OFF
     editMenu->addAction(pasteAction);
@@ -120,7 +128,9 @@ void MainWindow::createMenus() {
 
     selectSubMenu = editMenu->addMenu(tr("&Select")); //TEST
     selectSubMenu->addAction(selectRowAction);
-    //OFF selectSubMenu->addAction(selectColumnAction);
+#ifdef OFF
+    selectSubMenu->addAction(selectColumnAction);
+#endif //OFF
     selectSubMenu->addAction(selectAllAction);
 
     editMenu->addSeparator();
@@ -142,30 +152,48 @@ void MainWindow::createMenus() {
     menuBar()->addSeparator(); //TEST
 
     helpMenu = menuBar()->addMenu(tr("&Help"));
-    //OFF helpMenu->addAction(aboutAction);
+#ifdef OFF
+    helpMenu->addAction(aboutAction);
+#endif //OFF
     helpMenu->addAction(aboutQtAction);
 }
 
 void MainWindow::createContextMenu() {
-    //OFF spreadsheet->addAction(cutAction);
+#ifdef OFF
+    spreadsheet->addAction(cutAction);
+#endif //OFF
     spreadsheet->addAction(copyAction);
-    //OFF spreadsheet->addAction(pasteAction);
+#ifdef OFF
+    spreadsheet->addAction(pasteAction);
+#endif //OFF
     spreadsheet->setContextMenuPolicy(Qt::ActionsContextMenu);
 }
 
 void MainWindow::createToolBars() {
     fileToolBar = addToolBar(tr("&File"));
     fileToolBar->addAction(newAction);
-    //OFF fileToolBar->addAction(openAction);
-    //OFF fileToolBar->addAction(saveAction);
+#ifdef OFF
+    fileToolBar->addAction(openAction);
+#endif //OFF
+#ifdef OFF
+    fileToolBar->addAction(saveAction);
+#endif //OFF
 
     editToolBar = addToolBar(tr("&Edit"));
-    //OFF editToolBar->addAction(cutAction);
+#ifdef OFF
+    editToolBar->addAction(cutAction);
+#endif //OFF
     editToolBar->addAction(copyAction);
-    //OFF editToolBar->addAction(pasteAction);
+#ifdef OFF
+    editToolBar->addAction(pasteAction);
+#endif //OFF
     editToolBar->addSeparator();
-    //OFF editToolBar->addAction(findAction);
-    //OFF editToolBar->addAction(goToCellAction);
+#ifdef OFF
+    editToolBar->addAction(findAction);
+#endif //OFF
+#ifdef OFF
+    editToolBar->addAction(goToCellAction);
+#endif //OFF
 }
 #pragma endregion //Creating Menus and Toolbars
 
@@ -402,7 +430,9 @@ void MainWindow::readSettings() {
     showGridAction->setChecked(showGrid);
 
     bool autoRecalc = settings.value("autoRecalc", true).toBool();
-    //OFF autoRecalcAction->setChecked(autoRecalc);
+#ifdef OFF
+    autoRecalcAction->setChecked(autoRecalc);
+#endif //OFF
 }
 #pragma endregion //Storing Settings
 

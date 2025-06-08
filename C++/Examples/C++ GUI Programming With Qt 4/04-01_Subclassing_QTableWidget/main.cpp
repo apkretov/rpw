@@ -1,3 +1,5 @@
+#undef OFF
+
 #pragma region Splash Screens
 
 #include "mainwindow.h"
