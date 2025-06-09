@@ -143,9 +143,11 @@ void MdiWindow::updateWindowList() {
 #pragma region Listing 4-14. Creating a new document
 void MdiWindow::fileNew() {
     DocumentWindow *document = new DocumentWindow;
-    workspace->addWindow(document);
+    workspace->addSubWindow(document); //ORIG workspace->addWindow(document);
+#ifdef OFF
     connect(document, SIGNAL(copyAvailable(bool)), cutAction, SLOT(setEnabled(bool)));
     connect(document, SIGNAL(copyAvailable(bool)), copyAction, SLOT(setEnabled(bool)));
+#endif //OFF
     document->show();
 }
 #pragma endregion // Listing 4-14. Creating a new document
