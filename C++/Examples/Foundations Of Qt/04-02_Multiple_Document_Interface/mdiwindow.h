@@ -1,14 +1,9 @@
-#ifndef MDIWINDOW_H
-#define MDIWINDOW_H
+#pragma once
 
 #include <QMainWindow>
 
-class MdiWindow : public QMainWindow
-{
+class MdiWindow : public QMainWindow {
     Q_OBJECT
-
 public:
     MdiWindow(QWidget *parent = nullptr);
-    ~MdiWindow();
 };
-#endif // MDIWINDOW_H
