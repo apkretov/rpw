@@ -24,6 +24,7 @@ private:
     QAction *cutAction;
     QAction *copyAction;
     DocumentWindow *activeDocument();
+    QMenu *windowMenu; //MINE
     void editCut();
     void editCopy();
     void editPaste();

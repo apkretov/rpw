@@ -101,10 +101,35 @@ void MdiWindow::createMenus() {
     menu->addAction(exitAction);
 #endif //OFF
     // ...
-    QMenu *windowMenu; //MINE
     windowMenu = menuBar()->addMenu(tr("&Window"));
     connect(windowMenu, &QMenu::aboutToShow, this, &MdiWindow::updateWindowList); //ORIG connect(windowMenu, SIGNAL(aboutToShow()), this, SLOT(updateWindowList()));
 }
 #pragma endregion //Listing 4-12. Creating the Window menu
 
-void MdiWindow::updateWindowList() {} //MINE
+#pragma region Listing 4-13. Updating the Window menu
+void MdiWindow::updateWindowList() {
+    windowMenu->clear();
+
+    windowMenu->addAction(tileAction);
+    windowMenu->addAction(cascadeAction);
+    windowMenu->addSeparator();
+    windowMenu->addAction(nextAction);
+    windowMenu->addAction(previousAction);
+    windowMenu->addAction(separatorAction);
+
+    int i = 1;
+    foreach (QWidget *w, workspace->windowList()) {
+        QString text;
+        if (i < 10)
+            text = QString("&%1 %2").arg(i++).arg(w->windowTitle());
+        else
+            text = w->windowTitle();
+
+        QAction *action = windowMenu->addAction(text);
+        action->setCheckable(true);
+        action->setChecked(w == activeDocument());
+        connect(action, SIGNAL(triggered()), mapper, SLOT(map()));
+        mapper->setMapping(action, w);
+    }
+}
+#pragma endregion //Listing 4-13. Updating the Window menu
