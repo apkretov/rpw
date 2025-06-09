@@ -34,4 +34,5 @@ private slots:
     void createMenus();
     void createToolbars() {}
     void updateWindowList();
+    void fileNew();
 };
