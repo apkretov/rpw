@@ -4,6 +4,7 @@
 
 class QMdiArea;
 class QSignalMapper;
+class QAction;
 
 class MdiWindow : public QMainWindow {
     Q_OBJECT
@@ -12,9 +13,12 @@ public:
 private:
     QMdiArea *workspace;
     QSignalMapper *mapper;
+    QAction *closeAction;
+    QAction *tileAction;
+    QAction *separatorAction;
 private slots:
     void enableActions() {}
-    void createActions() {}
+    void createActions();
     void createMenus() {}
     void createToolbars() {}
 };

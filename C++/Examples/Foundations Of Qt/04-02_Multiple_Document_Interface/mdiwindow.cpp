@@ -3,6 +3,7 @@
 #include <QMdiSubWindow>
 #include <QSignalMapper>
 #include <QStatusBar>
+#include <QAction>
 
 #pragma region Listing 4-8. Constructor of the main window with differences between MDI and SDI highlighted
 MdiWindow::MdiWindow(QWidget *parent) : QMainWindow(parent) {
@@ -27,3 +28,21 @@ MdiWindow::MdiWindow(QWidget *parent) : QMainWindow(parent) {
     enableActions();
 }
 #pragma endregion //Listing 4-8. Constructor of the main window with differences between MDI and SDI highlighted
+
+#pragma region Listing 4-9. Creating actions for the MDI application
+void MdiWindow::createActions() {
+    // ...
+    closeAction = new QAction(tr("&Close"), this);
+    closeAction->setShortcut(tr("Ctrl+W"));
+    closeAction->setStatusTip(tr("Close this document"));
+    connect(closeAction, SIGNAL(triggered()), workspace, SLOT(closeActiveWindow()));
+    // ...
+    tileAction = new QAction(tr("&Tile"), this);
+    tileAction->setStatusTip(tr("Tile windows"));
+    connect(tileAction, SIGNAL(triggered()), workspace, SLOT(tile()));
+    // ...
+    separatorAction = new QAction(this);
+    separatorAction->setSeparator(true);
+    // ...
+}
+#pragma endregion // Listing 4-9. Creating actions for the MDI application
