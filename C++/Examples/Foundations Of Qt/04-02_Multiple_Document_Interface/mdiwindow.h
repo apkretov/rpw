@@ -24,6 +24,9 @@ private:
     QAction *cutAction;
     QAction *copyAction;
     DocumentWindow *activeDocument();
+    void editCut();
+    void editCopy();
+    void editPaste();
 private slots:
     void enableActions();
     void createActions();

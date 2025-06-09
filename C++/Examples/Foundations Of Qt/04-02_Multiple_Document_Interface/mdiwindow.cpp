@@ -78,3 +78,11 @@ void MdiWindow::enableActions() {
 #endif //OFF
 }
 #pragma endregion // Listing 4-10. Enabling and disabling actions
+
+#pragma region Listing 4-11. Passing signals from the main window to the document widget
+void MdiWindow::editCut() { activeDocument()->cut(); }
+
+void MdiWindow::editCopy() { activeDocument()->copy(); }
+
+void MdiWindow::editPaste() { activeDocument()->paste(); }
+#pragma endregion //Listing 4-11. Passing signals from the main window to the document widget
