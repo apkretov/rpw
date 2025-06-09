@@ -4,6 +4,7 @@
 #include <QSignalMapper>
 #include <QStatusBar>
 #include <QAction>
+#include "documentwindow.h"
 
 #pragma region Listing 4-8. Constructor of the main window with differences between MDI and SDI highlighted
 MdiWindow::MdiWindow(QWidget *parent) : QMainWindow(parent) {
@@ -46,3 +47,24 @@ void MdiWindow::createActions() {
     // ...
 }
 #pragma endregion // Listing 4-9. Creating actions for the MDI application
+
+#pragma region Listing 4-10. Enabling and disabling actions
+DocumentWindow *MdiWindow::activeDocument() { return qobject_cast<DocumentWindow *>(workspace->activeWindow()); }
+
+void MdiWindow::enableActions() {
+    bool hasDocuments = (activeDocument() != 0);
+
+    closeAction->setEnabled(hasDocuments);
+    pasteAction->setEnabled(hasDocuments);
+    tileAction->setEnabled(hasDocuments);
+    cascadeAction->setEnabled(hasDocuments);
+    nextAction->setEnabled(hasDocuments);
+    previousAction->setEnabled(hasDocuments);
+    separatorAction->setVisible(hasDocuments);
+
+    bool hasSelection = hasDocuments && activeDocument()->textCursor().hasSelection();
+
+    cutAction->setEnabled(hasSelection);
+    copyAction->setEnabled(hasSelection);
+}
+#pragma endregion // Listing 4-10. Enabling and disabling actions

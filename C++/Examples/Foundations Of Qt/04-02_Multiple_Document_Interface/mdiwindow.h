@@ -5,6 +5,7 @@
 class QMdiArea;
 class QSignalMapper;
 class QAction;
+class DocumentWindow;
 
 class MdiWindow : public QMainWindow {
     Q_OBJECT
@@ -16,8 +17,15 @@ private:
     QAction *closeAction;
     QAction *tileAction;
     QAction *separatorAction;
+    QAction *pasteAction;
+    QAction *cascadeAction;
+    QAction *nextAction;
+    QAction *previousAction;
+    QAction *cutAction;
+    QAction *copyAction;
+    DocumentWindow *activeDocument();
 private slots:
-    void enableActions() {}
+    void enableActions();
     void createActions();
     void createMenus() {}
     void createToolbars() {}
