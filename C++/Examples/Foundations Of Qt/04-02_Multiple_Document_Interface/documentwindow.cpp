@@ -10,6 +10,7 @@ DocumentWindow::DocumentWindow(QWidget *parent) : QTextEdit(parent) {
 }
 #pragma endregion // Listing 4-7. Constructor of the document widget class
 
+#pragma Listing 4-5. Closing a document
 void DocumentWindow::closeEvent(QCloseEvent *event) {
     if (isSafeToClose())
         event->accept();
@@ -28,3 +29,4 @@ bool DocumentWindow::isSafeToClose() {
     }
     return true;
 }
+#pragma endregion // Listing 4-5. Closing a document
