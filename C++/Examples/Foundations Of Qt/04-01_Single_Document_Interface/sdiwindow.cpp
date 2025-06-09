@@ -6,6 +6,8 @@
 #include <QToolBar>
 #include <QStatusBar>
 #include <QApplication>
+#include <QCloseEvent>
+#include <QMessageBox>
 
 #pragma region Listing 4-1. Constructor of the SDI main window
 SdiWindow::SdiWindow(QWidget *parent) : QMainWindow(parent) {
@@ -63,3 +65,24 @@ void SdiWindow::createToolbars() {
 #pragma Listing 4-4. Creating a new document
 void SdiWindow::fileNew() { (new SdiWindow())->show(); }
 #pragma endregion // Listing 4-4. Creating a new document
+
+#pragma Listing 4-5. Closing a document
+void SdiWindow::closeEvent(QCloseEvent *event) {
+    if (isSafeToClose())
+        event->accept();
+    else
+        event->ignore();
+}
+
+bool SdiWindow::isSafeToClose() {
+    if (isWindowModified()) {
+        switch (QMessageBox::warning(this, tr("SDI"), tr("The document has unsaved changes.\n" "Do you want to save it before it is closed?"), QMessageBox::Discard | QMessageBox::Cancel)) {
+        case QMessageBox::Cancel:
+            return false;
+        default:
+            return true;
+        }
+    }
+    return true;
+}
+#pragma endregion // Listing 4-5. Closing a document

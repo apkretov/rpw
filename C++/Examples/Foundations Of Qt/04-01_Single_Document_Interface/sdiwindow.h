@@ -12,10 +12,12 @@ public:
 private:
 #pragma region MINE
     QTextEdit *docWidget;
-    void fileNew();
     void createActions();
     void createMenus();
     void createToolbars();
+    void fileNew();
+    void closeEvent(QCloseEvent *event);
+    bool isSafeToClose();
     QAction *newAction;
     QAction *cutAction;
     QAction *aboutQtAction;
