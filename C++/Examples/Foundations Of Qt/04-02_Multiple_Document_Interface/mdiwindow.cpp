@@ -122,7 +122,7 @@ void MdiWindow::updateWindowList() {
     windowMenu->addAction(separatorAction);
 
     int i = 1;
-    for (QMdiSubWindow *w : workspace->subWindowList()) { //ORIG foreach (QWidget *w, workspace->windowList()) {
+    foreach (QMdiSubWindow *w, workspace->subWindowList()) { //ORIG foreach (QWidget *w, workspace->windowList()) {
         QString text;
         if (i < 10)
             text = QString("&%1 %2").arg(i++).arg(w->windowTitle());
