@@ -5,6 +5,7 @@
 #include <QMenuBar>
 #include <QToolBar>
 #include <QStatusBar>
+#include <QApplication>
 
 #pragma region Listing 4-1. Constructor of the SDI main window
 SdiWindow::SdiWindow(QWidget *parent) : QMainWindow(parent) {

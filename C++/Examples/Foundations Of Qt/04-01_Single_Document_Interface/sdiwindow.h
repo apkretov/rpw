@@ -3,6 +3,7 @@
 #include <QMainWindow>
 
 class QTextEdit;
+class QAction;
 
 class SdiWindow : public QMainWindow {
     Q_OBJECT
@@ -14,5 +15,8 @@ private:
     void createActions();
     void createMenus();
     void createToolbars();
+    QAction *newAction;
+    QAction *cutAction;
+    QAction *aboutQtAction;
 #pragma endregion //MINE
 };
