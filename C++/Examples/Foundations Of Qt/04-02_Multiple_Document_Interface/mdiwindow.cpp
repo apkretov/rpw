@@ -132,7 +132,9 @@ void MdiWindow::updateWindowList() {
         QAction *action = windowMenu->addAction(text);
         action->setCheckable(true);
         action->setChecked(w->widget() == activeDocument()); //ORIG action->setChecked(w == activeDocument());
-        connect(action, SIGNAL(triggered()), mapper, SLOT(map()));
+        connect(action, &QAction::triggered, this, [this, action, w]() {
+            workspace->setActiveSubWindow(w);
+        }); //ORIG connect(action, SIGNAL(triggered()), mapper, SLOT(map()));
         mapper->setMapping(action, w);
     }
 }
