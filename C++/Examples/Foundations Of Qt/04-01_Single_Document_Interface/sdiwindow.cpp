@@ -12,7 +12,7 @@ SdiWindow::SdiWindow(QWidget *parent) : QMainWindow(parent) {
     setWindowTitle(QString("%1[*] - %2").arg("unnamed").arg("SDI"));
     docWidget = new QTextEdit(this);
     setCentralWidget(docWidget);
-    connect(docWidget->document(), SIGNAL(modificationChanged(bool)), this, SLOT(setWindowModified(bool)));
+    connect(docWidget->document(), &QTextDocument::modificationChanged, this, &QMainWindow::setWindowModified); //ORIG connect(docWidget->document(), SIGNAL(modificationChanged(bool)), this, SLOT(setWindowModified(bool)));
     createActions();
     createMenus();
     createToolbars();
