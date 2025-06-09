@@ -111,10 +111,14 @@ void MdiWindow::updateWindowList() {
     windowMenu->clear();
 
     windowMenu->addAction(tileAction);
+#ifdef OFF
     windowMenu->addAction(cascadeAction);
+#endif //OFF
     windowMenu->addSeparator();
+#ifdef OFF
     windowMenu->addAction(nextAction);
     windowMenu->addAction(previousAction);
+#endif //OFF
     windowMenu->addAction(separatorAction);
 
     int i = 1;
@@ -127,7 +131,7 @@ void MdiWindow::updateWindowList() {
 
         QAction *action = windowMenu->addAction(text);
         action->setCheckable(true);
-        action->setChecked(w == activeDocument());
+        action->setChecked(w->widget() == activeDocument()); //ORIG action->setChecked(w == activeDocument());
         connect(action, SIGNAL(triggered()), mapper, SLOT(map()));
         mapper->setMapping(action, w);
     }
