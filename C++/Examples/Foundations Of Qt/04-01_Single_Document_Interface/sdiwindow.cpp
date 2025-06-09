@@ -26,7 +26,7 @@ void SdiWindow::createActions() {
     newAction = new QAction(tr("&New"), this); //ORIG newAction = new QAction(QIcon(":/images/new.png"), tr("&New"), this);
     newAction->setShortcut(tr("Ctrl+N"));
     newAction->setStatusTip(tr("Create a new document"));
-    connect(newAction, SIGNAL(triggered()), this, SLOT(fileNew()));
+    connect(newAction, SIGNAL(triggered()), this, SLOT(fileNew())); //MINE connect(newAction, &QAction::triggered, this, &SdiWindow::fileNew);
     // ...
     cutAction = new QAction(tr("Cu&t"), this); //ORIG cutAction = new QAction(QIcon(":/images/cut.png"), tr("Cu&t"), this);
     cutAction->setShortcut(tr("Ctrl+X"));
