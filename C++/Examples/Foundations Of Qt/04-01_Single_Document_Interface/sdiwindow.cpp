@@ -23,21 +23,21 @@ SdiWindow::SdiWindow(QWidget *parent) : QMainWindow(parent) {
 
 #pragma region Listing 4-2. Creating actions for the SDI application
 void SdiWindow::createActions() {
-    newAction = new QAction(QIcon(":/images/new.png"), tr("&New"), this);
+    newAction = new QAction(tr("&New"), this); //ORIG newAction = new QAction(QIcon(":/images/new.png"), tr("&New"), this);
     newAction->setShortcut(tr("Ctrl+N"));
     newAction->setStatusTip(tr("Create a new document"));
     connect(newAction, SIGNAL(triggered()), this, SLOT(fileNew()));
     // ...
-    cutAction = new QAction(QIcon(":/images/cut.png"), tr("Cu&t"), this);
+    cutAction = new QAction(tr("Cu&t"), this); //ORIG cutAction = new QAction(QIcon(":/images/cut.png"), tr("Cu&t"), this);
     cutAction->setShortcut(tr("Ctrl+X"));
     cutAction->setStatusTip(tr("Cut"));
     cutAction->setEnabled(false);
-    connect(docWidget, SIGNAL(copyAvailable(bool)), cutAction, SLOT(setEnabled(bool)));
-    connect(cutAction, SIGNAL(triggered()), docWidget, SLOT(cut()));
+    connect(docWidget, &QTextEdit::copyAvailable, cutAction, &QAction::setEnabled); //ORIG connect(docWidget, SIGNAL(copyAvailable(bool)), cutAction, SLOT(setEnabled(bool)));
+    connect(cutAction, &QAction::triggered, docWidget, &QTextEdit::cut); //ORIG connect(cutAction, SIGNAL(triggered()), docWidget, SLOT(cut()));
     // ...
     aboutQtAction = new QAction(tr("About &Qt"), this);
     aboutQtAction->setStatusTip(tr("About the Qt toolkit"));
-    connect(aboutQtAction, SIGNAL(triggered()), qApp, SLOT(aboutQt()));
+    connect(aboutQtAction, &QAction::triggered, qApp, &QApplication::aboutQt); //ORIG connect(aboutQtAction, SIGNAL(triggered()), qApp, SLOT(aboutQt()));
 }
 #pragma endregion //Listing 4-2. Creating actions for the SDI application
 
