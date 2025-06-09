@@ -22,6 +22,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(04-02_Multiple_Document_Interface
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
+        documentwindow.h documentwindow.cpp
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET 04-02_Multiple_Document_Interface APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
