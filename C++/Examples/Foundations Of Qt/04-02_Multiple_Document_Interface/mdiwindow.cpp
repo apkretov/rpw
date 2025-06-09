@@ -154,7 +154,7 @@ void MdiWindow::fileNew() {
 
 #pragma region Listing 4-15. Closing all documents and the main window
 void MdiWindow::closeEvent(QCloseEvent *event) {
-#ifdef OFF
+#ifdef OFF //SUSPENDED
     workspace->closeAllWindows();
     if (activeDocument())
         event->ignore();
