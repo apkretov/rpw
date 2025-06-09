@@ -4,6 +4,7 @@
 #include <QSignalMapper>
 #include <QStatusBar>
 #include <QAction>
+#include <QMenuBar>
 #include "documentwindow.h"
 
 #pragma region Listing 4-8. Constructor of the main window with differences between MDI and SDI highlighted
@@ -86,3 +87,24 @@ void MdiWindow::editCopy() { activeDocument()->copy(); }
 
 void MdiWindow::editPaste() { activeDocument()->paste(); }
 #pragma endregion //Listing 4-11. Passing signals from the main window to the document widget
+
+#pragma region Listing 4-12. Creating the Window menu
+void MdiWindow::createMenus() {
+    QMenu *menu;
+    menu = menuBar()->addMenu(tr("&File"));
+#ifdef OFF
+    menu->addAction(newAction);
+#endif //OFF
+    menu->addAction(closeAction);
+    menu->addSeparator();
+#ifdef OFF
+    menu->addAction(exitAction);
+#endif //OFF
+    // ...
+    QMenu *windowMenu; //MINE
+    windowMenu = menuBar()->addMenu(tr("&Window"));
+    connect(windowMenu, &QMenu::aboutToShow, this, &MdiWindow::updateWindowList); //ORIG connect(windowMenu, SIGNAL(aboutToShow()), this, SLOT(updateWindowList()));
+}
+#pragma endregion //Listing 4-12. Creating the Window menu
+
+void MdiWindow::updateWindowList() {} //MINE

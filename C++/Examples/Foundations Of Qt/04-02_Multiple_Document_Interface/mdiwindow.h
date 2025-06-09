@@ -30,6 +30,7 @@ private:
 private slots:
     void enableActions();
     void createActions();
-    void createMenus() {}
+    void createMenus();
     void createToolbars() {}
+    void updateWindowList();
 };
