@@ -52,22 +52,29 @@ void MdiWindow::createActions() {
 DocumentWindow *MdiWindow::activeDocument() {
     if (QMdiSubWindow *activeSubWindow = workspace->activeSubWindow()) //ORIG return qobject_cast<DocumentWindow *>(workspace->activeWindow());
         return qobject_cast<DocumentWindow *>(activeSubWindow->widget());
+    return nullptr;
 }
 
 void MdiWindow::enableActions() {
     bool hasDocuments = (activeDocument() != 0);
 
     closeAction->setEnabled(hasDocuments);
+#ifdef OFF
     pasteAction->setEnabled(hasDocuments);
+#endif //OFF
     tileAction->setEnabled(hasDocuments);
+#ifdef OFF
     cascadeAction->setEnabled(hasDocuments);
     nextAction->setEnabled(hasDocuments);
     previousAction->setEnabled(hasDocuments);
+#endif //OFF
     separatorAction->setVisible(hasDocuments);
 
     bool hasSelection = hasDocuments && activeDocument()->textCursor().hasSelection();
 
+#ifdef OFF
     cutAction->setEnabled(hasSelection);
     copyAction->setEnabled(hasSelection);
+#endif //OFF
 }
 #pragma endregion // Listing 4-10. Enabling and disabling actions
