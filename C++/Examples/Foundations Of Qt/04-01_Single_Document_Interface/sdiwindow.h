@@ -12,6 +12,7 @@ public:
 private:
 #pragma region MINE
     QTextEdit *docWidget;
+    void fileNew();
     void createActions();
     void createMenus();
     void createToolbars();
