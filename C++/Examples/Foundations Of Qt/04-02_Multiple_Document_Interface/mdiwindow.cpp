@@ -151,3 +151,13 @@ void MdiWindow::fileNew() {
     document->show();
 }
 #pragma endregion // Listing 4-14. Creating a new document
+
+#pragma region Listing 4-15. Closing all documents and the main window
+void MdiWindow::closeEvent(QCloseEvent *event) {
+#ifdef OFF
+    workspace->closeAllWindows();
+    if (activeDocument())
+        event->ignore();
+#endif //OFF
+}
+#pragma endregion //Listing 4-15. Closing all documents and the main window
