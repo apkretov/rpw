@@ -18,5 +18,7 @@ private:
     QAction *newAction;
     QAction *cutAction;
     QAction *aboutQtAction;
+    QAction *closeAction = nullptr;
+    QAction *exitAction = nullptr;
 #pragma endregion //MINE
 };

@@ -41,8 +41,21 @@ void SdiWindow::createActions() {
 }
 #pragma endregion //Listing 4-2. Creating actions for the SDI application
 
-#pragma region MINE
-void SdiWindow::createMenus() {}
+#pragma region Listing 4-3. The menus and toolbars are populated.
+void SdiWindow::createMenus() {
+    QMenu *menu;
+    menu = menuBar()->addMenu(tr("&File"));
+    menu->addAction(newAction);
+    menu->addAction(closeAction);
+    menu->addSeparator();
+    menu->addAction(exitAction);
+    // ...
+}
 
-void SdiWindow::createToolbars() {}
-#pragma endregion //MINE
+void SdiWindow::createToolbars() {
+    QToolBar *toolbar;
+    toolbar = addToolBar(tr("File"));
+    toolbar->addAction(newAction);
+    // ...
+}
+#pragma endregion // Listing 4-3. The menus and toolbars are populated.
