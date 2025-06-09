@@ -9,9 +9,10 @@ class SdiWindow : public QMainWindow {
 public:
     SdiWindow(QWidget *parent = nullptr);
 private:
-    QTextEdit *docWidget; //MINE
-    
+#pragma region MINE
+    QTextEdit *docWidget;
     void createActions();
     void createMenus();
     void createToolbars();
+#pragma endregion //MINE
 };

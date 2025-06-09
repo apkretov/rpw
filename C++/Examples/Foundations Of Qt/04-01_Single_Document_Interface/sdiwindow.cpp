@@ -9,7 +9,7 @@
 #pragma region Listing 4-1. Constructor of the SDI main window
 SdiWindow::SdiWindow(QWidget *parent) : QMainWindow(parent) {
     setAttribute(Qt::WA_DeleteOnClose);
-    setWindowTitle(QString("%1[*] - %2").arg("unnamed").arg("SDI")); //ORIG setWindowTitle(QString("%1[*] - %2").arg("unnamed" -).arg(-"SDI"));
+    setWindowTitle(QString("%1[*] - %2").arg("unnamed").arg("SDI"));
     docWidget = new QTextEdit(this);
     setCentralWidget(docWidget);
     connect(docWidget->document(), SIGNAL(modificationChanged(bool)), this, SLOT(setWindowModified(bool)));
@@ -20,14 +20,10 @@ SdiWindow::SdiWindow(QWidget *parent) : QMainWindow(parent) {
 }
 #pragma endregion //Listing 4-1. Constructor of the SDI main window
 
-void SdiWindow::createActions() {
-    // Implementation of createActions
-}
+#pragma region MINE
+void SdiWindow::createActions() {}
 
-void SdiWindow::createMenus() {
-    // Implementation of createMenus
-}
+void SdiWindow::createMenus() {}
 
-void SdiWindow::createToolbars() {
-    // Implementation of createToolbars
-}
+void SdiWindow::createToolbars() {}
+#pragma endregion //MINE
