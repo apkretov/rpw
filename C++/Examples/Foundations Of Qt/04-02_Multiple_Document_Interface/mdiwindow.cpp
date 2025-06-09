@@ -49,7 +49,10 @@ void MdiWindow::createActions() {
 #pragma endregion // Listing 4-9. Creating actions for the MDI application
 
 #pragma region Listing 4-10. Enabling and disabling actions
-DocumentWindow *MdiWindow::activeDocument() { return qobject_cast<DocumentWindow *>(workspace->activeWindow()); }
+DocumentWindow *MdiWindow::activeDocument() {
+    if (QMdiSubWindow *activeSubWindow = workspace->activeSubWindow()) //ORIG return qobject_cast<DocumentWindow *>(workspace->activeWindow());
+        return qobject_cast<DocumentWindow *>(activeSubWindow->widget());
+}
 
 void MdiWindow::enableActions() {
     bool hasDocuments = (activeDocument() != 0);
