@@ -35,11 +35,11 @@ void MdiWindow::createActions() {
     closeAction = new QAction(tr("&Close"), this);
     closeAction->setShortcut(tr("Ctrl+W"));
     closeAction->setStatusTip(tr("Close this document"));
-    connect(closeAction, SIGNAL(triggered()), workspace, SLOT(closeActiveWindow()));
+    connect(closeAction, &QAction::triggered, workspace, &QMdiArea::closeActiveSubWindow); //ORIG connect(closeAction, SIGNAL(triggered()), workspace, SLOT(closeActiveWindow()));
     // ...
     tileAction = new QAction(tr("&Tile"), this);
     tileAction->setStatusTip(tr("Tile windows"));
-    connect(tileAction, SIGNAL(triggered()), workspace, SLOT(tile()));
+    connect(tileAction, &QAction::triggered, workspace, &QMdiArea::tileSubWindows); //ORIG connect(tileAction, SIGNAL(triggered()), workspace, SLOT(tile()));
     // ...
     separatorAction = new QAction(this);
     separatorAction->setSeparator(true);
