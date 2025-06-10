@@ -74,7 +74,13 @@ void MainWindow::createActions() {
     selectRowAction = new QAction(tr("&Row"), this);
     selectColumnAction = new QAction(tr("&Column"), this);
     findAction = new QAction(tr("&Find..."), this);
+    findAction->setShortcut(QKeySequence::Find);
+    findAction->setStatusTip(tr("Find a matching cell"));
+    connect(findAction, &QAction::triggered, this, &MainWindow::find);
     goToCellAction = new QAction(tr("&Go to Cell..."), this);
+    goToCellAction->setShortcut(tr("Ctrl+G"));
+    goToCellAction->setStatusTip(tr("Go to the specified cell"));
+    connect(goToCellAction, &QAction::triggered, this, &MainWindow::goToCell);
     recalculateAction = new QAction(tr("&Recalculate"), this);
     sortAction = new QAction(tr("&Sort..."), this);
     aboutAction = new QAction(tr("&About"), this);
@@ -153,10 +159,8 @@ void MainWindow::createMenus() {
     selectSubMenu->addAction(selectAllAction);
 
     editMenu->addSeparator();
-#ifdef OFF
     editMenu->addAction(findAction);
     editMenu->addAction(goToCellAction);
-#endif //OFF
 
     toolsMenu = menuBar()->addMenu(tr("&Tools"));
 #ifdef OFF
@@ -207,12 +211,8 @@ void MainWindow::createToolBars() {
     editToolBar->addAction(pasteAction);
 #endif //OFF
     editToolBar->addSeparator();
-#ifdef OFF
     editToolBar->addAction(findAction);
-#endif //OFF
-#ifdef OFF
     editToolBar->addAction(goToCellAction);
-#endif //OFF
 }
 #pragma endregion //Creating Menus and Toolbars
 
