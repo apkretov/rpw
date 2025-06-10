@@ -16,12 +16,16 @@ private:
     void createMenus();
     void createToolbars();
     void fileNew();
+    void about();
     void closeEvent(QCloseEvent *event);
     bool isSafeToClose();
     QAction *newAction;
+    QAction *closeAction;
+    QAction *exitAction;
     QAction *cutAction;
+    QAction *copyAction;
+    QAction *pasteAction;
+    QAction *aboutAction;
     QAction *aboutQtAction;
-    QAction *closeAction = nullptr;
-    QAction *exitAction = nullptr;
 #pragma endregion //MINE
 };
