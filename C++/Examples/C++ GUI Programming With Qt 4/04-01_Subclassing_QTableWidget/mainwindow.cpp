@@ -65,14 +65,39 @@ void MainWindow::createActions() {
 
     // Initialize all actions to prevent null action errors
     openAction = new QAction(tr("&Open..."), this);
+    openAction->setShortcut(QKeySequence::Open);
+    openAction->setStatusTip(tr("Open an existing spreadsheet file"));
+    connect(openAction, &QAction::triggered, this, &MainWindow::open);
     saveAction = new QAction(tr("&Save"), this);
+    saveAction->setShortcut(QKeySequence::Save);
+    saveAction->setStatusTip(tr("Save the spreadsheet to disk"));
+    connect(saveAction, &QAction::triggered, this, &MainWindow::save);
     saveAsAction = new QAction(tr("Save &As..."), this);
+    saveAsAction->setShortcut(QKeySequence::SaveAs);
+    saveAsAction->setStatusTip(tr("Save the spreadsheet under a new name"));
+    connect(saveAsAction, &QAction::triggered, this, &MainWindow::saveAs);
     cutAction = new QAction(tr("Cu&t"), this);
+    cutAction->setShortcut(QKeySequence::Cut);
+    cutAction->setStatusTip(tr("Cut the current selection's contents to the clipboard"));
+    connect(cutAction, &QAction::triggered, spreadsheet, &Spreadsheet::cut);
     copyAction = new QAction(tr("&Copy"), this);
+    copyAction->setShortcut(QKeySequence::Copy);
+    copyAction->setStatusTip(tr("Copy the current selection's contents to the clipboard"));
+    connect(copyAction, &QAction::triggered, spreadsheet, &Spreadsheet::copy);
     pasteAction = new QAction(tr("&Paste"), this);
+    pasteAction->setShortcut(QKeySequence::Paste);
+    pasteAction->setStatusTip(tr("Paste the clipboard's contents into the current selection"));
+    connect(pasteAction, &QAction::triggered, spreadsheet, &Spreadsheet::paste);
     deleteAction = new QAction(tr("&Delete"), this);
+    deleteAction->setShortcut(QKeySequence::Delete);
+    deleteAction->setStatusTip(tr("Delete the current selection's contents"));
+    connect(deleteAction, &QAction::triggered, spreadsheet, &Spreadsheet::del);
     selectRowAction = new QAction(tr("&Row"), this);
+    selectRowAction->setStatusTip(tr("Select the current row"));
+    connect(selectRowAction, &QAction::triggered, spreadsheet, &Spreadsheet::selectCurrentRow);
     selectColumnAction = new QAction(tr("&Column"), this);
+    selectColumnAction->setStatusTip(tr("Select the current column"));
+    connect(selectColumnAction, &QAction::triggered, spreadsheet, &Spreadsheet::selectCurrentColumn);
     findAction = new QAction(tr("&Find..."), this);
     findAction->setShortcut(QKeySequence::Find);
     findAction->setStatusTip(tr("Find a matching cell"));
@@ -90,9 +115,13 @@ void MainWindow::createActions() {
     sortAction->setStatusTip(tr("Sort the selected cells"));
     connect(sortAction, &QAction::triggered, this, &MainWindow::sort);
     aboutAction = new QAction(tr("&About"), this);
+    aboutAction->setStatusTip(tr("Show the application's About box"));
+    connect(aboutAction, &QAction::triggered, this, &MainWindow::about);
     autoRecalcAction = new QAction(tr("&Auto-Recalculate"), this);
     autoRecalcAction->setCheckable(true);
     autoRecalcAction->setChecked(true);
+    autoRecalcAction->setStatusTip(tr("Recalculate automatically when a value changes"));
+    connect(autoRecalcAction, &QAction::toggled, spreadsheet, &Spreadsheet::setAutoRecalculate);
 
     // ...
     for (int i = 0; i < MaxRecentFiles; ++i) {
@@ -136,11 +165,9 @@ void MainWindow::createActions() {
 void MainWindow::createMenus() {
     fileMenu = menuBar()->addMenu(tr("&File"));
     fileMenu->addAction(newAction);
-#ifdef OFF
     fileMenu->addAction(openAction);
     fileMenu->addAction(saveAction);
     fileMenu->addAction(saveAsAction);
-#endif //OFF
     separatorAction = fileMenu->addSeparator(); //TEST
     for (int i = 0; i < MaxRecentFiles; ++i)
         fileMenu->addAction(recentFileActions[i]);
@@ -148,20 +175,14 @@ void MainWindow::createMenus() {
     fileMenu->addAction(exitAction);
 
     editMenu = menuBar()->addMenu(tr("&Edit"));
-#ifdef OFF
     editMenu->addAction(cutAction);
-#endif //OFF
     editMenu->addAction(copyAction);
-#ifdef OFF
     editMenu->addAction(pasteAction);
     editMenu->addAction(deleteAction);
-#endif //OFF
 
     selectSubMenu = editMenu->addMenu(tr("&Select")); //TEST
     selectSubMenu->addAction(selectRowAction);
-#ifdef OFF
     selectSubMenu->addAction(selectColumnAction);
-#endif //OFF
     selectSubMenu->addAction(selectAllAction);
 
     editMenu->addSeparator();
@@ -179,9 +200,7 @@ void MainWindow::createMenus() {
     menuBar()->addSeparator(); //TEST
 
     helpMenu = menuBar()->addMenu(tr("&Help"));
-#ifdef OFF
     helpMenu->addAction(aboutAction);
-#endif //OFF
     helpMenu->addAction(aboutQtAction);
 }
 
@@ -437,9 +456,7 @@ void MainWindow::readSettings() {
     showGridAction->setChecked(showGrid);
 
     bool autoRecalc = settings.value("autoRecalc", true).toBool();
-#ifdef OFF
     autoRecalcAction->setChecked(autoRecalc);
-#endif //OFF
 }
 #pragma endregion //Storing Settings
 
