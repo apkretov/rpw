@@ -6,7 +6,7 @@ public interface MetaEventListener {
     void beatEvent();
 }
 */
-class MetaEventListener {
+class MetaEventListener { // This is needed for the MIDI code.
 public:
     virtual ~MetaEventListener() = default;
     virtual void beatEvent() = 0;

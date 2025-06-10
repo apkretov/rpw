@@ -39,9 +39,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) { //ORIG MainWindo
     createStatusBar();
     readSettings();
     findDialog = 0;
-#ifdef OFF
-    setWindowIcon(QIcon(":/images/icon.png")); //MINE: See the Perplexity comment below.
-#endif //OFF
+    // Icon disabled as resources are not set up in this CMake project
+    // setWindowIcon(QIcon(":/images/icon.png"));
     setCurrentFile("");
     #pragma region Multiple Documents
     setAttribute(Qt::WA_DeleteOnClose);
@@ -52,71 +51,79 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) { //ORIG MainWindo
 #pragma region Creating Menus and Toolbars
 void MainWindow::createActions() {
     newAction = new QAction(tr("&New"), this);
-#ifdef OFF
-    newAction->setIcon(QIcon(":/images/new.png"));
-#endif //OFF
+    // Icon disabled as resources are not set up in this CMake project
+    // newAction->setIcon(QIcon(":/images/new.png"));
     newAction->setShortcut(QKeySequence::New); //TEST
     newAction->setStatusTip(tr("Create a new spreadsheet file"));
-    // Replace old syntax:
-    // connect(newAction, SIGNAL(triggered()), this, SLOT(newFile()));
-    
-    // With new syntax:
-    connect(newAction, &QAction::triggered, this, &MainWindow::newFile);
+    connect(newAction, &QAction::triggered, this, &MainWindow::newFile); //ORIG connect(newAction, SIGNAL(triggered()), this, SLOT(newFile()));
 
-    // Initialize all actions to prevent null action errors
-    openAction = new QAction(tr("&Open..."), this);
+    openAction = new QAction(tr("&Open..."), this); // Initialize all actions to prevent null action errors
     openAction->setShortcut(QKeySequence::Open);
     openAction->setStatusTip(tr("Open an existing spreadsheet file"));
     connect(openAction, &QAction::triggered, this, &MainWindow::open);
+
     saveAction = new QAction(tr("&Save"), this);
     saveAction->setShortcut(QKeySequence::Save);
     saveAction->setStatusTip(tr("Save the spreadsheet to disk"));
     connect(saveAction, &QAction::triggered, this, &MainWindow::save);
+
     saveAsAction = new QAction(tr("Save &As..."), this);
     saveAsAction->setShortcut(QKeySequence::SaveAs);
     saveAsAction->setStatusTip(tr("Save the spreadsheet under a new name"));
     connect(saveAsAction, &QAction::triggered, this, &MainWindow::saveAs);
+
     cutAction = new QAction(tr("Cu&t"), this);
     cutAction->setShortcut(QKeySequence::Cut);
     cutAction->setStatusTip(tr("Cut the current selection's contents to the clipboard"));
     connect(cutAction, &QAction::triggered, spreadsheet, &Spreadsheet::cut);
+
     copyAction = new QAction(tr("&Copy"), this);
     copyAction->setShortcut(QKeySequence::Copy);
     copyAction->setStatusTip(tr("Copy the current selection's contents to the clipboard"));
     connect(copyAction, &QAction::triggered, spreadsheet, &Spreadsheet::copy);
+
     pasteAction = new QAction(tr("&Paste"), this);
     pasteAction->setShortcut(QKeySequence::Paste);
     pasteAction->setStatusTip(tr("Paste the clipboard's contents into the current selection"));
     connect(pasteAction, &QAction::triggered, spreadsheet, &Spreadsheet::paste);
+
     deleteAction = new QAction(tr("&Delete"), this);
     deleteAction->setShortcut(QKeySequence::Delete);
     deleteAction->setStatusTip(tr("Delete the current selection's contents"));
     connect(deleteAction, &QAction::triggered, spreadsheet, &Spreadsheet::del);
+
     selectRowAction = new QAction(tr("&Row"), this);
     selectRowAction->setStatusTip(tr("Select the current row"));
     connect(selectRowAction, &QAction::triggered, spreadsheet, &Spreadsheet::selectCurrentRow);
+
     selectColumnAction = new QAction(tr("&Column"), this);
     selectColumnAction->setStatusTip(tr("Select the current column"));
     connect(selectColumnAction, &QAction::triggered, spreadsheet, &Spreadsheet::selectCurrentColumn);
+
     findAction = new QAction(tr("&Find..."), this);
     findAction->setShortcut(QKeySequence::Find);
     findAction->setStatusTip(tr("Find a matching cell"));
     connect(findAction, &QAction::triggered, this, &MainWindow::find);
+
     goToCellAction = new QAction(tr("&Go to Cell..."), this);
     goToCellAction->setShortcut(tr("Ctrl+G"));
     goToCellAction->setStatusTip(tr("Go to the specified cell"));
     connect(goToCellAction, &QAction::triggered, this, &MainWindow::goToCell);
+
     recalculateAction = new QAction(tr("&Recalculate"), this);
     recalculateAction->setShortcut(tr("F9"));
     recalculateAction->setStatusTip(tr("Recalculate all formulas"));
     connect(recalculateAction, &QAction::triggered, spreadsheet, &Spreadsheet::recalculate);
+
     sortAction = new QAction(tr("&Sort..."), this);
     sortAction->setShortcut(tr("Ctrl+S"));
     sortAction->setStatusTip(tr("Sort the selected cells"));
     connect(sortAction, &QAction::triggered, this, &MainWindow::sort);
+
     aboutAction = new QAction(tr("&About"), this);
     aboutAction->setStatusTip(tr("Show the application's About box"));
     connect(aboutAction, &QAction::triggered, this, &MainWindow::about);
+
     autoRecalcAction = new QAction(tr("&Auto-Recalculate"), this);
     autoRecalcAction->setCheckable(true);
     autoRecalcAction->setChecked(true);
@@ -154,6 +161,7 @@ void MainWindow::createActions() {
     closeAction->setShortcut(QKeySequence::Close);
     closeAction->setStatusTip(tr("Close this window"));
     connect(closeAction, &QAction::triggered, this, &QWidget::close);
+
     exitAction = new QAction(tr("E&xit"), this);
     exitAction->setShortcut(tr("Ctrl+Q"));
     exitAction->setStatusTip(tr("Exit the application"));
@@ -205,34 +213,22 @@ void MainWindow::createMenus() {
 }
 
 void MainWindow::createContextMenu() {
-#ifdef OFF
     spreadsheet->addAction(cutAction);
-#endif //OFF
     spreadsheet->addAction(copyAction);
-#ifdef OFF
     spreadsheet->addAction(pasteAction);
-#endif //OFF
     spreadsheet->setContextMenuPolicy(Qt::ActionsContextMenu);
 }
 
 void MainWindow::createToolBars() {
     fileToolBar = addToolBar(tr("&File"));
     fileToolBar->addAction(newAction);
-#ifdef OFF
     fileToolBar->addAction(openAction);
-#endif //OFF
-#ifdef OFF
     fileToolBar->addAction(saveAction);
-#endif //OFF
 
     editToolBar = addToolBar(tr("&Edit"));
-#ifdef OFF
     editToolBar->addAction(cutAction);
-#endif //OFF
     editToolBar->addAction(copyAction);
-#ifdef OFF
     editToolBar->addAction(pasteAction);
-#endif //OFF
     editToolBar->addSeparator();
     editToolBar->addAction(findAction);
     editToolBar->addAction(goToCellAction);
@@ -252,7 +248,7 @@ void MainWindow::createStatusBar() {
     statusBar()->addWidget(formulaLabel, 1);
 
     connect(spreadsheet, &QTableWidget::currentCellChanged, this, &MainWindow::updateStatusBar);
-    connect(spreadsheet, SIGNAL(modified()), this, SLOT(spreadsheetModified()));
+    connect(spreadsheet, &Spreadsheet::modified, this, &MainWindow::spreadsheetModified);
     updateStatusBar();
 }
 
@@ -383,8 +379,8 @@ void MainWindow::openRecentFile() {
 void MainWindow::find() {
     if (!findDialog) {
         findDialog = new FindDialog(this);
-        connect(findDialog, SIGNAL(findNext(    const QString &, Qt::CaseSensitivity)), spreadsheet, SLOT(findNext(    const QString &, Qt::CaseSensitivity)));
-        connect(findDialog, SIGNAL(findPrevious(const QString &, Qt::CaseSensitivity)), spreadsheet, SLOT(findPrevious(const QString &, Qt::CaseSensitivity)));
+        connect(findDialog, &FindDialog::findNext, spreadsheet, &Spreadsheet::findNext);
+        connect(findDialog, &FindDialog::findPrevious, spreadsheet, &Spreadsheet::findPrevious);
     }
     findDialog->show();
     findDialog->raise();
