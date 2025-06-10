@@ -82,7 +82,13 @@ void MainWindow::createActions() {
     goToCellAction->setStatusTip(tr("Go to the specified cell"));
     connect(goToCellAction, &QAction::triggered, this, &MainWindow::goToCell);
     recalculateAction = new QAction(tr("&Recalculate"), this);
+    recalculateAction->setShortcut(tr("F9"));
+    recalculateAction->setStatusTip(tr("Recalculate all formulas"));
+    connect(recalculateAction, &QAction::triggered, spreadsheet, &Spreadsheet::recalculate);
     sortAction = new QAction(tr("&Sort..."), this);
+    sortAction->setShortcut(tr("Ctrl+S"));
+    sortAction->setStatusTip(tr("Sort the selected cells"));
+    connect(sortAction, &QAction::triggered, this, &MainWindow::sort);
     aboutAction = new QAction(tr("&About"), this);
     autoRecalcAction = new QAction(tr("&Auto-Recalculate"), this);
     autoRecalcAction->setCheckable(true);
@@ -163,10 +169,8 @@ void MainWindow::createMenus() {
     editMenu->addAction(goToCellAction);
 
     toolsMenu = menuBar()->addMenu(tr("&Tools"));
-#ifdef OFF
     toolsMenu->addAction(recalculateAction);
     toolsMenu->addAction(sortAction);
-#endif //OFF
 
     optionsMenu = menuBar()->addMenu(tr("&Options"));
     optionsMenu->addAction(showGridAction);
@@ -385,7 +389,6 @@ void MainWindow::goToCell() {
 #endif //VER_2
 }
 
-#ifndef VER_1
 void MainWindow::sort() {
     SortDialog dialog(this);
     QTableWidgetSelectionRange range = spreadsheet->selectedRange();
@@ -401,21 +404,6 @@ void MainWindow::sort() {
         spreadsheet->sort(compare);
     }
 }
-#elif defined(VER_2)
-void MainWindow::sort() {
-    SortDialog dialog(this);
-    dialog.setSpreadsheet(spreadsheet);
-    dialog.exec();
-}
-#elif defined(VER_3)
-void MainWindow::sort() {
-    SortDialog dialog(this);
-    QTableWidgetSelectionRange range = spreadsheet->selectedRange();
-    dialog.setColumnRange('A' + range.leftColumn(), 'A' + range.rightColumn());
-    if (dialog.exec())
-        spreadsheet->performSort(dialog.comparisonObject());
-}
-#endif //VER_3
 
 void MainWindow::about() {
     QMessageBox::about(this, tr("About Spreadsheet"),
