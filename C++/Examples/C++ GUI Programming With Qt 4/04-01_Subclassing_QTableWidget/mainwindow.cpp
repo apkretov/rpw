@@ -63,41 +63,60 @@ void MainWindow::createActions() {
     // With new syntax:
     connect(newAction, &QAction::triggered, this, &MainWindow::newFile);
 
+    // Initialize all actions to prevent null action errors
+    openAction = new QAction(tr("&Open..."), this);
+    saveAction = new QAction(tr("&Save"), this);
+    saveAsAction = new QAction(tr("Save &As..."), this);
+    cutAction = new QAction(tr("Cu&t"), this);
+    copyAction = new QAction(tr("&Copy"), this);
+    pasteAction = new QAction(tr("&Paste"), this);
+    deleteAction = new QAction(tr("&Delete"), this);
+    selectRowAction = new QAction(tr("&Row"), this);
+    selectColumnAction = new QAction(tr("&Column"), this);
+    findAction = new QAction(tr("&Find..."), this);
+    goToCellAction = new QAction(tr("&Go to Cell..."), this);
+    recalculateAction = new QAction(tr("&Recalculate"), this);
+    sortAction = new QAction(tr("&Sort..."), this);
+    aboutAction = new QAction(tr("&About"), this);
+    autoRecalcAction = new QAction(tr("&Auto-Recalculate"), this);
+    autoRecalcAction->setCheckable(true);
+    autoRecalcAction->setChecked(true);
+
     // ...
     for (int i = 0; i < MaxRecentFiles; ++i) {
         recentFileActions[i] = new QAction(this);
         recentFileActions[i]->setVisible(false);
-        connect(recentFileActions[i], SIGNAL(triggered()), this, SLOT(openRecentFile()));
+        connect(recentFileActions[i], &QAction::triggered, this, &MainWindow::openRecentFile);
     }
 
     // ...
     selectAllAction = new QAction(tr("&All"), this);
     selectAllAction->setShortcut(QKeySequence::SelectAll);
     selectAllAction->setStatusTip(tr("Select all the cells in the spreadsheet"));
-    connect(selectAllAction, SIGNAL(triggered()), spreadsheet, SLOT(selectAll()));
+    connect(selectAllAction, &QAction::triggered, spreadsheet, &QTableWidget::selectAll);
 
     // ...
     showGridAction = new QAction(tr("&Show Grid"), this);
     showGridAction->setCheckable(true);
     showGridAction->setChecked(spreadsheet->showGrid());
     showGridAction->setStatusTip(tr("Show or hide the spreadsheet's grid"));
-    connect(showGridAction, SIGNAL(toggled(bool)), spreadsheet, SLOT(setShowGrid(bool)));
+    connect(showGridAction, &QAction::toggled, spreadsheet, &QTableWidget::setShowGrid);
 
     // ...
     aboutQtAction = new QAction(tr("About &Qt"), this);
     aboutQtAction->setStatusTip(tr("Show the Qt library's About box"));
-    connect(aboutQtAction, SIGNAL(triggered()), qApp, SLOT(aboutQt()));
+    connect(aboutQtAction, &QAction::triggered, qApp, &QApplication::aboutQt);
 
     #pragma region Multiple Documents
     // ...
     closeAction = new QAction(tr("&Close"), this);
     closeAction->setShortcut(QKeySequence::Close);
     closeAction->setStatusTip(tr("Close this window"));
-    connect(closeAction, SIGNAL(triggered()), this, SLOT(close()));
+    connect(closeAction, &QAction::triggered, this, &QWidget::close);
     exitAction = new QAction(tr("E&xit"), this);
     exitAction->setShortcut(tr("Ctrl+Q"));
     exitAction->setStatusTip(tr("Exit the application"));
-    connect(exitAction, SIGNAL(triggered()), qApp, SLOT(closeAllWindows()));
+    connect(exitAction, &QAction::triggered, qApp, &QApplication::closeAllWindows);
     // ...
     #pragma endregion //Multiple Documents
 }
@@ -209,7 +228,7 @@ void MainWindow::createStatusBar() {
     statusBar()->addWidget(locationLabel);
     statusBar()->addWidget(formulaLabel, 1);
 
-    connect(spreadsheet, SIGNAL(currentCellChanged(int, int, int, int)), this, SLOT(updateStatusBar()));
+    connect(spreadsheet, &QTableWidget::currentCellChanged, this, &MainWindow::updateStatusBar);
     connect(spreadsheet, SIGNAL(modified()), this, SLOT(spreadsheetModified()));
     updateStatusBar();
 }
