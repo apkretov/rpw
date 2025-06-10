@@ -5,6 +5,7 @@
 #include <QStatusBar>
 #include <QAction>
 #include <QMenuBar>
+#include <QCloseEvent>
 #include "documentwindow.h"
 
 #pragma region Listing 4-8. Constructor of the main window with differences between MDI and SDI highlighted
@@ -154,10 +155,8 @@ void MdiWindow::fileNew() {
 
 #pragma region Listing 4-15. Closing all documents and the main window
 void MdiWindow::closeEvent(QCloseEvent *event) {
-#ifdef OFF //SUSPENDED
-    workspace->closeAllWindows();
+    workspace->closeAllSubWindows(); //ORIG workspace->closeAllWindows();
     if (activeDocument())
         event->ignore();
-#endif //OFF
 }
 #pragma endregion //Listing 4-15. Closing all documents and the main window
