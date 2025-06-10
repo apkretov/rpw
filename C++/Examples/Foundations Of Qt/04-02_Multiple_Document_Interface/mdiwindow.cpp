@@ -5,6 +5,7 @@
 #include <QStatusBar>
 #include <QAction>
 #include <QMenuBar>
+#include <QToolBar>
 #include <QCloseEvent>
 #include "documentwindow.h"
 
@@ -34,19 +35,56 @@ MdiWindow::MdiWindow(QWidget *parent) : QMainWindow(parent) {
 
 #pragma region Listing 4-9. Creating actions for the MDI application
 void MdiWindow::createActions() {
-    // ...
+    newAction = new QAction(tr("&New"), this);
+    newAction->setShortcut(tr("Ctrl+N"));
+    newAction->setStatusTip(tr("Create a new document"));
+    connect(newAction, &QAction::triggered, this, &MdiWindow::fileNew);
+    
     closeAction = new QAction(tr("&Close"), this);
     closeAction->setShortcut(tr("Ctrl+W"));
     closeAction->setStatusTip(tr("Close this document"));
     connect(closeAction, &QAction::triggered, workspace, &QMdiArea::closeActiveSubWindow); //ORIG connect(closeAction, SIGNAL(triggered()), workspace, SLOT(closeActiveWindow()));
-    // ...
+    
+    exitAction = new QAction(tr("E&xit"), this);
+    exitAction->setShortcut(tr("Ctrl+Q"));
+    exitAction->setStatusTip(tr("Exit the application"));
+    connect(exitAction, &QAction::triggered, this, &QWidget::close);
+    
+    cutAction = new QAction(tr("Cu&t"), this);
+    cutAction->setShortcut(tr("Ctrl+X"));
+    cutAction->setStatusTip(tr("Cut the selection to the clipboard"));
+    connect(cutAction, &QAction::triggered, this, &MdiWindow::editCut);
+    
+    copyAction = new QAction(tr("&Copy"), this);
+    copyAction->setShortcut(tr("Ctrl+C"));
+    copyAction->setStatusTip(tr("Copy the selection to the clipboard"));
+    connect(copyAction, &QAction::triggered, this, &MdiWindow::editCopy);
+    
+    pasteAction = new QAction(tr("&Paste"), this);
+    pasteAction->setShortcut(tr("Ctrl+V"));
+    pasteAction->setStatusTip(tr("Paste from the clipboard"));
+    connect(pasteAction, &QAction::triggered, this, &MdiWindow::editPaste);
+    
     tileAction = new QAction(tr("&Tile"), this);
     tileAction->setStatusTip(tr("Tile windows"));
     connect(tileAction, &QAction::triggered, workspace, &QMdiArea::tileSubWindows); //ORIG connect(tileAction, SIGNAL(triggered()), workspace, SLOT(tile()));
-    // ...
+    
+    cascadeAction = new QAction(tr("&Cascade"), this);
+    cascadeAction->setStatusTip(tr("Cascade windows"));
+    connect(cascadeAction, &QAction::triggered, workspace, &QMdiArea::cascadeSubWindows);
+    
+    nextAction = new QAction(tr("Ne&xt"), this);
+    nextAction->setShortcut(tr("Ctrl+Tab"));
+    nextAction->setStatusTip(tr("Move to the next window"));
+    connect(nextAction, &QAction::triggered, workspace, &QMdiArea::activateNextSubWindow);
+    
+    previousAction = new QAction(tr("Pre&vious"), this);
+    previousAction->setShortcut(tr("Ctrl+Shift+Tab"));
+    previousAction->setStatusTip(tr("Move to the previous window"));
+    connect(previousAction, &QAction::triggered, workspace, &QMdiArea::activatePreviousSubWindow);
+    
     separatorAction = new QAction(this);
     separatorAction->setSeparator(true);
-    // ...
 }
 #pragma endregion // Listing 4-9. Creating actions for the MDI application
 
@@ -61,23 +99,17 @@ void MdiWindow::enableActions() {
     bool hasDocuments = (activeDocument() != 0);
 
     closeAction->setEnabled(hasDocuments);
-#ifdef OFF
     pasteAction->setEnabled(hasDocuments);
-#endif //OFF
     tileAction->setEnabled(hasDocuments);
-#ifdef OFF
     cascadeAction->setEnabled(hasDocuments);
     nextAction->setEnabled(hasDocuments);
     previousAction->setEnabled(hasDocuments);
-#endif //OFF
     separatorAction->setVisible(hasDocuments);
 
     bool hasSelection = hasDocuments && activeDocument()->textCursor().hasSelection();
 
-#ifdef OFF
     cutAction->setEnabled(hasSelection);
     copyAction->setEnabled(hasSelection);
-#endif //OFF
 }
 #pragma endregion // Listing 4-10. Enabling and disabling actions
 
@@ -93,15 +125,16 @@ void MdiWindow::editPaste() { activeDocument()->paste(); }
 void MdiWindow::createMenus() {
     QMenu *menu;
     menu = menuBar()->addMenu(tr("&File"));
-#ifdef OFF
     menu->addAction(newAction);
-#endif //OFF
     menu->addAction(closeAction);
     menu->addSeparator();
-#ifdef OFF
     menu->addAction(exitAction);
-#endif //OFF
-    // ...
+    
+    menu = menuBar()->addMenu(tr("&Edit"));
+    menu->addAction(cutAction);
+    menu->addAction(copyAction);
+    menu->addAction(pasteAction);
+    
     windowMenu = menuBar()->addMenu(tr("&Window"));
     connect(windowMenu, &QMenu::aboutToShow, this, &MdiWindow::updateWindowList); //ORIG connect(windowMenu, SIGNAL(aboutToShow()), this, SLOT(updateWindowList()));
 }
@@ -112,14 +145,10 @@ void MdiWindow::updateWindowList() {
     windowMenu->clear();
 
     windowMenu->addAction(tileAction);
-#ifdef OFF
     windowMenu->addAction(cascadeAction);
-#endif //OFF
     windowMenu->addSeparator();
-#ifdef OFF
     windowMenu->addAction(nextAction);
     windowMenu->addAction(previousAction);
-#endif //OFF
     windowMenu->addAction(separatorAction);
 
     int i = 1;
@@ -145,10 +174,8 @@ void MdiWindow::updateWindowList() {
 void MdiWindow::fileNew() {
     DocumentWindow *document = new DocumentWindow;
     workspace->addSubWindow(document); //ORIG workspace->addWindow(document);
-#ifdef OFF
-    connect(document, SIGNAL(copyAvailable(bool)), cutAction, SLOT(setEnabled(bool)));
-    connect(document, SIGNAL(copyAvailable(bool)), copyAction, SLOT(setEnabled(bool)));
-#endif //OFF
+    connect(document, &QTextEdit::copyAvailable, cutAction, &QAction::setEnabled);
+    connect(document, &QTextEdit::copyAvailable, copyAction, &QAction::setEnabled);
     document->show();
 }
 #pragma endregion // Listing 4-14. Creating a new document
@@ -160,3 +187,13 @@ void MdiWindow::closeEvent(QCloseEvent *event) {
         event->ignore();
 }
 #pragma endregion //Listing 4-15. Closing all documents and the main window
+
+void MdiWindow::createToolbars() {
+    QToolBar *fileToolBar = addToolBar(tr("File"));
+    fileToolBar->addAction(newAction);
+    
+    QToolBar *editToolBar = addToolBar(tr("Edit"));
+    editToolBar->addAction(cutAction);
+    editToolBar->addAction(copyAction);
+    editToolBar->addAction(pasteAction);
+}

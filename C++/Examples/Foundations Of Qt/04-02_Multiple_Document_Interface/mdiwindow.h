@@ -17,7 +17,9 @@ protected:
 private: // Member variables and internal helper functions (not slots).
     QMdiArea *workspace; // Member variables to hold child Qt objects
     QSignalMapper *mapper;
+    QAction *newAction;
     QAction *closeAction;
+    QAction *exitAction;
     QAction *tileAction;
     QAction *separatorAction;
     QAction *pasteAction;
@@ -31,7 +33,7 @@ private: // Member variables and internal helper functions (not slots).
     DocumentWindow *activeDocument(); // Helper methods called internally, not directly by signals
     void createActions();
     void createMenus();
-    void createToolbars() {} // Note: No empty '{}' here, as it's just a declaration. The empty implementation is in the .cpp file.
+    void createToolbars();
 private slots: // Methods intended to be connected to signals
     void fileNew(); // Slots connected to QAction::triggered() or similar signals
     void editCut();
