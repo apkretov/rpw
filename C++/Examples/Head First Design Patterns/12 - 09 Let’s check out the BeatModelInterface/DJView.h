@@ -89,7 +89,7 @@ class DJView : public BeatObserver, public BPMObserver { // We'll use platform-s
     BeatModelInterface &model;							 // For Windows, we could use Win32 API or a cross-platform library like wxWidgets
     ControllerInterface &controller;					 // For this example, we'll declare UI elements as pointers to be implemented
 public:
-    DJView(ControllerInterface &controller_, BeatModelInterface &model_) : controller(controller_), model(model_) {
+    DJView(ControllerInterface &controller, BeatModelInterface &model) : controller(controller), model(model) {
         model.registerObserver(static_cast<BeatObserver *>(this));  // Register as BeatObserver
         model.registerObserver(static_cast<BPMObserver *>(this));  // Register as BPMObserver
     }
