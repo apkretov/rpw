@@ -6,7 +6,7 @@ set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 
-set(CMAKE_CXX_STANDARD 23)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
@@ -14,16 +14,15 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 
 set(PROJECT_SOURCES
         main.cpp
-        widget.cpp
-        widget.h
-        widget.ui
+        djview.cpp
+        djview.h
+        djviewcontrol.ui
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(12-09_Lets_check_out_the_BeatModelInterface
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
-        BeatModel.h BeatModelInterface.h ControllerBeat.h ControllerInterface.h DJView.h ObserverBeat.h ObserverBPM.h Sequencer.h widget.cpp widget.h
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET 12-09_Lets_check_out_the_BeatModelInterface APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
