@@ -1,5 +1,3 @@
-#pragma once
-
 #include "../../stdafx.h"
 #include "vld.h"
 #include "BeatModel.h"
