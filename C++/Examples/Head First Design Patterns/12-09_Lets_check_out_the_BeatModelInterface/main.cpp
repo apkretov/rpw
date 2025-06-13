@@ -1,4 +1,4 @@
-#include "djview.h"
+#include "DJViewControl.h"
 
 #include <QApplication>
 
