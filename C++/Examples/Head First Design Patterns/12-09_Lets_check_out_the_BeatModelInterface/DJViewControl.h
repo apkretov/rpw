@@ -17,3 +17,6 @@ public:
 private:
     Ui::DJView *ui;
 };
+
+// Width: 120
+// Height: 92
