@@ -26,6 +26,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         Example_Callback_Mechanism_More_Coupled.h
 
         Example_Observer_Pattern_Less_Coupled.h
+        djviewview.h djviewview.cpp djviewview.ui
 
     )
 # Define target properties for Android with Qt 6 as:
