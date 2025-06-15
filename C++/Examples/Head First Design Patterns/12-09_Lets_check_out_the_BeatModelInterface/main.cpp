@@ -3,6 +3,7 @@
 #endif //OFF
 
 #include <QApplication>
+#include <iostream>
 
 void Example_Observer_Pattern_Less_Coupled_Extended_Demo();
 
@@ -14,7 +15,9 @@ int main(int argc, char *argv[]) {
     w.show();
     return a.exec();
 #endif //OFF
+    
     Example_Observer_Pattern_Less_Coupled_Extended_Demo();
+    return 0;
 }
 
 #include "Example_Observer_Pattern_Less_Coupled_Extended.h"
