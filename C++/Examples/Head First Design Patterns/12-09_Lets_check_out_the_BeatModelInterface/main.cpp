@@ -20,7 +20,7 @@ int main(int argc, char *argv[]) {
     return 0;
 }
 
-#include "Example_Observer_Pattern_Less_Coupled_Extended.h"
+#include "Example_Observer_Pattern_Less_Coupled.h"
 void Example_Observer_Pattern_Less_Coupled_Extended_Demo() {
     Demo();
 }
