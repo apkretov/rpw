@@ -24,6 +24,9 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
         Example_Callback_Mechanism_More_Coupled.h
+        Example_Observer_Pattern_Less_Coupled.h
+        Example_Observer_Pattern_Less_Coupled.h
+        Example_Observer_Pattern_Less_Coupled_Extended.h
 
     )
 # Define target properties for Android with Qt 6 as:
