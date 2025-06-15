@@ -1,13 +1,10 @@
-#pragma once
+#pragma once // Simple observer pattern example without Qt dependencies
 
 #include <iostream>
 #include <vector>
 #include <algorithm>
 
-// Simple observer pattern example without Qt dependencies
-
-// Observer interfaces
-class BeatObserver {
+class BeatObserver { // Observer interfaces
 public:
     virtual void updateBeat() = 0;
     virtual ~BeatObserver() = default;
@@ -19,13 +16,10 @@ public:
     virtual ~BPMObserver() = default;
 };
 
-// Subject (Observable)
-class BeatModel {
-private:
+class BeatModel { // Subject (Observable)
     std::vector<BeatObserver*> beatObservers;
     std::vector<BPMObserver*> bpmObservers;
     int bpm;
-
 public:
     BeatModel() : bpm(90) {}
     
@@ -34,13 +28,8 @@ public:
         notifyBPMObservers();
     }
     
-    int getBPM() const { 
-        return bpm; 
-    }
-    
-    void registerObserver(BeatObserver* observer) {
-        beatObservers.push_back(observer);
-    }
+    int getBPM() const { return bpm; }
+    void registerObserver(BeatObserver* observer) { beatObservers.push_back(observer); }
     
     void removeObserver(BeatObserver* observer) {
         beatObservers.erase(
@@ -49,9 +38,7 @@ public:
         );
     }
     
-    void registerObserver(BPMObserver* observer) {
-        bpmObservers.push_back(observer);
-    }
+    void registerObserver(BPMObserver* observer) { bpmObservers.push_back(observer); }
     
     void removeObserver(BPMObserver* observer) {
         bpmObservers.erase(
@@ -61,61 +48,46 @@ public:
     }
     
     void notifyBeatObservers() {
-        for (auto* observer : beatObservers) {
+        for (auto* observer : beatObservers)
             observer->updateBeat();
-        }
     }
     
     void notifyBPMObservers() {
-        for (auto* observer : bpmObservers) {
+        for (auto* observer : bpmObservers)
             observer->updateBPM(bpm);
-        }
     }
 };
 
-// Concrete observers
-class BeatDisplay : public BeatObserver {
+class BeatDisplay : public BeatObserver { // Concrete observers
 public:
-    void updateBeat() override {
-        std::cout << "BEAT!" << std::endl;
-    }
+    void updateBeat() override { std::cout << "BEAT!" << std::endl; }
 };
 
 class BPMDisplay : public BPMObserver {
 public:
-    void updateBPM(int bpm) override {
-        std::cout << "Current BPM: " << bpm << std::endl;
-    }
+    void updateBPM(int bpm) override { std::cout << "Current BPM: " << bpm << std::endl; }
 };
 
-// Demo function
 void Demo() {
     std::cout << "Observer Pattern Demo" << std::endl;
     
-    // Create the subject
     BeatModel model;
-    
-    // Create observers
     BeatDisplay beatDisplay;
     BPMDisplay bpmDisplay;
     
-    // Register observers
     model.registerObserver(&beatDisplay);
     model.registerObserver(&bpmDisplay);
     
     std::cout << "Initial BPM: " << model.getBPM() << std::endl;
     
-    // Generate some beats
-    std::cout << "Generating beats..." << std::endl;
+    std::cout << "Generating beats..." << std::endl; // Generate some beats
     model.notifyBeatObservers();
     model.notifyBeatObservers();
     
-    // Change the BPM
-    std::cout << "Changing BPM..." << std::endl;
+    std::cout << "Changing BPM..." << std::endl; // Change the BPM
     model.setBPM(120);
     
-    // Generate more beats
-    std::cout << "Generating beats at new BPM..." << std::endl;
+    std::cout << "Generating beats at new BPM..." << std::endl; // Generate more beats
     model.notifyBeatObservers();
     model.notifyBeatObservers();
     
