@@ -44,6 +44,7 @@ This demonstrates a clean separation of concerns:
 The Observer pattern allows the UI to react to changes without the model or controller needing to know about the UI implementation details.
 */
 
+/*
 class BeatModel { // Model: Represents the data and business logic
 private:
     int bpm;
@@ -139,3 +140,4 @@ void Demo() { // Simple demonstration
     ui.decreaseBPM();
     ui.stopBeat();
 }
+*/

@@ -1,5 +1,6 @@
 #pragma once // Simple observer pattern example without Qt dependencies
 
+/*
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -93,3 +94,4 @@ void Demo() {
     
     std::cout << "Demo complete" << std::endl;
 }
+*/
