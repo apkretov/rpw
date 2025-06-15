@@ -23,6 +23,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(12-09_Lets_check_out_the_BeatModelInterface
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
+        Example_Callback_Mechanism_More_Coupled.h
 
     )
 # Define target properties for Android with Qt 6 as:
