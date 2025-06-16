@@ -1,12 +1,15 @@
-#include "DJViewControl.h"
 #include <QApplication>
+#include "DJViewControl.h"
+#include "DJViewView.h"
 
 int main(int argc, char *argv[]) {
     QApplication a(argc, argv);
 
-    DJViewControl w;
-    w.show();
+    DJViewControl control;
+    control.show();
 
+    DJViewView view;
+    view.show();
 
     return a.exec();
 }
