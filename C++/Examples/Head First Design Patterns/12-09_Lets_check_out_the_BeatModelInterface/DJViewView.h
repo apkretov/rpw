@@ -1,5 +1,4 @@
-#ifndef DJVIEWVIEW_H
-#define DJVIEWVIEW_H
+#pragma once
 
 #include <QWidget>
 #include "ui_djviewview.h"
@@ -15,5 +14,3 @@ public:
     explicit DJViewView(QWidget *parent = nullptr) : QWidget(parent) , ui(new Ui::DJViewView) { ui->setupUi(this); }
     ~DJViewView() { delete ui; }
 };
-
-#endif // DJVIEWVIEW_H
