@@ -9,11 +9,11 @@ namespace Ui {
 }
 QT_END_NAMESPACE
 
-class DJView : public QMainWindow {
+class DJViewControl : public QMainWindow {
     Q_OBJECT
 public:
-    DJView(QWidget *parent = nullptr) : QMainWindow(parent), ui(new Ui::DJView) { ui->setupUi(this); }
-    ~DJView() { delete ui; }
+    DJViewControl(QWidget *parent = nullptr) : QMainWindow(parent), ui(new Ui::DJView) { ui->setupUi(this); }
+    ~DJViewControl() { delete ui; }
 private:
     Ui::DJView *ui;
 };
