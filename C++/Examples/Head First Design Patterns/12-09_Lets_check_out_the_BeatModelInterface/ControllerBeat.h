@@ -3,10 +3,10 @@
 #include "ControllerInterface.h"
 #include "BeatModelInterface.h"
 
-class ControllerBeat : public ControllerInterface {
+class BeatController : public ControllerInterface {
     BeatModelInterface& model;
 public:
-    ControllerBeat(BeatModelInterface& model) : model(model) {}
+    BeatController(BeatModelInterface& model) : model(model) {}
 
     void start() override {
         model.on();
