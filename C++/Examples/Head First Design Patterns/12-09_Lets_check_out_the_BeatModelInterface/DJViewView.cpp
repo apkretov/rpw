@@ -17,7 +17,7 @@ DJViewView::~DJViewView()
 
 void DJViewView::updateBPM()
 {
-    ui->bpmLabel->setText(QString::number(model.getBPM()));
+    ui->bpmOutputLabel->setText(QString::number(model.getBPM()));
 }
 
 void DJViewView::updateBeat()

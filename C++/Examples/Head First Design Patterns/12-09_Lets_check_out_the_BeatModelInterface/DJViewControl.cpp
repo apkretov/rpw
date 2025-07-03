@@ -16,7 +16,7 @@ DJViewControl::~DJViewControl()
 
 void DJViewControl::on_setBPMButton_clicked()
 {
-    controller.setBPM(ui->bpmSpinner->value());
+    controller.setBPM(ui->bpmTextField->text().toInt());
 }
 
 void DJViewControl::on_increaseBPMButton_clicked()

@@ -9,6 +9,8 @@ namespace Ui {
 }
 QT_END_NAMESPACE
 
+class ControllerInterface;
+
 class DJViewControl : public QMainWindow {
     Q_OBJECT
 public:
