@@ -8,7 +8,7 @@ int main(int argc, char *argv[]) {
     QApplication a(argc, argv);
 
     BeatModel beatModel;
-    beatModel.initialize();
+    beatModel.initialize(); //TO DO: Create a BeatModel constructor and call initialize() there.
     BeatController beatController{beatModel};
 
     DJViewView view{beatModel};
