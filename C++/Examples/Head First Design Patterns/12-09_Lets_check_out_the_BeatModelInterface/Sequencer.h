@@ -10,7 +10,7 @@ public interface Sequencer {
     void setTempoInBPM(int bpm);
 }
 */
-class Sequencer {
+class Sequencer { //TO DO: Make use of MetaEventListener.
 public:
     virtual ~Sequencer() = default;
 	virtual void start() { std::cout << "Sequencer started!\n"; }
