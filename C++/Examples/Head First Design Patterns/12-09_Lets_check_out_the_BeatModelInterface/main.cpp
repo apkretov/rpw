@@ -8,6 +8,7 @@ int main(int argc, char *argv[]) {
     QApplication a(argc, argv);
 
     BeatModel beatModel;
+    beatModel.initialize();
     BeatController beatController{beatModel};
 
     DJViewView view{beatModel};
