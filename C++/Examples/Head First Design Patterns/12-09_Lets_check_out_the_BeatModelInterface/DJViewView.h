@@ -7,10 +7,18 @@ namespace Ui {
     class DJViewView;
 }
 
-class DJViewView : public QWidget {
+#include "ObserverBPM.h"
+#include "ObserverBeat.h"
+#include "BeatModelInterface.h"
+
+class DJViewView : public QWidget, public BPMObserver, public BeatObserver {
     Q_OBJECT
     Ui::DJViewView *ui;
+    BeatModelInterface& model;
 public:
-    explicit DJViewView(QWidget *parent = nullptr) : QWidget(parent) , ui(new Ui::DJViewView) { ui->setupUi(this); }
-    ~DJViewView() { delete ui; }
+    explicit DJViewView(BeatModelInterface& model, QWidget *parent = nullptr);
+    ~DJViewView();
+public slots:
+    void updateBPM() override;
+    void updateBeat() override;
 };

@@ -16,7 +16,19 @@ set(PROJECT_SOURCES
         main.cpp
 
         DJViewControl.h
+        DJViewControl.cpp
         djviewcontrol.ui
+
+        DJViewView.h
+        DJViewView.cpp
+        djviewview.ui
+
+        BeatModel.h
+        BeatModelInterface.h
+        ControllerBeat.h
+        ControllerInterface.h
+        ObserverBeat.h
+        ObserverBPM.h
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
