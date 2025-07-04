@@ -86,32 +86,35 @@ public class DJView implements ActionListener,  BeatObserver, BPMObserver {
     }
 }
 */
+#ifdef OFF
 class DJView : public BeatObserver, public BPMObserver { // We'll use platform-specific UI components here
-    BeatModelInterface &model;							 // For Windows, we could use Win32 API or a cross-platform library like wxWidgets
+	BeatModelInterface &model;							 // For Windows, we could use Win32 API or a cross-platform library like wxWidgets
 public:													 // For this example, we'll declare UI elements as pointers to be implemented
-    DJView(ControllerInterface &controller, BeatModelInterface &model) : model(model) {
-        model.registerObserver(static_cast<BeatObserver *>(this)); // Register as BeatObserver
-        model.registerObserver(static_cast<BPMObserver *>(this)); // Register as BPMObserver
-    }
+	DJView(ControllerInterface &controller, BeatModelInterface &model) : model(model) {
+		model.registerObserver(static_cast<BeatObserver *>(this)); // Register as BeatObserver
+		model.registerObserver(static_cast<BPMObserver *>(this)); // Register as BPMObserver
+	}
 
-    ~DJView() {
-        model.removeObserver(static_cast<BeatObserver *>(this));
-        model.removeObserver(static_cast<BPMObserver *>(this));
-    }
+	~DJView() {
+		model.removeObserver(static_cast<BeatObserver *>(this));
+		model.removeObserver(static_cast<BPMObserver *>(this));
+	}
 
-    void createView() { /* Platform-specific UI creation code would go here */ }
-    void createControls() { /* Platform-specific control creation code would go here */ }
+	void createView() { /* Platform-specific UI creation code would go here */ }
+	void createControls() { /* Platform-specific control creation code would go here */ }
 	void enableStopMenuItem() { /* Enable stop menu item */ }
-    void disableStopMenuItem() { /* Disable stop menu item */ }
-    void enableStartMenuItem() { /* Enable start menu item */ }
-    void disableStartMenuItem() { /* Disable start menu item */ }
+	void disableStopMenuItem() { /* Disable stop menu item */ }
+	void enableStartMenuItem() { /* Enable start menu item */ }
+	void disableStartMenuItem() { /* Disable start menu item */ }
 
-    void updateBPM() override {
-        int bpm = model.getBPM();
-        // Update UI with BPM value. Platform-specific code would go here
+	void updateBPM() override {
+		int bpm = model.getBPM();
+		// Update UI with BPM value. Platform-specific code would go here
 		std::cout << "111 DJView::updateBPM()\n";
-    }
+	}
 
-    void updateBeat() override { /* Update beat bar. Platform-specific code would go here */ }
+	void updateBeat() override { /* Update beat bar. Platform-specific code would go here */ }
 };
+#endif // OFF
+
 #pragma endregion //Implementing the View
