@@ -108,7 +108,7 @@ public:
 	}
 
 	int getBPM() const override { return bpm; }
-	void beatEvent() { notifyBeatObservers(); }
+    void beatEvent() override { notifyBeatObservers(); }
 
 	void registerObserver(BeatObserver *o) override {
 		if (o)
