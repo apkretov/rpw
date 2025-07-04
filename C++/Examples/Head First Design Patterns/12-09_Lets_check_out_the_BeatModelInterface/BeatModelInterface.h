@@ -21,6 +21,7 @@ public interface BeatModelInterface {
 */
 class BeatModelInterface {
 public:
+    virtual ~BeatModelInterface() = default;
     virtual void initialize() = 0;
     virtual void on() = 0;
     virtual void off() = 0;
@@ -30,6 +31,5 @@ public:
     virtual void removeObserver(BeatObserver* o) = 0;
     virtual void registerObserver(BPMObserver* o) = 0;
     virtual void removeObserver(BPMObserver* o) = 0;
-    virtual ~BeatModelInterface() = default;
 };
 #pragma endregion //Lets check out the BeatModelInterface before looking at the implementation
