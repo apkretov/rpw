@@ -2,8 +2,8 @@
 
 DJViewView::DJViewView(BeatModelInterface& model, QWidget *parent) : QWidget(parent), ui(new Ui::DJViewView), model(model) {
     ui->setupUi(this);
-    model.registerObserver((BPMObserver*)this);
-    model.registerObserver((BeatObserver*)this);
+    model.registerObserver(static_cast<BPMObserver*>(this));
+    model.registerObserver(static_cast<BeatObserver*>(this));
 }
 
 DJViewView::~DJViewView() { delete ui; } //TO DO: Is this deletion needed in deed?
