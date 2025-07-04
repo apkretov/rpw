@@ -6,7 +6,7 @@ DJViewView::DJViewView(BeatModelInterface& model, QWidget *parent) : QWidget(par
     model.registerObserver((BeatObserver*)this);
 }
 
-DJViewView::~DJViewView() { delete ui; }
+DJViewView::~DJViewView() { delete ui; } //TO DO: Is this deletion needed in deed?
 
 void DJViewView::updateBPM() { ui->bpmOutputLabel->setText(QString::number(model.getBPM())); }
 

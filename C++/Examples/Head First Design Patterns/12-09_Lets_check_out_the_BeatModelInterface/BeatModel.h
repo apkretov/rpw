@@ -81,7 +81,7 @@ public class BeatModel implements BeatModelInterface, MetaEventListener {
 }
 */
 class BeatModel : public BeatModelInterface, public MetaEventListener { //TO DO: Make use of MetaEventListener.
-	std::unique_ptr<Sequencer> sequencer;
+	std::unique_ptr<Sequencer> sequencer; //TO DO: Unlike smart pointer, sequencer can be just an auto variable, if it is initialized in the constructor rather than in setUpMidi().
 	std::vector<BeatObserver *> beatObservers;
 	std::vector<BPMObserver *> bpmObservers;
 	int bpm = 90;
@@ -110,23 +110,19 @@ public:
 	int getBPM() const override { return bpm; }
 
 	void registerObserver(BeatObserver *o) override {
-		if (o)
-			beatObservers.push_back(o);
+		beatObservers.push_back(o);
 	}
 
 	void removeObserver(BeatObserver *o) override {
-		if (o)
-			std::erase(beatObservers, o);
+		std::erase(beatObservers, o);
 	}
 
 	void registerObserver(BPMObserver *o) override {
-		if (o)
-			bpmObservers.push_back(o);
+		bpmObservers.push_back(o);
 	}
 
 	void removeObserver(BPMObserver *o) override {
-		if (o)
-			std::erase(bpmObservers, o);
+		std::erase(bpmObservers, o);
 	}
 
     void beatEvent() override { notifyBeatObservers(); }
@@ -136,14 +132,12 @@ protected:
 
 	void notifyBeatObservers() {
 		for (auto observer : beatObservers)
-			if (observer)
-				observer->updateBeat();
+			observer->updateBeat();
 	}
 
 	void notifyBPMObservers() {
 		for (auto observer : bpmObservers)
-			if (observer)
-				observer->updateBPM();
+			observer->updateBPM();
 	}
 };
 #pragma endregion //Now lets have a look at the concrete BeatModel class

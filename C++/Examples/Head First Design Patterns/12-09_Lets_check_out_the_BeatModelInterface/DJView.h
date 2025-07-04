@@ -90,8 +90,8 @@ class DJView : public BeatObserver, public BPMObserver { // We'll use platform-s
     ControllerInterface &controller;					 // For this example, we'll declare UI elements as pointers to be implemented
 public:
     DJView(ControllerInterface &controller, BeatModelInterface &model) : controller(controller), model(model) {
-        model.registerObserver(static_cast<BeatObserver *>(this));  // Register as BeatObserver
-        model.registerObserver(static_cast<BPMObserver *>(this));  // Register as BPMObserver
+        model.registerObserver(static_cast<BeatObserver *>(this)); // Register as BeatObserver
+        model.registerObserver(static_cast<BPMObserver *>(this)); // Register as BPMObserver
     }
 
     ~DJView() {

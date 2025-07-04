@@ -14,4 +14,50 @@
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\12-09_Lets_check_out_the_BeatModelInterface\BeatModel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\12-09_Lets_check_out_the_BeatModelInterface\BeatModelInterface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\12-09_Lets_check_out_the_BeatModelInterface\ControllerBeat.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\12-09_Lets_check_out_the_BeatModelInterface\ControllerInterface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\12-09_Lets_check_out_the_BeatModelInterface\DJView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\12-09_Lets_check_out_the_BeatModelInterface\DJViewControl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\12-09_Lets_check_out_the_BeatModelInterface\DJViewView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\12-09_Lets_check_out_the_BeatModelInterface\MetaEventListener.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\12-09_Lets_check_out_the_BeatModelInterface\ObserverBeat.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\12-09_Lets_check_out_the_BeatModelInterface\ObserverBPM.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\12-09_Lets_check_out_the_BeatModelInterface\Sequencer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\12-09_Lets_check_out_the_BeatModelInterface\DJViewControl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\12-09_Lets_check_out_the_BeatModelInterface\DJViewView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\12-09_Lets_check_out_the_BeatModelInterface\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
 </Project>

@@ -11,7 +11,7 @@ namespace Ui {
 #include "ObserverBeat.h"
 #include "BeatModelInterface.h"
 
-class DJViewView : public QWidget, public BPMObserver, public BeatObserver {
+class DJViewView : public QWidget, public BeatObserver, public BPMObserver { //TO DO: Likewise DJView, why does DJViewView inherit from BeatObserver too?
     Q_OBJECT
     Ui::DJViewView *ui;
     BeatModelInterface& model;
