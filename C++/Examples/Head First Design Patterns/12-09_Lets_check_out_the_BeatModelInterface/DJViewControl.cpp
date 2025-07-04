@@ -3,8 +3,7 @@
 
 DJViewControl::DJViewControl(ControllerInterface& controller, QWidget *parent) : QMainWindow(parent), ui(new Ui::DJView), controller(controller) {
     ui->setupUi(this);
-    
-    connect(ui->setBPMButton, &QPushButton::clicked, this, &DJViewControl::setBPM); // Explicit connections
+    connect(ui->setBPMButton, &QPushButton::clicked, this, &DJViewControl::setBPM);
     connect(ui->increaseBPMButton, &QPushButton::clicked, this, &DJViewControl::increaseBPM);
     connect(ui->decreaseBPMButton, &QPushButton::clicked, this, &DJViewControl::decreaseBPM);
 }
