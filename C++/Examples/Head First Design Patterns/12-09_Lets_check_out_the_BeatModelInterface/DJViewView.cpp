@@ -13,9 +13,6 @@ DJViewView::~DJViewView() {
 } 
 
 #include <iostream>
-void DJViewView::updateBPM() { 
-	ui->bpmOutputLabel->setText(QString::number(model.getBPM())); 
-	std::cout << "222 DJViewView::updateBPM()\n";
-}
+void DJViewView::updateBPM() { ui->bpmOutputLabel->setText(QString::number(model.getBPM())); }
 
 void DJViewView::updateBeat() { ui->beatBar->setValue(100); }
