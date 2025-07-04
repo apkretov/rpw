@@ -13,6 +13,8 @@ class ControllerInterface;
 
 class DJViewControl : public QMainWindow {
     Q_OBJECT
+    Ui::DJView *ui;
+    ControllerInterface& controller;
 public:
     DJViewControl(ControllerInterface& controller, QWidget *parent = nullptr);
     ~DJViewControl();
@@ -20,7 +22,4 @@ private slots:
     void setBPM();
     void increaseBPM();
     void decreaseBPM();
-private:
-    Ui::DJView *ui;
-    ControllerInterface& controller;
 };
