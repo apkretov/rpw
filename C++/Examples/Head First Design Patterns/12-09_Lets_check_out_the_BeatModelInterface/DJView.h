@@ -88,9 +88,10 @@ public class DJView implements ActionListener,  BeatObserver, BPMObserver {
 */
 class DJView : public BeatObserver, public BPMObserver { // We'll use platform-specific UI components here
     BeatModelInterface &model;							 // For Windows, we could use Win32 API or a cross-platform library like wxWidgets
-    ControllerInterface &controller;					 // For this example, we'll declare UI elements as pointers to be implemented
+    //ControllerInterface &controller;					 // For this example, we'll declare UI elements as pointers to be implemented
 public:
-    DJView(ControllerInterface &controller, BeatModelInterface &model) : controller(controller), model(model) {
+    //DJView(ControllerInterface &controller, BeatModelInterface &model) : controller(controller), model(model) {
+    DJView(ControllerInterface &controller, BeatModelInterface &model) : model(model) {
         model.registerObserver(static_cast<BeatObserver *>(this)); // Register as BeatObserver
         model.registerObserver(static_cast<BPMObserver *>(this)); // Register as BPMObserver
     }
@@ -115,16 +116,16 @@ public:
 
     void updateBeat() override { /* Update beat bar. Platform-specific code would go here */ }
 protected:
-    void onSetBPM(const std::string& bpmText) {
-        try {
-            int bpm = std::stoi(bpmText);
-            controller.setBPM(bpm);
-        } catch (const std::exception&) {
-            // Handle invalid input
-        }
-    }
+    //void onSetBPM(const std::string& bpmText) {
+    //    try {
+    //        int bpm = std::stoi(bpmText);
+    //        controller.setBPM(bpm);
+    //    } catch (const std::exception&) {
+    //        // Handle invalid input
+    //    }
+    //}
 
-    void onIncreaseBPM() { controller.increaseBPM(); }
-    void onDecreaseBPM() { controller.decreaseBPM(); }
+    //void onIncreaseBPM() { controller.increaseBPM(); }
+    //void onDecreaseBPM() { controller.decreaseBPM(); }
 };
 #pragma endregion //Implementing the View
