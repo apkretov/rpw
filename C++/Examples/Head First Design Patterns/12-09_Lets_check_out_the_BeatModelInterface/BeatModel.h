@@ -108,7 +108,6 @@ public:
 	}
 
 	int getBPM() const override { return bpm; }
-    void beatEvent() override { notifyBeatObservers(); }
 
 	void registerObserver(BeatObserver *o) override {
 		if (o)
@@ -129,6 +128,8 @@ public:
 		if (o)
 			std::erase(bpmObservers, o);
 	}
+
+    void beatEvent() override { notifyBeatObservers(); }
 protected:
 	void setUpMidi() { sequencer = std::make_unique<Sequencer>(); }
 	void buildTrackAndStart() { sequencer->setTempoInBPM(getBPM()); }

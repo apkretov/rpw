@@ -13,7 +13,7 @@ public interface Sequencer {
 class Sequencer { //TO DO: Make use of MetaEventListener.
 public:
     virtual ~Sequencer() = default;
-	virtual void start() { std::cout << "Sequencer started!\n"; }
+    virtual void start() { std::cout << "Sequencer started!\n"; } //TO DO: Make use of all the sequencer features.
     virtual void stop() { std::cout << "Sequencer stopped!\n"; }
 	virtual void setTempoInBPM(int bpm) { std::cout << "Tempo set to " << bpm << " BPM.\n"; }
 };
