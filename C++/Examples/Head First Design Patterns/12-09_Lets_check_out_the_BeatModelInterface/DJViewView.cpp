@@ -8,6 +8,10 @@ DJViewView::DJViewView(BeatModelInterface& model, QWidget *parent) : QWidget(par
 
 DJViewView::~DJViewView() { delete ui; } //TO DO: Is this deletion needed in deed?
 
-void DJViewView::updateBPM() { ui->bpmOutputLabel->setText(QString::number(model.getBPM())); }
+#include <iostream>
+void DJViewView::updateBPM() { 
+	ui->bpmOutputLabel->setText(QString::number(model.getBPM())); 
+	std::cout << "222 DJViewView::updateBPM()\n";
+}
 
 void DJViewView::updateBeat() { ui->beatBar->setValue(100); }
