@@ -20,8 +20,6 @@ private slots:
     void setBPM();
     void increaseBPM();
     void decreaseBPM();
-    void start();
-    void stop();
 private:
     Ui::DJView *ui;
     ControllerInterface& controller;
