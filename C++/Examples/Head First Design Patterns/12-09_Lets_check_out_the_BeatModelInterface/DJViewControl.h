@@ -2,7 +2,6 @@
 
 #include <QMainWindow>
 #include "./ui_djviewcontrol.h"
-#include "ObserverBPM.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -11,17 +10,12 @@ namespace Ui {
 QT_END_NAMESPACE
 
 class ControllerInterface;
-class BeatModelInterface;
 
-class DJViewControl : public QMainWindow, public BPMObserver {
+class DJViewControl : public QMainWindow {
     Q_OBJECT
 public:
-    DJViewControl(ControllerInterface& controller, BeatModelInterface& model, QWidget *parent = nullptr);
+    DJViewControl(ControllerInterface& controller, QWidget *parent = nullptr);
     ~DJViewControl();
-
-public slots:
-    void updateBPM() override;
-
 private slots:
     void on_setBPMButton_clicked();
     void on_increaseBPMButton_clicked();
@@ -29,15 +23,7 @@ private slots:
     void on_actionStart_triggered();
     void on_actionStop_triggered();
     void on_actionQuit_triggered();
-
-private:
-    void enableStopMenuItem();
-    void disableStopMenuItem();
-    void enableStartMenuItem();
-    void disableStartMenuItem();
-
 private:
     Ui::DJView *ui;
     ControllerInterface& controller;
-    BeatModelInterface& model;
 };

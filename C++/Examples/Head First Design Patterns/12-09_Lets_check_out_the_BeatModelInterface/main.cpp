@@ -14,7 +14,7 @@ int main(int argc, char *argv[]) {
     DJViewView view{beatModel};
     view.show();
 
-    DJViewControl control(controller, beatModel);
+    DJViewControl control(controller);
     control.show();
 
     return a.exec();

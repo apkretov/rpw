@@ -1,18 +1,13 @@
 #include "DJViewControl.h"
 #include "ControllerInterface.h"
-#include "BeatModelInterface.h"
 #include <QApplication>
 
-DJViewControl::DJViewControl(ControllerInterface& controller, BeatModelInterface& model, QWidget *parent) :
+DJViewControl::DJViewControl(ControllerInterface& controller, QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::DJView),
-    controller(controller),
-    model(model)
+    controller(controller)
 {
     ui->setupUi(this);
-    model.registerObserver((BPMObserver*)this);
-    disableStopMenuItem();
-    enableStartMenuItem();
 }
 
 DJViewControl::~DJViewControl()
@@ -38,48 +33,15 @@ void DJViewControl::on_decreaseBPMButton_clicked()
 void DJViewControl::on_actionStart_triggered()
 {
     controller.start();
-    disableStartMenuItem();
-    enableStopMenuItem();
 }
 
 void DJViewControl::on_actionStop_triggered()
 {
     controller.stop();
-    disableStopMenuItem();
-    enableStartMenuItem();
 }
 
 void DJViewControl::on_actionQuit_triggered()
 {
     qApp->quit();
-}
-
-void DJViewControl::updateBPM()
-{
-    if (model.getBPM() == 0) {
-        ui->bpmOutputLabel->setText("offline");
-    } else {
-        ui->bpmOutputLabel->setText(QString::number(model.getBPM()));
-    }
-}
-
-void DJViewControl::enableStopMenuItem()
-{
-    ui->actionStop->setEnabled(true);
-}
-
-void DJViewControl::disableStopMenuItem()
-{
-    ui->actionStop->setEnabled(false);
-}
-
-void DJViewControl::enableStartMenuItem()
-{
-    ui->actionStart->setEnabled(true);
-}
-
-void DJViewControl::disableStartMenuItem()
-{
-    ui->actionStart->setEnabled(false);
 }
 
