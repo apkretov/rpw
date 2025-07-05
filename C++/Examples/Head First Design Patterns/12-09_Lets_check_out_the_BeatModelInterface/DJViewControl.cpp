@@ -49,8 +49,6 @@ void DJViewControl::on_actionStop_triggered()
     enableStartMenuItem();
 }
 
-#include <QApplication>
-
 void DJViewControl::on_actionQuit_triggered()
 {
     qApp->quit();
