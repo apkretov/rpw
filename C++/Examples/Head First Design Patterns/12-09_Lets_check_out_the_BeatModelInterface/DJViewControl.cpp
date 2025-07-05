@@ -1,17 +1,84 @@
 #include "DJViewControl.h"
 #include "ControllerInterface.h"
+#include "BeatModelInterface.h"
 
-DJViewControl::DJViewControl(ControllerInterface& controller, QWidget *parent) : QMainWindow(parent), ui(new Ui::DJView), controller(controller) {
+DJViewControl::DJViewControl(ControllerInterface& controller, BeatModelInterface& model, QWidget *parent) :
+    QMainWindow(parent),
+    ui(new Ui::DJView),
+    controller(controller),
+    model(model)
+{
     ui->setupUi(this);
-    connect(ui->setBPMButton, &QPushButton::clicked, this, &DJViewControl::setBPM);
-    connect(ui->increaseBPMButton, &QPushButton::clicked, this, &DJViewControl::increaseBPM);
-    connect(ui->decreaseBPMButton, &QPushButton::clicked, this, &DJViewControl::decreaseBPM);
+    model.registerObserver((BPMObserver*)this);
+    disableStopMenuItem();
+    enableStartMenuItem();
 }
 
-DJViewControl::~DJViewControl() { delete ui; }
+DJViewControl::~DJViewControl()
+{
+    delete ui;
+}
 
-void DJViewControl::setBPM() { controller.setBPM(ui->bpmTextField->text().toInt()); }
+void DJViewControl::on_setBPMButton_clicked()
+{
+    controller.setBPM(ui->bpmTextField->text().toInt());
+}
 
-void DJViewControl::increaseBPM() { controller.increaseBPM(); }
+void DJViewControl::on_increaseBPMButton_clicked()
+{
+    controller.increaseBPM();
+}
 
-void DJViewControl::decreaseBPM() { controller.decreaseBPM(); }
+void DJViewControl::on_decreaseBPMButton_clicked()
+{
+    controller.decreaseBPM();
+}
+
+void DJViewControl::on_actionStart_triggered()
+{
+    controller.start();
+    disableStartMenuItem();
+    enableStopMenuItem();
+}
+
+void DJViewControl::on_actionStop_triggered()
+{
+    controller.stop();
+    disableStopMenuItem();
+    enableStartMenuItem();
+}
+
+void DJViewControl::on_actionQuit_triggered()
+{
+    close();
+}
+
+void DJViewControl::updateBPM()
+{
+    if (model.getBPM() == 0) {
+        ui->bpmOutputLabel->setText("offline");
+    } else {
+        ui->bpmOutputLabel->setText(QString::number(model.getBPM()));
+    }
+}
+
+void DJViewControl::enableStopMenuItem()
+{
+    ui->actionStop->setEnabled(true);
+}
+
+void DJViewControl::disableStopMenuItem()
+{
+    ui->actionStop->setEnabled(false);
+}
+
+void DJViewControl::enableStartMenuItem()
+{
+    ui->actionStart->setEnabled(true);
+}
+
+void DJViewControl::disableStartMenuItem()
+{
+    ui->actionStart->setEnabled(false);
+}
+
