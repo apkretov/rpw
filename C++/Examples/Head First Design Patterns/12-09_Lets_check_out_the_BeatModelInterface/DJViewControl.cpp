@@ -48,10 +48,7 @@ void DJViewControl::on_actionStop_triggered()
     enableStartMenuItem();
 }
 
-void DJViewControl::on_actionQuit_triggered()
-{
-    close();
-}
+void DJViewControl::on_actionQuit_triggered() { close(); }
 
 void DJViewControl::updateBPM()
 {
