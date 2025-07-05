@@ -1,6 +1,7 @@
 #include "DJViewControl.h"
 #include "ControllerInterface.h"
 #include "BeatModelInterface.h"
+#include <QApplication>
 
 DJViewControl::DJViewControl(ControllerInterface& controller, BeatModelInterface& model, QWidget *parent) :
     QMainWindow(parent),
@@ -48,7 +49,12 @@ void DJViewControl::on_actionStop_triggered()
     enableStartMenuItem();
 }
 
-void DJViewControl::on_actionQuit_triggered() { close(); }
+#include <QApplication>
+
+void DJViewControl::on_actionQuit_triggered()
+{
+    qApp->quit();
+}
 
 void DJViewControl::updateBPM()
 {
