@@ -110,7 +110,6 @@ public:													 // For this example, we'll declare UI elements as pointers 
 	void updateBPM() override {
 		int bpm = model.getBPM();
 		// Update UI with BPM value. Platform-specific code would go here
-		std::cout << "111 DJView::updateBPM()\n";
 	}
 
 	void updateBeat() override { /* Update beat bar. Platform-specific code would go here */ }
