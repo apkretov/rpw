@@ -26,18 +26,28 @@ public:
         connect(ui->actionStart, &QAction::triggered, this, &DJViewControl::start);
         connect(ui->actionStop, &QAction::triggered, this, &DJViewControl::stop);
         connect(ui->actionQuit, &QAction::triggered, this, &DJViewControl::quit);
+        ui->actionStop->setEnabled(false);
     }
 
     ~DJViewControl() { delete ui; }
-
 private slots:
     void setBPM() { controller.setBPM(ui->bpmTextField->text().toInt()); }
     void increaseBPM() { controller.increaseBPM(); }
     void decreaseBPM() { controller.decreaseBPM(); }
-    void start() { controller.start(); }
-    void stop() { controller.stop(); }
-    void quit() { qApp->quit(); }
 
+    void start() { 
+        controller.start(); 
+        ui->actionStart->setEnabled(false);
+        ui->actionStop->setEnabled(true);
+    }
+
+    void stop() {
+        controller.stop(); 
+        ui->actionStart->setEnabled(true);
+        ui->actionStop->setEnabled(false);
+    }
+
+    void quit() { qApp->quit(); }
 private:
     Ui::DJView *ui;
     ControllerInterface& controller;
