@@ -19,7 +19,6 @@ set(PROJECT_SOURCES
         djviewcontrol.ui
 
         DJViewView.h
-        DJViewView.cpp
         djviewview.ui
 
         BeatModel.h
