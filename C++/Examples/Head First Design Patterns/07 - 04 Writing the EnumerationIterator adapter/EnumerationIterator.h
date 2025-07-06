@@ -15,10 +15,10 @@ public class EnumerationIterator implements Iterator { // Since we're adapting E
 }
 */
 class EnumerationIterator : public Iterator { // Since we're adapting Enumeration to Iterator, our Adapter implements the Iterator interface... it has to look like an Iterator.
-    Enumeration &enum__;  // The Enumeration we're adapting. We're using composition so we stash it in an instance variable.
+    Enumeration &enum_;  // The Enumeration we're adapting. We're using composition so we stash it in an instance variable.
 public:
-    EnumerationIterator(Enumeration &enum_) : enum__(enum_) {} // Constructor using member initializer list
-    bool hasNext() override { return enum__.hasMoreElements(); } // The Iterator's hasNext() method is delegated to the Enumeration's hasMoreElements() method...
-    void* next() override { return enum__.nextElement(); } // ... and the Iterator's next() method is delegated to the Enumerations's nextElement() method.
+    EnumerationIterator(Enumeration &enum_) : enum_(enum_) {} // Constructor using member initializer list
+    bool hasNext() override { return enum_.hasMoreElements(); } // The Iterator's hasNext() method is delegated to the Enumeration's hasMoreElements() method...
+    void* next() override { return enum_.nextElement(); } // ... and the Iterator's next() method is delegated to the Enumerations's nextElement() method.
     void remove() override { throw runtime_error("Operation not supported"); } //TEST //															Unfortunately, we can't support Iterator's remove() method, so we have to punt(in other words, we give up!).Here we just throw an exception.
 };
