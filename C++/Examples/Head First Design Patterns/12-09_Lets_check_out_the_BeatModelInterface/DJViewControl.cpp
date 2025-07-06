@@ -1,24 +1,55 @@
 #include "DJViewControl.h"
 #include "ControllerInterface.h"
+#include "ui_djviewcontrol.h"
 #include <QApplication>
 
 DJViewControl::DJViewControl(ControllerInterface& controller, QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::DJView),
     controller(controller)
-{ ui->setupUi(this); }
+{
+    ui->setupUi(this);
+    connect(ui->setBPMButton, &QPushButton::clicked, this, &DJViewControl::setBPM);
+    connect(ui->increaseBPMButton, &QPushButton::clicked, this, &DJViewControl::increaseBPM);
+    connect(ui->decreaseBPMButton, &QPushButton::clicked, this, &DJViewControl::decreaseBPM);
+    connect(ui->actionStart, &QAction::triggered, this, &DJViewControl::start);
+    connect(ui->actionStop, &QAction::triggered, this, &DJViewControl::stop);
+    connect(ui->actionQuit, &QAction::triggered, this, &DJViewControl::quit);
+}
 
-DJViewControl::~DJViewControl() { delete ui; }
+DJViewControl::~DJViewControl()
+{
+    delete ui;
+}
 
-void DJViewControl::on_setBPMButton_clicked() { controller.setBPM(ui->bpmTextField->text().toInt()); }
+void DJViewControl::setBPM()
+{
+    controller.setBPM(ui->bpmTextField->text().toInt());
+}
 
-void DJViewControl::on_increaseBPMButton_clicked() { controller.increaseBPM(); }
+void DJViewControl::increaseBPM()
+{
+    controller.increaseBPM();
+}
 
-void DJViewControl::on_decreaseBPMButton_clicked() { controller.decreaseBPM(); }
+void DJViewControl::decreaseBPM()
+{
+    controller.decreaseBPM();
+}
 
-void DJViewControl::on_actionStart_triggered() { controller.start(); }
+void DJViewControl::start()
+{
+    controller.start();
+}
 
-void DJViewControl::on_actionStop_triggered() { controller.stop(); }
+void DJViewControl::stop()
+{
+    controller.stop();
+}
 
-void DJViewControl::on_actionQuit_triggered() { qApp->quit(); }
+void DJViewControl::quit()
+{
+    qApp->quit();
+}
+
 
