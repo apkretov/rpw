@@ -1,5 +1,6 @@
 #pragma once
 
+#include <QTimer>
 #include <QWidget>
 #include "ui_djviewview.h"
 #include "ObserverBPM.h"
@@ -10,7 +11,6 @@ namespace Ui {
     class DJViewView;
 }
 
-#include <QTimer>
 
 class DJViewView : public QWidget, public BeatObserver, public BPMObserver {
     Q_OBJECT
@@ -30,11 +30,10 @@ public:
     }
 public slots:
     void updateBPM() override { 
-        if (model.getBPM() == 0) {
+        if (model.getBPM() == 0)
             ui->bpmOutputLabel->setText("offline");
-        } else {
+        else
             ui->bpmOutputLabel->setText(QString::number(model.getBPM())); 
-        }
     }
     void updateBeat() override { 
         ui->beatBar->setValue(100);
