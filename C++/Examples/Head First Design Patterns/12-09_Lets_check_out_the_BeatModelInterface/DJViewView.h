@@ -11,7 +11,6 @@ namespace Ui {
     class DJViewView;
 }
 
-
 class DJViewView : public QWidget, public BeatObserver, public BPMObserver {
     Q_OBJECT
     Ui::DJViewView *ui;
@@ -35,8 +34,9 @@ public slots:
         else
             ui->bpmOutputLabel->setText(QString::number(model.getBPM())); 
     }
+
     void updateBeat() override { 
         ui->beatBar->setValue(100);
-        QTimer::singleShot(100, this, [this]() { ui->beatBar->setValue(ui->beatBar->minimum()); });
+        QTimer::singleShot(50, this, [this]() { ui->beatBar->setValue(ui->beatBar->minimum()); });
     }
 };

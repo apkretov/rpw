@@ -7,7 +7,10 @@
 
 class BeatModel : public QObject, public BeatModelInterface {
     Q_OBJECT
-
+	QTimer *timer;
+	std::vector<BeatObserver *> beatObservers;
+	std::vector<BPMObserver *> bpmObservers;
+	int bpm;
 public:
     BeatModel(QObject *parent = nullptr) : QObject(parent), timer(nullptr), bpm(90) {}
 
@@ -18,70 +21,51 @@ public:
 
     void on() override {
         setBPM(90);
-        if (bpm > 0) {
+        if (bpm > 0)
             timer->start(60000 / bpm);
-        }
     }
 
     void off() override {
-        if(timer) timer->stop();
+        if(timer) 
+			timer->stop();
         setBPM(0);
     }
 
     void setBPM(int bpm) override {
         this->bpm = bpm;
         if (timer) {
-             if (bpm > 0) {
-                timer->setInterval(60000 / bpm);
-                if (!timer->isActive()) {
-                    timer->start();
-                }
-            } else {
+			if (bpm > 0) {
+				timer->setInterval(60000 / bpm);
+				if (!timer->isActive())
+					timer->start();
+			} else
                 timer->stop();
-            }
         }
         notifyBPMObservers();
     }
 
     int getBPM() const override { return bpm; }
 
-    void registerObserver(BeatObserver *o) override {
-        beatObservers.push_back(o);
-    }
+    void registerObserver(BeatObserver *o) override { beatObservers.push_back(o); }
 
-    void removeObserver(BeatObserver *o) override {
-        std::erase(beatObservers, o);
-    }
+    void removeObserver(BeatObserver *o) override { std::erase(beatObservers, o); }
 
-    void registerObserver(BPMObserver *o) override {
-        bpmObservers.push_back(o);
-    }
+    void registerObserver(BPMObserver *o) override { bpmObservers.push_back(o); }
 
-    void removeObserver(BPMObserver *o) override {
-        std::erase(bpmObservers, o);
-    }
+    void removeObserver(BPMObserver *o) override { std::erase(bpmObservers, o); }
 
 private slots:
-    void beatEvent() {
-        notifyBeatObservers();
-    }
+    void beatEvent() { notifyBeatObservers(); }
 
 protected:
     void notifyBeatObservers() {
-        for (auto observer : beatObservers) {
-            if(observer) observer->updateBeat();
-        }
+        for (auto observer : beatObservers)
+            if(observer) 
+				observer->updateBeat();
     }
 
     void notifyBPMObservers() {
-        for (auto observer : bpmObservers) {
+        for (auto observer : bpmObservers)
             if(observer) observer->updateBPM();
-        }
     }
-
-private:
-    QTimer *timer;
-    std::vector<BeatObserver *> beatObservers;
-    std::vector<BPMObserver *> bpmObservers;
-    int bpm;
 };
