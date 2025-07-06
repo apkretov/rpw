@@ -13,6 +13,8 @@ QT_END_NAMESPACE
 
 class DJViewControl : public QMainWindow {
     Q_OBJECT
+    Ui::DJView *ui;
+    ControllerInterface& controller;
 public:
     DJViewControl(ControllerInterface& controller, QWidget *parent = nullptr) :
         QMainWindow(parent),
@@ -35,20 +37,17 @@ private slots:
     void increaseBPM() { controller.increaseBPM(); }
     void decreaseBPM() { controller.decreaseBPM(); }
 
-    void start() { 
-        controller.start(); 
+    void start() {
+        controller.start();
         ui->actionStart->setEnabled(false);
         ui->actionStop->setEnabled(true);
     }
 
     void stop() {
-        controller.stop(); 
+        controller.stop();
         ui->actionStart->setEnabled(true);
         ui->actionStop->setEnabled(false);
     }
 
     void quit() { qApp->quit(); }
-private:
-    Ui::DJView *ui;
-    ControllerInterface& controller;
 };
