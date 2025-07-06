@@ -1,71 +1,70 @@
 #pragma once
 
-#include <QObject>
-#include <QTimer>
+#include <memory>
 #include <vector>
 #include "BeatModelInterface.h"
+#include "Sequencer.h"
+#include "MetaEventListener.h"
 
-class BeatModel : public QObject, public BeatModelInterface {
-    Q_OBJECT
-	QTimer *timer;
+class BeatModel : public BeatModelInterface, public MetaEventListener {
+	std::unique_ptr<Sequencer> sequencer;
 	std::vector<BeatObserver *> beatObservers;
 	std::vector<BPMObserver *> bpmObservers;
-	int bpm;
+	int bpm = 90;
 public:
-    BeatModel(QObject *parent = nullptr) : QObject(parent), timer(nullptr), bpm(90) {}
+	void initialize() override {
+		setUpMidi();
+		buildTrackAndStart();
+	}
 
-    void initialize() override {
-        timer = new QTimer(this);
-        connect(timer, &QTimer::timeout, this, &BeatModel::beatEvent);
+	void on() override {
+		sequencer->start();
+		setBPM(90);
+	}
+
+	void off() override {
+		setBPM(0);
+		sequencer->stop();
+	}
+
+	void setBPM(int bpm) override {
+		this->bpm = bpm;
+		sequencer->setTempoInBPM(getBPM());
+		notifyBPMObservers();
+	}
+
+	int getBPM() const override { return bpm; }
+
+	void registerObserver(BeatObserver *o) override {
+		beatObservers.push_back(o);
+	}
+
+	void removeObserver(BeatObserver *o) override {
+		std::erase(beatObservers, o);
+	}
+
+	void registerObserver(BPMObserver *o) override {
+		bpmObservers.push_back(o);
+	}
+
+	void removeObserver(BPMObserver *o) override {
+		std::erase(bpmObservers, o);
+	}
+
+    void beatEvent() {
+        notifyBeatObservers();
     }
-
-    void on() override {
-        setBPM(90);
-        if (bpm > 0)
-            timer->start(60000 / bpm);
-    }
-
-    void off() override {
-        if(timer) 
-			timer->stop();
-        setBPM(0);
-    }
-
-    void setBPM(int bpm) override {
-        this->bpm = bpm;
-        if (timer) {
-			if (bpm > 0) {
-				timer->setInterval(60000 / bpm);
-				if (!timer->isActive())
-					timer->start();
-			} else
-                timer->stop();
-        }
-        notifyBPMObservers();
-    }
-
-    int getBPM() const override { return bpm; }
-
-    void registerObserver(BeatObserver *o) override { beatObservers.push_back(o); }
-
-    void removeObserver(BeatObserver *o) override { std::erase(beatObservers, o); }
-
-    void registerObserver(BPMObserver *o) override { bpmObservers.push_back(o); }
-
-    void removeObserver(BPMObserver *o) override { std::erase(bpmObservers, o); }
-
-private slots:
-    void beatEvent() { notifyBeatObservers(); }
-
 protected:
-    void notifyBeatObservers() {
-        for (auto observer : beatObservers)
-            if(observer) 
-				observer->updateBeat();
-    }
+	void setUpMidi() { sequencer = std::make_unique<Sequencer>(); }
+	void buildTrackAndStart() { sequencer->setTempoInBPM(getBPM()); }
 
-    void notifyBPMObservers() {
-        for (auto observer : bpmObservers)
-            if(observer) observer->updateBPM();
-    }
+	void notifyBeatObservers() {
+		for (auto observer : beatObservers)
+			observer->updateBeat();
+	}
+
+	void notifyBPMObservers() {
+		for (auto observer : bpmObservers)
+			observer->updateBPM();
+	}
 };

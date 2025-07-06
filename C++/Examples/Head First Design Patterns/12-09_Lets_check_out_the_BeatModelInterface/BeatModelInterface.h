@@ -27,6 +27,7 @@ public:
     virtual void off() = 0;
     virtual void setBPM(int bpm) = 0;
     virtual int getBPM() const = 0;
+    virtual void beatEvent() = 0;
     virtual void registerObserver(BeatObserver* o) = 0;
     virtual void removeObserver(BeatObserver* o) = 0;
     virtual void registerObserver(BPMObserver* o) = 0;
