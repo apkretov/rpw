@@ -17,39 +17,16 @@ DJViewControl::DJViewControl(ControllerInterface& controller, QWidget *parent) :
     connect(ui->actionQuit, &QAction::triggered, this, &DJViewControl::quit);
 }
 
-DJViewControl::~DJViewControl()
-{
-    delete ui;
-}
+DJViewControl::~DJViewControl() { delete ui; }
 
-void DJViewControl::setBPM()
-{
-    controller.setBPM(ui->bpmTextField->text().toInt());
-}
+void DJViewControl::setBPM() { controller.setBPM(ui->bpmTextField->text().toInt()); }
 
-void DJViewControl::increaseBPM()
-{
-    controller.increaseBPM();
-}
+void DJViewControl::increaseBPM() { controller.increaseBPM(); }
 
-void DJViewControl::decreaseBPM()
-{
-    controller.decreaseBPM();
-}
+void DJViewControl::decreaseBPM() { controller.decreaseBPM(); }
 
-void DJViewControl::start()
-{
-    controller.start();
-}
+void DJViewControl::start() { controller.start(); }
 
-void DJViewControl::stop()
-{
-    controller.stop();
-}
+void DJViewControl::stop() { controller.stop(); }
 
-void DJViewControl::quit()
-{
-    qApp->quit();
-}
-
-
+void DJViewControl::quit() { qApp->quit(); }
