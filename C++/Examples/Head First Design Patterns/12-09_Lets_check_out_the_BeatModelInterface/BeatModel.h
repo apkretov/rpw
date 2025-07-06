@@ -35,25 +35,15 @@ public:
 
 	int getBPM() const override { return bpm; }
 
-	void registerObserver(BeatObserver *o) override {
-		beatObservers.push_back(o);
-	}
+	void registerObserver(BeatObserver *o) override { beatObservers.push_back(o); }
 
-	void removeObserver(BeatObserver *o) override {
-		std::erase(beatObservers, o);
-	}
+	void removeObserver(BeatObserver *o) override { std::erase(beatObservers, o); }
 
-	void registerObserver(BPMObserver *o) override {
-		bpmObservers.push_back(o);
-	}
+	void registerObserver(BPMObserver *o) override { bpmObservers.push_back(o); }
 
-	void removeObserver(BPMObserver *o) override {
-		std::erase(bpmObservers, o);
-	}
+	void removeObserver(BPMObserver *o) override { std::erase(bpmObservers, o); }
 
-    void beatEvent() {
-        notifyBeatObservers();
-    }
+    void beatEvent() { notifyBeatObservers(); }
 protected:
 	void setUpMidi() { sequencer = std::make_unique<Sequencer>(); }
 	void buildTrackAndStart() { sequencer->setTempoInBPM(getBPM()); }

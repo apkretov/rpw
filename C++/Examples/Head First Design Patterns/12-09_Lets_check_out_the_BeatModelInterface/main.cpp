@@ -9,7 +9,7 @@ int main(int argc, char *argv[]) {
 
     BeatModel beatModel;
     beatModel.initialize(); //TO DO: Create a BeatModel constructor and call initialize() there.
-    BeatController beatController{beatModel};
+    ControllerBeat beatController{beatModel};
 
     DJViewView view{beatModel};
     view.show();
