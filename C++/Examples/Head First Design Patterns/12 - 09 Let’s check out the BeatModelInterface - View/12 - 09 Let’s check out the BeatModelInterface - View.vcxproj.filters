@@ -50,12 +50,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\12-09_Lets_check_out_the_BeatModelInterface\DJViewControl.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\12-09_Lets_check_out_the_BeatModelInterface\DJViewView.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\12-09_Lets_check_out_the_BeatModelInterface\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

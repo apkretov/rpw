@@ -137,8 +137,6 @@
     <ClInclude Include="..\12-09_Lets_check_out_the_BeatModelInterface\Sequencer.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\12-09_Lets_check_out_the_BeatModelInterface\DJViewControl.cpp" />
-    <ClCompile Include="..\12-09_Lets_check_out_the_BeatModelInterface\DJViewView.cpp" />
     <ClCompile Include="..\12-09_Lets_check_out_the_BeatModelInterface\main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
