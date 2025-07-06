@@ -16,7 +16,6 @@ set(PROJECT_SOURCES
         main.cpp
 
         DJViewControl.h
-        DJViewControl.cpp
         djviewcontrol.ui
 
         DJViewView.h
