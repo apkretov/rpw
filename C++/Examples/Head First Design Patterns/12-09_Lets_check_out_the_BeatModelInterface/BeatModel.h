@@ -1,143 +1,87 @@
 #pragma once
 
-#include <memory>
+#include <QObject>
+#include <QTimer>
 #include <vector>
 #include "BeatModelInterface.h"
-#include "Sequencer.h"
-#include "MetaEventListener.h"
 
-#pragma region Now lets have a look at the concrete BeatModel class //Now let's have a look at the concrete BeatModel class
-/* Java @ https://github.com/bethrobson/Head-First-Design-Patterns/tree/master/src/headfirst/designpatterns/combined/djview
-public class BeatModel implements BeatModelInterface, MetaEventListener {
-	Sequencer sequencer;
-	ArrayList beatObservers = new ArrayList();
-	ArrayList bpmObservers = new ArrayList();
-	int bpm = 90;
+class BeatModel : public QObject, public BeatModelInterface {
+    Q_OBJECT
 
-	public void initialize() {
-		setUpMidi();
-		buildTrackAndStart();
-	}
-
-	public void on() {
-		sequencer.start();
-		setBPM(90);
-	}
-
-	public void off() {
-		setBPM(0);
-		sequencer.stop();
-	}
-
-	public void setBPM(int bpm) {
-		this.bpm = bpm;
-		sequencer.setTempoInBPM(getBPM());
-		notifyBPMObservers();
-	}
-
-	public int getBPM() {
-		return bpm;
-	}
-
-	void beatEvent() {
-		notifyBeatObservers();
-	}
-
-	public void registerObserver(BeatObserver o) {
-		beatObservers.add(o);
-	}
-
-	public void notifyBeatObservers() {
-		for(int i = 0; i < beatObservers.size(); i++) {
-			BeatObserver observer = (BeatObserver)beatObservers.get(i);
-			observer.updateBeat();
-		}
-	}
-
-	public void registerObserver(BPMObserver o) {
-		bpmObservers.add(o);
-	}
-
-	public void notifyBPMObservers() {
-		for(int i = 0; i < bpmObservers.size(); i++) {
-			BPMObserver observer = (BPMObserver)bpmObservers.get(i);
-			observer.updateBPM();
-		}
-	}
-
-	public void removeObserver(BeatObserver o) {
-		int i = beatObservers.indexOf(o);
-		if (i >= 0) {
-			beatObservers.remove(i);
-		}
-	}
-
-	public void removeObserver(BPMObserver o) {
-		int i = bpmObservers.indexOf(o);
-		if (i >= 0) {
-			bpmObservers.remove(i);
-		}
-	}
-}
-*/
-class BeatModel : public BeatModelInterface, public MetaEventListener { //TO DO: Make use of MetaEventListener.
-	std::unique_ptr<Sequencer> sequencer; //TO DO: Unlike smart pointer, sequencer can be just an auto variable, if it is initialized in the constructor rather than in setUpMidi().
-	std::vector<BeatObserver *> beatObservers;
-	std::vector<BPMObserver *> bpmObservers;
-	int bpm = 90;
 public:
-	void initialize() override {
-		setUpMidi();
-		buildTrackAndStart();
-	}
+    BeatModel(QObject *parent = nullptr) : QObject(parent), timer(nullptr), bpm(90) {}
 
-	void on() override {
-		sequencer->start();
-		setBPM(90);
-	}
+    void initialize() override {
+        timer = new QTimer(this);
+        connect(timer, &QTimer::timeout, this, &BeatModel::beatEvent);
+    }
 
-	void off() override {
-		setBPM(0);
-		sequencer->stop();
-	}
+    void on() override {
+        setBPM(90);
+        if (bpm > 0) {
+            timer->start(60000 / bpm);
+        }
+    }
 
-	void setBPM(int bpm) override {
-		this->bpm = bpm;
-		sequencer->setTempoInBPM(getBPM());
-		notifyBPMObservers();
-	}
+    void off() override {
+        if(timer) timer->stop();
+        setBPM(0);
+    }
 
-	int getBPM() const override { return bpm; }
+    void setBPM(int bpm) override {
+        this->bpm = bpm;
+        if (timer) {
+             if (bpm > 0) {
+                timer->setInterval(60000 / bpm);
+                if (!timer->isActive()) {
+                    timer->start();
+                }
+            } else {
+                timer->stop();
+            }
+        }
+        notifyBPMObservers();
+    }
 
-	void registerObserver(BeatObserver *o) override {
-		beatObservers.push_back(o);
-	}
+    int getBPM() const override { return bpm; }
 
-	void removeObserver(BeatObserver *o) override {
-		std::erase(beatObservers, o);
-	}
+    void registerObserver(BeatObserver *o) override {
+        beatObservers.push_back(o);
+    }
 
-	void registerObserver(BPMObserver *o) override {
-		bpmObservers.push_back(o);
-	}
+    void removeObserver(BeatObserver *o) override {
+        std::erase(beatObservers, o);
+    }
 
-	void removeObserver(BPMObserver *o) override {
-		std::erase(bpmObservers, o);
-	}
+    void registerObserver(BPMObserver *o) override {
+        bpmObservers.push_back(o);
+    }
 
-    void beatEvent() override { notifyBeatObservers(); }
+    void removeObserver(BPMObserver *o) override {
+        std::erase(bpmObservers, o);
+    }
+
+private slots:
+    void beatEvent() {
+        notifyBeatObservers();
+    }
+
 protected:
-	void setUpMidi() { sequencer = std::make_unique<Sequencer>(); }
-	void buildTrackAndStart() { sequencer->setTempoInBPM(getBPM()); }
+    void notifyBeatObservers() {
+        for (auto observer : beatObservers) {
+            if(observer) observer->updateBeat();
+        }
+    }
 
-	void notifyBeatObservers() {
-		for (auto observer : beatObservers)
-			observer->updateBeat();
-	}
+    void notifyBPMObservers() {
+        for (auto observer : bpmObservers) {
+            if(observer) observer->updateBPM();
+        }
+    }
 
-	void notifyBPMObservers() {
-		for (auto observer : bpmObservers)
-			observer->updateBPM();
-	}
+private:
+    QTimer *timer;
+    std::vector<BeatObserver *> beatObservers;
+    std::vector<BPMObserver *> bpmObservers;
+    int bpm;
 };
-#pragma endregion //Now lets have a look at the concrete BeatModel class

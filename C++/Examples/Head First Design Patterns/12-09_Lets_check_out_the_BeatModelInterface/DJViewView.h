@@ -10,6 +10,8 @@ namespace Ui {
     class DJViewView;
 }
 
+#include <QTimer>
+
 class DJViewView : public QWidget, public BeatObserver, public BPMObserver {
     Q_OBJECT
     Ui::DJViewView *ui;
@@ -27,6 +29,15 @@ public:
         delete ui;
     }
 public slots:
-    void updateBPM() override { ui->bpmOutputLabel->setText(QString::number(model.getBPM())); }
-    void updateBeat() override { ui->beatBar->setValue(100); }
+    void updateBPM() override { 
+        if (model.getBPM() == 0) {
+            ui->bpmOutputLabel->setText("offline");
+        } else {
+            ui->bpmOutputLabel->setText(QString::number(model.getBPM())); 
+        }
+    }
+    void updateBeat() override { 
+        ui->beatBar->setValue(100);
+        QTimer::singleShot(100, [this]() { ui->beatBar->setValue(ui->beatBar->minimum()); });
+    }
 };
