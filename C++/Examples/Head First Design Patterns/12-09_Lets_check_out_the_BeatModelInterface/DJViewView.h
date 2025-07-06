@@ -37,6 +37,6 @@ public slots:
     }
     void updateBeat() override { 
         ui->beatBar->setValue(100);
-        QTimer::singleShot(100, [this]() { ui->beatBar->setValue(ui->beatBar->minimum()); });
+        QTimer::singleShot(100, this, [this]() { ui->beatBar->setValue(ui->beatBar->minimum()); });
     }
 };
