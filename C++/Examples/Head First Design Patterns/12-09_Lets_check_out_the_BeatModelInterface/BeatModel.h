@@ -43,7 +43,7 @@ public:
 
 	void removeObserver(BPMObserver *o) override { std::erase(bpmObservers, o); }
 
-    void beatEvent() { notifyBeatObservers(); }
+    void beatEvent() override { notifyBeatObservers(); }
 protected:
 	void setUpMidi() { sequencer = std::make_unique<Sequencer>(); }
 	void buildTrackAndStart() { sequencer->setTempoInBPM(getBPM()); }

@@ -7,13 +7,11 @@
 
 class ControllerBeat : public QObject, public ControllerInterface {
     Q_OBJECT
-
+    BeatModelInterface& model;
+    QTimer* timer;
 public:
-    ControllerBeat(BeatModelInterface& model, QObject *parent = nullptr) 
-        : QObject(parent), model(model), timer(new QTimer(this))
-    {
-        connect(timer, &QTimer::timeout, this, &ControllerBeat::beat);
-    }
+    ControllerBeat(BeatModelInterface& model, QObject *parent = nullptr) : QObject(parent), model(model), timer(new QTimer(this))
+    { connect(timer, &QTimer::timeout, this, &ControllerBeat::beat); }
 
     void start() override {
         model.on();
@@ -37,19 +35,11 @@ public:
 
     void setBPM(int bpm) override {
         model.setBPM(bpm);
-        if (bpm > 0) {
+        if (bpm > 0)
             timer->setInterval(60000 / bpm);
-        } else {
+        else
             timer->stop();
-        }
     }
-
 private slots:
-    void beat() {
-        model.beatEvent();
-    }
-
-private:
-    BeatModelInterface& model;
-    QTimer* timer;
+    void beat() { model.beatEvent(); }
 };
