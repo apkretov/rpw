@@ -139,6 +139,9 @@
     <ClInclude Include="..\12-10_Adapting_the_Model\ObserverBPM.h" />
     <ClInclude Include="..\12-10_Adapting_the_Model\Sequencer.h" />
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\12-10_Adapting_the_Model\main.cpp" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
