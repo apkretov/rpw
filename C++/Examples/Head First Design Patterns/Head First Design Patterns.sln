@@ -109,6 +109,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "12 - 09 Let’s check out t
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "12 - 09 Let’s check out the BeatModelInterface - View", "12 - 09 Let’s check out the BeatModelInterface - View\12 - 09 Let’s check out the BeatModelInterface - View.vcxproj", "{8DFDF78D-03FB-4F0A-AF74-649EB2156651}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "12 - 10 Adapting the Model - View", "12 - 10 Adapting the Model - View\12 - 10 Adapting the Model - View.vcxproj", "{38E770F7-95AC-41C5-AFFD-15CC160005E6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -541,6 +543,14 @@ Global
 		{8DFDF78D-03FB-4F0A-AF74-649EB2156651}.Release|x64.Build.0 = Release|x64
 		{8DFDF78D-03FB-4F0A-AF74-649EB2156651}.Release|x86.ActiveCfg = Release|Win32
 		{8DFDF78D-03FB-4F0A-AF74-649EB2156651}.Release|x86.Build.0 = Release|Win32
+		{38E770F7-95AC-41C5-AFFD-15CC160005E6}.Debug|x64.ActiveCfg = Debug|x64
+		{38E770F7-95AC-41C5-AFFD-15CC160005E6}.Debug|x64.Build.0 = Debug|x64
+		{38E770F7-95AC-41C5-AFFD-15CC160005E6}.Debug|x86.ActiveCfg = Debug|Win32
+		{38E770F7-95AC-41C5-AFFD-15CC160005E6}.Debug|x86.Build.0 = Debug|Win32
+		{38E770F7-95AC-41C5-AFFD-15CC160005E6}.Release|x64.ActiveCfg = Release|x64
+		{38E770F7-95AC-41C5-AFFD-15CC160005E6}.Release|x64.Build.0 = Release|x64
+		{38E770F7-95AC-41C5-AFFD-15CC160005E6}.Release|x86.ActiveCfg = Release|Win32
+		{38E770F7-95AC-41C5-AFFD-15CC160005E6}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
