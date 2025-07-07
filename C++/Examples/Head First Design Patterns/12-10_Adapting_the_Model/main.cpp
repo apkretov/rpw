@@ -19,8 +19,7 @@ int main(int argc, char *argv[]) {
     DJViewControl control(heartController);
     control.show();
 
-    // Place the windows in the middle of the screen
-    const QRect availableGeometry = view.screen()->availableGeometry();
+    const QRect availableGeometry = view.screen()->availableGeometry(); // Place the windows in the middle of the screen
     int x = (availableGeometry.width() - view.width() - control.width()) / 2;
     int y = (availableGeometry.height() - view.height()) / 2;
     view.move(x, y);
