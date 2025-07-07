@@ -1,6 +1,5 @@
 #pragma once
 
-#include <QTimer>
 #include <QWidget>
 #include "ui_djviewview.h"
 #include "ObserverBPM.h"
@@ -115,9 +114,6 @@ public slots:
             ui->bpmOutputLabel->setText(QString::number(model.getBPM())); 
     }
 
-    void updateBeat() override { 
-        ui->beatBar->setValue(100);
-        QTimer::singleShot(50, this, [this]() { ui->beatBar->setValue(ui->beatBar->minimum()); });
-    }
+    void updateBeat() override { ui->beatBar->setValue(100); }
 };
 #pragma endregion //Implementing the View
