@@ -27,6 +27,11 @@ set(PROJECT_SOURCES
         ControllerInterface.h
         ObserverBeat.h
         ObserverBPM.h
+
+        HeartModelInterface.h
+        HeartModel.h
+        HeartAdapter.h
+        HeartController.h
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

@@ -1,0 +1,48 @@
+Adapting the Model
+For starters, we’re going to need to adapt the HeartModel to a BeatModel. If we don’t, the view
+won’t be able to work with the model, because the view only knows how to getBPM(), and the
+equivalent heart model method is getHeartRate(). How are we going to do this? We’re going to
+use the Adapter Pattern, of course! It turns out that this is a common technique when working
+with the MVC: use an adapter to adapt a model to work with existing controllers and views.
+Here’s the code to adapt a HeartModel to a BeatModel:
+public class HeartAdapter implements BeatModelInterface {
+HeartModelInterface heart;
+public HeartAdapter(HeartModelInterface heart) {
+this.heart = heart;
+}
+public void initialize() {}
+public void on() {}
+public void off() {}
+public int getBPM() {
+return heart.getHeartRate();
+}
+public void setBPM(int bpm) {}
+public void registerObserver(BeatObserver o) {
+heart.registerObserver(o);
+}
+public void removeObserver(BeatObserver o) {
+heart.removeObserver(o);
+}
+public void registerObserver(BPMObserver o) {
+heart.registerObserver(o);
+}
+public void removeObserver(BPMObserver o) {
+heart.removeObserver(o);
+}
+}
+We need to implement the
+target interface, in this
+case, BeatModelInterface.
+Here, we store a reference
+to the heart model.
+We don’t know what these would do
+to a heart, but it sounds scary. So
+we’ll just leave them as “no ops.”
+When getBPM() is called, we’ll just
+translate it to a getHeartRate() call
+on the heart model.
+We don’t want to do this on a heart!
+Again, let’s leave it as a “no op”.
+Here are our observer methods.
+We just delegate them to the
+wrapped heart model.
