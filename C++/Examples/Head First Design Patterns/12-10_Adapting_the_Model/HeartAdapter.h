@@ -34,4 +34,6 @@ public:
     void removeObserver(BPMObserver* o) override {
         heart.removeObserver(o);
     }
+
+    void beatEvent() override {}
 };

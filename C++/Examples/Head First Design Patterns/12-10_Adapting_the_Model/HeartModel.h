@@ -4,16 +4,18 @@
 #include <vector>
 #include <algorithm>
 #include <QTimer>
+#include <QObject>
 
-class HeartModel : public HeartModelInterface {
+class HeartModel : public QObject, public HeartModelInterface {
+    Q_OBJECT
     std::vector<BeatObserver*> beatObservers;
     std::vector<BPMObserver*> bpmObservers;
     int heartRate = 90;
     QTimer* timer;
 
 public:
-    HeartModel() {
-        timer = new QTimer();
+    HeartModel(QObject* parent = nullptr) : QObject(parent) {
+        timer = new QTimer(this);
         connect(timer, &QTimer::timeout, this, &HeartModel::beat);
         timer->start(1000);
     }
@@ -49,7 +51,7 @@ public:
             observer->updateBPM();
         }
     }
-
+public slots:
     void beat() {
         heartRate = rand() % 10 + 90;
         notifyBPMObservers();
