@@ -2,7 +2,7 @@
 
 #include "ControllerInterface.h"
 
-#pragma region Now were ready for a HeartController //Now we’re ready for a HeartController
+#pragma region Now were ready for a HeartController //Now we're ready for a HeartController
 /* Java
 public class HeartController implements ControllerInterface {
 	HeartModelInterface model;
