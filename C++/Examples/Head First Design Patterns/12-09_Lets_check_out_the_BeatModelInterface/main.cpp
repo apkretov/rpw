@@ -17,5 +17,8 @@ int main(int argc, char *argv[]) {
     DJViewControl control(beatController);
     control.show();
 
+    view.move(0, 0);
+    control.move(view.width(), 0);
+
     return a.exec();
 }
