@@ -31,7 +31,7 @@ set(PROJECT_SOURCES
         HeartModelInterface.h
         HeartModel.h
         HeartAdapter.h
-        HeartController.h
+        ControllerHeart.h
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

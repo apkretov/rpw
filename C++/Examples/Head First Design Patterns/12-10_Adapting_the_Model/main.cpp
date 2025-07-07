@@ -1,7 +1,7 @@
 #include <QApplication>
 #include <QScreen>
 #include "HeartModel.h"
-#include "HeartController.h"
+#include "ControllerHeart.h"
 #include "HeartAdapter.h"
 #include "DJViewView.h"
 #include "DJViewControl.h"
