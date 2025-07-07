@@ -127,7 +127,6 @@
     <ClInclude Include="..\12-10_Adapting_the_Model\BeatModelInterface.h" />
     <ClInclude Include="..\12-10_Adapting_the_Model\ControllerBeat.h" />
     <ClInclude Include="..\12-10_Adapting_the_Model\ControllerInterface.h" />
-    <ClInclude Include="..\12-10_Adapting_the_Model\DJView.h" />
     <ClInclude Include="..\12-10_Adapting_the_Model\DJViewControl.h" />
     <ClInclude Include="..\12-10_Adapting_the_Model\DJViewView.h" />
     <ClInclude Include="..\12-10_Adapting_the_Model\HeartAdapter.h" />

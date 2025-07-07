@@ -27,9 +27,6 @@
     <ClInclude Include="..\12-09_Lets_check_out_the_BeatModelInterface\ControllerInterface.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\12-09_Lets_check_out_the_BeatModelInterface\DJView.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\12-09_Lets_check_out_the_BeatModelInterface\DJViewControl.h">
       <Filter>Header Files</Filter>
     </ClInclude>
