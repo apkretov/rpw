@@ -1,4 +1,4 @@
-﻿#if 0 //@ https://github.com/Hrodvintir/-basics-of-c-plus-plus-development-brown-belt/tree/main/week4/01%20Programming%20Assignment
+﻿#if 1 //@ https://github.com/Hrodvintir/-basics-of-c-plus-plus-development-brown-belt/tree/main/week4/01%20Programming%20Assignment
 
 #include <cassert>
 #include <memory>
