@@ -66,7 +66,7 @@ struct IShape { // Интерфейс IShape описывает фигуру.
 
 #pragma region MINE
 class Rectangle final : IShape {
-public:
+	public:
 	unique_ptr<IShape> Clone() const override { return {}; } // Клонированная фигура использует ту же самую текстуру, что и оригинал. В дальнейшем клонированной фигуре можно задать новую текстуру.
 
 	void SetPosition(Point) override {}
