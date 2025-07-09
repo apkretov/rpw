@@ -65,7 +65,8 @@ struct IShape { // Интерфейс IShape описывает фигуру.
 };
 
 #pragma region MINE
-struct Rectangle final : IShape {
+class Rectangle final : IShape {
+public:
 	unique_ptr<IShape> Clone() const override { return {}; } // Клонированная фигура использует ту же самую текстуру, что и оригинал. В дальнейшем клонированной фигуре можно задать новую текстуру.
 
 	void SetPosition(Point) override {}
@@ -221,8 +222,7 @@ void TestSmallTexture() {
 	Canvas canvas;
 	canvas.SetSize({6, 4});
 
-	canvas.AddShape(ShapeType::Rectangle, {1, 1}, {4, 2},
-		MakeTextureSolid({3, 1}, '*'));
+	canvas.AddShape(ShapeType::Rectangle, {1, 1}, {4, 2}, MakeTextureSolid({3, 1}, '*'));
 
 	stringstream output;
 	canvas.Print(output);
