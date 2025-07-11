@@ -34,12 +34,8 @@ public:
 	virtual const Image &GetImage() const = 0;
 };
 
-#ifdef ORIG
 class IShape { // Интерфейс IShape описывает фигуру. 
 public:
-#else //MINE
-struct IShape { // Интерфейс IShape описывает фигуру. 
-#endif //MINE
 	virtual ~IShape() = default;
 
 	virtual unique_ptr<IShape> Clone() const = 0; // Клонированная фигура использует ту же самую текстуру, что и оригинал. В дальнейшем клонированной фигуре можно задать новую текстуру.
