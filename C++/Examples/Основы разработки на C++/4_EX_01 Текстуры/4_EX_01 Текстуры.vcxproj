@@ -133,6 +133,7 @@
     <ClInclude Include="Texture.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Canvas.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="textures.cpp" />
   </ItemGroup>
