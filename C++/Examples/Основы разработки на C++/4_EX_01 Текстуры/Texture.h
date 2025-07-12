@@ -8,5 +8,5 @@ class Texture : public ITexture {
 public:
 	Texture(Image image);
 	Size GetSize() const override;
-	const Image &GetImage() const override;
+	const Image &GetImage() const override { return image_; }
 };

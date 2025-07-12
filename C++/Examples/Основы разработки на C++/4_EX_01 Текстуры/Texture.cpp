@@ -11,7 +11,3 @@ Size Texture::GetSize() const {
 	auto height = static_cast<int>(image_.size());
 	return {width, height};
 }
-
-const Image &Texture::GetImage() const { 
-	return image_; 
-}

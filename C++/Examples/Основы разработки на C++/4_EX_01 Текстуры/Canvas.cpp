@@ -1,8 +1,6 @@
 #include "Canvas.h"
 
-void Canvas::SetSize(Size size) { 
-	size_ = size; 
-}
+void Canvas::SetSize(Size size) { size_ = size; }
 
 Canvas::ShapeId Canvas::AddShape(ShapeType shape_type, Point position, Size size, unique_ptr<ITexture> texture) {
 	auto shape = MakeShape(shape_type);
