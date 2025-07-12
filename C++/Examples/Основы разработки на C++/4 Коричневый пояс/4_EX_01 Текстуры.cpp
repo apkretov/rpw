@@ -60,7 +60,6 @@ public:
 	virtual void Draw(Image &) const = 0;
 };
 
-//SUSPENDED
 #pragma region MINE
 class Rectangle final : public IShape {
 	public:

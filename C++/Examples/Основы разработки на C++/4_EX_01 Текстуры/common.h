@@ -1,9 +1,13 @@
 #pragma once
 
+#include <memory>
 #include <string>
 #include <vector>
-using std::string;
-using std::vector;
+#include <stdexcept>
+#include "Ellipse.h"
+#include "IShape.h"
+#include "Rectangle.h"
+using namespace std;
 
 struct Point {
 	int x;
@@ -24,3 +28,12 @@ inline bool IsPointInEllipse(Point p, Size size) { // Вычисляет (можно по-разном
 using Image = vector<string>;
 
 enum class ShapeType { Rectangle, Ellipse }; // Существуют два вида фигур: прямоугольник и эллипс.
+
+unique_ptr<IShape> MakeShape(ShapeType shape_type) { // Создаёт фигуру заданного вида.
+	if (shape_type == ShapeType::Rectangle)
+		return make_unique<Rectangle>();
+	else if (shape_type == ShapeType::Rectangle)
+		return make_unique<Ellipse>();
+	else
+		throw std::invalid_argument("Unknown shape type");
+}

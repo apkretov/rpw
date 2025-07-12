@@ -3,8 +3,7 @@
 #include <memory>
 #include "common.h"
 #include "ITexture.h"
-using std::unique_ptr;
-using std::shared_ptr;
+using namespace std;
 
 class IShape { // Интерфейс IShape описывает фигуру. 
 public:
