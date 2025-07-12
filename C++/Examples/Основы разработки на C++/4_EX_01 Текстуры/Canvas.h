@@ -10,13 +10,13 @@ using namespace std;
 class Canvas {
 public:
 	using ShapeId = size_t;
-	void SetSize(Size size);
+	void SetSize(Size size) { size_ = size; }
 	ShapeId AddShape(ShapeType shape_type, Point position, Size size, unique_ptr<ITexture> texture);
 	ShapeId DuplicateShape(ShapeId source_id, Point target_position);
-	void RemoveShape(ShapeId id);
-	void MoveShape(ShapeId id, Point position);
-	void ResizeShape(ShapeId id, Size size);
-	int GetShapesCount() const;
+	void RemoveShape(ShapeId id) { shapes_.erase(GetShapeNodeById(id)); }
+	void MoveShape(ShapeId id, Point position) { GetShapeNodeById(id)->second->SetPosition(position); }
+	void ResizeShape(ShapeId id, Size size) { GetShapeNodeById(id)->second->SetSize(size); }
+	int GetShapesCount() const { return static_cast<int>(shapes_.size()); }
 	void Print(ostream &output) const;
 
 private:

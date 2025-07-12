@@ -1,7 +1,5 @@
 #include "Canvas.h"
 
-void Canvas::SetSize(Size size) { size_ = size; }
-
 Canvas::ShapeId Canvas::AddShape(ShapeType shape_type, Point position, Size size, unique_ptr<ITexture> texture) {
 	auto shape = MakeShape(shape_type);
 	shape->SetPosition(position);
@@ -14,22 +12,6 @@ Canvas::ShapeId Canvas::DuplicateShape(ShapeId source_id, Point target_position)
 	auto shape = GetShapeNodeById(source_id)->second->Clone();
 	shape->SetPosition(target_position);
 	return InsertShape(std::move(shape));
-}
-
-void Canvas::RemoveShape(ShapeId id) { 
-	shapes_.erase(GetShapeNodeById(id)); 
-}
-
-void Canvas::MoveShape(ShapeId id, Point position) { 
-	GetShapeNodeById(id)->second->SetPosition(position); 
-}
-
-void Canvas::ResizeShape(ShapeId id, Size size) { 
-	GetShapeNodeById(id)->second->SetSize(size); 
-}
-
-int Canvas::GetShapesCount() const { 
-	return static_cast<int>(shapes_.size()); 
 }
 
 void Canvas::Print(ostream &output) const {
