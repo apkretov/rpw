@@ -1,11 +1,13 @@
 #pragma once
 
-#include "common.h"
 #include <map>
 #include <iostream>
+#include "common.h"
+#include "Canvas.h"
+#include "Ellipse.h"
 #include "IShape.h"
 #include "ITexture.h"
-#include "Canvas.h"
+#include "Rectangle.h"
 using namespace std;
 
 class Canvas { // Автоматизированный редактор графики, который управляется через открытые методы.
