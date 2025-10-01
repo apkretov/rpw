@@ -1,4 +1,4 @@
-#ifdef ON
+#ifndef ON
 
 #include "../../stdafx.h"
 #include "16_03_2.h"
@@ -20,7 +20,7 @@ void Pack_Expansion() {
 	int i = 0; //MINE
 	string s = "hello"; //MINE
 
-	print(cout, i, s, 42); // two parameters in the pack
+		print(cout, i, s, 42); // two parameters in the pack
 }
 #pragma endregion
 
@@ -31,8 +31,7 @@ ostream &errorMsg(ostream &os, const Args&... rest) { // call debug_rep on each 
 }
 
 void Understanding_Pack_Expansions() {
-	//ORIG errorMsg(cerr, fcnName, code.num(), otherData, "other", item);
-	errorMsg(cerr, "fcnName", 42, "otherData", "other", "item"); //MINE
+	errorMsg(cerr, "fcnName", 42, "otherData", "other", "item"); //ORIG errorMsg(cerr, fcnName, code.num(), otherData, "other", item);
 
 	//TEST! print(os, debug_rep(rest...)); //																															error: no matching function to call // passes the pack to debug_rep; print(os, debug_rep(a1, a2, ..., an))
 }

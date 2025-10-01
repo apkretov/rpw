@@ -1,5 +1,5 @@
 #include "../../stdafx.h"
-#include "vld.h"
+//OFF #include "vld.h"
 #include "CommandLightOn.h"
 #include "SimpleRemoteControl.h"
 using namespace std;

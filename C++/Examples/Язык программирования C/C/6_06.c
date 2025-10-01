@@ -63,7 +63,7 @@ static struct nlist* install(name, def) /* put (name, def) */
 	return(np);
 }
 
-#ifndef ON
+#ifdef ON
 main() { //MINE
 	setlocale(LC_ALL, "RU");
 	printf("File: %s\tLine: %d\n\n", __FILE__, __LINE__);

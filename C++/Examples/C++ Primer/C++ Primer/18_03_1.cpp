@@ -1,4 +1,4 @@
-#ifndef ON
+#ifdef ON
 
 #include "../../stdafx.h"
 using namespace std;

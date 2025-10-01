@@ -145,7 +145,7 @@ main() {
 }
 #endif
 
-#ifdef EX_6_06_3 //EX_6_04_ENG // Solution by Bryan Williams @ https://clc-wiki.net/wiki/K%26R2_solutions:Chapter_6:Exercise_4#Solution_by_Bryan_Williams
+#ifndef EX_6_06_3 //EX_6_04_ENG // Solution by Bryan Williams @ https://clc-wiki.net/wiki/K%26R2_solutions:Chapter_6:Exercise_4#Solution_by_Bryan_Williams
 /*
 
   Chapter 6. Structures

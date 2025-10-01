@@ -7,10 +7,32 @@ using namespace std;
 #pragma region Template Specializations
 #ifdef ORIG
 template <typename T>
-int compare(const T &, const T &); // first version; can compare any two types
+int compare(const T &, const T &); //																															first version; can compare any two types
 
 template <size_t N, size_t M>
-int compare(const char(&)[N], const char(&)[M]); // second version to handle string literals
+int compare(const char(&)[N], const char(&)[M]); //																												second version to handle string literals
+
+#pragma region MINE
+template <typename T>
+int compare(const T &v1, const T &v2) { //																														first version; can compare any two types
+	if (v1 < v2)
+		return -1;
+	if (v2 < v1)
+		return 1;
+	return 0;
+}
+
+template <size_t N, size_t M>
+int compare(const char(&p1)[N], const char(&p2)[M]) { //																										second version to handle string literals
+	return strcmp(p1, p2);
+}
+#pragma endregion //MINE
+
+void Template_Specializations() {
+	const char *p1 = "hi", *p2 = "mom";
+	cout << compare(p1, p2) << '\n'; //																															calls the first template
+	cout << compare("hi", "mom") << '\n'; //																													calls the template with two nontype parameters
+}
 
 #else //MINE
 
