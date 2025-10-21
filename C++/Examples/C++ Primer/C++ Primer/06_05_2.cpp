@@ -18,7 +18,7 @@ constexpr int new_sz() { //TEST!
 	return 42;
 } 
 
-constexpr int foo = new_sz(); //TEST! //																																				ok: foo is a constant expression
+constexpr int b = new_sz(); //TEST! //																																				ok: foo is a constant expression
 
 constexpr size_t scale(size_t cnt) { // scale(arg) is a constant expression if arg is a constant expression
 	return new_sz() * cnt;

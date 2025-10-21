@@ -26,7 +26,7 @@ void Instantiating_a_Function_Template() {
 }
 
 #ifndef Template_Type_Parameters
-template <typename T> T foo(T *p) { // ok: same type used for the return type and parameter
+template <typename T> T b(T *p) { // ok: same type used for the return type and parameter
 	T tmp = *p; // tmp will have the type to which p points
 	// ...
 	return tmp;

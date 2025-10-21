@@ -52,7 +52,7 @@ void and_Dont_Use_get_to_Initialize_or_Assign_Another_Smart_Pointer() {
 	{ // new block
 		shared_ptr<int>(q); //TEST!! //																																									undefined: two independent shared_ptrs point to the same memory
 	} //																																																block ends, q is destroyed, and the memory to which q points is freed
-	int foo = *p; //TEST! //																																											undefined; the memory to which p points was freed
+	int b = *p; //TEST! //																																											undefined; the memory to which p points was freed
 }
 
 void Other_shared_ptr_Operations() {

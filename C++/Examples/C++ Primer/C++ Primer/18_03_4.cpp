@@ -43,13 +43,13 @@ protected:
 
 struct Derived1 : virtual public Base {
 	void bar(char) { cout << "Derived1::bar(char)\n"; } // public by default
-	void foo(char) { cout << "Derived1::foo(char)\n"; }
+	void b(char) { cout << "Derived1::foo(char)\n"; }
 protected:
 	char cval;
 };
 
 struct Derived2 : virtual public Base {
-	void foo(int) { cout << "Derived2::foo(int)\n"; } // public by default
+	void b(int) { cout << "Derived2::foo(int)\n"; } // public by default
 protected:
 	int ival;
 	char cval;
@@ -57,10 +57,10 @@ protected:
 
 struct VMI : public Derived1, public Derived2 {
 #pragma region With qualification
-	void foo(int) { //TEST
+	void b(int) { //TEST
 		cout << "VMI::foo(int):\n"; 
-		Derived1::foo(' ');
-		Derived2::foo(0);
+		Derived1::b(' ');
+		Derived2::b(0);
 		Base::ival = 0;
 		Derived2::ival = 0;
 		Derived1::cval = ' ';
@@ -78,7 +78,7 @@ int main() {
 #pragma endregion
 #pragma region With qualification
 	cout << '\n';
-	vmi.foo(0);
+	vmi.b(0);
 #pragma endregion
 	return 0;
 }

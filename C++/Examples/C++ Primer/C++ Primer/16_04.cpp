@@ -6,21 +6,19 @@ using namespace std;
 
 #pragma region Variadic Templates
 template <typename T, typename... Args>
-void foo(const T &t, const Args& ... rest) // Args is a template parameter pack; rest is a function parameter pack // Args represents zero or more template type parameters // rest represents zero or more function parameters
-//ORIG ; 
-{ cout << t << '\n'; } //MINE
+void b(const T &t, const Args& ... rest) { // Args is a template parameter pack; rest is a function parameter pack // Args represents zero or more template type parameters // rest represents zero or more function parameters
+	cout << t << '\n'; //MINE
+} 
 
 void Variadic_Templates() {
 	int i = 0; 
 	double d = 3.14; 
 	string s = "how now brown cow";
 
-#ifndef OFF
-	foo(i, s, 42, d); // three parameters in the pack
-	foo(s, 42, "hi"); // two parameters in the pack
-	foo(d, s); // one parameter in the pack
-	foo("hi"); // empty pack
-#endif
+	b(i, s, 42, d); // three parameters in the pack
+	b(s, 42, "hi"); // two parameters in the pack
+	b(d, s); // one parameter in the pack
+	b("hi"); // empty pack
 }
 #pragma endregion
 

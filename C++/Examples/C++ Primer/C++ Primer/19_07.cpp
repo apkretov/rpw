@@ -7,7 +7,7 @@ using namespace std;
 #pragma region Local_Classes_May_Not_Use_Variables_from_the_Function_s_Scope // Local Classes May Not Use Variables from the Function’s Scope
 int a, val;
 namespace Local_Classes_May_Not_Use_Variables_from_the_Function_s_Scope {
-	void foo(int val) {
+	void b(int val) {
 		static int si;
 		enum Loc { a = 1024, b };
 
@@ -27,7 +27,7 @@ namespace Local_Classes_May_Not_Use_Variables_from_the_Function_s_Scope {
 #pragma endregion
 
 #pragma region Nested Local Classes
-void foo() {
+void b() {
 	class Bar {
 	public:
 		// ...
