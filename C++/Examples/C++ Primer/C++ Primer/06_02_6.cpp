@@ -83,8 +83,8 @@ int main(int argc, char *argv[]) {
 	//mine1({"AAA", "BBB"});
 	//mine2({"111", "222"});
 
-	//double avg = average(6, 1, 2, 3, 4, 5, 6);
-	//cout << "\nAverage is " << avg << '\n';
+	double avg = average(6, 1, 2, 3, 4, 5, 6);
+	cout << "\nAverage is " << avg << '\n';
 
 	return 0;
 }

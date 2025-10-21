@@ -1,4 +1,4 @@
-#if 0
+#if 1
 
 #define ORIG
 #undef AMAZON_Q_COMPOSITION

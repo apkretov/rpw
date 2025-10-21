@@ -35,7 +35,7 @@ int main() {
 }
 #endif
 
-#ifdef EX_18_01
+#ifdef EX_18_01_1
 
 #include <iostream>
 #include <stdexcept>
@@ -120,6 +120,34 @@ int main() {
 	//main_you_com();
 	ex();
 
+	return 0;
+}
+#endif
+
+#ifdef EX_18_01_2
+#include <iostream>
+#include <stdexcept>
+using namespace std;
+
+[[noreturn]] static void b() {
+	range_error r("error");
+	const range_error* p = &r;
+	throw p; //TEST!																																			// Peplexity: The type of the exception object thrown is a pointer type (const range_error*), not the object itself.
+}
+
+int main(int argc, char* argv[]) {
+	try {
+		b();
+	}
+	catch (const range_error& r) {
+		cerr << r.what() << '\n';
+	}
+	catch (const range_error* r) {
+		cerr << "const range_error* object type caught = " << r << '\n';
+	}
+	catch (...) {
+		cerr << "Any type of thrown object caught.\n";
+	}
 	return 0;
 }
 #endif
