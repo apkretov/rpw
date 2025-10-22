@@ -1,8 +1,9 @@
-#ifdef ON
+#ifndef ON
 
 #include <iostream>
 #include <string>
 #include <numbers>
+//OFF #include "vld.h"
 #include "../../stdafx.h"
 using namespace std;
 
@@ -29,6 +30,8 @@ void Defining_a_Class_with_a_Conversion_Operator() {
 		SmallInt &operator=(const SmallInt &rhs) { //MINE
 			cout << "\nCopy-assignment operator";
 			printThis();
+			if (&rhs == this)
+				return *this;
 			val = rhs.val;
 			printThis();
 			return *this;
@@ -37,24 +40,50 @@ void Defining_a_Class_with_a_Conversion_Operator() {
 		SmallInt &operator=(SmallInt &&rhs) noexcept { //MINE
 			cout << "\nMove-assignment operator";
 			printThis();
+			if (&rhs == this)
+				return *this;
 			val = rhs.val;
+			rhs.val = 0;
 			printThis();
 			return *this;
 		}
 
-		void printThis() const { //MINE
-			cout << "\nthis = " << this << "\tval = " << val;
+		~SmallInt() noexcept { //MINE
+			try {
+				cout << "\nDestructor";
+				printThis(); // already noexcept internally
+			}
+			catch (const exception& e) {
+				fputs("Exception printing destructor message: ", stderr);
+				fputs(e.what(), stderr);
+				fputs("\n", stderr);
+			}
+			catch (...) {
+				fputs("Unknown stream error in destructor\n", stderr);
+			}
+		}
+
+		void printThis() const noexcept { //MINE
+			try {
+				cout << "\nthis = " << this << "\tval = " << val;
+			}
+			catch (const exception& e) {
+				cerr << "[printThis] Exception: " << e.what() << '\n';
+			}
+			catch (...) {
+				cerr << "[printThis] Unknown I/O error\n";
+			}
 		}
 
 		operator int() const { //TEST!!
-			cout << "\nint conversion operator"; //MINE
+			cout << "\nint implicit conversion operator"; //MINE
 			printThis(); //MINE
 			return val;
 		}
 
 		//MINE
 		explicit operator double() const { //TEST!!
-			cout << "\ndouble conversion operator";
+			cout << "\ndouble explicit conversion operator";
 			printThis();
 			return val;
 		}

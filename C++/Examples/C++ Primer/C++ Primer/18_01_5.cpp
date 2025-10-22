@@ -29,7 +29,7 @@ Sales_data &Sales_data::operator+=(const Sales_data &rhs) { // throws an excepti
 }
 #pragma endregion
 
-#ifndef ON
+#ifdef ON
 
 void Using_Our_Own_Exception_Types() {
 	Sales_data item1, item2, sum; // use the hypothetical bookstore exceptions
