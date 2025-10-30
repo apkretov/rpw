@@ -15,20 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="01.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="00.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="02.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="03.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

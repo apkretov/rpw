@@ -7,6 +7,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "09 Use destructors to preve
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "10 Prevent resource leaks in constructors", "10 Prevent resource leaks in constructors\10 Prevent resource leaks in constructors.vcxproj", "{65DDE3B3-36EB-45EA-B8F3-BB08EED9A5E2}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "12 Understand how throwing an exception differs", "12 Understand how throwing an exception differs\12 Understand how throwing an exception differs.vcxproj", "{652712AE-431C-4C7E-A517-D58BC6077523}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "11 Prevent exceptions from leaving destructors", "11 Prevent exceptions from leaving destructors\11 Prevent exceptions from leaving destructors.vcxproj", "{96AD8DF4-FBC7-46E3-BE47-58D2954CAB24}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -31,6 +35,22 @@ Global
 		{65DDE3B3-36EB-45EA-B8F3-BB08EED9A5E2}.Release|x64.Build.0 = Release|x64
 		{65DDE3B3-36EB-45EA-B8F3-BB08EED9A5E2}.Release|x86.ActiveCfg = Release|Win32
 		{65DDE3B3-36EB-45EA-B8F3-BB08EED9A5E2}.Release|x86.Build.0 = Release|Win32
+		{652712AE-431C-4C7E-A517-D58BC6077523}.Debug|x64.ActiveCfg = Debug|x64
+		{652712AE-431C-4C7E-A517-D58BC6077523}.Debug|x64.Build.0 = Debug|x64
+		{652712AE-431C-4C7E-A517-D58BC6077523}.Debug|x86.ActiveCfg = Debug|Win32
+		{652712AE-431C-4C7E-A517-D58BC6077523}.Debug|x86.Build.0 = Debug|Win32
+		{652712AE-431C-4C7E-A517-D58BC6077523}.Release|x64.ActiveCfg = Release|x64
+		{652712AE-431C-4C7E-A517-D58BC6077523}.Release|x64.Build.0 = Release|x64
+		{652712AE-431C-4C7E-A517-D58BC6077523}.Release|x86.ActiveCfg = Release|Win32
+		{652712AE-431C-4C7E-A517-D58BC6077523}.Release|x86.Build.0 = Release|Win32
+		{96AD8DF4-FBC7-46E3-BE47-58D2954CAB24}.Debug|x64.ActiveCfg = Debug|x64
+		{96AD8DF4-FBC7-46E3-BE47-58D2954CAB24}.Debug|x64.Build.0 = Debug|x64
+		{96AD8DF4-FBC7-46E3-BE47-58D2954CAB24}.Debug|x86.ActiveCfg = Debug|Win32
+		{96AD8DF4-FBC7-46E3-BE47-58D2954CAB24}.Debug|x86.Build.0 = Debug|Win32
+		{96AD8DF4-FBC7-46E3-BE47-58D2954CAB24}.Release|x64.ActiveCfg = Release|x64
+		{96AD8DF4-FBC7-46E3-BE47-58D2954CAB24}.Release|x64.Build.0 = Release|x64
+		{96AD8DF4-FBC7-46E3-BE47-58D2954CAB24}.Release|x86.ActiveCfg = Release|Win32
+		{96AD8DF4-FBC7-46E3-BE47-58D2954CAB24}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

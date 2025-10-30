@@ -92,6 +92,7 @@ int main(int argc, char *argv[]) {
 #include <thread>
 #include <mutex>
 #include <chrono>
+#include "../../stdafx.h"
 using namespace std;
 
 mutex mutex1;
@@ -114,6 +115,8 @@ void threadB() {
 }
 
 int main() {
+	PRINT_FILE_LINE();
+
 	thread t1(threadA);
 	thread t2(threadB);
 
@@ -124,12 +127,13 @@ int main() {
 }
 #endif // LOCK_GUARD
 
-#ifdef SCOPED_LOCK //Explanation of Deadlock Prevention //In this version, both threads attempt to lock mutex1 and mutex2 using std::scoped_lock. //Since std::scoped_lock locks both mutexes in a single operation, it prevents the situation where one thread holds one lock while waiting for another, and vice versa.
+#ifndef SCOPED_LOCK //Explanation of Deadlock Prevention //In this version, both threads attempt to lock mutex1 and mutex2 using std::scoped_lock. //Since std::scoped_lock locks both mutexes in a single operation, it prevents the situation where one thread holds one lock while waiting for another, and vice versa.
 
 #include <iostream>
 #include <thread>
 #include <mutex>
 #include <chrono>
+#include "../../stdafx.h"
 using namespace std;
 
 mutex mutex1;
@@ -146,6 +150,8 @@ void threadB() {
 }
 
 int main() {
+	PRINT_FILE_LINE();
+
 	thread t1(threadA);
 	thread t2(threadB);
 

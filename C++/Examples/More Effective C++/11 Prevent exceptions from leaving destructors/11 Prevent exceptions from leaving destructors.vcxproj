@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{65dde3b3-36eb-45ea-b8f3-bb08eed9a5e2}</ProjectGuid>
-    <RootNamespace>My10Preventresourceleaksinconstructors</RootNamespace>
+    <ProjectGuid>{96ad8df4-fbc7-46e3-be47-58d2954cab24}</ProjectGuid>
+    <RootNamespace>My11Preventexceptionsfromleavingdestructors</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -122,12 +122,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClInclude Include="00.h" />
-    <ClInclude Include="01.h" />
-    <ClInclude Include="02.h" />
-    <ClInclude Include="03.h" />
-  </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
   </ItemGroup>

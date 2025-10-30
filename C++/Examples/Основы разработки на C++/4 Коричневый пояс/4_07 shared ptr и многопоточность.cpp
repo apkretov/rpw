@@ -1,8 +1,8 @@
-#if 0
+#if 1
 
 #undef SYNCED_BY_OSTREAM
-#undef UNSYNCED_BY_OSTREAM
-#define SYNCED_BY_CONST
+#define UNSYNCED_BY_OSTREAM
+#undef SYNCED_BY_CONST
 
 #include <future>
 #include <thread> // For this_thread::get_id().
@@ -47,7 +47,7 @@ void ShareResource(shared_ptr<Data> data) {
 vector<future<void>> spawn() {
 	vector<future<void>> tasks;
 	auto data = make_shared<Data>("meow");
-	for (int i = 0; i < 1'000; ++i)
+	for (int i = 0; i < 1000; ++i)
 		tasks.push_back(async([=]() { ShareResource(data); }));
 	return tasks;
 }
