@@ -141,7 +141,11 @@
     <ClCompile Include="12_2_4 myvec-4.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="12_2 controllable.h" />
+    <ClInclude Include="11 multinh.cc.h" />
+    <ClInclude Include="11 throws.cc.h" />
+    <ClInclude Include="12 controllable.h" />
+    <ClInclude Include="12 noexc-dtor.cc.h" />
+    <ClInclude Include="12 noexc.cc.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

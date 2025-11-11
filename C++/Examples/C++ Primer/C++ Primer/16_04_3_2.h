@@ -27,30 +27,12 @@ public:
 	template <class... Args>
 	void emplace_back(Args&&...);
 #pragma endregion
-
-	size_t size() const {
-		return first_free - elements;
-	}
-
-	size_t capacity() const {
-		return cap - elements;
-	}
-
-	T *begin() const {
-		return elements;
-	}
-
-	T *end() const {
-		return first_free;
-	}
-
-	T &operator[](size_t n) {
-		return elements[n];
-	}
-	const T &operator[](size_t n) const {
-		return elements[n];
-	}
-
+	size_t size() const { return first_free - elements; }
+	size_t capacity() const { return cap - elements; }
+	T *begin() const { return elements; }
+	T *end() const { return first_free; }
+	T &operator[](size_t n) { return elements[n]; }
+	const T &operator[](size_t n) const { return elements[n]; }
 private:
 	static allocator<T> alloc; // allocates the elements
 

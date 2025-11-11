@@ -1,4 +1,4 @@
-#ifndef ON
+#ifdef ON
 
 #include <cassert> // Fourth attempt: push with move if available // 08-exceptions/myvec-demo/myvec-4.cc @ https://github.com/tilir/cpp-graduate/blob/master/08-exceptions/myvec-demo/myvec-4.cc
 #include <iostream>

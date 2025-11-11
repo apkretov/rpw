@@ -1,18 +1,67 @@
 #include <iostream>
+#include <stdexcept>
 #include "stdafx.h"
 using namespace std;
 
-#ifdef _1
-struct Base {
-	virtual ~Base() {
-		cout << "~Base()\n";
+#if 0 //Порождение ошибки
+struct UnwShow {
+	UnwShow() { std::cout << "ctor\n"; }
+	~UnwShow() { std::cout << "dtor\n"; }
+};
+int foo(int n) {
+	UnwShow s;
+	if (n == 0) abort(); // abort это убийство
+	foo(n - 1);
+}
+
+int main() {
+	PRINT_FILE_LINE();
+	foo(4); // что на экране?  
+}
+#endif
+
+#if 0 // Порождение исключения
+struct UnwShow {
+	UnwShow() { std::cout << "ctor\n"; }
+	~UnwShow() { std::cout << "dtor\n"; }
+};
+
+int foo(int n) {
+	UnwShow s;
+	if (n == 0) 
+		throw 1;
+	foo(n - 1);
+}
+
+int main() {
+	try { // вызов внутри try-блока
+		foo(4); // что на экране?
 	}
+	catch (const int) {
+		cerr << "Error caught" << '\n';
+	}
+}
+#endif
+
+#if 0
+#include "11 throws_cc.h"
+#endif
+
+#if 0
+#define FORMAT_THIS hex << noshowbase << reinterpret_cast<uintptr_t>(this) //MINE
+
+struct Base {
+	Base() { cout << "Base " << FORMAT_THIS << '\n'; } //MINE
+	Base(const Base&) { cout << "Base Copy " << FORMAT_THIS << '\n'; } //MINE
+	Base(Base&&) noexcept { cout << "Base Copy " << FORMAT_THIS << '\n'; }  //MINE
+	virtual ~Base() { cout << "~Base() " << FORMAT_THIS << '\n'; }
 };
 
 struct Derived : Base {
-	virtual ~Derived() {
-		cout << "~Derived()\n";
-	}
+	Derived() { cout << "Derived " << FORMAT_THIS << '\n'; } //MINE
+	Derived(const Derived&) { cout << "Derived Copy " << FORMAT_THIS << '\n'; } //MINE
+	Derived(Derived&&) noexcept { cout << "Derived Copy " << FORMAT_THIS << '\n'; } //MINE
+	virtual ~Derived() { cout << "~Derived() " << FORMAT_THIS << '\n'; }
 };
 
 int main() {
@@ -21,6 +70,11 @@ int main() {
 	try {
 		throw Derived();
 	}
+#if defined(CORR)
+	catch (Base& b) {
+		cout << "catch (Base& b):\n";
+	}
+#endif
 	catch (Base b) { //TEST!
 		cout << "catch (Base):\n";
 	}
@@ -30,94 +84,6 @@ int main() {
 }
 #endif
 
-#ifdef _2
-#include <iostream>
-#include <stdexcept>
-using namespace std;
-
-struct my_exc1 : exception {
-	char const *what() const noexcept override { return "exc1"; }
-};
-
-struct my_exc2 : exception {
-	char const *what() const noexcept override { return "exc2"; }
-};
-
-struct your_exc3 : my_exc1, my_exc2 {};
-
-int main() {
-	PRINT_FILE_LINE();
-
-	try {
-		throw your_exc3();
-	}
-	catch (exception const &e) {
-		cout << e.what() << endl;
-	}
-	catch (...) { //TEST!
-		cerr << "whoops!\n";
-	}
-}
-#endif
-
-#ifdef _3
-#include <iostream>
-#include <stdexcept>
-using namespace std;
-
-struct my_exc1 : virtual exception {
-	char const *what() const noexcept override { return "exc1"; }
-};
-
-struct my_exc2 : virtual exception {
-	char const *what() const noexcept override { return "exc2"; }
-};
-
-struct your_exc3 : my_exc1, my_exc2 {
-	char const *what() const noexcept override { return "your_exc3"; } //TEST!  
-};
-
-int main() {
-	PRINT_FILE_LINE();
-
-	try {
-		throw your_exc3();
-	}
-	catch (exception const &e) {
-		cout << e.what() << endl;
-	}
-	catch (...) {
-		cerr << "whoops!\n";
-	}
-}
-#endif
-
-#ifdef MINE
-#include <iostream>
-using namespace std;
-
-struct Base {
-	virtual ~Base() = default;
-	virtual const char *what() const noexcept {
-		return "Base";
-	}
-};
-
-struct my_exc1 : virtual Base {};
-struct my_exc2 : virtual Base {};
-struct your_exc3 : my_exc1, my_exc2 {}; //TEST
-
-int main() {
-	PRINT_FILE_LINE();
-
-	try {
-		throw your_exc3();
-	}
-	catch (const Base &e) {
-		cout << e.what() << endl;
-	}
-	catch (...) {
-		cerr << "whoops!\n";
-	}
-}
+#if 0
+#include "11 multinh_cc.h"
 #endif

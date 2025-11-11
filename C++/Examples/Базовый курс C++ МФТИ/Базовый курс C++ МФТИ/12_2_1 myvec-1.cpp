@@ -1,11 +1,11 @@
-#ifdef ON
+#ifndef ON
 
 #include <cassert> // First naive implementation: not exception safe // 08-exceptions/myvec-demo/myvec-1.cc @ https://github.com/tilir/cpp-graduate/blob/master/08-exceptions/myvec-demo/myvec-1.cc
 #include <iostream>
 #include <stdexcept>
 #include <utility>
-//MINE #include "vld.h" 
-#include "12_2 controllable.h"
+#include "vld.h" //MINE 
+#include "12 controllable.h"
 #include "stdafx.h" //MINE
 using namespace std; //MINE
 
@@ -48,9 +48,7 @@ public:
 		return *this;
 	}
 
-	~MyVector() { 
-		delete[] arr_; 
-	}
+	~MyVector() { delete[] arr_; }
 
 	T pop() {
 		if (used_ < 1)
@@ -76,13 +74,9 @@ public:
 		++used_;
 	}
 
-	size_t size() const { 
-		return used_; 
-	}
+	size_t size() const { return used_; }
 
-	size_t capacity() const { 
-		return size_; 
-	}
+	size_t capacity() const { return size_; }
 };
 
 void test1() {
@@ -100,7 +94,7 @@ int main() {
 	PRINT_FILE_LINE(); //MINE
 
 	try {
-		//test1();
+		test1();
 	}
 	catch (bad_alloc &) {
 		cout << "Exception caught\n";

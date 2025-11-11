@@ -35,7 +35,19 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="12_2 controllable.h">
+    <ClInclude Include="12 controllable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="11 throws.cc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="11 multinh.cc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="12 noexc.cc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="12 noexc-dtor.cc.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

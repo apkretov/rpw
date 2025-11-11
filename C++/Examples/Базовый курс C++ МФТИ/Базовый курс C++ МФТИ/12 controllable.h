@@ -17,9 +17,7 @@ struct Controllable {
 #endif
 	}
 
-	Controllable(Controllable &&rhs) noexcept : resource_(rhs.resource_) {
-		rhs.resource_ = nullptr;
-	}
+	Controllable(Controllable &&rhs) noexcept : resource_(rhs.resource_) { rhs.resource_ = nullptr; }
 
 	Controllable &operator=(Controllable &&rhs) noexcept {
 		std::swap(resource_, rhs.resource_);
