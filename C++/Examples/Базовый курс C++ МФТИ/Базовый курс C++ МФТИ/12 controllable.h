@@ -3,17 +3,20 @@
 #include <iostream>
 #include <stdexcept>
 #include <utility>
+#include "../../stdafx.h"
+#include <cstdint>
+#include <cstdio>
 using std::cout;
 
-#define DEBUG //MINE 
+//MINE #define DEBUG_CONTROLLABLE 
 
 struct Controllable {
 	static int control;
 	int *resource_;
 	
 	Controllable() : resource_(new int(42)) {
-#ifdef DEBUG
-		cout << "Constructing: this = " << this << '\n'; //MINE
+#ifdef DEBUG_CONTROLLABLE
+		cout << "Constructing: this = " << format_this(this) << '\n'; //MINE
 #endif
 	}
 
@@ -25,8 +28,8 @@ struct Controllable {
 	}
 	
 	Controllable(const Controllable &rhs) : resource_(new int(*rhs.resource_)) {
-#ifdef DEBUG
-		cout << "Copying: this = " << this << '\n'; //MINE
+#ifdef DEBUG_CONTROLLABLE
+		cout << "Copying: this = " << format_this(this) << '\n'; //MINE
 #endif
 		if (control == 0) {
 			control = 5;
@@ -43,8 +46,10 @@ struct Controllable {
 	}
 
 	~Controllable() { 
-#ifdef DEBUG
-		printf("Deleting: this = %p\n", this); //MINE
+#ifdef DEBUG_CONTROLLABLE
+		printf("Deleting: this = "); //MINE
+		printf_this(this);
+		printf("\n");
 #endif
 		delete resource_; 
 	}

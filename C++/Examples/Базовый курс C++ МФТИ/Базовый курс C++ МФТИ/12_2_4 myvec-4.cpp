@@ -4,11 +4,11 @@
 #include <iostream>
 #include <stdexcept>
 #include <utility>
-#include "stdafx.h" //MINE
+#include "../../stdafx.h" //MINE
 
 #include "12_2 controllable.h"
 
-#define DEBUG //MINE
+#define DEBUG_CONTROLLABLE //MINE
 
 int Controllable::control = 5;
 

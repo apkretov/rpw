@@ -1,6 +1,6 @@
 #include <iostream>
 #include <stdexcept>
-#include "stdafx.h"
+#include "../../stdafx.h"
 using namespace std;
 
 #if 0 //Порождение ошибки
@@ -48,20 +48,18 @@ int main() {
 #endif
 
 #if 0
-#define FORMAT_THIS hex << noshowbase << reinterpret_cast<uintptr_t>(this) //MINE
-
 struct Base {
-	Base() { cout << "Base " << FORMAT_THIS << '\n'; } //MINE
-	Base(const Base&) { cout << "Base Copy " << FORMAT_THIS << '\n'; } //MINE
-	Base(Base&&) noexcept { cout << "Base Copy " << FORMAT_THIS << '\n'; }  //MINE
-	virtual ~Base() { cout << "~Base() " << FORMAT_THIS << '\n'; }
+	Base() { cout << "Base " << format_this(this) << '\n'; } //MINE
+	Base(const Base&) { cout << "Base Copy " << format_this(this) << '\n'; } //MINE
+	Base(Base&&) noexcept { cout << "Base Copy " << format_this(this) << '\n'; }  //MINE
+	virtual ~Base() { cout << "~Base() " << format_this(this) << '\n'; }
 };
 
 struct Derived : Base {
-	Derived() { cout << "Derived " << FORMAT_THIS << '\n'; } //MINE
-	Derived(const Derived&) { cout << "Derived Copy " << FORMAT_THIS << '\n'; } //MINE
-	Derived(Derived&&) noexcept { cout << "Derived Copy " << FORMAT_THIS << '\n'; } //MINE
-	virtual ~Derived() { cout << "~Derived() " << FORMAT_THIS << '\n'; }
+	Derived() { cout << "Derived " << format_this(this) << '\n'; } //MINE
+	Derived(const Derived&) { cout << "Derived Copy " << format_this(this) << '\n'; } //MINE
+	Derived(Derived&&) noexcept { cout << "Derived Copy " << format_this(this) << '\n'; } //MINE
+	virtual ~Derived() { cout << "~Derived() " << format_this(this) << '\n'; }
 };
 
 int main() {

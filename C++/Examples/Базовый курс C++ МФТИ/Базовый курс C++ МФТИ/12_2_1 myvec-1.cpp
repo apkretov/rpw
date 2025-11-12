@@ -1,4 +1,4 @@
-#ifndef ON
+#if 1
 
 #include <cassert> // First naive implementation: not exception safe // 08-exceptions/myvec-demo/myvec-1.cc @ https://github.com/tilir/cpp-graduate/blob/master/08-exceptions/myvec-demo/myvec-1.cc
 #include <iostream>
@@ -6,8 +6,10 @@
 #include <utility>
 //MINE #include "vld.h" 
 #include "12 controllable.h"
-#include "stdafx.h" //MINE
+#include "../../stdafx.h" //MINE
 using namespace std; //MINE
+
+#define DEBUG_MYVECTOR //MINE
 
 int Controllable::control = 5;
 
@@ -17,9 +19,17 @@ class MyVector {
 	size_t size_, used_ = 0;
 
 public:
-	explicit MyVector(size_t sz = 0) : arr_(new T[sz]), size_(sz) {}
+	explicit MyVector(size_t sz = 0) : arr_(new T[sz]), size_(sz) {
+#ifdef DEBUG_MYVECTOR
+		cout << "MyVector ctor " << format_this(this) << '\n';
+#endif
+
+	}
 
 	MyVector(const MyVector &rhs) : arr_(new T[rhs.size_]), size_(rhs.size_), used_(rhs.used_) {
+#ifdef DEBUG_MYVECTOR
+		cout << "MyVector copy-ctor " << format_this(this) << '\n';
+#endif
 		for (size_t idx = 0; idx != size_; ++idx)
 			arr_[idx] = rhs.arr_[idx];
 	}
@@ -49,7 +59,14 @@ public:
 		return *this;
 	}
 
-	~MyVector() { delete[] arr_; }
+	~MyVector() { 
+#ifdef DEBUG_MYVECTOR //MINE
+		printf("MyVector dtor ");
+		printf_this(this);
+		printf("\n");
+#endif //DEBUG_MYVECTOR
+		delete[] arr_; 
+	}
 
 	T pop() {
 		if (used_ < 1)

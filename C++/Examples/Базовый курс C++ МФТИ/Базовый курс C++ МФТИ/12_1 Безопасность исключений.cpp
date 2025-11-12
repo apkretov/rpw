@@ -1,5 +1,5 @@
 #include <iostream>
-#include "stdafx.h"
+#include "../../stdafx.h"
 #include <type_traits>
 using namespace std;
 

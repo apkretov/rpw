@@ -1,12 +1,12 @@
-#ifdef ON
+#if 0
 
 #include <cassert> // Second better implementation: exception safe, but ugly // 08-exceptions/myvec-demo/myvec-2.cc @ https://github.com/tilir/cpp-graduate/blob/master/08-exceptions/myvec-demo/myvec-2.cc
 #include <iostream>
 #include <stdexcept>
 #include <utility>
-//MINE #include "vld.h"
+//MINE #include "vld.h" 
 #include "12 controllable.h"
-#include "stdafx.h" //MINE
+#include "../../stdafx.h" //MINE
 using namespace std; //MINE
 
 int Controllable::control = 5;

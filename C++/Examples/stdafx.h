@@ -49,6 +49,14 @@ inline std::string format_num(int64_t num) {
 	return form_num;
 }
 
+inline std::string format_this(const void* this_ptr) {
+	return std::format("{:x}", reinterpret_cast<uintptr_t>(this_ptr));
+}
+
+inline void printf_this(const void* this_ptr) noexcept {
+	printf("%llx", reinterpret_cast<uintptr_t>(this_ptr));
+}
+
 #ifdef KTB // Use the class below instead.
 template <typename Resolution = std::chrono::microseconds, typename Function, typename... Args>
 inline void duration(Function fnc, Args&&... args) {

@@ -6,7 +6,7 @@
 #include <utility>
 //MINE #include "vld.h"
 #include "12 controllable.h"
-#include "stdafx.h" //MINE
+#include "../../stdafx.h" //MINE
 
 int Controllable::control = 5;
 
