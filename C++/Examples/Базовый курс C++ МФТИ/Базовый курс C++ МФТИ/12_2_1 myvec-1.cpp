@@ -4,7 +4,7 @@
 #include <iostream>
 #include <stdexcept>
 #include <utility>
-#include "vld.h" //MINE 
+//MINE #include "vld.h" 
 #include "12 controllable.h"
 #include "stdafx.h" //MINE
 using namespace std; //MINE
@@ -34,6 +34,7 @@ public:
 		std::swap(arr_, rhs.arr_);
 		std::swap(size_, rhs.size_);
 		std::swap(used_, rhs.used_);
+		return *this; //MINE
 	}
 
 	MyVector &operator=(const MyVector &rhs) {
