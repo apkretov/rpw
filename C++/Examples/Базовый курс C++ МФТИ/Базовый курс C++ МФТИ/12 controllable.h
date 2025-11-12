@@ -5,7 +5,7 @@
 #include <utility>
 using std::cout;
 
-//MINE #define DEBUG 
+#define DEBUG //MINE 
 
 struct Controllable {
 	static int control;
