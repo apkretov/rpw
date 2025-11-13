@@ -1,4 +1,4 @@
-#if 1
+#if 0
 
 #include <cassert> // First naive implementation: not exception safe // 08-exceptions/myvec-demo/myvec-1.cc @ https://github.com/tilir/cpp-graduate/blob/master/08-exceptions/myvec-demo/myvec-1.cc
 #include <iostream>

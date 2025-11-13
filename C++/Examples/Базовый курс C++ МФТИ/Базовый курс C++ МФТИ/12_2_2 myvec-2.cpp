@@ -4,7 +4,7 @@
 #include <iostream>
 #include <stdexcept>
 #include <utility>
-//MINE #include "vld.h" 
+//MINE #include "vld.h"
 #include "12 controllable.h"
 #include "../../stdafx.h" //MINE
 using namespace std; //MINE
