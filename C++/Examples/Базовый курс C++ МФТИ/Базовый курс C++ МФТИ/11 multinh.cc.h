@@ -2,7 +2,7 @@
 
 #include <iostream>
 #include <stdexcept>
-#include "stdafx.h"
+#include "../../stdafx.h"
 using namespace std;
 
 #if 1

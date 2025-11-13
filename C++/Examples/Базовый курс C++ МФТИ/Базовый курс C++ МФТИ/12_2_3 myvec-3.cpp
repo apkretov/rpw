@@ -1,24 +1,20 @@
-#ifdef ON
+#if 1
 
 #include <cassert> // Third attempt: rather good implementation // 08-exceptions/myvec-demo/myvec-3.cc @ https://github.com/tilir/cpp-graduate/blob/master/08-exceptions/myvec-demo/myvec-3.cc
 #include <iostream>
 #include <stdexcept>
 #include <utility>
-//MINE #include "vld.h"
+//MINE #include "vld.h" 
 #include "12 controllable.h"
-#include "stdafx.h" //MINE
+#include "../../stdafx.h" //MINE
 
 int Controllable::control = 5;
 
 template <typename T> 
-void construct(T *p, const T &rhs) { //TEST!
-	new (p) T(rhs); 
-}
+void construct(T *p, const T &rhs) { new (p) T(rhs); } //TEST!
 
 template <class T> 
-void destroy(T *p) noexcept { //TEST!
-	p->~T(); 
-}
+void destroy(T *p) noexcept { p->~T(); } //TEST!
 
 template <typename FwdIter> 
 void destroy(FwdIter first, FwdIter last) noexcept { //TEST!

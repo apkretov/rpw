@@ -1,7 +1,7 @@
 #pragma once
 
 #include <type_traits>
-#include "stdafx.h"
+#include "../../stdafx.h"
 
 struct DefaultCtor {}; // 08-exceptions/noexc.cc @ https://github.com/tilir/cpp-graduate/blob/master/08-exceptions/noexc.cc
 
