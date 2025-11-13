@@ -1,4 +1,4 @@
-#if 1
+#if 0
 
 #include <cassert> // Third attempt: rather good implementation // 08-exceptions/myvec-demo/myvec-3.cc @ https://github.com/tilir/cpp-graduate/blob/master/08-exceptions/myvec-demo/myvec-3.cc
 #include <iostream>
@@ -102,13 +102,8 @@ struct MyVector : private MyVectorBuf<T> {
 		used_ += 1;
 	}
 
-	size_t size() const { 
-		return used_; 
-	}
-
-	size_t capacity() const { 
-		return size_; 
-	}
+	size_t size() const { return used_; }
+	size_t capacity() const { return size_; }
 };
 
 void test1() {

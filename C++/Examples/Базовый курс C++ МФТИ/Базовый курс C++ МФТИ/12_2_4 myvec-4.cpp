@@ -1,31 +1,25 @@
-#ifdef ON
+#if 1
 
 #include <cassert> // Fourth attempt: push with move if available // 08-exceptions/myvec-demo/myvec-4.cc @ https://github.com/tilir/cpp-graduate/blob/master/08-exceptions/myvec-demo/myvec-4.cc
 #include <iostream>
 #include <stdexcept>
 #include <utility>
 #include "../../stdafx.h" //MINE
-
-#include "12_2 controllable.h"
+#include "vld.h" //MINE
+#include "12 controllable.h"
 
 #define DEBUG_CONTROLLABLE //MINE
 
 int Controllable::control = 5;
 
 template <typename T> 
-void construct(T *p, const T &rhs) { 
-	new (p) T(rhs); 
-}
+void construct(T *p, const T &rhs) { new (p) T(rhs); }
 
 template <typename T> 
-void construct(T *p, T &&rhs) {
-	new (p) T(std::move(rhs));
-}
+void construct(T *p, T &&rhs) { new (p) T(std::move(rhs)); }
 
 template <class T>
-void destroy(T *p) {
-	p->~T();
-}
+void destroy(T *p) { p->~T(); }
 
 template <typename FwdIter> 
 void destroy(FwdIter first, FwdIter last) {
@@ -122,13 +116,8 @@ struct MyVector : private MyVectorBuf<T> { //TEST!
 		}
 	}
 
-	size_t size() const { 
-		return used_; 
-	}
-
-	size_t capacity() const { 
-		return size_; 
-	}
+	size_t size() const { return used_; }
+	size_t capacity() const { return size_; }
 };
 
 void test1() {
