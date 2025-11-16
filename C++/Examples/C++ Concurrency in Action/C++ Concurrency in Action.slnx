@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="C++ Concurrency in Action/C++ Concurrency in Action.vcxproj" Id="3ffe23bf-ca30-42b3-a36f-289d50c273a0" />
+</Solution>

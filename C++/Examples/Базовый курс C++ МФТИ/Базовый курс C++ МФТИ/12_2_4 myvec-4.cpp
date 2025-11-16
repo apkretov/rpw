@@ -5,7 +5,7 @@
 #include <stdexcept>
 #include <utility>
 #include "../../stdafx.h" //MINE
-#include "vld.h" //MINE
+//MINE #include "vld.h" 
 #include "12 controllable.h"
 
 #define DEBUG_CONTROLLABLE //MINE
