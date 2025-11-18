@@ -39,9 +39,27 @@
     <ClCompile Include="Listing 3.2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="3.2.4.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="3.2.5.1.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="3.2.5.2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="3.2.5.3.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Listing 3.7.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Listing 2.1.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Listing 3.8.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
