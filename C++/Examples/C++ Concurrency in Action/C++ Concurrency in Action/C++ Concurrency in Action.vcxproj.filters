@@ -54,12 +54,24 @@
     <ClCompile Include="Listing 3.7.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="3.2.7.1.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="3.2.7.2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Listing 2.1.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Listing 3.8.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Listing 3.6.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Listing 3.9.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

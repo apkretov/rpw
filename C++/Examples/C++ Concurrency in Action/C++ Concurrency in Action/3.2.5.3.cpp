@@ -1,3 +1,9 @@
+#ifdef MINE_DEADLOCK // Avoid calling user-supplied code while holding a lock. User code might acquire locks, causing nested locking and deadlock.
+//Deadlock scenario
+//Thread 1 holds a lock and calls user code.
+//User code tries to acquire the same or another lock already held by Thread 1 or other threads.
+//This can create nested locking and cause deadlock.
+
 #include <iostream>
 #include <thread>
 #include <mutex>
@@ -12,11 +18,6 @@ void user_code(function<void()> func) {
 	func();
 }
 
-#ifdef MINE_DEADLOCK // Avoid calling user-supplied code while holding a lock. User code might acquire locks, causing nested locking and deadlock.
-//Deadlock scenario
-//Thread 1 holds a lock and calls user code.
-//User code tries to acquire the same or another lock already held by Thread 1 or other threads.
-//This can create nested locking and cause deadlock.
 void thread_func() {
 	cout << "Thread locking mutex\n";
 	mtx.lock();
@@ -43,6 +44,21 @@ int main() {
 #endif // MINE_DEADLOCK
 
 #ifdef MINE_SOLUTION // Recommended approach : Avoid calling user code while holding locks. Unlock the mutex before calling user - supplied code. Re-lock only if needed safely afterward.
+
+#include <iostream>
+#include <thread>
+#include <mutex>
+#include <functional>
+#include "../../stdafx.h"
+using namespace std;
+
+mutex mtx;
+
+void user_code(function<void()> func) {
+	// User code might acquire locks inside here
+	func();
+}
+
 void thread_func_safe() {
 	mtx.lock();
 	cout << "Thread locked mutex, preparing to call user code\n";
