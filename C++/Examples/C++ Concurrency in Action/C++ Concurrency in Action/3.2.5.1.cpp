@@ -1,10 +1,5 @@
-#ifdef MINE // Deadlock often happens with locks, but it can also occur without locks, such as when two threads each wait by calling join() on the other. Neither thread can proceed because both are waiting for the other to finish, creating a deadlock. This can happen with more than two threads forming a cycle of waiting. The key to avoiding deadlock is: never wait for a thread that might be waiting for you.
-// To model a deadlock in C++ caused by threads each waiting on the other with join(), consider creating two threads where each tries to join the other thread. This will simulate a deadlock scenario due to cyclic waiting.
-// Explanation:
+#ifdef MINE // Deadlock due to a cycle of waiting without any locks.
 // Both threads wait indefinitely for the other thread to finish, creating a deadlock.
-// The main thread does not join either thread, so the program may deadlock (or terminate depending on environment).
-// This models deadlock without any locks but via cyclic join() waits.
-// Key point:
 // To avoid this kind of deadlock, a thread should never wait on a thread that may be waiting on it, preventing the cycle of dependencies.
 #include <iostream>
 #include <thread>

@@ -1,4 +1,4 @@
-#if 1
+#if 0
 
 #include <mutex>
 #include "../../stdafx.h"
@@ -28,7 +28,7 @@ void thread_a() {
 		high_level_func();
 	}
 	catch (const std::logic_error& e) { //MINE
-		std::cerr << "Thread A exception: " << e.what() << '\n';
+		std::cerr << this_thread::get_id() << " Thread A exception: " << e.what() << '\n';
 	}
 }
 
@@ -45,19 +45,21 @@ void thread_b() {
 		other_stuff();
 	}
 	catch (const std::logic_error& e) { //MINE
-		std::cerr << "Thread B exception: " << e.what() << '\n';
+		std::cerr << this_thread::get_id() << " Thread B exception: " << e.what() << '\n';
 	}
 }
 
-#pragma region MINE
+#pragma region MINE 
+// Thread A acquires the high_level_mutex (highest hierarchy), then the low_level_mutex (lower hierarchy), respecting the lock order, so it runs fine.
+// Thread B first locks other_mutex(mid - level hierarchy), then tries to acquire high_level_mutex inside other_stuff(), which violates the lock hierarchy and throws an error at runtime.
 int do_low_level_stuff() {
-	cout << "Low level work done.\n";
+	cout << this_thread::get_id() << " Low level work done.\n";
 	return 42;
 }
 
-void high_level_stuff(int some_param) { cout << "High level work with param: " << some_param << "\n"; }
+void high_level_stuff(int some_param) { cout << this_thread::get_id() << " High level work with param: " << some_param << "\n"; }
 
-void do_other_stuff() { cout << "Doing other stuff.\n"; }
+void do_other_stuff() { cout << this_thread::get_id() << " Doing other stuff.\n"; }
 
 int main() {
 	print_file_line();

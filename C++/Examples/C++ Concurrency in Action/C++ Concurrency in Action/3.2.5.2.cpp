@@ -7,7 +7,7 @@ using namespace std;
 mutex mutex2;
 mutex mutex1;
 
-#ifdef MINE_DEADLOCK // Deadlock due to nested locks // When Thread A locks mutex 1 and waits to lock mutex 2 while Thread B locks mutex 2 and waits to lock mutex 1, a deadlock occurs.
+#ifndef MINE_DEADLOCK // Deadlock due to nested locks // When Thread A locks mutex 1 and waits to lock mutex 2 while Thread B locks mutex 2 and waits to lock mutex 1, a deadlock occurs.
 void thread1_func() {
 	cout << "Thread 1 locking mutex1\n";
 	mutex1.lock();

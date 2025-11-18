@@ -31,7 +31,7 @@ public:
 	}
 
 	void unlock() {
-		if (this_thread_hierarchy_value != hierarchy_value)
+		if (this_thread_hierarchy_value != hierarchy_value) // Detect incorrect unlocking order violations (not doing "last locked, first unlocked" discipline).
 			throw std::logic_error("mutex hierarchy violated");
 		this_thread_hierarchy_value = previous_hierarchy_value;
 		internal_mutex.unlock();
