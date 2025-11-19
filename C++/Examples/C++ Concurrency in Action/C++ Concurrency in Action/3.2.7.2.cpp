@@ -1,4 +1,4 @@
-#ifndef MINE // A simple example of the gateway class pattern
+#ifdef MINE // A simple example of the gateway class pattern
 
 #include <mutex>
 #include <iostream>

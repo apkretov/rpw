@@ -60,6 +60,12 @@
     <ClCompile Include="3.2.7.2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="3.3.1.1.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="3.3.1.2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Listing 2.1.h">
@@ -72,6 +78,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Listing 3.9.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Listing 3.10.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

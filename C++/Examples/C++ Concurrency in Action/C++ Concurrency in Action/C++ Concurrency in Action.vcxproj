@@ -135,6 +135,8 @@
     <ClCompile Include="3.2.5.3.cpp" />
     <ClCompile Include="3.2.7.1.cpp" />
     <ClCompile Include="3.2.7.2.cpp" />
+    <ClCompile Include="3.3.1.1.cpp" />
+    <ClCompile Include="3.3.1.2.cpp" />
     <ClCompile Include="Listing 2.7.cpp" />
     <ClCompile Include="Listing 2.9.cpp" />
     <ClCompile Include="Listing 1.1.cpp" />
@@ -145,6 +147,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Listing 2.1.h" />
+    <ClInclude Include="Listing 3.10.h" />
     <ClInclude Include="Listing 3.6.h" />
     <ClInclude Include="Listing 3.8.h" />
     <ClInclude Include="Listing 3.9.h" />
