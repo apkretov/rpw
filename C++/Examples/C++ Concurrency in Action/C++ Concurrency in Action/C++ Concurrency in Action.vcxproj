@@ -137,6 +137,8 @@
     <ClCompile Include="3.2.7.2.cpp" />
     <ClCompile Include="3.3.1.1.cpp" />
     <ClCompile Include="3.3.1.2.cpp" />
+    <ClCompile Include="3.3.1.4.cpp" />
+    <ClCompile Include="3.3.1.3.cpp" />
     <ClCompile Include="Listing 2.7.cpp" />
     <ClCompile Include="Listing 2.9.cpp" />
     <ClCompile Include="Listing 1.1.cpp" />
