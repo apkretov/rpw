@@ -1,4 +1,4 @@
-﻿#ifdef MINE // Thread-safe lazy initialization with std::call_once
+﻿#ifndef MINE // Thread-safe lazy initialization with std::call_once
 
 #include <iostream>
 #include <memory>
@@ -10,11 +10,12 @@ using namespace std;
 
 struct some_resource {
 	some_resource() {
-		cout << "Resource constructed.\n";
+		cout << "Resource constructed by thread " << this_thread::get_id() << ".\n";
 		this_thread::sleep_for(chrono::milliseconds(100)); // Simulate resource construction taking time
 	}
-	~some_resource() { cout << "Resource destroyed.\n"; }
-	void do_something() { cout << "Resource used.\n"; }
+
+	~some_resource() { cout << "Resource destroyed by thread " << this_thread::get_id() << ".\n"; }
+	void do_something() { cout << "Resource used by thread " << this_thread::get_id() << ".\n"; }
 };
 
 shared_ptr<some_resource> resource_ptr;
@@ -36,7 +37,7 @@ void use_resource_safely(const char* thread_name) { // The function executed by 
 
 int main() {
 	print_file_line();
-	cout << "Demonstrating thread-safe lazy initialization using std::call_once.\n";
+	cout << "Main Thread (" << this_thread::get_id() << "): Demonstrating thread-safe lazy initialization using std::call_once.\n";
 
 	resource_ptr.reset(); // Reset for demonstration
 

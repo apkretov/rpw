@@ -1,4 +1,4 @@
-﻿#if 1 // Problematic double-checked locking
+﻿#if 0 // Problematic double-checked locking
 // What can happen
 // Thread 1 checks resource_ptr(❶), finds it nullptr, enters the lock, and begins initializing the resource.
 // Before Thread 1 finishes initialization, Thread 2 also checks resource_ptr(❶) without locking, finds it still nullptr, and then waits for the mutex.
