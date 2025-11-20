@@ -1,4 +1,4 @@
-﻿#ifndef MINE // Thread-safe lazy initialization with std::call_once
+﻿#ifdef MINE // Thread-safe lazy initialization with std::call_once
 
 #include <iostream>
 #include <memory>

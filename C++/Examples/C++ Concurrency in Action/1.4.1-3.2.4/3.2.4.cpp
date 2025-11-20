@@ -1,4 +1,4 @@
-#ifdef MINE // Model a deadlock situation. Imagine two threads, Thread 1 and Thread 2, and two mutexes, Mutex 1 and Mutex 2. Thread 1 locks Mutex 1 and then tries to lock Mutex 2. At the same time, Thread 2 locks Mutex 2 and then tries to lock Mutex 1. Since Thread 1 is holding Mutex 1 and waiting for Mutex 2, and Thread 2 is holding Mutex 2 and waiting for Mutex 1, neither thread can proceed, resulting in a deadlock.
+#ifndef MINE // Model a deadlock situation. Imagine two threads, Thread 1 and Thread 2, and two mutexes, Mutex 1 and Mutex 2. Thread 1 locks Mutex 1 and then tries to lock Mutex 2. At the same time, Thread 2 locks Mutex 2 and then tries to lock Mutex 1. Since Thread 1 is holding Mutex 1 and waiting for Mutex 2, and Thread 2 is holding Mutex 2 and waiting for Mutex 1, neither thread can proceed, resulting in a deadlock.
 
 #include <iostream>
 #include <thread>

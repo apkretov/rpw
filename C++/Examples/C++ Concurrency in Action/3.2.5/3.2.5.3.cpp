@@ -43,7 +43,7 @@ int main() {
 }
 #endif // MINE_DEADLOCK
 
-#ifdef MINE_SOLUTION // Recommended approach : Avoid calling user code while holding locks. Unlock the mutex before calling user - supplied code. Re-lock only if needed safely afterward.
+#ifndef MINE_SOLUTION // Recommended approach : Avoid calling user code while holding locks. Unlock the mutex before calling user - supplied code. Re-lock only if needed safely afterward.
 
 #include <iostream>
 #include <thread>
