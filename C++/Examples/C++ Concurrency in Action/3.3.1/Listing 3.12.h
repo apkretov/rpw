@@ -10,6 +10,7 @@ struct data_packet {};
 
 struct connection_handle {
 	void send_data(data_packet const& data) { std::cout << "sending data\n"; }
+	
 	data_packet receive_data() {
 		std::cout << "receiving data\n";
 		return data_packet();
