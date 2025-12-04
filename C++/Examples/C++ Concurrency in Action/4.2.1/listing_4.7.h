@@ -37,7 +37,10 @@ public:
 	move_only(move_only const&) = delete;
 	move_only& operator=(move_only&&) = default;
 	move_only& operator=(move_only const&) = delete;
-	void operator()() {}
+
+	void operator()() {
+		std::cout << "move_only::operator()\n"; //MINE
+	}
 };
 
 //OFF auto f5 = std::async(move_only());

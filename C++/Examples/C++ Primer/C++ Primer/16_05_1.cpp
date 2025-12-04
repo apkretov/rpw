@@ -1,11 +1,11 @@
-#ifdef ON
+#ifndef ON
 
 #include <iostream>
 #include "../../stdafx.h"
 using namespace std;
 
 #pragma region Template Specializations
-#ifdef ORIG
+#ifndef ORIG
 template <typename T>
 int compare(const T &, const T &); //																															first version; can compare any two types
 
@@ -51,7 +51,8 @@ int compare(const T &v1, const T &v2) {
 #ifndef Defining_a_Function_Template_Specialization
 template <> //TEST!!
 int compare(const char *const &p1, const char *const &p2) { //TEST! //																					special version of compare to handle pointers to character arrays
-	cout << "template <>\nint compare(const char *const &p1, const char *const &p2)\n\n";
+	cout << "template <>\n"
+			"int compare(const char *const &p1, const char *const &p2)\n\n";
 	return strcmp(p1, p2);
 }
 #endif
@@ -59,7 +60,8 @@ int compare(const char *const &p1, const char *const &p2) { //TEST! //										
 #pragma region Nontype_Template_Parameters
 template <unsigned N, unsigned M>
 int compare(const char(&p1)[N], const char(&p2)[M]) {
-	cout << "template <unsigned N, unsigned M>\nint compare(const char(&p1)[N], const char(&p2)[M])\n\n";
+	cout << "template <unsigned N, unsigned M>\n"
+			"int compare(const char(&p1)[N], const char(&p2)[M])\n\n";
 	return strcmp(p1, p2);
 }
 #pragma endregion
