@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>18.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{2da25c73-754b-4e21-8bd2-e58fa96d4e08}</ProjectGuid>
-    <RootNamespace>My423</RootNamespace>
+    <ProjectGuid>{5cc4b874-c04f-4813-a5ec-5acf234a2581}</ProjectGuid>
+    <RootNamespace>My4231</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -127,12 +127,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="4.2.3_connection.h" />
-    <ClInclude Include="listing_4.10.h" />
+    <ClCompile Include="connection.cpp" />
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="4.2.3.cpp" />
-    <ClCompile Include="4.2.3_connection.cpp" />
+    <ClInclude Include="connection.h" />
+    <ClInclude Include="listing_4.10.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
