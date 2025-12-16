@@ -15,34 +15,11 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="4.2.4.1.cpp">
+    <ClCompile Include="4.2.5.1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="4.2.4.2.cpp">
+    <ClCompile Include="4.2.5.2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="4.2.4.3.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="4.2.4.4.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="4.2.4.5.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="4.2.4.6.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="4.2.4.7.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="square_root.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="calculate_value.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>

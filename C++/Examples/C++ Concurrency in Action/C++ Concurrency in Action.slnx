@@ -15,4 +15,5 @@
   <Project Path="4.2.3.1/4.2.3.1.vcxproj" Id="5cc4b874-c04f-4813-a5ec-5acf234a2581" />
   <Project Path="4.2.3.2/4.2.3.2.vcxproj" Id="9121c8e3-357c-4399-8f02-60c102b157c9" />
   <Project Path="4.2.4/4.2.4.vcxproj" Id="0434e345-56f1-43ca-b360-af1394280e87" />
+  <Project Path="4.2.5/4.2.5.vcxproj" Id="a8f71b11-2950-4368-a2b8-d76d34362a39" />
 </Solution>
