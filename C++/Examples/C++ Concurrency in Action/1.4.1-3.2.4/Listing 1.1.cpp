@@ -8,6 +8,7 @@ void hello() { std::cout << "Hello Concurrent World\n"; }
 
 int main() {
 	print_file_line();
+	
 	std::thread t(hello);
 	t.join();
 }
