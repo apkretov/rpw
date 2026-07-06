@@ -18,26 +18,11 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="4.4.2.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="close_queue.h" />
-    <ClInclude Include="dispatcher.h" />
-    <ClInclude Include="Listing 4.15.h" />
-    <ClInclude Include="Listing 4.16.h" />
-    <ClInclude Include="message_base.h" />
-    <ClInclude Include="queue.h" />
-    <ClInclude Include="receiver.h" />
-    <ClInclude Include="sender.h" />
-    <ClInclude Include="simulator_components.h" />
-    <ClInclude Include="wrapped_message.h" />
-  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>18.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{302f1fcf-16bc-4fa3-95db-bc56acb126bb}</ProjectGuid>
-    <RootNamespace>My442</RootNamespace>
+    <ProjectGuid>{9db472d2-c6dc-449d-b077-6e04695c733b}</ProjectGuid>
+    <RootNamespace>My4421</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -153,6 +138,21 @@
       <EnableSegmentHeap>true</EnableSegmentHeap>
     </Manifest>
   </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="4.4.2.1.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="close_queue.h" />
+    <ClInclude Include="Dispatcher.h" />
+    <ClInclude Include="Listing 4.15.h" />
+    <ClInclude Include="Listing 4.16.h" />
+    <ClInclude Include="message_base.h" />
+    <ClInclude Include="Queue.h" />
+    <ClInclude Include="receiver.h" />
+    <ClInclude Include="Sender.h" />
+    <ClInclude Include="simulator_components.h" />
+    <ClInclude Include="wrapped_message.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

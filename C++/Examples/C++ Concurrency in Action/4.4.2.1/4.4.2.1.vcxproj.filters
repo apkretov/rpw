@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="4.4.2.cpp">
+    <ClCompile Include="4.4.2.1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -23,7 +23,7 @@
     <ClInclude Include="close_queue.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="dispatcher.h">
+    <ClInclude Include="Dispatcher.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Listing 4.15.h">
@@ -32,16 +32,16 @@
     <ClInclude Include="Listing 4.16.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="queue.h">
+    <ClInclude Include="message_base.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Queue.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="receiver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="sender.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="message_base.h">
+    <ClInclude Include="Sender.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="simulator_components.h">
