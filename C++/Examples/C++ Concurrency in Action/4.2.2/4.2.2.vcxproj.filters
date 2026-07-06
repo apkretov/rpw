@@ -15,18 +15,24 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="4.2.2.3.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="4.2.2.2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="4.2.2.4.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="4.2.2.1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="4.2.2.3.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="listing_4.9.h">
+    <ClInclude Include="Listing 4.9.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Listing 4.8.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

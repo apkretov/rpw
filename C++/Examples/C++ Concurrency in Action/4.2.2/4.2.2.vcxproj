@@ -19,12 +19,14 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="4.2.2.2.cpp" />
     <ClCompile Include="4.2.2.1.cpp" />
     <ClCompile Include="4.2.2.3.cpp" />
+    <ClCompile Include="4.2.2.2.cpp" />
+    <ClCompile Include="4.2.2.4.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="listing_4.9.h" />
+    <ClInclude Include="Listing 4.8.h" />
+    <ClInclude Include="Listing 4.9.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>18.0</VCProjectVersion>

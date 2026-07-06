@@ -1,4 +1,4 @@
-#ifdef ON
+#ifndef ON
 
 #include <iostream>
 #include "../../stdafx.h"
@@ -43,15 +43,15 @@ void operator delete(void *mem) noexcept {
 	printf("void operator delete(void *mem): mem = %p\n", mem); //MINE
 	free(mem); 
 }
-#pragma endregion
+#pragma endregion //The malloc and free Functions
 
 int main() {
 	print_file_line();
 
-	//Overloading_new_and_delete();
+	Overloading_new_and_delete();
 
-	auto p = new int(1);
-	delete p;
+	//auto p = new int(1);
+	//delete p;
 
 	return 0;
 }

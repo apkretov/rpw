@@ -127,14 +127,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="4.1.1.1.cpp" />
-    <ClCompile Include="4.1.1.2.cpp" />
+    <ClCompile Include="4.1.1.cpp" />
+    <ClCompile Include="4.1.3.cpp" />
     <ClCompile Include="4.1.2.cpp" />
-    <ClCompile Include="4.1.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="listing_4.1.h" />
-    <ClInclude Include="listing_4.5.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

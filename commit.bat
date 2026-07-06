@@ -12,3 +12,4 @@ if "%arg1%"=="" (
 
 git add -v .
 git commit -m "%arg1%"
+git log --oneline -3

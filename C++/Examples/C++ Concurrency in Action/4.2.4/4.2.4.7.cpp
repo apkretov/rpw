@@ -1,4 +1,4 @@
-#ifndef MINE
+#ifdef MINE
 
 #include <future>
 #include <iostream>
@@ -8,15 +8,14 @@ using namespace std;
 int main() { // Broken packaged_task
 	print_file_line();
 
-	future<void>* f_ptr;
+	future<void> f;
 	{
 		packaged_task<void()> task([] {});
-		future<void> f = task.get_future();
-		f_ptr = &f;
+		f = task.get_future();
 	} // Destroy without invoking task
 
 	try {
-		f_ptr->get();
+		f.get();
 	}
 	catch (const future_error& e) {
 		cerr << "Uninvoked task: " << e.what() << '\n';

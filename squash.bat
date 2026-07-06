@@ -19,3 +19,4 @@ if "%arg2%"=="" (
 git add -v .
 git reset --soft HEAD~%arg1%
 git commit -m "%arg2%"
+git log --oneline -3

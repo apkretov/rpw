@@ -1,25 +1,28 @@
-#ifdef MINE // std::packaged_task associates a future with a function or callable. When the packaged_task is called, it executes the function and sets the future with the function's return value. This mechanism is useful for thread pools or task schedulers that manage tasks by handling packaged_task instances instead of individual functions.
+#ifndef MINE
 
-#include <future> 
+#include <future>
 #include <iostream>
-#include <thread>   
-#include "../../stdafx.h"
-using namespace std;
+#include <vector>
+#include <string>
+#include "Listing 4.8.h"
 
-int add(int a, int b) { return a + b; }
+std::string example_callback(std::vector<char>* v, int i) { return "Vector size: " + std::to_string(v->size()) + ", int: " + std::to_string(i); }
+
+void unspecialized_function() { std::cout << "This is an unspecialized function.\n"; }
 
 int main() {
-	print_file_line();
+	std::vector<char> data = {'a', 'b', 'c'};
 
-	packaged_task<int(int, int)> task(add); // Step 1: Associate a packaged_task with a function (add)
-	future<int> resultFuture = task.get_future(); // Retrieve the future associated with this packaged_task
+	std::packaged_task<std::string(std::vector<char>*, int)> special_task(example_callback); // Now uses your specialized version!
+	std::packaged_task<void() > general_task(unspecialized_function);
+	std::future<std::string> result = special_task.get_future();
 
-	thread t(move(task), 3, 4); // Step 2 and 3: Run the packaged_task, which calls the function and sets the future value
-	t.join(); // Wait for thread to finish
+	special_task(&data, 42); // Call the task (typically in another thread)
 
-	int result = resultFuture.get(); // Step 3 continued: Get the value from the future (set by packaged_task)
-	cout << "Addition result: " << result << '\n';
+	std::cout << result.get() << '\n';
 
-	// Step 4: This mechanism can be used in thread pools or task schedulers, here we just use a single thread for demonstration.
+	general_task();
+
+	return 0;
 }
 #endif // MINE

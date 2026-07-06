@@ -1,48 +1,29 @@
-#ifndef MINE
+#ifdef MINE // Non-Recommended Approach (No Predicate) Wakes up on spurious wakeups, may process data prematurely.
 
 #include <iostream>
 #include <thread>
-#include "listing_4.5.h"
-#include "../../stdafx.h"
-using namespace std;
+#include <mutex>
+#include <condition_variable>
 
-struct data_chunk { int id; };
+std::mutex mtx;
+std::condition_variable cv;
+bool ready = false;
 
-static int prepared_chunks_count = 0;
-constexpr int total_chunks_to_produce = 5;
-
-bool more_data_to_prepare() { return prepared_chunks_count < total_chunks_to_produce; }
-
-data_chunk prepare_data() { return data_chunk{prepared_chunks_count++}; }
-
-void process(data_chunk& data) { cout << "Processing chunk " << data.id << endl; }
-
-bool is_last_chunk(data_chunk& data) { return data.id == 4; } // last chunk has id 4
-
-threadsafe_queue<data_chunk> q;
-
-void data_preparation_thread() {
-	while (more_data_to_prepare()) {
-		const data_chunk data = prepare_data();
-		q.push(data);
-	}
-}
-
-void data_processing_thread() {
-	for (int i = 0; i < total_chunks_to_produce; ++i) {
-		data_chunk data;
-		q.wait_and_pop(data);
-		process(data);
-	}
+void worker() {
+	std::unique_lock<std::mutex> lock(mtx);
+	cv.wait(lock);  // Wakes on signal OR spurious wakeup, no check!
+	std::cout << "Worker: Data ready? " << (ready ? "Yes" : "No!") << std::endl;
 }
 
 int main() {
-	print_file_line();
-
-	thread t1(data_preparation_thread);
-	thread t2(data_processing_thread);
-
-	t1.join();
-	t2.join();
+	std::thread t(worker);
+	std::this_thread::sleep_for(std::chrono::milliseconds(100));
+	{
+		std::lock_guard<std::mutex> lock(mtx);
+		ready = true;
+		cv.notify_one();
+	}
+	t.join();
+	return 0;
 }
 #endif //MINE

@@ -1,33 +1,35 @@
-#ifdef MINE // Intermediate: Delegates work to a private helper that assumes the mutex is already locked, preventing double locking.
+#ifndef MINE // GoodDesign: Final recommended approach with clear ownership of locking and a private function doing the guarded work, avoiding recursive locks.
 
 #include <iostream>
 #include <mutex>
 #include "../../stdafx.h"
 using namespace std;
 
-class Intermediate { // --- Intermediate solution: private helper that assumes mutex is locked ---
+class GoodDesign { // --- Final recommended design: clear ownership and no recursive locks ---
 	mutex mtx;
-	void helper() const { cout << "helper running\n"; } // Helper does work but assumes mutex is locked externally
+	void do_work() const { cout << "Doing work with locked mutex\n"; } // Private helper function that works on protected data
 public:
-	void f1() {
+	void public_f1() {
 		lock_guard lock(mtx);
-		cout << "f1 start\n";
-		helper();  // No locking here, already locked by f1
-		cout << "f1 end\n";
+		cout << "public_f1 start\n";
+		do_work();
+		cout << "public_f1 end\n";
 	}
 
-	void f2() {
+	void public_f2() {
 		lock_guard lock(mtx);
-		helper();  // No lock inside helper, safe to call here too
+		cout << "public_f2 start\n";
+		do_work();
+		cout << "public_f2 end\n";
 	}
 };
 
 int main() {
 	print_file_line();
 
-	Intermediate inter;
-	inter.f1();
-	inter.f2();
+	GoodDesign good;
+	good.public_f1();
+	good.public_f2();
 
 	return 0;
 }

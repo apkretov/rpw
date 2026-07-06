@@ -20,7 +20,6 @@ class hierarchical_mutex {
 		previous_hierarchy_value = this_thread_hierarchy_value;
 		this_thread_hierarchy_value = hierarchy_value;
 	}
-
 public:
 	explicit hierarchical_mutex(unsigned long value) : hierarchy_value(value), previous_hierarchy_value(0) {}
 

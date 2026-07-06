@@ -3,17 +3,30 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="1.4.1-3.2.4/1.4.1-3.2.4.vcxproj" Id="0333845b-294a-44c8-9206-989a37f4c569" />
+  <Project Path="1.4.1-3.2.2/1.4.1-3.2.2.vcxproj" Id="4d106c7e-dfac-4b0b-bb2f-8db8abada6dd" />
+  <Project Path="3.2.3/3.2.3.vcxproj" Id="46365582-56eb-42ce-ae4a-70bee85d844c" />
+  <Project Path="3.2.4/3.2.4.vcxproj" Id="fce1e2bf-d720-4a1d-81a5-f06e9f608f0b" />
   <Project Path="3.2.5/3.2.5.vcxproj" Id="4b8e2994-da8b-45a6-b053-3996c98e8341" />
-  <Project Path="3.2.7/3.2.7.vcxproj" Id="a1349dff-375d-4b11-b969-5114e02529c3" />
+  <Project Path="3.2.6/3.2.6.vcxproj" Id="82a428db-0ba2-4fd9-b652-4a985800a80d" />
+  <Project Path="3.2.7/3.2.7.vcxproj" Id="3b0cc806-6626-433c-932a-48390e13ad18" />
+  <Project Path="3.2.8/3.2.8.vcxproj" Id="9a4590b3-3d83-4276-b027-a3524e2bcd3e" />
   <Project Path="3.3.1/3.3.1.vcxproj" Id="336298ff-8ecb-4085-a565-3e4784af953c" />
   <Project Path="3.3.2/3.3.2.vcxproj" Id="80d80fd3-ad3b-49c4-82b3-7a6f2bc7c840" />
   <Project Path="3.3.3/3.3.3.vcxproj" Id="c690d164-8612-4603-bc74-5a8092e1671e" />
+  <Project Path="4.1.1/4.1.1.vcxproj" Id="b89b28d4-0a21-456c-ad94-187b809cf45d" />
+  <Project Path="4.1.2/4.1.2.vcxproj" Id="7e9aca55-fbc7-4255-a97b-a4c65d42a94b" />
   <Project Path="4.1/4.1.vcxproj" Id="f60cdaab-693b-4733-be72-c41e4ef2d880" />
   <Project Path="4.2.1/4.2.1.vcxproj" Id="a8e2a1cc-0afd-4d28-a00a-977a8163ce14" />
   <Project Path="4.2.2/4.2.2.vcxproj" Id="4ac7b553-c744-4aae-adcd-932a701138e7" />
-  <Project Path="4.2.3.1/4.2.3.1.vcxproj" Id="5cc4b874-c04f-4813-a5ec-5acf234a2581" />
-  <Project Path="4.2.3.2/4.2.3.2.vcxproj" Id="9121c8e3-357c-4399-8f02-60c102b157c9" />
+  <Project Path="4.2.3/4.2.3.vcxproj" Id="815d88d1-f646-4bcb-aa16-29ed6f6c584c" />
   <Project Path="4.2.4/4.2.4.vcxproj" Id="0434e345-56f1-43ca-b360-af1394280e87" />
   <Project Path="4.2.5/4.2.5.vcxproj" Id="a8f71b11-2950-4368-a2b8-d76d34362a39" />
+  <Project Path="4.3.1/4.3.1.vcxproj" Id="3991fce0-bc1a-40a5-91ba-17608fa1c37f" />
+  <Project Path="4.3.2/4.3.2.vcxproj" Id="b8f9f31c-5a1d-4ccf-9a9e-634e44e4b142" />
+  <Project Path="4.3.3/4.3.3.vcxproj" Id="49369bd7-6dc4-419a-8f7e-5ecbf253da96" />
+  <Project Path="4.3.4/4.3.4.vcxproj" Id="e8a2b25f-e257-45a8-85c4-a9d65642976a" />
+  <Project Path="4.3/4.3.vcxproj" Id="6e1cfb75-77fc-423c-86b8-0adfdb8f0b98" />
+  <Project Path="4.4.1.1/4.4.1.1.vcxproj" Id="f3acfcb3-4173-4ee3-8d7c-8079a3d2318c" />
+  <Project Path="4.4.1.2/4.4.1.2.vcxproj" Id="96dbe574-e655-405c-945d-50a2985ad5f0" />
+  <Project Path="4.4.2/4.4.2.vcxproj" Id="302f1fcf-16bc-4fa3-95db-bc56acb126bb" />
 </Solution>

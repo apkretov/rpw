@@ -1,8 +1,9 @@
-#ifdef MINE
+#if 1
 
+#include <functional>
 #include <future>
 #include "../../stdafx.h"
-#include "listing_4.7.h"
+#include "Listing 4.7.h"
 
 int main() { 
 	print_file_line(); //MINE
@@ -14,4 +15,4 @@ int main() {
 	auto f9 = std::async(baz, std::ref(x)); // Implementation chooses
 	f7.wait(); // Invoke deferred function
 }
-#endif //MINE
+#endif //1

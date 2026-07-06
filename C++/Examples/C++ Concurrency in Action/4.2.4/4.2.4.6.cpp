@@ -8,15 +8,15 @@ using namespace std;
 int main() { // Broken promise
 	print_file_line();
 
-	future<int>* f_ptr;
+	future<int> f;
 	{
 		promise<int> p;
-		future<int> f = p.get_future();
-		f_ptr = &f;
+		f = p.get_future();
 	} // Destroy promise without setting value/exception. p destructor stores broken_promise.
 
 	try {
-		int res = f_ptr->get();  // Throws future_error(broken_promise)
+		int res = f.get();
+		cout << "res = " << res << '\n';
 	}
 	catch (const future_error& e) {
 		cerr << "Broken promise: " << e.what() << '\n';

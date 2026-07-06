@@ -18,7 +18,7 @@
     <ClCompile Include="3.3.2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="listing_3.13.h">
+    <ClCompile Include="Listing 3.13.h">
       <Filter>Header Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -98,3 +98,10 @@ build*/
 # OS files
 .DS_Store
 Thumbs.db
+
+# Copilot instructions
+.github/
+
+# Gemini CLI, Cursor and other configuration files
+GEMINI.md
+*.md

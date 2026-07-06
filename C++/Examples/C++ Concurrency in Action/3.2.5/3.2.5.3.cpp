@@ -14,8 +14,7 @@ using namespace std;
 mutex mtx;
 
 void user_code(function<void()> func) {
-	// User code might acquire locks inside here
-	func();
+	func(); // User code might acquire locks inside here
 }
 
 void thread_func() {
@@ -28,7 +27,7 @@ void thread_func() {
 		mtx.lock();  // This causes deadlock because mutex is already locked by this thread
 		cout << "User code acquired mutex\n";
 		mtx.unlock();
-		});
+	});
 
 	mtx.unlock();
 	cout << "Thread finished\n";
@@ -43,7 +42,7 @@ int main() {
 }
 #endif // MINE_DEADLOCK
 
-#ifndef MINE_SOLUTION // Recommended approach : Avoid calling user code while holding locks. Unlock the mutex before calling user - supplied code. Re-lock only if needed safely afterward.
+#ifdef MINE_SOLUTION // Recommended approach : Avoid calling user code while holding locks. Unlock the mutex before calling user - supplied code. Re-lock only if needed safely afterward.
 
 #include <iostream>
 #include <thread>
@@ -55,8 +54,7 @@ using namespace std;
 mutex mtx;
 
 void user_code(function<void()> func) {
-	// User code might acquire locks inside here
-	func();
+	func(); // User code might acquire locks inside here
 }
 
 void thread_func_safe() {
@@ -70,7 +68,7 @@ void thread_func_safe() {
 		mtx.lock();
 		cout << "User code safely acquired mutex\n";
 		mtx.unlock();
-		});
+	});
 
 	cout << "Thread finished safely\n";
 }

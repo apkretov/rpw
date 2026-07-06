@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="listing_4.6.cpp">
+    <ClCompile Include="Listing 4.6.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="4.2.1.1.cpp">
@@ -26,7 +26,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="listing_4.7.h">
+    <ClInclude Include="Listing 4.7.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

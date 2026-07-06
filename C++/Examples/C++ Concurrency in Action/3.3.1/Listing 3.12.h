@@ -2,24 +2,28 @@
 
 #pragma region MINE
 
-#include <iostream>
 #include <mutex>
 
-struct connection_info {};
-struct data_packet {};
+struct connection_info { 
+	int id; 
+};
+
+struct data_packet { 
+	int id; 
+};
 
 struct connection_handle {
-	void send_data(data_packet const& data) { std::cout << "sending data\n"; }
+	void send_data(data_packet const& data) { std::print("thread {}: sending data\n", std::this_thread::get_id()); }
 	
 	data_packet receive_data() {
-		std::cout << "receiving data\n";
+		std::print("thread {}: receiving data\n", std::this_thread::get_id());
 		return data_packet();
 	}
 };
 
 struct connection_manager {
 	static connection_handle open(connection_info const& info) {
-		std::cout << "opening connection\n";
+		std::print("thread {}: opening connection\n", std::this_thread::get_id());
 		return connection_handle();
 	}
 };
@@ -30,19 +34,22 @@ private:
 	connection_info connection_details;
 	connection_handle connection;
 	std::once_flag connection_init_flag;
+	
 	void open_connection() {
-		std::cout << "thread " << std::this_thread::get_id() << ": open_connection() called\n"; //MINE
+		std::print("thread {}: open_connection() called\n", std::this_thread::get_id()); //MINE
 		connection = connection_manager::open(connection_details);
 	}
 public:
 	X(connection_info const& connection_details_) : connection_details(connection_details_) {}
 
 	void send_data(data_packet const& data) {
+		std::print("thread {}: send_data() called\n", std::this_thread::get_id()); //MINE
 		std::call_once(connection_init_flag, &X::open_connection, this);
 		connection.send_data(data);
 	}
 
 	data_packet receive_data() {
+		std::print("thread {}: receive_data() called\n", std::this_thread::get_id()); //MINE
 		std::call_once(connection_init_flag, &X::open_connection, this);
 		return connection.receive_data();
 	}

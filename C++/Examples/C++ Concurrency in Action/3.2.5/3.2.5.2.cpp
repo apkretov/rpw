@@ -1,4 +1,7 @@
-#include <iostream> // Avoid nested locks. Don’t lock another mutex if you already hold one. This prevents deadlock from lock use alone. If multiple locks are needed, acquire them together with std::lock to avoid deadlock.
+// Avoid nested locks. Don’t lock another mutex if you already hold one. This prevents deadlock from lock use alone. If multiple locks are needed, acquire them together with std::lock to avoid deadlock.
+#ifdef MINE_DEADLOCK
+
+#include <iostream> 
 #include <thread>
 #include <mutex>
 #include "../../stdafx.h"
@@ -6,8 +9,8 @@ using namespace std;
 
 mutex mutex2;
 mutex mutex1;
+ // Deadlock due to nested locks // When Thread A locks mutex 1 and waits to lock mutex 2 while Thread B locks mutex 2 and waits to lock mutex 1, a deadlock occurs.
 
-#ifdef MINE_DEADLOCK // Deadlock due to nested locks // When Thread A locks mutex 1 and waits to lock mutex 2 while Thread B locks mutex 2 and waits to lock mutex 1, a deadlock occurs.
 void thread1_func() {
 	cout << "Thread 1 locking mutex1\n";
 	mutex1.lock();
@@ -52,6 +55,16 @@ int main() {
 #endif // MINE_DEADLOCK
 
 #ifdef MINE_STDLOCK // Recommended solution: use std::lock. Using std::lock(mutex1, mutex2) ensures both mutexes are locked together atomically, preventing deadlock. Unlocking is done afterward normally.
+
+#include <iostream> 
+#include <thread>
+#include <mutex>
+#include "../../stdafx.h"
+using namespace std;
+
+mutex mutex2;
+mutex mutex1;
+
 void thread1_func_safe() {
 	std::cout << "Thread 1 locking mutex1 and mutex2 safely\n";
 	std::lock(mutex1, mutex2);
@@ -71,6 +84,8 @@ void thread2_func_safe() {
 }
 
 int main() {
+	print_file_line();
+
 	std::thread t1(thread1_func_safe);
 	std::thread t2(thread2_func_safe);
 
