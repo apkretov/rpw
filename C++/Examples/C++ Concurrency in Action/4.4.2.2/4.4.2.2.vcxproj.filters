@@ -15,40 +15,37 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="4.4.2.1.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
+    <ClInclude Include="Listing C.1.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Listing C.2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Listing C.3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Listing C.4.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Listing C.5.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Listing C.6.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Listing C.7.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Listing C.8.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Listing C.9.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="close_queue.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="dispatcher.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Listing 4.15.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Listing 4.16.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="message_base.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="queue.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="receiver.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="sender.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="simulator_components.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="wrapped_message.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
+    <ClCompile Include="Listing C.10.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
