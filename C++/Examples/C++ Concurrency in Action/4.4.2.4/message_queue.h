@@ -16,21 +16,23 @@ struct wrapped_message : message_base {
 };
 
 class message_queue {
-	std::mutex m;
-	std::condition_variable cv;
-	std::queue<std::shared_ptr<message_base>> q;
 public:
 	template<typename T>
 	void push(T const& msg) {
-		std::lock_guard<std::mutex> lk(m);
+		std::scoped_lock lk(m);
 		q.push(std::make_shared<wrapped_message<T>>(msg));
 		cv.notify_all();
 	}
 
 	std::shared_ptr<message_base> wait_and_pop() {
-		std::unique_lock<std::mutex> lk(m);
+		std::unique_lock lk(m);
 		cv.wait(lk, [&] { return !q.empty(); });
-		auto res = q.front(); q.pop();
+		auto res = q.front(); 
+		q.pop();
 		return res;
 	}
+private:
+	std::mutex m;
+	std::condition_variable cv;
+	std::queue<std::shared_ptr<message_base>> q;
 };
