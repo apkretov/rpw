@@ -11,6 +11,8 @@ template <typename T> class simple_future; // Forward declaration to break circu
 
 template <typename T>
 class simple_promise {
+	template <typename U> 
+	friend class simple_future;
 public:
 	simple_promise() : state(make_shared<shared_state<T>>()) {}
 	simple_promise(const simple_promise&) = delete; // Disable copy for simplicity; real promise is movable.
@@ -29,11 +31,12 @@ public:
 	void set_exception(exception_ptr e) { state->set_exception(e); } // Set an exception.
 private:
 	shared_ptr<shared_state<T>> state;
-	template <typename U> friend class simple_future;
 };
 
 template <> 
 class simple_promise<void> { // The full template specialization for void (no value to store).
+	template <typename U> 
+	friend class simple_future;
 public:
 	simple_promise() : state(make_shared<shared_state<void>>()) {}
 	simple_promise(const simple_promise&) = delete;
@@ -41,9 +44,8 @@ public:
 	simple_promise(simple_promise&& other) noexcept : state(move(other.state)) {}
 
 	simple_promise& operator=(simple_promise&& other) noexcept {
-		if (this != &other) {
+		if (this != &other)
 			state = move(other.state);
-		}
 		return *this;
 	}
 
@@ -52,7 +54,6 @@ public:
 	void set_exception(exception_ptr e) { state->set_exception(e); }
 private:
 	shared_ptr<shared_state<void>> state;
-	template <typename U> friend class simple_future;
 };
 
 #include "simple_future.h"
