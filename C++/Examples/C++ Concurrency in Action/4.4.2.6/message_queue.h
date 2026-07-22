@@ -1,19 +1,10 @@
 #pragma once
 
+#include "wrapped_message.h"
 #include <mutex>
 #include <condition_variable>
 #include <queue>
 #include <memory>
-
-struct message_base {
-	virtual ~message_base() = default;
-};
-
-template<typename Msg>
-struct wrapped_message : message_base {
-	Msg contents;
-	explicit wrapped_message(Msg const& contents_) : contents(contents_) {}
-};
 
 class message_queue {
 public:
@@ -27,7 +18,7 @@ public:
 	std::shared_ptr<message_base> wait_and_pop() {
 		std::unique_lock lk(m);
 		cv.wait(lk, [&] { return !q.empty(); });
-		auto res = q.front(); 
+		auto res = q.front();
 		q.pop();
 		return res;
 	}
