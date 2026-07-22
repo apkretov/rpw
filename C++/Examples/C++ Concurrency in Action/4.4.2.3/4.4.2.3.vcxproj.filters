@@ -15,27 +15,27 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="4.4.2.6.cpp">
+    <ClCompile Include="4.4.2.3.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="debug.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="dispatcher.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="messages.h">
+    <ClInclude Include="message_queue.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="message_queue.h">
+    <ClInclude Include="messages.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="template_dispatcher.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="wrapped_message.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="debug.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,5 +1,7 @@
 #pragma once
 
+#pragma region MINE
+
 #include "wrapped_message.h"
 #include <mutex>
 #include <condition_variable>
@@ -27,3 +29,4 @@ private:
 	std::condition_variable cv;
 	std::queue<std::shared_ptr<message_base>> q;
 };
+#pragma endregion //MINE

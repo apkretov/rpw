@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>18.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{d62c75ec-564f-4e2b-9173-f91f32a09c1f}</ProjectGuid>
-    <RootNamespace>My4426</RootNamespace>
+    <ProjectGuid>{c0bd0fae-5703-4972-a6c0-3876456da608}</ProjectGuid>
+    <RootNamespace>My4423</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -139,15 +139,15 @@
     </Manifest>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="4.4.2.3.cpp" />
+  </ItemGroup>
+  <ItemGroup>
     <ClInclude Include="debug.h" />
     <ClInclude Include="dispatcher.h" />
     <ClInclude Include="messages.h" />
     <ClInclude Include="message_queue.h" />
     <ClInclude Include="template_dispatcher.h" />
     <ClInclude Include="wrapped_message.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="4.4.2.6.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

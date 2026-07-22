@@ -1,3 +1,5 @@
+#pragma region MINE
+
 #include "message_queue.h"
 #include "dispatcher.h"
 #include "messages.h"
@@ -272,3 +274,4 @@ Useful for big TMP; overkill here. For this example, the `show_type` error or a 
 
 If you want, in Agent mode I can add a small optional `TRACE_CHAIN` macro to this file that prints ctor/dtor/`dispatch` steps without changing behavior. In Ask mode I can only outline it as above.
 */
+#pragma endregion //MINE

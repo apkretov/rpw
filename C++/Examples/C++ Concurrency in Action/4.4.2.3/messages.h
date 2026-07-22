@@ -1,5 +1,7 @@
 #pragma once
 
+#pragma region MINE
+
 #include <string>
 
 struct MsgA {
@@ -9,3 +11,4 @@ struct MsgA {
 struct MsgB {
 	int value;
 };
+#pragma endregion //MINE

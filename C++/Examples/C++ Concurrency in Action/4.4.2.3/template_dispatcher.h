@@ -1,5 +1,7 @@
 #pragma once
 
+#pragma region MINE
+
 #include "message_queue.h"
 #include <utility>
 #include <memory>
@@ -138,3 +140,4 @@ Type nesting is only in the **type of `PreviousDispatcher`** and the **`prev` po
 
 **Bottom line:** printing `typeid(Msg)` (or a demangled name) in the ctor is the right way to visualize which concrete links are being built; you’re not mistaken about the class already knowing `Msg` at that point.
 */
+#pragma endregion //MINE

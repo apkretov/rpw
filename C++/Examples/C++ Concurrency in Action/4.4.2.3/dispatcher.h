@@ -1,5 +1,7 @@
 #pragma once
 
+#pragma region MINE
+
 #include "message_queue.h"
 #include <utility>
 #include <memory>
@@ -58,3 +60,4 @@ private:
 };
 
 #include "template_dispatcher.h" // After dispatcher is complete (circular dependency)
+#pragma endregion //MINE
