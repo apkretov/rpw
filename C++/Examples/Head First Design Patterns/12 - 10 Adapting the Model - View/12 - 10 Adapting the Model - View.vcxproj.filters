@@ -27,9 +27,6 @@
     <ClInclude Include="..\12-10_Adapting_the_Model\ControllerInterface.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\12-10_Adapting_the_Model\DJView.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\12-10_Adapting_the_Model\DJViewControl.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -62,7 +59,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\12-10_Adapting_the_Model\DJViewControl.cpp">
+    <ClCompile Include="..\12-10_Adapting_the_Model\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
