@@ -72,7 +72,8 @@ class atm {
 				unsigned const pin_length = 4; 
 				pin += msg.digit; 
 				if (pin.length() == pin_length) {
-					bank.send(verify_pin(account, pin, incoming)); state = &atm::verifying_pin;
+					bank.send(verify_pin(account, pin, incoming)); 
+					state = &atm::verifying_pin;
 				}
 			})
 			.handle<clear_last_pressed>([&](clear_last_pressed const& msg) {
