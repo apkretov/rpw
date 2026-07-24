@@ -1,0 +1,108 @@
+#pragma region MINE
+// Teaching stand-in for Concurrency TS <experimental/future>.
+// MSVC never shipped this header; the TS was withdrawn from standardization.
+#pragma once
+
+#include <chrono>
+#include <future>
+#include <thread>
+#include <type_traits>
+#include <utility>
+
+namespace std::experimental {
+template <typename T>
+class future {
+public:
+	future() noexcept = default;
+	explicit future(std::future<T> f) noexcept : inner(std::move(f)) {}
+	future(future&&) noexcept = default;
+	future& operator=(future&&) noexcept = default;
+	future(const future&) = delete;
+	future& operator=(const future&) = delete;
+
+	T get() { return inner.get(); }
+	bool valid() const noexcept { return inner.valid(); }
+	void wait() const { inner.wait(); }
+	bool is_ready() const { return inner.valid() && inner.wait_for(std::chrono::seconds(0)) == std::future_status::ready; }
+
+	template <typename F>
+	auto then(F&& func) { // Continuations TS: schedule func(*this) when ready; invalidates *this.
+		using U = std::invoke_result_t<std::decay_t<F>, future>;
+		std::promise<U> p;
+		auto result = future<U>(p.get_future());
+		std::future<T> moved = std::move(inner);
+		
+		std::thread(
+			[p = std::move(p), f = std::decay_t<F>(std::forward<F>(func)), moved = std::move(moved)]() mutable {
+				try {
+					future self(std::move(moved));
+					if constexpr (std::is_void_v<U>) {
+						f(std::move(self));
+						p.set_value();
+					} else
+						p.set_value(f(std::move(self)));
+				} catch (...) {
+					p.set_exception(std::current_exception());
+				}
+			}).detach();
+		return result;
+	}
+private:
+	std::future<T> inner;
+};
+
+template <>
+class future<void> {
+public:
+	future() noexcept = default;
+	explicit future(std::future<void> f) noexcept : inner(std::move(f)) {}
+	future(future&&) noexcept = default;
+	future& operator=(future&&) noexcept = default;
+	future(const future&) = delete;
+	future& operator=(const future&) = delete;
+
+	void get() { inner.get(); }
+	bool valid() const noexcept { return inner.valid(); }
+	void wait() const { inner.wait(); }
+	bool is_ready() const { return inner.valid() && inner.wait_for(std::chrono::seconds(0)) == std::future_status::ready; }
+
+	template <typename F>
+	auto then(F&& func) {
+		using U = std::invoke_result_t<std::decay_t<F>, future>;
+		std::promise<U> p;
+		auto result = future<U>(p.get_future());
+		std::future<void> moved = std::move(inner);
+		std::thread(
+			[p = std::move(p), f = std::decay_t<F>(std::forward<F>(func)),
+			 moved = std::move(moved)]() mutable {
+				try {
+					future self(std::move(moved));
+					if constexpr (std::is_void_v<U>) {
+						f(std::move(self));
+						p.set_value();
+					} else
+						p.set_value(f(std::move(self)));
+				} catch (...) {
+					p.set_exception(std::current_exception());
+				}
+			}).detach();
+		return result;
+	}
+private:
+	std::future<void> inner;
+};
+
+template <typename T>
+future<T> make_ready_future(T value) {
+	std::promise<T> p;
+	p.set_value(std::move(value));
+	return future<T>(p.get_future());
+}
+
+inline future<void> make_ready_future() {
+	std::promise<void> p;
+	p.set_value();
+	return future<void>(p.get_future());
+}
+} // namespace std::experimental
+#pragma endregion // MINE
