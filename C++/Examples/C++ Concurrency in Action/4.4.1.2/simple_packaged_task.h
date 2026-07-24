@@ -5,7 +5,6 @@
 #include <type_traits>
 #include "simple_promise.h"
 #include "simple_future.h"
-using namespace std;
 
 template <typename F> class simple_packaged_task; // primary template not defined
 
@@ -13,16 +12,16 @@ template <typename R, typename... Args>
 class simple_packaged_task<R(Args...)> { // Specialization for general callable type.
 public:
 	template <typename F> 
-	explicit simple_packaged_task(F&& f) : func(forward<F>(f)) {} // Construct from any callable that can be stored in function.
+	explicit simple_packaged_task(F&& f) : func(std::forward<F>(f)) {} // Construct from any callable that can be stored in function.
 
 	simple_packaged_task(const simple_packaged_task&) = delete;
 	simple_packaged_task& operator=(const simple_packaged_task&) = delete;
-	simple_packaged_task(simple_packaged_task&& other) noexcept : func(move(other.func)), prom(move(other.prom)) {}
+	simple_packaged_task(simple_packaged_task&& other) noexcept : func(std::move(other.func)), prom(std::move(other.prom)) {}
 
 	simple_packaged_task& operator=(simple_packaged_task&& other) noexcept {
 		if (this != &other) {
-			func = move(other.func);
-			prom = move(other.prom);
+			func = std::move(other.func);
+			prom = std::move(other.prom);
 		}
 		return *this;
 	}
@@ -31,20 +30,20 @@ public:
 
 	void operator()(Args... args) { // Invoke the stored callable, set value or exception.
 		try {
-			if constexpr (is_void_v<R>) {
-				func(forward<Args>(args)...); // If it appears, ignore the compiler warning: "std::forward" should only be called on a forwarding reference.
+			if constexpr (std::is_void_v<R>) {
+				func(std::forward<Args>(args)...); // If it appears, ignore the compiler warning: "std::forward" should only be called on a forwarding reference.
 				prom.set_value();
 			} else {
-				R result = func(forward<Args>(args)...); // Same as above.
-				prom.set_value(move(result));
+				R result = func(std::forward<Args>(args)...); // Same as above.
+				prom.set_value(std::move(result));
 			}
 		}
 		catch (...) {
-			prom.set_exception(current_exception());
+			prom.set_exception(std::current_exception());
 		}
 	}
 private:
-	function<R(Args...)> func;
+	std::function<R(Args...)> func;
 	simple_promise<R> prom;
 };
 #pragma endregion //MINE

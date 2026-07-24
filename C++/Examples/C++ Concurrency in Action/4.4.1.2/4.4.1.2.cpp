@@ -16,10 +16,8 @@
 #include "Listing 4.14.h"
 #endif //SPAWN_TASK
 
-using namespace std;
-
 static int compute_sum(int a, int b) { // A simple function to run asynchronously.
-	this_thread::sleep_for(chrono::milliseconds(100));
+	std::this_thread::sleep_for(std::chrono::milliseconds(100));
 	return a + b;
 }
 
@@ -30,38 +28,38 @@ int main() {
 		simple_promise<int> p;
 		simple_future<int> f = p.get_future();
 
-		jthread producer([pr = move(p)]() mutable {
+		std::jthread producer([pr = std::move(p)]() mutable {
 			try {
-				this_thread::sleep_for(chrono::milliseconds(50)); // Simulate work
+				std::this_thread::sleep_for(std::chrono::milliseconds(50)); // Simulate work
 				pr.set_value(compute_sum(10, 32));
 			}
 			catch (...) {
-				pr.set_exception(current_exception());
+				pr.set_exception(std::current_exception());
 			}
 		});
 
 		int result = f.get(); // In the main thread, wait and get the result.
-		cout << "simple_promise/simple_future result = " << result << "\n";
+		std::cout << "simple_promise/simple_future result = " << result << "\n";
 	}
 
 	{ // 2) Using packaged_task directly.
 		simple_packaged_task<int(int, int)> task(compute_sum);
 		auto f = task.get_future();
 
-		jthread t(move(task), 10, 32); // task(10, 32) runs in the new thread and sets the promise.
+		std::jthread t(std::move(task), 10, 32); // task(10, 32) runs in the new thread and sets the promise.
 
 		int result = f.get();
-		cout << "simple_packaged_task result = " << result << "\n";
+		std::cout << "simple_packaged_task result = " << result << "\n";
 	}
 
 	{ // 3) Using async-like helper.
 #ifdef SIMPLE_ASYNC
 		auto f = simple_async(compute_sum, 10, 32); // compute_sum(7, 8) runs in background; we just wait on the future.
 #else //SPAWN_TASK
-		auto f = spawn_task( [](pair<int, int> args) { return compute_sum(args.first, args.second); }, pair{10, 32}); // spawn_task (Listing 4.14) passes one argument to f; bundle (10, 32) for compute_sum.
+		auto f = spawn_task( [](std::pair<int, int> args) { return compute_sum(args.first, args.second); }, std::pair{10, 32}); // spawn_task (Listing 4.14) passes one argument to f; bundle (10, 32) for compute_sum.
 #endif //SPAWN_TASK
 		int result = f.get();
-		cout << "simple_async result = " << result << "\n";
+		std::cout << "simple_async result = " << result << "\n";
 	}
 
 	return 0;

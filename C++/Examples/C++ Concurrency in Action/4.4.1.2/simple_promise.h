@@ -5,7 +5,6 @@
 #include <memory>
 #include <utility>
 #include "shared_state.h"
-using namespace std;
 
 template <typename T> class simple_future; // Forward declaration to break circular dependency
 
@@ -14,23 +13,23 @@ class simple_promise {
 	template <typename U> 
 	friend class simple_future;
 public:
-	simple_promise() : state(make_shared<shared_state<T>>()) {}
+	simple_promise() : state(std::make_shared<shared_state<T>>()) {}
 	simple_promise(const simple_promise&) = delete; // Disable copy for simplicity; real promise is movable.
 	simple_promise& operator=(const simple_promise&) = delete;
-	simple_promise(simple_promise&& other) noexcept : state(move(other.state)) {}
+	simple_promise(simple_promise&& other) noexcept : state(std::move(other.state)) {}
 
 	simple_promise& operator=(simple_promise&& other) noexcept {
 		if (this != &other) 
-			state = move(other.state);
+			state = std::move(other.state);
 		return *this;
 	}
 	
 	simple_future<T> get_future(); // Get the associated future.
 	void set_value(const T& v) { state->set_value(v); } // Set the result value.
-	void set_value(T&& v) { state->set_value(move(v)); }
-	void set_exception(exception_ptr e) { state->set_exception(e); } // Set an exception.
+	void set_value(T&& v) { state->set_value(std::move(v)); }
+	void set_exception(std::exception_ptr e) { state->set_exception(e); } // Set an exception.
 private:
-	shared_ptr<shared_state<T>> state;
+	std::shared_ptr<shared_state<T>> state;
 };
 
 template <> 
@@ -38,22 +37,22 @@ class simple_promise<void> { // The full template specialization for void (no va
 	template <typename U> 
 	friend class simple_future;
 public:
-	simple_promise() : state(make_shared<shared_state<void>>()) {}
+	simple_promise() : state(std::make_shared<shared_state<void>>()) {}
 	simple_promise(const simple_promise&) = delete;
 	simple_promise& operator=(const simple_promise&) = delete;
-	simple_promise(simple_promise&& other) noexcept : state(move(other.state)) {}
+	simple_promise(simple_promise&& other) noexcept : state(std::move(other.state)) {}
 
 	simple_promise& operator=(simple_promise&& other) noexcept {
 		if (this != &other)
-			state = move(other.state);
+			state = std::move(other.state);
 		return *this;
 	}
 
 	simple_future<void> get_future();
 	void set_value() { state->set_value(); }
-	void set_exception(exception_ptr e) { state->set_exception(e); }
+	void set_exception(std::exception_ptr e) { state->set_exception(e); }
 private:
-	shared_ptr<shared_state<void>> state;
+	std::shared_ptr<shared_state<void>> state;
 };
 
 #include "simple_future.h"
