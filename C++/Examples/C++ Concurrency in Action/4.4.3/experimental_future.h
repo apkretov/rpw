@@ -93,6 +93,50 @@ private:
 };
 
 template <typename T>
+class promise {
+public:
+	promise() = default;
+	promise(promise&&) noexcept = default;
+	promise& operator=(promise&&) noexcept = default;
+	promise(const promise&) = delete;
+	promise& operator=(const promise&) = delete;
+
+	future<T> get_future() { return future<T>(inner.get_future()); }
+
+	void set_value(const T& value) { inner.set_value(value); }
+	void set_value(T&& value) { inner.set_value(std::move(value)); }
+	void set_exception(std::exception_ptr e) { inner.set_exception(std::move(e)); }
+
+	void set_value_at_thread_exit(const T& value) { inner.set_value_at_thread_exit(value); }
+	void set_value_at_thread_exit(T&& value) { inner.set_value_at_thread_exit(std::move(value)); }
+	void set_exception_at_thread_exit(std::exception_ptr e) { inner.set_exception_at_thread_exit(std::move(e)); }
+
+private:
+	std::promise<T> inner;
+};
+
+template <>
+class promise<void> {
+public:
+	promise() = default;
+	promise(promise&&) noexcept = default;
+	promise& operator=(promise&&) noexcept = default;
+	promise(const promise&) = delete;
+	promise& operator=(const promise&) = delete;
+
+	future<void> get_future() { return future<void>(inner.get_future()); }
+
+	void set_value() { inner.set_value(); }
+	void set_exception(std::exception_ptr e) { inner.set_exception(std::move(e)); }
+
+	void set_value_at_thread_exit() { inner.set_value_at_thread_exit(); }
+	void set_exception_at_thread_exit(std::exception_ptr e) { inner.set_exception_at_thread_exit(std::move(e)); }
+
+private:
+	std::promise<void> inner;
+};
+
+template <typename T>
 future<T> make_ready_future(T value) {
 	std::promise<T> p;
 	p.set_value(std::move(value));
