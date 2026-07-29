@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>18.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{57ec17df-4ad7-43e9-8afc-6ea3d5f9041f}</ProjectGuid>
-    <RootNamespace>My444</RootNamespace>
+    <ProjectGuid>{f9801452-0c76-4c25-81ed-4c7729bf159b}</ProjectGuid>
+    <RootNamespace>My4441</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -139,18 +139,18 @@
     </Manifest>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="4.4.4.h" />
+    <ClCompile Include="4.4.4.4.1.cpp" />
+    <ClCompile Include="4.4.4.4.2.cpp" />
+    <ClCompile Include="4.4.4.4.3.cpp" />
+    <ClCompile Include="4.4.4.4.4.cpp" />
+    <ClCompile Include="4.4.4.4.5.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="4.4.4.1.h" />
     <ClInclude Include="Listing 4.18.h" />
     <ClInclude Include="Listing 4.19.h" />
     <ClInclude Include="Listing 4.20.h" />
     <ClInclude Include="Listing 4.21.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="4.4.4.1.cpp" />
-    <ClCompile Include="4.4.4.2.cpp" />
-    <ClCompile Include="4.4.4.3.cpp" />
-    <ClCompile Include="4.4.4.4.cpp" />
-    <ClCompile Include="4.4.4.5.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
