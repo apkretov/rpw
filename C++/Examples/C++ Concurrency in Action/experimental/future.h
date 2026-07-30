@@ -12,6 +12,8 @@
 namespace std::experimental {
 template <typename T>
 class future;
+template <typename T>
+class shared_future;
 
 namespace detail {
 template <typename T>
@@ -45,6 +47,7 @@ public:
 	bool is_ready() const {
 		return inner.valid() && inner.wait_for(std::chrono::seconds(0)) == std::future_status::ready;
 	}
+	shared_future<T> share();
 
 	template <typename F>
 	auto then(F&& func) { // Continuations TS: schedule func(*this) when ready; invalidates *this.
@@ -111,6 +114,7 @@ public:
 	bool is_ready() const {
 		return inner.valid() && inner.wait_for(std::chrono::seconds(0)) == std::future_status::ready;
 	}
+	shared_future<void> share();
 
 	template <typename F>
 	auto then(F&& func) {
@@ -159,6 +163,89 @@ public:
 private:
 	std::future<void> inner;
 };
+
+template <typename T>
+class shared_future {
+public:
+	shared_future() noexcept = default;
+	explicit shared_future(std::shared_future<T> f) noexcept : inner(std::move(f)) {}
+
+	T const& get() const { return inner.get(); }
+	bool valid() const noexcept { return inner.valid(); }
+	void wait() const { inner.wait(); }
+
+	template <typename F>
+	auto then(F&& func) const {
+		using U = std::invoke_result_t<std::decay_t<F>, shared_future>;
+		std::promise<U> p;
+		auto result = future<U>(p.get_future());
+		auto shared = inner;
+
+		std::thread([p = std::move(p), f = std::decay_t<F>(std::forward<F>(func)),
+					 shared = std::move(shared)]() mutable {
+			try {
+				shared_future self(std::move(shared));
+				if constexpr (std::is_void_v<U>) {
+					f(std::move(self));
+					p.set_value();
+				} else
+					p.set_value(f(std::move(self)));
+			} catch (...) {
+				p.set_exception(std::current_exception());
+			}
+		}).detach();
+		return result;
+	}
+
+private:
+	std::shared_future<T> inner;
+};
+
+template <>
+class shared_future<void> {
+public:
+	shared_future() noexcept = default;
+	explicit shared_future(std::shared_future<void> f) noexcept : inner(std::move(f)) {}
+
+	void get() const { inner.get(); }
+	bool valid() const noexcept { return inner.valid(); }
+	void wait() const { inner.wait(); }
+
+	template <typename F>
+	auto then(F&& func) const {
+		using U = std::invoke_result_t<std::decay_t<F>, shared_future>;
+		std::promise<U> p;
+		auto result = future<U>(p.get_future());
+		auto shared = inner;
+
+		std::thread([p = std::move(p), f = std::decay_t<F>(std::forward<F>(func)),
+					 shared = std::move(shared)]() mutable {
+			try {
+				shared_future self(std::move(shared));
+				if constexpr (std::is_void_v<U>) {
+					f(std::move(self));
+					p.set_value();
+				} else
+					p.set_value(f(std::move(self)));
+			} catch (...) {
+				p.set_exception(std::current_exception());
+			}
+		}).detach();
+		return result;
+	}
+
+private:
+	std::shared_future<void> inner;
+};
+
+template <typename T>
+shared_future<T> future<T>::share() {
+	return shared_future<T>(inner.share());
+}
+
+inline shared_future<void> future<void>::share() {
+	return shared_future<void>(inner.share());
+}
 
 template <typename T>
 class promise {

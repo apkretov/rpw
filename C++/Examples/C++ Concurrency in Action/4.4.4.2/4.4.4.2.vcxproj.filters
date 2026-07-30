@@ -15,37 +15,8 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="4.4.4.1.1.cpp">
+    <ClCompile Include="4.4.4.2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="4.4.4.1.2.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="4.4.4.1.3.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="4.4.4.1.4.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="4.4.4.1.5.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="4.4.4.1.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Listing 4.18.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Listing 4.19.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Listing 4.20.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Listing 4.21.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>
