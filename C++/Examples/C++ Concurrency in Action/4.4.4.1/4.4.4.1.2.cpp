@@ -1,13 +1,15 @@
 ﻿#ifdef MINE // demo_textbook_4_18_sequential_blocks_ui
 
-// Textbook 4.18 claim (baseline before async):
-// Sequential login runs on the calling (UI) thread, so the UI is blocked
-// for the full authenticate + request_info wait.
-//
-// It shows the textbook 4.18 baseline:
-// A) Sequential login on the UI thread → UI blocked(~176 ms), ** 0 frames during login * *
-// B) Same time budget with UI free → frames keep rendering(why the book moves to async)
-// C) 40 sequential logins → wall time adds up on one thread; peak blocked = 1
+/*
+Textbook 4.18 claim (baseline before async):
+Sequential login runs on the calling (UI) thread, so the UI is blocked
+for the full authenticate + request_info wait.
+
+It shows the textbook 4.18 baseline:
+A) Sequential login on the UI thread → UI blocked(~176 ms), ** 0 frames during login * *
+B) Same time budget with UI free → frames keep rendering(why the book moves to async)
+C) 40 sequential logins → wall time adds up on one thread; peak blocked = 1
+*/
 
 #include <atomic>
 #include <chrono>

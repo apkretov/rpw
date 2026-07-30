@@ -1,4 +1,4 @@
-#ifndef MINE
+#ifdef MINE
 
 #include <iostream>
 #include <thread>

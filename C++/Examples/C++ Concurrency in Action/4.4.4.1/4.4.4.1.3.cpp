@@ -1,13 +1,15 @@
 ﻿#ifdef MINE // demo_textbook_4_19_ui_free_but_blocked_workers
 
-// Textbook 4.19 claim:
-// - async keeps the UI thread free
-// - but each background task still BLOCKS its worker thread while waiting
-//
-// It shows the textbook 4.19 baseline:
-// A) Sequential on UI : login blocked UI ~166 ms
-// B) Async + UI pump : UI kept rendering frames while login ran
-// C) 40 logins : many workers blocked waiting at once
+/*
+Textbook 4.19 claim:
+- async keeps the UI thread free
+- but each background task still BLOCKS its worker thread while waiting
+
+It shows the textbook 4.19 baseline:
+A) Sequential on UI : login blocked UI ~166 ms
+B) Async + UI pump : UI kept rendering frames while login ran
+C) 40 logins : many workers blocked waiting at once
+*/
 
 #include <atomic>
 #include <chrono>

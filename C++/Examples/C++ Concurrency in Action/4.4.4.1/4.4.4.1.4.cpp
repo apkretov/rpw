@@ -1,12 +1,14 @@
 ﻿#ifdef MINE // demo_textbook_4_20_continuations_still_block
 
-// Textbook 4.20 claim:
-// Continuations split the login into chained stages.
-// BUT if backend calls still block, worker threads are STILL blocked while waiting.
-// 
-// It shows the textbook 4.20 baseline:
-// - Continuations completed all auth / info stages
-// - Still `peak threads blocked waiting = 40` — chaining ≠ non - blocking IO
+/*
+Textbook 4.20 claim:
+Continuations split the login into chained stages.
+BUT if backend calls still block, worker threads are STILL blocked while waiting.
+ 
+It shows the textbook 4.20 baseline:
+- Continuations completed all auth / info stages
+- Still `peak threads blocked waiting = 40` — chaining ≠ non - blocking IO
+*/
 
 #include <atomic>
 #include <chrono>

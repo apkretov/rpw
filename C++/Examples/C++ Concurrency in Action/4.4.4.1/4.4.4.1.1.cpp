@@ -1,4 +1,4 @@
-﻿#ifndef MINE // demo_parallel_many_requests
+﻿#ifdef MINE // demo_parallel_many_requests
 
 #define BENCHMARK_QUIET
 

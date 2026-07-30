@@ -1,13 +1,15 @@
-﻿#ifdef MINE // demo_textbook_4_21_nonblocking_async_backend
+﻿#ifndef MINE // demo_textbook_4_21_nonblocking_async_backend
 
-// Textbook 4.21 claim:
-// Backend should return futures that become ready WITHOUT blocking a worker thread
-// while waiting for network/DB. Continuations + future-unwrapping keep the chain async.
-//
-// It shows the textbook 4.21 baseline:
-// A) UI still free during login
-// B) Blocking backend chain : high peak blocked threads
-// C) Non - blocking async backend : `peak threads blocked waiting = 1` (one IO thread multiplexes waits)
+/*
+Textbook 4.21 claim:
+Backend should return futures that become ready WITHOUT blocking a worker thread
+while waiting for network/DB. Continuations + future-unwrapping keep the chain async.
+
+It shows the textbook 4.21 baseline:
+A) UI still free during login
+B) Blocking backend chain : high peak blocked threads
+C) Non - blocking async backend : `peak threads blocked waiting = 1` (one IO thread multiplexes waits)
+*/
 
 #include <atomic>
 #include <chrono>
@@ -18,6 +20,7 @@
 #include <queue>
 #include <string>
 #include <thread>
+#include <utility>
 #include <vector>
 #include "../experimental/future.h"
 #include "../../stdafx.h"
@@ -41,26 +44,25 @@ struct IoEvent {
 	long value;
 };
 
-// Tiny completion service: ONE thread waits; many requests stay non-blocking for callers.
-class NonBlockingBackend {
+class NonBlockingBackend { // Tiny completion service: ONE thread waits; many requests stay non-blocking for callers.
 public:
 	NonBlockingBackend() : stop(false), thr([this] { run(); }) {}
+	
 	~NonBlockingBackend() {
 		{
-			std::lock_guard<std::mutex> lk(mx);
+			std::scoped_lock lk(mx);
 			stop = true;
 		}
 		cv.notify_all();
 		thr.join();
 	}
 
-	// Returns immediately; no per-request worker thread sleeps for the IO wait.
-	std::experimental::future<long> async_authenticate(std::string const&) {
+	std::experimental::future<long> async_authenticate(std::string const&) { // Returns immediately; no per-request worker thread sleeps for the IO wait.
 		std::experimental::promise<long> p;
 		auto fut = p.get_future();
 		{
-			std::lock_guard<std::mutex> lk(mx);
-			q.push(IoEvent{Steady::now() + 80ms, std::move(p), 42});
+			std::scoped_lock lk(mx);
+			q.emplace(Steady::now() + 80ms, std::move(p), 42);
 		}
 		cv.notify_one();
 		return fut;
@@ -70,8 +72,8 @@ public:
 		std::experimental::promise<long> p;
 		auto fut = p.get_future();
 		{
-			std::lock_guard<std::mutex> lk(mx);
-			q.push(IoEvent{Steady::now() + 80ms, std::move(p), id});
+			std::scoped_lock lk(mx);
+			q.emplace(Steady::now() + 80ms, std::move(p), id);
 		}
 		cv.notify_one();
 		return fut;
@@ -80,7 +82,7 @@ public:
 private:
 	void run() {
 		for (;;) {
-			std::unique_lock<std::mutex> lk(mx);
+			std::unique_lock lk(mx);
 			cv.wait(lk, [&] { return stop || !q.empty(); });
 			if (stop && q.empty())
 				return;
@@ -90,8 +92,7 @@ private:
 			auto when = ev.when;
 			lk.unlock();
 
-			// Only this single IO thread blocks for the wait — not one thread per request.
-			note_blocked(+1);
+			note_blocked(+1); // Only this single IO thread blocks for the wait — not one thread per request.
 			std::this_thread::sleep_until(when);
 			note_blocked(-1);
 			ev.prom.set_value(ev.value);
@@ -102,7 +103,7 @@ private:
 	std::condition_variable cv;
 	std::queue<IoEvent> q;
 	bool stop;
-	std::thread thr;
+	std::jthread thr;
 };
 
 static long authenticate_blocking(std::string const&) {
@@ -119,8 +120,7 @@ static long request_info_blocking(long id) {
 	return id;
 }
 
-// Listing 4.20-like: continuations + blocking backend calls.
-static std::experimental::future<void> process_login_blocking_chain(std::string user) {
+static std::experimental::future<void> process_login_blocking_chain(std::string user) { // Listing 4.20-like: continuations + blocking backend calls.
 	return std::experimental::future<long>(
 		std::async(std::launch::async, [user] { return authenticate_blocking(user); }))
 		.then([](std::experimental::future<long> id) {
@@ -129,12 +129,10 @@ static std::experimental::future<void> process_login_blocking_chain(std::string 
 		.then([](std::experimental::future<long> info) { info.get(); });
 }
 
-// Listing 4.21-like: async backend + future-unwrapping.
-static std::experimental::future<void> process_login_4_21(NonBlockingBackend& backend, std::string user) {
+static std::experimental::future<void> process_login_4_21(NonBlockingBackend& backend, std::string user) { // Listing 4.21-like: async backend + future-unwrapping.
 	return backend.async_authenticate(user)
 		.then([&backend](std::experimental::future<long> id) {
-			// returns future<long> — Continuations TS unwraps to future<long>
-			return backend.async_request_info(id.get());
+			return backend.async_request_info(id.get()); // returns future<long> — Continuations TS unwraps to future<long>
 		})
 		.then([](std::experimental::future<long> info) {
 			info.get(); // update_display; must wait for unwrapped future
@@ -203,5 +201,4 @@ int main() {
 	}
 	return 0;
 }
-
 #endif

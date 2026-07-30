@@ -5,7 +5,7 @@
 #include "../experimental/future.h"
 #include "4.4.4.1.h"
 
-#ifdef AUTO
+#ifndef AUTO
 std::experimental::future<void> process_login(std::string const& username, std::string const& password) { // A function to process user login with fully asynchronous operations
 	return backend.async_authenticate_user(username, password).then(
 		[](std::experimental::future<user_id> id) {
