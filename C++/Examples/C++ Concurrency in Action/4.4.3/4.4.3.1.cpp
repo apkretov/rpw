@@ -2,7 +2,7 @@
 
 #include <cassert>
 #include <iostream>
-#include "experimental_future.h" // Cause: #include <experimental/future> failed because MSVC does not provide that header. Fix: Added a local teaching header as experimental_future.h (same pattern as simple_future stubs).
+#include "../experimental/future.h" // Cause: #include <experimental/future> failed because MSVC does not provide that header. Fix: Added a local teaching header as experimental_future.h (same pattern as simple_future stubs).
 #include "../../stdafx.h"
 
 static std::experimental::future<int> find_the_answer() { return std::experimental::make_ready_future(42); } //MINE
