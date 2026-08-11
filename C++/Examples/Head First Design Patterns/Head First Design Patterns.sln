@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.13.35818.85
+# Visual Studio Version 18
+VisualStudioVersion = 18.8.12023.21 stable
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "01 Intro to Design Patterns", "01 Intro to Design Patterns\01 Intro to Design Patterns.vcxproj", "{1759B4A3-1FDD-4600-B35C-6B06BCBD4EC8}"
 EndProject
@@ -110,6 +110,8 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "12 - 09 Let’s check out the BeatModelInterface - View", "12 - 09 Let’s check out the BeatModelInterface - View\12 - 09 Let’s check out the BeatModelInterface - View.vcxproj", "{8DFDF78D-03FB-4F0A-AF74-649EB2156651}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "12 - 10 Adapting the Model - View", "12 - 10 Adapting the Model - View\12 - 10 Adapting the Model - View.vcxproj", "{38E770F7-95AC-41C5-AFFD-15CC160005E6}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "11 - 02 MINE boost-asio-io_context", "11 - 02 MINE boost-asio-io_context\11 - 02 MINE boost-asio-io_context.vcxproj", "{3BD12304-5ED4-4A4A-9744-18F59358C426}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -551,6 +553,14 @@ Global
 		{38E770F7-95AC-41C5-AFFD-15CC160005E6}.Release|x64.Build.0 = Release|x64
 		{38E770F7-95AC-41C5-AFFD-15CC160005E6}.Release|x86.ActiveCfg = Release|Win32
 		{38E770F7-95AC-41C5-AFFD-15CC160005E6}.Release|x86.Build.0 = Release|Win32
+		{3BD12304-5ED4-4A4A-9744-18F59358C426}.Debug|x64.ActiveCfg = Debug|x64
+		{3BD12304-5ED4-4A4A-9744-18F59358C426}.Debug|x64.Build.0 = Debug|x64
+		{3BD12304-5ED4-4A4A-9744-18F59358C426}.Debug|x86.ActiveCfg = Debug|Win32
+		{3BD12304-5ED4-4A4A-9744-18F59358C426}.Debug|x86.Build.0 = Debug|Win32
+		{3BD12304-5ED4-4A4A-9744-18F59358C426}.Release|x64.ActiveCfg = Release|x64
+		{3BD12304-5ED4-4A4A-9744-18F59358C426}.Release|x64.Build.0 = Release|x64
+		{3BD12304-5ED4-4A4A-9744-18F59358C426}.Release|x86.ActiveCfg = Release|Win32
+		{3BD12304-5ED4-4A4A-9744-18F59358C426}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
