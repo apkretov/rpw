@@ -146,7 +146,9 @@
     <ClCompile Include="4.4.4.1.5.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="4.4.4.1.5.h" />
     <ClInclude Include="4.4.4.1.h" />
+    <ClInclude Include="Header.h" />
     <ClInclude Include="Listing 4.18.h" />
     <ClInclude Include="Listing 4.19.h" />
     <ClInclude Include="Listing 4.20.h" />

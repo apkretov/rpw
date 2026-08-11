@@ -47,5 +47,11 @@
     <ClInclude Include="Listing 4.21.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="4.4.4.1.5.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

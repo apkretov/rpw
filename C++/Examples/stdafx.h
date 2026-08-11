@@ -114,20 +114,17 @@ public:
 	LogDuration(LogDuration &&) = delete;
 	LogDuration operator=(LogDuration &&) = delete;
 
-	~LogDuration() {
+	~LogDuration() noexcept {
 		try {
 			finish = std::chrono::steady_clock::now();
 			auto duration = std::chrono::duration_cast<Resolution>(finish - start);
-			std::cout << message << ": execution time = " << format_num(duration.count()) << " " << unitName << std::endl;
+			std::printf("%s: execution time = %lld %s\n", message.c_str(), static_cast<long long>(duration.count()), unitName.c_str());
 		}
-		catch (const std::bad_alloc &e) {
-			std::cerr << "Memory allocation failed while logging duration for: " << message	<< ". Error: " << e.what() << "\n";
-		}
-		catch (const std::exception &e) {
-			std::cerr << "An error occurred while logging duration for: " << message << ". Error: " << e.what() << "\n";
+		catch (const std::exception& e) {
+			std::fprintf(stderr, "An error occurred while logging duration for: %s. Error: %s\n", message.c_str(), e.what());
 		}
 		catch (...) {
-			std::cerr << "An unknown error occurred while logging duration for: " << message << ".\n";
+			std::fprintf(stderr, "Unknown error logging duration for: %s.\n", message.c_str());
 		}
 	}
 private:
