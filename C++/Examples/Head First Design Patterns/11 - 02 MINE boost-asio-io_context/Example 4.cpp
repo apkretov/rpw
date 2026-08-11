@@ -2,11 +2,38 @@
 /*
 4. Simple TCP client: connect and read
 This example connects to a server, reads a line, and closes. It shows how sockets are tied to io_context.
+
 Key ideas:
 tcp::resolver, tcp::socket are constructed with io.
 All async operations (async_connect, async_write, async_read_some) post their completion handlers to io.
 io.run() drives everything: when the OS says “connected”, “written”, “data ready”, Asio calls your lambdas.
 You don’t manually “wait” anywhere; the event loop does it.
+
+5. Why io_context and not just threads?
+
+Without io_context, a naive server might do:
+One thread per connection, each blocking on recv()/send().
+Many threads → more context switches, more memory, harder to scale.
+
+With io_context:
+One (or a few) threads run io.run().
+Thousands of connections are handled via callbacks when the OS says they’re ready.
+You write code as “start async op + callback”, and io_context handles scheduling.
+
+This is especially useful in low-latency systems (e.g., trading gateways): you can have a small, fixed thread pool and still handle many network streams efficiently.
+
+6. Very compact mental model
+io_context = event loop + task queue.
+
+You:
+Create io_context io;
+Create async objects with io (sockets, timers, etc.).
+Start async operations (async_*) and give callbacks.
+Call io.run() in one or more threads.
+
+Asio:
+Waits for OS events (socket ready, timer expired).
+When something is ready, it calls your callback on a thread that’s inside run().
 */
 
 #include <boost/asio.hpp>
