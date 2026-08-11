@@ -1,6 +1,6 @@
 #include <iostream>
 #include "../../stdafx.h"
-#include "vld.h"
+//OFF #include "vld.h"
 #include "GumballMachine.h"
 #include "GumballMonitor.h"
 using std::cout;
