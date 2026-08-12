@@ -26,7 +26,19 @@
     <ClInclude Include="GumballMachine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="IGumballMachine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GumballMachineProxy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GumballMachineServer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="GumballMonitor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SocketHandler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="State.h">
@@ -47,16 +59,7 @@
     <ClInclude Include="StateWinner.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GumballMachineI.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GumballMachineServer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GumballMachineProxy.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SocketHandler.h">
+    <ClInclude Include="GumballConstants.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -21,10 +21,9 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>18.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{3bd12304-5ed4-4a4a-9744-18f59358c426}</ProjectGuid>
-    <RootNamespace>My1102MINEboostasioiocontext</RootNamespace>
+    <ProjectGuid>{39f76d9c-0c27-40f7-8bcb-28307a56b657}</ProjectGuid>
+    <RootNamespace>My11021Theroleoftheremoteproxy</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>11 - 02 - 2 MINE boost-asio-io_context</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -112,7 +111,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp23</LanguageStandard>
-      <AdditionalIncludeDirectories>C:\boost_1_84_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>c:\boost_1_84_0\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -141,10 +140,23 @@
     </Manifest>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Example 1.cpp" />
-    <ClCompile Include="Example 2.cpp" />
-    <ClCompile Include="Example 3.cpp" />
-    <ClCompile Include="Example 4.cpp" />
+    <ClCompile Include="GumballMachine.cpp" />
+    <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GumballConstants.h" />
+    <ClInclude Include="GumballMachine.h" />
+    <ClInclude Include="IGumballMachine.h" />
+    <ClInclude Include="GumballMachineProxy.h" />
+    <ClInclude Include="GumballMachineServer.h" />
+    <ClInclude Include="GumballMonitor.h" />
+    <ClInclude Include="SocketHandler.h" />
+    <ClInclude Include="State.h" />
+    <ClInclude Include="StateHasQuarter.h" />
+    <ClInclude Include="StateNoQuarter.h" />
+    <ClInclude Include="StateSold.h" />
+    <ClInclude Include="StateSoldOut.h" />
+    <ClInclude Include="StateWinner.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 18
-VisualStudioVersion = 18.8.12023.21 stable
+VisualStudioVersion = 18.8.12023.21
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "01 Intro to Design Patterns", "01 Intro to Design Patterns\01 Intro to Design Patterns.vcxproj", "{1759B4A3-1FDD-4600-B35C-6B06BCBD4EC8}"
 EndProject
@@ -79,8 +79,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "10 - 05 Sharpen your pencil
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "11 - 01 Coding the Monitor", "11 - 01 Coding the Monitor\11 - 01 Coding the Monitor.vcxproj", "{CF6EAF4F-1D22-4963-B8C6-BAD6B99AB6BA}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "11 - 02 The role of the remote proxy", "11 - 02 The role of the remote proxy\11 - 02 The role of the remote proxy.vcxproj", "{34FC4EB7-3E5D-43F7-B7BC-1012FC89BF59}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "11 - 03 The role of the remote proxy - Raw pointer", "11 - 03 The role of the remote proxy - Raw pointer\11 - 03 The role of the remote proxy - Raw pointer.vcxproj", "{9FBA7AED-B14E-4DDA-BEB6-F76AEA206EA6}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "11 - 04 Get ready for Virtual Proxy", "11 - 04 Get ready for Virtual Proxy\11 - 04 Get ready for Virtual Proxy.vcxproj", "{760C4543-1898-4100-B75F-79FDD23F5ED7}"
@@ -111,7 +109,9 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "12 - 09 Let’s check out t
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "12 - 10 Adapting the Model - View", "12 - 10 Adapting the Model - View\12 - 10 Adapting the Model - View.vcxproj", "{38E770F7-95AC-41C5-AFFD-15CC160005E6}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "11 - 02 MINE boost-asio-io_context", "11 - 02 MINE boost-asio-io_context\11 - 02 MINE boost-asio-io_context.vcxproj", "{3BD12304-5ED4-4A4A-9744-18F59358C426}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "11 - 02 - 1 The role of the remote proxy", "11 - 02 - 1 The role of the remote proxy\11 - 02 - 1 The role of the remote proxy.vcxproj", "{39F76D9C-0C27-40F7-8BCB-28307A56B657}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "11 - 02 - 2 MINE boost-asio-io_context", "11 - 02 - 2 MINE boost-asio-io_context\11 - 02 - 2 MINE boost-asio-io_context.vcxproj", "{6DDA57C4-65A6-480B-836D-40D1B064D35B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -425,14 +425,6 @@ Global
 		{CF6EAF4F-1D22-4963-B8C6-BAD6B99AB6BA}.Release|x64.Build.0 = Release|x64
 		{CF6EAF4F-1D22-4963-B8C6-BAD6B99AB6BA}.Release|x86.ActiveCfg = Release|Win32
 		{CF6EAF4F-1D22-4963-B8C6-BAD6B99AB6BA}.Release|x86.Build.0 = Release|Win32
-		{34FC4EB7-3E5D-43F7-B7BC-1012FC89BF59}.Debug|x64.ActiveCfg = Debug|x64
-		{34FC4EB7-3E5D-43F7-B7BC-1012FC89BF59}.Debug|x64.Build.0 = Debug|x64
-		{34FC4EB7-3E5D-43F7-B7BC-1012FC89BF59}.Debug|x86.ActiveCfg = Debug|Win32
-		{34FC4EB7-3E5D-43F7-B7BC-1012FC89BF59}.Debug|x86.Build.0 = Debug|Win32
-		{34FC4EB7-3E5D-43F7-B7BC-1012FC89BF59}.Release|x64.ActiveCfg = Release|x64
-		{34FC4EB7-3E5D-43F7-B7BC-1012FC89BF59}.Release|x64.Build.0 = Release|x64
-		{34FC4EB7-3E5D-43F7-B7BC-1012FC89BF59}.Release|x86.ActiveCfg = Release|Win32
-		{34FC4EB7-3E5D-43F7-B7BC-1012FC89BF59}.Release|x86.Build.0 = Release|Win32
 		{9FBA7AED-B14E-4DDA-BEB6-F76AEA206EA6}.Debug|x64.ActiveCfg = Debug|x64
 		{9FBA7AED-B14E-4DDA-BEB6-F76AEA206EA6}.Debug|x64.Build.0 = Debug|x64
 		{9FBA7AED-B14E-4DDA-BEB6-F76AEA206EA6}.Debug|x86.ActiveCfg = Debug|Win32
@@ -553,14 +545,22 @@ Global
 		{38E770F7-95AC-41C5-AFFD-15CC160005E6}.Release|x64.Build.0 = Release|x64
 		{38E770F7-95AC-41C5-AFFD-15CC160005E6}.Release|x86.ActiveCfg = Release|Win32
 		{38E770F7-95AC-41C5-AFFD-15CC160005E6}.Release|x86.Build.0 = Release|Win32
-		{3BD12304-5ED4-4A4A-9744-18F59358C426}.Debug|x64.ActiveCfg = Debug|x64
-		{3BD12304-5ED4-4A4A-9744-18F59358C426}.Debug|x64.Build.0 = Debug|x64
-		{3BD12304-5ED4-4A4A-9744-18F59358C426}.Debug|x86.ActiveCfg = Debug|Win32
-		{3BD12304-5ED4-4A4A-9744-18F59358C426}.Debug|x86.Build.0 = Debug|Win32
-		{3BD12304-5ED4-4A4A-9744-18F59358C426}.Release|x64.ActiveCfg = Release|x64
-		{3BD12304-5ED4-4A4A-9744-18F59358C426}.Release|x64.Build.0 = Release|x64
-		{3BD12304-5ED4-4A4A-9744-18F59358C426}.Release|x86.ActiveCfg = Release|Win32
-		{3BD12304-5ED4-4A4A-9744-18F59358C426}.Release|x86.Build.0 = Release|Win32
+		{39F76D9C-0C27-40F7-8BCB-28307A56B657}.Debug|x64.ActiveCfg = Debug|x64
+		{39F76D9C-0C27-40F7-8BCB-28307A56B657}.Debug|x64.Build.0 = Debug|x64
+		{39F76D9C-0C27-40F7-8BCB-28307A56B657}.Debug|x86.ActiveCfg = Debug|Win32
+		{39F76D9C-0C27-40F7-8BCB-28307A56B657}.Debug|x86.Build.0 = Debug|Win32
+		{39F76D9C-0C27-40F7-8BCB-28307A56B657}.Release|x64.ActiveCfg = Release|x64
+		{39F76D9C-0C27-40F7-8BCB-28307A56B657}.Release|x64.Build.0 = Release|x64
+		{39F76D9C-0C27-40F7-8BCB-28307A56B657}.Release|x86.ActiveCfg = Release|Win32
+		{39F76D9C-0C27-40F7-8BCB-28307A56B657}.Release|x86.Build.0 = Release|Win32
+		{6DDA57C4-65A6-480B-836D-40D1B064D35B}.Debug|x64.ActiveCfg = Debug|x64
+		{6DDA57C4-65A6-480B-836D-40D1B064D35B}.Debug|x64.Build.0 = Debug|x64
+		{6DDA57C4-65A6-480B-836D-40D1B064D35B}.Debug|x86.ActiveCfg = Debug|Win32
+		{6DDA57C4-65A6-480B-836D-40D1B064D35B}.Debug|x86.Build.0 = Debug|Win32
+		{6DDA57C4-65A6-480B-836D-40D1B064D35B}.Release|x64.ActiveCfg = Release|x64
+		{6DDA57C4-65A6-480B-836D-40D1B064D35B}.Release|x64.Build.0 = Release|x64
+		{6DDA57C4-65A6-480B-836D-40D1B064D35B}.Release|x86.ActiveCfg = Release|Win32
+		{6DDA57C4-65A6-480B-836D-40D1B064D35B}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

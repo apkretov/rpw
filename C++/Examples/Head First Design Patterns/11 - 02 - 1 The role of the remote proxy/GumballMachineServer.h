@@ -1,7 +1,9 @@
 #pragma once
 
 #include <boost/asio.hpp>
+#include <format>
 #include "GumballMachine.h"
+#include "GumballConstants.h"
 #include "SocketHandler.h"
 
 #pragma region Trae
@@ -21,9 +23,9 @@ class GumballMachineServer {
     acceptor acceptor_;
     GumballMachine_ptr machine_ptr_;
 
-    void handleRequest(socket_ptr socket_) {
+    void handleRequest(socket_ptr socket_) const {
         try {
-            char_vec buffer(1024);
+            char_vec buffer(gumball_constants::kSocketBufferSize);
             error_code ec;
             size_t len = socket_->read_some(boost::asio::buffer(buffer), ec);
 
@@ -32,13 +34,8 @@ class GumballMachineServer {
 
             string request(buffer.data(), len);
             string response;
-
-            if (request == "getAllInfo\n") {
-                response = machine_ptr_->getLocation() + "\n" +
-                    std::to_string(machine_ptr_->getCount()) + "\n" +
-                    machine_ptr_->getStateString() + "\n";
-            }
-
+            if (request == gumball_constants::kGetAllInfoRequest)
+                response = std::format("{}\n{}\n{}\n", machine_ptr_->getLocation(), machine_ptr_->getCount(), machine_ptr_->getStateString());
             boost::asio::write(*socket_, boost::asio::buffer(response), ec);
         }
         catch (const std::exception& e) {
@@ -55,9 +52,9 @@ class GumballMachineServer {
         });
     }
 public:
-    GumballMachineServer(io_context& io_context, unsigned short port, GumballMachine_ptr machine_ptr)
+    GumballMachineServer(io_context& io_context, unsigned short port__, GumballMachine_ptr machine_ptr)
         : io_context_(io_context)
-        , acceptor_(io_context, endpoint(boost::asio::ip::tcp::v4(), port))
+        , acceptor_(io_context, endpoint(boost::asio::ip::tcp::v4(), port__))
         , machine_ptr_(machine_ptr) 
 	{ accept(); }
 };

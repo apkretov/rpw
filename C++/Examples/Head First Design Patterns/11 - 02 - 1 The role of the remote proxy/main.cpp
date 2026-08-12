@@ -6,6 +6,7 @@
 #include "GumballMachineServer.h"
 #include "GumballMachineProxy.h"
 #include "GumballMonitor.h"
+#include "GumballConstants.h"
 
 #pragma region Aliases
 using io_context            = boost::asio::io_context;
@@ -19,17 +20,22 @@ using std::thread;
 #pragma endregion
 
 #pragma region Trae
-void runServer(io_context_ptr context_ptr) { // Server example
-    auto machine_ptr = GumballMachine::create("Seattle", 5);
-    GumballMachineServer server(*context_ptr, 12345, machine_ptr);
+static void runServer(io_context_ptr context_ptr) { // Server example
+    auto machine_ptr = GumballMachine::create(
+        gumball_constants::kDefaultMachineLocation,
+        gumball_constants::kDefaultMachineCount);
+    GumballMachineServer server(*context_ptr, gumball_constants::kServerPort, machine_ptr);
     context_ptr->run(); // This starts the event loop.
 }
 
-void runClient() { // Client example
+static void runClient() { // Client example
 	using namespace boost;
 	using namespace std;
     io_context io_context_;
-    auto GumballMachineProxy_ptr = make_shared<GumballMachineProxy>(io_context_, "localhost", 12345);
+    auto GumballMachineProxy_ptr = make_shared<GumballMachineProxy>(
+        io_context_,
+        gumball_constants::kDefaultServerHost,
+        gumball_constants::kServerPort);
     GumballMonitor monitor(GumballMachineProxy_ptr);
     try {
         monitor.report();
@@ -40,17 +46,17 @@ void runClient() { // Client example
 }
 
 int main() {
-	using namespace std;
     print_file_line();
 
+	using namespace std;
+
     auto io_context_ptr = make_shared<io_context>();
-    thread server_thread([io_context_ptr]() { runServer(io_context_ptr); });
+    jthread server_thread([io_context_ptr]() { runServer(io_context_ptr); });
     
-    this_thread::sleep_for(chrono::milliseconds(100)); // Give the server a moment to start
+    this_thread::sleep_for(gumball_constants::kServerStartupDelay); // Give the server a moment to start
     runClient(); // Run client
     
     io_context_ptr->stop(); // Signal the server to stop and cleanup
-	server_thread.join(); // Wait for the server thread to finish
     cout << '\n';
 
     return 0;

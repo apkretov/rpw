@@ -2,12 +2,10 @@
 
 #include <memory>
 #include <iostream>
-#include "GumballMachineI.h"
+#include "IGumballMachine.h"
 
 #pragma region Trae
 class GumballMonitor {
-	std::weak_ptr<IGumballMachine> machine_;
-
 public:
 	explicit GumballMonitor(std::shared_ptr<IGumballMachine> machine) : machine_(machine) {}
 
@@ -18,5 +16,7 @@ public:
 			std::cout << "Current state: " << machine->getStateString() << "\n";
 		}
 	}
+private:
+	std::weak_ptr<IGumballMachine> machine_;
 };
 #pragma endregion //Trae
