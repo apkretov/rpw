@@ -78,6 +78,7 @@ class ImageProxyTestDrive {
 
 	HWND hwnd;
 	std::map<std::wstring, std::wstring> albums;
+	std::map<UINT, std::wstring> menuIdToAlbum;
 	std::unique_ptr<Icon> currentIcon;
 	ULONG_PTR gdiplusToken;
 
@@ -126,9 +127,12 @@ void ImageProxyTestDrive::Initialize() {
 	HMENU hMenu = CreateMenu(); // Create menu
 	HMENU hSubMenu = CreatePopupMenu();
 
-	int id = 1;
-	for (const auto &album : albums)
-		AppendMenu(hSubMenu, MF_STRING, id++, album.first.c_str());
+	UINT id = 1;
+	for (const auto &album : albums) {
+		AppendMenu(hSubMenu, MF_STRING, id, album.first.c_str());
+		menuIdToAlbum[id] = album.first;
+		++id;
+	}
 
 	AppendMenu(hMenu, MF_POPUP, (UINT_PTR)hSubMenu, L"Favorite Albums");
 	SetMenu(hwnd, hMenu);
@@ -168,14 +172,11 @@ LRESULT CALLBACK ImageProxyTestDrive::WindowProc(HWND hwnd, UINT uMsg, WPARAM wP
 		case WM_COMMAND:
 			{
 				if (HIWORD(wParam) == 0) { // Menu selection
-					WCHAR menuText[256];
-					MENUITEMINFO mii = {sizeof(MENUITEMINFO)};
-					mii.fMask = MIIM_STRING;
-					mii.dwTypeData = menuText;
-					mii.cch = sizeof(menuText);
-					GetMenuItemInfo(GetMenu(hwnd), LOWORD(wParam), FALSE, &mii);
-					if (app) 
-						app->HandleMenuSelection(menuText);
+					if (app) {
+						auto it = app->menuIdToAlbum.find(LOWORD(wParam));
+						if (it != app->menuIdToAlbum.end())
+							app->HandleMenuSelection(it->second);
+					}
 				}
 				return 0;
 			}

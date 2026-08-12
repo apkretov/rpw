@@ -5,6 +5,7 @@
 #include <memory>
 #include <thread>
 #include <atomic>
+#include <mutex>
 
 #pragma region Trae
 /* Java @ https://github.com/bethrobson/Head-First-Design-Patterns/tree/master/src/headfirst/designpatterns/proxy/virtualproxy
@@ -119,6 +120,7 @@ class ImageProxy : public Icon { // The ImageProxy implements the Icon interface
 	std::wstring imageURL;
 	std::thread retrievalThread;
 	std::atomic<bool> retrieving;
+	mutable std::mutex imageMutex;
 	HWND hwnd;
 public:
 	ImageProxy(const std::wstring &url, HWND window) : imageURL(url), retrieving(false), hwnd(window) {} // We pass the URL of the image into the constructor.This is the image we need to display once it's loaded!
@@ -128,8 +130,14 @@ public:
 			retrievalThread.join();
 	}
 
-	int GetWidth() const override { return imageIcon ? imageIcon->GetWidth() : 800; } // We return a default width and height until the imageIcon is loaded; then we turn it over to the imageIcon.
-	int GetHeight() const override { return imageIcon ? imageIcon->GetHeight() : 600; } // We return a default width and height until the imageIcon is loaded; then we turn it over to the imageIcon.
+	int GetWidth() const override {
+		std::lock_guard<std::mutex> guard(imageMutex);
+		return imageIcon ? imageIcon->GetWidth() : 800;
+	} // We return a default width and height until the imageIcon is loaded; then we turn it over to the imageIcon.
+	int GetHeight() const override {
+		std::lock_guard<std::mutex> guard(imageMutex);
+		return imageIcon ? imageIcon->GetHeight() : 600;
+	} // We return a default width and height until the imageIcon is loaded; then we turn it over to the imageIcon.
 	void Paint(HDC hdc, int x, int y) override;
 };
 #pragma endregion //Trae
