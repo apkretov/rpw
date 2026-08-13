@@ -32,7 +32,7 @@ inline long long elapsed_ms() {
 
 inline int thread_label() { // Short stable names (T0, T1, ...); thread ids are unwieldy to print.
 	static std::atomic<int> next{0};
-	thread_local int const label = next++;
+	thread_local const int label = next++;
 	return label;
 }
 
@@ -40,7 +40,7 @@ inline std::mutex io_mx;
 
 template <typename... Args>
 void say(std::format_string<Args...> fmt, Args&&... args) {
-	std::lock_guard<std::mutex> lk(io_mx);
+	std::scoped_lock lk(io_mx);
 	std::println(fmt, std::forward<Args>(args)...);
 }
 
