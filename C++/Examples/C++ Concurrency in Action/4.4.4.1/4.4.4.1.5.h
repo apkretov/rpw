@@ -16,6 +16,8 @@
 using namespace std::chrono_literals;
 using Steady = std::chrono::steady_clock;
 
+inline constexpr auto simulated_io_latency = 80ms; // Shared by blocking sleeps and non-blocking backend enqueue
+
 inline std::atomic<int> blocked_waiting{0};
 inline std::atomic<int> peak_blocked{0};
 
@@ -67,7 +69,7 @@ private:
 		auto fut = p.get_future();
 		{
 			std::scoped_lock lk(mx);
-			q.emplace(Steady::now() + 80ms, std::move(p), param);
+			q.emplace(Steady::now() + simulated_io_latency, std::move(p), param);
 		}
 		cv.notify_one(); // See the note about the notify_one below.
 		return fut;

@@ -13,6 +13,7 @@ C) Non - blocking async backend : `peak threads blocked waiting = 1` (one IO thr
 
 #include <atomic>
 #include <chrono>
+#include <format>
 #include <future>
 #include <print>
 #include <string>
@@ -24,19 +25,19 @@ C) Non - blocking async backend : `peak threads blocked waiting = 1` (one IO thr
 
 static long authenticate_blocking(std::string const&) {
 	note_blocked(+1);
-	std::this_thread::sleep_for(80ms);
+	std::this_thread::sleep_for(simulated_io_latency);
 	note_blocked(-1);
 	return 42;
 }
 
 static long request_info_blocking(long id) {
 	note_blocked(+1);
-	std::this_thread::sleep_for(80ms);
+	std::this_thread::sleep_for(simulated_io_latency);
 	note_blocked(-1);
 	return id;
 }
 
-static std::experimental::future<void> process_login_blocking_chain(std::string user) { // Listing 4.20-like: continuations + blocking backend calls.
+static std::experimental::future<void> process_login_blocking_chain(const std::string& user) { // Listing 4.20-like: continuations + blocking backend calls.
 	return std::experimental::future<long>(
 		std::async(std::launch::async, [user] { return authenticate_blocking(user); }))
 		.then([](std::experimental::future<long> id) {
@@ -45,7 +46,7 @@ static std::experimental::future<void> process_login_blocking_chain(std::string 
 		.then([](std::experimental::future<long> info) { info.get(); });
 }
 
-static std::experimental::future<void> process_login_4_21(non_blocking_backend& backend, std::string user) { // Listing 4.21-like: async backend + future-unwrapping.
+static std::experimental::future<void> process_login_4_21(non_blocking_backend& backend, const std::string& user) { // Listing 4.21-like: async backend + future-unwrapping.
 	return backend.async_authenticate(user)
 		.then([&backend](std::experimental::future<long> id) {
 			return backend.async_request_info(id.get()); // returns future<long> — Continuations TS unwraps to future<long>
@@ -73,13 +74,32 @@ static void ui_pump(std::chrono::milliseconds budget) {
 	std::println("UI frames rendered during waits: {}", frames);
 }
 
+template<typename Launch, typename... Notes>
+static void run_many_logins(Launch launch, Notes&&... notes) {
+	constexpr int N = 40;
+	peak_blocked = 0;
+	
+	std::vector<std::experimental::future<void>> all;
+	all.reserve(N);
+	auto t0 = Steady::now();
+	for (int i = 0; i < N; ++i)
+		all.emplace_back(launch(i));
+	for (const auto& f : all)
+		f.wait();
+
+	auto ms = std::chrono::duration_cast<std::chrono::milliseconds>(Steady::now() - t0).count();
+	std::println("users = {}", N);
+	std::println("wall time = {} ms", ms);
+	std::println("peak threads blocked waiting = {}", peak_blocked.load());
+	(std::println("{}", notes), ...);
+}
+
 int main() {
 	print_file_line();
 
 	std::println("=== Textbook point for Listing 4.21 ===");
 	std::println("Async backend futures become ready without one blocked thread per wait.\n");
 
-	constexpr int N = 40;
 	non_blocking_backend backend;
 
 	std::println("-- A) UI stays free while 4.21-style login runs --");
@@ -99,39 +119,18 @@ int main() {
 	}
 
 	std::println("-- B) Many logins with BLOCKING backend in continuations --");
-	{
-		peak_blocked = 0;
-		std::vector<std::experimental::future<void>> all;
-		all.reserve(N);
-		auto t0 = Steady::now();
-		for (int i = 0; i < N; ++i)
-			all.push_back(process_login_blocking_chain("user" + std::to_string(i)));
-		for (auto& f : all)
-			f.wait();
-		auto ms = std::chrono::duration_cast<std::chrono::milliseconds>(Steady::now() - t0).count();
-		std::println("users = {}", N);
-		std::println("wall time = {} ms", ms);
-		std::println("peak threads blocked waiting = {}", peak_blocked.load());
-		std::println("(many workers stuck in sleep/wait)\n");
-	}
+	run_many_logins(
+		[](int i) { return process_login_blocking_chain(std::format("user {}", i));	}, 
+		"(many workers stuck in sleep/wait)\n"
+	);
 
 	std::println("-- C) Many logins with NON-BLOCKING async backend (Listing 4.21 idea) --");
-	{
-		peak_blocked = 0;
-		std::vector<std::experimental::future<void>> all;
-		all.reserve(N);
-		auto t0 = Steady::now();
-		for (int i = 0; i < N; ++i)
-			all.push_back(process_login_4_21(backend, "user" + std::to_string(i)));
-		for (auto& f : all)
-			f.wait();
-		auto ms = std::chrono::duration_cast<std::chrono::milliseconds>(Steady::now() - t0).count();
-		std::println("users = {}", N);
-		std::println("wall time = {} ms", ms);
-		std::println("peak threads blocked waiting = {}", peak_blocked.load());
-		std::println("Textbook: waits are multiplexed; peak blocked stays near 1 IO thread.");
-		std::println("Also: .then that returns a future is unwrapped (no future<future<T>>).");
-	}
+	run_many_logins(
+		[&backend](int i) { return process_login_4_21(backend, std::format("user {}", i)); }, 
+		"Textbook: waits are multiplexed; peak blocked stays near 1 IO thread.",
+		"Also: .then that returns a future is unwrapped (no future<future<T>>)."
+	);
+
 	return 0;
 }
 #endif
