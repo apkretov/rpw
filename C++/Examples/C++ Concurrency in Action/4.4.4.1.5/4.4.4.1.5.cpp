@@ -56,7 +56,7 @@ static void run_many_logins(Launch launch, Notes&&... notes) {
 	auto t0 = Steady::now();
 	for (int i = 0; i < N; ++i)
 		all.emplace_back(launch(i));
-	for (auto& f : all)
+	for (const auto& f : all)
 		f.wait();
 
 	auto ms = std::chrono::duration_cast<std::chrono::milliseconds>(Steady::now() - t0).count();
