@@ -63,7 +63,8 @@ static void start_http_exchange(boost::asio::ip::tcp::socket& socket, boost::asi
 		"GET / HTTP/1.1\r\n"
 		"Host: " + host + "\r\n"
 		"Connection: close\r\n"
-		"\r\n"); // Keep the request alive until async_write finishes (buffer() only views the data; it does not copy it).
+		"\r\n"
+	); // Keep the request alive until async_write finishes (buffer() only views the data; it does not copy it).
 	boost::asio::async_write(socket, boost::asio::buffer(*request), [&, request](const boost::system::error_code& ec, std::size_t) {
 		if (ec) {
 			std::cerr << "Write error: " << ec.message() << "\n";

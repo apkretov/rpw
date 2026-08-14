@@ -1,9 +1,10 @@
 #ifdef MINE
 
 /*
-1. Minimal example : just posting tasks
+1. Minimal example: just posting tasks
 This shows the core idea without any sockets.
-Key idea : io_context is where work gets executed. If you don’t call run(), nothing happens.
+
+Key idea: io_context is where work gets executed. If you don’t call run(), nothing happens.
 */
 
 #include <boost/asio.hpp>
@@ -13,7 +14,7 @@ Key idea : io_context is where work gets executed. If you don’t call run(), no
 int main() {
 	print_file_line();
 
-	boost::asio::io_context		io;  // the event loop / task manager
+	boost::asio::io_context	io; // the event loop / task manager
 
 	boost::asio::post(io, [] { std::cout << "Task 1\n"; }); // Post two tasks (lambdas) to be run by io_context
 	boost::asio::post(io, [] { std::cout << "Task 2\n"; });
