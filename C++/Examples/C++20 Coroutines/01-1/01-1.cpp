@@ -1,5 +1,3 @@
-#if 1
-
 #include "connection.h"
 #include "database.h"
 #include "parsed_request.h"
@@ -16,6 +14,7 @@ void handle_request(connection& conn) {
 	conn.write(response);                   // blocks until write completes
 }
 
+#pragma region MINE
 int main() {
 	print_file_line();
 
@@ -24,4 +23,4 @@ int main() {
 
 	return 0;
 }
-#endif //1
+#pragma endregion //MINE
