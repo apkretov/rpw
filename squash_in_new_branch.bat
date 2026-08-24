@@ -45,8 +45,14 @@ if %errorlevel% neq 0 (
 :: Step 3: Commit
 REM echo Committing squashed changes...
 git commit -m "%COMMIT_MSG%"
+if errorlevel 1 (
+    echo Commit failed.
+    exit /b 1
+)
 
 git log --oneline -3
+
+for /f "delims=" %%i in ('git -C "%~dp0." log -1 --format^="%%h %%s" 2^>nul') do echo|set /p="%%i"| clip
 
 REM echo Done successfully!
 endlocal
