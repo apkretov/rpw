@@ -6,4 +6,5 @@
   <Project Path="01-1/01-1.vcxproj" Id="300017a5-42b9-450a-b678-39a36d0a46ac" />
   <Project Path="01-2/01-2.vcxproj" Id="37c2643c-cc1a-479f-9fc5-51d8b8a4f532" />
   <Project Path="01-3/01-3.vcxproj" Id="ce71f83c-4e89-4a28-a345-fd0c71b300bf" />
+  <Project Path="02/02.vcxproj" Id="8e354615-ef3f-4aaa-85a2-24730a6d93f4" />
 </Solution>
