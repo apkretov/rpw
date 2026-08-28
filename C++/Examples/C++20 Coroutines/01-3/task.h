@@ -19,10 +19,7 @@ public:
 		bool done = false;
 		std::exception_ptr exception;
 
-		task get_return_object() {
-			return task{std::coroutine_handle<promise_type>::from_promise(*this)};
-		}
-
+		task get_return_object() { return task{std::coroutine_handle<promise_type>::from_promise(*this)}; }
 		std::suspend_never initial_suspend() noexcept { return {}; }
 
 		auto final_suspend() noexcept {

@@ -54,5 +54,5 @@ int main() {
 		h();
 	}
 
-	h.destroy(); // Comment this out to call final_suspend() and print 555.
+	h.destroy(); // Comment this out to call final_suspend() to print 555.
 }
