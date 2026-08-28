@@ -13,24 +13,6 @@ template<typename T = void>
 class task { // Minimal coroutine return type for this teaching example. handle_request returns task<void>; main waits with ready() / get().
 	static_assert(std::is_void_v<T>, "This example only implements task<void>");
 public:
-	task(const task&) = delete;
-	task& operator=(const task&) = delete;
-	task(task&& other) noexcept : handle(std::exchange(other.handle, {})) {}
-
-	task& operator=(task&& other) noexcept {
-		if (this != &other) {
-			if (handle)
-				handle.destroy();
-			handle = std::exchange(other.handle, {});
-		}
-		return *this;
-	}
-
-	~task() {
-		if (handle)
-			handle.destroy();
-	}
-
 	struct promise_type {
 		std::mutex mutex;
 		std::condition_variable cv;
@@ -49,7 +31,7 @@ public:
 				bool await_ready() const noexcept { return false; }
 				void await_suspend(std::coroutine_handle<>) const noexcept {
 					{
-						std::lock_guard lock(p.mutex);
+						std::scoped_lock lock(p.mutex);
 						p.done = true;
 					}
 					p.cv.notify_one();
@@ -63,8 +45,26 @@ public:
 		void unhandled_exception() { exception = std::current_exception(); }
 	};
 
+	task(const task&) = delete;
+	task& operator=(const task&) = delete;
+	task(task&& other) noexcept : handle(std::exchange(other.handle, {})) {}
+
+	task& operator=(task&& other) noexcept {
+		if (this != &other) {
+			if (handle)
+				handle.destroy();
+			handle = std::exchange(other.handle, {});
+		}
+		return *this;
+	}
+
+	~task() {
+		if (handle)
+			handle.destroy();
+	}
+
 	bool ready() const {
-		std::lock_guard lock(handle.promise().mutex);
+		std::scoped_lock lock(handle.promise().mutex);
 		return handle.promise().done;
 	}
 
