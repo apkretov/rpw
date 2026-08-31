@@ -35,7 +35,6 @@ struct Awaiter {
 	bool await_ready() { 
 		std::cout << std::this_thread::get_id() << " 444 await_ready()" << std::endl; //MINE
 		return false; 
-		//MINE return true;
 	}
 
 	void await_suspend(std::coroutine_handle<> h) { 
