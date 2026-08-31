@@ -1,2 +1,9 @@
+Configuration Properties -> VC++ Directories:
+
+1) Include directories: 
 c:\Program Files (x86)\Visual Leak Detector\include\
+
+2) Library directories:
 c:\Program Files (x86)\Visual Leak Detector\lib\Win64\
+
+3) #include "vld.h"

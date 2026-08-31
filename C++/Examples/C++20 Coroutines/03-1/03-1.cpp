@@ -1,6 +1,7 @@
 #include <coroutine>
 #include <iostream>
 #include <thread>
+#include "vld.h"
 #include "../../stdafx.h"
 
 struct ReturnObject {
@@ -16,11 +17,14 @@ struct ReturnObject {
 		}
 
 		std::suspend_never final_suspend() noexcept { 
-			std::cout << std::this_thread::get_id() << " 555 final_suspend()" << std::endl; //MINE
+			std::cout << std::this_thread::get_id() << " 999 final_suspend()" << std::endl; //MINE
 			return {}; 
 		}
 
-		void return_void() {}
+		void return_void() {
+			std::cout << std::this_thread::get_id() << " 888 return_void()" << std::endl; //MINE
+		}
+
 		void unhandled_exception() {}
 	};
 };
@@ -28,17 +32,28 @@ struct ReturnObject {
 struct Awaiter {
 	std::coroutine_handle<>* handle_out;
 
-	bool await_ready() { return false; }
-	void await_suspend(std::coroutine_handle<> h) { *handle_out = h; }
-	void await_resume() {}
+	bool await_ready() { 
+		std::cout << std::this_thread::get_id() << " 444 await_ready()" << std::endl; //MINE
+		return false; 
+		//MINE return true;
+	}
+
+	void await_suspend(std::coroutine_handle<> h) { 
+		std::cout << std::this_thread::get_id() << " 555 await_suspend()" << std::endl; //MINE
+		*handle_out = h; 
+	}
+
+	void await_resume() {
+		std::cout << std::this_thread::get_id() << " 777 await_resume()" << std::endl; //MINE
+	}
 };
 
 ReturnObject counter(std::coroutine_handle<>* handle) {
 	Awaiter awaiter{handle};
 
-	for (unsigned i = 0; ; ++i) {
-	// MINE for (unsigned i = 0; i < 3; ++i) { // This calls final_suspend() and prints 555.
-		std::cout << std::this_thread::get_id() << " 333 counter: " << i << std::endl;
+	//ORIG for (unsigned i = 0; ; ++i) {
+	for (unsigned i = 0; i < 3; ++i) { //MINE This calls final_suspend() and prints 555.
+		std::cout << '\n' << std::this_thread::get_id() << " 333 counter: " << i << std::endl;
 		co_await awaiter;
 	}
 }
@@ -50,9 +65,9 @@ int main() {
 	counter(&h);
 
 	for (int i = 0; i < 3; ++i) {
-		std::cout << std::this_thread::get_id() << " 444 main: resuming" << std::endl;
+		std::cout << '\n' << std::this_thread::get_id() << " 666 main: resuming" << std::endl;
 		h();
 	}
 
-	h.destroy(); // Comment this out to call final_suspend() to print 555.
+	//ORIG h.destroy(); // Comment this out to call final_suspend() to print 555.
 }
