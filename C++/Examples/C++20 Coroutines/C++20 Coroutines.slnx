@@ -9,6 +9,7 @@
   <Project Path="02/02.vcxproj" Id="8e354615-ef3f-4aaa-85a2-24730a6d93f4" />
   <Project Path="03-1/03-1.vcxproj" Id="7d320d95-71f8-4963-ac74-6c8d3551f1ba" />
   <Project Path="03-2/03-2.vcxproj" Id="b12bb63a-96d6-48ff-94c7-55f1f5d3fc41" />
+  <Project Path="03-3/03-3.vcxproj" Id="331d58aa-fb74-4849-9577-b169158a1823" />
   <Project Path="04/04.vcxproj" Id="5ad579a4-787d-4a6f-849d-a3536b701ab0" />
   <Project Path="05/05.vcxproj" Id="3726a3a8-7673-4456-9a92-0386fb47ab47" />
 </Solution>

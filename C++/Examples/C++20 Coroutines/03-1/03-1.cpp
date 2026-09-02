@@ -1,6 +1,7 @@
 #include <coroutine>
 #include <iostream>
 #include <thread>
+#include <vector>
 #include "vld.h"
 #include "../../stdafx.h"
 
@@ -60,7 +61,11 @@ ReturnObject counter(std::coroutine_handle<>* handle) {
 int main() {
 	print_file_line();
 
-	std::coroutine_handle<> h;
+	std::coroutine_handle<> h; //OK
+	std::coroutine_handle h2; //OK
+	std::vector v{0, 1, 2}; //OK
+	//ERROR std::vector<> v{0, 1, 2};
+	//ERROR std::vector v2;
 	counter(&h);
 
 	for (int i = 0; i < 3; ++i) {
