@@ -1,8 +1,7 @@
 #include <coroutine>
 #include <iostream>
 #include <thread>
-#include <vector>
-#include "vld.h"
+//OFF #include "vld.h"
 #include "../../stdafx.h"
 
 struct ReturnObject {
@@ -43,9 +42,7 @@ struct Awaiter {
 		*handle_out = h; 
 	}
 
-	void await_resume() {
-		std::cout << std::this_thread::get_id() << " 777 await_resume()" << std::endl; //MINE
-	}
+	void await_resume() { std::cout << std::this_thread::get_id() << " 777 await_resume()" << std::endl; } //MINE
 };
 
 ReturnObject counter(std::coroutine_handle<>* handle) {
@@ -61,11 +58,7 @@ ReturnObject counter(std::coroutine_handle<>* handle) {
 int main() {
 	print_file_line();
 
-	std::coroutine_handle<> h; //OK
-	std::coroutine_handle h2; //OK
-	std::vector v{0, 1, 2}; //OK
-	//ERROR std::vector<> v{0, 1, 2};
-	//ERROR std::vector v2;
+	std::coroutine_handle<> h;
 	counter(&h);
 
 	for (int i = 0; i < 3; ++i) {

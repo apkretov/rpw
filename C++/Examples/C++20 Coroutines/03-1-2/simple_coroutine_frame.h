@@ -2,8 +2,7 @@
 
 #pragma region MINE
 
-// Hand-rolled stand-in for a compiler-generated coroutine frame (no C++20 coroutine keywords).
-struct simple_coroutine_frame {
+struct simple_coroutine_frame { // Hand-rolled stand-in for a compiler-generated coroutine frame (no C++20 coroutine keywords).
 	int state_index = 0;
 	bool finished = false;
 

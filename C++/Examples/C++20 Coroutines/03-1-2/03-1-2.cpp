@@ -1,26 +1,21 @@
+#pragma region MINE
+
 #include "counter_frame.h"
 #include "return_object.h"
 #include "simple_co_await.h"
 #include "simple_suspend_never.h"
 #include "../../stdafx.h"
-
+//OFF #include "vld.h"
 #include <iostream>
 #include <thread>
-#include <vector>
 
-#pragma region MINE
+static void counter_destroy(simple_coroutine_frame* base) { delete static_cast<counter_frame*>(base); }
 
-static void counter_destroy(simple_coroutine_frame* base) {
-	delete static_cast<counter_frame*>(base);
-}
-
-// Hand-written resume state machine equivalent to 03-1's counter body.
-static void counter_resume(simple_coroutine_frame* base) {
+static void counter_resume(simple_coroutine_frame* base) { // Hand-written resume state machine equivalent to 03-1's counter body.
 	auto* frame = static_cast<counter_frame*>(base);
 
 	switch (frame->state_index) {
-	case 0: {
-		// initial_suspend = never -- run body immediately at ramp.
+	case 0: { // initial_suspend = never -- run body immediately at ramp.
 		std::cout << std::this_thread::get_id() << " 222 initial_suspend()" << std::endl;
 		simple_suspend_never initial{};
 		if (simple_co_await(frame, 0, initial, [] {}))
@@ -78,8 +73,6 @@ int main() {
 	print_file_line();
 
 	simple_coroutine_frame* h = nullptr;
-	simple_coroutine_frame* h2 = nullptr; // unused, preserved like 03-1
-	std::vector v{0, 1, 2}; // unused, preserved like 03-1
 	counter(&h);
 
 	for (int i = 0; i < 3; ++i) {

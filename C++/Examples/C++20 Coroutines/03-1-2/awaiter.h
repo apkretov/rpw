@@ -6,8 +6,7 @@
 #include <iostream>
 #include <thread>
 
-// Hand-rolled stand-in for 03-1's Awaiter; stores a frame* instead of coroutine_handle.
-struct Awaiter {
+struct Awaiter { // Hand-rolled stand-in for 03-1's Awaiter; stores a frame* instead of coroutine_handle.
 	simple_coroutine_frame** handle_out = nullptr;
 
 	bool await_ready() {
@@ -21,8 +20,6 @@ struct Awaiter {
 		return true; // void await_suspend => always suspend
 	}
 
-	void await_resume() {
-		std::cout << std::this_thread::get_id() << " 777 await_resume()" << std::endl;
-	}
+	void await_resume() { std::cout << std::this_thread::get_id() << " 777 await_resume()" << std::endl; }
 };
 #pragma endregion //MINE

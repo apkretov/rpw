@@ -4,8 +4,7 @@
 
 #include "simple_coroutine_frame.h"
 
-// Models std::suspend_never for the hand-rolled state machine.
-struct simple_suspend_never {
+struct simple_suspend_never { // Models std::suspend_never for the hand-rolled state machine.
 	bool await_ready() const noexcept { return true; }
 	bool await_suspend(simple_coroutine_frame*) noexcept { return false; }
 	void await_resume() const noexcept {}
