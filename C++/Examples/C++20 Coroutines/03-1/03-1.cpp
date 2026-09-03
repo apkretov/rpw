@@ -21,10 +21,7 @@ struct ReturnObject {
 			return {}; 
 		}
 
-		void return_void() {
-			std::cout << std::this_thread::get_id() << " 888 return_void()" << std::endl; //MINE
-		}
-
+		void return_void() { std::cout << std::this_thread::get_id() << " 888 return_void()" << std::endl; } //MINE
 		void unhandled_exception() {}
 	};
 };
