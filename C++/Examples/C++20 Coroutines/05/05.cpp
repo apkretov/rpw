@@ -23,9 +23,9 @@ struct Generator {
 
 	Generator(std::coroutine_handle<promise_type> h) : handle(h) {}
 	
-	~Generator() { 
-		if (handle) 
-		handle.destroy(); 
+	~Generator() {
+		if (handle)
+			handle.destroy();
 	}
 
 	Generator(const Generator&) = delete; // Disable copying
