@@ -26,7 +26,7 @@ struct TracePromise {
 		void unhandled_exception() { std::cout << "unhandled_exception called" << std::endl; }
 	};
 
-	//ORIG std::coroutine_handle<promise_type> handle;
+	std::coroutine_handle<promise_type> handle;
 };
 
 TracePromise trace_coroutine() {
