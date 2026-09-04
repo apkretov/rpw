@@ -17,7 +17,7 @@ struct ReturnObject {
 		}
 
 		//ORIG std::suspend_never final_suspend() noexcept { // Returns std::suspend_never. The coroutine automatically destroys itself after it finishes, so the memory is cleaned up. // See the note below about final_suspend().
-		std::suspend_always final_suspend() noexcept { //MINE // Returns std::suspend_always. h.destroy() must be called in main to prevent a memory leak.
+		std::suspend_always final_suspend() noexcept { //MINE // Returns std::suspend_always. W/o a ReturnObject wrapper's destructor destroying this struct's wrapped object, h.destroy() must be called explicitly in main to prevent a memory leak.
 			std::cout << std::this_thread::get_id() << " 999 final_suspend()" << std::endl; //MINE
 			return {}; 
 		}
