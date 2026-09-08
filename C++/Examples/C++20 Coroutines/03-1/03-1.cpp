@@ -1,5 +1,7 @@
 #include <coroutine>
+#include <cstdint>
 #include <iostream>
+#include <print>
 #include <thread>
 #include "vld.h"
 #include "../../stdafx.h"
@@ -7,22 +9,22 @@
 struct ReturnObject {
 	struct promise_type {
 		ReturnObject get_return_object() { 
-			std::cout << std::this_thread::get_id() << " 111 get_return_object()" << std::endl; //MINE
+			std::cout << std::this_thread::get_id() << " 002 get_return_object()" << std::endl; //MINE
 			return {}; 
 		}
 
 		std::suspend_never initial_suspend() { 
-			std::cout << std::this_thread::get_id() << " 222 initial_suspend()" << std::endl; //MINE
+			std::cout << std::this_thread::get_id() << " 003 initial_suspend()" << std::endl; //MINE
 			return {}; 
 		}
 
 		//ORIG std::suspend_never final_suspend() noexcept { // Returns std::suspend_never. The coroutine automatically destroys itself after it finishes, so the memory is cleaned up. // See the note below about final_suspend().
-		std::suspend_always final_suspend() noexcept { //MINE // Returns std::suspend_always. h.destroy() must be called in main to prevent a memory leak.
-			std::cout << std::this_thread::get_id() << " 999 final_suspend()" << std::endl; //MINE
+		std::suspend_always final_suspend() noexcept { //MINE // Returns std::suspend_always. W/o a ReturnObject wrapper's destructor destroying this struct's wrapped object, h.destroy() must be called explicitly in main to prevent a memory leak.
+			std::cout << std::this_thread::get_id() << " 014 final_suspend()" << std::endl; //MINE
 			return {}; 
 		}
 
-		void return_void() { std::cout << std::this_thread::get_id() << " 888 return_void()" << std::endl; } //MINE
+		void return_void() { std::cout << std::this_thread::get_id() << " 013 return_void()" << std::endl; } //MINE
 		void unhandled_exception() {}
 	};
 };
@@ -30,25 +32,30 @@ struct ReturnObject {
 struct Awaiter {
 	std::coroutine_handle<>* handle_out;
 
+	explicit Awaiter(std::coroutine_handle<>* handle) : handle_out(handle) { //MINE
+		std::print("{} 005 Awaiter() handle_out={:x} frame={:x}\n", std::this_thread::get_id(), reinterpret_cast<std::uintptr_t>(handle_out), handle_out ? reinterpret_cast<std::uintptr_t>(handle_out->address()) : 0); 
+	}
+
 	bool await_ready() { 
-		std::cout << std::this_thread::get_id() << " 444 await_ready()" << std::endl; //MINE
-		return false; 
+		std::print("{} 007 await_ready() handle_out={:x} handle_out->frame={:x}\n", std::this_thread::get_id(), reinterpret_cast<std::uintptr_t>(handle_out) , handle_out ? reinterpret_cast<std::uintptr_t>(handle_out->address()) : 0); //MINE 
+		return false;
 	}
 
 	void await_suspend(std::coroutine_handle<> h) { 
-		std::cout << std::this_thread::get_id() << " 555 await_suspend()" << std::endl; //MINE
-		*handle_out = h; 
+		std::print("{} 008 await_suspend() &h={:x} h.frame={:x} handle_out={:x} handle_out->frame={:x}\n", std::this_thread::get_id(), reinterpret_cast<std::uintptr_t>(&h), reinterpret_cast<std::uintptr_t>(h.address()), reinterpret_cast<std::uintptr_t>(handle_out), handle_out ? reinterpret_cast<std::uintptr_t>(handle_out->address()) : 0); //MINE
+		*handle_out = h;
 	}
 
-	void await_resume() { std::cout << std::this_thread::get_id() << " 777 await_resume()" << std::endl; } //MINE
+	void await_resume() { std::cout << std::this_thread::get_id() << " 011 await_resume()" << std::endl; } //MINE
 };
 
 ReturnObject counter(std::coroutine_handle<>* handle) {
+	std::print("{} 004 counter() entry handle={:x} frame={:x}\n", std::this_thread::get_id(), reinterpret_cast<std::uintptr_t>(handle), handle ? reinterpret_cast<std::uintptr_t>(handle->address()) : 0); //MINE
 	Awaiter awaiter{handle};
 
-	//ORIG for (unsigned i = 0; ; ++i) { //MINE: Comment this out to call final_suspend() to print 999.
-	for (unsigned i = 0; i < 3; ++i) { //MINE This calls final_suspend() and prints 999.
-		std::cout << '\n' << std::this_thread::get_id() << " 333 counter: " << i << std::endl;
+	//ORIG for (unsigned i = 0; ; ++i) { //MINE: Comment this out to call final_suspend() to print 014.
+	for (unsigned i = 0; i < 3; ++i) { //MINE This calls final_suspend() and prints 014.
+		std::print("\n{} 006 counter: {} handle={:x} frame={:x}\n", std::this_thread::get_id(), i, reinterpret_cast<std::uintptr_t>(handle), handle ? reinterpret_cast<std::uintptr_t>(handle->address()) : 0);
 		co_await awaiter;
 	}
 }
@@ -57,11 +64,14 @@ int main() {
 	print_file_line();
 
 	std::coroutine_handle<> h;
+	std::print("{} 001 main before counter &h={:x} h.frame={:x}\n", std::this_thread::get_id(), reinterpret_cast<std::uintptr_t>(&h), reinterpret_cast<std::uintptr_t>(h.address())); //MINE
 	counter(&h);
+	std::print("{} 009 main after counter &h={:x} h.frame={:x}\n", std::this_thread::get_id(), reinterpret_cast<std::uintptr_t>(&h), reinterpret_cast<std::uintptr_t>(h.address())); //MINE
 
 	for (int i = 0; i < 3; ++i) {
-		std::cout << '\n' << std::this_thread::get_id() << " 666 main: resuming" << std::endl;
+		std::print("\n{} 010 main: before resume &h={:x} h.frame={:x}\n", std::this_thread::get_id(), reinterpret_cast<std::uintptr_t>(&h), reinterpret_cast<std::uintptr_t>(h.address())); //MINE
 		h();
+		std::print("{} 012 main: after resume &h={:x} h.frame={:x}\n", std::this_thread::get_id(), reinterpret_cast<std::uintptr_t>(&h), reinterpret_cast<std::uintptr_t>(h.address())); //MINE
 	}
 
 	h.destroy();
@@ -100,7 +110,7 @@ That’s why VLD is happy with:
 ```19:22:c:\_\rpw\C++\Examples\C++20 Coroutines\03-1\03-1.cpp
 		std::suspend_never final_suspend() noexcept { // Returns std::suspend_never. The coroutine automatically destroys itself after it finishes, so the memory is cleaned up.
 		//MINE std::suspend_always final_suspend() noexcept { // Returns std::suspend_always - memory leaks.
-			std::cout << std::this_thread::get_id() << " 999 final_suspend()" << std::endl; //MINE
+			std::cout << std::this_thread::get_id() << " 014 final_suspend()" << std::endl; //MINE
 			return {};
 ```
 
@@ -109,7 +119,7 @@ That’s why VLD is happy with:
 `std::suspend_always` suspends at the final point. The frame stays allocated. In this sample, `h.destroy()` is commented out:
 
 ```67:67:c:\_\rpw\C++\Examples\C++20 Coroutines\03-1\03-1.cpp
-	//ORIG h.destroy(); //MINE: Comment this out to call final_suspend() to print 999.
+	//ORIG h.destroy(); //MINE: Comment this out to call final_suspend() to print 014.
 ```
 
 So nothing ever frees the frame → leak.
