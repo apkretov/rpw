@@ -1,7 +1,7 @@
 #include <coroutine>
 #include <iostream>
 #include "../../stdafx.h"
-#include "vld.h" //MINE
+//MINE #include "vld.h"
 
 struct TracePromise {
 	struct promise_type {
