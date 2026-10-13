@@ -4,7 +4,7 @@
 #include <iostream>
 #include <print>
 #include <thread>
-#include "vld.h"
+//OFF #include "vld.h"
 #include "../../stdafx.h"
 
 struct ReturnObject {
@@ -64,52 +64,44 @@ ReturnObject counter(std::coroutine_handle<>* handle) {
 	std::println("{} 013 counter() handle={:x} frame={:x}", std::this_thread::get_id(), reinterpret_cast<std::uintptr_t>(handle), handle ? reinterpret_cast<std::uintptr_t>(handle->address()) : 0); //MINE
 }
 
-#ifdef MINE_PSEUDOCODE
-ReturnObject __compiler_counter(std::coroutine_handle<>* handle_arg) { // Caller (main) sees: counter(&h); // Compiler-generated “ramp” function for the coroutine
-	void* __frame = ::operator new(__builtin_coroutine_frame_size()); // 1. Allocate coroutine frame (promise, locals, etc.)
+#ifndef MINE_PSEUDOCODE
+ReturnObject __compiler_counter(std::coroutine_handle<>* handle_arg) { // Caller sees: counter(&h);
+	void* __frame = ::operator new(__builtin_coroutine_frame_size()); // 1. Allocate coroutine frame (stores promise and local state)
 	auto& promise = *new (__frame) promise_type;
 
 	ReturnObject __return = promise.get_return_object(); // 2. Obtain the return object immediately // Calls promise.get_return_object() --> "002 get_return_object()"
 
 	auto __initial_awaiter = promise.initial_suspend(); // 3. Begin coroutine execution, start at initial suspend point // Calls promise.initial_suspend() --> "003 initial_suspend()"
 	if (!__initial_awaiter.await_ready()) {
-		auto __handle = std::coroutine_handle<promise_type>::from_promise(promise); // Gets handle to self
-		__initial_awaiter.await_suspend(__handle); // (suspends here if await_ready returns false, but yours returns true)
-		return __return; // Ramp function returns return object here if it suspends
+		auto __handle = std::coroutine_handle<promise_type>::from_promise(promise);
+		__initial_awaiter.await_suspend(__handle); // initial_suspend returns suspend_never here, so this is skipped
+		return __return;
 	}
 
-	/*
-	4. Run the coroutine body
-		"004 counter() entry...", allocates 'Awaiter awaiter{handle_arg}'
-		--> "005 Awaiter()"
-		Loop with 'std::print("\n... counter: ...")'
-		--> "006 counter: 0 ..."
-	*/
+	std::println("{} 004 counter() entry...", std::this_thread::get_id()); // 4. Run the coroutine body // --> "004 counter() entry..."
+	Awaiter& awaiter = *new (static_cast<void*>(/* frame offset */)) Awaiter{handle_arg}; // Allocate 'Awaiter awaiter' in the coroutine frame // --> "005 Awaiter()"
+	unsigned& i = *new (static_cast<void*>(/* frame offset */)) unsigned(); // Local variable 'i' stored in the coroutine frame
+	for (i = 0; i < 3; ++i) {
+		std::println("\n{} 006 counter: {}...", std::this_thread::get_id(), i); // --> "006 counter: i..."
 
-	{ // co_await awaiter;
-		auto& __awaiter = awaiter;
+		auto& __awaiter = awaiter; // co_await awaiter; desugars into this
 		if (!__awaiter.await_ready()) { // Calls awaiter.await_ready() --> "007 await_ready()"
-			auto __handle = std::coroutine_handle<promise_type>::from_promise(promise); // Gets handle to self
+			auto __handle = std::coroutine_handle<promise_type>::from_promise(promise);
 			__awaiter.await_suspend(__handle); // Calls awaiter.await_suspend(__handle) --> "008 await_suspend()"
-			return __return; // Ramp function returns return object now! Coroutine is suspended.
+			return __return; // Ramp function returns return object here! Coroutine suspends.
 		}
-		__awaiter.await_resume();  // runs when resumed --> " 011 await_resume()"
+		__awaiter.await_resume(); // Runs when resumed --> "011 await_resume()"
 	}
 
-	/*
-	(Coroutine continues loop and suspend cycle)
-	After loops finish: // --> "013 counter()"
-	*/
+	std::println("{} 013 counter() exiting...", std::this_thread::get_id()); // --> "013 counter()"
 
-	promise.return_void(); // --> "014 return_void()"
+	promise.return_void(); // 5. Reached the end of the coroutine body // Calls promise.return_void() --> "014 return_void()"
 
-	auto __final_awaiter = promise.final_suspend(); // Final suspend point // --> "015 final_suspend()"
+	auto __final_awaiter = promise.final_suspend(); // 6. Final suspend point // Calls promise.final_suspend() --> "015 final_suspend()"
 	if (!__final_awaiter.await_ready()) {
-		auto __handle = std::coroutine_handle<promise_type>::from_promise(promise); // Gets handle to self
-		__final_awaiter.await_suspende(__handle); // Without wrapper, this suspends frame.
+		auto __handle = std::coroutine_handle<promise_type>::from_promise(promise);
+		__final_awaiter.await_suspend(__handle); // Suspends frame; explicitly destroyed later via h.destroy() in main
 	}
-
-	// Frame destroyed here if not suspended, or later via handle.destroy()
 }
 #endif // MINE_PSEUDOCODE
 
@@ -129,6 +121,7 @@ int main() {
 
 	h.destroy();
 }
+#endif // 0
 
 /*
 The note below about final_suspend()
@@ -186,4 +179,72 @@ So nothing ever frees the frame → leak.
 
 `suspend_always` is common when a caller still needs the handle after completion (read a result, join, etc.). Fire-and-forget style (like this example) often uses `suspend_never` so cleanup is automatic — but then the handle must not be used after the final resume.
 */
-#endif // 0
+
+/*
+# Why are some handles of std::coroutine_handle\<promise_type> while the others of just std::coroutine_handle\<>? What is the default type of std::coroutine_handle\<>?
+
+
+`std::coroutine_handle<>` is exactly `std::coroutine_handle<void>`: the template parameter has a default of `void`. It is a **type-erased** handle—useful for storing or passing any coroutine handle without knowing its promise type.[^1_1][^1_2]
+
+## Two kinds of handle
+
+| Type | Meaning | Typical use |
+| :-- | :-- | :-- |
+| `std::coroutine_handle<promise_type>` | Handle tied to a specific promise type; can access the promise via `.promise()` and can be created with `from_promise()` | Inside `promise_type::get_return_object()`, or when you need promise state |
+| `std::coroutine_handle<>` | Handle with the promise type erased (`Promise = void`) | Generic APIs, awaiters, schedulers, storing “who suspended me” |
+
+The standard defines:
+
+```cpp
+template<class Promise = void> struct coroutine_handle;
+```
+
+So these declarations are identical:
+
+```cpp
+std::coroutine_handle<> h;
+std::coroutine_handle<void> h;
+```
+
+`coroutine_handle<void>` erases the promise type and is implicitly convertible from other specializations, such as `coroutine_handle<ReturnObject::promise_type>`.
+
+## In your code
+
+Your `ReturnObject` needs the concrete promise type because it constructs the handle from the promise:
+
+```cpp
+std::coroutine_handle<promise_type>::from_promise(*this)
+```
+
+Only `coroutine_handle<promise_type>` has `from_promise()` and `.promise()` for that particular promise type.
+
+But `Awaiter::await_suspend()` receives the handle of whichever coroutine is currently executing the `co_await`. The awaiter does not need—and should not assume—that coroutine’s promise type, so the standard passes a type-erased handle:
+
+```cpp
+void await_suspend(std::coroutine_handle<> h) {
+	*handle_out = h;
+}
+```
+
+That is why `Awaiter` stores `std::coroutine_handle<>*`: it can later resume the suspended coroutine through `h.resume()` or `h()` without caring what its promise type is.
+
+## Conversion direction
+
+This works:
+
+```cpp
+std::coroutine_handle<ReturnObject::promise_type> specific = ...;
+std::coroutine_handle<> generic = specific; // OK
+```
+
+This does **not** work directly:
+
+```cpp
+std::coroutine_handle<> generic = ...;
+std::coroutine_handle<ReturnObject::promise_type> specific = generic; // error
+```
+
+Type erasure is one-way: once you convert to `coroutine_handle<>`, the compiler no longer knows which promise type it had. If you need the promise later, keep the typed handle or recover it through a design that preserves that information.
+
+So, in short: **use the typed handle when you need the promise; use `std::coroutine_handle<>` when you only need to resume, destroy, or pass around a coroutine generically.**
+*/

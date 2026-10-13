@@ -1,3 +1,5 @@
+#if 1
+
 #include <coroutine>
 #include <iostream>
 #include "../../stdafx.h"
@@ -14,7 +16,7 @@ struct Generator {
 			current_value = value;
 			return {};
 		}
-		
+
 		void return_void() {}
 		void unhandled_exception() { std::terminate(); }
 	};
@@ -22,7 +24,7 @@ struct Generator {
 	std::coroutine_handle<promise_type> handle;
 
 	Generator(std::coroutine_handle<promise_type> h) : handle(h) {}
-	
+
 	~Generator() {
 		if (handle)
 			handle.destroy();
@@ -34,7 +36,8 @@ struct Generator {
 
 	Generator& operator=(Generator&& other) noexcept {
 		if (this != &other) {
-			if (handle) handle.destroy();
+			if (handle)
+				handle.destroy();
 			handle = other.handle;
 			other.handle = nullptr;
 		}
@@ -42,29 +45,33 @@ struct Generator {
 	}
 
 	bool next() {
-		if (!handle || handle.done())
+		if (!handle || handle.done()) // See the note about done() below.
 			return false;
 		handle.resume();
 		return !handle.done();
 	}
 
-	int value() const {
-		return handle.promise().current_value;
-	}
+	int value() const { return handle.promise().current_value; }
 };
 
-Generator count_to(int n) {
-	for (int i = 1; i <= n; ++i) {
-		co_yield i;
+Generator fibonacci() {
+	int a = 0, b = 1;
+	while (true) {
+		co_yield a;
+		int next = a + b;
+		a = b;
+		b = next;
 	}
 }
 
 int main() {
 	print_file_line();
 
-	auto gen = count_to(5);
+	auto fib = fibonacci();
 
-	while (gen.next()) {
-		std::cout << gen.value() << std::endl;
+	for (int i = 0; i < 10 && fib.next(); ++i) {
+		std::cout << fib.value() << " ";
 	}
+	std::cout << std::endl;
 }
+#endif // 1

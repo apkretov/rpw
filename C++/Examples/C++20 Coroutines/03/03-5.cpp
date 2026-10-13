@@ -1,10 +1,10 @@
-#if 0
+#if 1
 
 #include <coroutine>
 #include <iostream>
 #include <print>
 #include <thread>
-#include "vld.h"
+//OFF #include "vld.h"
 #include "../../stdafx.h"
 
 struct ReturnObject {
@@ -84,51 +84,40 @@ ReturnObject counter(std::coroutine_handle<>* handle) {
 }
 
 #ifdef MINE_PSEUDOCODE
-ReturnObject __compiler_counter(std::coroutine_handle<>* handle_arg) { // Caller (main) sees: counter(&h); // Compiler-generated “ramp” function for the coroutine
+ReturnObject __compiler_counter(std::coroutine_handle<>* handle_arg) { // Caller (main) sees: auto ro = counter(&h); // Compiler-generated “ramp” function for the coroutine
 	void* __frame = ::operator new(__builtin_coroutine_frame_size()); // 1. Allocate coroutine frame (promise, locals, etc.)
-	auto& promise = *new (__frame) promise_type;
+	auto& promise = *new (__frame) promise_type; // Calls promise_type::promise_type() --> "002 promise_type()"
 
-	ReturnObject __return = promise.get_return_object(); // 2. Obtain the return object immediately // Calls promise.get_return_object() --> "003 get_return_object()"
+	ReturnObject __return = promise.get_return_object(); // 2. Obtain the return object immediately // Calls promise.get_return_object() --> "003 get_return_object()", which constructs ReturnObject --> "004 ReturnObject()"
 
 	auto __initial_awaiter = promise.initial_suspend(); // 3. Begin coroutine execution, start at initial suspend point // Calls promise.initial_suspend() --> "005 initial_suspend()"
 	if (!__initial_awaiter.await_ready()) {
 		auto __handle = std::coroutine_handle<promise_type>::from_promise(promise); // Gets handle to self
-		__initial_awaiter.await_suspend(__handle); // (suspends here if await_ready returns false, but yours returns true)
-		return __return; // Ramp function returns return object here if it suspends
+		__initial_awaiter.await_suspend(__handle); // Suspends here since initial_suspend returns suspend_always
+		return __return; // Ramp function returns return object here, initially suspended before body runs
 	}
 
-	/*
-	4. Run the coroutine body
-		"007 counter() entry...", allocates 'Awaiter awaiter{handle_arg}'
-		--> "008 Awaiter()"
-		Loop with 'std::print("\n... counter: ...")'
-		--> "009 counter: 0 ..."
-	*/
-
-	{ // co_await awaiter;
+	/*  4. Run the coroutine body       "007 counter() entry...", allocates 'Awaiter awaiter{handle_arg}'      --> "008 Awaiter()"       Loop with 'std::print("\n... counter: ...")'       --> "009 counter: 0 ..."    */
+	{ // int x = co_await awaiter; desugars into:
 		auto& __awaiter = awaiter;
 		if (!__awaiter.await_ready()) { // Calls awaiter.await_ready() --> "010 await_ready()"
 			auto __handle = std::coroutine_handle<promise_type>::from_promise(promise); // Gets handle to self
 			__awaiter.await_suspend(__handle); // Calls awaiter.await_suspend(__handle) --> "011 await_suspend()"
 			return __return; // Ramp function returns return object now! Coroutine is suspended.
 		}
-		__awaiter.await_resume();  // runs when resumed --> " 014 await_resume()"
+		int x = __awaiter.await_resume();  // Runs when resumed --> "014 await_resume(): returns 42"
 	}
-
-	/*
-	(Coroutine continues loop and suspend cycle)
-	After loops finish: // --> "017 counter()"
-	*/
+	/*  (Coroutine continues loop and suspend cycle, prints "015 counter: co_await returned 42") After loops finish: // --> "017 counter()"    */
 
 	promise.return_void(); // --> "018 return_void()"
 
 	auto __final_awaiter = promise.final_suspend(); // Final suspend point // --> "019 final_suspend()"
 	if (!__final_awaiter.await_ready()) {
 		auto __handle = std::coroutine_handle<promise_type>::from_promise(promise); // Gets handle to self
-		__final_awaiter.await_suspende(__handle); // Without wrapper, this suspends frame.
+		__final_awaiter.await_suspend(__handle); // Suspends frame; explicitly destroyed later via h.destroy() in main
 	}
 
-	// Frame destroyed here if not suspended, or later via handle.destroy()
+	// Frame destroyed here if not suspended, or later via handle.destroy() (which triggers ~promise_type() --> "021 ~promise_type()")
 }
 #endif // MINE_PSEUDOCODE
 
@@ -156,61 +145,4 @@ int main() {
 	h.destroy(); //MINE required because final_suspend is suspend_always
 	std::println("{} 022 main: after h.destroy()", std::this_thread::get_id()); //MINE
 }
-
-/*
-The note below about final_suspend()
-
----
-
-**User**
-
-Why does returning std::suspend_never clean up memory? @03-1.cpp:19-21
-
----
-
-**Cursor**
-
-`final_suspend()` is the last await point before the coroutine frame is eligible for destruction. What it returns decides whether the frame is destroyed for you or left alive.
-
-## What happens at the end of a coroutine
-
-When `counter` finishes (loop ends → `return_void()`), the runtime effectively does:
-
-1. Call `promise.return_void()`
-2. `co_await promise.final_suspend()`
-3. **If that await does not suspend** → destroy the coroutine frame
-4. **If it suspends** → leave the frame alive until something calls `handle.destroy()`
-
-## Why `std::suspend_never` cleans up
-
-`std::suspend_never::await_ready()` is `true`, so the await does not pause. Control falls through step 3, and the compiler-generated code destroys the frame (promise, locals, etc.).
-
-That’s why VLD is happy with:
-
-```19:22:c:\_\rpw\C++\Examples\C++20 Coroutines\03-1\03-1.cpp
-		std::suspend_never final_suspend() noexcept { // Returns std::suspend_never. The coroutine automatically destroys itself after it finishes, so the memory is cleaned up.
-		//MINE std::suspend_always final_suspend() noexcept { // Returns std::suspend_always - memory leaks.
-			std::cout << std::this_thread::get_id() << " 019 final_suspend()" << std::endl; //MINE
-			return {};
-```
-
-## Why `std::suspend_always` leaks here
-
-`std::suspend_always` suspends at the final point. The frame stays allocated. In this sample, `h.destroy()` is commented out:
-
-```67:67:c:\_\rpw\C++\Examples\C++20 Coroutines\03-1\03-1.cpp
-	//ORIG h.destroy(); //MINE: Comment this out to call final_suspend() to print 019.
-```
-
-So nothing ever frees the frame → leak.
-
-## Rule of thumb
-
-| `final_suspend` returns | Frame lifetime |
-|---|---|
-| `suspend_never` | Destroyed automatically when the coroutine finishes |
-| `suspend_always` | Kept until you call `destroy()` (or another owner does) |
-
-`suspend_always` is common when a caller still needs the handle after completion (read a result, join, etc.). Fire-and-forget style (like this example) often uses `suspend_never` so cleanup is automatic — but then the handle must not be used after the final resume.
-*/
 #endif // 0

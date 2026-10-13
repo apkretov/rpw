@@ -1,9 +1,9 @@
-#if 1
+#if 0
 
 #include <coroutine>
 #include <iostream>
 #include <thread>
-#include "vld.h"
+//OFF #include "vld.h"
 #include "../../stdafx.h"
 
 struct ReturnObject {
