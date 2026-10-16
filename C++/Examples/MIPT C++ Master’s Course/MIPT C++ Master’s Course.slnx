@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="23-1 Coroutines/23-1 Coroutines.vcxproj" Id="390d1efe-b8ab-45ca-ac5d-b791ec00b27f" />
+</Solution>
