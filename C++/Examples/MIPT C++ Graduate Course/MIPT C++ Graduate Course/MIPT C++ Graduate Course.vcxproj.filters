@@ -15,6 +15,23 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="11 multinh.cc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="11 throws.cc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="12 controllable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="12 noexc.cc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="12 noexc-dtor.cc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
     <ClCompile Include="11 Исключения.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -33,22 +50,5 @@
     <ClCompile Include="12_2_4 myvec-4.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="12 controllable.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="11 throws.cc.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="11 multinh.cc.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="12 noexc.cc.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="12 noexc-dtor.cc.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>
