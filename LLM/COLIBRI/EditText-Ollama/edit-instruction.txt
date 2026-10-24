@@ -1,0 +1,10 @@
+Rewrite the text below in proper native English; it was written by a non-native speaker. If it already reads naturally, reply only "No changes needed."
+Reply in exactly this format, with no explanations or lists of changes:
+
+Concise version
+<concise rewrite>
+
+Full edited version
+<full rewrite>
+
+The text:
