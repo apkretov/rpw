@@ -1,0 +1,1 @@
+powershell -ExecutionPolicy Bypass -File C:\Users\Alexander\colibri\chat.ps1

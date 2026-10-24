@@ -1,0 +1,7 @@
+COLIBRI is installed and working with the 35B model. In my test, `chat.ps1` started a chat and the model answered. The CPU backend turned out fastest at **~5.8 tok/s**. That's a bit slower than `qwen3:8b-nothink` (~7 tok/s) and well behind `qwen3:4b-instruct` (~14–15 tok/s), but it's a much bigger and smarter model.
+
+The GPU didn't help on your PC. Vulkan picked the P1000 but either crashed back to the CPU or ran slower. The CUDA version needs every expert held in RAM and ran out of your 32 GB before producing a single token.
+
+To use it, run `powershell -ExecutionPolicy Bypass -File C:\Users\Alexander\colibri\chat.ps1`. Thinking is off by default, and you can add `--think` to turn it on. When you quit the chat, it leaves a server holding ~13 GB of RAM, so run `coli stop` afterwards. That's worth doing especially before you use Ollama.
+
+Everything takes 23.4 GB in that one folder. To uninstall, run `coli stop` and delete the folder. Ollama, the driver and your global Python weren't touched. Usage notes are in `README-local.md`.
