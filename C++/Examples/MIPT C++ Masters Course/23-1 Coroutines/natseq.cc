@@ -1,4 +1,4 @@
-#if 1
+#if 0
 //-----------------------------------------------------------------------------
 //
 // Source code for MIPT masters course on C++
@@ -16,6 +16,7 @@
 #include <string>
 
 #include "gtest/gtest.h"
+#include "../../stdafx.h"
 
 namespace {
 
@@ -72,6 +73,7 @@ TEST(coroutines, natseq) {
 	for (int i = 0; i < 10; ++i) {
 		nums.move_next();
 		auto y = nums.current_value();
+		std::cout << AS_KV(y) << '\t' << AS_KV(n) << '\n'; //MINE
 		EXPECT_EQ(y, n);
 		n = n + 1;
 	}
