@@ -157,7 +157,8 @@
     <ClCompile Include="01.cpp" />
     <ClCompile Include="02.cpp" />
     <ClCompile Include="03.cpp" />
-    <ClCompile Include="natseq.cc" />
+    <ClCompile Include="04.cpp" />
+    <ClCompile Include="05 natseq.cc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

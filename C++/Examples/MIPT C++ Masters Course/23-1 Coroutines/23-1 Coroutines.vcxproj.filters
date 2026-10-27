@@ -18,13 +18,16 @@
     <ClCompile Include="01.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="natseq.cc">
+    <ClCompile Include="05 natseq.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="02.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="03.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="04.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
