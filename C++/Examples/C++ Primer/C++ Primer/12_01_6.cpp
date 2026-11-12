@@ -1,4 +1,4 @@
-#ifdef ON
+#ifndef ON
 #include <iostream>
 #include "../../stdafx.h"
 #include "12_01_6_3.h"

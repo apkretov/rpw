@@ -1,0 +1,73 @@
+# Visual Studio Google Test settings
+_Exported on 11/12/2026 at 14:57:03 GMT+3 from Cursor (3.29.15)_
+
+---
+
+**User**
+
+This project @23-1-1 Coroutines/23-1-1 Coroutines.vcxproj can work with Google Test but @23-1-2 Coroutines/23-1-2 Coroutines.vcxproj can't. Teach me which Microsoft Visual Studio GUI settings I need to change to enable that.
+
+---
+
+**Cursor**
+
+I'll compare the two `.vcxproj` files and related project settings to find what differs for Google Test.
+
+The linker error matches a missing Google Test setup. Checking how the working project resolves include/lib paths.
+
+**23-1-2 fails because it never links Google Test.** Your build log’s `unresolved external symbol main` matches that: the source only defines `main` under `NOGTESTMAIN`, so VS expects `gtest_main` to supply it.
+
+Working project **23-1-1** has two gtest-related settings that **23-1-2** lacks (for **Debug|x64** / **Release|x64**). Mirror those in the GUI.
+
+### 1. Link `gtest` + `gtest_main`
+
+1. Right-click **23-1-2 Coroutines** → **Properties**
+2. Set **Configuration** to the one you build (e.g. **Debug**), **Platform** to **x64**
+3. **Linker → Input → Additional Dependencies**
+4. Add (keep existing entries / `%(AdditionalDependencies)`):
+
+```text
+gtest.lib;gtest_main.lib
+```
+
+That is what provides `main` and the gtest symbols.
+
+### 2. Define the shared-library macro
+
+Same **Properties** dialog:
+
+1. **C/C++ → Preprocessor → Preprocessor Definitions**
+2. Add:
+
+```text
+GTEST_LINKED_AS_SHARED_LIBRARY=1
+```
+
+Your vcpkg gtest is the DLL build (`gtest.dll` / `gtest_main.dll` are copied next to the exe for 23-1-1). Without this macro, headers assume a static link and you can get link/runtime mismatches.
+
+### 3. Apply for Release too (if you use it)
+
+Repeat steps 1–2 with **Configuration = Release**, **Platform = x64**.
+
+---
+
+### Optional (matches 23-1-1 exactly)
+
+In **Properties → Configuration Properties → vcpkg** (or project globals):
+
+- **Use AutoLink Libraries** → **No** (`VcpkgAutoLink` = false)
+
+23-1-1 turns AutoLink off and lists the libs manually. Headers/lib paths still come from vcpkg integration — that’s why `#include "gtest/gtest.h"` already works on 23-1-2; only the explicit link step is missing.
+
+---
+
+### Checklist vs 23-1-1
+
+| Setting | GUI path | 23-1-1 | 23-1-2 |
+|---|---|---|---|
+| `gtest.lib;gtest_main.lib` | Linker → Input → Additional Dependencies | yes | **missing** |
+| `GTEST_LINKED_AS_SHARED_LIBRARY=1` | C/C++ → Preprocessor → Preprocessor Definitions | yes | **missing** |
+| AutoLink off | vcpkg → Use AutoLink Libraries = No | yes | default (usually On) |
+
+After those two required changes, rebuild **x64**. The `main` LNK2019 should go away; vcpkg should also copy the gtest DLLs beside the exe as it does for 23-1-1.
+

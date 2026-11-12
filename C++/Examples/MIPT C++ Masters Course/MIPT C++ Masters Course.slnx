@@ -3,5 +3,7 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="23-1 Coroutines/23-1 Coroutines.vcxproj" Id="390d1efe-b8ab-45ca-ac5d-b791ec00b27f" />
+  <Project Path="23-1-1 Coroutines/23-1-1 Coroutines.vcxproj" Id="390d1efe-b8ab-45ca-ac5d-b791ec00b27f" />
+  <Project Path="23-1-2 Coroutines - tmp/23-1-2 Coroutines - tmp.vcxproj" Id="3a73f8f1-7ddb-45e6-8ec3-12bfd4e6ba84" />
+  <Project Path="23-1-2 Coroutines/23-1-2 Coroutines.vcxproj" Id="efbb6531-1f18-41df-8f43-83393ef6599a" />
 </Solution>

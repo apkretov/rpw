@@ -55,27 +55,27 @@ struct generator {
 };
 #pragma endregion //MINE
 
-generator<int> natural_nums() {
-	int num = 0;
-	int num_2 = 0; //MINE
-	for (;;) {
-		std::println("num = {}\tnum_2 = {}", num, num_2++); //MINE
+template <typename T>
+generator<T> sequence(int start, int fin, int step) {
+	for (int num = start; num < fin; num += step) {
 		co_yield num;
-		num += 1;
 	}
 }
 
+#pragma region MINE
 int main() {
 	print_file_line(); //MINE
 
-	auto nums = natural_nums();
-	nums.move_next();
-	auto y = nums.current_value(); // y = 0
-	std::cout << AS_KV(y) << '\n'; //MINE
-	nums.move_next();
-	auto z = nums.current_value(); // z = 1
-	std::cout << AS_KV(z) << '\n'; //MINE
+	#ifndef WHILE
+	auto nums = sequence<int>(5, 20, 3);
+	while (nums.move_next())
+		std::cout << AS_KV(nums.current_value()) << '\n';
+	#else //RANGE_BASED_ERR
+	for (const auto& it : sequence<int>(5, 20, 3))
+		;
+	#endif //RANGE_BASED
 
 	return 0;
 }
+#pragma endregion //MINE
 #endif //1
